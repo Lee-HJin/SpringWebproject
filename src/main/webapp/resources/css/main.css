@@ -82,7 +82,7 @@ body{font-size: 12px;
     height: 100%;
     top: 0;
     left: 0;
-    background: url(/springwebmybatis/resources/image/sp_gnb_menu.gif) no-repeat; }
+    background: url(/webproject/resources/image/main/sp_gnb_menu.gif) no-repeat; }
 
 .display_wrap{
 	position: absolute;
@@ -111,14 +111,14 @@ body{font-size: 12px;
     color: rgb(51, 51, 51);
     padding-right: 18px;
     font: bolder 14px 돋움;
-    background: url(/springwebmybatis/resources/image/sp_common.gif) right -273px no-repeat;
+    background: url(/webproject/resources/image/main/sp_common.gif) right -273px no-repeat;
 }
 .display_wrap span{
     position: absolute;
     width: 11px;
     height: 7px;
     top: -7px;
-    background: url(/springwebmybatis/resources/image/sp_common.gif) no-repeat 0 -252px;
+    background: url(/webproject/resources/image/main/sp_common.gif) no-repeat 0 -252px;
 }
 .display_total span{ left: 30px;}
 .display_book span{ left: 83px;}
@@ -255,7 +255,7 @@ body{font-size: 12px;
     width: 23px;
     height: 45px;
     cursor: pointer;
-    background: #FFF url(/springwebmybatis/resources/image/sp_common.gif) no-repeat 0 -58px;    margin: 0px;} !important;
+    background: #FFF url(/webproject/resources/image/sp_common.gif) no-repeat 0 -58px;    margin: 0px;} !important;
 } !important    
 
 .swiper-button-next{
@@ -265,7 +265,7 @@ body{font-size: 12px;
     right: 0px;
     width: 23px;
     height: 45px;
-    background: #FFF url(/springwebmybatis/resources/image/sp_common.gif) no-repeat -46px -58px;
+    background: #FFF url(/webproject/resources/image/sp_common.gif) no-repeat -46px -58px;
     cursor: pointer;
     margin: 0px;} !important;
  
@@ -273,11 +273,11 @@ body{font-size: 12px;
  */
 
 .swiper-button-prev, .swiper-container-rtl .swiper-button-next {
-  background: url(/springwebmybatis/resources/image/sp_common.gif) no-repeat 0 -58px !important;
+  background: url(/webproject/resources/image/main/sp_common.gif) no-repeat 0 -58px !important;
 }
 
 .swiper-button-next, .swiper-container-rtl .swiper-button-prev {
-  background: url(/springwebmybatis/resources/image/sp_common.gif) no-repeat -46px -58px !important;
+  background: url(/webproject/resources/image/main/sp_common.gif) no-repeat -46px -58px !important;
 }
 
 .swiper-button-prev:hover{background-position:-23px -58px !important;}
@@ -348,7 +348,7 @@ body{font-size: 12px;
     width: 79px;
     height: 13px;
     bottom: 24px;
-    right: 24px;
+    right: -5px;
     z-index: 10;
 }
 
@@ -356,18 +356,25 @@ body{font-size: 12px;
     float: left;
     color: #999;
     font: normal 11px 돋움;
-    width: 40px;
+    width: 40px !important;
     text-align: right;
     padding: 1px 5px 0 0;
 }
-.ban_awN{ 
-    width: 14px !important;
-    height: 13px !important;
-    background:  background: url(/springwebmybatis/resources/image/sp_common.gif) no-repeat -15px -30px !important;}
-.ban_awP{ 
-    width: 14px !important;
-    height: 13px !important;
-    background: background: url(/springwebmybatis/resources/image/sp_common.gif) no-repeat 0 -30px !important;}
+.arrow_box .ban_awN{  
+	width: 14px; 
+	height: 13px;     
+	float: left;
+    background: url(/webproject/resources/image/main/sp_common.gif) no-repeat 0 -30px;}
+.arrow_box .ban_awP{ 
+    width: 14px;
+    height: 13px;
+    float: left;
+    background: url(/webproject/resources/image/main/sp_common.gif) no-repeat -15px -30px;}
+
+.arrow_box .aw_l:hover{background-position:-29px -30px;}
+.arrow_box .aw_r:hover{background-position:-44px -30px;}
+
+.swiper-pagination-current{font-weight: bold;}
 
 a:link{
 	text-decoration: none;
@@ -383,4 +390,4 @@ ul{list-style: none;}
 
 li{ display: list-item; text-align: -webkit-match-parent;}
 
-button { border: 0 none;}
+button { border: 0 none; cursor: pointer;}

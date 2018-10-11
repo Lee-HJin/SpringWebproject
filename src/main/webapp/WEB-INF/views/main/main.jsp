@@ -1,3 +1,4 @@
+<%@page import="java.io.PrintWriter"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%
@@ -36,7 +37,7 @@
 			<div class="head">
 				<h1 class="logo">
 					<a href="<%=cp%>/main.action">
-						<img alt="" src="<%=cp%>/resources/image/logo_2014_top.gif">
+						<img alt="" src="<%=cp%>/resources/image/main/logo_2014_top.gif">
 					</a>
 				</h1>
 			</div>
@@ -274,18 +275,18 @@
 	<div class="swiper-container swiper1">
    		<div class="swiper-wrapper">
      		<div class="swiper-slide">
-     			<a href="javascript://"><img src="<%=cp%>/resources/image/box1.jpg"></a>
+     			<a href="javascript://"><img src="<%=cp%>/resources/image/main/box1.jpg"></a>
      		</div>
      		<div class="swiper-slide">
      			<ul>
      				<li class="s_box03">
-     					<a href="javascript://"><img src="<%=cp%>/resources/image/box3_1.jpg"></a>
+     					<a href="javascript://"><img src="<%=cp%>/resources/image/main/box3_1.jpg"></a>
      				</li>
      				<li class="s_box03">
-     					<a href="javascript://"><img src="<%=cp%>/resources/image/box3_2.jpg"></a>
+     					<a href="javascript://"><img src="<%=cp%>/resources/image/main/box3_2.jpg"></a>
      				</li>
      				<li class="s_box03 alt">
-     					<a href="javascript://"><img src="<%=cp%>/resources/image/box3_3.jpg"></a>
+     					<a href="javascript://"><img src="<%=cp%>/resources/image/main/box3_3.jpg"></a>
      				</li>
      			</ul>
      		</div>
@@ -305,25 +306,23 @@
 			<div class="swiper-container bn_swiper1">
 				<div class="swiper-wrapper">
 					<div class="swiper-slide">
-						<a href="javascript://"><img src="<%=cp%>/resources/image/banner01.jpg"></a>
+						<a href="javascript://"><img src="<%=cp%>/resources/image/main/banner01.jpg"></a>
 					</div>
 					<div class="swiper-slide">
-						<a href="javascript://"><img src="<%=cp%>/resources/image/banner02.jpg"></a>
+						<a href="javascript://"><img src="<%=cp%>/resources/image/main/banner02.jpg"></a>
 					</div>
 					<div class="swiper-slide">
-						<a href="javascript://"><img src="<%=cp%>/resources/image/banner03.jpg"></a>
+						<a href="javascript://"><img src="<%=cp%>/resources/image/main/banner03.jpg"></a>
 					</div>
 					<div class="swiper-slide">
-						<a href="javascript://"><img src="<%=cp%>/resources/image/banner04.jpg"></a>
+						<a href="javascript://"><img src="<%=cp%>/resources/image/main/banner04.jpg"></a>
 					</div>
 				</div>
 				
 				<div class="arrow_box">
-					<span class="arrow_count">
-						<span style="font-weight: bold;"></span>
-					</span>
-					<div class="swiper-button-next ban_awN"></div>
-					<div class="swiper-button-prev ban_awP"></div>
+					<span class="arrow_count"></span>
+					<button class="ban_awN"></button>
+					<button class="ban_awP"></button>
 				</div>
 				
 			</div>
@@ -332,19 +331,20 @@
 			<div class="swiper-container bn_swiper2">
 				<div class="swiper-wrapper">
 					<div class="swiper-slide">
-						<a href="javascript://"><img src="<%=cp%>/resources/image/banner01.jpg"></a>
+						<a href="javascript://"><img src="<%=cp%>/resources/image/main/banner2_01.jpg"></a>
 					</div>
 					<div class="swiper-slide">
-						<a href="javascript://"><img src="<%=cp%>/resources/image/banner02.jpg"></a>
+						<a href="javascript://"><img src="<%=cp%>/resources/image/main/banner2_02.jpg"></a>
+					</div>
+					<div class="swiper-slide">
+						<a href="javascript://"><img src="<%=cp%>/resources/image/main/banner2_03.jpg"></a>
 					</div>
 				</div>
 				
 				<div class="arrow_box">
-					<div class="arrow_count">
-					
-					</div>
-					<div class="swiper-button-next"></div>
-					<div class="swiper-button-prev"></div>
+					<span class="arrow_count"></span>
+					<button class="ban_awN"></button>
+					<button class="ban_awP"></button>
 				</div>
 			</div>
 		</li>
@@ -352,19 +352,26 @@
 			<div class="swiper-container bn_swiper3">
 				<div class="swiper-wrapper">
 					<div class="swiper-slide">
-						<a href="javascript://"><img src="<%=cp%>/resources/image/banner01.jpg"></a>
+						<a href="javascript://"><img src="<%=cp%>/resources/image/main/banner3_01.jpg"></a>
 					</div>
 					<div class="swiper-slide">
-						<a href="javascript://"><img src="<%=cp%>/resources/image/banner02.jpg"></a>
+						<a href="javascript://"><img src="<%=cp%>/resources/image/main/banner3_02.jpg"></a>
+					</div>
+					<div class="swiper-slide">
+						<a href="javascript://"><img src="<%=cp%>/resources/image/main/banner3_03.jpg"></a>
+					</div>
+					<div class="swiper-slide">
+						<a href="javascript://"><img src="<%=cp%>/resources/image/main/banner3_04.jpg"></a>
+					</div>
+					<div class="swiper-slide">
+						<a href="javascript://"><img src="<%=cp%>/resources/image/main/banner3_05.jpg"></a>
 					</div>
 				</div>
 				
 				<div class="arrow_box">
-					<div class="arrow_count">
-					
-					</div>
-					<div class="swiper-button-next"></div>
-					<div class="swiper-button-prev"></div>
+					<span class="arrow_count"></span>
+					<button class="ban_awN"></button>
+					<button class="ban_awP"></button>
 				</div>
 			</div>
 		</li>
@@ -399,9 +406,13 @@
 	    spaceBetween: 0,
 	    centeredSlides: true,
 	    loop: true,
+	    pagination: {
+	        el: '.arrow_count',
+	        type: 'fraction',
+	      },
 	    navigation: {
-	      nextEl: '.swiper-button-next',
-	      prevEl: '.swiper-button-prev',
+	      nextEl: '.ban_awP',
+	      prevEl: '.ban_awN',
 	    },
 	  });
 	
@@ -409,9 +420,13 @@
 	    spaceBetween: 0,
 	    centeredSlides: true,
 	    loop: true,
+	    pagination: {
+	        el: '.arrow_count',
+	        type: 'fraction',
+	      },
 	    navigation: {
-	      nextEl: '.swiper-button-next',
-	      prevEl: '.swiper-button-prev',
+		      nextEl: '.ban_awP',
+		      prevEl: '.ban_awN',
 	    },
 	  }); 
 	
@@ -419,37 +434,19 @@
 	    spaceBetween: 0,
 	    centeredSlides: true,
 	    loop: true,
+	    pagination: {
+	        el: '.arrow_count',
+	        type: 'fraction',
+	      },
 	    navigation: {
-	      nextEl: '.swiper-button-next',
-	      prevEl: '.swiper-button-prev',
+		      nextEl: '.ban_awP',
+		      prevEl: '.ban_awN',
 	    },
 	  }); 
 	
 	</script>
 </div>
 
-
-
-
-
-
-<%-- 
-<div class="body_section">
-	<ul class="mini_banner">
-		<li id="mini_bn01">
-			<div class="swiper-container">
-				<div class="swiper-wrapper">
-					<div class="swiper-slide">
-						<a href="javascript://"><img src="<%=cp%>/resources/image/banner01.jpg"></a>
-					</div>
-					<div class="swiper-slide">
-						<a href="javascript://"><img src="<%=cp%>/resources/image/banner02.jpg"></a>
-					</div>
-				</div>
-			</div>
-		</li>
-	</ul>
-</div> --%>
 
 
 
