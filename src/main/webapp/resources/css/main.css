@@ -53,20 +53,19 @@ body{font-size: 12px;
 .menu_sale{ width:70px; margin-left: 25px;}
 
 .header_menu .menu_wrap .menu .menu_total span{ background-position: 0 0;}
-.header_menu .menu_wrap .menu .menu_total span:hover{
-    background-position: 0 -40px;}
+.header_menu .menu_wrap .menu .menu_total span:hover{ background-position: 0 -40px;}
+
 .header_menu .menu_wrap .menu .menu_book span{ background-position: -93px 0;}
-.header_menu .menu_wrap .menu .menu_book span:hover{
-	background-position: -93px -40px;}
+.header_menu .menu_wrap .menu .menu_book span:hover{ background-position: -93px -40px;}
+
 .header_menu .menu_wrap .menu .menu_best span{ background-position: 0 -81px;}
-.header_menu .menu_wrap .menu .menu_best span:hover{
-	background-position:0 -121px;}
+.header_menu .menu_wrap .menu .menu_best span:hover{ background-position:0 -121px;}
+
 .header_menu .menu_wrap .menu .menu_new span{ background-position: -89px -81px;}
-.header_menu .menu_wrap .menu .menu_new span:hover{
-	background-position:-89px -121px;}
+.header_menu .menu_wrap .menu .menu_new span:hover{ background-position:-89px -121px;}
+
 .header_menu .menu_wrap .menu .menu_sale span{background-position:-180px -81px}
-.header_menu .menu_wrap .menu .menu_sale span:hover{
-	background-position:-180px -121px}
+.header_menu .menu_wrap .menu .menu_sale span:hover{ background-position:-180px -121px}
 
 .menu_link{
     display: block;
@@ -329,6 +328,13 @@ body{font-size: 12px;
      align-items: center;
 }
 
+.body_section{
+	width: 1100px;
+	height: 1504px;
+	margin: 0 auto;
+    position: relative;
+    clear: both;
+}
 
 .mini_banner{
 	width: 100%;

@@ -300,89 +300,91 @@
 
 </div>
 
-<div id="body" style="width: 1100px;height: 145px;margin: 0 auto;position: relative;clear: both; background-color: #fff">
-	<ul class="mini_banner">
-		<li id="mini_bn01">
-			<div class="swiper-container bn_swiper1">
-				<div class="swiper-wrapper">
-					<div class="swiper-slide">
-						<a href="javascript://"><img src="<%=cp%>/resources/image/main/banner01.jpg"></a>
+<div class="body_section">
+	<div id="body" style="width: 1100px;height: 145px;margin: 0 auto;position: relative;clear: both; background-color: #fff">
+		<ul class="mini_banner">
+			<li id="mini_bn01">
+				<div class="swiper-container bn_swiper1">
+					<div class="swiper-wrapper">
+						<div class="swiper-slide">
+							<a href="javascript://"><img src="<%=cp%>/resources/image/main/banner01.jpg"></a>
+						</div>
+						<div class="swiper-slide">
+							<a href="javascript://"><img src="<%=cp%>/resources/image/main/banner02.jpg"></a>
+						</div>
+						<div class="swiper-slide">
+							<a href="javascript://"><img src="<%=cp%>/resources/image/main/banner03.jpg"></a>
+						</div>
+						<div class="swiper-slide">
+							<a href="javascript://"><img src="<%=cp%>/resources/image/main/banner04.jpg"></a>
+						</div>
 					</div>
-					<div class="swiper-slide">
-						<a href="javascript://"><img src="<%=cp%>/resources/image/main/banner02.jpg"></a>
+					
+					<div class="arrow_box">
+						<span class="arrow_count"></span>
+						<button class="ban_awN"></button>
+						<button class="ban_awP"></button>
 					</div>
-					<div class="swiper-slide">
-						<a href="javascript://"><img src="<%=cp%>/resources/image/main/banner03.jpg"></a>
+					
+				</div>
+			</li>
+			<li id="mini_bn01">
+				<div class="swiper-container bn_swiper2">
+					<div class="swiper-wrapper">
+						<div class="swiper-slide">
+							<a href="javascript://"><img src="<%=cp%>/resources/image/main/banner2_01.jpg"></a>
+						</div>
+						<div class="swiper-slide">
+							<a href="javascript://"><img src="<%=cp%>/resources/image/main/banner2_02.jpg"></a>
+						</div>
+						<div class="swiper-slide">
+							<a href="javascript://"><img src="<%=cp%>/resources/image/main/banner2_03.jpg"></a>
+						</div>
 					</div>
-					<div class="swiper-slide">
-						<a href="javascript://"><img src="<%=cp%>/resources/image/main/banner04.jpg"></a>
+					
+					<div class="arrow_box">
+						<span class="arrow_count"></span>
+						<button class="ban_awN"></button>
+						<button class="ban_awP"></button>
 					</div>
 				</div>
-				
-				<div class="arrow_box">
-					<span class="arrow_count"></span>
-					<button class="ban_awN"></button>
-					<button class="ban_awP"></button>
-				</div>
-				
-			</div>
-		</li>
-		<li id="mini_bn01">
-			<div class="swiper-container bn_swiper2">
-				<div class="swiper-wrapper">
-					<div class="swiper-slide">
-						<a href="javascript://"><img src="<%=cp%>/resources/image/main/banner2_01.jpg"></a>
+			</li>
+			<li id="mini_bn01">
+				<div class="swiper-container bn_swiper3">
+					<div class="swiper-wrapper">
+						<div class="swiper-slide">
+							<a href="javascript://"><img src="<%=cp%>/resources/image/main/banner3_01.jpg"></a>
+						</div>
+						<div class="swiper-slide">
+							<a href="javascript://"><img src="<%=cp%>/resources/image/main/banner3_02.jpg"></a>
+						</div>
+						<div class="swiper-slide">
+							<a href="javascript://"><img src="<%=cp%>/resources/image/main/banner3_03.jpg"></a>
+						</div>
+						<div class="swiper-slide">
+							<a href="javascript://"><img src="<%=cp%>/resources/image/main/banner3_04.jpg"></a>
+						</div>
+						<div class="swiper-slide">
+							<a href="javascript://"><img src="<%=cp%>/resources/image/main/banner3_05.jpg"></a>
+						</div>
 					</div>
-					<div class="swiper-slide">
-						<a href="javascript://"><img src="<%=cp%>/resources/image/main/banner2_02.jpg"></a>
-					</div>
-					<div class="swiper-slide">
-						<a href="javascript://"><img src="<%=cp%>/resources/image/main/banner2_03.jpg"></a>
-					</div>
-				</div>
-				
-				<div class="arrow_box">
-					<span class="arrow_count"></span>
-					<button class="ban_awN"></button>
-					<button class="ban_awP"></button>
-				</div>
-			</div>
-		</li>
-		<li id="mini_bn01">
-			<div class="swiper-container bn_swiper3">
-				<div class="swiper-wrapper">
-					<div class="swiper-slide">
-						<a href="javascript://"><img src="<%=cp%>/resources/image/main/banner3_01.jpg"></a>
-					</div>
-					<div class="swiper-slide">
-						<a href="javascript://"><img src="<%=cp%>/resources/image/main/banner3_02.jpg"></a>
-					</div>
-					<div class="swiper-slide">
-						<a href="javascript://"><img src="<%=cp%>/resources/image/main/banner3_03.jpg"></a>
-					</div>
-					<div class="swiper-slide">
-						<a href="javascript://"><img src="<%=cp%>/resources/image/main/banner3_04.jpg"></a>
-					</div>
-					<div class="swiper-slide">
-						<a href="javascript://"><img src="<%=cp%>/resources/image/main/banner3_05.jpg"></a>
+					
+					<div class="arrow_box">
+						<span class="arrow_count"></span>
+						<button class="ban_awN"></button>
+						<button class="ban_awP"></button>
 					</div>
 				</div>
-				
-				<div class="arrow_box">
-					<span class="arrow_count"></span>
-					<button class="ban_awN"></button>
-					<button class="ban_awP"></button>
-				</div>
-			</div>
-		</li>
-	</ul>
+			</li>
+		</ul>
+		
+		
+		
+	   	
+	</div>
 	
+	<script src="<%=cp%>/resources/js/swiper_min.js"></script>
 	
-	
-   	<script src="<%=cp%>/resources/js/swiper_min.js"></script>
-	
-
-
 	<script type="text/javascript">
 	
 	var swiper = new Swiper('.swiper1', {
@@ -445,8 +447,9 @@
 	  }); 
 	
 	</script>
+	
+	
 </div>
-
 
 
 
