@@ -5,14 +5,14 @@ body{font-size: 12px;
     line-height: 16px;
     font-family: 굴림;}
 
-#wrap {
+#top_wrap {
     width: 100%;
     height: 100%;
     margin: 0;
     padding: 0;
     }
 
-.head_wrap{
+.head_top{
 	width: 1100px;
 	height: 143px;
     margin: 0 auto;
@@ -23,7 +23,90 @@ body{font-size: 12px;
 	float: left;
     margin: 32px 0 0 0;
     }
-    
+
+.top_menu{
+	position: absolute;
+    top: 0;
+    left: 0;
+    width: 1100px;
+    height: 32px;
+    z-index: 600;
+}    
+
+.t_menu_list{
+	float: right;
+    margin: 7px 0 0 0;
+    height: 19px;	
+}
+
+.t_menu{
+	position: relative;
+    float: left;
+    height: 19px;
+    background: url(/webproject/resources/image/main/sp_common.gif) no-repeat 0 -1px;
+}
+
+.t_menu_link{
+    height: 14px;
+    display: block;
+    color: rgb(113, 113, 113);
+    letter-spacing: -1px;
+    padding: 4px 7px 0 7px;
+    font: normal 11px 돋움;
+    color: #717171;
+}
+.myShopping .t_menu_link{	
+	padding-right: 15px;
+    background: url(/webproject/resources/image/main/sp_common.gif) no-repeat -260px -3px;
+}
+.store .t_menu_link{
+	padding-right: 15px;
+    background: url(/webproject/resources/image/main/sp_common.gif) no-repeat -250px -3px;
+}
+
+.login{
+    background: none;
+    width: 42px;
+    height: 19px;
+    margin-right: 3px;
+}
+.btn_login{
+    border: 1px solid #cccccc;
+    width: 40px;
+    height: 14px;
+    padding: 3px 0 0 0;
+    text-align: center;
+    color: #2b2b2b;
+}
+.btn_login:hover{
+	text-decoration:none;
+	background:#f9f9f9;
+	color:#000;
+}
+
+.join{ background: none;}
+
+.display_top{
+    font: normal 11px 돋움;
+    background: #FFF;
+    position: absolute;
+    z-index: 600;
+    border: 1px solid #917253;
+    top: 17px;
+    left: 0;
+}
+
+.display_top a{
+    display: block;
+    height: 17px;
+    wwidth: 85px;
+    padding: 4px 0 0 5px;
+    color: #888;
+    background: #FFF;
+    background-position: -10000px 0;
+}
+.display_top a:hover{ background:#f6f6f6;color:#557eb0;text-decoration:none}
+
 .wrap_header {
     width: 100%;
     border-top: 1px solid #e8e8e8;
@@ -202,75 +285,6 @@ body{font-size: 12px;
 /* head 끝 */
 
 /* body */
-/* 
-.m_slide{
-    position: relative;
-    width: 1100px;
-    height: 352px;
-    margin: 0 auto;}
-    
-
-
-
-.swiper-container{
-    width: 960px;
-    height: 352px;
-    margin: 0 auto;
-    position:relative;overflow:hidden;list-style:none;padding:0;z-index:1
-}
-
-.swiper-container .swiper-wrapper .swiper-slide{
-	text-align: center; 
-    font-size: 18px; 
-	background: #fff;
-	
-	display: -webkit-box; 
-	display: -ms-flexbox; 
-	display: -webkit-flex; 
-	display: flex; 
-	-webkit-box-pack: center; 
-	-ms-flex-pack: center; 
-	-webkit-justify-content: center; 
-	justify-content: center; 
-	-webkit-box-align: center; 
-	-ms-flex-align: center; 
-	-webkit-align-items: center; 
-	align-items: center;}
-
-.s_box01{
-    float: left;
-    width: 960px;
-    height: 352px;
-    overflow: hidden;}
-    
-.aw{ display: none;}
-
- 
-.swiper-button-prev{
-    z-index: 10;
-    position: absolute;
-    top: 40%;
-    left: 0px;
-    width: 23px;
-    height: 45px;
-    cursor: pointer;
-    background: #FFF url(/webproject/resources/image/sp_common.gif) no-repeat 0 -58px;    margin: 0px;} !important;
-} !important    
-
-.swiper-button-next{
-    z-index: 10;
-    position: absolute;
-    top: 40%;
-    right: 0px;
-    width: 23px;
-    height: 45px;
-    background: #FFF url(/webproject/resources/image/sp_common.gif) no-repeat -46px -58px;
-    cursor: pointer;
-    margin: 0px;} !important;
- 
-
- */
-
 .swiper-button-prev, .swiper-container-rtl .swiper-button-next {
   background: url(/webproject/resources/image/main/sp_common.gif) no-repeat 0 -58px !important;
 }
@@ -382,6 +396,11 @@ body{font-size: 12px;
 
 .swiper-pagination-current{font-weight: bold;}
 
+/* body끝 */
+
+
+
+
 a:link{
 	text-decoration: none;
     color: #555555;
@@ -390,7 +409,7 @@ a:visit{ text-decoration: none; color: #555555;}
 
 a:hover{ text-decoration: underline;}
 
-h1,h3,h4,ul,li{ margin: 0; padding: 0;}
+h1,h3,h4,ul,li,dl,dd{ margin: 0; padding: 0;}
 
 ul{list-style: none;}
 
