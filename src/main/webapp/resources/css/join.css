@@ -1,0 +1,31 @@
+@charset "UTF-8";
+
+.href a:link {text-decoration: none; color: grey;}
+.href a:visited {text-decoration: none; color: grey;}
+.href a:active {text-decoration: none; color: grey;}
+.href a:hover {text-decoration: underline; color: #886e45;}
+
+.joinTable table {margin-top: 10px;}
+.joinTable tr {border-bottom: 1px solid #d5d5d5; border-top: 1px solid #d5d5d5; text-align: left; height: 45px;}
+.joinTable th {background-color: #fafafa; width: 150px; padding-left: 10px}
+.joinTable td {padding-left: 10px; width: 700px;}
+
+.findIdTable table {margin-top: 10px;}
+.findIdTable tr {border-bottom: 1px solid #d5d5d5; border-top: 1px solid #d5d5d5; text-align: left; height: 45px;}
+.findIdTable th {background-color: #fafafa; width: 150px; padding-left: 10px}
+.findIdTable td {padding-left: 10px; width: 700px;}
+
+.findPwdTable table {margin-top: 10px;}
+.findPwdTable tr {border-bottom: 1px solid #d5d5d5; border-top: 1px solid #d5d5d5; text-align: left; height: 45px;}
+.findPwdTable th {background-color: #fafafa; width: 150px; padding-left: 10px}
+.findPwdTable td {padding-left: 10px; width: 700px;}
+
+.okBtn {color: white; background-color: #886e45; border: none; height: 40px; width: 120px; font-size: 20px; font-weight: bold; cursor: pointer;}
+.okBtn:hover {color: #886e45; background-color: white; border: 2px solid #886e45; height: 40px; width: 120px; font-size: 20px; font-weight: bold; cursor: pointer;}
+.cancelBtn {color: #886e45; background-color: white; border: 1px solid #886e45; height: 40px; width: 120px; font-size: 20px; font-weight: bold; cursor: pointer;}
+.cancelBtn:hover {border: 2px solid #886e45;}
+
+#text_pwd2 {color: red;}
+
+ul {padding: 0px; margin: 0px;}
+li {padding: 0px; margin: 0px;}
