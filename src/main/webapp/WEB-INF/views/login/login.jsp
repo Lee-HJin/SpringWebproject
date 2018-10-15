@@ -34,9 +34,10 @@
 <div style="border: 2px solid; border-color: #886e45; padding: 10px; width: 470px;">
 	<div style="padding: 10px">
 		<font color="#886e45" size="6"><b>로그인</b></font><br/><br/>
+		<div style="padding-bottom: 10px; color: #ea5759;"><b>${message}</b></div>
 		<div style="float: left;">			
-			<input type="text" name="user_id" placeholder="아이디" style="border-color: bcbcbc; border: 1px solid; margin-bottom: 0px; height: 40px; width: 300px;" class="form-control"> <br/>
-			<input type="password" name="user_pwd" placeholder="비밀번호" style="border-color: bcbcbc; border: 1px solid; margin-bottom: 10px; height: 40px; width: 300px;" class="form-control">		
+			<input type="text" name="userId" placeholder="아이디" style="border-color: bcbcbc; border: 1px solid; margin-bottom: 0px; height: 40px; width: 300px;" class="form-control"> <br/>
+			<input type="password" name="userPwd" placeholder="비밀번호" style="border-color: bcbcbc; border: 1px solid; margin-bottom: 10px; height: 40px; width: 300px;" class="form-control">		
 		</div>
 		<div style="float: left; padding-left: 20px">
 			<input type="button" value="로그인" onclick="login();" style="height: 100px; width: 100px; color: white; background-color: #886e45; border: none; font-size: 18px; font-weight: bold;">
@@ -66,13 +67,11 @@
 	</div>
 </div>
 
+<a href="<%=cp%>/myShoppingMain.action">나의쇼핑</a>
 
-
-
-
-
-
-
+<c:if test="${!empty userInfo}">
+	${userInfo.userId }, ${userInfo.userPwd }, ${userInfo.nickName }
+</c:if>
 
 </body>
 </html>
