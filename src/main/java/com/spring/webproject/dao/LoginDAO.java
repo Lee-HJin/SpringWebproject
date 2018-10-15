@@ -1,5 +1,7 @@
 package com.spring.webproject.dao;
 
+import java.util.HashMap;
+
 import org.mybatis.spring.SqlSessionTemplate;
 
 import com.spring.webproject.dto.UserDTO;
@@ -26,6 +28,18 @@ private SqlSessionTemplate sessionTemplate;
 		
 		sessionTemplate.insert("loginMapper.joinMember", dto);
 		
+	}
+	
+	public UserDTO login(String userId, String userPwd) {
+		
+		HashMap<String, Object> params = new HashMap<String, Object>();
+		
+		params.put("userId", userId);
+		params.put("userPwd", userPwd);
+		
+		UserDTO dto = sessionTemplate.selectOne("loginMapper.login",params);
+		
+		return dto;
 	}
 
 }

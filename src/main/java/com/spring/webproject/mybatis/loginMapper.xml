@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="loginMapper">
+
+<!-- 아이디 중복검사 -->
+<select id="idOverlapCheck" parameterType="java.lang.String" resultType="com.spring.webproject.dto.UserDTO">
+	select * from users where userId=#{userId}
+</select>
+
+<!-- 회원가입 성공 -->
+<insert id="joinMember" parameterType="com.spring.webproject.dto.UserDTO">
+	insert into users(userId,userPwd,userName,birth,phone,email,emailReception,smsReception,nickName,zipCode,address1,address2,addTel,memberGrade)
+	values(#{userId},#{userPwd},#{userName},#{birth},#{phone},#{email},#{emailReception},#{smsReception},#{nickName},#{zipCode},#{address1},#{address2},#{addTel},#{memberGrade})
+</insert>
+
+<!-- 로그인 -->
+<select id="login" parameterType="map" resultType="com.spring.webproject.dto.UserDTO">
+	select * from users where userId=#{userId} and userPwd=#{userPwd}
+</select>
+
+</mapper>

@@ -19,10 +19,35 @@ public class LoginController {
 
 	//로그인페이지
 	@RequestMapping(value = "/login.action", method = RequestMethod.GET)
-	public String home() {
+	public String login() {
 
 		return "login/login";
 	}
+	
+	//로그인 진행
+	@RequestMapping(value = "/login_ok.action", method = RequestMethod.POST)
+	public String loginProcess(HttpServletRequest request) {
+		
+		String returnUrl = "";
+		String userId = request.getParameter("userId");
+		String userPwd = request.getParameter("userPwd");
+		
+		UserDTO dto = dao.login(userId, userPwd);
+		
+		if(dto!=null) {	//로그인 성공
+			request.getSession().setAttribute("userInfo", dto);
+			request.getSession().removeAttribute("message");
+			returnUrl = "redirect:/login.action";
+			
+		}
+		else {	//로그인 실패
+			returnUrl = "redirect:/login.action";
+			request.getSession().setAttribute("message", "아이디 또는 비밀번호가 일치하지 않습니다.");
+		}
+
+		return returnUrl;
+	}
+	
 
 	//회원가입 1단계 : 약관동의
 	@RequestMapping(value = "login/mem_agree.action", method = {RequestMethod.GET,RequestMethod.POST})
@@ -86,23 +111,25 @@ public class LoginController {
 		return "login/mem_join_success";
 	}
 	
-	//
+	//아이디 찾기
 	@RequestMapping(value = "/mem_findId.action", method = {RequestMethod.GET,RequestMethod.POST})
 	public String memfindId() {
 
 		return "mem_findId";
 	}
 
+	//비밀번호 찾기
 	@RequestMapping(value = "/mem_findPwd.action", method = {RequestMethod.GET,RequestMethod.POST})
 	public String memfindPwd() {
 
 		return "mem_findPwd";
 	}
-
+	
+	//나의쇼핑 메인
 	@RequestMapping(value = "/myShoppingMain.action", method = {RequestMethod.GET,RequestMethod.POST})
 	public String myShoppingMain() {
 
-		return "myShoppingMain";
+		return "myShopping/myShoppingMain";
 	}
 
 }
