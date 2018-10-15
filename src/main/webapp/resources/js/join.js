@@ -110,9 +110,9 @@ $(document).ready(function(){
 	//아이디저장 - 쿠키 설정
 	var userInputId = getCookie("userInputId");	//쿠키 가져옴
 
-	$("input[name='user_id']").val(userInputId);  //쿠키에 저장되어 있는 아이디를 input에 입력
+	$("input[name='userId']").val(userInputId);  //쿠키에 저장되어 있는 아이디를 input에 입력
 
-	if($("input[name='user_id']").val() != ""){	//input이 빈칸이 아니면 체크박스 체크하도록
+	if($("input[name='userId']").val() != ""){	//input이 빈칸이 아니면 체크박스 체크하도록
 		$("#idSave").attr("checked", true);
 	}
 
@@ -146,25 +146,25 @@ function login() {
 
 	var f = document.loginForm;
 
-	var id = f.user_id.value;
+	var id = f.userId.value;
 	id = id.trim();
 	if(!id) {
 		alert("\n아이디를 입력하세요. ");
-		f.user_id.focus();
+		f.userId.focus();
 		return;
 	}
-	f.user_id.value = id;
+	f.userId.value = id;
 
-	var pwd = f.user_pwd.value;
+	var pwd = f.userPwd.value;
 	pwd = pwd.trim();
 	if(!pwd) {
 		alert("\n비밀번호를 입력하세요. ");
-		f.user_pwd.focus();
+		f.userPwd.focus();
 		return;
 	}
-	f.user_pwd.value = pwd;
+	f.userPwd.value = pwd;
 
-	f.action = "<%=cp%>/login/login_ok.action";
+	f.action = "/webproject/login_ok.action";
 
 	if(f.idSave.checked){
 		setCookie('userInputId',id,30);
@@ -351,6 +351,13 @@ function joinConfirmation(){
 	}
 	f.day.value = birth;
 
+	var validDate = isValidDate(f.year.value, f.month.value, f.day.value);
+	if(validDate==false){
+		alert("\n생년월일을 정확히 입력하세요.");
+		f.month.focus();
+		return;
+	}
+
 	var tel = f.tel1.value;
 	tel = tel.trim();
 	if(!tel) {
@@ -432,8 +439,6 @@ function joinConfirmation(){
 	email = f.email1.value + '@' + f.email2.value;
 	f.email.value = email;
 
-
-
 	if(f.emailCheck.checked){
 		f.emailReception.value = 'Y';
 	}
@@ -451,4 +456,26 @@ function joinConfirmation(){
 	f.action = "/webproject/login/mem_join_success.action";
 
 	f.submit();
+}
+
+// 날짜 검사
+function isValidDate(year, month, day) {
+	var days = new Array (31, 0, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31);
+
+     if(year%4==0 && year%100 !=0 || year%400==0){
+		days[1]=29;
+	 }
+     else{
+		days[1]=28;
+	 }
+
+     if(month < 1 || month > 12){
+		return false;
+	 }
+
+     if(day > days[month-1] || day < 1){
+		return false;
+	 }
+       
+     return true;
 }
