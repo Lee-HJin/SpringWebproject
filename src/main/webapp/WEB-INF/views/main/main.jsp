@@ -327,9 +327,195 @@
 		</div>
 		<div class="recommend_book">
 			<div class="rc_title">
-				
+				<h4>
+					<span>추천도서</span>
+					&nbsp;&nbsp;오늘 조회 하신 상품과 유사한 속성을 지닌 상품을 추천합니다.
+				</h4>
+				<div class="rc_title_aw"></div>
 			</div>
-		</div>	
+			<div class="rc_body">
+				<div>
+					<div class="recent_book">
+						<div class="rb_awbox">
+							<button class="slide_aw left" id="rb_awL">
+								<span class="aw_count_rb"></span>
+							</button>	
+							<button class="slide_aw right" id="rb_awR">
+								<span class="aw_count_rb"></span>
+							</button>
+						</div>
+						<h4>오늘본 상품</h4>
+						<div class="swiper-container swiper3">
+							<div class="swiper-wrapper">
+								<div class="swiper-slide">
+									<div class="rb_image">
+										<a href="javascript://">
+											<img src="<%=cp%>/resources/image/main/4202644.jpg">
+										</a>
+										<dl class="rb_title">
+											<dt>설거지 누가 할래</dt>
+											<dd>야먀우치 마리코</dd>
+										</dl>
+									</div>
+								</div>
+								<div class="swiper-slide">
+									<div class="rb_image">
+										<a href="javascript://">
+											<img src="<%=cp%>/resources/image/main/4198240.jpg">
+										</a>
+										<dl class="rb_title">
+											<dt>미키는 늘 너의 이…</dt>
+											<dd>미키 마우스</dd>
+										</dl>
+									</div>	
+								</div>
+							</div>
+						</div>
+					</div>
+					<button class="rc_btn"></button>
+					<div class="rc_books">
+						<h4>최근 본 도서와 유사한 분야 또는 주제를 다룬 도서</h4>
+						<ul class="rc_books_list">
+							<li>
+								<div class="rb_image">
+									<a href="javascript://">
+										<img src="<%=cp%>/resources/image/main/3983105.jpg">
+									</a>
+									<dl class="rb_title">
+										<dt>언어의 온도[100…</dt>
+										<dd>이기주</dd>
+									</dl>
+								</div>
+							</li>
+							<li>
+								<div class="rb_image">
+									<a href="javascript://">
+										<img src="<%=cp%>/resources/image/main/4201046.jpg">
+									</a>
+									<dl class="rb_title">
+										<dt>골든아워 2</dt>
+										<dd>이국종</dd>
+									</dl>
+								</div>
+							</li>
+							<li>
+								<div class="rb_image">
+									<a href="javascript://">
+										<img src="<%=cp%>/resources/image/main/4200595.jpg">
+									</a>
+									<dl class="rb_title">
+										<dt>참 잘했어요</dt>
+										<dd>박광수</dd>
+									</dl>
+								</div>
+							</li>
+						</ul>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="new_book">
+			<h3 class="nb_title"></h3>
+			<ul class="nb_tab_menu">
+				<li>
+					<a href="javascript://">전체</a>
+				</li>
+				<li>
+					<a href="javascript://">소설</a>
+				</li>
+				<li>
+					<a href="javascript://">인문/교양/철학</a>
+				</li>
+				<li>
+					<a href="javascript://">시/에세이/기행</a>
+				</li>
+				<li>
+					<a href="javascript://">사회/정치/법률</a>
+				</li>
+				<li>
+					<a href="javascript://">경제/경영</a>
+				</li>
+				<li>
+					<a href="javascript://">자기계발</a>
+				</li>
+				<li>
+					<a href="javascript://">가정/생활/요리</a>
+				</li>
+				<li>
+					<a href="javascript://">여행/취미/레저</a>
+				</li>
+			</ul>
+			<div class="nb_list1">
+				<div class="b_arrow_box">
+					<button class="slide_aw left" id="nb_awL">
+						<span class="aw_count_nb"></span>
+					</button>	
+					<button class="slide_aw right" id="nb_awR">
+						<span class="aw_count_nb"></span>
+					</button>
+				</div>
+				<div class="swiper-container swiper4">
+					<div class="swiper-wrapper">
+						<div class="swiper-slide">
+							<div>
+								<a href="javascript://">
+									<img src="<%=cp%>/resources/image/main/4203179.jpg">
+								</a>
+							</div>
+							<dl class="rb_title">
+								<dt>설거지 누가 할래</dt>
+								<dd>야먀우치 마리코</dd>
+							</dl>
+						</div>
+						<div class="swiper-slide">
+							<a href="javascript://">
+								<img src="<%=cp%>/resources/image/main/4202644.jpg">
+							</a>
+						</div>
+						<div class="swiper-slide">
+							<a href="javascript://">
+								<img src="<%=cp%>/resources/image/main/4201858.jpg">
+							</a>
+						</div>
+						<div class="swiper-slide">
+							<a href="javascript://">
+								<img src="<%=cp%>/resources/image/main/4203116.jpg">
+							</a>
+						</div>
+						<div class="swiper-slide">
+							<a href="javascript://">
+								<img src="<%=cp%>/resources/image/main/4201995.jpg">
+							</a>
+						</div>
+						<div class="swiper-slide">
+							<a href="javascript://">
+								<img src="<%=cp%>/resources/image/main/4202623.jpg">
+							</a>
+						</div>
+						<div class="swiper-slide">
+							<a href="javascript://">
+								<img src="<%=cp%>/resources/image/main/4200746.jpg">
+							</a>
+						</div>
+						<div class="swiper-slide">
+							<a href="javascript://">
+								<img src="<%=cp%>/resources/image/main/4203203.jpg">
+							</a>
+						</div>
+						<div class="swiper-slide">
+							<a href="javascript://">
+								<img src="<%=cp%>/resources/image/main/4198414.jpg">
+							</a>
+						</div>
+						<div class="swiper-slide">
+							<a href="javascript://">
+								<img src="<%=cp%>/resources/image/main/4192753.jpg">
+							</a>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
 	</div>
 
 	
@@ -407,6 +593,37 @@
 	    navigation: {
 	      nextEl: '#slide_awR',
 	      prevEl: '#slide_awL',
+	    },
+	  });
+	
+	var swiper = new Swiper('.swiper3', {
+	    spaceBetween: 0,
+	    centeredSlides: true,
+	    loop: true,
+	    simulateTouch : false,
+	    pagination: {
+	        el: '.aw_count_rb',
+	        type: 'fraction',
+	      },
+	    navigation: {
+	      nextEl: '#rb_awR',
+	      prevEl: '#rb_awL',
+	    },
+	  });
+	
+	var swiper = new Swiper('.swiper4', {
+		slidesPerView: 5,
+		spaceBetween: 10,
+		slidesPerGroup: 5,
+	    loopFillGroupWithBlank: true,
+	    loop: true,
+	    pagination: {
+	        el: '.aw_count_nb',
+	        type: 'fraction',
+	      },
+	    navigation: {
+	      nextEl: '#nb_awR',
+	      prevEl: '#nb_awL',
 	    },
 	  });
 

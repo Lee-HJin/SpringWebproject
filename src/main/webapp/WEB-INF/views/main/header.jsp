@@ -3,7 +3,8 @@
 <%
 	request.setCharacterEncoding("UTF-8");
 	String cp = request.getContextPath();
-%> 
+%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -47,16 +48,26 @@
 			</h1>
 			<div class="top_menu" style="width: 1100px;">
 				<ul class="t_menu_list">
+					<c:if test="${empty sessionScope.userInfo.userId }">
 					<li class="t_menu login">
-						<a href="javascript://" class="t_menu_link btn_login">로그인</a>
+						<a href="<%=cp %>/login.action" class="t_menu_link btn_login">로그인</a>
 					</li>
 					<li class="t_menu join">
-						<a href="javascript://" class="t_menu_link">회원가입</a>
+						<a href="<%=cp %>/logout.action" class="t_menu_link">회원가입</a>
 					</li>
 					<li class="t_menu">
 						<a href="javascript://" class="t_menu_link">쇼핑카트</a>
-						
 					</li>
+ 					</c:if>
+					<c:if test="${!empty sessionScope.userInfo.userId }"> 
+						<li class="t_menu logout">
+							<a href="javascript://" class="t_menu_link btn_logout">로그아웃</a>
+						</li>
+						<li class="t_menu join">
+						<a href="javascript://" class="t_menu_link">쇼핑카트</a>
+						</li>
+ 					</c:if>
+					
 					<li class="t_menu myShopping">
 						<a href="javascript://" class="t_menu_link" 
 						onmouseover="javascript:toggleDisplay2('01')" onmouseout="javascript:toggleDisplay2('01')">
