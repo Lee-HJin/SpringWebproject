@@ -8,7 +8,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>Insert title here</title>
+<title>반디앤루니스 인터넷서점</title>
 
 	<link rel="stylesheet" href="<%=cp%>/resources/css/join.css" type="text/css">
 	

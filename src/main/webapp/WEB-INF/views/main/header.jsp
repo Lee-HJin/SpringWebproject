@@ -1,11 +1,17 @@
-<%@ page contentType="text/html; charset=UTF-8"%>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-<% 
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<%
 	request.setCharacterEncoding("UTF-8");
 	String cp = request.getContextPath();
-	
-%>
+%> 
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
 
+<link rel="stylesheet" href="<%=cp%>/resources/css/main.css" type="text/css"/>
+
+<title>Insert title here</title>
 <script type="text/javascript">
 	
 	function toggleDisplay(num){
@@ -25,17 +31,21 @@
 	        con.style.display = 'none'; 
 	    }
 	}
-</script>
+	
 
+
+</script>
+</head>
+<body>
 <div id="head">
 	<div id="top_wrap">
-		<div class="head_top">
+		<div class="head_top" style="width: 1100px;">
 			<h1 class="logo">
 				<a href="<%=cp%>/main.action">
 					<img alt="" src="<%=cp%>/resources/image/main/logo_2014_top.gif">
 				</a>
 			</h1>
-			<div class="top_menu">
+			<div class="top_menu" style="width: 1100px;">
 				<ul class="t_menu_list">
 					<li class="t_menu login">
 						<a href="javascript://" class="t_menu_link btn_login">로그인</a>
@@ -129,7 +139,7 @@
 	</div>
 	
 	<div class="wrap_header">
-		<div class="header_menu">
+		<div class="header_menu" style="width: 1100px;">
 			<ul class="menu_wrap">
 				<li class="menu">			
 					<a href="javascript://" class="menu_link menu_total" 
@@ -353,3 +363,5 @@
 		</div>
 	</div>
 </div>
+</body>
+</html>

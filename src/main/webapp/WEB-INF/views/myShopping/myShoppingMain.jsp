@@ -8,61 +8,21 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>반디앤루니스 인터넷서점</title>
-
-<style type="text/css">
+	<title>반디앤루니스 인터넷서점</title>
 	
-	a:link {text-decoration: none; color: black;}
-	a:visited {text-decoration: none; color: black;}
-	a:active {text-decoration: none; color: black;}
-	a:hover {text-decoration: underline; color: #886e45;}
-	
-	div{display: block;}
-
-	.nameBar {background-color: #878787; color: white; width: 950px; height: 25px; padding: 3px; margin: 0;}
-	.nameBar .left_div {float: left; line-height: 25px;}
-	.nameBar .right_div {float: right; line-height: 30px; padding-right: 5px;}
-	
-	.navi_div {width: 950px; padding: 0; margin-top: 50px;}
-	.infoBar {width: 948px; height: 100px; background-color: #fcfcfa; padding: 3px; margin: 0; border-bottom: 1px solid #878787; border-left: 1px solid #878787; border-right: 1px solid #878787; font-weight: bold;}
-	.infoBar ul {list-style: none; margin: 0; display: block; margin-top: 16px; padding-left: 0px;}
-	.infoBar li {float: left; border-left: 1px solid #e1e1e1; height: 60px; padding-top: 4px; text-align: center; width: 150px; margin: 0}
-	.infoBar span {display: block;}
-	.infoBar .under{margin-top: 15px; color: #3aaeca;}
-
-	.side_navi {float: left; border: 1px solid #c9c9c9; margin-top: 15px; width: 180px; font-size: 11pt;}
-	.side_navi_title {display: block; background-color: #fcfcfa; border-bottom: 1px solid #c9c9c9; padding-left: 5px; padding-top: 5px; padding-bottom: 5px;}
-	.side_navi_span {font-weight: bold; display: block; padding-left: 10px; padding-bottom: 5px;}
-	.side_navi ul {list-style: none; padding-left: 0px; margin: 0;}
-	.side_navi li {margin: 0;}
-	.side_navi_line {border-bottom: 1px solid #e1e1e1;}
-	.side_navi_line li {padding-left: 20px;}
-
-	.contents {float: left; margin-top: 15px; margin-left: 20px; width: 760px;}
-
-	.main_RecentOrderList {height: 200px;}
-	.main_wishList {height: 300px;}
-	.main_latesbooksList {height: 300px;}
-	.main_CounselList {height: 200px;}
-
-	table {border-top: 2px solid #d5d5d5; border-collapse: collapse; border-spacing: 0px; font-size: 11pt; text-align: center;}
-	th {background-color: #f8f8f8; border-bottom: 1px solid #d5d5d5; height: 30px; width: 100px; line-height: 30px; }
-	
-	.sapn_right {float: right; margin: 0; padding-top: 8px;}
-	.count {color: #ea5759; font-weight: bold};
-	
-</style>
-
-<link rel="stylesheet" href="<%=cp%>/resources/css/main.css" type="text/css">
+	<link rel="stylesheet" href="<%=cp%>/resources/css/main.css" type="text/css">
+	<link rel="stylesheet" href="<%=cp%>/resources/css/myShopping.css" type="text/css">
 
 </head>
-<body style="margin: 0">
+<body>
 
 <!-- header -->
-<jsp:include page="./header.jsp" flush="false"/>
+<jsp:include page="../common/header.jsp" flush="false"/>
 
+<!-- 전체 div -->
+<div style="margin: 0 auto; width: 960px;">
 
-<div>
+<div style="margin-top: 12px;">
 	<a href="<%=cp %>/main.action">홈</a> > <b>나의쇼핑</b>
 </div>
 
@@ -106,7 +66,7 @@
 </div>
 
 <div class="side_navi">
-	<span class="side_navi_title"><font size="5">나의쇼핑</font></span>
+	<span class="side_navi_title">나의쇼핑</span>
 	<ul>
 		<li style="padding-top: 10px;">
 			<span class="side_navi_span">주문관리</span>
@@ -168,38 +128,38 @@
 
 <div class="contents">
 	<div class="main_RecentOrderList">
-		<font size="5">최근 주문/배송 내역</font> | 고객님의 최근 1개월 주문 내역입니다. <span class="sapn_right"><a href="">더보기></a></span>
+		<span class="contents_title">최근 주문/배송 내역</span> | 고객님의 최근 1개월 주문 내역입니다. <span class="sapn_right"><a href="">더보기></a></span>
 		<table>
 			<tr>
 				<th>주문번호</th>
 				<th>주문일자</th>
 				<th>수령예상일</th>
-				<th style="width: 350px;">상품명</th>
+				<th style="width: 365px;">상품명</th>
 				<th>주문금액</th>
 			</tr>
 			<tr>
-				<td colspan="5" height="50px;">최근 주문내역이 없습니다.</td>
+				<td colspan="5" height="100px;">최근 주문내역이 없습니다.</td>
 			</tr>
 		</table>
 	</div>
 	<div class="main_wishList">
-		<div style="border-bottom: 1px solid #c9c9c9;">
-			<font size="5" style="text-align: center;">위시리스트 </font><span class="count">[1]</span>
+		<div style="border-bottom: 1px solid #c9c9c9; line-height: 30px;">
+			<span class="contents_title">위시리스트</span><span class="count">[1]</span>
 		</div>
 		<div>
 			책책책
 		</div>
 	</div>
 	<div class="main_latesbooksList">
-		<div style="border-bottom: 1px solid #c9c9c9;">
-			<font size="5">최근 본 상품 </font><span class="count">[5]</span>
+		<div style="border-bottom: 1px solid #c9c9c9; line-height: 30px;">
+			<span class="contents_title">최근 본 상품</span><span class="count">[5]</span>
 		</div>
 		<div>
 			책책책
 		</div>
 	</div>
 	<div class="main_CounselList">
-		<font size="5">나의 상담 내역</font>  <span class="sapn_right"><a href="">더보기></a></span>
+		<span class="contents_title">나의 상담 내역</span>  <span class="sapn_right"><a href="">더보기></a></span>
 		<table>
 			<tr>
 				<th>상담날짜</th>
@@ -208,12 +168,14 @@
 				<th>답변여부</th>
 			</tr>
 			<tr>
-				<td colspan="4" height="50px;">최근 주문내역이 없습니다.</td>
+				<td colspan="4" height="100px;">최근 주문내역이 없습니다.</td>
 			</tr>
 		</table>
 	</div>
 </div>
 
+<!-- 전체 div 끝 -->
+</div>
 
 </body>
 </html>
