@@ -33,8 +33,8 @@
 		
 		<beans:property name="driverClassName" value = "oracle.jdbc.driver.OracleDriver"/>
 		<beans:property name="url" value="jdbc:oracle:thin:@192.168.16.25:1521:TestDB"/>
-		<beans:property name="username" value ="suzi"/>
-		<beans:property name="password" value ="a123"/>
+		<beans:property name="username" value ="springwebuser"/>
+		<beans:property name="password" value ="springwebpwd"/>
 	
 	</beans:bean>
 	
