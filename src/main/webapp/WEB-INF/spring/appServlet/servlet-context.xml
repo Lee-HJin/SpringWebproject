@@ -29,7 +29,7 @@
 	
 	<!-- 수정 -->
 	
-<!-- 	<beans:bean id ="myUtil" class ="com.spring.webproject.util.MyUtil"/>
+	<beans:bean id ="myUtil" class ="com.spring.webproject.util.MyUtil"/>
 
 	<beans:bean id="loginDAO" class="com.spring.webproject.dao.LoginDAO">
 		<beans:property name="sessionTemplate" ref="sessionTemplate"></beans:property>
