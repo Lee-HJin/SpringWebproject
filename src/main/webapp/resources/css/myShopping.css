@@ -1,0 +1,41 @@
+@charset "UTF-8";
+
+a:link {text-decoration: none; color: #555555;}
+a:visited {text-decoration: none; color: #555555;}
+a:active {text-decoration: none; color: #555555;}
+a:hover {text-decoration: underline; color: #886e45;}
+
+div{display: block;}
+
+.nameBar {background-color: #878787; color: white; width: 950px; height: 25px; padding: 3px; margin: 0;}
+.nameBar .left_div {float: left; line-height: 25px; padding-left: 5px;}
+.nameBar .right_div {float: right; line-height: 35px; padding-right: 5px;}
+
+.navi_div {width: 950px; padding: 0; margin-top: 20px; font-family: 맑은고딕;}
+.infoBar {width: 948px; height: 70px; background-color: #fcfcfa; padding: 3px; margin: 0; border-bottom: 1px solid #878787; border-left: 1px solid #878787; border-right: 1px solid #878787; font-weight: bold; font-size: 11pt;}
+.infoBar ul {list-style: none; margin: 0; display: block; margin-top: 4px; padding-left: 0px;}
+.infoBar li {float: left; border-left: 1px solid #e1e1e1; height: 50px; padding-top: 10px; text-align: center; width: 150px; margin: 0}
+.infoBar span {display: block;}
+.infoBar .under{margin-top: 10px; color: #3aaeca;}
+
+.side_navi {float: left; border: 1px solid #c9c9c9; margin-top: 15px; width: 160px; font-size: 11pt; font-family: 맑은고딕;}
+.side_navi_title {display: block; background-color: #fcfcfa; border-bottom: 1px solid #c9c9c9; padding-left: 10px; padding-top: 7px; padding-bottom: 7px; font-weight: bold; font-size: 12pt;}
+.side_navi_span {font-weight: bold; display: block; padding-left: 10px; padding-bottom: 5px;}
+.side_navi ul {list-style: none; padding-left: 0px; margin: 0;}
+.side_navi li {margin: 0; font-size: 10pt;}
+.side_navi_line {border-bottom: 1px solid #e1e1e1;}
+.side_navi_line li {padding-left: 20px;}
+
+.contents {float: left; margin-top: 15px; margin-left: 20px; width: 778px; font-family: 맑은고딕;}
+.contents_title {font-size: 13pt; font-weight: bold;}
+
+.main_RecentOrderList {height: 200px;}
+.main_wishList {height: 300px;}
+.main_latesbooksList {height: 300px;}
+.main_CounselList {height: 200px;}
+
+table {border-top: 2px solid #d5d5d5; border-bottom: 1px solid #d5d5d5; border-collapse: collapse; border-spacing: 0px; font-size: 10pt; text-align: center; margin-top: 10px;}
+th {background-color: #f8f8f8; border-bottom: 1px solid #d5d5d5; height: 30px; width: 100px; line-height: 30px; }
+
+.sapn_right {float: right; margin: 0; padding-top: 8px; font-weight: bold; padding-right: 3px;}
+.count {color: #ea5759; font-weight: bold};
