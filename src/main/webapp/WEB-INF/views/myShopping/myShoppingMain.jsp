@@ -14,7 +14,7 @@
 	<link rel="stylesheet" href="<%=cp%>/resources/css/myShopping.css" type="text/css">
 
 </head>
-<body>
+<body style="padding: 0; margin: 0;">
 
 <!-- header -->
 <jsp:include page="../common/header.jsp" flush="false"/>

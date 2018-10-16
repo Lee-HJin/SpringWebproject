@@ -37,7 +37,7 @@ public class LoginController {
 		if(dto!=null) {	//로그인 성공
 			request.getSession().setAttribute("userInfo", dto);
 			request.getSession().removeAttribute("message");
-			returnUrl = "redirect:/login.action";
+			returnUrl = "redirect:/main.action";
 			
 		}
 		else {	//로그인 실패
@@ -48,6 +48,15 @@ public class LoginController {
 		return returnUrl;
 	}
 	
+	//로그아웃
+	@RequestMapping(value = "/logout.action", method = {RequestMethod.POST, RequestMethod.GET})
+	public String logout(HttpServletRequest request) {
+		
+		request.getSession().removeAttribute("userInfo");
+		request.getSession().invalidate();
+		
+		return "redirect:/main.action";
+	}
 
 	//회원가입 1단계 : 약관동의
 	@RequestMapping(value = "login/mem_agree.action", method = {RequestMethod.GET,RequestMethod.POST})
@@ -103,26 +112,63 @@ public class LoginController {
 	}
 	
 	//회원가입 성공
-	@RequestMapping(value = "login/mem_join_success.action", method = RequestMethod.POST)
+	@RequestMapping(value = "login/mem_join_success.action", method = {RequestMethod.POST,RequestMethod.GET})
 	public String joinSucess(UserDTO dto) {
 		
 		dao.joinMember(dto);
+		
+		String userId = dto.getUserId();
+		int pointId = dao.getPointId() + 1;
+		
+		dao.joinPointSaving(userId, pointId);
 
 		return "login/mem_join_success";
 	}
 	
-	//아이디 찾기
+	//아이디 찾기 페이지
 	@RequestMapping(value = "/mem_findId.action", method = {RequestMethod.GET,RequestMethod.POST})
-	public String memfindId() {
+	public String memfindId() {	
 
-		return "mem_findId";
+		return "login/mem_findId";
 	}
+	
+	//아이디 찾기 진행
+	@ResponseBody
+	@RequestMapping(value = "/mem_findId_ok.action", method = RequestMethod.POST)
+	public String memfindId(HttpServletRequest request) {
+		
+		//폼에서 넘어온 데이터 받아내기
+		String userName = request.getParameter("userName");
+		String birth = request.getParameter("birth");
+		String phone = request.getParameter("phone");
+		String email = request.getParameter("email");
+		
+		//dto에 넘어온 아이티를 넣음
+		UserDTO dto = new UserDTO();
+		
+		dto.setUserName(userName);
+		dto.setBirth(birth);
+		dto.setPhone(phone);
+		dto.setEmail(email);
+		
+		//아이디 검색함
+		String userId = dao.findUserId(dto);
+		
+		if(userId==null || userId.equals("")) {
+			return "";
+		}
+		else {
+			return userId;
+		}
+		
+	}
+	
 
 	//비밀번호 찾기
 	@RequestMapping(value = "/mem_findPwd.action", method = {RequestMethod.GET,RequestMethod.POST})
 	public String memfindPwd() {
 
-		return "mem_findPwd";
+		return "login/mem_findPwd";
 	}
 	
 	//나의쇼핑 메인

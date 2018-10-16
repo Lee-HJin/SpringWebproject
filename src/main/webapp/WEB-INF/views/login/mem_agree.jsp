@@ -22,7 +22,7 @@
 
 </head>
 
-<body>
+<body style="margin: 0;padding: 0">
 
 <!-- header -->
 <jsp:include page="../common/header.jsp" flush="false"/>
@@ -52,20 +52,20 @@
 			<div>
 				<div class="agree_sub_box">
 					<div style="float: left;"><label><input type="checkbox" class="chk" name="agree">"이용 약관"에 동의 (필수)</label></div>
-					<div style="float: right;"><input type="button" value="내용보기" onclick="showWindow('rulesInfo',1100);" class="agree_moreBtn"></div>
+					<div style="float: right;"><input type="button" value="내용보기" onclick="showWindow('rules/rulesInfo',1100);" class="agree_more_btn"></div>
 				</div>
 				<div class="agree_sub_box">
 					<div style="float: left;"><label><input type="checkbox" class="chk" name="agree">개인정보 "필수" 항목에 대한 수집과 이용 동의 (필수)</label></div>
-					<div style="float: right;"><input type="button" value="내용보기" onclick="showWindow('rules_privacy',700);" class="agree_moreBtn"></div>
+					<div style="float: right;"><input type="button" value="내용보기" onclick="showWindow('rules/rules_privacy',700);" class="agree_more_btn"></div>
 				</div>
 				<div class="agree_additional_box">
 					<div style="float: left;"><label><input type="checkbox" class="chk">개인정보 "선택" 항목에 대한 수집과 이용 동의 (선택)</label></div>
-					<div style="float: right;"><input type="button" value="내용보기" onclick="showWindow('rules_privacy2',700);" class="agree_moreBtn" sty></div>
+					<div style="float: right;"><input type="button" value="내용보기" onclick="showWindow('rules/rules_privacy2',700);" class="agree_more_btn"></div>
 				</div>
 				<div class="agree_last_box">
-					선택 항목의 경우 동의하지 않아도 회원 가입이 가능하나, 구매 등 서비스 이용시 추가적인 정보 입력이 필요합니다. <br/><br/>
-					<input type="button" value="다음" class="okBtn" onclick="next();">&nbsp;&nbsp;
-					<input type="button" value="취소" class="cancelBtn" onclick="javascipt:location.href='<%=cp%>/login.action';">
+					<br/><b>선택 항목의 경우 동의하지 않아도 회원 가입이 가능하나, 구매 등 서비스 이용시 추가적인 정보 입력이 필요합니다.</b> <br/><br/><br/>
+					<input type="button" value="다음" class="agree_ok_btn" onclick="next();">&nbsp;&nbsp;
+					<input type="button" value="취소" class="agree_cancel_btn" onclick="javascipt:location.href='<%=cp%>/main.action';">
 				</div>
 			</div>
 		</div>
