@@ -1,5 +1,10 @@
 $(document).ready(function(){
-
+	
+	//약관동의 전체클릭 이벤트
+	$('.checkAll').click( function() {
+		$('.chk').prop('checked', this.checked);
+	});
+	
 	//아이디 유효성 검사
 	$('#userId').on('keyup',function(){
 
@@ -116,30 +121,34 @@ $(document).ready(function(){
 		$("#idSave").attr("checked", true);
 	}
 
-	/* 
-		 $("#idSave").change(function(){	//체크박스 상태 변경시
-
-		 	if($("#idSave").is(":checked")){	//아이디 저장하기 선택함
-		  		var userInputId = $("input[name='user_id']").val();
-		   		setCookie("userInputId", userInputId, 30); // 30일 동안 쿠키 저장  
-		  	}
-		  	else{	//아이디 저장하기 해제
-		   		deleteCookie("userInputId");	//쿠키 삭제
-		  	}
-
-		 });
-
-		 $("input[name='user_id']").keyup(function(){	//아이디 입력 이벤트 발생시
-
-			 if($("#idSave").is(":checked")){
-		  		var userInputId = $("input[name='user_id']").val();
-		   		setCookie("userInputId", userInputId, 30);	// 30일 동안 쿠키 저장  
-		 	 }
-
-		 });
-	 */
-
 });//ready끝
+
+//약관동의 다음 버튼 클릭시
+function next(){
+	
+	for(var i=0; i<agreeForm.agree.length; i++){ 
+		
+		if(!agreeForm.agree[i].checked){ 
+	         alert("필수 약관에 동의해주십시오."); 
+	         agreeForm.agree[i].focus(); 
+	         return false; 
+	    }
+	}
+	
+	agreeForm.action = "/webproject/login/mem_join.action";
+	agreeForm.submit();
+}
+
+//약관 팝업
+function showWindow(addr,width) {
+	
+	var url = "/webproject/rules/" + addr + ".action";
+
+	var setting = 'toolbar=no,menubar=no,status=no,resizable=no,location=no,top=90,left=250,height=650,' + 'width=' + width;
+	
+	window.open(url,"반디앤루니스 인터넷서점",setting);
+
+} 
 
 //로그인 버튼 클릭시 
 function login() {

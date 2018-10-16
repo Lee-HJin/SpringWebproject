@@ -10,32 +10,28 @@
 <head>
 	<title>반디앤루니스 인터넷서점</title>
 	
-	<link rel="stylesheet" href="<%=cp%>/resources/css/join.css" type="text/css">
-	
 	<!-- bootstrap -->
-	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+	<!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"> -->
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
  	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
- 	
- 	<script src="<%=cp%>/resources/js/join.js"></script>
+	<script src="<%=cp%>/resources/js/join.js"></script>
 	
 </head>
 <body>
 
-<img src="<%=cp%>/resources/img/login/aaaa.jpg">
 
+<!-- 전체 div -->
+<div style="margin: 0 auto; width: 960px;">
 
 <!-- 로그인 -->
-<!-- #555555 #886e45 -->
-
 <div style="padding-left: 60px; padding-bottom: 20px;">
 
 <form action="" name="loginForm" method="post">
-<div style="border: 2px solid; border-color: #886e45; padding: 10px; width: 470px;">
+<div class="login_div">
 	<div style="padding: 10px">
-		<font color="#886e45" size="6"><b>로그인</b></font><br/><br/>
-		<div style="padding-bottom: 10px; color: #ea5759;"><b>${message}</b></div>
-		<div style="float: left;">			
+		<span class="login_title_span">로그인</span><br/><br/>
+		<div class="login_message"><b>${message}</b></div>
+		<div class="bts"  style="float: left;">			
 			<input type="text" name="userId" placeholder="아이디" style="border-color: bcbcbc; border: 1px solid; margin-bottom: 0px; height: 40px; width: 300px;" class="form-control"> <br/>
 			<input type="password" name="userPwd" placeholder="비밀번호" style="border-color: bcbcbc; border: 1px solid; margin-bottom: 10px; height: 40px; width: 300px;" class="form-control">		
 		</div>
@@ -72,6 +68,8 @@
 <c:if test="${!empty userInfo}">
 	${userInfo.userId }, ${userInfo.userPwd }, ${userInfo.nickName }
 </c:if>
+
+</div>
 
 </body>
 </html>

@@ -25,7 +25,23 @@
 .cancelBtn {color: #886e45; background-color: white; border: 1px solid #886e45; height: 40px; width: 120px; font-size: 20px; font-weight: bold; cursor: pointer;}
 .cancelBtn:hover {border: 2px solid #886e45;}
 
-#text_pwd2 {color: red;}
+#join_agree {margin: 0 auto; width: 960px;}
+#join_agree .join_up_div {width: 960px; border-bottom: 2px solid #000; height: 95px; margin-top: 20px;}
+#join_agree .join_up_div .left_div {float: left; height: 50px; padding-top: 40px;}
+#join_agree .join_up_div .right_div {float: right;}
 
-ul {padding: 0px; margin: 0px;}
-li {padding: 0px; margin: 0px;}
+.okBtn {color: white; background-color: #886e45; border: none; height: 40px; width: 120px; font-size: 20px; font-weight: bold; cursor: pointer;}
+.okBtn:hover {color: #886e45; background-color: white; border: 2px solid #886e45; height: 40px; width: 120px; font-size: 20px; font-weight: bold; cursor: pointer;}
+.cancelBtn {color: #886e45; background-color: white; border: 1px solid #886e45; height: 40px; width: 120px; font-size: 20px; font-weight: bold; cursor: pointer;}
+.cancelBtn:hover {border: 2px solid #886e45;}
+.agree_moreBtn {background-color: #fafafa; border: 1px solid #d1d1d1; cursor: pointer; height: 23px;}
+.agree_moreBtn:hover {background-color: #fafafa; border: 1px solid #555555; cursor: pointer; height: 23px;}
+
+.agree_all_div {font-family: 맑은고딕;}
+.agree_title {margin-top: 20px; padding-left: 10px;}
+.agree_main_box {border-bottom: 1px solid #d1d1d1; border-top: 2px solid #d1d1d1; width: 960px; padding: 20px; margin-top: 10px; font-size: 12pt;}
+.agree_sub_box {width: 960px; padding: 15px; padding-left: 35px; margin-bottom: 15px; font-size: 10pt;}
+.agree_additional_box {width: 960px; padding: 15px; padding-left: 35px; margin-bottom: 15px; font-size: 10pt;}
+.agree_last_box {width: 960px; padding: 10px; margin-top: 30px; text-align: center; border-top: 2px solid #d1d1d1;}
+
+#text_pwd2 {color: red;}
