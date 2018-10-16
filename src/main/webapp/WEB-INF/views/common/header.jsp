@@ -38,23 +38,23 @@
 			<div class="top_menu">
 				<ul class="t_menu_list">
 					<li class="t_menu login">
-						<a href="javascript://" class="t_menu_link btn_login">로그인</a>
+						<a href="<%=cp%>/login.action" class="t_menu_link btn_login">로그인</a>
 					</li>
 					<li class="t_menu join">
-						<a href="javascript://" class="t_menu_link">회원가입</a>
+						<a href="<%=cp %>/login/mem_agree.action" class="t_menu_link">회원가입</a>
 					</li>
 					<li class="t_menu">
 						<a href="javascript://" class="t_menu_link">쇼핑카트</a>
 						
 					</li>
 					<li class="t_menu myShopping">
-						<a href="javascript://" class="t_menu_link" 
+						<a href="<%=cp %>/myShoppingMain.action" class="t_menu_link" 
 						onmouseover="javascript:toggleDisplay2('01')" onmouseout="javascript:toggleDisplay2('01')">
 						나의쇼핑</a>
 						<div id="top_layer01" class="display_top"  style="display: none; width: 90px;"
 						onmouseover="javascript:toggleDisplay2('01')" onmouseout="javascript:toggleDisplay2('01')">
 							<div style="margin-top: 5px;">
-								<a href="javascript://">나의쇼핑정보</a>
+								<a href="<%=cp %>/myShoppingMain.action">나의쇼핑정보</a>
 							</div>
 							<div>
 								<a href="javascript://">주문배송조회</a>
