@@ -10,13 +10,13 @@
 <head>
 <title>반디앤루니스 인터넷서점</title>
 
+	<link rel="stylesheet" href="<%=cp%>/resources/css/custom_bootstrap.css" type="text/css">
+	<link rel="stylesheet" href="<%=cp%>/resources/css/main.css" type="text/css">
 	<link rel="stylesheet" href="<%=cp%>/resources/css/join.css" type="text/css">
 	
 	<!-- bootstrap -->
-	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
  	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-	
 	<script src="<%=cp%>/resources/js/join.js"></script>
 	
 	<!-- 우편번호 -->
@@ -72,20 +72,29 @@
 	</script>
 	
 </head>
-<body>
+<body style="margin: 0;padding: 0">
 
+<!-- header -->
+<jsp:include page="../common/header.jsp" flush="false"/>
 
+<!-- 전체 div -->
+<div style="margin: 0 auto; width: 960px;">
 
 <!-- 회원가입 -->
-<!-- #555555 #886e45 -->
-
-<font size="12">회원가입</font>
-<hr size="1" color="black">
+<div class="join_title_div">
+	<div class="join_title_left">
+		<img alt="회원가입" src="<%=cp%>/resources/img/login/tit_h1_member.gif">
+	</div>
+	<div class="join_title_right">
+		<img alt="" src="<%=cp%>/resources/img/login/img_member_join_info.gif">
+	</div>
+</div>
+<hr size="2" color="black">
 
 <form name="joinForm" action="" method="POST">
 
 <div class="joinTable">
-	<font size="4"><b>필수 정보 입력</b></font>
+	<span class="joinTable_sub_title">필수 정보 입력</span>
 	<table>
 		<tr>
 			<th>아이디</th>
@@ -95,7 +104,7 @@
 				
 			</td>
 		</tr>
-		<tr>
+		<tr style="border-bottom: 1px solid #d5d5d5; border-top: 1px solid #d5d5d5; text-align: left; height: 45px;">
 			<th>비밀번호</th>
 			<td>
 				<div style="float: left;"><input type="password" style="width: 200px;" name="userPwd1" id="userPwd1" size="15" maxlength="15"></div>	
@@ -143,7 +152,7 @@
 				<div style="padding-top: 10px; padding-bottom: 10px;">
 					<input type="text" name="email1" id="email1">&nbsp;@
 					<input type="text" name="email2" id="email2">
-					<select name="email3" onchange="emailInput();">
+					<select name="email3" onchange="emailInput();" class="joinTable_select">
 						<option value="">직접입력</option>
 						<option value="naver.com">네이버</option>
 						<option value="gmail.com">구글(G메일)</option>
@@ -159,11 +168,13 @@
 		<tr>
 			<th>정보수신여부</th>
 			<td>
-				<div class="checkbox">
-					<label><input type="checkbox" name="emailCheck">&nbsp;이메일 수신동의</label>
-					&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-					<label><input type="checkbox" name="smsCheck">&nbsp;SMS/MMS 수신동의</label>
-				</div>
+				<div class="bts">
+					<div class="checkbox">
+						<label><input type="checkbox" name="emailCheck">&nbsp;이메일 수신동의</label>
+						&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+						<label><input type="checkbox" name="smsCheck">&nbsp;SMS/MMS 수신동의</label>
+					</div>
+				</div>	
 			</td>
 		</tr>
 	</table>
@@ -172,7 +183,7 @@
 <br/><br/>
 
 <div class="joinTable">
-	<b><font size="4">선택 정보 입력</font> <font size="3" color="#886e45">(입력하지 않아도 가입 가능)</font></b>
+	<span class="joinTable_sub_title">선택 정보 입력 <font size="3" color="#4dafca">(입력하지 않아도 가입 가능)</font></span>
 	<table>
 		<tr>
 			<th>닉네임</th>
@@ -212,12 +223,14 @@
 <input type="hidden" name="smsReception" id="smsReception" value="">
 <input type="hidden" name="addTel" id="addTel" value="">
 
-<div style="text-align: center; margin-top: 20px;">
-	<input type="button" value="가입신청" class="okBtn" onclick="joinConfirmation();">&nbsp;&nbsp;
-	<input type="button" value="취소하기" class="cancelBtn" onclick="javascipt:location.href='<%=cp%>/login.action';">
+<div style="text-align: center; margin-top: 20px; margin-bottom: 20px;">
+	<input type="button" value="가입신청" class="join_ok_btn" onclick="joinConfirmation();">&nbsp;&nbsp;
+	<input type="button" value="취소하기" class="join_cancel_btn" onclick="javascipt:location.href='<%=cp%>/main.action';">
 </div>
 
 </form>
+
+</div>
 
 </body>
 </html>
