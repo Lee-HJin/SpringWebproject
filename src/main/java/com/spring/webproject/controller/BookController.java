@@ -11,4 +11,6 @@ public class BookController {
 	public String book_novel() {
 		return "/books/book_novel";
 	}
+	
+	
 }
