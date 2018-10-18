@@ -12,7 +12,7 @@ public class bnlContoller {
 
 	@RequestMapping(value="/bnlBSList.action", method= {RequestMethod.GET, RequestMethod.POST})
 	public String list(HttpServletRequest request, HttpServletResponse response) throws Exception {
-		
+			
 		return "bookSections/bnlBSList";
 	}
 	
