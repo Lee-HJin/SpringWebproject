@@ -4,10 +4,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>메인_소설</title>
-
-<link rel="stylesheet" href="/springwebview/resources/css/Main_01.css"
-	type="text/css">
+<title>메인 가운데 레이아웃</title>
 
 <link rel="stylesheet" href="/springwebview/resources/css/common.css"
 	type="text/css">
@@ -30,6 +27,16 @@
 	src="/springwebview/resources/js/jquery/jquery.min.js"></script>
 <script type="text/javascript"
 	src="/springwebview/resources/js/swfobject.js"></script>
+
+<!-- Carousel BS -->
+<!-- Tabs with Dropdown Menu-->
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script
+	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
 <script type="text/javascript">
 	function toggleDisplay(num) {
 		var con = document.getElementById("layer" + num);
@@ -49,34 +56,6 @@
 		}
 	}
 </script>
-<!-- Carousel BS -->
-<!-- Tabs with Dropdown Menu-->
-<link rel="stylesheet"
-	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-<script
-	src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-<script
-	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-
-<!-- 메뉴 드롭 다운 -->
-<script>
-	/* Loop through all dropdown buttons to toggle between hiding and showing its dropdown content - This allows the user to have multiple dropdowns without any conflict */
-	var dropdown = document.getElementsByClassName("dropdown-btn");
-	var i;
-
-	for (i = 0; i < dropdown.length; i++) {
-		dropdown[i].addEventListener("click", function() {
-			this.classList.toggle("active");
-			var dropdownContent = this.nextElementSibling;
-			if (dropdownContent.style.display === "block") {
-				dropdownContent.style.display = "none";
-			} else {
-				dropdownContent.style.display = "block";
-			}
-		});
-	}
-</script>
-
 <style>
 * {
 	box-sizing: border-box
@@ -142,19 +121,18 @@
 
 </head>
 <body>
-	<div id="contentBody">
 
+	<div id="contentBody">
 		<!-- 좌측 템플릿 시작 -->
 
 		<div class="side_t2 ml5">
 			<div class="cate_comm">
-				<h2 class="cate_tit">소설</h2>
+				<h2 class="cate_tit">자기계발</h2>
 				<ul class="cate_d1">
 					<!-- 중분류 -->
-					<li id="kidsCate_821" class="cate_d1_li "><a
-						href="/front/product/bookCategoryMain.do?cateId=821"
+					<li id="kidsCate_821" class="cate_d1_li "><a href="/"
 						class="cate_d1_link" onmouseover="javascript:toggleDisplay2('01')"
-						onmouseout="javascript:toggleDisplay2('01')">한국소설</a> <!-- 소분류 -->
+						onmouseout="javascript:toggleDisplay2('01')">성공/처세</a> <!-- 소분류 -->
 						<div class="cate_d2" id="left_layer01"
 							onmouseover="javascript:toggleDisplay2('01')"
 							onmouseout="javascript:toggleDisplay2('01')"
@@ -165,59 +143,24 @@
 								<ul>
 
 									<li class="cate_d2_link "><a
-										href="/front/product/bookCategoryMain.do?cateId=822">현대소설</a></li>
-
-									<li class="cate_d2_link "><a
-										href="/front/product/bookCategoryMain.do?cateId=826">고전/명작소설</a>
+										href="/front/product/bookCategoryMain.do?cateId=822">성공스토리</a>
 									</li>
 
 									<li class="cate_d2_link "><a
-										href="/front/product/bookCategoryMain.do?cateId=827">공포/무협소설</a>
+										href="/front/product/bookCategoryMain.do?cateId=826">마인드콘트롤</a>
 									</li>
 
 									<li class="cate_d2_link "><a
-										href="/front/product/bookCategoryMain.do?cateId=831">추리/범죄/스릴러소설</a>
+										href="/front/product/bookCategoryMain.do?cateId=827">직장처세술</a>
 									</li>
 
 									<li class="cate_d2_link "><a
-										href="/front/product/bookCategoryMain.do?cateId=835">로맨스/인터넷소설</a>
+										href="/front/product/bookCategoryMain.do?cateId=831">인생처세술</a>
 									</li>
 
 									<li class="cate_d2_link "><a
-										href="/front/product/bookCategoryMain.do?cateId=835">SF/판타지소설</a>
+										href="/front/product/bookCategoryMain.do?cateId=835">유명인처세</a>
 									</li>
-
-									<li class="cate_d2_link "><a
-										href="/front/product/bookCategoryMain.do?cateId=835">동화/우화소설</a>
-									</li>
-
-									<li class="cate_d2_link "><a
-										href="/front/product/bookCategoryMain.do?cateId=835">가족/성장소설</a>
-									</li>
-
-									<li class="cate_d2_link "><a
-										href="/front/product/bookCategoryMain.do?cateId=835">드라마/영화소설</a>
-									</li>
-
-									<li class="cate_d2_link "><a
-										href="/front/product/bookCategoryMain.do?cateId=835">청소년소설</a>
-									</li>
-
-									<li class="cate_d2_link "><a
-										href="/front/product/bookCategoryMain.do?cateId=835">대하/역사/전쟁소설</a>
-									</li>
-
-									<li class="cate_d2_link "><a
-										href="/front/product/bookCategoryMain.do?cateId=835">문학상수상작품</a>
-									</li>
-
-									<li class="cate_d2_link "><a
-										href="/front/product/bookCategoryMain.do?cateId=835">라이트(NT)소설</a>
-									</li>
-
-									<li class="cate_d2_link "><a
-										href="/front/product/bookCategoryMain.do?cateId=835">문지사
-											한국소설전</a></li>
 
 								</ul>
 							</div>
@@ -227,8 +170,7 @@
 					<li id="kidsCate_841" class="cate_d1_li "><a
 						href="/front/product/bookCategoryMain.do?cateId=841"
 						class="cate_d1_link" onmouseover="javascript:toggleDisplay2('02')"
-						onmouseout="javascript:toggleDisplay2('02')">일본소설</a> <!-- 소분류 -->
-
+						onmouseout="javascript:toggleDisplay2('02')">자기능력계발</a> <!-- 소분류 -->
 
 
 						<div class="cate_d2" id="left_layer02"
@@ -240,53 +182,15 @@
 								<div class="ico_arrow"></div>
 								<ul>
 
-									<li class="cate_d2_link "><a
-										href="/front/product/bookCategoryMain.do?cateId=822">현대소설</a></li>
+
+
 
 									<li class="cate_d2_link "><a
-										href="/front/product/bookCategoryMain.do?cateId=826">고전/명작소설</a>
-									</li>
+										href="/front/product/bookCategoryMain.do?cateId=842">자기혁신</a></li>
+
 
 									<li class="cate_d2_link "><a
-										href="/front/product/bookCategoryMain.do?cateId=827">공포/무협소설</a>
-									</li>
-
-									<li class="cate_d2_link "><a
-										href="/front/product/bookCategoryMain.do?cateId=831">추리/범죄/스릴러소설</a>
-									</li>
-
-									<li class="cate_d2_link "><a
-										href="/front/product/bookCategoryMain.do?cateId=835">로맨스/인터넷소설</a>
-									</li>
-
-									<li class="cate_d2_link "><a
-										href="/front/product/bookCategoryMain.do?cateId=835">SF/판타지소설</a>
-									</li>
-
-									<li class="cate_d2_link "><a
-										href="/front/product/bookCategoryMain.do?cateId=835">동화/우화소설</a>
-									</li>
-
-									<li class="cate_d2_link "><a
-										href="/front/product/bookCategoryMain.do?cateId=835">가족/성장소설</a>
-									</li>
-
-									<li class="cate_d2_link "><a
-										href="/front/product/bookCategoryMain.do?cateId=835">드라마/영화소설</a>
-									</li>
-
-									<li class="cate_d2_link "><a
-										href="/front/product/bookCategoryMain.do?cateId=835">청소년소설</a>
-									</li>
-
-									<li class="cate_d2_link "><a
-										href="/front/product/bookCategoryMain.do?cateId=835">대하/역사/전쟁소설</a>
-									</li>
-
-									<li class="cate_d2_link "><a
-										href="/front/product/bookCategoryMain.do?cateId=835">문학상수상작품</a>
-									</li>
-
+										href="/front/product/bookCategoryMain.do?cateId=847">자기관리</a></li>
 
 								</ul>
 							</div>
@@ -334,7 +238,7 @@
 					<li id="kidsCate_853" class="cate_d1_li "><a
 						href="/front/product/bookCategoryMain.do?cateId=853"
 						class="cate_d1_link" onmouseover="javascript:toggleDisplay2('03')"
-						onmouseout="javascript:toggleDisplay2('03')">영미소설</a> <!-- 소분류 -->
+						onmouseout="javascript:toggleDisplay2('03')">비즈니스능력계발</a> <!-- 소분류 -->
 
 						<div class="cate_d2" id="left_layer03"
 							onmouseover="javascript:toggleDisplay2('03')"
@@ -346,51 +250,11 @@
 								<ul>
 
 									<li class="cate_d2_link "><a
-										href="/front/product/bookCategoryMain.do?cateId=822">현대소설</a></li>
-
-									<li class="cate_d2_link "><a
-										href="/front/product/bookCategoryMain.do?cateId=826">고전/명작소설</a>
+										href="/front/product/bookCategoryMain.do?cateId=854">비즈니스소양</a>
 									</li>
 
 									<li class="cate_d2_link "><a
-										href="/front/product/bookCategoryMain.do?cateId=827">공포/무협소설</a>
-									</li>
-
-									<li class="cate_d2_link "><a
-										href="/front/product/bookCategoryMain.do?cateId=831">추리/범죄/스릴러소설</a>
-									</li>
-
-									<li class="cate_d2_link "><a
-										href="/front/product/bookCategoryMain.do?cateId=835">로맨스/인터넷소설</a>
-									</li>
-
-									<li class="cate_d2_link "><a
-										href="/front/product/bookCategoryMain.do?cateId=835">SF/판타지소설</a>
-									</li>
-
-									<li class="cate_d2_link "><a
-										href="/front/product/bookCategoryMain.do?cateId=835">동화/우화소설</a>
-									</li>
-
-									<li class="cate_d2_link "><a
-										href="/front/product/bookCategoryMain.do?cateId=835">가족/성장소설</a>
-									</li>
-
-									<li class="cate_d2_link "><a
-										href="/front/product/bookCategoryMain.do?cateId=835">드라마/영화소설</a>
-									</li>
-
-									<li class="cate_d2_link "><a
-										href="/front/product/bookCategoryMain.do?cateId=835">청소년소설</a>
-									</li>
-
-									<li class="cate_d2_link "><a
-										href="/front/product/bookCategoryMain.do?cateId=835">대하/역사/전쟁소설</a>
-									</li>
-
-									<li class="cate_d2_link "><a
-										href="/front/product/bookCategoryMain.do?cateId=835">문학상수상작품</a>
-									</li>
+										href="/front/product/bookCategoryMain.do?cateId=861">리더십</a></li>
 
 								</ul>
 							</div>
@@ -435,7 +299,7 @@
 					<li id="kidsCate_864" class="cate_d1_li "><a
 						href="/front/product/bookCategoryMain.do?cateId=864"
 						class="cate_d1_link" onmouseover="javascript:toggleDisplay2('04')"
-						onmouseout="javascript:toggleDisplay2('04')">기타외국소설</a> <!-- 소분류 -->
+						onmouseout="javascript:toggleDisplay2('04')">인간관계</a> <!-- 소분류 -->
 
 
 
@@ -450,33 +314,29 @@
 
 
 									<li class="cate_d2_link "><a
-										href="/front/product/bookCategoryMain.do?cateId=865">프랑스소설</a>
+										href="/front/product/bookCategoryMain.do?cateId=865">인간관계일반</a>
 									</li>
 
 
 									<li class="cate_d2_link "><a
-										href="/front/product/bookCategoryMain.do?cateId=866">독일소설</a></li>
+										href="/front/product/bookCategoryMain.do?cateId=866">직장내인간관계</a>
+									</li>
 
 
 									<li class="cate_d2_link "><a
-										href="/front/product/bookCategoryMain.do?cateId=867">중국소설</a></li>
-
-
-
-									<li class="cate_d2_link "><a
-										href="/front/product/bookCategoryMain.do?cateId=868">인도소설</a></li>
+										href="/front/product/bookCategoryMain.do?cateId=867">남녀관계</a></li>
 
 
 
 									<li class="cate_d2_link "><a
-										href="/front/product/bookCategoryMain.do?cateId=869">동유럽소설</a></li>
+										href="/front/product/bookCategoryMain.do?cateId=868">가족관계</a></li>
 
 
-									<li class="cate_d2_link "><a
-										href="/front/product/bookCategoryMain.do?cateId=869">스페인/중남미소설</a></li>
 
 									<li class="cate_d2_link "><a
-										href="/front/product/bookCategoryMain.do?cateId=869">기타국가소설</a></li>
+										href="/front/product/bookCategoryMain.do?cateId=869">심리일반</a></li>
+
+
 								</ul>
 							</div>
 						</div></li>
@@ -511,7 +371,7 @@
 					<li id="kidsCate_873" class="cate_d1_li "><a
 						href="/front/product/bookCategoryMain.do?cateId=873"
 						class="cate_d1_link" onmouseover="javascript:toggleDisplay2('05')"
-						onmouseout="javascript:toggleDisplay2('05')">고전/명작소설</a> <!-- 소분류 -->
+						onmouseout="javascript:toggleDisplay2('05')">화술/협상</a> <!-- 소분류 -->
 
 
 
@@ -525,26 +385,28 @@
 								<ul>
 
 
-									<li class="cate_d2_link "><a
-										href="/front/product/bookCategoryMain.do?cateId=874">한국</a></li>
-
-
 
 									<li class="cate_d2_link "><a
-										href="/front/product/bookCategoryMain.do?cateId=875">일본</a></li>
+										href="/front/product/bookCategoryMain.do?cateId=874">대화와화술</a>
+									</li>
 
 
 
 									<li class="cate_d2_link "><a
-										href="/front/product/bookCategoryMain.do?cateId=876">영미</a></li>
+										href="/front/product/bookCategoryMain.do?cateId=875">설득/협상</a>
+									</li>
 
 
 
 									<li class="cate_d2_link "><a
-										href="/front/product/bookCategoryMain.do?cateId=877">중국</a></li>
+										href="/front/product/bookCategoryMain.do?cateId=876">연설/스피치</a>
+									</li>
+
+
 
 									<li class="cate_d2_link "><a
-										href="/front/product/bookCategoryMain.do?cateId=877">기타외국</a></li>
+										href="/front/product/bookCategoryMain.do?cateId=877">회의방법/토론</a>
+									</li>
 
 
 								</ul>
@@ -569,7 +431,8 @@
 					<li id="kidsCate_878" class="cate_d1_li "><a
 						href="/front/product/bookCategoryMain.do?cateId=878"
 						class="cate_d1_link" onmouseover="javascript:toggleDisplay2('06')"
-						onmouseout="javascript:toggleDisplay2('06')">장르소설</a> <!-- 소분류 -->
+						onmouseout="javascript:toggleDisplay2('06')">세일즈/매너</a> <!-- 소분류 -->
+
 
 
 						<div class="cate_d2" id="left_layer06"
@@ -582,21 +445,23 @@
 								<ul>
 
 									<li class="cate_d2_link "><a
-										href="/front/product/bookCategoryMain.do?cateId=879">공포/무협소설</a></li>
+										href="/front/product/bookCategoryMain.do?cateId=879">CS</a></li>
+
+
 
 									<li class="cate_d2_link "><a
-										href="/front/product/bookCategoryMain.do?cateId=880">추리/범죄/스릴러소설</a>
+										href="/front/product/bookCategoryMain.do?cateId=880">세일즈기법</a>
 									</li>
 
-									<li class="cate_d2_link "><a
-										href="/front/product/bookCategoryMain.do?cateId=881">라이트(NT)소설</a></li>
+
 
 									<li class="cate_d2_link "><a
-										href="/front/product/bookCategoryMain.do?cateId=882">로맨스/인터넷소설</a>
-									</li>
+										href="/front/product/bookCategoryMain.do?cateId=881">매너</a></li>
+
+
 
 									<li class="cate_d2_link "><a
-										href="/front/product/bookCategoryMain.do?cateId=882">SF/판타지소설</a>
+										href="/front/product/bookCategoryMain.do?cateId=882">세일즈성공스토리</a>
 									</li>
 
 
@@ -622,7 +487,7 @@
 					<li id="kidsCate_883" class="cate_d1_li "><a
 						href="/front/product/bookCategoryMain.do?cateId=883"
 						class="cate_d1_link" onmouseover="javascript:toggleDisplay2('07')"
-						onmouseout="javascript:toggleDisplay2('07')">테마소설</a> <!-- 소분류 -->
+						onmouseout="javascript:toggleDisplay2('07')">오디오북</a> <!-- 소분류 -->
 
 
 
@@ -636,37 +501,38 @@
 								<ul>
 
 									<li class="cate_d2_link "><a
-										href="/front/product/bookCategoryMain.do?cateId=884">동화/우화소설</a>
+										href="/front/product/bookCategoryMain.do?cateId=884">성공/처세</a>
 									</li>
 
 
 
 									<li class="cate_d2_link "><a
-										href="/front/product/bookCategoryMain.do?cateId=885">가족/성장소설</a>
+										href="/front/product/bookCategoryMain.do?cateId=885">자기능력계발</a>
 									</li>
 
 
 
 									<li class="cate_d2_link "><a
-										href="/front/product/bookCategoryMain.do?cateId=886">드라마/영화소설</a>
+										href="/front/product/bookCategoryMain.do?cateId=886">비즈니스능력계발</a>
 									</li>
 
 
 
 									<li class="cate_d2_link "><a
-										href="/front/product/bookCategoryMain.do?cateId=887">청소년소설</a>
+										href="/front/product/bookCategoryMain.do?cateId=887">인간관계일반</a>
 									</li>
 
 
 
 									<li class="cate_d2_link "><a
-										href="/front/product/bookCategoryMain.do?cateId=888">대하/역사/전쟁소설</a>
+										href="/front/product/bookCategoryMain.do?cateId=888">화술/협상</a>
 									</li>
 
 
 
 									<li class="cate_d2_link "><a
-										href="/front/product/bookCategoryMain.do?cateId=889">성인소설</a></li>
+										href="/front/product/bookCategoryMain.do?cateId=889">세일즈/매너</a>
+									</li>
 
 
 
@@ -674,6 +540,13 @@
 								</ul>
 							</div>
 						</div></li>
+
+
+
+
+					<li id="kidsCate_4931" class="cate_d1_li "><a
+						href="/front/product/bookCategoryMain.do?cateId=4931"
+						class="cate_d1_link">묶음</a> <!-- 소분류 --></li>
 
 				</ul>
 			</div>
@@ -2142,8 +2015,8 @@
 		</div>
 
 		<!-- 가운데 레이아웃 -->
-	</div>
 
+	</div>
 
 
 </body>
