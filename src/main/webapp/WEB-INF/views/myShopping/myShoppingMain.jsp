@@ -7,12 +7,13 @@
 %>
 <!DOCTYPE html>
 <html>
-<head>
-	<title>반디앤루니스 인터넷서점</title>
-	
+<title>반디앤루니스 인터넷서점</title>
+
 	<link rel="stylesheet" href="<%=cp%>/resources/css/main.css" type="text/css">
 	<link rel="stylesheet" href="<%=cp%>/resources/css/myShopping.css" type="text/css">
-
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+	<script src="<%=cp%>/resources/js/myShopping.js"></script>
+	
 </head>
 <body style="padding: 0; margin: 0;">
 
@@ -23,108 +24,11 @@
 <div style="margin: 0 auto; width: 960px;">
 
 <div style="margin-top: 12px;">
-	<a href="<%=cp %>/main.action">홈</a> > <b>나의쇼핑</b>
+	<a href="<%=cp %>/main.action">홈</a> > <a href="<%=cp %>/myShoppingMain.action">나의쇼핑</a> > 회원정보 > <b>회원정보수정</b>
 </div>
-
-<div class="navi_div">
-	<div class="nameBar">
-		<div class="left_div">
-			<b>
-			${userInfo.userId }<c:if test="${!empty userInfo.nickName }">(${userInfo.nickName })님의 쇼핑 정보</c:if>
-			<c:if test="${empty userInfo.nickName }">(${userInfo.userId })님의 쇼핑 정보</c:if>
-			</b>
-		</div>
-		<div class="right_div">
-			<img alt="" src="<%=cp%>/resources/img/myShopping/btn_mem_modify.gif">
-			<img alt="" src="<%=cp%>/resources/img/myShopping/btn_mem_wishlist.gif">
-		</div>
-	</div>
-	<div class="infoBar">
-		<ul>
-			<li style="border-left: none;">
-				<span>회원등급</span>
-				<span class="under">일반</span>
-			</li>
-			<li>
-				<span>진행중 주문건</span>
-				<span class="under">0건</span>
-			</li>
-			<li>
-				<span>적립금</span>
-				<span class="under">1,000원</span>
-			</li>
-			<li>
-				<span>최근 본 상품</span>
-				<span class="under">0건</span>
-			</li>
-			<li>
-				<span>나의 상담</span>
-				<span class="under">0건</span>
-			</li>
-		</ul>
-	</div>
-</div>
-
-<div class="side_navi">
-	<span class="side_navi_title">나의쇼핑</span>
-	<ul>
-		<li style="padding-top: 10px;">
-			<span class="side_navi_span">주문관리</span>
-			<div class="side_navi_line">
-				<ul>
-					<li><a href="">주문/배송 조회</a></li>
-					<li style="padding-bottom: 10px;"><a href="">취소/반품/교환 내역</a></li>
-				</ul>
-			</div>
-		</li>
-		<li style="padding-top: 10px;">
-			<span class="side_navi_span">포인트와 혜택</span>
-			<div class="side_navi_line">
-				<ul>
-					<li style="padding-bottom: 10px;">적립금</li>
-				</ul>
-			</div>
-		</li>
-		<li style="padding-top: 10px;">
-			<span class="side_navi_span">관심 리스트</span>
-			<div class="side_navi_line">
-				<ul>
-					<li>최근 본 상품</li>
-					<li style="padding-bottom: 10px;">위시리스트</li>
-				</ul>
-			</div>
-		</li>
-		<li style="padding-top: 10px;">
-			<span class="side_navi_span">나의 리뷰</span>
-			<div class="side_navi_line">
-				<ul>
-					<li>리뷰가 있는 책</li>
-					<li>리뷰를 기다리는 책</li>
-					<li>간단평</li>
-					<li style="padding-bottom: 10px;">최근 덧글</li>
-				</ul>
-			</div>
-		</li>
-		<li style="padding-top: 10px;">
-			<span class="side_navi_span">나의 상담</span>
-			<div class="side_navi_line">
-				<ul>
-					<li>1:1 상담 내역</li>
-					<li style="padding-bottom: 10px;">1:1 상담하기</li>
-				</ul>
-			</div>
-		</li>
-		<li style="padding-top: 10px;">
-			<span class="side_navi_span">회원정보</span>
-			<div class="side_navi_line">
-				<ul>
-					<li>회원정보 수정</li>
-					<li style="padding-bottom: 10px;">회원 탈퇴</li>
-				</ul>
-			</div>
-		</li>
-	</ul>
-</div>
+<!-- navigation -->
+<jsp:include page="./topNavi.jsp" flush="false"/>
+<jsp:include page="./sideNavi.jsp" flush="false"/>
 
 <div class="contents">
 	<div class="main_RecentOrderList">
