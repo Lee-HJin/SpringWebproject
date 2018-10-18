@@ -38,7 +38,7 @@ $(document).ready(function(){
 							}
 						},
 						error:function(){
-							alert("실패!");
+							
 						}
 					});
 
@@ -120,6 +120,51 @@ $(document).ready(function(){
 	if($("input[name='userId']").val() != ""){	//input이 빈칸이 아니면 체크박스 체크하도록
 		$("#idSave").attr("checked", true);
 	}
+	
+	$('#find_id_okBtn').on('click', function(){
+		
+		var flag = false;
+		
+		flag = hiddenValue();
+		
+		if(flag==false){
+			return;
+		}
+		else{
+			var params = $('#findIdForm').serialize();
+
+			$.ajax({
+				type:"POST",
+				url:"mem_findId_ok.action",
+				data: params,
+				success:function(data){
+					if(!data){
+						var html = "입력하신 이름, 생년월일, 휴대폰 번호, 이메일이 일치하는 <br/>회원정보를 찾을 수 없습니다.<br/>";
+						html += "가입시 등록하신 정보를 확인 하신 후 다시 입력해 주시기 바랍니다.<br/><br/><br/>";
+						html += "<input type='button' value='아이디 찾기' class='find_id_back' onclick='javascript:location='mem_findId.action';'>";
+						
+						$('#findIdTable').css({margin:'0 auto', width:'450px', border:'5px solid #f8f8f8',padding: '30px',}).css('text-align','center').css('font-size','10pt').css('margin-top','30px');
+						$('#findIdTable').html(html);
+					
+					}
+					else{
+						var html = "회원님의 아이디는 아래와 같습니다.<br/>";
+						html += "로그인 하시면 반디앤루니스의 다양한 혜택을 받으실 수 있습니다.<br/>";
+						html += "<span class='finded_id'>";
+						html += data;
+						html += "</span>";
+						html += "<input type='button' value='로그인' class='find_id_to_login' onclick='findIdToLogin();'>";
+						
+						$('#findIdTable').css({margin:'0 auto', width:'450px', border:'5px solid #f8f8f8',padding: '30px',}).css('text-align','center').css('font-size','10pt').css('margin-top','30px');
+						$('#findIdTable').html(html);
+					}
+				},
+				error:function(){
+					alert("실패!");
+				}
+			});
+		}
+	});
 
 });//ready끝
 
@@ -139,10 +184,10 @@ function next(){
 	agreeForm.submit();
 }
 
-//약관 팝업
+//약관 팝업 + 아이디 찾기 팝업
 function showWindow(addr,width) {
 	
-	var url = "/webproject/rules/" + addr + ".action";
+	var url = "/webproject/" + addr + ".action";
 
 	var setting = 'toolbar=no,menubar=no,status=no,resizable=no,location=no,top=90,left=250,height=650,' + 'width=' + width;
 	
@@ -199,9 +244,9 @@ function onlyKorean(){
 
 
 //이메일 select 값 input text에 전달하기
-function emailInput() {
+function emailInput(formName) {
 
-	var f = document.joinForm;
+	var f = "document." + formName;
 
 	var cLength = f.email3.options.length;
 	var cValue = f.email3.selectedIndex;
@@ -434,16 +479,16 @@ function joinConfirmation(){
 			f.addTEl3.focus();
 			return;
 		}
+		
+		tel = f.addTel1.value + '-' + f.addTel2.value + '-' + f.addTel3.value;
+		f.addTel.value = tel;
 	}
-
+	
 	birth = f.year.value + '-' + f.month.value + '-' + f.day.value;
 	f.birth.value = birth;
 
 	tel = f.tel1.value + '-' + f.tel2.value + '-' + f.tel3.value;
 	f.phone.value = tel;
-	
-	tel = f.addTel1.value + '-' + f.addTel2.value + '-' + f.addTel3.value;
-	f.addTel.value = tel;
 
 	email = f.email1.value + '@' + f.email2.value;
 	f.email.value = email;
@@ -488,3 +533,117 @@ function isValidDate(year, month, day) {
        
      return true;
 }
+
+//아이디 찾기 히든값 정리
+function hiddenValue(){
+
+	var f = document.findIdForm;
+
+	var userName = f.userName.value;
+	userName = userName.trim();
+	if(!userName) {
+		alert("\n이름을 입력하세요.");
+		f.userName.focus();
+		return false;
+	}
+	f.userName.value = userName;
+
+	var birth = f.year.value;
+	birth = birth.trim();
+	if(!birth) {
+		alert("\n생년월일을 입력하세요.");
+		f.year.focus();
+		return false;
+	}
+	f.year.value = birth;
+
+	birth = f.month.value;
+	birth = birth.trim();
+	if(!birth) {
+		alert("\n생년월일을 입력하세요.");
+		f.month.focus();
+		return false;
+	}
+	f.month.value = birth;
+
+	birth = f.day.value;
+	birth = birth.trim();
+	if(!birth) {
+		alert("\n생년월일을 입력하세요.");
+		f.day.focus();
+		return false;
+	}
+	f.day.value = birth;
+
+	var validDate = isValidDate(f.year.value, f.month.value, f.day.value);
+	if(validDate==false){
+		alert("\n생년월일을 정확히 입력하세요.");
+		f.month.focus();
+		return false;
+	}
+
+	var tel = f.tel1.value;
+	tel = tel.trim();
+	if(!tel) {
+		alert("\n휴대폰 번호를 입력하세요.");
+		f.tel1.focus();
+		return false;
+	}
+	f.tel1.value = tel;
+
+	tel = f.tel2.value;
+	tel = tel.trim();
+	if(!tel) {
+		alert("\n휴대폰 번호를 입력하세요.");
+		f.tel2.focus();
+		return false;
+	}
+	f.tel2.value = tel;
+
+	tel = f.tel3.value;
+	tel = tel.trim();
+	if(!tel) {
+		alert("\n휴대폰 번호를 입력하세요.");
+		f.tel3.focus();
+		return false;
+	}
+	f.tel3.value = tel;
+
+	var email = f.email1.value;
+	email = email.trim();
+	if(!email) {
+		alert("\n이메일을 입력하세요.");
+		f.email1.focus();
+		return false;
+	}
+	f.email1.value = email;
+
+	email = f.email2.value;
+	email = email.trim();
+	if(!email) {
+		alert("\n이메일을 입력하세요.");
+		f.email2.focus();
+		return false;
+	}
+	f.email2.value = email;
+
+	birth = f.year.value + '-' + f.month.value + '-' + f.day.value;
+	f.birth.value = birth;
+
+	tel = f.tel1.value + '-' + f.tel2.value + '-' + f.tel3.value;
+	f.phone.value = tel;
+
+	email = f.email1.value + '@' + f.email2.value;
+	f.email.value = email;
+	
+	return true;
+
+}
+
+function findIdToLogin(){
+	
+	window.opener.top.location.href = "login.action";
+	window.close();
+	
+}
+

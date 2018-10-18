@@ -41,5 +41,33 @@ private SqlSessionTemplate sessionTemplate;
 		
 		return dto;
 	}
-
+	
+	public int getPointId() {
+		
+		return sessionTemplate.selectOne("loginMapper.getPointId");
+		
+	}
+	
+	public void joinPointSaving(String userId, int pointId) {
+		
+		HashMap<String, Object> params = new HashMap<String, Object>();
+		
+		params.put("userId", userId);
+		params.put("pointItem","신규회원 가입 적립금 지급 (30일 후 소멸)");
+		params.put("pointId",pointId);
+		
+		sessionTemplate.insert("loginMapper.joinPointSaving",params);
+		
+	}
+	
+	public String findUserId(UserDTO dto) {
+		
+		return sessionTemplate.selectOne("loginMapper.findUserId",dto);
+		
+	}
+	/*
+	public String findUserPwd() {
+		
+	}
+	 */
 }
