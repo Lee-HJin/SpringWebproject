@@ -26,7 +26,7 @@
 .findIdTable th {background-color: #fafafa; width: 150px; padding-left: 10px}
 .findIdTable td {padding-left: 10px; width: 700px;}
 
-.findPwdTable table {margin-top: 10px;}
+.findPwdTable table {margin-top: 20px; font-size: 10pt; border-collapse: collapse;}
 .findPwdTable tr {border-bottom: 1px solid #d5d5d5; border-top: 1px solid #d5d5d5; text-align: left; height: 45px;}
 .findPwdTable th {background-color: #fafafa; width: 150px; padding-left: 10px}
 .findPwdTable td {padding-left: 10px; width: 700px;}
@@ -68,6 +68,17 @@
 .find_id_cancelBtn {color: white; background-color: #d5d5d5; border: 1px solid #d5d5d5; width: 80px; height: 30px; cursor: pointer; font-weight: bold;}
 .find_id_cancelBtn:hover {color: white; background-color: #d5d5d5; border: 1px solid #d1d1d1; width: 80px; height: 30px; cursor: pointer; font-weight: bold;}
 .finded_id {font-size: 11pt; color: #DE7110; font-weight: bold; display: block; clear: both; margin-bottom: 20px; margin-top: 20px;}
-.find_id_to_login, .find_id_back {color: white; background-color: #af9883; border: 1px solid #af9883; width: 100px; height: 30px; cursor: pointer; font-weight: bold;}
 
+.find_pwd ul, li{margin: 0; font-size: 10pt;}
+.find_pwd a {color: black; text-decoration: none;}
+.find_pwd a:hover {color: #886e45; text-decoration: underline;}
+.find_pwd_okBtn {color: white; background-color: #af9883; border: 1px solid #af9883; width: 80px; height: 30px; cursor: pointer; font-weight: bold;}
+.find_pwd_okBtn:hover {color: white; background-color: #af9883; border: 1px solid #947558; font-weight: bold;}
+.find_pwd_cancelBtn {color: white; background-color: #d5d5d5; border: 1px solid #d5d5d5; width: 80px; height: 30px; cursor: pointer; font-weight: bold;}
+.find_pwd_cancelBtn:hover {color: white; background-color: #d5d5d5; border: 1px solid #d1d1d1; width: 80px; height: 30px; cursor: pointer; font-weight: bold;}
+.joinTable_select {font-size: 10pt; height: 22px;}
+.find_pwd_back {color: white; background-color: #af9883; border: 1px solid #af9883; width: 100px; height: 30px; cursor: pointer; font-weight: bold; display: block; text-decoration: none; line-height: 20pt; margin: 0 auto;}
+.find_pwd_back a{text-decoration: none; color: white;}
+.find_pwd_back:hover {text-decoration: none; color: white;}
+.findPwdTable_div {text-align: center;}
 

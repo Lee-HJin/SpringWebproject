@@ -1,5 +1,13 @@
 $(document).ready(function(){
 	
+	
+	$('#login_pwd').keypress(function(evt){
+		if(evt.keyCode==13){
+			login();
+		}
+	});
+	
+	
 	//약관동의 전체클릭 이벤트
 	$('.checkAll').click( function() {
 		$('.chk').prop('checked', this.checked);
@@ -59,14 +67,17 @@ $(document).ready(function(){
 
 		if(temp_pwd.length!=0){
 			if(temp_pwd.length<10){
-				$('#text_pwd1').text('10~15자의 영문/숫자 사용');
+				$('#text_pwd1').html("<span id='text_pwd1'>10~15자의 영문/숫자 사용</span>");
+			}
+			else if(temp_pwd.length>15){
+				$('#text_pwd1').html("<span id='text_pwd1'>10~15자의 영문/숫자 사용</span>");
 			}
 			else {
-				$('#text_pwd1').text('  ');
+				$('#text_pwd1').html("<span id='text_pwd1' style='color: #886e45;'>이용 가능한 비밀번호입니다</span>");
 			}
 		}
-		else{
-			$('#text_pwd1').text('10~15자의 영문/숫자 사용');
+		else {
+			$('#text_pwd1').html("<span id='text_pwd1'>10~15자의 영문/숫자 사용</span>");
 		}
 
 	});
@@ -115,12 +126,13 @@ $(document).ready(function(){
 	//아이디저장 - 쿠키 설정
 	var userInputId = getCookie("userInputId");	//쿠키 가져옴
 
-	$("input[name='userId']").val(userInputId);  //쿠키에 저장되어 있는 아이디를 input에 입력
+	$("input[name='user_id']").val(userInputId);  //쿠키에 저장되어 있는 아이디를 input에 입력
 
-	if($("input[name='userId']").val() != ""){	//input이 빈칸이 아니면 체크박스 체크하도록
+	if($("input[name='user_id']").val() != ""){	//input이 빈칸이 아니면 체크박스 체크하도록
 		$("#idSave").attr("checked", true);
 	}
 	
+	//아이디 찾기
 	$('#find_id_okBtn').on('click', function(){
 		
 		var flag = false;
@@ -141,7 +153,7 @@ $(document).ready(function(){
 					if(!data){
 						var html = "입력하신 이름, 생년월일, 휴대폰 번호, 이메일이 일치하는 <br/>회원정보를 찾을 수 없습니다.<br/>";
 						html += "가입시 등록하신 정보를 확인 하신 후 다시 입력해 주시기 바랍니다.<br/><br/><br/>";
-						html += "<input type='button' value='아이디 찾기' class='find_id_back' onclick='javascript:location='mem_findId.action';'>";
+						html += "<a href='/webproject/mem_findId_ok.action' class='find_pwd_back'>아이디 찾기</a>";
 						
 						$('#findIdTable').css({margin:'0 auto', width:'450px', border:'5px solid #f8f8f8',padding: '30px',}).css('text-align','center').css('font-size','10pt').css('margin-top','30px');
 						$('#findIdTable').html(html);
@@ -165,6 +177,60 @@ $(document).ready(function(){
 			});
 		}
 	});
+	
+	//패스워드 찾기
+	$('#find_pwd_okBtn').on('click', function(){
+		
+		var flag = false;
+		
+		flag = hiddenValuePwd();
+		
+		if(flag==false){
+			return;
+		}
+		else{
+			var params = $('#findPwdForm').serialize();
+			
+			$.ajax({
+				type:"POST",
+				url:"mem_findPwd_ok.action",
+				data: params,
+				success:function(data){
+					if(!data){
+						var html = "입력하신 아이디, 이름, 생년월일, 휴대폰 번호, 이메일 중 일치하지 않는 회원정보가 있습니다.<br/>";
+						html += "아이디, 이름, 생년월일, 휴대폰 번호를 확인하신 후 다시 입력해주시기 바랍니다.<br/><br/><br/>";
+						html += "<a href='/webproject/mem_findPwd.action' class='find_pwd_back'>비밀번호 찾기</a>";
+						
+						$('#findPwdTable').css({margin:'0 auto', width:'600px', border:'5px solid #f8f8f8',padding: '15px'}).css('text-align','center').css('font-size','10pt').css('margin-top','30px').css('text-decoration','none');
+						$('#findPwdTable').html(html);
+					}
+					else{
+						var html = "회원님의 임시 비밀번호는 아래와 같습니다.<br/>";
+						html += "임시 비밀번호를 확인하시어, 로그인해주시기 바랍니다.<br/>";
+						html += "만약 임시 비밀번호로 로그인이 되지 않는 경우에는, 고객센터로 문의해주시기 바랍니다.<br/>";
+						html += "<span class='finded_id'>";
+						html += data;
+						html += "</span>";
+						html += "<input type='button' value='로그인' class='find_id_to_login' onclick='findIdToLogin();'>";
+						
+						$('#findPwdTable').css({margin:'0 auto', width:'450px', border:'5px solid #f8f8f8',padding: '30px',}).css('text-align','center').css('font-size','10pt').css('margin-top','30px');
+						$('#findPwdTable').html(html);
+					}
+				},
+				error:function(){
+					alert("실패!");
+				}	
+			});
+		}
+	});
+	
+	$('#find_id_back').on('click', function(){
+		$(location).attr('href','webproject/mem_findId.action');
+	});
+	
+	$('#find_pwd_back').on('click', function(){
+		$(location).attr('href','webproject/mem_findPwd.action');
+	});
 
 });//ready끝
 
@@ -184,7 +250,7 @@ function next(){
 	agreeForm.submit();
 }
 
-//약관 팝업 + 아이디 찾기 팝업
+//약관 팝업 + 아이디 찾기 + 비밀번호 찾기 팝업
 function showWindow(addr,width) {
 	
 	var url = "/webproject/" + addr + ".action";
@@ -200,14 +266,14 @@ function login() {
 
 	var f = document.loginForm;
 
-	var id = f.userId.value;
+	var id = f.user_id.value;
 	id = id.trim();
 	if(!id) {
 		alert("\n아이디를 입력하세요. ");
-		f.userId.focus();
+		f.user_id.focus();
 		return;
 	}
-	f.userId.value = id;
+	f.user_id.value = id;
 
 	var pwd = f.userPwd.value;
 	pwd = pwd.trim();
@@ -466,6 +532,18 @@ function joinConfirmation(){
 			return;
 		}
 	}
+	else {
+		if(address1){
+			alert("\n주소(배송지)를 정확히 입력해 주세요.");
+			f.address1.focus();
+			return;
+		}
+		else if(adress2){
+			alert("\n주소(배송지)를 정확히 입력해 주세요.");
+			f.zipCode.focus();
+			return;
+		}
+	}
 
 	tel = f.addTel1.value;
 	if(tel){
@@ -477,6 +555,37 @@ function joinConfirmation(){
 		else if(!f.addTel3.value){
 			alert("\n추가연락처를 정확히 입력해 주세요.");
 			f.addTEl3.focus();
+			return;
+		}
+		
+		tel = f.addTel1.value + '-' + f.addTel2.value + '-' + f.addTel3.value;
+		f.addTel.value = tel;
+	}
+else if(f.addTel2.value){
+		
+		if(!f.addTel1.value){
+			alert("\n추가연락처를 정확히 입력해 주세요.");
+			f.addTel1.focus();
+			return;
+		}
+		else if(!f.addTel3.value){
+			alert("\n추가연락처를 정확히 입력해 주세요.");
+			f.addTEl3.focus();
+			return;
+		}
+		
+		tel = f.addTel1.value + '-' + f.addTel2.value + '-' + f.addTel3.value;
+		f.addTel.value = tel;
+	}
+	else if(f.addTel3.value){
+		if(!f.addTel1.value){
+			alert("\n추가연락처를 정확히 입력해 주세요.");
+			f.addTel1.focus();
+			return;
+		}
+		else if(!f.addTel2.value){
+			alert("\n추가연락처를 정확히 입력해 주세요.");
+			f.addTEl2.focus();
 			return;
 		}
 		
@@ -645,5 +754,121 @@ function findIdToLogin(){
 	window.opener.top.location.href = "login.action";
 	window.close();
 	
+}
+
+
+//비밀번호 찾기 히든값 정리
+function hiddenValuePwd(){
+
+	var f = document.findPwdForm;
+	
+	var userId = f.userId.value;
+	userId = userId.trim();
+	if(!userId) {
+		alert("\n아이디를 입력하세요.");
+		f.userId.focus();
+		return false;
+	}
+	f.userId.value = userId;
+
+	var userName = f.userName.value;
+	userName = userName.trim();
+	if(!userName) {
+		alert("\n이름을 입력하세요.");
+		f.userName.focus();
+		return false;
+	}
+	f.userName.value = userName;
+
+	var birth = f.year.value;
+	birth = birth.trim();
+	if(!birth) {
+		alert("\n생년월일을 입력하세요.");
+		f.year.focus();
+		return false;
+	}
+	f.year.value = birth;
+
+	birth = f.month.value;
+	birth = birth.trim();
+	if(!birth) {
+		alert("\n생년월일을 입력하세요.");
+		f.month.focus();
+		return false;
+	}
+	f.month.value = birth;
+
+	birth = f.day.value;
+	birth = birth.trim();
+	if(!birth) {
+		alert("\n생년월일을 입력하세요.");
+		f.day.focus();
+		return false;
+	}
+	f.day.value = birth;
+
+	var validDate = isValidDate(f.year.value, f.month.value, f.day.value);
+	if(validDate==false){
+		alert("\n생년월일을 정확히 입력하세요.");
+		f.month.focus();
+		return false;
+	}
+
+	var tel = f.tel1.value;
+	tel = tel.trim();
+	if(!tel) {
+		alert("\n휴대폰 번호를 입력하세요.");
+		f.tel1.focus();
+		return false;
+	}
+	f.tel1.value = tel;
+
+	tel = f.tel2.value;
+	tel = tel.trim();
+	if(!tel) {
+		alert("\n휴대폰 번호를 입력하세요.");
+		f.tel2.focus();
+		return false;
+	}
+	f.tel2.value = tel;
+
+	tel = f.tel3.value;
+	tel = tel.trim();
+	if(!tel) {
+		alert("\n휴대폰 번호를 입력하세요.");
+		f.tel3.focus();
+		return false;
+	}
+	f.tel3.value = tel;
+
+	var email = f.email1.value;
+	email = email.trim();
+	if(!email) {
+		alert("\n이메일을 입력하세요.");
+		f.email1.focus();
+		return false;
+	}
+	f.email1.value = email;
+
+	email = f.email2.value;
+	email = email.trim();
+	if(!email) {
+		alert("\n이메일을 입력하세요.");
+		f.email2.focus();
+		return false;
+	}
+	f.email2.value = email;
+
+	birth = f.year.value + '-' + f.month.value + '-' + f.day.value;
+	f.birth.value = birth;
+
+	tel = f.tel1.value + '-' + f.tel2.value + '-' + f.tel3.value;
+	f.phone.value = tel;
+
+	email = f.email1.value + '@' + f.email2.value;
+	f.email.value = email;
+	
+	return true;
+
 }
 

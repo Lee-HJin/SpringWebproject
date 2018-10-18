@@ -1,5 +1,8 @@
 package com.spring.webproject.controller;
 
+import java.io.UnsupportedEncodingException;
+import java.net.URLDecoder;
+
 import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,7 +16,7 @@ import com.spring.webproject.dto.UserDTO;
 
 @Controller
 public class LoginController {
-	
+
 	@Autowired
 	LoginDAO dao;
 
@@ -23,22 +26,22 @@ public class LoginController {
 
 		return "login/login";
 	}
-	
+
 	//로그인 진행
 	@RequestMapping(value = "/login_ok.action", method = RequestMethod.POST)
 	public String loginProcess(HttpServletRequest request) {
-		
+
 		String returnUrl = "";
-		String userId = request.getParameter("userId");
+		String userId = request.getParameter("user_id");
 		String userPwd = request.getParameter("userPwd");
-		
+
 		UserDTO dto = dao.login(userId, userPwd);
-		
+
 		if(dto!=null) {	//로그인 성공
 			request.getSession().setAttribute("userInfo", dto);
 			request.getSession().removeAttribute("message");
 			returnUrl = "redirect:/main.action";
-			
+
 		}
 		else {	//로그인 실패
 			returnUrl = "redirect:/login.action";
@@ -47,14 +50,14 @@ public class LoginController {
 
 		return returnUrl;
 	}
-	
+
 	//로그아웃
 	@RequestMapping(value = "/logout.action", method = {RequestMethod.POST, RequestMethod.GET})
 	public String logout(HttpServletRequest request) {
-		
+
 		request.getSession().removeAttribute("userInfo");
 		request.getSession().invalidate();
-		
+
 		return "redirect:/main.action";
 	}
 
@@ -64,7 +67,7 @@ public class LoginController {
 
 		return "login/mem_agree";
 	}
-	
+
 	//약관 팝업
 	@RequestMapping(value = "rules/rules_privacy.action", method = {RequestMethod.GET,RequestMethod.POST})
 	public String privacy() {
@@ -90,79 +93,79 @@ public class LoginController {
 
 		return "login/mem_join";
 	}
-	
+
 	//회원가입 2단계 : 아이디 중복 체크
 	@ResponseBody
 	@RequestMapping(value = "login/idOverlapCheck.action", method = {RequestMethod.GET,RequestMethod.POST})
 	public boolean idOverlapCheck(HttpServletRequest request) {
-		
+
 		String userId = request.getParameter("userId");	
 		boolean flag = false;
-		
+
 		UserDTO dto = dao.idOverlapCheck(userId);
-		
+
 		if(dto==null) {
 			flag = true;
 		}
 		else {
 			flag = false;
 		}
-		
+
 		return flag;	
 	}
-	
+
 	//회원가입 성공
 	@RequestMapping(value = "login/mem_join_success.action", method = {RequestMethod.POST,RequestMethod.GET})
 	public String joinSucess(UserDTO dto) {
-		
+
 		dao.joinMember(dto);
-		
+
 		String userId = dto.getUserId();
 		int pointId = dao.getPointId() + 1;
-		
+
 		dao.joinPointSaving(userId, pointId);
 
 		return "login/mem_join_success";
 	}
-	
+
 	//아이디 찾기 페이지
 	@RequestMapping(value = "/mem_findId.action", method = {RequestMethod.GET,RequestMethod.POST})
 	public String memfindId() {	
 
 		return "login/mem_findId";
 	}
-	
+
 	//아이디 찾기 진행
 	@ResponseBody
 	@RequestMapping(value = "/mem_findId_ok.action", method = RequestMethod.POST)
 	public String memfindId(HttpServletRequest request) {
-		
+
 		//폼에서 넘어온 데이터 받아내기
 		String userName = request.getParameter("userName");
 		String birth = request.getParameter("birth");
 		String phone = request.getParameter("phone");
 		String email = request.getParameter("email");
-		
-		//dto에 넘어온 아이티를 넣음
+
+		//dto에 넘어온 데이터를 넣음
 		UserDTO dto = new UserDTO();
-		
+
 		dto.setUserName(userName);
 		dto.setBirth(birth);
 		dto.setPhone(phone);
 		dto.setEmail(email);
-		
+
 		//아이디 검색함
 		String userId = dao.findUserId(dto);
-		
+
 		if(userId==null || userId.equals("")) {
 			return "";
 		}
 		else {
 			return userId;
 		}
-		
+
 	}
-	
+
 
 	//비밀번호 찾기
 	@RequestMapping(value = "/mem_findPwd.action", method = {RequestMethod.GET,RequestMethod.POST})
@@ -170,12 +173,58 @@ public class LoginController {
 
 		return "login/mem_findPwd";
 	}
-	
-	//나의쇼핑 메인
-	@RequestMapping(value = "/myShoppingMain.action", method = {RequestMethod.GET,RequestMethod.POST})
-	public String myShoppingMain() {
 
-		return "myShopping/myShoppingMain";
+	//비밀번호 찾기 진행
+	@ResponseBody
+	@RequestMapping(value = "/mem_findPwd_ok.action", method = {RequestMethod.POST})
+	public String memfindPwd(HttpServletRequest request) throws UnsupportedEncodingException {
+
+		//폼에서 넘어온 데이터 받아내기
+		String userId = request.getParameter("userId");
+		String userName = request.getParameter("userName");
+		String birth = request.getParameter("birth");
+		String phone = request.getParameter("phone");
+		String email = request.getParameter("email");
+
+		//dto에 넘어온 데이터를 넣음
+		UserDTO dto = new UserDTO();
+
+		dto.setUserId(userId);
+		dto.setUserName(userName);
+		dto.setBirth(birth);
+		dto.setPhone(phone);
+		dto.setEmail(email);
+
+
+		//회원 정보 검색
+		UserDTO findedDto = dao.findUserPwd(dto);
+
+		if(findedDto==null) {	//회원정보를 못 찾았을 때
+			return "";
+		}
+		else {	//회원정보를 찾았을 때
+
+			//임시 비밀번호 만들기(10자리-영대소문자+숫자 랜덤조합)
+			char[] randomWord = new char[] {'a','b','c','d','e','f','g','h','i','j','k','l','m','n','o','p','q','r','s','t','u','v','w','x','y','z',
+					'A','B','C','D','E','F','G','H','I','J','K','L','M','N','O','P','Q','R','S','T','U','V','W','X','Y','Z',
+					'0','1','2','3','4','5','6','7','8','9'};
+
+			int index = 0;
+			StringBuffer tempPwd = new StringBuffer();
+
+			for(int i=0;i<10;i++) {
+				index = (int)(randomWord.length * Math.random());
+				tempPwd.append(randomWord[index]);
+			}
+
+			//임시 비밀번호 DB에 입력
+			dao.updateTempPwd(tempPwd.toString(), findedDto.getUserId());
+
+			//ajax에 data 리턴
+			return tempPwd.toString();
+
+		}
+
 	}
 
 }

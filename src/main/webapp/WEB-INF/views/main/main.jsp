@@ -50,8 +50,6 @@
 </script>
 </head>
 <body style="margin: 0;">
-
-
 <jsp:include page="./header.jsp" flush="false"/>
 
 <div id="body">
