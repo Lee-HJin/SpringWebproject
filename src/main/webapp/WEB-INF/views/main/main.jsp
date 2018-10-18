@@ -50,344 +50,16 @@
 </script>
 </head>
 <body style="margin: 0;">
-<<<<<<< HEAD
-<div id="head">
-	<div id="top_wrap">
-		<div class="head_top">
-			<h1 class="logo">
-				<a href="<%=cp%>/main.action">
-					<img alt="" src="<%=cp%>/resources/image/main/logo_2014_top.gif">
-				</a>
-			</h1>
-			<div class="top_menu">
-				<ul class="t_menu_list">
-					<li class="t_menu login">
-						<a href="<%=cp%>/login.action" class="t_menu_link btn_login">로그인</a>
-					</li>
-					<li class="t_menu join">
-						<a href="<%=cp %>/login/mem_agree.action" class="t_menu_link">회원가입</a>
-					</li>
-					<li class="t_menu">
-						<a href="javascript://" class="t_menu_link">쇼핑카트</a>
-						
-					</li>
-					<li class="t_menu myShopping">
-						<a href="<%=cp %>/myShoppingMain.action" class="t_menu_link" 
-						onmouseover="javascript:toggleDisplay2('01')" onmouseout="javascript:toggleDisplay2('01')">
-						나의쇼핑</a>
-						<div id="top_layer01" class="display_top"  style="display: none; width: 90px;"
-						onmouseover="javascript:toggleDisplay2('01')" onmouseout="javascript:toggleDisplay2('01')">
-							<div style="margin-top: 5px;">
-								<a href="<%=cp %>/myShoppingMain.action">나의쇼핑정보</a>
-							</div>
-							<div>
-								<a href="javascript://">주문배송조회</a>
-							</div>
-							<div>
-								<a href="javascript://">적립내역</a>
-							</div>
-							<div>
-								<a href="javascript://">구매히스토리</a>
-							</div>
-							<div>
-								<a href="javascript://">위시리스트</a>
-							</div>
-							<div>
-								<a href="javascript://">회원정보</a>
-							</div>
-						</div>
-					</li>
-					<li class="t_menu">
-						<a href="javascript://" class="t_menu_link">고객센터</a>
-					</li>
-					<li class="t_menu store">
-						<a href="javascript://" class="t_menu_link"
-						onmouseover="javascript:toggleDisplay2('02')" onmouseout="javascript:toggleDisplay2('02')">
-						영업점안내</a>
-						<div id="top_layer02" class="display_top"  style="display: none; width: 130px;"
-						onmouseover="javascript:toggleDisplay2('02')" onmouseout="javascript:toggleDisplay2('02')">
-							<div style="margin-top: 5px;">
-								<a href="javascript://">신세계강남점</a>
-							</div>
-							<div>
-								<a href="javascript://">신세계센텀시티점(부산)</a>
-							</div>
-							<div>
-								<a href="javascript://">롯데월드몰점</a>
-							</div>
-							<div>
-								<a href="javascript://">여의도신영증권점</a>
-							</div>
-							<div>
-								<a href="javascript://">대구신세계점</a>
-							</div>
-							<div>
-								<a href="javascript://">롯데몰수원점</a>
-							</div>
-							<div>
-								<a href="javascript://">신세계김해점</a>
-							</div>
-							<div>
-								<a href="javascript://">롯데스타시티점</a>
-							</div>
-							<div>
-								<a href="javascript://">신림역점</a>
-							</div>
-							<div>
-								<a href="javascript://">사당역점</a>
-							</div>
-							<div>
-								<a href="javascript://">목동점</a>
-							</div>
-							<div>
-								<a href="javascript://">롯데피트인산본점</a>
-							</div>
-							<div>
-								<a href="javascript://">롯데울산점</a>
-							</div>
-						</div>
-					</li>
-				</ul>
-			</div>
-		</div>
-	</div>
-	
-	<div class="wrap_header">
-		<div class="header_menu">
-			<ul class="menu_wrap">
-				<li class="menu">			
-					<a href="javascript://" class="menu_link menu_total" 
-					onmouseover="javascript:toggleDisplay('01')" onmouseout="javascript:toggleDisplay('01')">
-					<%-- <img alt="" src="<%=cp%>/resources/image/sp_gnb_menu1.png"> --%>
-						<span></span>
-					</a>
-					
-					<div id="layer01" class="display_wrap display_total" style="display: none;"
-					onmouseover="javascript:toggleDisplay('01')" onmouseout="javascript:toggleDisplay('01')">
-						<div class="cate01">
-							<h3><a href="<%=cp %>/main.action">도서</a></h3>
-							<ul class="cate_list">
-								<li><em>소설</em></li>
-								<li><em>장르소설</em></li>
-								<li>시/에세이/기행</li>
-								<li>청소년교양</li>
-								<li>경제/경영</li>
-								<li><em>자기계발</em></li>
-							</ul>
-							
-							<ul class="cate_list">
-								<li>유아</li>
-								<li>육아/자녀교육</li>
-								<li>어린이</li>
-								<li>어린이영어</li>
-								<li>아동전집</li>
-								<li>정가제 Free</li>
-							</ul>
-							
-							<ul class="cate_list">
-								<li>가정/생활/요리</li>
-								<li>건강/의학/미용</li>
-								<li>여행/취미/레저</li>
-								<li>잡기</li>
-								<li>만화</li>
-							</ul>
-							
-							<ul class="cate_list clear">
-								<li><em>인문/교양/철학</em></li>
-								<li>역사/신화/문화</li>
-								<li>종교</li>
-								<li>사회/정치/법률</li>
-								<li>예술/대중문화</li>
-								<li>자연과학/공학</li>
-							</ul>
-							
-							<ul class="cate_list">
-								<li><em>초등참고서</em></li>
-								<li><em>중/고등참고서</em></li>
-								<li>&nbsp;</li>
-								<li><em>외국어/사전</em></li>
-								<li>대학교재</li>
-								<li>컴퓨터/IT</li>
-							</ul>
-							
-							<ul class="cate_list">
-								<li>서양서</li>
-								<li>일본서</li>
-							</ul>
-						</div>
-						<div class="cate02">
-							<h3><a href="<%=cp %>/main.action">키즈샵</a></h3>
-							<ul class="cate_list">
-								<li><em>유아</em></li>
-								<li>어린이</li>
-								<li>유아동전집</li>
-							</ul>
-							
-							<ul class="cate_list">
-								<li>유아/자녀교육</li>
-								<li>임신/출산/태교</li>
-								<li>교구완구</li>
-							</ul>
-							
-							<ul class="cate_list">
-								<li><em>초등참고서</em></li>
-								<li>어린이 영어</li>
-								<li>교구완구</li>
-							</ul>
-						</div>	
-						<div class="cate03">
-							<h3><a href="<%=cp %>/main.action">수험서</a></h3>
-							<ul class="cate_list">
-								<li>공무원</li>
-								<li>국가고시</li>
-								<li>임용시험</li>
-								<li>대기업/공기업/면접</li>
-								<li>대표저자수험서</li>
-							</ul>
-							
-							<ul class="cate_list">
-								<li>국가기술자격증</li>
-								<li>국가전문자격증</li>
-								<li>민간전문자격증</li>
-								<li>외국자격증</li>
-							</ul>
-							
-							<ul class="cate_list">
-								<li>편입/진학/전문대학원</li>
-								<li>공부법/안내서</li>
-							</ul>
-						</div>
-						<span></span>
-					</div>	
-				</li>
-				
-				<li class="menu">
-					<a href="javascript://" class="menu_link menu_book" 
-					onmouseover="javascript:toggleDisplay('02')" onmouseout="javascript:toggleDisplay('02')">
-						<span></span>
-					</a>
-					
-					<div id="layer02" class="display_wrap display_book" style="display: none;"
-					onmouseover="javascript:toggleDisplay('02')" onmouseout="javascript:toggleDisplay('02')">
-						<div class="cate_book01">
-							<h3><a href="<%=cp %>/main.action">도서</a></h3>
-							<div class="cate_menu">
-								<ul>
-									<li>베스트셀러</li>
-									<li>새로나온 책</li>
-									<li>주간 탑클릭</li>
-									<li>정가인하도서</li>
-									<li>오늘의 책</li>
-									<li>이달의 추천책</li>
-									<li>미디어 추천책</li>
-									<li class="gap">작가 프로필</li>
-									<li>이벤트</li>
-									<li class="gap">북셀프안내</li>
-									<li>대량주문 안내</li>
-									<li>반디e캐쉬안내</li>
-								</ul>
-							</div>
-							<div class="cate_list_wrap">
-								<ul class="cate_list">
-									<li><em>소설</em></li>
-									<li><em>장르소설</em></li>
-									<li><em>시/에세이/기행</em></li>
-									<li>청소년교양</li>
-									<li>경제/경영</li>
-									<li><em>자기계발</em></li>
-								</ul>
-								<ul class="cate_list">
-									<li>유아</li>
-									<li>육아/자녀교육</li>
-									<li><em>어린이</em></li>
-									<li>어린이영어</li>
-									<li>아동전집</li>
-									<li>정가제 Free</li>
-								</ul>
-								<ul class="cate_list">
-									<li>가정/생활/요리</li>
-									<li>건강/의학/미용</li>
-									<li>여행/취미/레저</li>
-									<li>잡지</li>
-									<li>만화</li>
-								</ul>
-								<ul class="cate_list clear">
-									<li><em>인문/교양/철학</em></li>
-									<li>역사/신화/문화</li>
-									<li>종교</li>
-									<li>사회/정치/법률</li>
-									<li>예술/대중문화</li>
-									<li>자연과학/공학</li>
-								</ul>
-								<ul class="cate_list">
-									<li><em>초등참고서</em></li>
-									<li><em>중/고등참고서</em></li>
-									<li>&nbsp;</li>
-									<li><em>외국어/사전</em></li>
-									<li>대학교재</li>
-									<li>컴퓨터/IT</li>
-								</ul>
-								<ul class="cate_list">
-									<li>서양서</li>
-									<li>일본서</li>
-								</ul>
-							</div>
-						</div>
-						<div class="cate_book02">
-							<h3><a href="<%=cp %>/main.action">수험서</a></h3>
-							<div class="cate_list_wrap cate_exam">
-								<ul class="cate_list exam">
-									<li><em>공무원</em></li>
-									<li>국가고시</li>
-									<li>임용시험</li>
-									<li><em>대기업/공기업/면접</em></li>
-									<li>대표저자수험서</li>
-								</ul>
-								<ul class="cate_list">
-									<li>국가기술자격증</li>
-									<li>국가전문자격증</li>
-									<li>민간전문자격증</li>
-									<li>외국자격증</li>
-								</ul>
-								<ul class="cate_list exam clear">
-									<li>편입/진학/전문대학원</li>
-									<li>공부법/안내서</li>
-								</ul>
-							</div>
-						</div>
-						<span></span>
-					</div>
-				</li>
-				<li class="menu">
-					<a href="javascript://" class="menu_link menu_best">
-						<span></span>
-					</a>
-				</li>
-				<li class="menu">
-					<a href="javascript://" class="menu_link menu_new">
-						<span></span>
-					</a>
-				</li>
-				<li class="menu">
-					<a href="javascript://" class="menu_link menu_sale">
-						<span></span>
-					</a>
-				</li>
-			</ul>	
-		</div>
-	</div>
-</div>
-=======
+
 
 <jsp:include page="./header.jsp" flush="false"/>
->>>>>>> Hyunjin2018.10.11
 
 <div id="body">
 	
 	<div class="swiper-container swiper1">
    		<div class="swiper-wrapper">
      		<div class="swiper-slide">
-     			<a href="javascript://"><img src="<%=cp%>/resources/image/main/box1.jpg"></a>
+     			<a href="javascript://"><img src="<%=cp%>/resources/image/main/box1_1.jpg"></a>
      		</div>
      		<div class="swiper-slide">
      			<ul>
@@ -401,6 +73,9 @@
      					<a href="javascript://"><img src="<%=cp%>/resources/image/main/box3_3.jpg"></a>
      				</li>
      			</ul>
+     		</div>
+     		<div class="swiper-slide">
+     			<a href="javascript://"><img src="<%=cp%>/resources/image/main/box1_2.jpg"></a>
      		</div>
      	</div>
      	
@@ -604,45 +279,45 @@
 					<ul class="rank_list">
 						<li><!-- foreach로 데이터 돌린다 -->
 							<span class="list_n">1</span>
-							&nbsp;<a id="img_link0" href="javascript://00" onmouseover="hoverImg('0')">죽고싶지만 떡볶이는 먹고…
+							<a id="img_link0" class="list_title" href="javascript://00" onmouseover="hoverImg('0')">죽고싶지만 떡볶이는 먹고…
 							<img id="link_img0" src="<%=cp%>/resources/image/main/4181047.jpg" style="display: none;"></a>
 						</li>
 						<li>
 							<span class="list_n">2</span>
-							&nbsp;<a id="img_link1" href="<%=cp %>/main.action" onmouseover="hoverImg('1')">돌이킬 수 없는 약속
+							<a id="img_link1" class="list_title" href="<%=cp %>/main.action" onmouseover="hoverImg('1')">돌이킬 수 없는 약속
 							<img id="link_img1" src="<%=cp%>/resources/image/main/4034224.jpg" style="display: none;"></a>
 						</li>
 						<li>
 							<span class="list_n">3</span>
-							&nbsp;<a href="javascript://">초격차</a>
+							<a href="javascript://" class="list_title">초격차</a>
 						</li>
 						<li>
 							<span class="list_n">4</span>
-							&nbsp;<a href="javascript://">골든 아워 1</a>
+							<a href="javascript://" class="list_title">골든 아워 1</a>
 						</li>
 						<li>
 							<span class="list_n">5</span>
-							&nbsp;<a href="javascript://">인생 우화</a>
+							<a href="javascript://" class="list_title">인생 우화</a>
 						</li>
 						<li>
 							<span class="list_n">6</span>
-							&nbsp;<a href="javascript://">뼈있는 아무말 대잔치</a>
+							<a href="javascript://" class="list_title">뼈있는 아무말 대잔치</a>
 						</li>
 						<li>
 							<span class="list_n">7</span>
-							&nbsp;<a href="javascript://">언어의 온도[100만부 돌…</a>
+							<a href="javascript://" class="list_title">언어의 온도[100만부 돌…</a>
 						</li>
 						<li>
 							<span class="list_n">8</span>
-							&nbsp;<a href="javascript://">열두 발자국</a>
+							<a href="javascript://" class="list_title">열두 발자국</a>
 						</li>
 						<li>
 							<span class="list_n">9</span>
-							&nbsp;<a href="javascript://">고양이 1</a>
+							<a href="javascript://" class="list_title">고양이 1</a>
 						</li>
 						<li>
 							<span class="list_n">10</span>
-							&nbsp;<a href="javascript://">죄의 목소리</a>
+							<a href="javascript://" class="list_title">죄의 목소리</a>
 						</li>
 					</ul>
 					<a class="more_link" href="javascript://"></a>
@@ -786,188 +461,422 @@
 				<div class="swiper-container swiper4">
 					<div class="swiper-wrapper">
 						<div class="swiper-slide">
-							<div>
+							<div class="wrap_b_img">
 								<a href="javascript://">
 									<img src="<%=cp%>/resources/image/main/4203179.jpg">
 								</a>
+								<dl class="rb_title">
+									<dt>설거지 누가 할래</dt>
+									<dd>야먀우치 마리코</dd>
+								</dl>
 							</div>
+						</div>
+						<div class="swiper-slide">
+							<div class="wrap_b_img">
+							 	<a href="javascript://">
+									<img src="<%=cp%>/resources/image/main/4202644.jpg">
+								</a>
+								<dl class="rb_title">
+									<dt>설거지 누가 할래</dt>
+									<dd>야먀우치 마리코</dd>
+								</dl>
+							</div>
+						</div>
+						<div class="swiper-slide">
+							<div class="wrap_b_img">
+							<a href="javascript://">
+								<img src="<%=cp%>/resources/image/main/4201858.jpg">
+							</a>
 							<dl class="rb_title">
 								<dt>설거지 누가 할래</dt>
 								<dd>야먀우치 마리코</dd>
 							</dl>
+							</div>
 						</div>
 						<div class="swiper-slide">
-							<a href="javascript://">
-								<img src="<%=cp%>/resources/image/main/4202644.jpg">
-							</a>
+							<div class="wrap_b_img">
+								<a href="javascript://">
+									<img src="<%=cp%>/resources/image/main/4203116.jpg">
+								</a>
+								<dl class="rb_title">
+									<dt>설거지 누가 할래</dt>
+									<dd>야먀우치 마리코</dd>
+								</dl>
+							</div>	
 						</div>
 						<div class="swiper-slide">
-							<a href="javascript://">
-								<img src="<%=cp%>/resources/image/main/4201858.jpg">
-							</a>
+							<div class="wrap_b_img">
+								<a href="javascript://">
+									<img src="<%=cp%>/resources/image/main/4201995.jpg">
+								</a>
+								<dl class="rb_title">
+									<dt>설거지 누가 할래</dt>
+									<dd>야먀우치 마리코</dd>
+								</dl>
+							</div>
 						</div>
 						<div class="swiper-slide">
-							<a href="javascript://">
-								<img src="<%=cp%>/resources/image/main/4203116.jpg">
-							</a>
+							<div class="wrap_b_img">
+								<a href="javascript://">
+									<img src="<%=cp%>/resources/image/main/4202623.jpg">
+								</a>
+								<dl class="rb_title">
+									<dt>설거지 누가 할래</dt>
+									<dd>야먀우치 마리코</dd>
+								</dl>
+							</div>
+						</div>
+						<div class="swiper-slide first">
+							<div class="wrap_b_img">
+								<a href="javascript://">
+									<img src="<%=cp%>/resources/image/main/4200746.jpg">
+								</a>
+								<dl class="rb_title">
+									<dt>설거지 누가 할래</dt>
+									<dd>야먀우치 마리코</dd>
+								</dl>
+							</div>	
 						</div>
 						<div class="swiper-slide">
-							<a href="javascript://">
-								<img src="<%=cp%>/resources/image/main/4201995.jpg">
-							</a>
+							<div class="wrap_b_img">
+								<a href="javascript://">
+									<img src="<%=cp%>/resources/image/main/4203203.jpg">
+								</a>
+								<dl class="rb_title">
+									<dt>열 살, 변하기 시작한 아들에게 해서는 안...</dt>
+									<dd>오야노 메구미</dd>
+								</dl>
+							</div>
 						</div>
 						<div class="swiper-slide">
-							<a href="javascript://">
-								<img src="<%=cp%>/resources/image/main/4202623.jpg">
-							</a>
+							<div class="wrap_b_img">
+								<a href="javascript://">
+									<img src="<%=cp%>/resources/image/main/4198414.jpg">
+								</a>
+								<dl class="rb_title">
+									<dt>설거지 누가 할래</dt>
+									<dd>야먀우치 마리코</dd>
+								</dl>
+							</div>	
 						</div>
 						<div class="swiper-slide">
-							<a href="javascript://">
-								<img src="<%=cp%>/resources/image/main/4200746.jpg">
-							</a>
+							<div class="wrap_b_img">
+								<a href="javascript://">
+									<img src="<%=cp%>/resources/image/main/4192753.jpg">
+								</a>
+								<dl class="rb_title">
+									<dt>설거지 누가 할래</dt>
+									<dd>야먀우치 마리코</dd>
+								</dl>
+							</div>	
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="issue_book">
+			<h3 class="ib_title"></h3>
+			<h4 class="ib_subtitle">도대체 행복이 뭐에요?</h4>
+			<div class="ib_list">
+				<div class="b_arrow_box">
+					<button class="slide_aw left" id="ib_awL">
+						<span class="aw_count_ib"></span>
+					</button>	
+					<button class="slide_aw right" id="ib_awR">
+						<span class="aw_count_ib"></span>
+					</button>
+				</div>
+				<div class="swiper-container swiper5">
+					<div class="swiper-wrapper">
+						<div class="swiper-slide">
+							<div class="wrap_ib_img">
+								<a href="javascript://">
+									<img src="<%=cp%>/resources/image/main/3785296.jpg">
+								</a>
+								<dl class="rb_title">
+									<dt>설거지 누가 할래</dt>
+									<dd>야먀우치 마리코</dd>
+								</dl>
+							</div>
 						</div>
 						<div class="swiper-slide">
-							<a href="javascript://">
-								<img src="<%=cp%>/resources/image/main/4203203.jpg">
-							</a>
+							<div class="wrap_ib_img">
+								<a href="javascript://">
+									<img src="<%=cp%>/resources/image/main/3054578.jpg">
+								</a>
+								<dl class="rb_title">
+									<dt>설거지 누가 할래</dt>
+									<dd>야먀우치 마리코</dd>
+								</dl>
+							</div>
 						</div>
 						<div class="swiper-slide">
-							<a href="javascript://">
-								<img src="<%=cp%>/resources/image/main/4198414.jpg">
-							</a>
+							<div class="wrap_ib_img">
+								<a href="javascript://">
+									<img src="<%=cp%>/resources/image/main/4106911.jpg">
+								</a>
+								<dl class="rb_title">
+									<dt>설거지 누가 할래</dt>
+									<dd>야먀우치 마리코</dd>
+								</dl>
+							</div>
 						</div>
 						<div class="swiper-slide">
-							<a href="javascript://">
-								<img src="<%=cp%>/resources/image/main/4192753.jpg">
-							</a>
+							<div class="wrap_ib_img">
+								<a href="javascript://">
+									<img src="<%=cp%>/resources/image/main/4200744.jpg">
+								</a>
+								<dl class="rb_title">
+									<dt>설거지 누가 할래</dt>
+									<dd>야먀우치 마리코</dd>
+								</dl>
+							</div>
+						</div>
+						<div class="swiper-slide">
+							<div class="wrap_ib_img">
+								<a href="javascript://">
+									<img src="<%=cp%>/resources/image/main/4198136.jpg">
+								</a>
+								<dl class="rb_title">
+									<dt>설거지 누가 할래</dt>
+									<dd>야먀우치 마리코</dd>
+								</dl>
+							</div>
+						</div>
+						<div class="swiper-slide">
+							<div class="wrap_ib_img">
+								<a href="javascript://">
+									<img src="<%=cp%>/resources/image/main/4197660.jpg">
+								</a>
+								<dl class="rb_title">
+									<dt>설거지 누가 할래</dt>
+									<dd>야먀우치 마리코</dd>
+								</dl>
+							</div>
+						</div>
+						<div class="swiper-slide">
+							<div class="wrap_ib_img">
+								<a href="javascript://">
+									<img src="<%=cp%>/resources/image/main/4194760.jpg">
+								</a>
+								<dl class="rb_title">
+									<dt>설거지 누가 할래</dt>
+									<dd>야먀우치 마리코</dd>
+								</dl>
+							</div>
+						</div>
+						<div class="swiper-slide">
+							<div class="wrap_ib_img">
+								<a href="javascript://">
+									<img src="<%=cp%>/resources/image/main/4191313.jpg">
+								</a>
+								<dl class="rb_title">
+									<dt>설거지 누가 할래</dt>
+									<dd>야먀우치 마리코</dd>
+								</dl>
+							</div>
+						</div>
+						<div class="swiper-slide">
+							<div class="wrap_ib_img">
+								<a href="javascript://">
+									<img src="<%=cp%>/resources/image/main/4191050.jpg">
+								</a>
+								<dl class="rb_title">
+									<dt>설거지 누가 할래</dt>
+									<dd>야먀우치 마리코</dd>
+								</dl>
+							</div>
+						</div>
+						<div class="swiper-slide">
+							<div class="wrap_ib_img">
+								<a href="javascript://">
+									<img src="<%=cp%>/resources/image/main/4189057.jpg">
+								</a>
+								<dl class="rb_title">
+									<dt>설거지 누가 할래</dt>
+									<dd>야먀우치 마리코</dd>
+								</dl>
+							</div>
 						</div>
 					</div>
 				</div>
 			</div>
 		</div>
 	</div>
+	<div class="theme_book">
+		<div class="b_arrow_box">
+			<button class="slide_aw left" id="tb_awL">
+				<span class="aw_count_tb"></span>
+			</button>	
+			<button class="slide_aw right" id="tb_awR">
+				<span class="aw_count_tb"></span>
+			</button>
+		</div>
+		<div class="swiper-container swiper6">
+			<div class="swiper-wrapper">
+				<div class="swiper-slide">
+					<h3 class="tb_title">< CEO의 자격 > 진정한 리더의 자격</h3>
+					<ul class="tb_list">
+						<li>
+							<div class="tb_img">
+								<a>
+									<img src="<%=cp%>/resources/image/main/4191050.jpg">
+								</a>
+							</div>
+							<dl class="rb_title">
+								<dt>설거지 누가 할래</dt>
+								<dd>야먀우치 마리코</dd>
+							</dl>
+						</li>
+						<li>
+							<div class="tb_img">
+								<a>
+									<img src="<%=cp%>/resources/image/main/4191050.jpg">
+								</a>
+							</div>
+							<dl class="rb_title">
+								<dt>설거지 누가 할래</dt>
+								<dd>야먀우치 마리코</dd>
+							</dl>
+						</li>
+						<li>
+							<div class="tb_img">
+								<a>
+									<img src="<%=cp%>/resources/image/main/4191050.jpg">
+								</a>
+							</div>
+							<dl class="rb_title">
+								<dt>설거지 누가 할래</dt>
+								<dd>야먀우치 마리코</dd>
+							</dl>
+						</li>
+					</ul>
+				</div>
+				<div class="swiper-slide">
+					<h3 class="tb_title">< 주말 여행> 주말에 떠나보자</h3>
+					<ul class="tb_list">
+						<li>
+							<div class="tb_img">
+								<a>
+									<img src="<%=cp%>/resources/image/main/4191050.jpg">
+								</a>
+							</div>
+							<dl class="rb_title">
+								<dt>설거지 누가 할래</dt>
+								<dd>야먀우치 마리코</dd>
+							</dl>
+						</li>
+						<li>
+							<div class="tb_img">
+								<a>
+									<img src="<%=cp%>/resources/image/main/4191050.jpg">
+								</a>
+							</div>
+							<dl class="rb_title">
+								<dt>설거지 누가 할래</dt>
+								<dd>야먀우치 마리코</dd>
+							</dl>
+						</li>
+						<li>
+							<div class="tb_img">
+								<a>
+									<img src="<%=cp%>/resources/image/main/4191050.jpg">
+								</a>
+							</div>
+							<dl class="rb_title">
+								<dt>설거지 누가 할래</dt>
+								<dd>야먀우치 마리코</dd>
+							</dl>
+						</li>
+					</ul>
+				</div>
+				<div class="swiper-slide">
+					<h3 class="tb_title"><직장인> 직장인으로 살아간다는것</h3>
+					<ul class="tb_list">
+						<li>
+							<div class="tb_img">
+								<a>
+									<img src="<%=cp%>/resources/image/main/4191050.jpg">
+								</a>
+							</div>
+							<dl class="rb_title">
+								<dt>설거지 누가 할래</dt>
+								<dd>야먀우치 마리코</dd>
+							</dl>
+						</li>
+						<li>
+							<div class="tb_img">
+								<a>
+									<img src="<%=cp%>/resources/image/main/4191050.jpg">
+								</a>
+							</div>
+							<dl class="rb_title">
+								<dt>설거지 누가 할래</dt>
+								<dd>야먀우치 마리코</dd>
+							</dl>
+						</li>
+						<li>
+							<div class="tb_img">
+								<a>
+									<img src="<%=cp%>/resources/image/main/4191050.jpg">
+								</a>
+							</div>
+							<dl class="rb_title">
+								<dt>설거지 누가 할래</dt>
+								<dd>야먀우치 마리코</dd>
+							</dl>
+						</li>
+					</ul>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<div class="sale_book">
+		<h3 class="sb_title"></h3>
+		<a class="more_link" href="javascript://"></a>
+		<ul class="sb_list">
+			<li>
+				<div class="sb_img">
+					<a href="javascript://">
+						<img src="<%=cp%>/resources/image/main/3827032.jpg">
+					</a>						
+				</div>
+				<dl>
+					<dt>
+						<a href="javascript://">[정가인하] 1000 스티커 백과</a>
+					</dt>
+					<dd class="sb_author">편집부</dd>
+					<dd class="sb_price">재정가 : 5,000원</dd>
+					<dd class="sb_reprice">판매가 : 4,500원</dd>
+				</dl>
+			</li>
+			<li>
+				<div class="sb_img">
+					<a href="javascript://">
+						<img src="<%=cp%>/resources/image/main/3803030.jpg">
+					</a>						
+				</div>
+				<dl>
+					<dt>
+						<a href="javascript://">[정가인하] 안나 카레니나 전3권 세트</a>
+					</dt>
+					<dd class="sb_author">레프 니콜라예비치 톨스토이</dd>
+					<dd class="sb_price">재정가 : 30,800원</dd>
+					<dd class="sb_reprice">판매가 : 30,800원</dd>
+				</dl>
+			</li>
+		</ul>
+	</div>	
+</div>
 
 	
 	<script src="<%=cp%>/resources/js/swiper_min.js"></script>
+	<script src="<%=cp%>/resources/js/main.js"></script>
 	
-	<script type="text/javascript">
-	
-	var swiper = new Swiper('.swiper1', {
-	    spaceBetween: 0,
-	    centeredSlides: true,
-	    autoplay: {
-	      delay: 5000,
-	      disableOnInteraction: false,
-	    },loop: true,
-	    pagination: {
-	      el: '.swiper-pagination',
-	      clickable: true,
-	    },
-	    navigation: {
-	      nextEl: '.swiper-button-next',
-	      prevEl: '.swiper-button-prev',
-	    },
-	  }); 
-	
-	var swiper = new Swiper('.bn_swiper1', {
-	    spaceBetween: 0,
-	    centeredSlides: true,
-	    loop: true,
-	    pagination: {
-	        el: '.arrow_count',
-	        type: 'fraction',
-	      },
-	    navigation: {
-	      nextEl: '.ban_awP',
-	      prevEl: '.ban_awN',
-	    },
-	  });
-	
-	var swiper = new Swiper('.bn_swiper2', {
-	    spaceBetween: 0,
-	    centeredSlides: true,
-	    loop: true,
-	    pagination: {
-	        el: '.arrow_count',
-	        type: 'fraction',
-	      },
-	    navigation: {
-		      nextEl: '.ban_awP',
-		      prevEl: '.ban_awN',
-	    },
-	  }); 
-	
-	var swiper = new Swiper('.bn_swiper3', {
-	    spaceBetween: 0,
-	    centeredSlides: true,
-	    loop: true,
-	    pagination: {
-	        el: '.arrow_count',
-	        type: 'fraction',
-	      },
-	    navigation: {
-		      nextEl: '.ban_awP',
-		      prevEl: '.ban_awN',
-	    },
-	  });
-	
-	var swiper = new Swiper('.swiper2', {
-	    spaceBetween: 0,
-	    centeredSlides: true,
-	    loop: true,
-	    pagination: {
-	        el: '.aw_count_sl',
-	        type: 'fraction',
-	      },
-	    navigation: {
-	      nextEl: '#slide_awR',
-	      prevEl: '#slide_awL',
-	    },
-	  });
-	
-	var swiper = new Swiper('.swiper3', {
-	    spaceBetween: 0,
-	    centeredSlides: true,
-	    loop: true,
-	    simulateTouch : false,
-	    pagination: {
-	        el: '.aw_count_rb',
-	        type: 'fraction',
-	      },
-	    navigation: {
-	      nextEl: '#rb_awR',
-	      prevEl: '#rb_awL',
-	    },
-	  });
-	
-	var swiper = new Swiper('.swiper4', {
-		slidesPerView: 5,
-		spaceBetween: 10,
-		slidesPerGroup: 5,
-	    loopFillGroupWithBlank: true,
-	    loop: true,
-	    pagination: {
-	        el: '.aw_count_nb',
-	        type: 'fraction',
-	      },
-	    navigation: {
-	      nextEl: '#nb_awR',
-	      prevEl: '#nb_awL',
-	    },
-	  });
-
-	</script>
-
-
-
-<br><br><br><br><br><br><br><br><br><br><br><br><br><br>
-<br><br><br><br><br><br><br><br><br><br><br><br><br><br>
-<br><br><br><br><br><br><br><br><br><br><br><br><br><br>
-<br><br><br><br><br><br><br><br><br><br><br><br><br><br>
-<br><br><br><br><br><br><br><br><br><br><br><br><br><br>
-<br><br><br><br><br><br><br><br><br><br><br><br><br><br>
-<br><br><br><br><br><br><br><br><br><br><br><br><br><br>
-<br><br><br><br><br><br><br><br><br><br><br><br><br><br>
-<br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+<br><br><br><br><br><br><br><br><br><br><br>
+<br><br><br><br><br><br><br><br><br><br><br>
+<br><br><br><br><br><br><br><br><br><br><br>
+<br><br><br><br><br><br><br><br><br><br><br>
 </body>
 </html>
