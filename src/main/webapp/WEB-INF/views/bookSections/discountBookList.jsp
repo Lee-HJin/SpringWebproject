@@ -6,24 +6,24 @@
 <head>
 <meta charset="UTF-8">
 
-<link rel="stylesheet" href="/ra/resources/common/css/bnlBSList2.css" type="text/css">
+<link rel="stylesheet" href="/webproject/resources/common/css/bnlBSList2.css" type="text/css">
 <link rel="shortcut icon" href="http://image.bandinlunis.com/favicon.ico" type="image/x-icon">
 <title>2조 반디앤루니스</title>
 
-<script type="text/javascript" src="/ra/resources/common/js/common.js"></script>
-<script type="text/javascript" src="/ra/resources/common/js/swfobject.js"></script>
-<script type="text/javascript" src="/ra/resources/common/js/flashcommon.js"></script>
-<script type="text/javascript" src="/ra/resources/common/js/AC_RunActiveContent.js"></script>
+<script type="text/javascript" src="/webproject/resources/common/js/common.js"></script>
+<script type="text/javascript" src="/webproject/resources/common/js/swfobject.js"></script>
+<script type="text/javascript" src="/webproject/resources/common/js/flashcommon.js"></script>
+<script type="text/javascript" src="/webproject/resources/common/js/AC_RunActiveContent.js"></script>
 
-<script type="text/javascript" src="/ra/resources/js/common.js" charset="utf-8"></script>
-<script type="text/javascript" src="/ra/resources/js/JUTIL/JUTIL.js" charset="utf-8"></script>
-<script type="text/javascript" src="/ra/resources/js/navi.js" charset="utf-8"></script>
-<script type="text/javascript" src="/ra/resources/js/partnerHeaderInfo.js"></script>
+<script type="text/javascript" src="/webproject/resources/js/common.js" charset="utf-8"></script>
+<script type="text/javascript" src="/webproject/resources/js/JUTIL/JUTIL.js" charset="utf-8"></script>
+<script type="text/javascript" src="/webproject/resources/js/navi.js" charset="utf-8"></script>
+<script type="text/javascript" src="/webproject/resources/js/partnerHeaderInfo.js"></script>
 
-<script type="text/javascript" src="/ra/resources/js/jquery/jquery.min.js"></script>
-<script type="text/javascript" src="/ra/resources/js/jquery/jquery-ui.js"></script>
-<script type="text/javascript" src="/ra/resources/js/jquery/jquery.blockUI.js"></script>
-<script type="text/javascript" src="/ra/resources/js/jquery/idangerous.swiper.js"></script>
+<script type="text/javascript" src="/webproject/resources/js/jquery/jquery.min.js"></script>
+<script type="text/javascript" src="/webproject/resources/js/jquery/jquery-ui.js"></script>
+<script type="text/javascript" src="/webproject/resources/js/jquery/jquery.blockUI.js"></script>
+<script type="text/javascript" src="/webproject/resources/js/jquery/idangerous.swiper.js"></script>
 
 <script type="text/javascript" src="https://wcs.naver.net/wcslog.js"></script>
 
@@ -1043,9 +1043,9 @@ $(document).ready(function(){
 						<!-- 페이징 -->
 						<div class="pageTypeA">
 							<span class="prev-btn">	
-		<!-- <img src="/images/common/btn_pagePrevG.gif" align="absmiddle" border="0"> -->
+		<!-- <img src="/webproject/resources/images/searchN/btn_pagePrevG.gif" align="absmiddle" border="0"> -->
 
-		<!-- <img src="/images/common/btn_pagePrev.gif" align="absmiddle" hspace="2" border="0"> -->
+		<!-- <img src="/webproject/resources/images/searchN/btn_pagePrev.gif" align="absmiddle" hspace="2" border="0"> -->
 </span>
 <span class="pageNum">
 		<a class="on">1</a>
@@ -1060,7 +1060,7 @@ $(document).ready(function(){
         <a href="/front/display/discountBookList.do?page=10#tabMenu">10</a>
 </span>
 <span class="next-btn">
-		<a href="/front/display/discountBookList.do?page=11#tabMenu"><img src="/images/common/btn_pageNext.gif" align="absmiddle" hspace="2" border="0"></a>
+		<a href="/front/display/discountBookList.do?page=11#tabMenu"><img src="/webproject/resources/images/searchN/btn_pageNext.gif" align="absmiddle" hspace="2" border="0"></a>
 
 </span>
 
