@@ -25,6 +25,33 @@
 	        con.style.display = 'none'; 
 	    }
 	}
+	var newURL =  window.location.pathname;
+    if (newURL == '/webproject/main.action') {
+        scrollHeight = 924;
+       } else {
+  	  	scrollHeight = 500;
+    } 
+
+	
+	$(function() {
+		$(window).scroll(function(){
+		      if ($(this).scrollTop() > 450) {
+		    	  $('.top_btn').show();
+		      }else{
+		    	  $('.top_btn').hide();
+		      }
+
+			if ($(this).scrollTop() > scrollHeight) {
+		          $('#side_service').addClass('ss_fixed');
+		      } else {
+		          $('#side_service').removeClass('ss_fixed');
+		      }
+		});
+		
+		$("#onTop").click(function(){
+			$('html, body').animate({scrollTop:0}, 350);
+		});
+	});
 </script>
 
 <link rel="stylesheet" href="<%=cp%>/resources/css/main.css" type="text/css">

@@ -78,4 +78,25 @@ a:hover {text-decoration: underline; color: #886e45;}
 .update_pwd_cancel {color: white; background-color: #d5d5d5; border: 1px solid #d5d5d5; width: 80px; height: 30px; cursor: pointer; font-weight: bold;}
 .update_pwd_cancel:hover {color: white; background-color: #d5d5d5; border: 1px solid #d1d1d1; width: 80px; height: 30px; cursor: pointer; font-weight: bold;}
 
+.sort_box {border: 1px solid #e1e1e1; padding: 10px; margin-top: 5px; height: 130px; width: 753px;}
+.sort_box a {cursor: pointer; text-decoration: none;}
+.sort_box dl{padding: 10px;}
+.sort_box dt{float: left; width: 100px; font-weight: bold; text-align: center;}
+.sort_box dd{float: left; width: 600px; margin-bottom: 10px;}
+.sort_box dd span{height: 22px; margin: 0; padding: 0;}
+.sort_box select {height: 22px; vertical-align: middle;}
+#fromYear {border:1pt solid #999999; font-size:9pt; color:#333333;}
+#fromMonth {border:1pt solid #999999; font-size:9pt; color:#333333;}
+#fromDay {border:1pt solid #999999; font-size:9pt; color:#333333;}
+#toYear {border:1pt solid #999999; font-size:9pt; color:#333333;}
+#toMonth {border:1pt solid #999999; font-size:9pt; color:#333333;}
+#toDay {border:1pt solid #999999; font-size:9pt; color:#333333;}
+
+.myOrderList_table table {border-top: 2px solid #d5d5d5; border-bottom: 1px solid #d5d5d5; border-collapse: collapse; border-spacing: 0px; font-size: 10pt; text-align: center; margin-top: 10px;}
+.myOrderList_table th {background-color: #f8f8f8; border-bottom: 1px solid #d5d5d5; height: 30px; width: 100px; line-height: 30px; }
+.myOrderList_table td {border-bottom: 1px solid #d5d5d5; height: 30px; line-height: 30px;}
+
+
+.myOrder_under_div {font-size: 13pt; font-weight: bold; padding-bottom: 10px; margin-top: 40px;}
+
 

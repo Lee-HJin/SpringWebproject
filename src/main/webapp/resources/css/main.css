@@ -1226,6 +1226,7 @@ body{font-size: 12px;
     position: relative;
     padding-top: 60px;
     overflow: hidden;
+    margin-bottom: 50px;
 }
 .bnl_title{
     width: 200px;
@@ -1304,7 +1305,121 @@ body{font-size: 12px;
 
 /* body끝 */
 
+/* footer */
+.footer{
+    clear: both;
+    width: 960px;
+    margin: 0 auto;
+    padding: 15px 0 35px 0;
+    overflow: hidden;
+}
+.copyright{
+	clear: both;
+    padding: 0;
+    width: 960px;
+    position: relative;
+    overflow: hidden;
+}
+.f_menu{
+	height: 32px;
+	padding: 10px 0;
+    background: #fafafa;
+    border-top: 1px solid #d5d5d5;
+    border-bottom: 1px solid #d5d5d5;
+    overflow: hidden;
+}
+.f_menu ul{
+	float: left;
+    margin: 0 auto;
+    overflow: hidden;
+    width: 835px;
+    margin-top: 10px;
+}
+.f_menu li{
+    float: left;
+    font-size: 9pt; 
+    font-family: 굴림; 
+    line-height: 13px;
+}
+.f_menu li a{
+	display: block;
+    padding: 0 15px;
+    zoom: 1;
+    height: 14px;
+    border-right: 1px solid #ccc;
+}
+.sns_btn{
+    float: right;
+    width: 80px;
+}
+.btn_inst{
+    display: inline-block;
+    border: none;
+    width: 34px;
+    height: 32px;
+    text-indent: -9000px;
+    background: url(/webproject/resources/image/main/btn_in.gif) no-repeat;
+}
+.btn_nb{
+    display: inline-block;
+    border: none;
+    width: 34px;
+    height: 32px;
+    text-indent: -9000px;
+	background: url(/webproject/resources/image/main/btn_nb.gif) no-repeat;
+}
+.f_logo{
+	text-align: center;
+    width: 220px;
+    margin-top: 62px;
+    float: left;
+}
+.f_info{
+    padding-left: 15px;
+    margin-top: 10px;
+    float: left;
+}
+.f_info_box{
+	clear: both;
+    margin-top: 12px;
+}
+.fib_customer{
+	font: normal 11px 돋움;
+    color: #7a7a7a;
+}
+.fib_customer .tel{
+	color: #333;
+    font-size: 12px;
+}
+.fib_customer .tel_time{
+	font-size: 11px;
+    color: #888888;
+    font-family: 돋움;
+}
+.fib_company{
+	margin-top: 20px;
+	overflow: hidden;
+}
+.company_info{
+    float: left;
+    font: normal 11px 돋움;
+    color: #7a7a7a;
+    width: 208px;
+}
+.fib_cr{
+	clear: both;
+    margin-top: 14px;
+    font: normal 11px verdana;
+    color: #888;
+}
+.copy_award{
+	border-top: 1px solid #e6e6e6;
+    border-bottom: 1px solid #e6e6e6;
+    clear: both;
+    margin-top: 30px;
+}
 
+/* footer 끝 */
 
 
 a:link{
