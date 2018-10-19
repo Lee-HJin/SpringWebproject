@@ -34,6 +34,9 @@
 	</div>
 </div>
 
+<!-- footer -->
+<jsp:include page="../common/footer.jsp" flush="false"/>
+
 <script type="text/javascript">
 	window.onload = function(){
 		alert("반디앤루니스 가입을 환영합니다. 신규가입 축하 적립금이 지급되었습니다(유효기간 30일). 나의 쇼핑정보에서 확인해주세요.");

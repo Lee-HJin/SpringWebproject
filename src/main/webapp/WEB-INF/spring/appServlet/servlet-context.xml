@@ -60,6 +60,9 @@
 	<mvc:interceptors>
 		<mvc:interceptor>
 			<mvc:mapping path="/myShoppingMain.action"/>
+			<mvc:mapping path="/myShopping/pre_updateMyInfo.action"/>
+			<mvc:mapping path="/myShopping/updateMyInfo.action"/>
+			<mvc:mapping path="/myShopping/updatePwd.action"/>
 			<beans:bean class="com.spring.webproject.interceptor.Interceptor"/>
 		</mvc:interceptor>
 	</mvc:interceptors>
