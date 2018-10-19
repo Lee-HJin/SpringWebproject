@@ -27,6 +27,79 @@
 	}
 </script>
 
+<link rel="stylesheet" href="<%=cp%>/resources/css/main.css" type="text/css">
+
+<body>
+<div id="onTop" class="top_btn">
+	<a href="javascript://">
+		<img src="<%=cp%>/resources/image/main/btn_top.png">
+	</a>
+</div>
+<div class="side_banner" style="top:200px;">
+	<div>
+		<a href="javascript://">
+			<img src="<%=cp%>/resources/image/main/side_banner01.jpg">
+		</a>
+	</div>
+	<div>
+		<a href="javascript://">
+			<img src="<%=cp%>/resources/image/main/side_banner02.jpg">
+		</a>
+	</div>
+</div>
+<div id="side_service" style="top: 554px;">
+	<div class="today_view">
+		<h4>최근 본 상품</h4>
+		<div class="swiper-container side_swiper" style="height: 204px;">
+			<div class="swiper-wrapper">
+				<ul class="swiper-slide">
+					<li class="tv_item">
+						<a href="javascript://">
+							<img src="">
+						</a>
+					</li>
+					<li class="tv_item">
+						<a href="javascript://">
+							<img src="">
+						</a>
+					</li>
+				</ul>
+				<ul class="swiper-slide">
+					<li class="tv_item">
+						<a href="javascript://">
+							<img src="">
+						</a>
+					</li>
+					<li class="tv_item">
+						<a href="javascript://">
+							<img src="">
+						</a>
+					</li>
+				</ul>
+			</div>
+		</div>
+		<div class="aw_box_tv">
+			<button class="tv_aw left" id="tv_awl"></button>
+			<span class="tv_aw_count"></span>
+			<button class="tv_aw right" id="tv_awr"></button>
+		</div>
+	</div>
+	<div class="ss_myshop">
+		<a href="javascript://">
+			나의 쇼핑
+		</a>
+	</div>
+	<div class="ss_myshop">
+		<a href="javascript://">
+			위시리스트
+		</a>
+	</div>
+	<div class="ss_myshop">
+		<a href="javascript://">
+			구매히스토리
+		</a>
+	</div>
+</div>
 <div id="head">
 	<div id="top_wrap">
 		<div class="head_top">
@@ -360,3 +433,6 @@
 		</div>
 	</div>
 </div>
+</body>
+	<script src="<%=cp%>/resources/js/swiper_min.js"></script>
+	<script src="<%=cp%>/resources/js/main.js"></script>

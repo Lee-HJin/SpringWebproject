@@ -14,27 +14,10 @@
 
 <link rel="stylesheet" href="<%=cp%>/resources/css/main.css" type="text/css"/>
 <link rel="stylesheet" href="<%=cp%>/resources/css/swiper_min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 
 <title>Insert title here</title>
 <script type="text/javascript">
-	
-	function toggleDisplay(num){
-	    var con = document.getElementById("layer"+num);
- 	     if(con.style.display=='none'){
-	        con.style.display = 'block';
-	    }else{
-	        con.style.display = 'none'; 
-	    }
-	}
-	
-	function toggleDisplay2(num){
-	    var con = document.getElementById("top_layer"+num);
- 	     if(con.style.display=='none'){
-	        con.style.display = 'block';
-	    }else{
-	        con.style.display = 'none'; 
-	    }
-	}
 	
 	function hoverImg(num) {
 		
@@ -45,7 +28,10 @@
 		document.getElementById("bs_img").src = img;
 	}
 	
+	
 
+
+	
 
 </script>
 </head>
@@ -53,6 +39,9 @@
 
 
 <jsp:include page="./header.jsp" flush="false"/>
+
+
+
 
 <div id="body">
 	
@@ -867,7 +856,120 @@
 				</dl>
 			</li>
 		</ul>
-	</div>	
+	</div>
+</div>
+<div class="body_section_tale">
+	<div class="bandi_n_lunis">
+		<h3 class="bnl_title"></h3>
+		<div class="bnl_info">
+			<div class="info_box">
+				<div class="swiper-container bnl_swiper1">
+					<div class="swiper-wrapper">
+						<div class="swiper-slide">	
+							<dl>
+								<dt>
+									<a href="javascript://">
+										<img src="<%=cp%>/resources/image/main/bnl_info01.jpg">
+									</a>
+								</dt>
+								<dd class="ifb_title">반디앤루니스를 읽다</dd>
+								<dd class="ifb_txt">한 손으로 쉽고 빠르게 모든 혜택을 누려보세요!</dd>
+							</dl>
+						</div>
+						<div class="swiper-slide">
+							<dl>
+								<dt>
+									<a href="javascript://">
+										<img src="<%=cp%>/resources/image/main/bnl_info02.jpg">
+									</a>
+								</dt>
+								<dd class="ifb_title">나는 책 입니다</dd>
+								<dd class="ifb_txt">일상에 묻혀 잠시 잊고 있었던 책을 떠올려 보세요.</dd>
+							</dl>
+						</div>
+					</div>
+					<div class="arrow_box ">
+						<span class="arrow_count"></span>
+						<button class="ban_awN"></button>
+						<button class="ban_awP"></button>
+					</div>
+				</div>
+			</div>
+			<div class="info_box">
+				<div class="swiper-container bnl_swiper2">
+					<div class="swiper-wrapper">
+						<div class="swiper-slide">
+							<dl>
+								<dt>
+									<a href="javascript://">
+										<img src="<%=cp%>/resources/image/main/bnl_store01.jpg">
+									</a>
+								</dt>
+								<dd class="ifb_title">반디앤루니스 롯데피트인산본점</dd>
+								<dd class="ifb_txt">책나라 군포의 문화 힐링 스팟</dd>
+							</dl>
+						</div>
+						<div class="swiper-slide">
+							<dl>
+								<dt>
+									<a href="javascript://">
+										<img src="<%=cp%>/resources/image/main/bnl_store02.jpg">
+									</a>
+								</dt>
+								<dd class="ifb_title">반디앤루니스 대구신세계점</dd>
+								<dd class="ifb_txt">대구 서점의 새로운 랜드마크</dd>
+							</dl>
+						</div>
+						<div class="swiper-slide">
+							<dl>
+								<dt>
+									<a href="javascript://">
+										<img src="<%=cp%>/resources/image/main/bnl_store03.jpg">
+									</a>
+								</dt>
+								<dd class="ifb_title">반디앤루니스 신세계센텀시티점</dd>
+								<dd class="ifb_txt">배움과 체험이 가득한 멀티컬쳐스토어</dd>
+							</dl>
+						</div>
+					</div>
+					<div class="arrow_box">
+						<span class="arrow_count"></span>
+						<button class="ban_awN"></button>
+						<button class="ban_awP"></button>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="bnl_custom">
+			<h4 class="bnlc_title">자주묻는 질문</h4>
+			<a href="javascript://" class="more_link"></a>
+			<ul class="q_list">
+				<li>
+					<a href="javascript://">자주묻는 질문 넣기</a>
+				</li>
+				<li>
+					<a href="javascript://">자주묻는 질문 넣기</a>
+				</li>
+				<li>
+					<a href="javascript://">자주묻는 질문 넣기</a>
+				</li>
+				<li>
+					<a href="javascript://">자주묻는 질문 넣기</a>
+				</li>
+				<li>
+					<a href="javascript://">자주묻는 질문 넣기</a>
+				</li>
+				<li>
+					<a href="javascript://">자주묻는 질문 넣기</a>
+				</li>
+			</ul>
+			<div class="bnl_banner">
+			<a href="javascript://">
+				<img src="<%=cp%>/resources/image/main/bnl_banner.jpg">
+			</a>
+		</div>
+		</div>
+	</div>
 </div>
 
 	
