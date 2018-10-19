@@ -11,5 +11,5 @@ function popPreview(prodId) {
         return;
     }
     
-    window.open("/front/product/previewBook.do?prodId=" + prodId, "preview", "width="+screen.availWidth+",height="+screen.availHeight+",resizable=yes,scrollbars=yes");
+    window.open("/webproject/books/book_preview.action?prodId=" + prodId, "preview", "width="+screen.availWidth+",height="+screen.availHeight+",resizable=yes,scrollbars=yes");
 }

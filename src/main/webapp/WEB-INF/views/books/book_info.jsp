@@ -1,5 +1,10 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%
+	request.setCharacterEncoding("UTF-8");
+	String cp = request.getContextPath();
+%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -14,7 +19,8 @@
 	type="text/css">
 
 <link rel="stylesheet"
-	href="/webproject/resources/book_css/detail_default.css" type="text/css">
+	href="/webproject/resources/book_css/detail_default.css"
+	type="text/css">
 
 <link rel="stylesheet" href="/webproject/resources/book_css/pStyle.css"
 	type="text/css">
@@ -87,7 +93,8 @@ i {
 </style>
 
 <script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
-<script type="text/javascript" src = "/webproject/resources/book_js/common.js"></script>
+<script type="text/javascript"
+	src="/webproject/resources/book_js/common.js"></script>
 <!-- TOP 버튼 CSS -->
 <style type="text/css">
 #myBtn {
@@ -488,8 +495,8 @@ i {
 										<span>제휴할인</span>
 									</div>
 									<div class="tbl_right">
-										<a href="javascript:popLayer('cardSaleInfo')"><span
-											 >카드할인/포인트결제 안내 </span></a> 
+										<a href="javascript:popLayer('cardSaleInfo')"><span>카드할인/포인트결제
+												안내 </span></a>
 										<!-- 제휴할인 -->
 										<div class="bookViewPop" id="cardSaleInfo"
 											style="visibility: hidden; right: 212px; top: 0; width: 450px; height: 425px">
@@ -614,7 +621,7 @@ i {
 											</p>
 										</div>
 
-										
+
 									</div>
 								</li>
 
@@ -1766,6 +1773,7 @@ i {
 								onclick="javascript:popHidden('reviewInfo')">
 						</p>
 					</div>
+					
 					<!-- iframe src="/global/iframe_review.html" height="370" class="iframe_review" frameborder="0" scrolling="no"></iframe-->
 					<iframe id="blogReview"
 						src="http://blog.bandinlunis.com/bandi_blog/extention/prodListTop.do?prod_id=4189934"
