@@ -35,6 +35,10 @@
 		<beans:property name="sessionTemplate" ref="sessionTemplate"></beans:property>
 	</beans:bean>
 	
+	<beans:bean id="myShoppingDAO" class="com.spring.webproject.dao.MyShoppingDAO">
+		<beans:property name="sessionTemplate" ref="sessionTemplate"></beans:property>
+	</beans:bean>
+	
 	<!-- MyBatis -->
 	<beans:bean id="sessionTemplate" class="org.mybatis.spring.SqlSessionTemplate">
 		<beans:constructor-arg ref="sessionFactory"/>

@@ -8,7 +8,7 @@ import com.spring.webproject.dto.UserDTO;
 
 public class LoginDAO {
 	
-private SqlSessionTemplate sessionTemplate;
+	private SqlSessionTemplate sessionTemplate;
 	
 	public void setSessionTemplate(SqlSessionTemplate sessionTemplate) throws Exception{
 		this.sessionTemplate = sessionTemplate;
@@ -65,9 +65,21 @@ private SqlSessionTemplate sessionTemplate;
 		return sessionTemplate.selectOne("loginMapper.findUserId",dto);
 		
 	}
-	/*
-	public String findUserPwd() {
+	
+	public UserDTO findUserPwd(UserDTO dto) {
+		
+		UserDTO findedDto = sessionTemplate.selectOne("loginMapper.findUserPwd",dto);
+		
+		return findedDto;
+	}
+	
+	public void updateTempPwd(String tempPwd, String userId) {
+		
+		HashMap<String, Object> params = new HashMap<String, Object>();
+		params.put("userId", userId);
+		params.put("userPwd", tempPwd);
+		
+		sessionTemplate.update("loginMapper.tempPwd",params);
 		
 	}
-	 */
 }

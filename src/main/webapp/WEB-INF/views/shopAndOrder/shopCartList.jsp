@@ -6,25 +6,25 @@
 <head>
 <meta charset="UTF-8">
 
-<link rel="stylesheet" href="/ra/resources/common/css/bnlBSList2.css" type="text/css"/>
-<link rel="stylesheet" href="/ra/resources/common/css/shopCartList.css" type="text/css"/>
+<link rel="stylesheet" href="/webproject/resources/common/css/bnlBSList2.css" type="text/css"/>
+<link rel="stylesheet" href="/webproject/resources/common/css/shopCartList.css" type="text/css"/>
 <link rel="shortcut icon" href="http://image.bandinlunis.com/favicon.ico" type="image/x-icon">
 <title>2조 반디앤루니스</title>
 
-<script type="text/javascript" src="/ra/resources/common/js/common.js"></script>
-<script type="text/javascript" src="/ra/resources/common/js/swfobject.js"></script>
-<script type="text/javascript" src="/ra/resources/common/js/flashcommon.js"></script>
-<script type="text/javascript" src="/ra/resources/common/js/AC_RunActiveContent.js"></script>
+<script type="text/javascript" src="/webproject/resources/common/js/common.js"></script>
+<script type="text/javascript" src="/webproject/resources/common/js/swfobject.js"></script>
+<script type="text/javascript" src="/webproject/resources/common/js/flashcommon.js"></script>
+<script type="text/javascript" src="/webproject/resources/common/js/AC_RunActiveContent.js"></script>
 
-<script type="text/javascript" src="/ra/resources/js/common.js" charset="utf-8"></script>
-<script type="text/javascript" src="/ra/resources/js/JUTIL/JUTIL.js" charset="utf-8"></script>
-<script type="text/javascript" src="/ra/resources/js/navi.js" charset="utf-8"></script>
-<script type="text/javascript" src="/ra/resources/js/partnerHeaderInfo.js"></script>
+<script type="text/javascript" src="/webproject/resources/js/common.js" charset="utf-8"></script>
+<script type="text/javascript" src="/webproject/resources/js/JUTIL/JUTIL.js" charset="utf-8"></script>
+<script type="text/javascript" src="/webproject/resources/js/navi.js" charset="utf-8"></script>
+<script type="text/javascript" src="/webproject/resources/js/partnerHeaderInfo.js"></script>
 
-<script type="text/javascript" src="/ra/resources/js/jquery/jquery.min.js"></script>
-<script type="text/javascript" src="/ra/resources/js/jquery/jquery-ui.js"></script>
-<script type="text/javascript" src="/ra/resources/js/jquery/jquery.blockUI.js"></script>
-<script type="text/javascript" src="/ra/resources/js/jquery/idangerous.swiper.js"></script>
+<script type="text/javascript" src="/webproject/resources/js/jquery/jquery.min.js"></script>
+<script type="text/javascript" src="/webproject/resources/js/jquery/jquery-ui.js"></script>
+<script type="text/javascript" src="/webproject/resources/js/jquery/jquery.blockUI.js"></script>
+<script type="text/javascript" src="/webproject/resources/js/jquery/idangerous.swiper.js"></script>
 
 <script type="text/javascript" src="https://wcs.naver.net/wcslog.js"></script>
 
@@ -842,7 +842,7 @@ $(document).ready(function(){
              <!-- location -->
             <div id="conLocation">
 				<div class="location" id="locationArea">
-					<li><a href="/">홈</a>&nbsp;<img src="/ra/resources/images/searchN/ico_carte.gif">&nbsp;</li>
+					<li><a href="/">홈</a>&nbsp;<img src="/webproject/resources/images/searchN/ico_carte.gif">&nbsp;</li>
 					<li><b>쇼핑카트</b></li>
 				</div>
 			</div>
@@ -850,7 +850,7 @@ $(document).ready(function(){
             <div class="conWrap pos_rel">
             	
             	<div class="orderStepN">
-                    <h2><img src="/ra/resources/images/searchN/h2_bookcart.gif" alt="쇼핑카트"></h2>
+                    <h2><img src="/webproject/resources/images/searchN/h2_bookcart.gif" alt="쇼핑카트"></h2>
                     
                     
 	                    <dl class="benefitA overflow">
@@ -863,7 +863,7 @@ $(document).ready(function(){
 	                    </dl>
                     
                     <p class="mt10 t_gr fl_clear">최대 90일까지 보관되며, 이후에는 위시리스트에 자동 보관됩니다.</p>
-                   	<p class="step"><img src="/ra/resources/images/searchN/navi_step01.gif" alt="쇼핑카트 > 주문/결제 > 주문완료"></p>
+                   	<p class="step"><img src="/webproject/resources/images/searchN/navi_step01.gif" alt="쇼핑카트 > 주문/결제 > 주문완료"></p>
                 </div>
                 
                 
@@ -872,7 +872,7 @@ $(document).ready(function(){
                 	<li><a href="/front/order/shopCartList.do?cartType=03" class="cart_link tab_bookself">북셀프 상품</a></li>
                 	<li class="alt"><a href="/front/order/shopCartList.do?cartType=04" class="cart_link tab_ebook">eBook 상품</a></li>
                 </ul>
-                <div class="cart_bookself_info"><a href="javascript:popLayer('bookSelfInfo')"><img src="/ra/resources/images/searchN/btn_bookself_info.png" alt="주문 후 매장에서 수령 | 북셀프 안내"></a></div>
+                <div class="cart_bookself_info"><a href="javascript:popLayer('bookSelfInfo')"><img src="/webproject/resources/images/searchN/btn_bookself_info.png" alt="주문 후 매장에서 수령 | 북셀프 안내"></a></div>
                 <!-- 북셀프 안내  LAYER -->
 	            <div class="bookViewPop" id="bookSelfInfo" style="visibility:hidden; margin:-5px 0 0 327px; width:300px">
 	            	 <h3 class="mLine">북셀프 서비스 안내 </h3>				        
@@ -908,10 +908,10 @@ $(document).ready(function(){
 
 					<div class="pos_abs at0 ar0 mt3" style="_top:0;_margin-top:0">
 						
-						<a id="bandiDeduction" class="btn_bookSelf" style="cursor:pointer;"><img src="/ra/resources/images/searchN/btn_cart_move_bookself.gif" alt="선택상품 북셀프로 주문하기"></a>
+						<a id="bandiDeduction" class="btn_bookSelf" style="cursor:pointer;"><img src="/webproject/resources/images/searchN/btn_cart_move_bookself.gif" alt="선택상품 북셀프로 주문하기"></a>
  						
-						<a href="javascript:array_interest(1);"><img src="/ra/resources/images/searchN/btn_cart_wishlist02.gif" alt="선택상품 위시리스트 담기"></a>
-						<a id="bandiDeduction" class="btn_del" style="cursor:pointer;"><img src="/ra/resources/images/searchN/btn_cart_del02.gif" alt="선택상품 삭제"></a>
+						<a href="javascript:array_interest(1);"><img src="/webproject/resources/images/searchN/btn_cart_wishlist02.gif" alt="선택상품 위시리스트 담기"></a>
+						<a id="bandiDeduction" class="btn_del" style="cursor:pointer;"><img src="/webproject/resources/images/searchN/btn_cart_del02.gif" alt="선택상품 삭제"></a>
 					</div>
             	
 	            	<table cellpadding="0" cellspacing="0" class="orderTable">
@@ -958,17 +958,17 @@ $(document).ready(function(){
 	            			<td>
 	            				<span class="num_c">
 	            					<input type="text" name="cntVal" id="cntVal_48116888" value="1" class="o_input_num fl_left" size="3" onkeydown="onlyNumber();" onkeyup="cntChange('48116888');" style="text-align:right;ime-mode:disabled;">
-	            					<span class="num_c_up"><img src="/ra/resources/images/searchN/btn_num_up.gif" alt="" onclick="cntUp('48116888');" style="cursor:pointer;"></span>
-	            					<span class="num_c_dn"><img src="/ra/resources/images/searchN/btn_num_down.gif" alt="" onclick="cntDown('48116888');" style="cursor:pointer;"></span>
+	            					<span class="num_c_up"><img src="/webproject/resources/images/searchN/btn_num_up.gif" alt="" onclick="cntUp('48116888');" style="cursor:pointer;"></span>
+	            					<span class="num_c_dn"><img src="/webproject/resources/images/searchN/btn_num_down.gif" alt="" onclick="cntDown('48116888');" style="cursor:pointer;"></span>
 	            				</span>
-            					<img src="/ra/resources/images/searchN/btn_cart_modify.gif" alt="수정" class="mt5" onclick="updateShopCart(48116888)" style="cursor:pointer;">
+            					<img src="/webproject/resources/images/searchN/btn_cart_modify.gif" alt="수정" class="mt5" onclick="updateShopCart(48116888)" style="cursor:pointer;">
 	            			</td>
 
 	            			<td><strong id="costVal_48116888">13,500원</strong></td>  
 	            			          			
 	            			<td>
-	            				<img src="/ra/resources/images/searchN/btn_cart_wishlist.gif" alt="위시리스트 담기" onclick="add_wish_common('4034224');" style="cursor:pointer;"><br>
-	            				<img src="/ra/resources/images/searchN/btn_cart_del.gif" alt="삭제" class="mt5" onclick="deleteShopCart('48116888')" style="cursor:pointer;">
+	            				<img src="/webproject/resources/images/searchN/btn_cart_wishlist.gif" alt="위시리스트 담기" onclick="add_wish_common('4034224');" style="cursor:pointer;"><br>
+	            				<img src="/webproject/resources/images/searchN/btn_cart_del.gif" alt="삭제" class="mt5" onclick="deleteShopCart('48116888')" style="cursor:pointer;">
 	            			</td>
 	            			
 	            			<td>
@@ -997,9 +997,9 @@ $(document).ready(function(){
 	            		<span class="fl_left mt3 ml10" id="bandiDeduction_totOrdCnt">수량: 1종(1개)</span>
 	            		<span class="fl_right al_right">
 	            			<span class="di_in mt3 mr5">총 상품 금액: <span id="bandiDeduction_totSaleCost">13,500</span>원</span>
-	            			<span class="di_in al_top mr5"><img src="/ra/resources/images/searchN/ico_cart_plus.gif" alt=""></span>
+	            			<span class="di_in al_top mr5"><img src="/webproject/resources/images/searchN/ico_cart_plus.gif" alt=""></span>
 	            			<span class="di_in mt3 mr5">배송비: <span id="bandiDeduction_totDeliCost">0</span>원</span>
-	            			<span class="di_in al_top mr5"><img src="/ra/resources/images/searchN/ico_cart_same.gif" alt=""></span>
+	            			<span class="di_in al_top mr5"><img src="/webproject/resources/images/searchN/ico_cart_same.gif" alt=""></span>
 	            			<span class="di_in mt3 mr10">주문금액 합계: <span class="t_red"><span id="bandiDeduction_totOrdCost">13,500</span>원</span></span>
 	            		</span>
 	            	</div>
@@ -1029,10 +1029,10 @@ $(document).ready(function(){
 					
 					<div class="pos_abs at0 ar0 mt3" style="_top:0;_margin-top:0">
 						
- 							<a id="bandi" class="btn_bookSelf" style="cursor:pointer;"><img src="/ra/resources/images/searchN/btn_cart_move_bookself.gif" alt="선택상품 북셀프로 주문하기"></a>
+ 							<a id="bandi" class="btn_bookSelf" style="cursor:pointer;"><img src="/webproject/resources/images/searchN/btn_cart_move_bookself.gif" alt="선택상품 북셀프로 주문하기"></a>
  						
-						<a href="javascript:array_interest(1);"><img src="/ra/resources/images/searchN/btn_cart_wishlist02.gif" alt="선택상품 위시리스트 담기"></a>
-						<a id="bandi" class="btn_del" style="cursor:pointer;"><img src="/ra/resources/images/searchN/btn_cart_del02.gif" alt="선택상품 삭제"></a>
+						<a href="javascript:array_interest(1);"><img src="/webproject/resources/images/searchN/btn_cart_wishlist02.gif" alt="선택상품 위시리스트 담기"></a>
+						<a id="bandi" class="btn_del" style="cursor:pointer;"><img src="/webproject/resources/images/searchN/btn_cart_del02.gif" alt="선택상품 삭제"></a>
 					</div>
 					
 	            	<table cellpadding="0" cellspacing="0" class="orderTable">
@@ -1057,9 +1057,9 @@ $(document).ready(function(){
 	            		<span class="fl_left mt3 ml10" id="bandi_totOrdCnt">수량: 0종(0개)</span>
 	            		<span class="fl_right al_right">
 	            			<span class="di_in mt3 mr5">총 상품 금액: <span id="bandi_totSaleCost">0</span>원</span>
-	            			<span class="di_in al_top mr5"><img src="/ra/resources/images/searchN/ico_cart_plus.gif" alt=""></span>
+	            			<span class="di_in al_top mr5"><img src="/webproject/resources/images/searchN/ico_cart_plus.gif" alt=""></span>
 	            			<span class="di_in mt3 mr5">배송비: <span id="bandi_totDeliCost">0</span>원</span>
-	            			<span class="di_in al_top mr5"><img src="/ra/resources/images/searchN/ico_cart_same.gif" alt=""></span>
+	            			<span class="di_in al_top mr5"><img src="/webproject/resources/images/searchN/ico_cart_same.gif" alt=""></span>
 	            			<span class="di_in mt3 mr10">주문금액 합계: <span class="t_red"><span id="bandi_totOrdCost">0</span>원</span></span>
 	            		</span>
 	            	</div>
@@ -1075,8 +1075,8 @@ $(document).ready(function(){
             	<div id="store_list" class="pos_rel overflow mt50" style="display:none;">
 					<h3 class="orderTit mt20">업체배송 상품</h3>
 					<div class="pos_abs at15 ar0 mt3" style="_top:0;_margin-top:0">
-						<a href="javascript:array_interest(2);"><img src="/ra/resources/images/searchN/btn_cart_wishlist02.gif" alt="선택상품 위시리스트 담기"></a>
-						<a id="store" class="btn_del" style="cursor:pointer;"><img src="/ra/resources/images/searchN/btn_cart_del02.gif" alt="선택상품 삭제"></a>
+						<a href="javascript:array_interest(2);"><img src="/webproject/resources/images/searchN/btn_cart_wishlist02.gif" alt="선택상품 위시리스트 담기"></a>
+						<a id="store" class="btn_del" style="cursor:pointer;"><img src="/webproject/resources/images/searchN/btn_cart_del02.gif" alt="선택상품 삭제"></a>
 					</div>
             	
 	            	<table cellpadding="0" cellspacing="0" class="orderTable">
@@ -1101,14 +1101,14 @@ $(document).ready(function(){
 	            		<span class="fl_left mt3 ml10" id="store_totOrdCnt">수량: 0종(0개)</span>
 	            		<span class="fl_right al_right">
 	            			<span class="di_in mt3 mr5">총 상품 금액: <span id="store_totSaleCost">0</span>원</span>
-	            			<span class="di_in al_top mr5"><img src="/ra/resources/images/searchN/ico_cart_plus.gif" alt=""></span>
+	            			<span class="di_in al_top mr5"><img src="/webproject/resources/images/searchN/ico_cart_plus.gif" alt=""></span>
 	            			<span class="di_in mt3 mr5">배송비: <span id="store_totDeliCost">0</span>원</span>
-	            			<span class="di_in al_top mr5"><img src="/ra/resources/images/searchN/ico_cart_same.gif" alt=""></span>
+	            			<span class="di_in al_top mr5"><img src="/webproject/resources/images/searchN/ico_cart_same.gif" alt=""></span>
 	            			<span class="di_in mt3 mr10">주문금액 합계: <span class="t_red"><span id="store_totOrdCost">0</span>원</span></span>
 	            		</span>
 	            	</div>
 	            	<div class="cart_point_total al_right">
-	            		<span class="btn_gift_view"><img src="/ra/resources/images/searchN/bn_cart_gift.jpg"></span>
+	            		<span class="btn_gift_view"><img src="/webproject/resources/images/searchN/bn_cart_gift.jpg"></span>
 	            		<strong class="mr10">적립가능액 : <span class="point_b">상품적립금 <span id="store_totPoint">0</span>원</span></strong>
 	            	</div>
             	</div>
@@ -1117,7 +1117,7 @@ $(document).ready(function(){
             	
             	
             	<div class="pos_rel overflow mt40">
-					<h3 class="orderTit02 mt20"><img src="/ra/resources/images/searchN/h3_cart_total.gif" alt="쇼핑카트 총 주문금액"></h3> 
+					<h3 class="orderTit02 mt20"><img src="/webproject/resources/images/searchN/h3_cart_total.gif" alt="쇼핑카트 총 주문금액"></h3> 
 	            	<table cellpadding="0" cellspacing="0" class="orderTable_tatol" width="960">
 	            		<colgroup><col width="104"><col width="212"><col width="212"><col width="212"><col></colgroup>
 	            		<tbody><tr>
@@ -1184,8 +1184,8 @@ $(document).ready(function(){
 				</div>
 				
 				<div class="mt20 al_center fl_clear">
-					<a href="/"><img src="/ra/resources/images/searchN/btn_cart_shopping.gif" alt="쇼핑계속하기"></a>
-					<a id="btn_order" style="cursor:pointer;"><img src="/ra/resources/images/searchN/btn_cart_order.gif" alt="주문하기"></a>
+					<a href="/"><img src="/webproject/resources/images/searchN/btn_cart_shopping.gif" alt="쇼핑계속하기"></a>
+					<a id="btn_order" style="cursor:pointer;"><img src="/webproject/resources/images/searchN/btn_cart_order.gif" alt="주문하기"></a>
 				</div>
 				
 				<!-- 크레마 무이자 팝업 -->
@@ -1213,7 +1213,7 @@ $(document).ready(function(){
 				
 				<div class="pos_rel overflow mt10 mb20 cart_inside">
 					<div class="cartTit">
-						<h3><img src="/ra/resources/images/searchN/h3_cart_inside.gif" alt="추천inside"></h3>
+						<h3><img src="/webproject/resources/images/searchN/h3_cart_inside.gif" alt="추천inside"></h3>
 					</div>
 					<div class="cart_re_inside"><div class="inside_book">
 						

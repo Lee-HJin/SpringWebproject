@@ -18,7 +18,8 @@
 
 <!-- 로그인 -->
 <select id="login" parameterType="map" resultType="com.spring.webproject.dto.UserDTO">
-	select * from users where userId=#{userId} and userPwd=#{userPwd}
+	select userId,userName,to_char(birth,'YYY-MM-DD') birth, phone, email, emailReception, smsReception, nickName, zipCode, address1, address2, addTel, memberGrade 
+	from users where userId=#{userId} and userPwd=#{userPwd}
 </select>
 
 <!-- 적립금 pointId 찾기 -->
@@ -28,7 +29,7 @@
 
 <!-- 신규가입 적립금 적립 -->
 <insert id="joinPointSaving" parameterType="map">
-	insert into point(userId, savingDate, expirationDate,pointValue,pointItem,pointId)
+	insert into point(userId, savingDate, expirationDate,value,pointItem,pointId)
 	values(#{userId}, sysdate, sysdate+30,1000,#{pointItem},#{pointId})
 </insert>
 
@@ -37,6 +38,14 @@
 	select userId from users where userName=#{userName} and to_char(birth,'YYYY-MM-DD')=#{birth} and phone=#{phone} and email=#{email}
 </select>
 
+<!-- 비밀번호 찾기 -->
+<select id="findUserPwd" parameterType="com.spring.webproject.dto.UserDTO" resultType="com.spring.webproject.dto.UserDTO">
+	select * from users where userId=#{userId} and userName=#{userName} and to_char(birth,'YYYY-MM-DD')=#{birth} and phone=#{phone} and email=#{email}
+</select>
 
+<!-- 임시 비밀번호 저장 -->
+<update id="tempPwd" parameterType="map">
+	update users set userPwd=#{userPwd} where userId=#{userId}
+</update>
 
 </mapper>

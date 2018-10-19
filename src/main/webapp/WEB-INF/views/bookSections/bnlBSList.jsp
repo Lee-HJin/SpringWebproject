@@ -1,4 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%
+	request.setCharacterEncoding("UTF-8");
+	String cp = request.getContextPath();
+%> 
 <!DOCTYPE html>
 <html>
 <head>
@@ -6,25 +10,27 @@
 <meta http-equiv="Content-Type" content="text/html; charset=euc-kr">
 <meta http-equiv="X-UA-Compatible" content="IE=Edge">
 
-<link rel="stylesheet" href="/ra/resources/common/css/bnlBSList2.css" type="text/css">
+
+<link rel="stylesheet" href="/webproject/resources/common/css/bnlBSList2.css" type="text/css">
+<link rel="stylesheet" href="/webproject/resources/css/main.css" type="text/css">
 <link rel="shortcut icon" href="http://image.bandinlunis.com/favicon.ico" type="image/x-icon">
 <title>2조 반디앤루니스</title>
 
 
-<script type="text/javascript" src="/ra/resources/common/js/common.js"></script>
-<script type="text/javascript" src="/ra/resources/common/js/swfobject.js"></script>
-<script type="text/javascript" src="/ra/resources/common/js/flashcommon.js"></script>
-<script type="text/javascript" src="/ra/resources/common/js/AC_RunActiveContent.js"></script>
+<script type="text/javascript" src="/webproject/resources/common/js/common.js"></script>
+<script type="text/javascript" src="/webproject/resources/common/js/swfobject.js"></script>
+<script type="text/javascript" src="/webproject/resources/common/js/flashcommon.js"></script>
+<script type="text/javascript" src="/webproject/resources/common/js/AC_RunActiveContent.js"></script>
 
-<script type="text/javascript" src="/ra/resources/js/common.js" charset="euc-kr"></script>
-<script type="text/javascript" src="/ra/resources/js/JUTIL/JUTIL.js" charset="utf-8"></script>
-<script type="text/javascript" src="/ra/resources/js/navi.js" charset="euc-kr"></script>
-<script type="text/javascript" src="/ra/resources/js/partnerHeaderInfo.js"></script>
+<script type="text/javascript" src="/webproject/resources/js/common.js" charset="euc-kr"></script>
+<script type="text/javascript" src="/webproject/resources/js/JUTIL/JUTIL.js" charset="utf-8"></script>
+<script type="text/javascript" src="/webproject/resources/js/navi.js" charset="euc-kr"></script>
+<script type="text/javascript" src="/webproject/resources/js/partnerHeaderInfo.js"></script>
 
-<script type="text/javascript" src="/ra/resources/js/jquery/jquery.min.js"></script>
-<script type="text/javascript" src="/ra/resources/js/jquery/jquery-ui.js"></script>
-<script type="text/javascript" src="/ra/resources/js/jquery/jquery.blockUI.js"></script>
-<script type="text/javascript" src="/ra/resources/js/jquery/idangerous.swiper.js"></script>
+<script type="text/javascript" src="/webproject/resources/js/jquery/jquery.min.js"></script>
+<script type="text/javascript" src="/webproject/resources/js/jquery/jquery-ui.js"></script>
+<script type="text/javascript" src="/webproject/resources/js/jquery/jquery.blockUI.js"></script>
+<script type="text/javascript" src="/webproject/resources/js/jquery/idangerous.swiper.js"></script>
 
 <script type="text/javascript" src="https://wcs.naver.net/wcslog.js"></script>
 
@@ -111,7 +117,7 @@ $(document).ready(function(){
       } 
       
 	/* 스크롤에 따른 검색과 날개 영역 변경 */
-	$(window).scroll(function(){
+	/* $(window).scroll(function(){
 	      if ($(this).scrollTop() > 450) {	 
 	          $('.gnb_add_btn').addClass('abs_view');
 	          $('.ss_top').show();
@@ -129,7 +135,7 @@ $(document).ready(function(){
 	      } else {
 	          $('#serviceWrap').removeClass('ss_fixed');
 	      }
-	  });
+	  }); */
 
 	$(".add_search").click(function(){
 		 $('#head').show();
@@ -670,40 +676,6 @@ $(document).ready(function(){
 		});
 	}
 	
-	// Gnb 플래시 배너 설정 함수-
-	function setGnbBanner() {
-		if(checkMemType('15')) {
-			var memSeq = "21058516";
-			$.getScript("/ajax/getB2EBanner.do?memSeq="+memSeq,
-				function(){
-					if (data != null && typeof(data) == "object") {															
-						var bannerHtml = '<div class="swiper-slide"><a href="javascript:goBannerUrl(\''+data.url+'\', \''+data.target+'\', \''+data.banseq+'\');"><img src="http://image.bandinlunis.com/upload'+data.filename+'"></a></div>';
-						$("#gnbBannerArea").html(bannerHtml);
-						setGnbBannerSlide();
-					}   
-				}
-			);
-		} 
-	}
-	
-	function setGnbBannerSlide(){
-		var mGnbBnIndex = parseInt(Math.random() * ($(".gnb_banner  .swiper-container .swiper-wrapper div").length));
-		var mGnbBn = new Swiper('.gnb_banner .swiper-container',{
-			initialSlide:mGnbBnIndex,
-		    pagination: '.gnb_banner .pagination',
-		    loop:true,
-		    simulateTouch: false
-		  });
-		  $('#gnbBnLt').on('click', function(e){
-		    e.preventDefault();
-		    mGnbBn.swipePrev();
-		  });
-		  $('#gnbBnRt').on('click', function(e){
-		    e.preventDefault();
-		    mGnbBn.swipeNext();
-		  });
-	}
-	
 	function checkMemType(value) {				
 		var flag = false;
 		var temp = "01";
@@ -831,32 +803,24 @@ $(document).ready(function(){
      }
 	
 </script>
-<script type="text/javascript" charset="UTF-8" async="" src="http://s.n2s.co.kr/_n2s_ck_log.php"></script></head>
+<script type="text/javascript" charset="UTF-8" async="" src="http://s.n2s.co.kr/_n2s_ck_log.php"></script>
 
-<body>
-
-<div id="wrap">
-
+<!-- 스크립트2 시작 -->
 <link rel="stylesheet" href="http://image.bandinlunis.com/common/css/pStyle.css" type="text/css">
 
-<script type="text/javascript" src="/ra/resources/js/dwr.js" charset="euc-kr"></script>
-<!-- <script type="text/javascript" src="/ra/resources/js/dwr/engine.js"></script> -->
+<script type="text/javascript" src="/webproject/resources/js/dwr.js" charset="euc-kr"></script>
+<!-- <script type="text/javascript" src="/webproject/resources/js/dwr/engine.js"></script> -->
 <!-- <script type="text/javascript" src="/dwr/util.js"></script> -->
-<script type="text/javascript" src="/ra/resources/js/jquery/jquery.min.js"></script><!-- IE8 에서 오류로 인해 일부러 넣음(jQuery 보다 dwr.util.js 가 밑에 있음 오류 발생) -->
-<script type="text/javascript" src="/ra/resources/js/multiCart.js"></script>
+<script type="text/javascript" src="/webproject/resources/js/jquery/jquery.min.js"></script><!-- IE8 에서 오류로 인해 일부러 넣음(jQuery 보다 dwr.util.js 가 밑에 있음 오류 발생) -->
+<script type="text/javascript" src="/webproject/resources/js/multiCart.js"></script>
 <script type="text/javascript">
 
 	navi.type = "path";
 	
 		navi.path = 401;
-		
-		
-		
-	
-	jutil.eventAdd(window, "onload", navi.make);
- 
 
-	
+	jutil.eventAdd(window, "onload", navi.make);
+
 	$(document).ready(function(){
 
 		$(".changeListSize").change(function(){
@@ -1028,6 +992,15 @@ function goSearch(sort) {
 	}
 	
 </script>
+<!-- 스트립트2 끝  -->
+
+
+
+</head>
+
+<body>
+
+<div id="wrap">
 	
 	<!-- body -->
 	<div id="contentBody">
@@ -1074,7 +1047,7 @@ function goSearch(sort) {
 				
 				<!-- left contents -->
 				<div class="con_t2">
-				<form name="bestForm" action="/front/display/listBest.do" method="get" onsubmit="javascript:return false;">
+				<form name="bestForm" action="/webspring/bnlBSList.action" method="get" onsubmit="javascript:return false;">
 				<input type="hidden" name="searchType" value="top">
 				<input type="hidden" name="prodStat">
 				<input type="hidden" name="sort">
@@ -1203,7 +1176,6 @@ function goSearch(sort) {
 									<span class="tag_area">
 										<span class="tag_best"><span>베스트</span></span>
 										<span class="tag_recom"><span>반디추천</span></span>
-										
 										<span class="tag_free"><span>무료배송</span></span>
 									</span>
 								</dt>
