@@ -1150,7 +1150,6 @@ body{font-size: 12px;
 }
 .today_view .swiper-slide{
 	width: 92px;
-    height: 204px;
     display: block;
 }
 .tv_item{
@@ -1306,6 +1305,11 @@ body{font-size: 12px;
 /* body끝 */
 
 /* footer */
+.f_margin{
+	height: 50px;
+	width: 960px;
+}
+
 .footer{
     clear: both;
     width: 960px;

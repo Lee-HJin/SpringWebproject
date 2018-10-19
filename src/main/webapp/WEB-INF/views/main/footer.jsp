@@ -5,7 +5,6 @@
 	
 %>
 
-
 <!DOCTYPE html>
 <html>
 <head>
@@ -15,10 +14,9 @@
 </head>
 <body>
 <div class="f_margin"></div>
-
-<div class="footer">
-	<div class="copyright">
-		<div class="f_menu">
+<div class="footer" style="width: 1100px;">
+	<div class="copyright" style="width: 1100px;">
+		<div class="f_menu" style="width: 1100px;">
 			<ul>
 				<li>
 					<a href="javascript://">회사소개</a>
@@ -40,7 +38,7 @@
 				</a>
 			</div>
 		</div>
-		<div class="f_logo">
+		<div class="f_logo" style="width: 300px;">
 			<img src="<%=cp%>/resources/image/main/logo_footer.gif">
 		</div>
 		<div class="f_info">
@@ -54,7 +52,7 @@
 					</a>
 				</div>
 				<div class="fib_company">
-					<ul class="company_info">
+					<ul class="company_info" style="width: 238px;">
 						<li>회사명 : (주)서울문고</li>
 						<li>대표이사 : 김동국</li>
 						<li>개인정보 관리 책임자 : 이해권</li>
@@ -76,6 +74,8 @@
 	<div class="copy_award">
 		<img src="<%=cp%>/resources/image/main/footer_award.jpg">
 	</div>
+</div>
+
 
 
 
@@ -83,4 +83,3 @@
 
 </body>
 </html>
-
