@@ -396,6 +396,12 @@ function joinConfirmation(){
 			f.userId.focus();
 			return;
 		}
+		error = '중복된 아이디입니다';
+		if(idSpan==error){
+			alert("\n아이디를 확인하세요.");
+			f.userId.focus();
+			return;
+		}
 	}
 
 	var pwd = f.userPwd1.value;
@@ -524,21 +530,21 @@ function joinConfirmation(){
 	f.email2.value = email;
 
 	var zipCode = f.zipCode.value;
-	var address = f.address2.value;
+	zipCode = zipCode.trim();
 	if(zipCode){
-		if(!address){
+		if(!f.address2.value){
 			alert("\n주소(배송지)를 정확히 입력해 주세요.");
 			f.address2.focus();
 			return;
 		}
 	}
 	else {
-		if(address1){
+		if(f.address1.value){
 			alert("\n주소(배송지)를 정확히 입력해 주세요.");
 			f.address1.focus();
 			return;
 		}
-		else if(adress2){
+		else if(f.address2.value){
 			alert("\n주소(배송지)를 정확히 입력해 주세요.");
 			f.zipCode.focus();
 			return;
