@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="adminUsersMapper">
+
+<select id="selectAll" parameterType="map" resultType="com.spring.webproject.dto.AdminUsersDTO">
+<![CDATA[ 
+select 
+  A.userId, A.userPwd, A.userName, A.birth, A.phone, A.email, A.emailReception, A.smsReception,
+	A.nickName, A.ZipCode, A.address1, A.address2, A.addTel, A.memberGrade, A.point
+from
+(select 
+  rownum as rnum, A.userId, A.userPwd, A.userName, A.birth, A.phone, A.email, A.emailReception, A.smsReception,
+	A.nickName, A.ZipCode, A.address1, A.address2, A.addTel, A.memberGrade, A.point
+from
+(select 
+	A.userId, A.userPwd, A.userName, A.birth, A.phone, A.email, A.emailReception, A.smsReception,
+	A.nickName, A.ZipCode, A.address1, A.address2, A.addTel, A.memberGrade, B.point
+from 
+	users A,
+	(select A.userId userId, sum(B.value) point from 
+		(select * from users) A,
+		(select * from point) B
+		where A.userId = B.userId
+		GROUP BY A.USERID) B
+where A.userId = B.userId(+)
+order by A.userId desc) A
+
+where rownum<=#{end})A
+where A.rnum>=#{start}
+]]>
+
+</select>
+
+<select id="getTotalCount" resultType="int">
+	select count(userid) from users
+</select>
+
+<delete id="deleteUser" parameterType="java.lang.String"> 
+	delete 
+	from 
+		users
+	where
+		userId = #{userId}
+</delete>
+
+</mapper>
