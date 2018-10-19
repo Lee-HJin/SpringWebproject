@@ -14,6 +14,7 @@ import com.spring.webproject.dao.AdminUsersDAO;
 import com.spring.webproject.dto.AdminUsersDTO;
 import com.spring.webproject.util.Criteria;
 import com.spring.webproject.util.PageMaker;
+import com.spring.webproject.util.SearchCriteria;
 
 
 @Controller
@@ -30,14 +31,15 @@ public class AdminController {
 	
 	
 	@RequestMapping(value="/admin_users.action",method= {RequestMethod.GET,RequestMethod.POST})
-	public String users(Model model, Criteria cri) {
+	public String users(Model model, SearchCriteria cri) {
 		
 		List<AdminUsersDTO> userList = dao.getUserList(cri);
 		
-		int totalDataCount = dao.getTotalCount();
+		System.out.println(dao.getTotalCount(cri));
+		System.out.println(userList.size());
 		
 		PageMaker pageMaker = new PageMaker(cri);
-		pageMaker.setTotalDataCount(totalDataCount);
+		pageMaker.setTotalDataCount(dao.getTotalCount(cri));
 		
 		model.addAttribute("pageMaker", pageMaker);
 		model.addAttribute("userList", userList);

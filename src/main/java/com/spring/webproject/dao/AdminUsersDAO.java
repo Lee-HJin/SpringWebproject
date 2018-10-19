@@ -8,7 +8,7 @@ import org.apache.ibatis.session.SqlSession;
 import org.springframework.stereotype.Repository;
 
 import com.spring.webproject.dto.AdminUsersDTO;
-import com.spring.webproject.util.Criteria;
+import com.spring.webproject.util.SearchCriteria;
 
 
 @Repository
@@ -18,7 +18,7 @@ public class AdminUsersDAO {
 	private SqlSession sessionTemplate;
 	
 	
-	public List<AdminUsersDTO> getUserList(Criteria cri){
+	public List<AdminUsersDTO> getUserList(SearchCriteria cri){
 		
 		List<AdminUsersDTO> list = sessionTemplate.selectList("adminUsersMapper.selectAll",cri);
 		
@@ -31,9 +31,9 @@ public class AdminUsersDAO {
 		
 	}
 	
-	public int getTotalCount() {
+	public int getTotalCount(SearchCriteria cri) {
 		
-		return sessionTemplate.selectOne("adminUsersMapper.getTotalCount");
+		return sessionTemplate.selectOne("adminUsersMapper.getTotalCount",cri);
 	}
 	
 }

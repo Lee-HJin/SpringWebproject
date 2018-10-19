@@ -32,12 +32,14 @@
 
 <body>
 
+
+
 	<div class="users_table">
 		<form name="userList" method="post" action="">
 			<table class="table table-bordered">
 				<thead>
 					<tr>
-						<th scope="col">#</th>
+						<th scope="col">no</th>
 						<th scope="col">아이디</th>
 						<th scope="col">이름</th>
 						<th scope="col">닉네임</th>
@@ -74,8 +76,8 @@
 
 	</div>
 
-	
-		<div style=" display: table; margin: 0 auto;">
+
+	<div style="display: table; margin: 0 auto;">
 		<ul class="pagination">
 			<c:if test="${pageMaker.pre }">
 				<li><a
@@ -85,13 +87,13 @@
 				end="${pageMaker.endPage }" var="idx">
 				<li><a href="<%=cp %>/admin_users.action?page=${idx}">${idx }</a></li>
 			</c:forEach>
-			<c:if test="${pageMaker.nex }" >
+			<c:if test="${pageMaker.nex }">
 				<li><a
 					href="<%=cp %>/admin_users.action?page=${pageMaker.endPage+1}">&gt;</a></li>
 			</c:if>
 		</ul>
-		</div>
-	
+	</div>
+
 
 </body>
 </html>
