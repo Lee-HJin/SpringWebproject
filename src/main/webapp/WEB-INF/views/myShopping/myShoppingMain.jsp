@@ -24,7 +24,7 @@
 <div style="margin: 0 auto; width: 960px;">
 
 <div style="margin-top: 12px;">
-	<a href="<%=cp %>/main.action">홈</a> > <a href="<%=cp %>/myShoppingMain.action">나의쇼핑</a> > 회원정보 > <b>회원정보수정</b>
+	<a href="<%=cp %>/main.action">홈</a> > <b>나의쇼핑</b>
 </div>
 <!-- navigation -->
 <jsp:include page="./topNavi.jsp" flush="false"/>
@@ -80,6 +80,9 @@
 
 <!-- 전체 div 끝 -->
 </div>
+
+<!-- footer -->
+<jsp:include page="../common/footer.jsp" flush="false"/>
 
 </body>
 </html>

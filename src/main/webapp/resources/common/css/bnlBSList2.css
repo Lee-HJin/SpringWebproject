@@ -209,7 +209,9 @@ a.t_red:active		{text-decoration:underline; color:#E82323;}
 .booktit_11	a:active	{color:#222222;	font-weight:bold; text-decoration:underline;}
 
 .booktit_music				{color:#7B5A2B;	font-size:11px; font-weight:bold; font-family: verdana, 돋움; line-height:120%;}
-.booktit_music	a:link		{color:#7B5A2B;	font-size:11px; font-weight:bold; text-decoration:none; font-family: verdana, 돋움;}
+
+.booktit_music	a:link		{color:#7B5A2B;	font-size:11px; font-weight:bold; text-decoration:none; font-family: verdana,돋움;}
+
 .booktit_music	a:visited	{color:#7B5A2B;	font-size:11px; font-weight:bold; text-decoration:none;}
 .booktit_music	a:hover		{color:#7B5A2B;	font-size:11px; font-weight:bold; text-decoration:underline;}
 .booktit_music	a:active	{color:#7B5A2B;	font-size:11px; font-weight:bold; text-decoration:underline;}
@@ -282,8 +284,10 @@ a.more:active	{text-decoration:none; color:#999999;}
 .t_normal	{font-weight:normal}
 .t_bold	{font-weight:bold}
 .t_uline a {text-decoration:underline}
-.t_12	{font-size:12px; font-family:±¼¸²}
-.t_13	{font-size:13px; font-family:±¼¸²}
+
+.t_12	{font-size:12px; font-family:굴림}
+.t_13	{font-size:13px; font-family:굴림}
+
 .t_14	{font-size:14px; font-family:돋움}
 .t_16	{font-size:16px; font-family:돋움}
 .t_17	{font-size:17px; font-family:돋움}
@@ -471,7 +475,9 @@ a.more:active	{text-decoration:none; color:#999999;}
 .bookmark_pop {font:normal 11px 돋움; background:#FFF; position:absolute; top:5px; left:0; z-index:600; width:226px; padding:12px; overflow:hidden; text-align:center;  border:1px solid #917253; color:#888; line-height:16px;text-align:center}
 .bookmark_pop .bookmark_on{width:226px}
 .bookmark_pop .bookmark_off{width:226px}
-.bookmark_pop strong{font:bolder 12px ±¼¸²;color:#557eb0}
+
+.bookmark_pop strong{font:bolder 12px 굴림;color:#557eb0}
+
 .bookmark_pop .btn_on{display:inline-block;width:80%;margin-top:5px;padding:5px 0;background:#937354;border:1px solid #7b6046;color:#FFF;font:bolder 11px 돋움;line-height:20px;text-decoration:none}
 
 .search_more{position:absolute;top:52px;right:-5px;width:120px;height:15px;z-index:490}
@@ -738,8 +744,10 @@ a.more:active	{text-decoration:none; color:#999999;}
 
 .aw_type_box{}.aw_type_box .ns{display:none}
 .aw_type_box .aw_count{display:none;color:#555;font:normal 14px 맑은 고딕,돋움;width:45px;text-align:center;padding:0;letter-spacing:-0.03em}.aw_type_box .start_index{font-weight:bolder}
+
 .aw_type_box .aw_l{z-index:100;position:absolute;top:45%;left:1px;width:27px;height:41px;border-top:1px solid #e9e9e9;border-bottom:1px solid #e9e9e9;border-right:1px solid #e9e9e9;background:#FFF url(/webproject/resources/images/searchN/sp_common.gif) no-repeat 0 -118px;cursor:pointer;opacity:0.7}
 .aw_type_box .aw_r{z-index:100;position:absolute;top:45%;right:1px;width:27px;height:41px;border-top:1px solid #e9e9e9;border-bottom:1px solid #e9e9e9;border-left:1px solid #e9e9e9;background:#FFF url(/webproject/resources/images/searchN/sp_common.gif) no-repeat 0 -157px;cursor:pointer;opacity:0.7}
+
 .aw_type_box .aw_l:hover{width:65px;background-position:-65px -118px;border-top:1px solid #666;border-bottom:1px solid #666;border-right:1px solid #666}.aw_type_box .aw_l:active{background-position:-65px -118px;border-top:1px solid #666;border-bottom:1px solid #666;border-right:1px solid #666}
 .aw_type_box .aw_r:hover{width:65px;background-position:-27px -157px;border-top:1px solid #666;border-bottom:1px solid #666;border-left:1px solid #666}.aw_type_box .aw_r:active{background-position:-27px -157px;border-top:1px solid #666;border-bottom:1px solid #666;border-left:1px solid #666}
 .aw_type_box .aw_l:hover .aw_count{display:inline-block;margin-left:20px}.aw_type_box .aw_r:hover .aw_count{display:inline-block;margin-right:20px}
@@ -829,7 +837,7 @@ a.more:active	{text-decoration:none; color:#999999;}
 .cate_comm .cate_d1 .open .cate_d2_link a:hover {color:#3aaeca}
 .cate_comm .cate_d1 .open .cate_d2 .ico_arrow{display:none}
 
-/* ¹öÆ° */
+
 .btn_b_comm{display:inline-block;font:bolder 12px 돋움;text-align:center;text-decoration:none;border:1px solid #7b6046;background:#937354;color:#fff !important} .btn_b_comm:hover{border:1px solid #000;text-decoration:none}
 .btn_w_comm{display:inline-block;font:bolder 12px 돋움;text-align:center;text-decoration:none;border:1px solid #c6c8cb;background:#fff;color:#666 !important} .btn_w_comm:hover{border:1px solid #666;text-decoration:none}
 .btn_gy_comm{display:inline-block;font:bolder 12px 돋움;text-align:center;text-decoration:none;border:1px solid #8f8f8f;background:#9d9d9d;color:#fff !important} .btn_gy_comm:hover{border:1px solid #666;text-decoration:none}
@@ -1060,9 +1068,7 @@ a.more:active	{text-decoration:none; color:#999999;}
   
 .ss_event {display:none}
 #paycoLayer2 {display:none !important}
-/* ³×ÀÌ¹öÆäÀÌ ¼Òµæ°øÁ¦ ¾È³» ·¹ÀÌ¾î ºñÀü½Ã
-.pi_box6 {display:none !important}
-*/
+
 
 /* bnlNewBookList의 가로 광고  */
 .book_new_list{clear:both;position:relative;width:100%;border-top:1px solid #e3e3e3;padding:20px 0 40px 0}

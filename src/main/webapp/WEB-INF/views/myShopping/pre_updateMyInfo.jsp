@@ -77,10 +77,10 @@
 	</div>
 </div>
 
-
-
-
 </div>
+
+<!-- footer -->
+<jsp:include page="../common/footer.jsp" flush="false"/>
 
 </body>
 </html>

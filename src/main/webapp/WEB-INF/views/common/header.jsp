@@ -25,7 +25,7 @@
 	        con.style.display = 'none'; 
 	    }
 	}
-	
+
 	var newURL =  window.location.pathname;
     if (newURL == '/webproject/main.action') {
         scrollHeight = 924;

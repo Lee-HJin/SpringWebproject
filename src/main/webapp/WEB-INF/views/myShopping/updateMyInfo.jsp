@@ -248,7 +248,10 @@
 
 </div>
 
-	<script src="<%=cp%>/resources/js/myShopping.js"></script>
+<!-- footer -->
+<jsp:include page="../common/footer.jsp" flush="false"/>
+
+<script src="<%=cp%>/resources/js/myShopping.js"></script>
 	
 </body>
 </html>
