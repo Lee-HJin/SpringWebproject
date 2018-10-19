@@ -3,8 +3,9 @@
 body{font-size: 12px;
     color: #555555;
     line-height: 16px;
-    font-family: 굴림;}
-
+    font-family: 굴림;
+    }
+    
 #top_wrap {
     width: 100%;
     height: 100%;
@@ -38,7 +39,7 @@ body{font-size: 12px;
     margin: 7px 0 0 0;
     height: 19px;	
 }
-
+.t_menu_list a{ color: #717171 !important;}
 .t_menu{
 	position: relative;
     float: left;
@@ -397,7 +398,7 @@ body{font-size: 12px;
     padding: 1px 5px 0 0;
 }
 .arrow_box .ban_awN{  
-	width: 14px; 
+	width: 15px; 
 	height: 13px;     
 	float: left;
     background: url(/webproject/resources/image/main/sp_common.gif) no-repeat 0 -30px;}
@@ -1069,7 +1070,237 @@ body{font-size: 12px;
     font-size: 12px;
     color: #ea5759;
     font-weight: bolder;}
+    
+.top_btn{
+    margin-left: 575px;
+    position: fixed;
+    bottom: 30px;
+    left: 50%;
+    width: 48px;
+    height: 34px;
+    z-index: 9;
+    display: none;
+}
+/* 
+다른페이지 용
+.top_btn{
+	position: fixed;
+    bottom: 30px;
+    left: 50%;
+    margin-left: 507px;
+    display: none;
+    width: 48px;
+    height: 34px;
+    z-index: 9;
+} */
 
+.side_banner{
+	position: absolute;
+    left: 50%;
+    width: 110px;
+    top: 580px;
+    margin-left: 505px;
+}
+.side_banner div{
+    border: 1px solid #e9e9e9;
+    width: 108px;
+    height: 160px;
+    overflow: hidden;
+    margin-bottom: 7px;
+}
+#side_service{
+	position: absolute;
+	top: 934px;
+	width: 110px;
+	height: 343px;
+	margin-left: 505px;
+	left: 50%;
+	z-index: 10;
+}
+
+.ss_fixed{
+	position: fixed !important;
+    top: 10px !important;
+}
+.today_view{
+    position: relative;
+    width: 108px;
+    border: 1px solid #e9e9e9;
+    background: #FFF;
+    padding-bottom: 30px;
+    overflow: hidden;
+}
+.today_view h4{
+	font: bolder 11px 돋움;
+    color: #666;
+    margin: 10px 0 6px 8px;
+    letter-spacing: -0.03em;
+}
+.ss_myshop{
+    width: 108px;
+    height: 26px;
+    border-left: 1px solid #e9e9e9;
+    border-right: 1px solid #e9e9e9;
+    border-bottom: 1px solid #e9e9e9;
+}
+.today_view .swiper-container{
+    width: 92px;
+    margin: 0 auto;
+    overflow: hidden;
+}
+.today_view .swiper-slide{
+	width: 92px;
+    height: 204px;
+    display: block;
+}
+.tv_item{
+    width: 90px;
+    height: 90px;
+    border: 1px solid #e9e9e9;
+    margin-bottom: 10px;
+    text-align: center;
+    overflow: hidden;
+}
+
+.aw_box_tv{
+    position: absolute;
+    width: 60px;
+    height: 14px;
+    left: 24px;
+    bottom: 10px;
+    text-align: center;
+}
+
+.tv_aw{
+    float: left;
+    width: 8px;
+    height: 14px;
+    background: url(/webproject/resources/image/main/sp_common.gif) no-repeat;
+    padding: 0;
+    border: 0;
+}
+
+.tv_aw:hover{
+    float: left;
+    width: 8px;
+    height: 14px;
+    background: url(/webproject/resources/image/main/sp_common.gif) no-repeat;
+    padding: 0;
+    border: 0;
+}
+
+.aw_box_tv .left{ background-position: 2px -208px;}
+.aw_box_tv .right{ background-position: -10px -208px;}
+.aw_box_tv .left:hover{ background-position:-4px -208px}
+.aw_box_tv .right:hover{ background-position:-16px -208px}
+
+.tv_aw_count{
+	float: left;
+    color: #818181;
+    font: normal 11px 돋움;
+    width: 44px;
+    height: 14px;
+    text-align: center;
+}
+
+.ss_myshop a{
+	display: block;
+    width: 99px;
+    height: 18px;
+    color: rgb(146, 146, 146) !important;
+    padding: 8px 0px 0px 9px;
+    font: 11px 돋움;
+    background: url(/webproject/resources/image/main/sp_common.gif) 95px -222px no-repeat rgb(255, 255, 255);
+}
+.ss_myshop a:hover{ color:#4dafca !important; text-decoration:none;}
+
+/* 반디앤루니스 section */
+.body_section_tale{
+	width: 1100px;
+	margin: 0 auto;
+    position: relative;
+    clear: both;
+}
+.bandi_n_lunis{
+    clear: both;
+    position: relative;
+    padding-top: 60px;
+    overflow: hidden;
+}
+.bnl_title{
+    width: 200px;
+    height: 24px;
+    margin: 0 0 10px 8px;
+    background: url(/webproject/resources/image/main/sp_main_comm.gif) no-repeat -209px -200px;
+}
+.bnl_info{
+    width: 726px;
+    height: 293px;
+    float: left;
+    border: 1px solid #e9e9e9;
+    margin-right: 15px;
+}
+.info_box{
+    width: 340px;
+    height: 260px;
+    float: left;
+    position: relative;
+    margin: 15px 0 0 15px;
+}
+.info_box .swiper-slide{ text-align: left; display: inline;}
+.info_box img{ width: 340px; display: inline;}
+.info_box .arrow_box{
+	bottom: 0;
+    right: 0;
+    z-index: 10;
+    position: absolute;
+    width: 79px;
+    height: 13px;
+}
+
+.ifb_title{
+    font-size: 12px;
+    margin: 8px 12px 0 5px;
+    color: #333;
+    line-height: 120%;
+    font-weight: bolder;
+}
+.ifb_txt{
+    font-size: 11px;
+    margin: 3px 12px 0 5px;
+    color: #777;
+}
+.bnl_custom{
+    position: relative;
+    float: left;
+    width: 356px;
+}
+.bnlc_title{
+    font-family: 나눔고딕;
+    font-size: 15px;
+    width: 100px;
+    margin: 2px 0 0 0;
+    color: rgb(51, 51, 51);
+    font-weight: bold;
+}
+.bnl_custom .more_link{
+	display: inline-block;
+    width: 42px;
+    height: 13px;
+    position: absolute;
+    top: 5px;
+    right: 5px;
+    background: #FFF url(/webproject/resources/image/main/sp_common.gif) no-repeat -177px -57px;
+}
+.q_list{
+    margin: 12px 0 0 3px;
+    height: 165px;}
+.q_list li{ margin-bottom: 8px;}
+
+.bnl_banner{
+	border: 1px solid #e9e9e9;
+    width: 354px;
+}
 
 /* body끝 */
 
@@ -1082,7 +1313,8 @@ a:link{
 }
 a:visited{ text-decoration: none; color: #555555;}
 
-a:hover{ text-decoration: underline;}
+a:hover		{text-decoration:underline; color:#8F6A24;}
+a:active	{text-decoration:underline; color:#555555;}
 
 h1,h3,h4,ul,li,dl,dd{ margin: 0; padding: 0;}
 
