@@ -19,13 +19,11 @@
 	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 
 <script type="text/javascript">
-	
 	function deleteUser() {
-		
+
 		User = document.userList;
-		
+
 	}
-	
 </script>
 
 </head>
@@ -53,9 +51,9 @@
 				</thead>
 				<tbody>
 
-					<c:forEach var="user" items="${userList}">
+					<c:forEach var="user" items="${userList}" varStatus="status">
 						<tr>
-							<th scope="row"></th>
+							<td>${(status.index + pageMaker.cri.numPerPage * (pageMaker.cri.page-1))+1 }</td>
 							<td>${user.userId }</td>
 							<td>${user.userName }</td>
 							<td>${user.nickName }</td>
@@ -63,28 +61,38 @@
 							<td>${user.point }</td>
 							<td>${user.email}</td>
 							<td>${user.phone }</td>
-							<td>${user.zipCode}${user.address1 } ${user.address2 }</td>
+							<td>${user.zipCode}${user.address1 }${user.address2 }</td>
 							<td>
-								<button type="button" class="btn" onclick="location.href='<%=cp %>/admin_users_delete.action?userId=${user.userId }'">삭제</button>
+								<button type="button" class="btn"
+									onclick="location.href='<%=cp %>/admin_users_delete.action?userId=${user.userId }'">삭제</button>
 							</td>
 						</tr>
 					</c:forEach>
 				</tbody>
 			</table>
 		</form>
-		
+
 	</div>
+
 	
+		<div style=" display: table; margin: 0 auto;">
+		<ul class="pagination">
+			<c:if test="${pageMaker.pre }">
+				<li><a
+					href="<%=cp %>/admin_users.action?page=${pageMaker.startPage-1}">&lt;</a></li>
+			</c:if>
+			<c:forEach begin="${pageMaker.startPage }"
+				end="${pageMaker.endPage }" var="idx">
+				<li><a href="<%=cp %>/admin_users.action?page=${idx}">${idx }</a></li>
+			</c:forEach>
+			<c:if test="${pageMaker.nex }" >
+				<li><a
+					href="<%=cp %>/admin_users.action?page=${pageMaker.endPage+1}">&gt;</a></li>
+			</c:if>
+		</ul>
+		</div>
 	
-	${pageMaker.startPage } ${pageMaker.endPage } ${pageMaker.pre } ${pageMaker.nex }
-	
-	<ul class="pagination">
-		<c:forEach begin="${pageMaker.startPage }" end="${pageMaker.endPage }"
-			var="idx">
-			<li><a href="#">${idx }</a></li>
-		</c:forEach>
-	</ul>
-	
+
 </body>
 </html>
 

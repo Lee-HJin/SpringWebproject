@@ -32,28 +32,62 @@ public class PageMaker {
 		}
 		
 		this.pre = startPage==1 ? false:true;
-		this.nex = endPage*cri.getNumPerPage()<=totalDataCount ? true:false;
+		this.nex = endPage*cri.getNumPerPage()<totalDataCount ? true:false;
 	}
 
 	public int getStartPage() {
 		return startPage;
 	}
 
+	public void setStartPage(int startPage) {
+		this.startPage = startPage;
+	}
+
 	public int getEndPage() {
 		return endPage;
+	}
+
+	public void setEndPage(int endPage) {
+		this.endPage = endPage;
 	}
 
 	public boolean isPre() {
 		return pre;
 	}
 
+	public void setPre(boolean pre) {
+		this.pre = pre;
+	}
+
 	public boolean isNex() {
 		return nex;
+	}
+
+	public void setNex(boolean nex) {
+		this.nex = nex;
+	}
+
+	public int getDisplayPageNum() {
+		return displayPageNum;
 	}
 
 	public void setDisplayPageNum(int displayPageNum) {
 		this.displayPageNum = displayPageNum;
 	}
+
+	public Criteria getCri() {
+		return cri;
+	}
+
+	public void setCri(Criteria cri) {
+		this.cri = cri;
+	}
+
+	public int getTotalDataCount() {
+		return totalDataCount;
+	}
+
+	
 
 	
 	
