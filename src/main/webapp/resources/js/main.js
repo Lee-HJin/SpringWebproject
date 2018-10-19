@@ -1,3 +1,18 @@
+var swiper = new Swiper('.side_swiper', {
+	spaceBetween: 0,
+	centeredSlides: true,
+	simulateTouch : false,
+	loop: true,
+	pagination: {
+		el: '.tv_aw_count',
+		type: 'fraction',
+	},
+	navigation: {
+		nextEl: '#tv_awr',
+		prevEl: '#tv_awl',
+	},
+}); 
+
 var swiper = new Swiper('.swiper1', {
 	spaceBetween: 0,
 	centeredSlides: true,
@@ -132,4 +147,38 @@ var swiper = new Swiper('.swiper6', {
 		prevEl: '#tb_awL',
 	},
 });
+
+var swiper = new Swiper('.bnl_swiper1', {
+	spaceBetween: 0,
+	centeredSlides: true,
+	loop: true,
+	simulateTouch : false,
+	pagination: {
+		el: '.arrow_count',
+		type: 'fraction',
+	},
+	navigation: {
+		nextEl: '.ban_awP',
+		prevEl: '.ban_awN',
+	},
+}); 
+
+var swiper = new Swiper('.bnl_swiper2', {
+	spaceBetween: 0,
+	centeredSlides: true,
+	loop: true,
+	simulateTouch : false,
+	autoplay: {
+		delay: 7000,
+		disableOnInteraction: false,
+	},
+	pagination: {
+		el: '.arrow_count',
+		type: 'fraction',
+	},
+	navigation: {
+		nextEl: '.ban_awP',
+		prevEl: '.ban_awN',
+	},
+}); 
 

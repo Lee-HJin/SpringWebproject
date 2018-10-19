@@ -14,6 +14,29 @@
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 	<script src="<%=cp%>/resources/js/join.js"></script>
 	
+	<script type="text/javascript">
+	function selectEmail(){
+		
+		var f = document.findIdForm;
+
+		var cLength = f.email3.options.length;
+		var cValue = f.email3.selectedIndex;
+
+		f.email2.value = "";
+
+		if(cValue==(cLength-6)){
+			f.email2.readOnly = false;
+			f.email2.focus();
+		}
+		else{
+			f.email2.value = f.email3.options[cValue].value;
+			f.email2.readOnly = true;
+		}
+	}
+	
+	
+	</script>
+	
 </head>
 <body style="padding: 0;margin: 0">
 
@@ -33,7 +56,7 @@
 		</ul>
 	</div>
 	
-	<form action="" name="findIdForm" id="findIdForm">
+	<form action="" name="findIdForm" id="findIdForm" method="post">
 	<div class="findIdTable" id="findIdTable">
 		<table>
 			<tr>
@@ -68,7 +91,7 @@
 					<div style="padding-top: 10px; padding-bottom: 10px;">
 						<input type="text" name="email1" id="email1">&nbsp;@
 						<input type="text" name="email2" id="email2">
-						<select name="email3" onchange="emailInput('document.findIdForm');" class="joinTable_select">
+						<select name="email3" onchange="selectEmail();" class="joinTable_select">
 							<option value="">직접입력</option>
 							<option value="naver.com">네이버</option>
 							<option value="gmail.com">구글(G메일)</option>
