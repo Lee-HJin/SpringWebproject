@@ -1,10 +1,9 @@
-@charset "UTF-8";
 /*base.css BandinLunis OJJ 2012-3-5*/
-@import "bnlBSList1.css";
+@import "class.css";
 
 *		{margin:0; padding:0;}
 html	{height:100%; _overflow:hidden;}
-body	{width:100%; height:100%;font-size:12px; color:#555555; line-height:16px; font-family:굴림} 
+body	{width:100%; height:100%;font-size:12px; color:#555555; line-height:16px; font-family:±¼¸²} 
 img		{border:0; vertical-align:top;}
 ul		{list-style:none; vertical-alig:top;}
 li		{vertical-align:top;}
@@ -282,8 +281,8 @@ a.more:active	{text-decoration:none; color:#999999;}
 .t_normal	{font-weight:normal}
 .t_bold	{font-weight:bold}
 .t_uline a {text-decoration:underline}
-.t_12	{font-size:12px; font-family:굴림}
-.t_13	{font-size:13px; font-family:굴림}
+.t_12	{font-size:12px; font-family:±¼¸²}
+.t_13	{font-size:13px; font-family:±¼¸²}
 .t_14	{font-size:14px; font-family:돋움}
 .t_16	{font-size:16px; font-family:돋움}
 .t_17	{font-size:17px; font-family:돋움}
@@ -372,7 +371,7 @@ a.more:active	{text-decoration:none; color:#999999;}
 /* GNB 2014 */
 .head_wrap{width:960px;height:143px;margin:0 auto;position:relative}
 .head_wrap .logoArea {float:left; margin:32px 0 0 0}
-.sp_common{background:url(/images/common/2014/sp_common.gif) no-rpeat}
+.sp_common{background:url(/springwebproject/images/book/common/2014/sp_common.gif) no-rpeat}
 .head_banner{display:none}
 
 /* °Ë»ö ÇÊµå */
@@ -471,7 +470,7 @@ a.more:active	{text-decoration:none; color:#999999;}
 .bookmark_pop {font:normal 11px 돋움; background:#FFF; position:absolute; top:5px; left:0; z-index:600; width:226px; padding:12px; overflow:hidden; text-align:center;  border:1px solid #917253; color:#888; line-height:16px;text-align:center}
 .bookmark_pop .bookmark_on{width:226px}
 .bookmark_pop .bookmark_off{width:226px}
-.bookmark_pop strong{font:bolder 12px 굴림;color:#557eb0}
+.bookmark_pop strong{font:bolder 12px ±¼¸²;color:#557eb0}
 .bookmark_pop .btn_on{display:inline-block;width:80%;margin-top:5px;padding:5px 0;background:#937354;border:1px solid #7b6046;color:#FFF;font:bolder 11px 돋움;line-height:20px;text-decoration:none}
 
 .search_more{position:absolute;top:52px;right:-5px;width:120px;height:15px;z-index:490}
@@ -687,7 +686,7 @@ a.more:active	{text-decoration:none; color:#999999;}
 .copyright	.scmIco { background:url(/images/common/gnb_menu_0102.gif) no-repeat 0 -492px; position:absolute; z-index:10; width:17px; height:14px; top:4px; left:438px }
 /* footer */
 
-/* ³¯°³ ¹è³Ê ¹× ÃÖ±Ùº» »óÇ° °øÅë */
+
 #ssWrap {position: absolute;left: 50%;width:110px;top:195px;margin-left: 505px;}
 #ssWrap div{border:1px solid #e9e9e9;width:108px;height:160px;overflow:hidden;margin-bottom:7px}
 #serviceWrap{position: absolute;left: 50%;width: 110px;top:551px;margin-left: 505px;z-index:10}
@@ -723,7 +722,7 @@ a.more:active	{text-decoration:none; color:#999999;}
 #ssWrapLeft .ihave_event_bn{display:none}
 #ssWrapLeft .used_bn{}
 #ssWrapLeft .ss_benefit{display:none}
-/* ³¯°³ ¹è³Ê ¹× ÃÖ±Ùº» »óÇ° °øÅë */
+
 
 /* ÁÂ¿ì¹öÆ° °øÅë */
 .aw_type_sbox{position:absolute;width:79px;height:13px}.aw_type_sbox .aw_l span,.aw_type_sbox .aw_r span,.aw_type_sbox .aw_l_off span,.aw_type_sbox .aw_r_off span{display:none}
@@ -755,7 +754,7 @@ a.more:active	{text-decoration:none; color:#999999;}
 .aw_type_num span{float:left;display:block;border:1px solid #e1e1e1;margin-left:3px;color:#a7a7a7;text-align:center;width:17px;height:13px;padding-top:4px;font:normal 11px 돋움;cursor:pointer}
 .aw_type_num span.on{border:1px solid #1495ce;background:#1495ce;color:#FFF}
 
-.btn_more_2014{display:inline-block;width:42px;height:13px;background:#FFF url(/images/common/2014/sp_common.gif) no-repeat -177px -57px;}.btn_more_2014 span{display:none}
+.btn_more_2014{display:inline-block;width:42px;height:13px;background:#FFF url(/springwebproject/images/book/common/2014/sp_common.gif) no-repeat -177px -57px;}.btn_more_2014 span{display:none}
 
 /* swiper °øÅë */
 .swiper-slide{float:left}
@@ -829,7 +828,7 @@ a.more:active	{text-decoration:none; color:#999999;}
 .cate_comm .cate_d1 .open .cate_d2_link a:hover {color:#3aaeca}
 .cate_comm .cate_d1 .open .cate_d2 .ico_arrow{display:none}
 
-
+/* ¹öÆ° */
 .btn_b_comm{display:inline-block;font:bolder 12px 돋움;text-align:center;text-decoration:none;border:1px solid #7b6046;background:#937354;color:#fff !important} .btn_b_comm:hover{border:1px solid #000;text-decoration:none}
 .btn_w_comm{display:inline-block;font:bolder 12px 돋움;text-align:center;text-decoration:none;border:1px solid #c6c8cb;background:#fff;color:#666 !important} .btn_w_comm:hover{border:1px solid #666;text-decoration:none}
 .btn_gy_comm{display:inline-block;font:bolder 12px 돋움;text-align:center;text-decoration:none;border:1px solid #8f8f8f;background:#9d9d9d;color:#fff !important} .btn_gy_comm:hover{border:1px solid #666;text-decoration:none}
@@ -840,7 +839,7 @@ a.more:active	{text-decoration:none; color:#999999;}
 .btype_a4{height:14px;padding:3px 5px 0 5px;font:normal 11px 돋움;text-align:center}
 .btype_b4{height:14px;padding:3px 5px 3px 5px;font:normal 11px 돋움;text-align:center}
 .btype_f1{width:120px;height:21px;padding:7px 0 0 0}
-.sp_btn{display:inline-block;height:20px;margin-top:-3px;background:url('/images/detail/2014/sp_btn_small.gif') no-repeat;vertical-align: middle;cursor:pointer}
+.sp_btn{display:inline-block;height:20px;margin-top:-3px;background:url('/webproject/resources/images/book_image/sp_btn_small.gif') no-repeat;vertical-align: middle;cursor:pointer}
 .sp_btn span{display:none}
 .sp_help{width:16px;height:14px;background-position:-53px -42px}
 
@@ -896,7 +895,7 @@ a.more:active	{text-decoration:none; color:#999999;}
 .prod_info .txt_desc strong{float:left;padding:2px 4px 0 0;font-size:14px}
 .prod_info .txt_desc em{color:#999;font-style:normal}
 .prod_info .txt_desc .review_point{display:block;overflow:hidden;float:left;width:79px;height:14px;margin-right:7px;background:url(/images/searchN/sp_review_point.gif) 0 0 no-repeat}
-.prod_info .txt_desc .review_point span{float:left;height:14px;background:url(/images/searchN/sp_review_point.gif) 0 -18px no-repeat}
+.prod_info .txt_desc .review_point span{float:left;height:14px;background:url(/webproject/resources/images/searchN/sp_review_point.gif) 0 -18px no-repeat}
 .prod_info .txt_bex{color:#888}
 .prod_info .txt_coment p{width:85%;margin-top:-5px;line-height:18px;color:#888}
 .prod_info .txt_book, .prod_info .txt_ebook{margin-top:7px;padding-top:12px;background:url(/images/searchN/bg_dash.gif) 0 0 repeat-x}
@@ -1060,12 +1059,6 @@ a.more:active	{text-decoration:none; color:#999999;}
   
 .ss_event {display:none}
 #paycoLayer2 {display:none !important}
-
-
-/* bnlNewBookList의 가로 광고  */
-.book_new_list{clear:both;position:relative;width:100%;border-top:1px solid #e3e3e3;padding:20px 0 40px 0}
-.book_new_list h4{margin-left:20px;font:normal 15px 'Malgun Gothic','맑은 고딕','Apple SD Neo Gothic','돋움';color:#000;}
-.book_new_list .swiper-container{width:728px;margin-left:18px;margin-top:20px}
-.book_new_list ul li{float:left;width:162px;margin:0 10px;text-align:center}
-.book_new_list ul li .pimg img{height:160px;max-width:160px;border:1px solid #e1e1e1}
-
+/* ³×ÀÌ¹öÆäÀÌ ¼Òµæ°øÁ¦ ¾È³» ·¹ÀÌ¾î ºñÀü½Ã
+.pi_box6 {display:none !important}
+*/
