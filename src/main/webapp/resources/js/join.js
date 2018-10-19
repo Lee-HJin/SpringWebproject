@@ -390,8 +390,8 @@ function joinConfirmation(){
 		f.userId.value = id;
 
 		var idSpan = $('#text_id').text();
-		var error = '6~12자의 영문,숫자,-,_만 사용 가능';
-		if(idSpan==error){
+		var pass = '사용 가능한 아이디입니다';
+		if(idSpan!=error){
 			alert("\n아이디를 확인하세요.");
 			f.userId.focus();
 			return;
@@ -524,21 +524,21 @@ function joinConfirmation(){
 	f.email2.value = email;
 
 	var zipCode = f.zipCode.value;
-	var address = f.address2.value;
+	zipCode = zipCode.trim();
 	if(zipCode){
-		if(!address){
+		if(!f.address2.value){
 			alert("\n주소(배송지)를 정확히 입력해 주세요.");
 			f.address2.focus();
 			return;
 		}
 	}
 	else {
-		if(address1){
+		if(f.address1.value){
 			alert("\n주소(배송지)를 정확히 입력해 주세요.");
 			f.address1.focus();
 			return;
 		}
-		else if(adress2){
+		else if(f.address2.value){
 			alert("\n주소(배송지)를 정확히 입력해 주세요.");
 			f.zipCode.focus();
 			return;
@@ -561,7 +561,7 @@ function joinConfirmation(){
 		tel = f.addTel1.value + '-' + f.addTel2.value + '-' + f.addTel3.value;
 		f.addTel.value = tel;
 	}
-else if(f.addTel2.value){
+	else if(f.addTel2.value){
 		
 		if(!f.addTel1.value){
 			alert("\n추가연락처를 정확히 입력해 주세요.");
