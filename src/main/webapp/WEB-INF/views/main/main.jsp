@@ -27,11 +27,6 @@
 		document.getElementById("bs_link").href = link;
 		document.getElementById("bs_img").src = img;
 	}
-	
-	
-
-
-	
 
 </script>
 </head>
@@ -367,18 +362,20 @@
 					<div class="rc_books">
 						<h4>최근 본 도서와 유사한 분야 또는 주제를 다룬 도서</h4>
 						<ul class="rc_books_list">
+							<c:forEach var="cate" items="${lst }">
 							<li>
 								<div class="rb_image">
 									<a href="javascript://">
-										<img src="<%=cp%>/resources/image/main/3983105.jpg">
+										<img src="<%=cp%>/resources/image/book/${cate.bookImage}">
 									</a>
 									<dl class="rb_title">
-										<dt>언어의 온도[100…</dt>
-										<dd>이기주</dd>
+										<dt>${cate.bookTitle }</dt>
+										<dd>${cate.authorName }</dd>
 									</dl>
 								</div>
 							</li>
-							<li>
+							</c:forEach>
+							<%-- <li>
 								<div class="rb_image">
 									<a href="javascript://">
 										<img src="<%=cp%>/resources/image/main/4201046.jpg">
@@ -399,7 +396,7 @@
 										<dd>박광수</dd>
 									</dl>
 								</div>
-							</li>
+							</li> --%>
 						</ul>
 					</div>
 				</div>
@@ -974,9 +971,7 @@
 	<script src="<%=cp%>/resources/js/swiper_min.js"></script>
 	<script src="<%=cp%>/resources/js/main.js"></script>
 	
-<br><br><br><br><br><br><br><br><br><br><br>
-<br><br><br><br><br><br><br><br><br><br><br>
-<br><br><br><br><br><br><br><br><br><br><br>
-<br><br><br><br><br><br><br><br><br><br><br>
+<jsp:include page="./footer.jsp" flush="false"/>
+
 </body>
 </html>

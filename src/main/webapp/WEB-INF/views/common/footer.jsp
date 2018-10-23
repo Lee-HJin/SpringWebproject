@@ -6,7 +6,15 @@
 %>
 
 
-<div style="margin-top: 50px; width: 960px; clear: both; height: 50px;"></div>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+
+</head>
+<body>
+<div class="f_margin"></div>
 
 <div class="footer">
 	<div class="copyright">
@@ -68,5 +76,11 @@
 	<div class="copy_award">
 		<img src="<%=cp%>/resources/image/main/footer_award.jpg">
 	</div>
-</div>
+
+
+
+
+
+</body>
+</html>
 

@@ -40,6 +40,14 @@
 		<beans:property name="sessionTemplate" ref="sessionTemplate"></beans:property>
 	</beans:bean>
 	
+
+	<beans:bean id = "booksDAO" class = "com.spring.webproject.dao.BooksDAO" >
+
+	<beans:bean id="mainDAO" class="com.spring.webproject.dao.MainDAO">
+
+		<beans:property name="sessionTemplate" ref="sessionTemplate"></beans:property>
+	</beans:bean>
+	
 	<!-- MyBatis -->
 	<beans:bean id="sessionTemplate" class="org.mybatis.spring.SqlSessionTemplate">
 		<beans:constructor-arg ref="sessionFactory"/>
