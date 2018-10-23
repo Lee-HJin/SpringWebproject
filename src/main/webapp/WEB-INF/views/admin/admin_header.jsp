@@ -56,8 +56,8 @@
 					</a>
 				</li>
 				<li class="menu">
-					<a href="<%=cp %>/admin_home.action" >
-						<font></font>
+					<a href="<%=cp %>/admin_goods.action" >
+						<font>상품등록</font>
 					</a>
 				</li>
 				

@@ -66,5 +66,8 @@ public class AdminController {
 		
 		return "redirect:/"+url;
 	}
-	
+	@RequestMapping(value="/admin_goods.action",method= {RequestMethod.GET})
+	public String goods() {
+		return "admin/admin_goods";
+	}
 }

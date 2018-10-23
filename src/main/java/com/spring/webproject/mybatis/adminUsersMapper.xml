@@ -93,6 +93,4 @@ where A.rnum>=#{start}
 		userId = #{userId}
 </delete>
 
-
-
 </mapper>
