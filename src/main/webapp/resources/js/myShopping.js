@@ -1,12 +1,5 @@
 $(document).ready(function(){
 	
-	//엔터 치면 다음단계로
-	$('#pre_myinfo_pwd').keypress(function(evt){
-		if(evt.keyCode==13){
-			checkPwd();
-		}
-	});
-	
 	//셀렉트 박스 날짜 지정(기본값)
 	setDefaultDate();
 	
@@ -63,16 +56,7 @@ $(document).ready(function(){
 		}
 		$('#toDay').val(toDay).attr("selected","selected");
 		
-	});
-	
-	
-	
-	//$("#paper_type option:selected").text();
-	//$("#print_type option:selected").val();
-	
-
-
-	
+	});	
 	
 	//숫자만 입력할 수 있도록
 	$('.onlyNum_2').on('keyup',function(){

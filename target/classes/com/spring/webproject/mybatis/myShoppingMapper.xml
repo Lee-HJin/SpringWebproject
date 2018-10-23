@@ -26,4 +26,49 @@
 	update users set userPwd=#{userPwd} where userId=#{userId}
 </update>
 
+<!-- 회원 탈퇴 -->
+<delete id="memberOut" parameterType="java.lang.String">
+	delete users where userId=#{userId}
+</delete>
+
+<!-- 주문/배송 조회 리스트 count -->
+<select id="getCountOrderListNormal" parameterType="java.lang.String" resultType="int">
+	select nvl(count(*),0) from orderList where userId=#{userId} and (status='주문' or status='구매완료')
+</select>
+
+<!-- 주문/배송 조회 리스트 -->
+<select id="getOrderList" parameterType="map" resultType="com.spring.webproject.dto.OrderListDTO">
+	select * from (select rownum rnum, data.* from (select userid,orderid,orderprice,shipmentsstatuscode,to_char(HANDLINGDATE,'YYYY-MM-DD') HANDLINGDATE,to_char(EXPECTEDDATE,'YYYY-MM-DD') EXPECTEDDATE, status, mainTitle,quantity 
+	from orderList where userid=#{userId} and (status='주문' or status='구매완료') order by orderid desc) data) <![CDATA[where rnum>=#{start} and rnum<=#{end}]]>
+</select>
+
+<!-- 주문/배송 조회 리스트 count (날짜 조건) -->
+<select id="getCountOrderListByDate" parameterType="map" resultType="int">
+	select nvl(count(*),0) from orderList where userId=#{userId} and (status='주문' or status='구매완료') 
+	and handlingdate between to_date(#{fromDate} || '000000', 'YYYY-MM-DD-HH24MISS') and to_date(#{toDate} || '235959' ,'YYYY-MM-DD-HH24MISS')
+</select>
+
+<!-- 주문/배송 조회 리스트 (날짜 조건) -->
+<select id="getOrderListByDate" parameterType="map" resultType="com.spring.webproject.dto.OrderListDTO">
+	select * from (select rownum rnum, data.* from (select userId, orderId,orderPrice,shipmentsStatusCode,to_char(HANDLINGDATE,'YYYY-MM-DD') HANDLINGDATE,to_char(EXPECTEDDATE,'YYYY-MM-DD') EXPECTEDDATE, status, mainTitle,quantity 
+	from orderList where userId=#{userId} and (status='주문' or status='구매완료') 
+	and handlingdate between to_date(#{fromDate} || '000000', 'YYYY-MM-DD-HH24MISS') and to_date(#{toDate} || '235959' ,'YYYY-MM-DD-HH24MISS') order by orderId desc) data) <![CDATA[where rnum>=#{start} and rnum<=#{end}]]>
+</select>
+
+<!-- 주문/배송 조회 리스트 count (이름 및 isbn 조건) -->
+<select id="getCountOrderListByName" parameterType="map" resultType="int">
+	select nvl(count(distinct orderId),0) from
+	(select orderbooks.orderid, orderbooks.isbn from orderBooks,(select orderId from orderlist where userId=#{userId} and (status='주문' or status='구매완료')) orders where orderbooks.orderId=orders.orderId) userOrders
+	inner join books on userOrders.isbn=books.isbn where books.isbn=#{searchValue} or booktitle like '%' || #{searchValue} || '%'
+</select>
+
+<!-- 주문/배송 조회 리스트 (이름 및 isbn 조건) -->
+<select id="getOrderListByName" parameterType="map" resultType="com.spring.webproject.dto.OrderListDTO">
+	select * from(select rownum rnum, a.*, booktitle from
+	(select orderbooks.isbn, b.* from orderbooks, (select userid,orderid,orderprice,shipmentsstatuscode,to_char(HANDLINGDATE,'YYYY-MM-DD') HANDLINGDATE,to_char(EXPECTEDDATE,'YYYY-MM-DD') EXPECTEDDATE, status, mainTitle,quantity from orderlist where userId=#{userId} and (status='주문' or status='구매완료'))b where orderbooks.orderid=b.orderid order by b.orderid desc)a
+	inner join books on a.isbn=books.isbn where books.isbn=#{searchValue} or booktitle like '%' || #{searchValue} || '%') <![CDATA[where rnum>=#{start} and rnum<=#{end}]]>
+</select>
+
+
+
 </mapper>

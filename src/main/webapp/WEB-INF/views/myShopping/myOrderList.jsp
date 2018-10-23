@@ -15,6 +15,124 @@
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 	<script src="<%=cp%>/resources/js/myShopping.js"></script>
 	
+	<script type="text/javascript">
+	
+	//주문/배송 조회
+	$(document).ready(function(){
+		
+		$.ajax({
+			
+			url:"getOrderList.action",
+			type:"POST",
+			success:function(data){
+				$('#myOrderList').html(data);	
+			},
+			error:function(e){
+				alert(e.responseText);
+			}
+
+		});
+		
+		
+		$('#searchOrdersByName').on('click',function(){
+			var searchValue = $('#orderListSearchValue').val();
+			var pageNum = '${pageNum}';
+			
+			var params = "searchValue=" + searchValue;
+			
+			if(pageNum!=''){
+				params += "&pageNum=" + pageNum;
+			}
+			
+			$.ajax({
+				
+				url:"getOrderList.action",
+				data:params,
+				type:"POST",
+				success:function(data){
+					$('#myOrderList').html(data);	
+				},
+				error:function(e){
+					alert(e.responseText);
+				}
+
+			});
+			
+		});
+		
+		
+		$('#searchOrdersByDate').on('click',function(){
+			
+			var fromMonth = '0' + $('#fromMonth option:selected').val();
+			fromMonth = fromMonth.substring(fromMonth.length, fromMonth.length-2);
+			var fromDay = '0' + $('#fromDay option:selected').val();
+			fromDay = fromDay.substring(fromDay.length, fromDay.length-2);
+			var toMonth = '0' + $('#toMonth option:selected').val();
+			toMonth = toMonth.substring(toMonth.length, toMonth.length-2);
+			var toDay = '0' + $('#toDay option:selected').val();
+			toDay = toDay.substring(toDay.length, toDay.length-2);
+			
+			var fromDate = $('#fromYear option:selected').val() + '-' 
+							+ fromMonth + '-'+ fromDay;
+
+			var toDate = $('#toYear option:selected').val() + '-' 
+							+ toMonth + '-'	+ toDay;
+			
+			//파라미터 정리
+			var pageNum = '${pageNum}';
+			
+			params = 'fromDate=' + fromDate + '&toDate=' + toDate;
+			
+			if(pageNum!=''){
+				params += "&pageNum=" + pageNum;
+			}
+			
+			$.ajax({
+				
+				url:"getOrderList.action",
+				data:params,
+				type:"POST",
+				success:function(data){
+					$('#myOrderList').html(data);	
+				},
+				error:function(e){
+					alert(e.responseText);
+				}
+
+			});
+			
+		});
+
+	});
+	
+	function getList(pageNum, fromDate, toDate, searchValue){
+		
+		var params = 'pageNum=' + pageNum;
+		
+		if(fromDate!=''){
+			params += '&fromDate=' + fromDate + '&toDate=' + toDate;
+		}
+		if(searchValue!=''){
+			params = 'pageNum=' + pageNum + '&searchValue=' + searchValue;
+		}
+
+		jQuery.ajax({
+			url:"getOrderList.action",
+			data:params,
+			type:"POST",
+			success:function(data){
+				$('#myOrderList').html(data);	
+			},
+			error:function(e){
+				alert(e.responseText);
+			}	
+		});
+		
+	}
+	
+	</script>
+	
+	
 </head>
 <body style="padding: 0; margin: 0;">
 
@@ -25,7 +143,7 @@
 <div style="margin: 0 auto; width: 960px;">
 
 <div style="margin-top: 12px;">
-	<a href="<%=cp %>/main.action">홈</a> > <a href="<%=cp %>/myShoppingMain.action">나의쇼핑</a> > <b>주문/배송조회</b>
+	<a href="<%=cp %>/main.action">홈</a> > <a href="<%=cp %>/myShoppingMain.action">나의쇼핑</a> > 주문관리 ><b>주문/배송조회</b>
 </div>
 <!-- navigation -->
 <jsp:include page="./topNavi.jsp" flush="false"/>
@@ -53,7 +171,7 @@
 					<span><select name="toMonth" id="toMonth"></select></span>
 					<span><select name="toDay" id="toDay"></select></span>
 					<span style="display: inline; height: 22px;">
-						<a href="#"><img alt="조회" src="<%=cp%>/resources/img/myShopping/btn_sort_search.gif" style="vertical-align: top;"></a>
+						<a href="#"><img alt="조회" src="<%=cp%>/resources/img/myShopping/btn_sort_search.gif" style="vertical-align: top;" id="searchOrdersByDate"></a>
 					</span>	
 				</span>	
 			</dd>
@@ -61,8 +179,8 @@
 		<dl>
 			<dt>상품명 조회</dt>
 			<dd>
-				<span><input type="text" style="height: 16px;"></span>
-				<span style="margin-right: 5px;"><a href="#"><img alt="조회" src="<%=cp%>/resources/img/myShopping/btn_sort_search.gif" style="vertical-align: top;"></a></span>
+				<span><input type="text" style="height: 16px;" id="orderListSearchValue"></span>
+				<span style="margin-right: 5px;"><a href="#"><img alt="조회" src="<%=cp%>/resources/img/myShopping/btn_sort_search.gif" style="vertical-align: top;" name="searchOrdersByName" id="searchOrdersByName"></a></span>
 				상품명 또는 ISBN 검색
 			</dd>
 		</dl>
@@ -71,7 +189,7 @@
 		</dl>
 	</div>
 		
-	<div class="myOrderList_table">
+	<div class="myOrderList_table" id="myOrderList">
 		<table>
 			<tr>
 				<th>주문번호</th>
