@@ -27,8 +27,7 @@
 			</li>
 			<li>
 				<span>진행중 주문건</span>
-				<span class="under">-건</span>
-				<!-- 주문 상태 정리 필요 -->
+				<span class="under">${orderCount }건</span>
 			</li>
 			<li>
 				<span>적립금</span>

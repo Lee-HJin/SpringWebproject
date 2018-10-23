@@ -31,7 +31,7 @@
 			<div class="side_navi_line">
 				<ul>
 					<li><a href="<%=cp%>/myShopping/myLatesBooksList.action">최근 본 상품</a></li>
-					<li style="padding-bottom: 10px;">위시리스트</li>
+					<li style="padding-bottom: 10px;"><a href="<%=cp%>/myShopping/myWishList.action">위시리스트</a></li>
 				</ul>
 			</div>
 		</li>
@@ -39,10 +39,10 @@
 			<span class="side_navi_span">나의 리뷰</span>
 			<div class="side_navi_line">
 				<ul>
-					<li>리뷰가 있는 책</li>
-					<li>리뷰를 기다리는 책</li>
-					<li>간단평</li>
-					<li style="padding-bottom: 10px;">최근 덧글</li>
+					<li><a href="<%=cp%>/myShopping/myReviewList.action">리뷰가 있는 책</a></li>
+					<li><a href="<%=cp%>/myShopping/readyReviewList.action">리뷰를 기다리는 책</a></li>
+					<li><a href="<%=cp%>/myShopping/mySentenceList.action">간단평</a></li>
+					<li style="padding-bottom: 10px;"><a href="<%=cp%>/myShopping/myCommentList.action">최근 덧글</a></li>
 				</ul>
 			</div>
 		</li>
@@ -50,7 +50,7 @@
 			<span class="side_navi_span">나의 상담</span>
 			<div class="side_navi_line">
 				<ul>
-					<li>1:1 상담 내역</li>
+					<li><a href="<%=cp%>/myShopping/myCounselHistory.action">1:1 상담 내역</a></li>
 					<li style="padding-bottom: 10px;">1:1 상담하기</li>
 				</ul>
 			</div>
@@ -59,8 +59,8 @@
 			<span class="side_navi_span">회원정보</span>
 			<div class="side_navi_line">
 				<ul>
-					<li><a href="<%=cp %>/myShopping/pre_updateMyInfo.action">회원정보 수정</a></li>
-					<li style="padding-bottom: 10px;">회원 탈퇴</li>
+					<li><a href="<%=cp %>/myShopping/pre_updateMyInfo.action?mode=update">회원정보 수정</a></li>
+					<li style="padding-bottom: 10px;"><a href="<%=cp %>/myShopping/pre_updateMyInfo.action?mode=out">회원 탈퇴</a></li>
 				</ul>
 			</div>
 		</li>
