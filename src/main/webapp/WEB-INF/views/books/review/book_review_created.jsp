@@ -43,8 +43,7 @@
 		f.content.value = str;
 		
 		
-		f.action = "<%=cp%>
-	/book_review_created_ok.action";
+		f.action = "<%=cp%>/book_review_created_ok.action";
 		f.submit();
 
 	}
@@ -67,9 +66,7 @@ img:hover {
 	width: 120px;
 	transition: all 0.5s;
 	cursor: pointer;
-	
 	margin: 5px;
-	
 }
 
 .button1 span {
@@ -117,47 +114,45 @@ img:hover {
 
 .button2:active {
 	background-color: #3e8e41;
-	
 	transform: translateY(4px);
 }
 /* 버튼 효과 3*/
 .button3 {
-    position: relative;
-    background-color: #4CAF50;
-    border: none;
-    font-size: 18px;
-    color: #FFFFFF;
-    padding: 10px;
-    width: 100px;
-    text-align: center;
-    -webkit-transition-duration: 0.4s; /* Safari */
-    transition-duration: 0.4s;
-    text-decoration: none;
-    overflow: hidden;
-    cursor: pointer;
-    border-radius: 10px;
-  margin: 5px;
-    
+	position: relative;
+	background-color: #4CAF50;
+	border: none;
+	font-size: 18px;
+	color: #FFFFFF;
+	padding: 10px;
+	width: 100px;
+	text-align: center;
+	-webkit-transition-duration: 0.4s; /* Safari */
+	transition-duration: 0.4s;
+	text-decoration: none;
+	overflow: hidden;
+	cursor: pointer;
+	border-radius: 10px;
+	margin: 5px;
 }
 
 .button3:after {
-    content: "";
-    background: #90EE90;
-    display: block;
-    position: absolute;
-    padding-top: 300%;
-    padding-left: 350%;
-    margin-left: -20px!important;
-    margin-top: -120%;
-    opacity: 0;
-    transition: all 1s
+	content: "";
+	background: #90EE90;
+	display: block;
+	position: absolute;
+	padding-top: 300%;
+	padding-left: 350%;
+	margin-left: -20px !important;
+	margin-top: -120%;
+	opacity: 0;
+	transition: all 1s
 }
 
 .button3:active:after {
-    padding: 0;
-    margin: 0;
-    opacity: 1;
-    transition: 1s
+	padding: 0;
+	margin: 0;
+	opacity: 1;
+	transition: 1s
 }
 </style>
 
@@ -181,12 +176,14 @@ img:hover {
 							style="border: 1px solid #ddd; border-radius: 4px; padding: 5px; width: 150px;"></a>
 					</div>
 					<div class="info" style="margin-top: 3px;">
-						<p class="booktit">
+						<p class="booktit" style="margin-bottom: 20px;">
 							<a href="#" id="book_title_txt"
-								style="font-size: 15pt; font-style: italic; font-weight: bold;">숨은
-								골짜기의 단풍나무 한 그루</a>
+								style="font-size: 15pt; font-style: italic; font-weight: bold;">책
+								제목</a>
 						</p>
-						<p class="t_11gr" id="book_etc">윤영수저 | 열림원 | 2018-08-10</p>
+
+						<p class="t_11gr" id="book_etc" style="margin-bottom: 20px;">
+							저자 | 출판사 | 도서 등록일</p>
 						<div id="scoreDiv" class="btmA" style="display: block;">
 							<select name="usr_point">
 								<option value="">나의 평점 선택</option>
@@ -247,11 +244,13 @@ img:hover {
 			</div>
 
 			<div id="bbsCreated_footer">
-				<button class="button2">등록하기</button>
-				<button class="button3" onclick="document.myForm.subject.focus();">
+				<button class="button2" onclick="sendIt();">등록하기</button>
+
+				<button class="button3" onclick="document.myForm.subject.focus();" type="reset">
 					<span>다시입력 </span>
 				</button>
-				<button class="button1" onclick="">
+				<button class="button1" 
+					onclick="javascript:location.href='<%=cp%>/book_info.action';">
 					<span>작성취소</span>
 				</button>
 			</div>

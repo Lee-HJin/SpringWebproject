@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fmt" uri ="http://java.sun.com/jsp/jstl/fmt" %>
 <%
 	request.setCharacterEncoding("UTF-8");
 	String cp = request.getContextPath();
@@ -25,7 +26,7 @@
 <link rel="stylesheet" href="/webproject/resources/book_css/pStyle.css"
 	type="text/css">
 
-
+<script src="/webproject/resources/book_js/bookInfo.js"></script>
 
 
 <style>
@@ -241,7 +242,7 @@ i {
 
 					<p class="btn_txt">
 
-						<a href="javascript:popPreview('4189934');"
+						<a href="javascript:popPreview(${dto.isbn });"
 							class="btn_gy_comm btype_a4">미리보기</a>
 
 					</p>
@@ -273,8 +274,8 @@ i {
 									</tr>
 									<tr>
 										<td>6</td>
-										<td><a href="javascript:popBookshelf('05');">36</a></td>
-										<td><a href="javascript:popBookshelf('03');">20</a></td>
+										<td><a href="javascript:popBookshelf('05');">0</a></td>
+										<td><a href="javascript:popBookshelf('03');">0</a></td>
 									</tr>
 									<tr>
 										<th>롯데<br>스타시티점
@@ -383,23 +384,21 @@ i {
 						</div>
 						<div class="group_title">
 							<h1>
-								<!-- <h3 class="txt_front">그림으로 배우는 원리와 구조</h3> -->
 
-
-								<span class="txt_main">숨은 골짜기의 단풍나무 한 그루 </span>
+								<span class="txt_main">${dto.bookTitle } </span>
 
 							</h1>
 						</div>
 
-						<div class="group_inside">
-							<ul>
-								<li><a href="javascript:goSearchAuthor('윤영수');">윤영수</a> 저</li>
+						<div class="group_inside" style="padding: 0px;">
+							<ul style="height: 13px;">
+								<li>${dto2.authorname } 저</li>
 
 
-								<li><a href="javascript:goSearchPublish('열림원');">열림원</a></li>
+								<li>${dto.publisher }</li>
 
 
-								<li>2018년 08월 10일</li>
+								<li>${dto.publishDate }</li>
 
 
 
@@ -415,7 +414,7 @@ i {
 										<span>정가</span>
 									</div>
 									<div class="tbl_right">
-										<span class="list_price">19,000원</span>
+										<span class="list_price"><fmt:formatNumber value ="${dto.bookPrice }" type="number"></fmt:formatNumber> 원</span>
 									</div>
 								</li>
 
@@ -425,70 +424,14 @@ i {
 										<span>판매가</span>
 									</div>
 									<div class="tbl_right" style="">
-										<span class="sale_price">17,100<span>원</span></span> <span
-											class="point_red">[10% 할인]</span>
+										<span class="sale_price"> <fmt:formatNumber value ="${dto.bookPrice * 0.9 }" type = "number"></fmt:formatNumber>   <span>원</span></span> 
+										<span class="point_red">[10% 할인]</span>
 
 									</div>
 								</li>
 
 
-
-
-								<li class="payco_event" id="paycoLayer" style="display: none;">
-									<div class="tbl_left mt10">
-										<span>페이코혜택가</span>
-									</div>
-									<div class="tbl_right">
-										<span class="card_price">15,600<span>원</span></span> <span
-											class="t_blue">[1,500원 할인]</span> <a
-											href="javascript:popLayer('paycoInfo')"><span
-											class="sp_btn help">?</span></a>
-									</div> <!-- 페이코 안내 -->
-									<div class="bookViewPop" id="paycoInfo"
-										style="visibility: hidden; left: 112px; top: 18px; width: 270px">
-										<h3 class="mLine">페이코 혜택가 안내</h3>
-										<div class="laypopCon">
-											<p class="t_11gr mt5"></p>
-											<div class="dot_comm_11 t_11gr">3천원 이상 구매 시 1,500원 할인</div>
-											<div class="dot_comm_11 t_11gr">ID당 총 3회 할인가능</div>
-											<p></p>
-										</div>
-										<p class="btnClose">
-											<img
-												src="http://image.bandinlunis.com/images/common/btn_close02.gif"
-												alt="close" style="cursor: pointer;"
-												onclick="javascript:popHidden('paycoInfo')">
-										</p>
-									</div>
-								</li>
-
-								<li class="payco_event" id="paycoLayer2" style="display: none;">
-									<div class="tbl_left mt10">
-										<span>페이코혜택가</span>
-									</div>
-									<div class="tbl_right">
-										<span class="card_price">16,600<span>원</span></span> <span
-											class="t_blue">[500원 할인]</span> <a
-											href="javascript:popLayer('paycoInfo2')"><span
-											class="sp_btn help">?</span></a>
-									</div> <!-- 페이코 안내 -->
-									<div class="bookViewPop" id="paycoInfo2"
-										style="visibility: hidden; left: 112px; top: 18px; width: 270px">
-										<h3 class="mLine">페이코 혜택가 안내</h3>
-										<div class="laypopCon">
-											<p class="t_11gr mt5"></p>
-											<div class="dot_comm_11 t_11gr">3천원 이상 구매 시 500원 할인</div>
-											<div class="dot_comm_11 t_11gr">ID당 총 3회 할인가능</div>
-											<p></p>
-										</div>
-										<p class="btnClose">
-											<img
-												src="http://image.bandinlunis.com/images/common/btn_close02.gif"
-												alt="close" style="cursor: pointer;"
-												onclick="javascript:popHidden('paycoInfo2')">
-										</p>
-									</div>
-								</li>
+								
 
 								<li>
 									<div class="tbl_left mt3">
@@ -630,7 +573,7 @@ i {
 										<span>적립금</span>
 									</div>
 									<div class="tbl_right">
-										<span class="save_price">950<span>원 적립</span></span> <span
+										<span class="save_price"><fmt:formatNumber value ="${dto.bookPrice * 0.05 }" type="number"></fmt:formatNumber> <span>원 적립</span></span> <span
 											class="sub_info">[5%P]</span> <span class="ml5 lspM">-
 											5만원이상 구매시 2천원 / 멤버십 최대3% <strong>추가적립</strong> <a
 											href="javascript:popLayer('addPoint')"><span
@@ -691,22 +634,7 @@ i {
 										</div>
 									</div>
 								</li>
-								<li>
-									<div class="tbl_left" id="naverMileageRateTit"
-										style="display: none;">
-										<span>네이버마일리지</span>
-									</div>
-									<div class="tbl_right" id="naverMileageRateInfo"
-										style="display: none;">
-										<strong><font color="#64CD3C"><span
-												id="naverMileageRate"></span></font> 적립 <img
-											src="http://image.bandinlunis.com/images/common/naverOn.png">
-										</strong> <img
-											src="http://image.bandinlunis.com/images/common/btnW_naver_q.gif"
-											alt="네이버마일리지안내" style="cursor: pointer;"
-											onclick="popNaverMileageInfo();">
-									</div>
-								</li>
+								
 							</ul>
 						</div>
 
@@ -1116,8 +1044,8 @@ i {
 							<div class="medium_ratings">
 								<span style="width: 93%"></span>
 							</div>
-							<span class="medium_ratings_num"> 9.33 <span class="ml10">리뷰[<strong>3</strong>]
-									간단평[<strong>0</strong>] 테마[<strong>0</strong>]
+							<span class="medium_ratings_num"> 리뷰평점 평균 <span class="ml10">리뷰[<strong>리뷰개수</strong>]
+									간단평[<strong>간단평개수</strong>] 
 							</span>
 							</span> <a href="#sub02" class="btn_w_comm btype_a4">참여하기</a>
 						</div>
@@ -1125,30 +1053,15 @@ i {
 
 						<div class="isbn_info">
 
-							<span class="alt"><strong>ISBN</strong>: 9791188047475</span> <span>728쪽</span>
+							<span class="alt"><strong>ISBN</strong>: ${book.isbn }</span> <span>${dto.page }쪽</span>
 
 
 
 
-
-
-							<span>140 x 215 (㎜) </span>
-
-
-
-
-
-
-
-
-
+							<span>${book.bookSize } (㎜) </span>
 
 
 						</div>
-
-
-
-
 
 
 					</div>
@@ -1158,16 +1071,7 @@ i {
 
 				<div class="inner_merge">
 					<div class="row_item">
-						<div class="section_left">
-							<h4 class="txt_title">지금 이책은</h4>
-							<ul>
-								<li>판매지수 : <strong>3,130</strong></li>
-
-							</ul>
-
-
-
-						</div>
+						
 						<div class="section_center">
 							<h4 class="txt_title">이 분야의 베스트셀러</h4>
 
@@ -1210,15 +1114,11 @@ i {
 
 						</div>
 						<div class="section_right">
-
-
 							<a
 								href="javascript:parent.goBannerUrl('http://www.bandinlunis.com/front/product/detailProduct.do?prodId=4203203', '_self', '112656');"><script>
 									showImgSwf("http://image.bandinlunis.com/upload/banner/20181012/banner20181012112050.jpg");
 								</script><img
 								src="http://image.bandinlunis.com/upload/banner/20181012/banner20181012112050.jpg"></a>
-
-
 						</div>
 					</div>
 				</div>
@@ -1522,23 +1422,18 @@ i {
 									</a>
 								</div>
 
-								<a href="javascript:popAuthorInterest(8840, '윤영수', 'insert');"
-									class="btn_small"><span class="box_like">관심작가 추가 /
-										신간알림</span></a>
-
-
 							</div>
 							<div class="group_profile">
 								<div class="txt_profile_left mt10">
 									<span class="author_name"> <a
-										href="/front/author/authorProfile.do?authorSeq=8840">윤영수</a> <span>(1952)</span>
+										href="/front/author/authorProfile.do?authorSeq=8840">${dto2.authorname }</a> <span>(1952)</span>
 									</span>
 									<ul>
 										<li>구분 : 저서</li>
-										<li>국적 : 대한민국</li>
-										<li>분류 : 문학가 , 기타</li>
-										<li>인기지수 : 160</li>
-										<li>반디추천 : 3회선정</li>
+										<li>국적 : ${dto2.nationality }</li>
+										<li>분류 : ${dto2.category }</li>
+										
+						
 									</ul>
 								</div>
 								<div class="txt_profile_right mt10">
@@ -1566,11 +1461,7 @@ i {
 								<div class="txt_profile_marge">
 									<p></p>
 									<p>
-										1952년 서울에서 태어나 서울대 역사교육과를 졸업했다. 1990년 『현대소설』에 단편 「생태관찰」이 당선되어
-										작품활동을 시작했으며, 이후 경쾌하고도 정확한 문체로 현실의 삶과 인간의 본성에 대한 깊은 응시를 담은 뛰어난
-										작품들을 발표해왔다.<br>지은 책으로 『사랑하라, 희망 없이』 『착한 사람 문성현』 『자린고비의
-										죽음을 애도함』 『소설 쓰는 밤』 『내 안의 황무지』 『내 여자친구의 귀여운 연애』 『귀가도』 등이 있다.
-										한국일보문학상, 남촌문학상, 만해문학상을 수상했다.
+										${dto2.introduction }
 									</p>
 									<p>&nbsp;</p>
 									<p></p>
@@ -1597,57 +1488,7 @@ i {
 						</div>
 						<div class="box_contents">
 							<div class="group_txt">
-								“아무리 들어봐도 시계가 치컥대며 하는 말은 딱 한 가지야. ‘시간이 얼마나 중요한지 알아? 알아? 알아? 알아?’
-								시계는 밤낮으로 흘러가는 모든 시간이 똑같이 중요하며 똑같이 귀하다고 종주먹을 대. 빛바위가 자고 모든 생명들이
-								잠든 순간에도 그는 깨어 건방을 떨어. 자기가 자지 않고 시간을 쟀기 때문에 그만큼 시간이 흘러갔으며 그 시간들은
-								영원히 되찾을 수 없다며 야죽거려. 시계는 끊임없이 명령해. 자기 말을 들으라고. 후회하지 않으려거든 자기에게 맞춰
-								자고, 자기에게 맞춰 일어나고, 자기에게 맞춰 일하라고.<br>하지만 하전, 시계가 없을 때에도 빛바위는
-								꼬박꼬박 밝아졌고 어두워졌어. 시계가 없을 때에도 우리는 잘 살았고 잘 죽었어. 우리뿐 아냐. 나무와 풀과 가축과
-								새 들 모두 잘 살았고 잘 살고 앞으로도 계속 잘 살 거야. 우리는 모두 시간을 마음대로 쓰고 마음대로 낭비할
-								권리가 있어. 하전, 네 말대로 시계는 기계야. 사람이 만든 기계가 사람을 휘두를 수는 없어. 편리함을 가장한
-								기계의 감시 따위 나는 더이상 받을 수 없어.” _148~149쪽<br> <br>검은머리짐승과
-								우리의 삶 중 한쪽을 거꾸로 놓고 견줘보면 신통하게도 맞아떨어지는 부분이 있음은 신기했다. 우선 몸피가 그러하다.
-								검은머리짐승은 조그맣게 태어나 점점 커져서 결국 7, 80년 후 몸이 큰 상태로 죽음을 맞는다. 우리 어른이는 크게
-								태어나 점점 작아져 7, 80년 후 조그만 몸체로 죽음을 맞는다. 또 검은머리짐승은 태어나서 20년 후 가장 건강할
-								때 수컷이 암컷의 몸에 씨를 뿌려 후손을 만든다. 그리고 나머지 60년 동안 서서히 늙어간다. 우리 어른이는 몸에
-								붙었던 딱딱한 각질을 5, 60년 동안 서서히 떼어낸다. 몸이 가장 자유롭고 잘 움직일 때쯤 배우자와 함께 어미산에
-								올라 씨물과 알을 심는다. 그 후 1, 20년 동안 어른이들의 몸과 머리는 급격히 작아진다. 땅으로 돌아가기 직전,
-								거의 온종일 잠자다가 숨을 멈추는 어른이의 모습 역시 갓 태어난 검은머리짐승의 모습과 묘하게 맞아떨어지는 것이다.
-								완전히 반대의 삶을 살면서 두 세상에서 공통인 점도 있었다. 태어나서부터 7, 80년쯤 혹은 그 이상도 살아간다는
-								것, 갓 태어난 이를 귀히 여기고 죽음에 임박한 노인들을 본능적으로 싫어한다는 것도 우스울 정도로 똑같았다.
-								_175쪽<br> <br>준호가 비록 나와 다른 생각을 가졌고 모든 이에게 질시받는
-								검은머리짐승이라 해도, 자기 스스로를 믿고 무언가를 끝까지 해내려는 모습은 존경스럽기도 하고 어떤 때는 아름답게
-								느껴지기도 했다. 짐승세상에서 의사였던 그는 특히 아픈 사람들을 보면 어떻게든 낫게 해주려고 애썼다. 다른 이가
-								욕을 하건 겁을 내건 불이나 훈증을 이용하여 사람들의 상처를 지지기도 하고, 죽어가는 이에게 자신이 만든 죽을 먹여
-								살려내기도 했다. 환자의 고통이 안쓰러워 같이 밤을 설치고, 병이 나으면 자기 일처럼 기뻐하는 그는 사람들의
-								칭송처럼 ‘땅이 보낸 구원자’의 모습이었다. 준호야 당연히 부정하겠지만 나는 준호 역시 우리와 같은 몸체인
-								생명나무의 한가지라는 생각이 들었다. 다른 이가 행복하면 나도 즐겁고 다른 이가 고통스러우면 나 역시 괴로워지는
-								것, 그것은 서로 사랑하는 이들 사이에서만 국한된 감정은 아니다. 사람들뿐 아니라 풀, 나무, 박쥐, 축사에 갇힌
-								타조라도 그가 행복하고 편안하면 그 감정이 내게 전해진다. 모든 생명들이 보이지 않는 땅속뿌리로 다 이어져 있다는
-								증거 아니겠는가. _219쪽<br> <br>밤새 잠을 이룰 수 없었다. 내 머리와 몸에 가득 차
-								빠져나가지 않는 것은 미단부리도, 미단부리의 인형도 아니고 지금까지의 내 삶이 무엇이었던가 하는 의문이었다. 그녀의
-								손으로 만들어진 인형들은 적어도 그녀의 분신, 그녀의 한 부분이다. 하지만 나는 아니다. 미단부리는 나를 캐었을 뿐
-								나는 그녀의 분신이 아니다. 수십 년 전 어느 모르는 이가 뿌린, 미단부리로서는 우연히 맞닥뜨린, 의무와 관습에
-								의한, 땅이 던져준 일거리에 불과하다. 그렇게 태어난 나는 지금껏 무엇이었던가. 지난 30년 동안 내가 한
-								일이라고는 미단부리의 인정을 받으려 애쓴 것, 그리고 짐승 준호와의 교류밖에 없지 않은가. ‘운명을 함께할 존재’를
-								맞아 짐승세상의 발달된 기계와 문명을 부러워하고 급기야는 그들의 교접 흉내까지 낸 것, 그것 이상 무엇이 있었던가.
-								_345쪽<br> <br>그렇다. 어둠도, 땅도, 생명을 살리는 물조차 우리를 위해 존재하는 것은
-								아니다. 우리가 기댈 대상은 무심한 자연도, 발달된 문명도 아닌 살아 있는 우리 자신인지 모른다. 생각을 바꾸고
-								몸을 바꿔서라도 어떻게든 삶을 이어가고자 하는 우리의 안간힘, 내 몸속에 깃든 나의 주인. 제 몸빛으로 광대한
-								어둠을 밝히는 바다달팽이, 그의 몸속에 깃든 주인처럼. <br>죽음 후의 우리가 어떻게 될지, 땅이 과연
-								우리를 생명으로 태어나게 할 것인지조차 우리는 모른다. 확실한 것은 지금 살아 있는 우리가 땅으로서는 최선의,
-								기적에 가까운 결과물이라는 사실이다. 우리는 살아 있다. 살아 있으므로 판단하고 선택할 수 있다. 살아 있으므로
-								우리 자신을 지금까지와는 다르게 발전시킬 수 있다. 그렇다. 죽음이 아니라 삶이 답인 것이다. 이전의 죽음과 앞으로
-								올 죽음을 이어주는 것이 지금의 삶이 아니라, 이전의 삶에서 앞으로의 삶으로 넘어가기 위한 잠깐의 숨 고름, 그것이
-								죽음인 것이다. 죽음 후의 내가 어떤 형태로든 생명을 얻게 될 때…… 나는 과연 이 조그만 달팽이라도 되어 어른이의
-								땅에 안착할 수 있을까? 손에 들었던 달팽이를 조심스레 개펄에 놓아주었다. 잘 살아가기를. 삶의 시간들을 후회 없이
-								보내기를. _511쪽 <br> <br>“맑은이들은 머리만 굴릴 뿐 세상을 이끌어갈 힘도, 감당할
-								능력도 없어. 그들이 가진 예지력 역시 미래의 위기에 행여 도움이 될지 모를 하찮은 열쇠, 자기들 스스로도 어디에
-								어떻게 꽂아야 할지 모르는 미래의 끊겨진 장면들일 뿐이야. 앞날의 충격적인 장면, 수많은 위험을 보는 그들로서는
-								세상의 모든 일, 삶의 시간에 대해 회의적일 수밖에 없어. 다른 이를 품거나 안심시킬 아량 따위는 기대할 수도
-								없지. <br>그들에 비해 운흘 연토, 너는 아냐. 앞날을 볼 능력이 없기 때문에 네게는 옳다고 믿는 일을
-								밀고 나갈 힘이 있어. 살아 있는 이들의 노력으로 운명이 바뀐다는 것을, 맑은이들이 보는 미래의 그림 역시 우리가
-								노력함으로써 바뀔 수 있는 밑그림일 뿐임을 너는 네 행동으로 증명하지.“ _678쪽<br>
+								${dto.introduction }
 							</div>
 						</div>
 					</div>
@@ -1663,24 +1504,8 @@ i {
 						<div class="box_contents">
 							<div class="group_txt">
 
-								단풍동 가계도 6<br>어른이족의 종류 10<br>어른이들의 삶과 세월 12<br>단풍동의
-								여덟 샘과 마을 20<br>어른이들의 세상 22<br> <br>시작 24<br>
-								<span id="dots2">...</span> <span id="more2"> <br>1부<br>숨:
-									무녀 영기 28<br>은: 짐승과의 만남 42<br>골: 저잣거리 56<br>짜: 네
-									이름은 준호 79<br>기: 하전의 귀향 91<br>의: 기남의 성년식 110<br>단:
-									훈장 하전 131<br>풍: 신문물 147<br> <br>2부<br>나:
-									순부부리의 장례식 162<br>무: 준호는 의사 179<br>한: 미단의 인형 199<br>그:
-									이안과 외삼촌 미곤 217<br>루: 위령제 238<br>빗: 저쪽 세상에서 온 사내아이 255<br>겨:
-									연토의 성년식 269<br>앉: 연토의 결혼례 280<br>은: 장저훤과 김점례 299<br>바:
-									잡혀가는 준호 315<br>위: 액막이 인형 소동 329<br> <br>3부<br>틈:
-									여행의 시작, 호랑가시동 354<br>맑: 청매동 371<br>은: 붓동과 살촉동 390<br>샘:
-									거대한 숲 411<br>물: 아후밀탄을 향해 429<br>한: 사막을 통과하다 451<br>줄:
-									제울에서 469<br> <br>4부<br>기: 귀향 516<br>찾: 행복의
-									의미 546<br>으: 삼신각 572<br>시: 전쟁에 대한 불안 609<br>거:
-									또다시 밝은샘마을로 618<br>든: 전쟁 651<br> <br>새로운 시작 683<br>
-									<br>해설│ 환상문학의 진경(眞景), 그 가능성을 찾아서 687<br>–윤영수의 『숨은
-									골짜기의 단풍나무 한 그루』와 “단풍나무”의 이야기 <br> <br>작가의 말 725<br>
-									<br>
+								${dto.tableOfContents }
+								<span id="dots2">...</span> <span id="more2"> 이하 생략 
 								</span>
 
 							</div>
@@ -1715,11 +1540,7 @@ i {
 						src="http://image.bandinlunis.com/upload/design/bn/2017/01/bandipoint_info.jpg"
 						usemap="#bandipoint_info">
 				</div>
-				<map name="bandipoint_info">
-					<area shape="rect" coords="772,121,948,159"
-						href="/pages/front/service/serviceBandiPointInfo.jsp"
-						target="_blank" alt="">
-				</map>
+				
 
 
 				<!-- 리뷰 -->
@@ -1751,20 +1572,13 @@ i {
 								</tbody>
 							</table>
 							<div class="al_center mt10">
-								<a
-									href="/pages/front/service/serviceBandiPointInfo.jsp#bandipoint04"
-									class="btn_bu_comm btype_a2 hand mt3" target="_parent">리뷰
-									혜택 안내 및 주의 사항 보기</a>
+								
 							</div>
 							<h4 class="mt20">반딧불이란?</h4>
 							<div class="t_11gr mt5" style="line-height: 140%">반디앤루니스에서
 								메일 구독, 간단평/서평 작성, 공감하기 등 책과 관련된 컨텐츠 활동을 하는 모든 회원님께 드리는 특별 포인트
 								입니다. 반딧불은 10개부터 적립금으로 환전하여 현금처럼 사용할 수 있습니다.</div>
-							<div class="al_center mt10">
-								<a href="/front/bookPeople/bandiEffect.do"
-									class="btn_gy_comm btype_a2 hand mt3" target="_parent">반딧불
-									환전하기</a>
-							</div>
+							
 						</div>
 						<p class="btnClose">
 							<img
@@ -1776,7 +1590,7 @@ i {
 					
 					<!-- iframe src="/global/iframe_review.html" height="370" class="iframe_review" frameborder="0" scrolling="no"></iframe-->
 					<iframe id="blogReview"
-						src="http://blog.bandinlunis.com/bandi_blog/extention/prodListTop.do?prod_id=4189934"
+						src="<%=cp%>/book_review.action"
 						width="100%" height="290" class="iframe_review" frameborder="0"
 						scrolling="no"></iframe>
 				</div>
@@ -1785,6 +1599,7 @@ i {
 				<!-- 간단평 -->
 				<!-- 			src="/front/product/iframeSimpleReview.do?prodId=4189934" -->
 				<iframe id="simpleReview" width="100%" class="iframe_review"
+					src ="<%=cp %>/book_simpleReview.action"
 					style="margin-left: 0" frameborder="0" scrolling="no" height="422"></iframe>
 				<!-- //간단평 -->
 

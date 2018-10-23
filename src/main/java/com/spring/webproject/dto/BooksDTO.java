@@ -6,13 +6,25 @@ public class BooksDTO {
 	private String publisher;
 	private String bookTitle;
 	private int bookPrice;
-	private String isbn; // 책 표준 번호 
-	private String publishDate;
+	private String isbn; // 책 표준 번호
+	private String publishDate; 
 	private String introduction;
 	private String page; // 페이지 쪽수
 	private String subTitle; // 부제목
 	private String bookSize; // 책 크기
 	private String tableOfContents; // 책 목차
+	
+	private String authorname; // 저자 이름
+
+	
+	
+	public String getAuthorname() {
+		return authorname;
+	}
+
+	public void setAuthorname(String authorname) {
+		this.authorname = authorname;
+	}
 
 	public int getAuthorId() {
 		return authorId;

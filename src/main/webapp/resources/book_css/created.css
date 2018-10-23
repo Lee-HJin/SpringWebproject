@@ -55,7 +55,8 @@
 	line-height:35px;
 	text-align:left;
 	padding-left:20px;
-	background-color:#EEEEEE;
+	
+	background-color: #FAECC5;
 }
 #bbsCreated dd {
 	float:left;
@@ -64,6 +65,7 @@
 	line-height:35px;
 	text-align:left;
 	padding-left:10px;
+	
 }
 
 #bbsCreated_content dt {
