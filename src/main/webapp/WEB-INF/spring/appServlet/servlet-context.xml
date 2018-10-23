@@ -39,6 +39,10 @@
 		<beans:property name="sessionTemplate" ref="sessionTemplate"></beans:property>
 	</beans:bean>
 	
+	<beans:bean id="mainDAO" class="com.spring.webproject.dao.MainDAO">
+		<beans:property name="sessionTemplate" ref="sessionTemplate"></beans:property>
+	</beans:bean>
+	
 	<!-- MyBatis -->
 	<beans:bean id="sessionTemplate" class="org.mybatis.spring.SqlSessionTemplate">
 		<beans:constructor-arg ref="sessionFactory"/>
@@ -60,6 +64,9 @@
 	<mvc:interceptors>
 		<mvc:interceptor>
 			<mvc:mapping path="/myShoppingMain.action"/>
+			<mvc:mapping path="/myShopping/pre_updateMyInfo.action"/>
+			<mvc:mapping path="/myShopping/updateMyInfo.action"/>
+			<mvc:mapping path="/myShopping/updatePwd.action"/>
 			<beans:bean class="com.spring.webproject.interceptor.Interceptor"/>
 		</mvc:interceptor>
 	</mvc:interceptors>

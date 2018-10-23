@@ -18,7 +18,7 @@
 
 <!-- 로그인 -->
 <select id="login" parameterType="map" resultType="com.spring.webproject.dto.UserDTO">
-	select userId,userName,to_char(birth,'YYY-MM-DD') birth, phone, email, emailReception, smsReception, nickName, zipCode, address1, address2, addTel, memberGrade 
+	select userId,userName,to_char(birth,'YYYY-MM-DD') birth, phone, email, emailReception, smsReception, nickName, zipCode, address1, address2, addTel, memberGrade 
 	from users where userId=#{userId} and userPwd=#{userPwd}
 </select>
 
@@ -47,5 +47,10 @@
 <update id="tempPwd" parameterType="map">
 	update users set userPwd=#{userPwd} where userId=#{userId}
 </update>
+
+<!-- 적립금 불러오기 -->
+<select id="getPointValue" parameterType="java.lang.String" resultType="int">
+	select nvl(sum(value),0) from point where userId=#{userId}
+</select>
 
 </mapper>
