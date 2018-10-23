@@ -1,3 +1,4 @@
+<%@page import="org.springframework.http.HttpRequest"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
@@ -5,12 +6,23 @@
 <%
 	request.setCharacterEncoding("UTF-8");
 	String cp = request.getContextPath();
+	
+	String searchKey = request.getParameter("searchKey");
+	String searchValue = request.getParameter("searchValue");
+	
 %>
+
+<jsp:include page="./admin_header.jsp" />
+
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+
+<link rel="stylesheet" href="<%=cp%>/resources/css/admin.css"
+	type="text/css" />
+
 <link rel="stylesheet"
 	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 <script
@@ -19,19 +31,105 @@
 	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 
 <script type="text/javascript">
-	function deleteUser() {
 
-		User = document.userList;
+	
+	var searchKey = "<%=searchKey%>";
+
+	var searchValue = "<%=searchValue%>";
+	
+	function makeURL(url){
+		
+		if (searchKey!=null || searchKey != "null") {
+			url += "&searchKey=" + searchKey;
+
+			if (searchValue != "null") {
+				url += "&searchValue=" + searchValue;
+			} else {
+				url = "admin_users.action?page=${pageMaker.cri.page}";
+			}
+
+		}
+		
+		return url;
+		
+	}
+	
+	function deleteUser(userId) {
+
+		var url = "admin_users_delete.action?userId="+userId+"&page=${pageMaker.cri.page}";
+
+		location.href=makeURL(url);
 
 	}
+	
+
+	$(document).ready(function(e) {
+
+		$(".searchKey").click(function() {
+			$("#search_concept").text($(this).text());
+
+			if ($(this).val() == 1) {
+				searchKey = "id";
+			} else if ($(this).val() == 2) {
+				searchKey = "name";
+			} else if ($(this).val() == 3) {
+				searchKey = "email";
+			} else if ($(this).val() == 4) {
+				searchKey = "nickname";
+			}
+		});
+
+		$(".form-control").change(function() {
+			searchValue = $(this).val();
+
+			var url = "admin_users.action?page=${pageMaker.cri.page}";
+
+			$(location).attr('href', makeURL(url));
+		});
+
+		$("button[name='but']").click(function() {
+			/* alert("key: "+ searchKey + "\nvalue: " + searchValue); */
+
+			$(location).attr('href', makeURL(url));
+
+		});
+
+	});
 </script>
 
 </head>
 
-<jsp:include page="./admin_header.jsp" />
+
 
 <body>
 
+
+	<div class="search_container" style="width: 1200px; margin: 20px auto;">
+		<div class="row">
+			<div class="col-xs-8 col-xs-offset-2">
+				<div class="input-group">
+					<div class="input-group-btn search-panel">
+						<button type="button" class="btn btn-default dropdown-toggle"
+							data-toggle="dropdown">
+							<span id="search_concept">---</span> <span class="caret"></span>
+						</button>
+						<ul class="dropdown-menu" role="menu">
+							<li style="cursor: pointer;" class="searchKey" value=1><a>아이디</a></li>
+							<li style="cursor: pointer;" class="searchKey" value=2><a>이름</a></li>
+							<li style="cursor: pointer;" class="searchKey" value=3><a>이메일</a></li>
+							<li style="cursor: pointer;" class="searchKey" value=4><a>닉네임</a></li>
+						</ul>
+					</div>
+					<input type="text" class="form-control" name="x"
+						placeholder="입력하세요."> <span class="input-group-btn">
+						<button class="btn btn-default" name="but" type="button">
+							<span class="glyphicon glyphicon-search"></span>
+						</button>
+					</span>
+				</div>
+			</div>
+		</div>
+	</div>
 
 
 	<div class="users_table">
@@ -65,8 +163,11 @@
 							<td>${user.phone }</td>
 							<td>${user.zipCode}${user.address1 }${user.address2 }</td>
 							<td>
-								<button type="button" class="btn"
-									onclick="location.href='<%=cp %>/admin_users_delete.action?userId=${user.userId }'">삭제</button>
+							<button type="button" class="btn" id="del_btn" onclick="deleteUser('${user.userId}')">삭제</button>
+							
+							<%--  	<button type="button" class="btn"
+									onclick="location.href='<%=cp %>/admin_users_delete.action?userId=${user.userId }&page=${pageMaker.cri.page}&searchKey=${pageMaker.cri.searchKey}&searchValue=${pageMaker.cri.searchValue}'">삭제</button>
+							 --%>
 							</td>
 						</tr>
 					</c:forEach>
@@ -80,16 +181,16 @@
 	<div style="display: table; margin: 0 auto;">
 		<ul class="pagination">
 			<c:if test="${pageMaker.pre }">
-				<li><a
-					href="<%=cp %>/admin_users.action?page=${pageMaker.startPage-1}">&lt;</a></li>
+				<li><a onclick="paging('<%=cp %>/admin_users.action?page=${pageMaker.startPage-1}')">&lt;</a></li>
 			</c:if>
 			<c:forEach begin="${pageMaker.startPage }"
 				end="${pageMaker.endPage }" var="idx">
-				<li><a href="<%=cp %>/admin_users.action?page=${idx}">${idx }</a></li>
+				<li><a
+					href="<%=cp %>/admin_users.action?page=${idx}&searchKey=${pageMaker.cri.searchKey}&searchValue=${pageMaker.cri.searchValue}">${idx }</a></li>
 			</c:forEach>
 			<c:if test="${pageMaker.nex }">
 				<li><a
-					href="<%=cp %>/admin_users.action?page=${pageMaker.endPage+1}">&gt;</a></li>
+					href="<%=cp %>/admin_users.action?page=${pageMaker.endPage+1}&searchKey=${pageMaker.cri.searchKey}&searchValue=${pageMaker.cri.searchValue}">&gt;</a></li>
 			</c:if>
 		</ul>
 	</div>

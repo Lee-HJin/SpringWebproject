@@ -31,6 +31,10 @@ from
 		A.userId = B.userId(+) 
 	</if>
 	
+	<if test="searchValue==''">
+		A.userId = B.userId(+) 
+	</if>
+	
 	<if test="searchKey=='id'">
 		A.userId = B.userId(+) and A.userId like '%${searchValue}%'
 	</if>

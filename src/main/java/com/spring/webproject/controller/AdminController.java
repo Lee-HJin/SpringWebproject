@@ -7,8 +7,10 @@ import javax.servlet.http.HttpServletRequest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.spring.webproject.dao.AdminUsersDAO;
 import com.spring.webproject.dto.AdminUsersDTO;
@@ -35,9 +37,6 @@ public class AdminController {
 		
 		List<AdminUsersDTO> userList = dao.getUserList(cri);
 		
-		System.out.println(dao.getTotalCount(cri));
-		System.out.println(userList.size());
-		
 		PageMaker pageMaker = new PageMaker(cri);
 		pageMaker.setTotalDataCount(dao.getTotalCount(cri));
 		
@@ -48,11 +47,24 @@ public class AdminController {
 	}
 	
 	@RequestMapping(value="/admin_users_delete.action",method= {RequestMethod.GET,RequestMethod.POST})
-	public String usersDel(HttpServletRequest request) {
+	public String usersDel(HttpServletRequest request, SearchCriteria cri) {
 		
 		dao.delUser((String)request.getParameter("userId"));
 		
-		return "redirect:/admin_users.action";
+		
+		String url = "/admin_users.action?page="+cri.getPage();
+		
+		if(cri.getSearchKey()!=null || cri.getSearchKey()=="") {
+			url += "&searchKey="+cri.getSearchKey();
+			if(cri.getSearchValue()!=null) {
+				url +="&searchValue="+cri.getSearchValue();
+			}else {
+				url = "/admin_users.action";
+			}
+		}
+		
+		
+		return "redirect:/"+url;
 	}
 	
 }
