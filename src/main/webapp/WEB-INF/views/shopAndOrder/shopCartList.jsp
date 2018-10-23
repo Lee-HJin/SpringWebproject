@@ -868,9 +868,9 @@ $(document).ready(function(){
                 
                 
                 <ul class="tab_cart_menu">
-                	<li class="on"><a href="/front/order/shopCartList.do" class="cart_link tab_bandi">일반 상품</a></li>
-                	<li><a href="/front/order/shopCartList.do?cartType=03" class="cart_link tab_bookself">북셀프 상품</a></li>
-                	<li class="alt"><a href="/front/order/shopCartList.do?cartType=04" class="cart_link tab_ebook">eBook 상품</a></li>
+                	<li class="on"><a href="/webproject/shopCartList.do" class="cart_link tab_bandi">일반 상품</a></li>
+                	<li><a href="/webproject//shopCartList.do?cartType=03" class="cart_link tab_bookself">북셀프 상품</a></li>
+                	<li class="alt"><a href="/webproject//shopCartList.do?cartType=04" class="cart_link tab_ebook">eBook 상품</a></li>
                 </ul>
                 <div class="cart_bookself_info"><a href="javascript:popLayer('bookSelfInfo')"><img src="/webproject/resources/images/searchN/btn_bookself_info.png" alt="주문 후 매장에서 수령 | 북셀프 안내"></a></div>
                 <!-- 북셀프 안내  LAYER -->

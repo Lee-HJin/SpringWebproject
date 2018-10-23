@@ -82,4 +82,9 @@ public class LoginDAO {
 		sessionTemplate.update("loginMapper.tempPwd",params);
 		
 	}
+	
+	public int getPointValue(String userId) {
+	
+		return sessionTemplate.selectOne("loginMapper.getPointValue",userId);
+	}
 }

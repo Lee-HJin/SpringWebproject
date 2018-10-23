@@ -38,7 +38,15 @@ public class LoginController {
 		UserDTO dto = dao.login(userId, userPwd);
 
 		if(dto!=null) {	//로그인 성공
+			
+			//회원 적립금 정보 불러오기
+			int pointValue = dao.getPointValue(userId);	
+			
+			//회원 등급 정보 불러오기
+			
+			//세션 - dto, pointValue 올리기
 			request.getSession().setAttribute("userInfo", dto);
+			request.getSession().setAttribute("pointValue", pointValue);
 			request.getSession().removeAttribute("message");
 			returnUrl = "redirect:/main.action";
 

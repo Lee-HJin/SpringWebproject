@@ -7,6 +7,73 @@ $(document).ready(function(){
 		}
 	});
 	
+	//셀렉트 박스 날짜 지정(기본값)
+	setDefaultDate();
+	
+	//날짜 셀렉트 박스 onchange 이벤트 발생시 
+	$('#fromYear').on('change', function(){	//검색 시작 날짜 연도 변경시
+		var fromYear = $('#fromYear').val();
+		var fromMonth = $('#fromMonth').val();
+		var fromDay = $('#fromDay').val();
+		var fromLastDay = getDays(fromYear, fromMonth);
+
+		$('#fromDay').empty();
+		for(var i=1;i<fromLastDay+1;i++){
+			$('#fromDay').append('<option value="' + i + '">' + i + '</option>');
+		}
+		$('#fromDay').val(fromDay).attr("selected","selected");
+	});
+	
+	$('#toYear').on('change', function(){	//검색 종료 날짜 연도 변경시
+		var toYear = $('#toYear').val();
+		var toMonth = $('#toMonth').val();
+		var toDay = $('#toDay').val();
+		var toLastDay = getDays(toYear, toMonth);
+
+		$('#toDay').empty();
+		for(var i=1;i<toLastDay+1;i++){
+			$('#toDay').append('<option value="' + i + '">' + i + '</option>');	
+		}
+		$('#toDay').val(toDay).attr("selected","selected");
+		
+	});
+	
+	$('#fromMonth').on('change', function(){	//검색 시작 날짜 월 변경시
+		var fromYear = $('#fromYear').val();
+		var fromMonth = $('#fromMonth').val();
+		var fromDay = $('#fromDay').val();
+		var fromLastDay = getDays(fromYear, fromMonth);
+
+		$('#fromDay').empty();
+		for(var i=1;i<fromLastDay+1;i++){
+			$('#fromDay').append('<option value="' + i + '">' + i + '</option>');
+		}
+		$('#fromDay').val(fromDay).attr("selected","selected");
+	});
+	
+	$('#toMonth').on('change', function(){	//검색 종료 날짜 월 변경시
+		var toYear = $('#toYear').val();
+		var toMonth = $('#toMonth').val();
+		var toDay = $('#toDay').val();
+		var toLastDay = getDays(toYear, toMonth);
+
+		$('#toDay').empty();
+		for(var i=1;i<toLastDay+1;i++){
+			$('#toDay').append('<option value="' + i + '">' + i + '</option>');	
+		}
+		$('#toDay').val(toDay).attr("selected","selected");
+		
+	});
+	
+	
+	
+	//$("#paper_type option:selected").text();
+	//$("#print_type option:selected").val();
+	
+
+
+	
+	
 	//숫자만 입력할 수 있도록
 	$('.onlyNum_2').on('keyup',function(){
 		$(this).val( $(this).val().replace( /[^0-9]/g, '' ) );
@@ -94,8 +161,6 @@ $(document).ready(function(){
 	});
 	
 });
-
-
 
 //회원정보수정 저장
 function updateUserInfo(){
@@ -289,6 +354,241 @@ function updatePwd(){
 	f.action = "updatePwd_ok.action";
 		
 	f.submit();
+}
+
+//말일 구하기
+function getDays(year, month){
+	
+	var day = 30;
+	
+	if(year%400==0 || year%4 ==0){	//윤년
+		if(month==2){
+			day = 29;
+		}
+		if( (month>7 && month%2==0) || (month<=7 && month%2==1) ){
+			day = 31;
+		}
+	}
+	else{	//평년
+		if(month==2){
+			day = 28;
+		}
+		if( (month>7 && month%2==0) || (month<=7 && month%2==1) ){
+			day = 31;
+		}
+	}
+	
+	return day;
+	
+}
+
+//날짜 select option 기본값 입력 (조회기간: 오늘로부터 한달)
+function setDefaultDate(){
+	
+	//조회 시작 날짜
+	var fromDate = new Date();	
+	
+	var fromYear = fromDate.getFullYear();
+	var fromMonth = (fromDate.getMonth()+1)-1;
+	var fromDay = fromDate.getDate();
+	var fromLastDay = getDays(fromYear, fromMonth);
+	
+	//조회 끝 날짜
+	today = new Date();	
+	
+	var toYear = today.getFullYear();
+	var toMonth = today.getMonth()+1;
+	var toDay = today.getDate();
+	var toLastDay =  getDays(toYear, toMonth);
+	
+	//셀렉트 박스 element가져와서 옵션 넣기
+	var select = document.getElementById('fromYear');
+	for(var i=fromYear-10;i<fromYear+1;i++){
+		var opt = document.createElement('option');
+		opt.value = i;
+		opt.innerHTML = i;
+		if(i==fromYear){
+			opt.selected = 'selected';
+		}
+		select.appendChild(opt);
+	}
+	
+	select = document.getElementById('fromMonth');
+	for(var i=1;i<13;i++){
+		var opt = document.createElement('option');
+		opt.value = i;
+		opt.innerHTML = i;
+		if(i==fromMonth){
+			opt.selected = 'selected';
+		}
+		select.appendChild(opt);
+	}
+	
+	select = document.getElementById('fromDay');
+	for(var i=1;i<=fromLastDay;i++){
+		var opt = document.createElement('option');
+		opt.value = i;
+		opt.innerHTML = i;
+		if(i==fromDay){
+			opt.selected = 'selected';
+		}
+		select.appendChild(opt);
+	}	
+	
+	var select = document.getElementById('toYear');
+	for(var i=toYear-10;i<toYear+1;i++){
+		var opt = document.createElement('option');
+		opt.value = i;
+		opt.innerHTML = i;
+		if(i==toYear){
+			opt.selected = 'selected';
+		}
+		select.appendChild(opt);
+	}
+	
+	select = document.getElementById('toMonth');
+	for(var i=1;i<13;i++){
+		var opt = document.createElement('option');
+		opt.value = i;
+		opt.innerHTML = i;
+		if(i==toMonth){
+			opt.selected = 'selected';
+		}
+		select.appendChild(opt);
+	}
+	
+	select = document.getElementById('toDay');
+	for(var i=1;i<=toLastDay;i++){
+		var opt = document.createElement('option');
+		opt.value = i;
+		opt.innerHTML = i;
+		if(i==toDay){
+			opt.selected = 'selected';
+		}
+		select.appendChild(opt);
+	}
+	
+	
+}
+
+//최근15일  1개월  3개월  6개월 조회
+function setDate(month, day){
+	
+	var today, fromYear, fromMonth, fromDay, fromLastDay = '';
+	var toYear, toMonth, toDay, toLastDay = '';
+	
+	
+	//최근15일 조회
+	if(month<1){
+		
+		//조회 시작 날짜
+		today = new Date();
+		
+		fromYear = today.getFullYear();
+		fromMonth = today.getMonth()+1;
+		fromDay = today.getDate()-day;
+		fromLastDay = getDays(fromYear, fromMonth);
+		
+		//조회 끝 날짜
+		today = new Date();	
+		
+		toYear = today.getFullYear();
+		toMonth = today.getMonth()+1;
+		toDay = today.getDate();
+		toLastDay =  getDays(toYear, toMonth);
+	}
+	else{	//최근 1개월,3개월, 6개월 조회
+		
+		//조회 시작 날짜
+		today = new Date();
+		
+		fromYear = today.getFullYear();
+		fromMonth = (today.getMonth()+1)-month;
+		fromDay = today.getDate()-day;
+		fromLastDay = getDays(fromYear, fromMonth);
+		
+		//조회 끝 날짜
+		today = new Date();	
+		
+		toYear = today.getFullYear();
+		toMonth = today.getMonth()+1;
+		toDay = today.getDate();
+		toLastDay =  getDays(toYear, toMonth);
+	}
+	
+	//셀렉트 박스 element가져와서 옵션 넣기
+	var select = document.getElementById('fromYear');
+	select.options.length = 0;	
+	for(var i=fromYear-10;i<fromYear+1;i++){
+		var opt = document.createElement('option');
+		opt.value = i;
+		opt.innerHTML = i;
+		if(i==fromYear){
+			opt.selected = 'selected';
+		}
+		select.appendChild(opt);
+	}
+	
+	select = document.getElementById('fromMonth');
+	select.options.length = 0;
+	for(var i=1;i<13;i++){
+		var opt = document.createElement('option');
+		opt.value = i;
+		opt.innerHTML = i;
+		if(i==fromMonth){
+			opt.selected = 'selected';
+		}
+		select.appendChild(opt);
+	}
+	
+	select = document.getElementById('fromDay');
+	select.options.length = 0;
+	for(var i=1;i<=fromLastDay;i++){
+		var opt = document.createElement('option');
+		opt.value = i;
+		opt.innerHTML = i;
+		if(i==fromDay){
+			opt.selected = 'selected';
+		}
+		select.appendChild(opt);
+	}	
+	
+	var select = document.getElementById('toYear');
+	select.options.length = 0;
+	for(var i=toYear-10;i<toYear+1;i++){
+		var opt = document.createElement('option');
+		opt.value = i;
+		opt.innerHTML = i;
+		if(i==toYear){
+			opt.selected = 'selected';
+		}
+		select.appendChild(opt);
+	}
+	
+	select = document.getElementById('toMonth');
+	select.options.length = 0;
+	for(var i=1;i<13;i++){
+		var opt = document.createElement('option');
+		opt.value = i;
+		opt.innerHTML = i;
+		if(i==toMonth){
+			opt.selected = 'selected';
+		}
+		select.appendChild(opt);
+	}
+	
+	select = document.getElementById('toDay');
+	select.options.length = 0;
+	for(var i=1;i<=toLastDay;i++){
+		var opt = document.createElement('option');
+		opt.value = i;
+		opt.innerHTML = i;
+		if(i==toDay){
+			opt.selected = 'selected';
+		}
+		select.appendChild(opt);
+	}	
+	
 }
 
 
