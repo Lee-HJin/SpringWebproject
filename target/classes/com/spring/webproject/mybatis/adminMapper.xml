@@ -1,0 +1,188 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="adminMapper">
+
+<!-- user -->
+
+<select id="selectAll" parameterType="map" resultType="com.spring.webproject.dto.AdminUsersDTO">
+
+select 
+  A.userId, A.userPwd, A.userName, A.birth, A.phone, A.email, A.emailReception, A.smsReception,
+	A.nickName, A.ZipCode, A.address1, A.address2, A.addTel, A.memberGrade, A.point
+from
+(select 
+  rownum as rnum, A.userId, A.userPwd, A.userName, A.birth, A.phone, A.email, A.emailReception, A.smsReception,
+	A.nickName, A.ZipCode, A.address1, A.address2, A.addTel, A.memberGrade, A.point
+from
+(select 
+	A.userId, A.userPwd, A.userName, A.birth, A.phone, A.email, A.emailReception, A.smsReception,
+	A.nickName, A.ZipCode, A.address1, A.address2, A.addTel, A.memberGrade, B.point
+from 
+	users A,
+	(select A.userId userId, sum(B.value) point from 
+		(select * from users) A,
+		(select * from point) B
+		where A.userId = B.userId
+		GROUP BY A.USERID) B
+<where>
+	
+	<if test="searchValue==null">
+		A.userId = B.userId(+) 
+	</if>
+	
+	<if test="searchValue==''">
+		A.userId = B.userId(+) 
+	</if>
+	
+	<if test="searchKey=='id'">
+		A.userId = B.userId(+) and A.userId like '%${searchValue}%'
+	</if>
+	
+	<if test="searchKey=='name'">
+		A.userId = B.userId(+) and A.userName like '%${searchValue}%'
+	</if>
+	
+	<if test="searchKey=='email'">
+		A.userId = B.userId(+) and A.email like '%${searchValue}%'
+	</if>
+	
+	<if test="searchKey=='nickname'">
+		A.userId = B.userId(+) and A.nickname like '%${searchValue}%'
+	</if>
+</where>
+
+order by A.userId desc) A
+<![CDATA[ 
+where rownum<=#{end})A
+where A.rnum>=#{start}
+]]>
+
+</select>
+
+<select id="getUserTotalCount" parameterType="map" resultType="int">
+
+	select count(userid) from users
+	
+	<where>
+	
+	<if test="searchKey=='id'">
+		userId like '%${searchValue}%'
+	</if>
+	
+	<if test="searchKey=='name'">
+		userName like '%${searchValue}%'
+	</if>
+	
+	<if test="searchKey=='email'">
+		email like '%${searchValue}%'
+	</if>
+	
+	<if test="searchKey=='nickname'">
+		nickname like '%${searchValue}%'
+	</if>
+</where>
+	
+</select>
+
+<delete id="deleteUser" parameterType="java.lang.String"> 
+	delete 
+	from 
+		users
+	where
+		userId = #{userId}
+</delete>
+
+
+<!-- user end -->
+
+<!-- author -->
+
+<select id="authorList" parameterType="map" resultType="com.spring.webproject.dto.AdminAuthorDTO">
+select authorid,authorname,nationality, category, introduction, image from (
+	select rownum as rnum, authorid, authorname, nationality, category, introduction, image
+	from(
+		select authorid, authorname, nationality, category, introduction, image 
+		from author
+		where authorName like '%${searchValue}%' order by authorName) A
+<![CDATA[
+	where rownum <=#{end})B
+where b.rnum>=#{start}
+]]>
+</select>
+
+<select id="getAuthorTotalCount" parameterType="map" resultType="int">
+	
+	select 
+		count(authorId) 
+	from 
+		author
+	where
+		authorName like '%${searchValue}%'
+	
+</select>
+
+
+<!-- author end -->
+
+<!-- translator -->
+
+<select id="translatorList" parameterType="map" resultType="com.spring.webproject.dto.AdminTranslatorDTO">
+select translatorid,translatorname,nationality, category, introduction, image from (
+	select rownum as rnum, translatorid, translatorname, nationality, category, introduction, image
+	from(
+		select translatorid, translatorname, nationality, category, introduction, image 
+		from translator
+		where translatorName like '%${searchValue}%' order by translatorName) A
+<![CDATA[
+	where rownum <=#{end})B
+where b.rnum>=#{start}
+]]>
+</select>
+
+<select id="getTranslatorTotalCount" parameterType="map" resultType="int">
+	
+	select 
+		count(translatorId) 
+	from 
+		translator
+	where
+		translatorName like '%${searchValue}%'
+	
+</select>
+
+
+<!-- warehouse end -->
+
+
+<select id="warehouseList" parameterType="map" resultType="com.spring.webproject.dto.AdminWarehouseDTO">
+select warehouseid, warehousename, lat, lng, addr, time, intro, waybus, waysub from (
+	select rownum as rnum, warehouseid, warehousename, lat, lng, addr, time, intro, waybus, waysub
+	from(
+		select warehouseid, warehousename, lat, lng, addr, time, intro, waybus, waysub 
+		from warehouse
+		where warehouseName like '%${searchValue}%' order by warehouseName) A
+<![CDATA[
+	where rownum <=#{end})B
+where b.rnum>=#{start}
+]]>
+</select>
+
+<select id="getWarehouseTotalCount" parameterType="map" resultType="int">
+	
+	select 
+		count(warehouseId) 
+	from 
+		warehouse
+	where
+		warehouseName like '%${searchValue}%'
+	
+</select>
+
+
+<!-- warehouse end -->
+
+
+</mapper>

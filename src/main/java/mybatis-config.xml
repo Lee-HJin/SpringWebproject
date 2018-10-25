@@ -30,7 +30,7 @@
 
 <mappers>
 	<mapper resource="com/spring/webproject/mybatis/loginMapper.xml"/>
-	<mapper resource="com/spring/webproject/mybatis/adminUsersMapper.xml"/>
+	<mapper resource="com/spring/webproject/mybatis/adminMapper.xml"/>
 </mappers>
 
 
