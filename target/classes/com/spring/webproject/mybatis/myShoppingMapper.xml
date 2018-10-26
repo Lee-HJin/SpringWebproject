@@ -156,5 +156,29 @@ select * from (select rownum rnum, data.* from (select to_char(savingdate,'YYYY-
 	select orderid, orderbooks.isbn, booktitle, quantity, bookprice, (bookprice*0.05)as point from orderbooks, books where orderbooks.isbn=books.isbn and orderid=#{orderId}
 </select>
 
+<!-- 주문 상세내역 -->
+<select id="getOrderDetailInfo" parameterType="java.lang.String" resultType="com.spring.webproject.dto.OrderListDTO">
+	select orderId, orderPrice, point, shipmentsStatusCode, handlingDate, to_char(expectedDate,'YYYY-MM-DD') expectedDate, status, zipCode, address1, address2  from orderList where orderId=#{orderId}
+</select>
+
+<!-- 주문 취소 -->
+<update id="cancelOrder" parameterType="java.lang.String">
+	update orders set orderStatusCode=7 where orderId=#{orderId}
+</update>
+
+<!-- 반품 신청 -->
+<update id="returnOrder" parameterType="java.lang.String">
+	update orders set orderStatusCode=2 where orderId=#{orderId}
+</update>
+
+<!-- 구매 완료 -->
+<update id="confirmOrder" parameterType="java.lang.String">
+	update orders set orderStatusCode=6 where orderId=#{orderId}
+</update>
+
+<!-- 교환 신청 -->
+<update id="exchangeOrder" parameterType="java.lang.String">
+	update orders set orderStatusCode=4 where orderId=#{orderId}
+</update>
 
 </mapper>

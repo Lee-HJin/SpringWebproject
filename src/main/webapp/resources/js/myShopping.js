@@ -638,6 +638,30 @@ function getList(pageNum, fromDate, toDate, searchValue){
 	});
 	
 }
+function getRetList(pageNum, fromDate, toDate, mode){
+	
+	var params = 'pageNum=' + pageNum;
+	
+	if(fromDate!=''){
+		params += '&fromDate=' + fromDate + '&toDate=' + toDate;
+	}
+	if(mode!=''){
+		params += '&pageNum=' + pageNum + '&mode=' + mode;
+	}
+
+	jQuery.ajax({
+		url:"getRetList.action",
+		data:params,
+		type:"POST",
+		success:function(data){
+			$('#myRetLists').html(data);	
+		},
+		error:function(e){
+			alert(e.responseText);
+		}	
+	});
+	
+}
 
 function getPointList(pageNum, fromDate, toDate, mode){
 	
@@ -673,16 +697,63 @@ function checkValue(){
 	return true;
 }
 
-/*//적립금 조회 - 내역별 조회
-function selectMode(option){
+//주문 취소
+function cancelOrder(orderId){
+	var check = confirm("정말 주문을 취소하시겠습니까?");
+	var url = "cancelOrder.action?orderId=" + orderId; 
 	
-	var mode = option.value;
+	if(check){
+		location.href= url;
+	}
+	else{
+		return;
+	}
+}
+
+//반품 신청
+function returnOrder(orderId){
+	var check = confirm("주문하신 상품을 반품하시겠습니까?");
+	var url = "returnOrder.action?orderId=" + orderId; 
 	
-	if(mode=='all'){
-		
+	if(check){
+		location.href= url;
 	}
-	else if(mode==save){
-		
+	else{
+		return;
 	}
-}*/
+}
+
+//구매 완료
+function confirmOrder(orderId){
+	
+	var txt = "주문하신 상품을 구매완료하시겠습니까?\n";
+	txt += " '구매완료'가 되면 반품/교환/주문취소는 불가능합니다.";
+	var check = confirm(txt);
+	var url = "confirmOrder.action?orderId=" + orderId;
+	
+	if(check){
+		location.href= url;
+	}
+	else{
+		return;
+	}
+	
+}
+
+//교환 신청
+function exchangeOrder(orderId){
+	var check = confirm("주문하신 상품을 교환하시겠습니까?");
+	var url = "exchangeOrder.action?orderId=" + orderId;
+	
+	if(check){
+		location.href= url;
+	}
+	else{
+		return;
+	}
+}
+
+
+
+
 

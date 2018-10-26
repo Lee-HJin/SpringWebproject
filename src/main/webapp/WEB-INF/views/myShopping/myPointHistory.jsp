@@ -155,7 +155,7 @@
 		</div>
 		<div class="point_box" style="margin-left: 0px;">
 			소멸 예정 적립금 (60일 이내) : <span class="point_red"><fmt:formatNumber value="${exPoint }" pattern="#,###"/>원</span> 
-			<input type="button" value="자세히보기" name="point_more" id="point_more" class="point_more">
+			<input type="button" value="자세히보기" name="point_more" id="point_more" class="point_more" onclick="javascript:location='<%=cp%>/myShopping/expPointDetail.action';">
 		</div>
 		
 		<span></span>
