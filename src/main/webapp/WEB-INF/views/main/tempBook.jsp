@@ -6,8 +6,6 @@
 	String cp = request.getContextPath();
 
 %>
-    
-    
 <!DOCTYPE html>
 <html>
 <head>
@@ -15,7 +13,6 @@
 <title>Insert title here</title>
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-
 
 <script type="text/javascript">
 	
@@ -38,29 +35,17 @@
 	
 	function addCookie(cValue){
 		
-		alert(cValue + 'cval');
 		var items = getCookie('book');
 		var maxItemNum = 10;
-		alert(items);
 		if(items){
 			var itemArray=items.split(',');
-			
-			alert(itemArray[0] + 'array0');
-			alert(itemArray[1] + 'array1');
-			alert(itemArray[2]+ 'array2');
-			alert(itemArray[3]+ 'array3');
-			alert(itemArray[4]+ 'array4');
-			alert(itemArray[5]+ 'array5');
 
-			alert(itemArray.indexOf(cValue));
-			
-			if(itemArray.indexOf(cValue)!=-1){//중복시 기존 제거 후 맨앞으로 가져옴
+			if(itemArray.indexOf('${isbn}')!=-1){//중복시 기존 제거 후 맨앞으로 가져옴
 				alert("중복");
 				var idx = itemArray.findIndex(function(item) {
-					return item === cValue;
+					return item === '${isbn}';
 				});		
-				
-				alert(idx);
+			
 				itemArray.splice(idx,1);
 		
 				itemArray.unshift(cValue);

@@ -6,15 +6,15 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
 <ul class="rc_books_list">
-	<c:forEach var="cate" items="${lst }">
+	<c:forEach var="rc" items="${lst }">
 	<li>
 		<div class="rb_image">
 			<a href="javascript://">
-				<img src="<%=cp%>/resources/image/book/${cate.bookImage}">
+				<img src="<%=cp%>/resources/image/book/${rc.bookImage}">
 			</a>
 			<dl class="rb_title">
-				<dt>${cate.bookTitle }</dt>
-				<dd>${cate.authorName }</dd>
+				<dt>${rc.bookTitle }</dt>
+				<dd>${rc.authorName }</dd>
 			</dl>
 		</div>
 	</li>

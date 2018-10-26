@@ -21,7 +21,7 @@ public class MainDAO {
 	public List<MainDTO> similCate(String isbn){
 		
 		List<MainDTO> lst = sessionTemplate.selectList("mainMapper.similCate",isbn);
-		
+
 		Random rd = new Random();
 		int[] num = new int[3];
 		
@@ -80,13 +80,28 @@ public class MainDAO {
 		return lst;
 	}
 	
-	
 	//임시 책 정보
 	public MainDTO tempBook(String isbn){
 		
 		MainDTO dto = sessionTemplate.selectOne("mainMapper.tempBook",isbn);
 		
 		return dto;
+	}
+	
+	//오늘 본 상품
+	public List<MainDTO> todayView(String ck){
+		
+		List<MainDTO> lst = new ArrayList<MainDTO>();
+		MainDTO dto;
+		String[] isbn = ck.split(",");
+		System.out.println(isbn);
+		for(int i=0;i<isbn.length;i++) {
+			
+			dto = sessionTemplate.selectOne("mainMapper.todayView",isbn[i]);
+			System.out.println(isbn[i]);
+			lst.add(dto);
+		}
+		return lst;
 	}
 		
 }
