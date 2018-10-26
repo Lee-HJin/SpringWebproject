@@ -30,6 +30,9 @@
 
 <mappers>
 	<mapper resource="com/spring/webproject/mybatis/loginMapper.xml"/>
+
+	<mapper resource="com/spring/webproject/mybatis/adminMapper.xml"/>
+
 	<mapper resource="com/spring/webproject/mybatis/myShoppingMapper.xml"/>
 
 	<mapper resource="com/spring/webproject/mybatis/bookMapper.xml" />
