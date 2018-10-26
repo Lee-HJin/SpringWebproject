@@ -47,6 +47,10 @@
 		<beans:property name="sqlSessionTemplate" ref="sessionTemplate"></beans:property>
 	</beans:bean>
 	
+	<beans:bean id="searchDAO" class="com.spring.webproject.dao.SearchDAO">
+		<beans:property name="sqlSessionTemplate" ref="sessionTemplate"/>
+	</beans:bean>
+	
 	<!-- MyBatis -->
 	<beans:bean id="sessionTemplate" class="org.mybatis.spring.SqlSessionTemplate">
 		<beans:constructor-arg ref="sessionFactory"/>
