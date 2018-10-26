@@ -105,7 +105,7 @@
 
 <!-- 소멸예정 적립금 조회 -->
 <select id="getExPoint" parameterType="java.lang.String" resultType="int">
-	select nvl(sum(value),0) from point where userId=#{userId} and <![CDATA[expirationdate>sysdate and expirationdate<=sysdate+60]]>
+	select nvl(sum(value),0) from point where userId=#{userId} and <![CDATA[expirationdate<=sysdate+60]]>
 </select>
 
 <!-- 적립금 리스트 count -->
@@ -180,5 +180,12 @@ select * from (select rownum rnum, data.* from (select to_char(savingdate,'YYYY-
 <update id="exchangeOrder" parameterType="java.lang.String">
 	update orders set orderStatusCode=4 where orderId=#{orderId}
 </update>
+
+<!-- 소멸 예정 포인트 리스트 -->
+<select id="expPointList" parameterType="map" resultType="com.spring.webproject.dto.PointDTO">
+select * from (select rownum rnum, data.userid, to_char(data.savingdate,'YYYY-MM-DD')savingdate,to_char(data.expirationdate,'YYYY-MM-DD')expirationdate,orderid,value,pointitem  from (select userid, savingdate, expirationdate,orderid,value,pointitem from point where userId=#{userId} <![CDATA[and expirationdate<=sysdate+60]]>
+minus(select a.userid,a.savingdate,a.expirationdate,a.orderid,a.value,a.pointitem from point a, point b where a.orderid=b.orderid and a.value+b.value=0 and a.userId=${userId}
+union select a.userid,a.savingdate,a.expirationdate,a.orderid,a.value,a.pointitem from point a, point b where a.savingdate=b.savingdate and a.expirationdate=b.expirationdate and a.value+b.value=0 and a.userId=#{userId}))data order by expirationdate) <![CDATA[where rnum>=#{start} and rnum<=#{end}]]>
+</select>
 
 </mapper>
