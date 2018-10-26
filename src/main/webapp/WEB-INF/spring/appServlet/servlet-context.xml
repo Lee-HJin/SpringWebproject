@@ -30,6 +30,7 @@
 	<!-- 수정 -->
 	
 	<beans:bean id ="myUtil" class ="com.spring.webproject.util.MyUtil"/>
+	<beans:bean id ="ajaxPaging" class ="com.spring.webproject.util.AjaxPageIndex"/>
 
 	<beans:bean id="loginDAO" class="com.spring.webproject.dao.LoginDAO">
 		<beans:property name="sessionTemplate" ref="sessionTemplate"></beans:property>
@@ -39,6 +40,9 @@
 		<beans:property name="sessionTemplate" ref="sessionTemplate"></beans:property>
 	</beans:bean>
 	
+
+	<beans:bean id="booksDAO" class="com.spring.webproject.dao.BooksDAO"/>
+
 	<beans:bean id="mainDAO" class="com.spring.webproject.dao.MainDAO">
 		<beans:property name="sessionTemplate" ref="sessionTemplate"></beans:property>
 	</beans:bean>

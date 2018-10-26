@@ -1,5 +1,12 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+
+<%
+	request.setCharacterEncoding("UTF-8");
+	String cp = request.getContextPath();
+%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -111,16 +118,16 @@ body {
 	display: none;
 }
 
-
 img {
 	vertical-align: middle;
 }
 
 /* Slideshow container */
 .slideshow-container {
-	max-width: 1000px;
+	max-width: 60%;
 	position: relative;
 	margin: auto;
+	position: relative;
 }
 
 /* Next & previous buttons */
@@ -686,39 +693,27 @@ bbbody {
 
 
 	<div class="slideshow-container">
+		<c:forEach var="dto" items="${lists }">
+			<div class="mySlides fade" id="ex${dto.rnum }" align="center">
+				<img alt="${dto.bookImage }" style="height: 700px;"
+					src="<%=cp %>/resources/book_image/sample/${dto.bookImage}">
+			</div>
 
-		<div class="mySlides fade" id = "ex1" align="center">
-			<div class="numbertext">1 / 3</div>
-			<img src="/springwebview/resources/images/sample/hyoju.jpg"
-				style="width: 80%">
+			
+		
+		</c:forEach>
+	
 
-		</div>
-
-		<div class="mySlides fade" id = "ex2" align="center">
-			<div class="numbertext">2 / 3</div>
-			<img src="/springwebview/resources/images/sample/nakyung.jpg"
-				style="width: 80%">
-
-		</div>
-
-		<div class="mySlides fade" id = "ex3" align="center">
-			<div class="numbertext">3 / 3</div>
-			<img src="/springwebview/resources/images/sample/suzi.jpg"
-				style="width: 80%">
-
-		</div>
 
 		<a class="prev" onclick="plusSlides(-1)">&#10094;</a> <a class="next"
 			onclick="plusSlides(1)">&#10095;</a>
+		<c:forEach var="dto3" items="lists">
 
+		</c:forEach>
 	</div>
 	<br>
 
-	<div style="text-align: center">
-		<span class="dot" onclick="currentSlide(1)"></span> <span class="dot"
-			onclick="currentSlide(2)"></span> <span class="dot"
-			onclick="currentSlide(3)"></span>
-	</div>
+
 
 	<script>
 		var slideIndex = 1;
@@ -770,27 +765,30 @@ bbbody {
 				<p class="toolLine1"></p>
 				<div class="titBox">
 					<div class="conTit">
-						<div class="title">숨은 골짜기의 단풍나무 한 그루</div>
-						<div class="titleS2 t_11">윤영수 저 | 열림원 | 2018.08.10</div>
+						<div class="title">${dto2.bookTitle }</div>
+						<div class="titleS2 t_11">${dto2.authorname }저<br /> <br />
+							${dto2.publisher } <br /> <br /> ${dto2.publishDate }
+						</div>
 					</div>
 				</div>
 				<div class="btnA">
 
-					<a class="bookCart" href="javascript:bookCart('4189934');"> <span>쇼핑카트</span>
+					<a class="bookCart" href="javascript:bookCart('${dto2.isbn }');">
+						<span>쇼핑카트</span>
 					</a>
 
 					<!-- 판매중지, 품절, 절판 -->
 
-					<a class="wishList" href="javascript:wishList('4189934');"> <span>위시리스트</span>
+					<a class="wishList" href="javascript:wishList('${dto2.isbn }');">
+						<span>위시리스트</span>
 					</a> <a class="myLibrary"
-						href="javascript:opener.jutil.bandi.blogAddMyLibrary('4189934');">
+						href="javascript:opener.jutil.bandi.blogAddMyLibrary('${dto2.isbn }');">
 						<span>서재에 담기</span>
 					</a> <a class="bookInfo" target="_blank"
-						href="http://www.bandinlunis.com/front/product/detailProduct.do?prodId=4189934">
-						<span>상세정보</span>
+						href="<%=cp %>/?isbn=${dto2.isbn }"> <span>상세정보</span>
 					</a>
 				</div>
-				
+
 			</div>
 		</div>
 	</div>

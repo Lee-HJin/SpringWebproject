@@ -3,6 +3,7 @@
 <% 
 	request.setCharacterEncoding("UTF-8");
 	String cp = request.getContextPath();
+	String mode = request.getParameter("mode");
 	
 %>
 <!DOCTYPE html>
@@ -17,8 +18,20 @@
 	
 	<script type="text/javascript">
 	
+	$('document').ready(function(){
+		
+		//엔터 치면 다음단계로
+		$('#pre_myinfo_pwd').keypress(function(evt){
+			if(evt.keyCode==13){
+				checkPwd('${mode }');
+			}
+		});
+
+	});
+	
+	
 	//회원정보수정 - 비밀번호 재확인
-	function checkPwd(userId){
+	function checkPwd(mode){
 		
 		var f = document.checkPwdForm;
 		
@@ -31,7 +44,7 @@
 		}
 		f.userPwd.value = pwd;
 		
-		f.action = "<%=cp%>/myShopping/pre_updateMyInfo_ok.action";
+		f.action = "<%=cp%>/myShopping/pre_updateMyInfo_ok.action?mode=" + mode;
 		
 		f.submit();
 	}
@@ -59,7 +72,13 @@
 	<div style="border-bottom: 1px solid #e1e1e1; font-size: 13pt; font-weight: bold; padding-bottom: 10px;">회원정보수정</div>
 	
 	<div class="pre_myinfo_div">
-		고객님의 정보를 안전하게 보호하기 위해 회원정보 수정 전 <b>비밀번호</b>를 입력해주시기 바랍니다.<br/><br/>
+		<c:if test="${mode=='update' }">
+			고객님의 정보를 안전하게 보호하기 위해 회원정보 수정 전 <b>비밀번호</b>를 입력해주시기 바랍니다.<br/><br/>
+		</c:if>
+		<c:if test="${mode=='out' }">
+			고객님의 정보를 안전하게 보호하기 위해 회원탈퇴 전 <b>비밀번호</b>를 입력해주시기 바랍니다.<br/><br/>
+		</c:if>
+		
 		<span class="pre_myinfo_msg">${pwdErrMessage }</span>
 		<form action="" name="checkPwdForm" method="post">
 			<div class="pre_myinfo_form">
@@ -72,7 +91,8 @@
 					</dd>
 				</dl>
 			</div>
-			<input type="button" value="다음페이지로" class="pre_myinfo_next_btn" onclick="checkPwd();">
+			<input type="hidden" name="mode" value="${mode }">
+			<input type="button" value="다음페이지로" class="pre_myinfo_next_btn" onclick="checkPwd('${mode }');">
 		</form>
 	</div>
 </div>
