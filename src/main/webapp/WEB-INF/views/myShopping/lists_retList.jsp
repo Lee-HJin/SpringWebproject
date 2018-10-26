@@ -25,10 +25,10 @@
 		<td>${dto.orderId }</td>
 		<td>${dto.handlingDate }</td>
 		<c:if test="${dto.quantity>1 }">
-			<td style="text-align: left;">${dto.mainTitle } 외 ${dto.quantity-1 }개</td>
+			<td style="text-align: left;"><a href="<%=cp%>/myShopping/myOrderDetail.action?orderId=${dto.orderId}">${dto.mainTitle } 외 ${dto.quantity-1 }개</a></td>
 		</c:if>
 		<c:if test="${dto.quantity==1 }">
-			<td style="text-align: left;">${dto.mainTitle }</td>
+			<td style="text-align: left;"><a href="<%=cp%>/myShopping/myOrderDetail.action?orderId=${dto.orderId}">${dto.mainTitle }</a></td>
 		</c:if>	
 		<td><fmt:formatNumber value="${dto.orderPrice }" pattern="#,###"/></td>
 		<td>${dto.status }</td>	

@@ -4,6 +4,7 @@ public class OrderListDTO {
 	
 	private int orderId;
 	private int orderPrice;
+	private int point;
 	private String shipmentsStatusCode;
 	private String handlingDate;
 	private String expectedDate;
@@ -25,6 +26,12 @@ public class OrderListDTO {
 	}
 	public void setOrderPrice(int orderPrice) {
 		this.orderPrice = orderPrice;
+	}
+	public int getPoint() {
+		return point;
+	}
+	public void setPoint(int point) {
+		this.point = point;
 	}
 	public String getShipmentsStatusCode() {
 		return shipmentsStatusCode;
