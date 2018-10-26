@@ -16,7 +16,7 @@
 		</div>
 		<div class="right_div">
 			<img alt="" src="<%=cp%>/resources/img/myShopping/btn_mem_modify.gif" onclick="location.href='<%=cp %>/myShopping/pre_updateMyInfo.action';">
-			<img alt="" src="<%=cp%>/resources/img/myShopping/btn_mem_wishlist.gif">
+			<img alt="" src="<%=cp%>/resources/img/myShopping/btn_mem_wishlist.gif" onclick="location.href='<%=cp%>/myShopping/myWishList.action';">
 		</div>
 	</div>
 	<div class="infoBar">
@@ -35,7 +35,7 @@
 			</li>
 			<li>
 				<span>최근 본 상품</span>
-				<span class="under">-건</span>
+				<span class="under">${recentCount }건</span>
 				<!-- 로그인시 DB에서 최근 본 상품 dto를 불러옴 메인에 있는 최근 본 상품이랑 연동 session 이용해야할듯  -->
 				<!-- 최근 본 상품 dto 생성 후 작업하자!  -->
 			</li>

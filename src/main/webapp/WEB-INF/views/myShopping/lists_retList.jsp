@@ -9,29 +9,29 @@
 <table>
 	<tr>
 		<th>주문번호</th>
-		<th style="width: 365px;">상품명</th>
-		<th>주문일자</th>
-		<th>수령예상일</th>
-		<th>주문금액</th>
+		<th>처리일자</th>
+		<th style="width: 365px;">상품명</th>	
+		<th>취소/환불금액</th>
+		<th>현황</th>
 	</tr>
 	<c:if test="${empty lists }">
 	<tr height="100px;">
-		<td colspan="5">주문내역이 없습니다.</td>
+		<td colspan="5">취소/반품/교환 내역이 없습니다.</td>
 	</tr>
 	</c:if>
 	
 	<c:forEach var="dto" items="${lists }">
 	<tr>
 		<td>${dto.orderId }</td>
+		<td>${dto.handlingDate }</td>
 		<c:if test="${dto.quantity>1 }">
-			<td style="text-align: left;"><a href="<%=cp%>/myShopping/myOrderDetail.action?orderId=${dto.orderId}">${dto.mainTitle } 외 ${dto.quantity-1 }개</a></td>
+			<td style="text-align: left;">${dto.mainTitle } 외 ${dto.quantity-1 }개</td>
 		</c:if>
 		<c:if test="${dto.quantity==1 }">
-			<td style="text-align: left;"><a href="<%=cp%>/myShopping/myOrderDetail.action?orderId=${dto.orderId}">${dto.mainTitle }</a></td>
-		</c:if>
-		<td>${dto.handlingDate }</td>
-		<td>${dto.expectedDate }</td>
+			<td style="text-align: left;">${dto.mainTitle }</td>
+		</c:if>	
 		<td><fmt:formatNumber value="${dto.orderPrice }" pattern="#,###"/></td>
+		<td>${dto.status }</td>	
 	</tr>
 	</c:forEach>
 </table>
@@ -42,7 +42,6 @@
 			${pageIndexList }
 		</c:if>
 		<c:if test="${totalDataCount==0 }">
-		
 		</c:if>
 	</p>
 </div>

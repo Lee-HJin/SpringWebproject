@@ -41,10 +41,9 @@
 	</beans:bean>
 	
 
-	<beans:bean id = "booksDAO" class = "com.spring.webproject.dao.BooksDAO" >
+	<beans:bean id="booksDAO" class="com.spring.webproject.dao.BooksDAO"/>
 
 	<beans:bean id="mainDAO" class="com.spring.webproject.dao.MainDAO">
-
 		<beans:property name="sessionTemplate" ref="sessionTemplate"></beans:property>
 	</beans:bean>
 	

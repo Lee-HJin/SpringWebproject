@@ -20,6 +20,7 @@
 	//주문/배송 조회
 	$(document).ready(function(){
 		
+		//초기 리스트 자동 불러오기
 		$.ajax({
 			
 			url:"getOrderList.action",
@@ -33,34 +34,8 @@
 
 		});
 		
-		
-		$('#searchOrdersByName').on('click',function(){
-			var searchValue = $('#orderListSearchValue').val();
-			var pageNum = '${pageNum}';
-			
-			var params = "searchValue=" + searchValue;
-			
-			if(pageNum!=''){
-				params += "&pageNum=" + pageNum;
-			}
-			
-			$.ajax({
-				
-				url:"getOrderList.action",
-				data:params,
-				type:"POST",
-				success:function(data){
-					$('#myOrderList').html(data);	
-				},
-				error:function(e){
-					alert(e.responseText);
-				}
-
-			});
-			
-		});
-		
-		
+		//주문/배송 조회
+		//기간별 조회		
 		$('#searchOrdersByDate').on('click',function(){
 			
 			var fromMonth = '0' + $('#fromMonth option:selected').val();
@@ -102,33 +77,36 @@
 			});
 			
 		});
+		
+		//상품명 조회
+		$('#searchOrdersByName').on('click',function(){
+			var searchValue = $('#orderListSearchValue').val();
+			var pageNum = '${pageNum}';
+			
+			var params = "searchValue=" + searchValue;
+			
+			if(pageNum!=''){
+				params += "&pageNum=" + pageNum;
+			}
+			
+			$.ajax({
+				
+				url:"getOrderList.action",
+				data:params,
+				type:"POST",
+				beforeSend:checkValue,
+				success:function(data){
+					$('#myOrderList').html(data);	
+				},
+				error:function(e){
+					alert(e.responseText);
+				}
+
+			});
+			
+		});
 
 	});
-	
-	function getList(pageNum, fromDate, toDate, searchValue){
-		
-		var params = 'pageNum=' + pageNum;
-		
-		if(fromDate!=''){
-			params += '&fromDate=' + fromDate + '&toDate=' + toDate;
-		}
-		if(searchValue!=''){
-			params = 'pageNum=' + pageNum + '&searchValue=' + searchValue;
-		}
-
-		jQuery.ajax({
-			url:"getOrderList.action",
-			data:params,
-			type:"POST",
-			success:function(data){
-				$('#myOrderList').html(data);	
-			},
-			error:function(e){
-				alert(e.responseText);
-			}	
-		});
-		
-	}
 	
 	</script>
 	
@@ -179,7 +157,7 @@
 		<dl>
 			<dt>상품명 조회</dt>
 			<dd>
-				<span><input type="text" style="height: 16px;" id="orderListSearchValue"></span>
+				<span><input type="text" style="height: 16px;" name="orderListSearchValue" id="orderListSearchValue"></span>
 				<span style="margin-right: 5px;"><a href="#"><img alt="조회" src="<%=cp%>/resources/img/myShopping/btn_sort_search.gif" style="vertical-align: top;" name="searchOrdersByName" id="searchOrdersByName"></a></span>
 				상품명 또는 ISBN 검색
 			</dd>
