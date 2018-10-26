@@ -21,30 +21,35 @@ public class MainDAO {
 	public List<MainDTO> similCate(String isbn){
 		
 		List<MainDTO> lst = sessionTemplate.selectList("mainMapper.similCate",isbn);
-
-		Random rd = new Random();
-		int[] num = new int[3];
-		
-		int i,n;
-		n=0;
-		while(n<3){
-			num[n] = rd.nextInt(lst.size());
+		System.out.println("DAO: "+ isbn);
+		System.out.println(lst);
+		if(!lst.isEmpty()) {
+			Random rd = new Random();
+			int[] num = new int[3];
 			
-			for(i=0;i<n;i++) {
-				if(num[i]==num[n]) {
-					n--;
-					break;
+			int i,n;
+			n=0;
+			while(n<3){
+				num[n] = rd.nextInt(lst.size());
+				
+				for(i=0;i<n;i++) {
+					if(num[i]==num[n]) {
+						n--;
+						break;
+					}
 				}
+				n++;
 			}
-			n++;
-		}
-		List<MainDTO> list = new ArrayList<MainDTO>();
-		
-		for(i=0;i<num.length;i++) {
+			List<MainDTO> list = new ArrayList<MainDTO>();
 			
-			list.add(lst.get(num[i]));
+			for(i=0;i<num.length;i++) {
+				
+				list.add(lst.get(num[i]));
+			}
+			return list;
+		}else {
+			return null;
 		}
-		return list;
 	}
 	
 	
@@ -92,13 +97,12 @@ public class MainDAO {
 	public List<MainDTO> todayView(String ck){
 		
 		List<MainDTO> lst = new ArrayList<MainDTO>();
-		MainDTO dto;
+		
 		String[] isbn = ck.split(",");
-		System.out.println(isbn);
+
 		for(int i=0;i<isbn.length;i++) {
 			
-			dto = sessionTemplate.selectOne("mainMapper.todayView",isbn[i]);
-			System.out.println(isbn[i]);
+			MainDTO dto = sessionTemplate.selectOne("mainMapper.todayView",isbn[i]);
 			lst.add(dto);
 		}
 		return lst;
