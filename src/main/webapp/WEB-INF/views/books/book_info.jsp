@@ -1044,7 +1044,7 @@ i {
 							<div class="medium_ratings">
 								<span style="width: 93%"></span>
 							</div>
-							<span class="medium_ratings_num"> 리뷰평점 평균 <span class="ml10">리뷰[<strong>리뷰개수</strong>]
+							<span class="medium_ratings_num"> 리뷰평점 평균 <span class="ml10">리뷰[${reviewNum}]
 									간단평[<strong>간단평개수</strong>] 
 							</span>
 							</span> <a href="#sub02" class="btn_w_comm btype_a4">참여하기</a>
@@ -1587,19 +1587,23 @@ i {
 								onclick="javascript:popHidden('reviewInfo')">
 						</p>
 					</div>
+				
+					<iframe style="overflow: auto;"
+					id="blogReview" 
+						src="<%=cp%>/book_review.action?isbn=${isbn }"
+						width="100%"  height="600px" class="iframe_review" frameborder="0"
+						scrolling="no" ></iframe>
 					
-					<!-- iframe src="/global/iframe_review.html" height="370" class="iframe_review" frameborder="0" scrolling="no"></iframe-->
-					<iframe id="blogReview"
-						src="<%=cp%>/book_review.action"
-						width="100%" height="290" class="iframe_review" frameborder="0"
-						scrolling="no"></iframe>
+				
+					
+					
 				</div>
 				<!-- //리뷰 -->
 
 				<!-- 간단평 -->
 				<!-- 			src="/front/product/iframeSimpleReview.do?prodId=4189934" -->
 				<iframe id="simpleReview" width="100%" class="iframe_review"
-					src ="<%=cp %>/book_simpleReview.action"
+					src ="<%=cp %>/book_simpleReview.action?isbn=${isbn}"
 					style="margin-left: 0" frameborder="0" scrolling="no" height="422"></iframe>
 				<!-- //간단평 -->
 
@@ -1704,10 +1708,9 @@ i {
 			<br />
 			<br />
 			<br />
-			<br />
-			<br />
-			<br />
+			
 	</div>
+
 
 </body>
 </html>
