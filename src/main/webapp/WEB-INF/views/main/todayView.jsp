@@ -32,6 +32,7 @@
 	</div>
 </div>
 
+<script src="<%=cp%>/resources/js/swiper_min.js"></script>
 <script type="text/javascript">
 
 var swiper = new Swiper('.swiper3', {
@@ -48,5 +49,27 @@ var swiper = new Swiper('.swiper3', {
 		prevEl: '#rb_awL',
 	},
 });
+
+
+
+//추천도서 새로고침 버튼
+$(document).ready(function() {
+	$('#recommend_btn,#rb_awL,#rb_awR').click(function() {
+	
+		var params = $('.swiper-slide-active #isbn').val();
+		$.ajax({
+			type:"POST",
+			url:"<%=cp%>/recomm.action",
+			data: {isbn:params},
+			success:function(args){
+				$('#recommend_books').html(args);
+			},
+			error:function(e){
+				alert(e.responseText);
+			}
+		});
+	});
+});
+
 
 </script>
