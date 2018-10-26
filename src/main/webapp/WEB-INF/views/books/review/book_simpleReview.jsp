@@ -1,6 +1,17 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<!DOCTYPE html>
+
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+
+
+<%
+	request.setCharacterEncoding("UTF-8");
+	String cp = request.getContextPath();
+
+	int isbn = Integer.parseInt(request.getParameter("isbn"));
+%>
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 
 <head>
@@ -525,13 +536,33 @@ table	th.td_Left {
 </style>
 <link rel="stylesheet" href="/webproject/resources/book_css/common.css"
 	type="text/css">
+
+<script type="text/javascript"
+	src="/webproject/resources/book_js/httpRequest.js"></script>
 <script type="text/javascript"
 	src="/webproject/resources/book_js/common.js"></script>
 <script type="text/javascript"
 	src="/webproject/resources/book_js/common.js" charset="euc-kr"></script>
 <script type="text/javascript"
 	src="/webproject/resources/book_js/JUTIL.js" charset="utf-8"></script>
+
+
+
 <script type="text/javascript">
+
+function go_login() {
+
+	alert("로그인 하셔야 간단평을 쓰실수 있습니다.");
+	parent.location.href = '<%=cp%>/login2.action?isbn='+<%=isbn%>;
+
+}
+
+function enroll_SimpleReview(Val){
+	alert("간단평이 등록되었습니다.");
+	location.href = '<%=cp%>/enroll_simpleReview.action?isbn=' + Val;
+		return;
+	}
+
 	var sMemSeq = "";
 
 	function onChangeText(obj, val) {
@@ -543,25 +574,6 @@ table	th.td_Left {
 		// 길이체크 바이트 체크 안함
 		var len = obj.value.length;
 		document.getElementById(val).innerHTML = len + "/200";
-	}
-
-	function goRegist() {
-		var frm = document.mainForm;
-
-		if (isLogin() == false) {
-			alert("로그인이 필요한 서비스 입니다.");
-			parent.location.href = "/front/formLogin.do?resPath="
-					+ encodeURIComponent("/front/product/detailProduct.do?prodId=4189934#simpleReview");
-			return;
-
-		} else {
-			if (checkReview(0) == false) {
-				return;
-			}
-
-			frm.actionType.value = "insert";
-			frm.submit();
-		}
 	}
 
 	function checkReview(seq) {
@@ -654,8 +666,10 @@ table	th.td_Left {
 
 	}
 </script>
-<link rel="stylesheet" media="screen"
-	href="/common/css/detail_defult.css">
+
+<link rel="stylesheet"
+	href="/webproject/resources/book_css/detail_default.css"
+	type="text/css">
 
 </head>
 
@@ -740,41 +754,33 @@ table	th.td_Left {
 									onkeyup="onChangeText(this,'title_stat')"
 									onkeypress="onChangeText(this,'title_stat')"></textarea>
 								<p class="btn_show_register">
-									<a class="box_tag" href="javascript:goRegist();">등록</a>
+									<c:choose>
+										<c:when test="${empty sessionSope.userInfo.userId }">
+											<a class="box_tag" href="javascript:go_login();">등록</a>
+										</c:when>
+										<c:otherwise>
+											<a class="box_tag"
+												href="javascript:enroll_SimpleReview(${dto.isbn });">등록</a>
+										</c:otherwise>
+									</c:choose>
+
+
+
+
 								</p>
 								<p class="check" id="title_stat">0/200</p>
 							</div>
 						</div>
 
 
-						<table width="100%" border="0" cellpadding="0" cellspacing="0"
-							class="boardList02 mt10">
-							<colgroup>
-								<col width="135">
-								<col width="">
-								<col width="135">
-							</colgroup>
-							<tbody>
-								<tr>
-									<td colspan="6" class="line"></td>
-								</tr>
 
-								<tr>
-									<td class="td_L15"> 회원 닉네임</td>
-									<td class="td_L15">
-										<p id="listArea_162394"> 간단평 내용</p>
-										
-									</td>
-									<td class="td_R10"><span class="ilike"><button
-												onclick="recommandCnt('162394', 0)" class="btn_ilike ">
-												<span>공감하기</span>
-											</button> <span class="ilike_count">공감개수</span></span></td>
-								</tr>
-							</tbody>
-						</table>
+						<div id="simpleReviewTitle"></div>
+
+
+
 					</form>
 
-	
+
 
 
 				</div>
@@ -783,14 +789,65 @@ table	th.td_Left {
 	</div>
 
 
-	<script type="text/javascript">
-		window.onload = function() {
-			if (parent.document.getElementById('simpleReview')) {
-				parent.document.getElementById('simpleReview').height = 0;
-				parent.document.getElementById('simpleReview').height = document.documentElement.scrollHeight;
-			}
-		}
-	</script>
-
 </body>
+<script>
+
+
+	function simpleReviewTitle() {
+		sendRequest("/webproject/book_simpleReview_ok.action?isbn=" + <%=isbn%>,null, displaySimpleReviewTitle, "GET");
+
+	}
+	
+	
+	function displaySimpleReviewTitle() {
+		
+		if (httpRequest.readyState == 4) {
+			if (httpRequest.status == 200) {
+				alert("?");
+				var doc = httpRequest.responseXML;
+				var titleNL = doc.getElementsByTagName("title");
+				var userName = doc.getElementsByTagName("username");
+				var thumbup = doc.getElementsByTagName("thumbup");
+				var reviewId = doc.getElementsByTagName("reviewId");
+				var htmlData = "<table width='100%' border='0' cellpadding='0' cellspacing='0' class='boardList02 mt10'>";
+				htmlData += "<colgroup>	<col width='135'><col width=''>	<col width='135'> </colgroup>";
+				htmlData += "<tbody> <tr> <td colspan='6' class='line'> </td> </tr>";
+				htmlData += "<tr>";
+
+				for (var i = 0; i < titleNL.length; i++) {
+					htmlData += "<td class='td_L15' style='width:15%'>" + userName.item(i).firstChild.nodeValue;
+					htmlData += "</td>";
+					htmlData += "<td class='td_L15' style='width:70%'> ";
+					htmlData += titleNL.item(i).firstChild.nodeValue;
+					htmlData += "</td>";
+					htmlData += "<td class='td_R10'style='width:15%'> ";
+					htmlData += "<span class='ilike'><button onclick='recommandCnt('', 0)'"; 
+					htmlData += "class='btn_ilike'><span>공감하기</span></button>";
+					htmlData += "<span class='ilike_count'>";
+					htmlData += thumbup.item(i).firstChild.nodeValue;
+					htmlData += "</span></span></td>";
+							
+				}
+
+				htmlData += "</tr> 	</tbody>  </table>";
+
+				var simpleReviewDiv = document
+						.getElementById("simpleReviewTitle");
+				simpleReviewDiv.innerHTML = htmlData;
+			} else {
+				alert(httpRequest.status + " : " + httpRequest.statusText);
+			}
+			
+			
+		
+			
+	
+		}
+
+	}
+	
+	window.onload = function() {
+		simpleReviewTitle();
+	}
+</script>
 </html>
