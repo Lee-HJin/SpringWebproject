@@ -250,6 +250,14 @@ public class MyShoppingDAO {
 		
 	}
 	
+	public List<PointDTO> expPointList(Map<String, Object> map){
+		
+		List<PointDTO> lists = sessionTemplate.selectList("myShopping.expPointList",map);
+		
+		return lists;
+		
+	}
+	
 	
 	
 

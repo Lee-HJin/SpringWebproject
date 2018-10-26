@@ -72,7 +72,7 @@ public class AjaxPageIndex {
 
 		}
 		//취소/반품/교환 내역 조회에서 넘어온 리스트 페이징
-		if(mode.equals("ret")) {	
+		else if(mode.equals("ret")) {	
 
 			if(params==null || params.equals("")) {
 				while(page <= totalPage && page <= (currentPageSetup + numPerBlock)){
@@ -103,7 +103,7 @@ public class AjaxPageIndex {
 		}
 
 		//포인트조회에서 넘어온 리스트 페이징
-		if(mode.equals("all") || mode.equals("save") || mode.equals("use")) {	
+		else if(mode.equals("all") || mode.equals("save") || mode.equals("use")) {	
 
 			if(params==null || params.equals("")) {
 				while(page <= totalPage && page <= (currentPageSetup + numPerBlock)){
@@ -133,6 +133,19 @@ public class AjaxPageIndex {
 
 		}
 
+		//소멸예정 포인트 조회 리스트에서 넘어온 리스트 페이징
+		else {
+			while(page <= totalPage && page <= (currentPageSetup + numPerBlock)){
+				if(page == currentPage){				
+					sb.append("<span class='page_on'>" + page + "</span>&nbsp;");				
+				}
+				else{
+					sb.append("<span class='page_off'><a href=\"javascript:getPointList(" +  page + ",'','','exp')\">"
+							+ page + "</a></span>&nbsp;");		
+				}				
+				page++;		
+			}		
+		}
 
 		return sb.toString();
 
