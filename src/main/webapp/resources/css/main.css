@@ -1451,3 +1451,14 @@ ul{list-style: none;}
 li{ display: list-item; text-align: -webkit-match-parent;}
 
 button { border: 0 none; cursor: pointer;}
+
+
+/*페이징 디자인 */
+.page_off{display: inline-block; width: 24px; height: 19px; margin: 0 1px; padding-top: 5px; vertical-align: middle; font-size: 11px; color: #826740; text-align: center; border: 1px solid #d1d1d1;text-decoration: none;}
+.page_on {display: inline-block; width: 24px; height: 19px; margin: 0 1px; padding-top: 5px; vertical-align: middle; font-size: 11px; color: #826740; text-align: center; border: 1px solid #B67A24; background-color: #f9f9f9; text-decoration: none; font-weight: bold;}
+
+
+
+
+
+
