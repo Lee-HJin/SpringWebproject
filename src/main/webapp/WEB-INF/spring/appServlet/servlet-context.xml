@@ -72,6 +72,10 @@
 		<beans:property name="sqlSessionTemplate" ref="sessionTemplate"/>
 	</beans:bean>
 	
+	<beans:bean id="bookSectionsDAO" class="com.spring.webproject.dao.BookSectionsDAO">
+		<beans:property name="sessionTemplate" ref="sessionTemplate"/>
+	</beans:bean>
+	
 	<!-- MyBatis -->
 	<beans:bean id="sessionTemplate"
 		class="org.mybatis.spring.SqlSessionTemplate">

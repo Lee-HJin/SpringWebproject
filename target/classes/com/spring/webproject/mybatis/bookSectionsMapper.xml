@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+<mapper namespace="bookSectionsMapper">
+ 
+<!-- 전체데이터  -->
+<select id="getLists" parameterType="hashMap" resultType="com.spring.webproject.dto.BookSectionsDTO">
+	select * from (
+	select rownum rnum, data.* from (
+	select * from bookSections
+	where categoryId between ${sort1st } and ${sort2nd }
+	order by soldBookCnt desc, rate desc, reviewCnt desc
+	) data)
+	<![CDATA[
+	where rnum >= #{start } and rnum <= #{end }
+	]]>
+</select>
+
+<!-- getListSort1  -->
+<select id="getListSort1" parameterType="hashMap" resultType="com.spring.webproject.dto.BookSectionsDTO">
+	select * from (
+	select rownum rnum, data.* from (
+	select * from bookSections
+	where categoryId between ${sort1st } and ${sort2nd }
+	order by publishDate desc
+	) data)
+	<![CDATA[
+	where rnum >= #{start } and rnum <= #{end }
+	]]>
+</select>
+
+<!-- getListSort2  -->
+<select id="getListSort2" parameterType="hashMap" resultType="com.spring.webproject.dto.BookSectionsDTO">
+	select * from (
+	select rownum rnum, data.* from (
+	select * from bookSections
+	where categoryId between ${sort1st } and ${sort2nd }
+	) data)
+	<![CDATA[
+	where rnum >= #{start } and rnum <= #{end }
+	]]>
+</select>
+
+<!-- getListSort3  -->
+<select id="getListSort3" parameterType="hashMap" resultType="com.spring.webproject.dto.BookSectionsDTO">
+	select * from (
+	select rownum rnum, data.* from (
+	select * from bookSections
+	where categoryId between ${sort1st } and ${sort2nd }
+	order by reviewCnt desc
+	) data)
+	<![CDATA[
+	where rnum >= #{start } and rnum <= #{end }
+	]]>
+</select>
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+<!-- 전체 데이터 갯수  -->
+<select id="getDataCount" resultType="Integer">
+	select nvl(count(*),0) from bookSections
+</select>
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+</mapper>
