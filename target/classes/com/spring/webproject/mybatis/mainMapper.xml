@@ -72,5 +72,13 @@
 	(select * from books where isbn=#{isbn}) b where a.authorid=b.authorid) b where a.isbn=b.isbn and bookImage like '%cover%'
 </select>
 
+<!-- 오늘 본 상품 책 정보 -->
+<select id="todayView" parameterType="java.lang.String" resultType="com.spring.webproject.dto.MainDTO">
+	select a.isbn,bookTitle,authorName,bookImage from bookImage a,
+	(select isbn,bookTitle,authorName from author a,
+	(select * from books where isbn=#{isbn}) b where a.authorId=b.authorId) b where a.isbn=b.isbn
+</select>
+
+
 
 </mapper>

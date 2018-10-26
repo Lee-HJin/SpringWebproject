@@ -86,7 +86,7 @@ var swiper = new Swiper('.swiper2', {
 		prevEl: '#slide_awL',
 	},
 });
-
+/*
 var swiper = new Swiper('.swiper3', {
 	spaceBetween: 0,
 	centeredSlides: true,
@@ -100,7 +100,7 @@ var swiper = new Swiper('.swiper3', {
 		nextEl: '#rb_awR',
 		prevEl: '#rb_awL',
 	},
-});
+});*/
 
 
 var swiper = new Swiper('.swiper6', {

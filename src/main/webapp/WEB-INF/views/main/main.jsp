@@ -21,27 +21,6 @@
 <link rel="stylesheet" href="<%=cp%>/resources/css/swiper_min.css">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 
-<script type="text/javascript">
-
- 	// 쿠키 가져오기
-	
- 	
-	
-	
-/* 	var cookie = getCookie('book');
-	alert(cookie);
- 	cookie = cookie.split("/");
-
-	var ck = new Array();
-	
-	for(i=0;i<cookie.length;i++){
-		ck[i] = JSON.parse(cookie[i]);
-	}
-	
-	alert(ck[3].bookTitle); */
-	
-</script>
-
 <title>Insert title here</title>
 <script type="text/javascript">
 	
@@ -58,15 +37,25 @@
 	
 	//메인화면 로드시 기본값
 	$(function() {
-		var params = $('.swiper-slide-active #isbn').val();
+		
 		var data = document.getElementById("data");
 		var noData = document.getElementById("no_data");
-
-		if(params!=null){
+		
+		var ck = getCookie('book');
+		if(ck!=null){
+			var ckone = ck.split(',');
+			ckone = ckone.splice(0,1);
+		}else{
+			ckone = null;
+		}
+		
+		todayView(ck); 
+ 
+   		if(ck!=null){
 			noData.style.display = 'none';
 			data.style.display = 'block';
-			listRecomm(params);
-		}else if(params==null){
+			listRecomm(ckone);
+		}else if(ck==null){
 			noData.style.display = 'block';
 			data.style.display = 'none';
 		}
@@ -76,29 +65,7 @@
 		
 		newBookAll();
 		issueBook();
-		
-		
-		
-		
-		var ck = cookieInfo(getCookie('book'));
-		for(i=0;i<ck.length;i++){
-			$('#isbn'+i).val(ck[i].isbn);
-		}
-		
-<%-- 		
-		var html = "<div class='swiper-container swiper3'><div class='swiper-wrapper'>";
-
-		for(i=0;i<ck.length;i++){
-
-			html += "<div class='swiper-slide'><input id='isbn' value='" + ck[i].isbn + "' type='hidden'/>";
-			html += "<div class='rb_image'><a href='javascript://'><img src='<%=cp%>/resources/image/book/" + ck[i].bookImage + "'>";
-			html += "</a><dl class='rb_title'><dt>" + ck[i].bookTitle + "</dt><dd>" + ck[i].authorName + "</dd>";
-			html += "</dl></div></div>";
-		}
-		
-		html+= "</div></div>";
-		
-		document.getElementById('today_view').innerHTML=html; --%>
+		todayView();	
 		
 	});	
 	
@@ -106,12 +73,11 @@
 	$(document).ready(function() {
 		$('#recommend_btn,#rb_awL,#rb_awR').click(function() {
 		
-			var params = $('.swiper-slide-active #isbn0').val();
-			alert(params);
+			var isbn = $('.swiper-slide-active #isbn').val();
 			$.ajax({
 				type:"POST",
 				url:"<%=cp%>/recomm.action",
-				data: {params:params},
+				data: {isbn:isbn},
 				success:function(args){
 					$('#recommend_books').html(args);
 				},
@@ -123,11 +89,11 @@
 	});
 	
 	//추천도서 불러오기
-	function listRecomm(params) {
-		
+	function listRecomm(isbn) {
+		var params = "isbn=" + isbn;
 		var url = "<%=cp%>/recomm.action";
 		
-		$.post(url,{params:params},function(args){
+		$.post(url,params,function(args){
 			$("#recommend_books").html(args);
 		});
 	}
@@ -144,11 +110,11 @@
 	}
 	
 	//기대신간 카테고리별
-	function newBook(params) {
+	function newBook(nb) {
 
 		var url = "<%=cp%>/newbook.action";
 		
-		$.post(url,{params:params},function(args){
+		$.post(url,{nb:nb},function(args){
 			$("#new_book").html(args);
 		});
 	}
@@ -163,22 +129,39 @@
 		});
 	}
 	
+	
+	//오늘 본 상품
+	function todayView(ck) {
+	
+		if(ck==null){
+			return;
+		}else{
+			var url = "<%=cp%>/todayview.action";
+			
+			$.post(url,{ck:ck},function(args){
+				$("#today_view").html(args);
+			})
+		}
+	}
+
 	//쿠키 가져오기
 	function getCookie(cookiename){
-		var ck = [];
 		var cookiestring  = document.cookie;
 		var cookiearray = cookiestring.split(';');
-		for(var i=0; i<cookiearray.length; ++i){ 
+
+		for(var i=0;i<cookiearray.length;i++){
 		    if(cookiearray[i].indexOf(cookiename)!=-1){
 		        var nameVal = cookiearray[i].split("=");
 		        nameVal = nameVal[1].trim();
-
-		        } 
+		        
+		        flag = false;
+		        
+		        return unescape(nameVal);     		
 		    }
-		return unescape(nameVal);
+		}
 	}
 		
-	
+/* 	
 	//쿠키 뿌리기
 	function cookieInfo(cValue) {		
  		var cookie = cValue;
@@ -192,12 +175,7 @@
  		
  		return ck;
  		
-<%--  		var url = "<%=cp%>/cookie.action";
- 		
- 		$.post(url,{params:ck},function(args){
-			$("#today_view").html(args);
-		}); --%>
-	}
+	} */
 	
 
 </script>
@@ -484,38 +462,7 @@
 			</div>
 			<div class="rc_body" id="data" style="display: block;">
 				<div>
-<%-- 					<c:if test="${empty today.isbn }">
-						
-					</c:if> --%>
-					<div class="recent_book">
-						<div class="rb_awbox">
-							<button class="slide_aw left" id="rb_awL">
-								<span class="aw_count_rb"></span>
-							</button>	
-							<button class="slide_aw right" id="rb_awR">
-								<span class="aw_count_rb"></span>
-							</button>
-						</div>
-						<h4>오늘본 상품</h4>
-						<div id="today_view"></div>
-						 <div class="swiper-container swiper3">
-							<div class="swiper-wrapper">
-							
-  								<div class="swiper-slide">
- 									<input id="isbn" value="${ck.isbn }" type="hidden"/>
-									<div class="rb_image">
-										<a href="javascript://">
-											<img src="<%=cp%>/resources/image/book/4202644_cover.jpg">
-										</a>
-										<dl class="rb_title">
-											<dt>${ck.bookTitle }</dt>
-											<dd>${ck.authorName }</dd>
-										</dl>
-									</div>
-								</div>
-
-							</div>
-						</div> 
+					<div class="recent_book"  id="today_view">
 					</div>
 					<button class="rc_btn" id="recommend_btn"></button>
 					<div class="rc_books">
