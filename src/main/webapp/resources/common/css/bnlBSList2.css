@@ -338,7 +338,7 @@ a.more:active	{text-decoration:none; color:#999999;}
 .imgP img{ border:1px solid #e1e1e1;}
 
 /*ÆäÀÌÂ¡*/
-.pageTypeA{clear:both;height:26px;margin-top:15px;text-align:center}
+.pageTypeA {clear:both;height:26px;margin-top:15px;text-align:center}
 .pageTypeA a{display:inline-block;width:24px;height:19px;margin:0 1px;padding-top:5px;vertical-align:middle;border:1px solid #d1d1d1;font:normal 11px verdana;color:#826740;text-align:center}
 .pageTypeA a:hover,.pageTypeA a.on{text-decoration:none;border:1px solid #B67A24;font-weight:bolder;background:#f9f9f9}
 .pageTypeA .pFirst,.pageTypeA .pFirst:hover{background:#f9f9f9 url(/images/common/btn_pageTypeA.gif) no-repeat 0 0;text-indent:-5000px}

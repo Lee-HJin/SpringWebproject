@@ -38,11 +38,12 @@
 	<mapper resource="com/spring/webproject/mybatis/bookMapper.xml" />
 
 	<mapper resource="com/spring/webproject/mybatis/mainMapper.xml"/>
-
+	
+ 	<mapper resource="com/spring/webproject/mybatis/bookSectionsMapper.xml"/>
+ 	
 	<mapper resource="com/spring/webproject/mybatis/questionMapper.xml"/>
-  
-	<mapper resource="com/spring/webproject/mybatis/searchMapper.xml"/>	
-
+	
+    <mapper resource="com/spring/webproject/mybatis/searchMapper.xml"/>	
 </mappers>
 
 

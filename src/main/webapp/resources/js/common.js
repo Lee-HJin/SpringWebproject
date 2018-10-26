@@ -1601,10 +1601,10 @@ function add_basket_array_common(prod_id, opt_seq, cnt, book_mem_id, isArlert_, 
         - 콜백을 등록하면 콜백 함수가 실행되고, 아니면 와이즈카트가 열린다.
         - 최종본 단일상품을 등록할 경우에는 이 함수를 활용할 것!
 *********************************************************/
-function add_basket(prodId, cnt_, opt_, book_mem_id_, callBack_){
+function add_basket(isbn, cnt_, opt_, book_mem_id_, callBack_){
     //OrderDwr.createShopCarts({
     ajaxRequest("createShopCarts", {
-            "prod_id"       : prodId, 
+            "prod_id"       : isbn, 
             "opt_seq"       : opt_ ? opt_ : "", 
             "cnt"           : cnt_ ? cnt_ : 1, 
             "book_mem_id"   : "" 
@@ -1644,7 +1644,7 @@ function add_basket(prodId, cnt_, opt_, book_mem_id_, callBack_){
                 	jutil.bandi.reloadWiseCart("cart");
                 }else{
                     if(confirm("쇼핑카트에 등록되었습니다. 지금 바로 확인 하시겠습니까?")) {
-                    	document.location.href = '/front/order/shopCartList.do';
+                    	document.location.href = '/webproject/shopCarList.action';
                     }
                 }
             }
@@ -1736,25 +1736,25 @@ function add_wish_array(check_box_obj,prod_id_obj){
 /*************************************
 * 도서 상품 미리보기 팝업
 *************************************/ 
-function popPreview(prodId) {
+function popPreview(isbn) {
 
-    if (typeof(prodId) == "undefined" || prodId == "") {
+    if (typeof(isbn) == "undefined" || isbn == "") {
         return;
     }
     
-    window.open("/front/product/previewBook.do?prodId=" + prodId, "preview", "width="+screen.availWidth+",height="+screen.availHeight+",resizable=yes,scrollbars=yes");
+    window.open("/front/product/previewBook.do?isbn=" + isbn, "preview", "width="+screen.availWidth+",height="+screen.availHeight+",resizable=yes,scrollbars=yes");
 }
 
 /*************************************
 * 도서 상품 동영상 리뷰 팝업
 *************************************/ 
-function popVod(prodId, path) {
+function popVod(isbn, path) {
 
-    if (typeof(prodId) == "undefined" || prodId == "" || typeof(path) == "undefined" || path == "") {
+    if (typeof(isbn) == "undefined" || isbn == "" || typeof(path) == "undefined" || path == "") {
         return;
     }
     
-    window.open("/front/product/vodBook.do?prodId=" + prodId + "&path=" + path, "vod", "width=400,height=380,resizable=yes");
+    window.open("/front/product/vodBook.do?prodId=" + isbn + "&path=" + path, "vod", "width=400,height=380,resizable=yes");
 }
 
 /*************************************
