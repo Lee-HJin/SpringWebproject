@@ -218,5 +218,39 @@ public class MyShoppingDAO {
 		
 		return lists;
 	}
+	
+	public OrderListDTO getOrderDetailInfo(String orderId) {
+		
+		OrderListDTO dto = sessionTemplate.selectOne("myShopping.getOrderDetailInfo", orderId);
+		
+		return dto;
+	}
+	
+	public void cancelOrder(String orderId) {
+		
+		sessionTemplate.update("myShopping.cancelOrder",orderId);
+		
+	}
+	
+	public void returnOrder(String orderId) {
+		
+		sessionTemplate.update("myShopping.returnOrder",orderId);
+		
+	}
+	
+	public void confirmOrder(String orderId) {
+		
+		sessionTemplate.update("myShopping.confirmOrder",orderId);
+		
+	}
+	
+	public void exchangeOrder(String orderId) {
+		
+		sessionTemplate.update("myShopping.exchangeOrder",orderId);
+		
+	}
+	
+	
+	
 
 }

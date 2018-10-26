@@ -29,15 +29,12 @@
 	function go_login() {
 
 		alert("로그인 하셔야 리뷰를 쓰실수 있습니다.");
+		parent.location.href = '<%=cp%>/login2.action?isbn='+${isbn};
 		return;
 
-		window.open('/.action?dest=book&prod_id=4189934');
-
 	}
 
-	function go_write() {
-		parent.location.href = '<%=cp%>/book_review_created.action'
-	}
+	
 
 	function viewArt(inValue) {
 		//this.location.href = "http://www.bandinlunis.com/front/product/detailProduct.do?prodId=4189934&art_seq_no="+inValue;
@@ -238,7 +235,7 @@
 
 	<form name="mainform" id="mainform"
 		action="/bandi_blog/extention/prodListTop.do">
-		<input type="hidden" name="prod_id" value="4189934">
+		<input type="hidden" name="prod_id" value="${isbn }">
 
 	</form>
 	<div class="p_bookInfo">
@@ -247,7 +244,7 @@
 				style="width: 100%; height: 25px; margin-top: 30px; *padding-top: 20px">
 				<h3
 					style="padding-right: 20px; font-weight: bold; font-size: 15pt; font-family: '맑은 고딕', '돋움', sans-serif; letter-spacing: -0.1em; margin-left: 0">
-					리뷰 <span style="font-size: 14px; color: #666">[데이터개수]</span>
+					리뷰 <span style="font-size: 14px; color: #666">[${reviewNum }]</span>
 					<!-- 데이터개수 입력하기 -->
 				</h3>
 			</div>
@@ -257,12 +254,12 @@
 				<table width="100%" border="0" cellpadding="0" cellspacing="0"
 					class="commTable2">
 					<colgroup>
-						<col width="17%">
-						<col width="55%">
+						<col width="12%">
+						<col width="50%">
+						<col width="12%">
 						<col width="7%">
 						<col width="7%">
-						<col width="7%">
-						<col width="7%">
+						<col width="12%">
 					</colgroup>
 					<thead>
 						<tr>
@@ -276,23 +273,149 @@
 					</thead>
 					<tbody>
 						<!-- loop -->
-						<tr>
-							<td>
-								<!-- 평점에 따른 나뭇잎개수 구현 --> <img
-								src="http://blog.bandinlunis.com/bandi_blog/images/common/ico_gradeS2.gif"
-								alt=""> <!-- 나뭇잎1 --> <img
-								src="http://blog.bandinlunis.com/bandi_blog/images/common/ico_gradeS0.gif"
-								alt=""> <!-- 나뭇잎0 -->
-							</td>
-							<td style="text-align: left"><a
-								href="javascript:viewArt('46031080')">제목</a></td>
-							<td class="t_gr"><img id="member_icon_tmp1"
-								src="http://blog.bandinlunis.com/bandi_blog/images/myLibrary/ico_bandi.gif"
-								alt="" class="al_middle" style="display: none;"> 글쓴이</td>
-							<td class="t_11gr">조회수</td>
-							<td class="t_11gr">공감수</td>
-							<td class="t_11gr">작성일</td>
-						</tr>
+						<c:forEach var="dto" items="${lists }">
+							<tr>
+								<td style="width: 15%"><c:if
+										test="${dto.rate >= 0 && dto.rate < 2}">
+
+										<img
+											src="http://blog.bandinlunis.com/bandi_blog/images/common/ico_gradeS0.gif"
+											alt="">
+										<!-- 나뭇잎0 -->
+										<img
+											src="http://blog.bandinlunis.com/bandi_blog/images/common/ico_gradeS0.gif"
+											alt="">
+										<!-- 나뭇잎0 -->
+										<img
+											src="http://blog.bandinlunis.com/bandi_blog/images/common/ico_gradeS0.gif"
+											alt="">
+										<!-- 나뭇잎0 -->
+										<img
+											src="http://blog.bandinlunis.com/bandi_blog/images/common/ico_gradeS0.gif"
+											alt="">
+										<!-- 나뭇잎0 -->
+										<img
+											src="http://blog.bandinlunis.com/bandi_blog/images/common/ico_gradeS0.gif"
+											alt="">
+										<!-- 나뭇잎0 -->
+
+									</c:if> <c:if test="${dto.rate >= 2 && dto.rate < 4  }">
+										<img
+											src="http://blog.bandinlunis.com/bandi_blog/images/common/ico_gradeS2.gif"
+											alt="">
+										<!-- 나뭇잎1 -->
+										<img
+											src="http://blog.bandinlunis.com/bandi_blog/images/common/ico_gradeS0.gif"
+											alt="">
+										<!-- 나뭇잎0 -->
+										<img
+											src="http://blog.bandinlunis.com/bandi_blog/images/common/ico_gradeS0.gif"
+											alt="">
+										<!-- 나뭇잎0 -->
+										<img
+											src="http://blog.bandinlunis.com/bandi_blog/images/common/ico_gradeS0.gif"
+											alt="">
+										<!-- 나뭇잎0 -->
+										<img
+											src="http://blog.bandinlunis.com/bandi_blog/images/common/ico_gradeS0.gif"
+											alt="">
+										<!-- 나뭇잎0 -->
+									</c:if> <c:if test="${dto.rate >=4 && dto.rate < 6}">
+										<img
+											src="http://blog.bandinlunis.com/bandi_blog/images/common/ico_gradeS2.gif"
+											alt="">
+										<!-- 나뭇잎1 -->
+										<img
+											src="http://blog.bandinlunis.com/bandi_blog/images/common/ico_gradeS2.gif"
+											alt="">
+										<!-- 나뭇잎1 -->
+										<img
+											src="http://blog.bandinlunis.com/bandi_blog/images/common/ico_gradeS0.gif"
+											alt="">
+										<!-- 나뭇잎0 -->
+										<img
+											src="http://blog.bandinlunis.com/bandi_blog/images/common/ico_gradeS0.gif"
+											alt="">
+										<!-- 나뭇잎0 -->
+										<img
+											src="http://blog.bandinlunis.com/bandi_blog/images/common/ico_gradeS0.gif"
+											alt="">
+										<!-- 나뭇잎0 -->
+									</c:if> <c:if test="${dto.rate >=6 && dto.rate <8}">
+										<img
+											src="http://blog.bandinlunis.com/bandi_blog/images/common/ico_gradeS2.gif"
+											alt="">
+										<!-- 나뭇잎1 -->
+										<img
+											src="http://blog.bandinlunis.com/bandi_blog/images/common/ico_gradeS2.gif"
+											alt="">
+										<!-- 나뭇잎1 -->
+										<img
+											src="http://blog.bandinlunis.com/bandi_blog/images/common/ico_gradeS2.gif"
+											alt="">
+										<!-- 나뭇잎1 -->
+										<img
+											src="http://blog.bandinlunis.com/bandi_blog/images/common/ico_gradeS0.gif"
+											alt="">
+										<!-- 나뭇잎0 -->
+										<img
+											src="http://blog.bandinlunis.com/bandi_blog/images/common/ico_gradeS0.gif"
+											alt="">
+										<!-- 나뭇잎0 -->
+									</c:if> <c:if test="${dto.rate >=8 && dto.rate <10}">
+										<img
+											src="http://blog.bandinlunis.com/bandi_blog/images/common/ico_gradeS2.gif"
+											alt="">
+										<!-- 나뭇잎1 -->
+										<img
+											src="http://blog.bandinlunis.com/bandi_blog/images/common/ico_gradeS2.gif"
+											alt="">
+										<!-- 나뭇잎1 -->
+										<img
+											src="http://blog.bandinlunis.com/bandi_blog/images/common/ico_gradeS2.gif"
+											alt="">
+										<!-- 나뭇잎1 -->
+										<img
+											src="http://blog.bandinlunis.com/bandi_blog/images/common/ico_gradeS2.gif"
+											alt="">
+										<!-- 나뭇잎1 -->
+										<img
+											src="http://blog.bandinlunis.com/bandi_blog/images/common/ico_gradeS0.gif"
+											alt="">
+										<!-- 나뭇잎0 -->
+									</c:if> <c:if test="${dto.rate ==10}">
+										<img
+											src="http://blog.bandinlunis.com/bandi_blog/images/common/ico_gradeS2.gif"
+											alt="">
+										<!-- 나뭇잎1 -->
+										<img
+											src="http://blog.bandinlunis.com/bandi_blog/images/common/ico_gradeS2.gif"
+											alt="">
+										<!-- 나뭇잎1 -->
+										<img
+											src="http://blog.bandinlunis.com/bandi_blog/images/common/ico_gradeS2.gif"
+											alt="">
+										<!-- 나뭇잎1 -->
+										<img
+											src="http://blog.bandinlunis.com/bandi_blog/images/common/ico_gradeS2.gif"
+											alt="">
+										<!-- 나뭇잎1 -->
+										<img
+											src="http://blog.bandinlunis.com/bandi_blog/images/common/ico_gradeS2.gif"
+											alt="">
+										<!-- 나뭇잎1 -->
+									</c:if></td>
+								<td style="text-align: left;"><a href ="javascript:goReviewMain(${dto.reviewId })"> ${dto.reviewTitle }
+								</a></td>
+								<td class="t_gr">${dto.username }</td>
+								<td class="t_11gr">${dto.hitCount }</td>
+								<td class="t_11gr">${dto.thumbup }</td>
+								<td class="t_11gr">${dto.created }</td>
+
+							</tr>
+
+						</c:forEach>
+
 
 						<!-- //loop -->
 					</tbody>
@@ -320,22 +443,27 @@
 
 					<div class="pageConR">
 						<script>
-							function goReview() {
-								parent.location.href = '?prodId=&viewType=review';
-							}
+						function goReview() {
+							parent.location.href = '<%=cp%>/book_review_created.action?isbn='+ ${isbn};
+							
+						}
+						
+						function goReviewMain(Val){
+							location.href = '<%=cp%>/book_review_main.action?reviewId='+ Val;
+						}
 						</script>
 						<form action="" name="reviewForm" method="post">
 							<c:choose>
 
-								<c:when test="${empty sessionScope.customInfo.userId }">
-									<a href="javascript:go_write()"> <img
+								<c:when test="${empty sessionScope.userInfo.userId }">
+									<a href="javascript:go_login()"> <img
 										src="http://blog.bandinlunis.com/bandi_blog/images/common/btn_writeReview.gif"
 										class="al_middle" alt="리뷰쓰기">
 									</a>
 								</c:when>
 
 								<c:otherwise>
-									<a href="javascript:go_write()"> <img
+									<a href="javascript:goReview()"> <img
 										src="http://blog.bandinlunis.com/bandi_blog/images/common/btn_writeReview.gif"
 										class="al_middle" alt="리뷰쓰기">
 									</a>

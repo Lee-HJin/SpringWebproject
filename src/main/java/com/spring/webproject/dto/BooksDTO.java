@@ -1,6 +1,7 @@
 package com.spring.webproject.dto;
 
 public class BooksDTO {
+	
 	private int authorId;
 	private int translatorId;
 	private String publisher;
@@ -14,16 +15,17 @@ public class BooksDTO {
 	private String bookSize; // 책 크기
 	private String tableOfContents; // 책 목차
 	
-	private String authorname; // 저자 이름
+	private String authorName; // 저자 이름
 
 	
 	
-	public String getAuthorname() {
-		return authorname;
+	
+	public String getAuthorName() {
+		return authorName;
 	}
 
-	public void setAuthorname(String authorname) {
-		this.authorname = authorname;
+	public void setAuthorName(String authorName) {
+		this.authorName = authorName;
 	}
 
 	public int getAuthorId() {
