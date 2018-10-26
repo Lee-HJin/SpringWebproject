@@ -4,6 +4,7 @@ public class MainDTO {
 	
 	int authorId;
 	int categoryId;
+	int listNum;
 	
 	String bookTitle;
 	String isbn;
@@ -45,6 +46,12 @@ public class MainDTO {
 	}
 	public void setAuthorName(String authorName) {
 		this.authorName = authorName;
+	}
+	public int getListNum() {
+		return listNum;
+	}
+	public void setListNum(int listNum) {
+		this.listNum = listNum;
 	}
 	
 	
