@@ -59,12 +59,12 @@ public class MyUtil {
 			
 			if(page == currentPage){				
 				
-				sb.append("<font color=\"Fuchsia\">" + page + "</font>&nbsp;");				
+				sb.append("<span class='page_on'>" + page + "</span>&nbsp;");				
 			
 			}else{
 				
-				sb.append("<a href=\"" + listUrl + "pageNum=" + page + "\">"
-						+ page + "</a>&nbsp;");
+				sb.append("<span class='page_off'><a href=\"" + listUrl + "pageNum=" + page + "\">"
+						+ page + "</a></span>&nbsp;");
 				
 			}
 			

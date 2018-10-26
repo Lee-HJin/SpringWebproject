@@ -11,7 +11,6 @@
 <title>반디앤루니스 인터넷서점</title>
 
 	<link rel="stylesheet" href="<%=cp%>/resources/css/custom_bootstrap.css" type="text/css">
-	<link rel="stylesheet" href="<%=cp%>/resources/css/main.css" type="text/css">
 	<link rel="stylesheet" href="<%=cp%>/resources/css/join.css" type="text/css">
 	
 	<!-- bootstrap -->
@@ -36,8 +35,8 @@
 		<br/><br/>
 		<div class="login_message"><b>${message}</b></div>
 		<div class="bts"  style="float: left;">			
-			<input type="text" name="userId" placeholder="아이디" style="border-color: bcbcbc; border: 1px solid; margin-bottom: 0px; height: 40px; width: 300px;" class="form-control"> <br/>
-			<input type="password" name="userPwd" placeholder="비밀번호" style="border-color: bcbcbc; border: 1px solid; margin-bottom: 10px; height: 40px; width: 300px;" class="form-control">		
+			<input type="text" name="user_id" placeholder="아이디" style="border-color: bcbcbc; border: 1px solid; margin-bottom: 0px; height: 40px; width: 300px;" class="form-control"> <br/>
+			<input type="password" name="userPwd" placeholder="비밀번호" style="border-color: bcbcbc; border: 1px solid; margin-bottom: 10px; height: 40px; width: 300px;" class="form-control" id="login_pwd">		
 		</div>
 		<div style="float: left; padding-left: 20px">
 			<input type="button" value="로그인" onclick="login();" class="login_btn">
@@ -47,7 +46,7 @@
 		</div>
 		<div class="href">
 			<a href="javascript:showWindow('mem_findId',660)">아이디찾기</a>&nbsp;|&nbsp;
-			<a href="mem_findPwd.action">비밀번호 찾기</a>&nbsp;|&nbsp;
+			<a href="javascript:showWindow('mem_findPwd',660)">비밀번호 찾기</a>&nbsp;|&nbsp;
 			<a href="<%=cp%>/login/mem_agree.action"><b>회원가입</b></a>
 		</div>
 	</div>
@@ -70,6 +69,11 @@
 
 </div>
 
+
+<jsp:include page="../common/footer.jsp" flush="false"/>
+
+	<script src="<%=cp%>/resources/js/swiper_min.js"></script>
+	<script src="<%=cp%>/resources/js/main.js"></script>
 
 </body>
 </html>

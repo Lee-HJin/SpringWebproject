@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="bookMapper">
+
+	<!-- 한개의 책 데이터 가져오기 -->
+	<select id="getReadBookData" parameterType="Integer"
+		resultType="com.spring.webproject.dto.BooksDTO">
+		select A.authorId, A.translatorId, A.publisher,
+		A.bookTitle, A.bookPrice, A.isbn, TO_CHAR(A.publishDate,'YYYY-MM-DD')
+		publishDate, A.introduction, A.page, A.subTitle, A.bookSize,
+		A.tableOfContents, B.authorname from books A, author B where isbn =
+		#{isbn} and B.authorid = (select authorid from books where isbn =
+		#{isbn})
+	</select>
+
+	<!-- 작가 정보 가져오기 -->
+
+	<select id="getReadAuthorData" parameterType="Integer"
+		resultType="com.spring.webproject.dto.AuthorDTO">
+		select authorname, nationality, category, introduction,
+		image from author where authorid = (select authorid from books where
+		isbn = #{isbn})
+	</select>
+
+	<select id="getReadBookList" parameterType="Integer"
+		resultType="com.spring.webproject.dto.BooksImageDTO">
+		select * from(
+		select rownum rnum, data.* from(
+		select isbn, bookImage from bookImage where isbn = #{isbn}
+		order by bookImage asc) data)
+
+	</select>
+</mapper>

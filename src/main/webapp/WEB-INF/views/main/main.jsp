@@ -1,3 +1,4 @@
+<%@page import="java.util.List"%>
 <%@ page import="java.io.PrintWriter"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
@@ -5,7 +6,11 @@
 <%
 	request.setCharacterEncoding("UTF-8");
 	String cp = request.getContextPath();
-%> 
+	
+	Cookie[] cookie = request.getCookies();
+
+%>
+ 
    
 <!DOCTYPE html>
 <html>
@@ -14,28 +19,33 @@
 
 <link rel="stylesheet" href="<%=cp%>/resources/css/main.css" type="text/css"/>
 <link rel="stylesheet" href="<%=cp%>/resources/css/swiper_min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+<script type="text/javascript">
+
+ 	// 쿠키 가져오기
+	
+ 	
+	
+	
+/* 	var cookie = getCookie('book');
+	alert(cookie);
+ 	cookie = cookie.split("/");
+
+	var ck = new Array();
+	
+	for(i=0;i<cookie.length;i++){
+		ck[i] = JSON.parse(cookie[i]);
+	}
+	
+	alert(ck[3].bookTitle); */
+	
+</script>
 
 <title>Insert title here</title>
 <script type="text/javascript">
 	
-	function toggleDisplay(num){
-	    var con = document.getElementById("layer"+num);
- 	     if(con.style.display=='none'){
-	        con.style.display = 'block';
-	    }else{
-	        con.style.display = 'none'; 
-	    }
-	}
-	
-	function toggleDisplay2(num){
-	    var con = document.getElementById("top_layer"+num);
- 	     if(con.style.display=='none'){
-	        con.style.display = 'block';
-	    }else{
-	        con.style.display = 'none'; 
-	    }
-	}
-	
+	//베스트셀러 hover시 이미지 띄우기
 	function hoverImg(num) {
 		
 		var img = document.getElementById("link_img"+num).src;
@@ -43,15 +53,156 @@
 		
 		document.getElementById("bs_link").href = link;
 		document.getElementById("bs_img").src = img;
+	}	
+	
+	
+	//메인화면 로드시 기본값
+	$(function() {
+		var params = $('.swiper-slide-active #isbn').val();
+		var data = document.getElementById("data");
+		var noData = document.getElementById("no_data");
+
+		if(params!=null){
+			noData.style.display = 'none';
+			data.style.display = 'block';
+			listRecomm(params);
+		}else if(params==null){
+			noData.style.display = 'block';
+			data.style.display = 'none';
+		}
+		
+		document.getElementById("bs_link").href = document.getElementById("img_link1").href;
+		document.getElementById("bs_img").src = document.getElementById("link_img1").src;
+		
+		newBookAll();
+		issueBook();
+		
+		
+		
+		
+		var ck = cookieInfo(getCookie('book'));
+		for(i=0;i<ck.length;i++){
+			$('#isbn'+i).val(ck[i].isbn);
+		}
+		
+<%-- 		
+		var html = "<div class='swiper-container swiper3'><div class='swiper-wrapper'>";
+
+		for(i=0;i<ck.length;i++){
+
+			html += "<div class='swiper-slide'><input id='isbn' value='" + ck[i].isbn + "' type='hidden'/>";
+			html += "<div class='rb_image'><a href='javascript://'><img src='<%=cp%>/resources/image/book/" + ck[i].bookImage + "'>";
+			html += "</a><dl class='rb_title'><dt>" + ck[i].bookTitle + "</dt><dd>" + ck[i].authorName + "</dd>";
+			html += "</dl></div></div>";
+		}
+		
+		html+= "</div></div>";
+		
+		document.getElementById('today_view').innerHTML=html; --%>
+		
+	});	
+	
+	//추천도서 새로고침 버튼
+	$(document).ready(function() {
+		$('#recommend_btn,#rb_awL,#rb_awR').click(function() {
+		
+			var params = $('.swiper-slide-active #isbn0').val();
+			alert(params);
+			$.ajax({
+				type:"POST",
+				url:"<%=cp%>/recomm.action",
+				data: {params:params},
+				success:function(args){
+					$('#recommend_books').html(args);
+				},
+				error:function(e){
+					alert(e.responseText);
+				}
+			});
+		});
+	});
+	
+	//추천도서 불러오기
+	function listRecomm(params) {
+		
+		var url = "<%=cp%>/recomm.action";
+		
+		$.post(url,{params:params},function(args){
+			$("#recommend_books").html(args);
+		});
 	}
 	
+		
+	//기대신간 전체
+	function newBookAll() {
+		
+		var url = "<%=cp%>/newbookall.action";
+		
+		$.post(url,function(args){
+			$("#new_book").html(args);
+		});	
+	}
+	
+	//기대신간 카테고리별
+	function newBook(params) {
 
+		var url = "<%=cp%>/newbook.action";
+		
+		$.post(url,{params:params},function(args){
+			$("#new_book").html(args);
+		});
+	}
+	
+	//이슈북
+	function issueBook() {
+
+		var url = "<%=cp%>/issuebook.action";
+		
+		$.post(url,function(args){
+			$("#issue_book").html(args);
+		});
+	}
+	
+	//쿠키 가져오기
+	function getCookie(cookiename){
+		var ck = [];
+		var cookiestring  = document.cookie;
+		var cookiearray = cookiestring.split(';');
+		for(var i=0; i<cookiearray.length; ++i){ 
+		    if(cookiearray[i].indexOf(cookiename)!=-1){
+		        var nameVal = cookiearray[i].split("=");
+		        nameVal = nameVal[1].trim();
+
+		        } 
+		    }
+		return unescape(nameVal);
+	}
+		
+	
+	//쿠키 뿌리기
+	function cookieInfo(cValue) {		
+ 		var cookie = cValue;
+ 		cookie = cookie.split("/");
+ 		alert(cookie);
+ 		var ck = new Array();
+ 		
+ 		for(i=0;i<cookie.length;i++){
+ 			ck[i] = JSON.parse(cookie[i]);
+ 		}
+ 		
+ 		return ck;
+ 		
+<%--  		var url = "<%=cp%>/cookie.action";
+ 		
+ 		$.post(url,{params:ck},function(args){
+			$("#today_view").html(args);
+		}); --%>
+	}
+	
 
 </script>
 </head>
 <body style="margin: 0;">
-
-
 <jsp:include page="./header.jsp" flush="false"/>
 
 <div id="body">
@@ -105,6 +256,15 @@
 						<div class="swiper-slide">
 							<a href="javascript://"><img src="<%=cp%>/resources/image/main/banner04.jpg"></a>
 						</div>
+						<div class="swiper-slide">
+							<a href="javascript://"><img src="<%=cp%>/resources/image/main/banner05.jpg"></a>
+						</div>
+						<div class="swiper-slide">
+							<a href="javascript://"><img src="<%=cp%>/resources/image/main/banner06.jpg"></a>
+						</div>
+						<div class="swiper-slide">
+							<a href="javascript://"><img src="<%=cp%>/resources/image/main/banner07.jpg"></a>
+						</div>
 					</div>
 					
 					<div class="arrow_box">
@@ -153,6 +313,9 @@
 						</div>
 						<div class="swiper-slide">
 							<a href="javascript://"><img src="<%=cp%>/resources/image/main/banner3_05.jpg"></a>
+						</div>
+						<div class="swiper-slide">
+							<a href="javascript://"><img src="<%=cp%>/resources/image/main/banner3_06.jpg"></a>
 						</div>
 					</div>
 					
@@ -277,54 +440,31 @@
 			<div class="bs_area">
 				<div class="rank_wrap">
 					<ul class="rank_list">
-						<li><!-- foreach로 데이터 돌린다 -->
-							<span class="list_n">1</span>
-							<a id="img_link0" class="list_title" href="javascript://00" onmouseover="hoverImg('0')">죽고싶지만 떡볶이는 먹고…
-							<img id="link_img0" src="<%=cp%>/resources/image/main/4181047.jpg" style="display: none;"></a>
-						</li>
+						<c:forEach var="bs" items="${lst }">
 						<li>
-							<span class="list_n">2</span>
-							<a id="img_link1" class="list_title" href="<%=cp %>/main.action" onmouseover="hoverImg('1')">돌이킬 수 없는 약속
-							<img id="link_img1" src="<%=cp%>/resources/image/main/4034224.jpg" style="display: none;"></a>
+							<a id="img_link${bs.listNum }" class="list_title" href="<%=cp %>/tempbook.action?isbn=${bs.isbn}" 
+							onmouseover="hoverImg('${bs.listNum}')">
+								<span class="list_n">${bs.listNum }</span>
+								<c:choose>
+									<c:when test="${fn:length(bs.bookTitle)>16 }">
+										<c:out value="${fn:substring(bs.bookTitle,0,13) }"/>…
+									</c:when>
+									<c:otherwise>
+										<c:out value="${bs.bookTitle }"></c:out>
+									</c:otherwise>
+								</c:choose>
+							</a>
+							<a href="<%=cp %>/tempbook.action?isbn=${bs.isbn}">
+								<img id="link_img${bs.listNum }" src="<%=cp%>/resources/image/book/${bs.bookImage}" style="display: none;">
+							</a>	
 						</li>
-						<li>
-							<span class="list_n">3</span>
-							<a href="javascript://" class="list_title">초격차</a>
-						</li>
-						<li>
-							<span class="list_n">4</span>
-							<a href="javascript://" class="list_title">골든 아워 1</a>
-						</li>
-						<li>
-							<span class="list_n">5</span>
-							<a href="javascript://" class="list_title">인생 우화</a>
-						</li>
-						<li>
-							<span class="list_n">6</span>
-							<a href="javascript://" class="list_title">뼈있는 아무말 대잔치</a>
-						</li>
-						<li>
-							<span class="list_n">7</span>
-							<a href="javascript://" class="list_title">언어의 온도[100만부 돌…</a>
-						</li>
-						<li>
-							<span class="list_n">8</span>
-							<a href="javascript://" class="list_title">열두 발자국</a>
-						</li>
-						<li>
-							<span class="list_n">9</span>
-							<a href="javascript://" class="list_title">고양이 1</a>
-						</li>
-						<li>
-							<span class="list_n">10</span>
-							<a href="javascript://" class="list_title">죄의 목소리</a>
-						</li>
+						</c:forEach>
 					</ul>
 					<a class="more_link" href="javascript://"></a>
 				</div>
 				<div class="bs_image">
 					<a id="bs_link" href="javascript://">
-						<img id="bs_img" src="<%=cp%>/resources/image/main/4181047.jpg">
+						<img id="bs_img" src="javascript://">
 					</a>
 				</div>
 			</div>	
@@ -337,8 +477,16 @@
 				</h4>
 				<div class="rc_title_aw"></div>
 			</div>
-			<div class="rc_body">
+			<div class="rc_body" id="no_data" style="display: none;">
+				<div class="rc_no_data">
+					최근 본 상품이 없습니다.
+				</div>
+			</div>
+			<div class="rc_body" id="data" style="display: block;">
 				<div>
+<%-- 					<c:if test="${empty today.isbn }">
+						
+					</c:if> --%>
 					<div class="recent_book">
 						<div class="rb_awbox">
 							<button class="slide_aw left" id="rb_awL">
@@ -349,71 +497,30 @@
 							</button>
 						</div>
 						<h4>오늘본 상품</h4>
-						<div class="swiper-container swiper3">
+						<div id="today_view"></div>
+						 <div class="swiper-container swiper3">
 							<div class="swiper-wrapper">
-								<div class="swiper-slide">
+							
+  								<div class="swiper-slide">
+ 									<input id="isbn" value="${ck.isbn }" type="hidden"/>
 									<div class="rb_image">
 										<a href="javascript://">
-											<img src="<%=cp%>/resources/image/main/4202644.jpg">
+											<img src="<%=cp%>/resources/image/book/4202644_cover.jpg">
 										</a>
 										<dl class="rb_title">
-											<dt>설거지 누가 할래</dt>
-											<dd>야먀우치 마리코</dd>
+											<dt>${ck.bookTitle }</dt>
+											<dd>${ck.authorName }</dd>
 										</dl>
 									</div>
 								</div>
-								<div class="swiper-slide">
-									<div class="rb_image">
-										<a href="javascript://">
-											<img src="<%=cp%>/resources/image/main/4198240.jpg">
-										</a>
-										<dl class="rb_title">
-											<dt>미키는 늘 너의 이…</dt>
-											<dd>미키 마우스</dd>
-										</dl>
-									</div>	
-								</div>
+
 							</div>
-						</div>
+						</div> 
 					</div>
-					<button class="rc_btn"></button>
+					<button class="rc_btn" id="recommend_btn"></button>
 					<div class="rc_books">
 						<h4>최근 본 도서와 유사한 분야 또는 주제를 다룬 도서</h4>
-						<ul class="rc_books_list">
-							<li>
-								<div class="rb_image">
-									<a href="javascript://">
-										<img src="<%=cp%>/resources/image/main/3983105.jpg">
-									</a>
-									<dl class="rb_title">
-										<dt>언어의 온도[100…</dt>
-										<dd>이기주</dd>
-									</dl>
-								</div>
-							</li>
-							<li>
-								<div class="rb_image">
-									<a href="javascript://">
-										<img src="<%=cp%>/resources/image/main/4201046.jpg">
-									</a>
-									<dl class="rb_title">
-										<dt>골든아워 2</dt>
-										<dd>이국종</dd>
-									</dl>
-								</div>
-							</li>
-							<li>
-								<div class="rb_image">
-									<a href="javascript://">
-										<img src="<%=cp%>/resources/image/main/4200595.jpg">
-									</a>
-									<dl class="rb_title">
-										<dt>참 잘했어요</dt>
-										<dd>박광수</dd>
-									</dl>
-								</div>
-							</li>
-						</ul>
+						<div id="recommend_books"></div>
 					</div>
 				</div>
 			</div>
@@ -422,16 +529,16 @@
 			<h3 class="nb_title"></h3>
 			<ul class="nb_tab_menu">
 				<li>
-					<a href="javascript://">전체</a>
+					<a href="#" onclick="newBookAll();return false;">전체</a>
 				</li>
 				<li>
-					<a href="javascript://">소설</a>
+					<a href="#" onclick="newBook(4);return false;">소설</a>
 				</li>
 				<li>
 					<a href="javascript://">인문/교양/철학</a>
 				</li>
 				<li>
-					<a href="javascript://">시/에세이/기행</a>
+					<a href="#" onclick="newBook(1);return false;">시/에세이/기행</a>
 				</li>
 				<li>
 					<a href="javascript://">사회/정치/법률</a>
@@ -449,257 +556,13 @@
 					<a href="javascript://">여행/취미/레저</a>
 				</li>
 			</ul>
-			<div class="nb_list1">
-				<div class="b_arrow_box">
-					<button class="slide_aw left" id="nb_awL">
-						<span class="aw_count_nb"></span>
-					</button>	
-					<button class="slide_aw right" id="nb_awR">
-						<span class="aw_count_nb"></span>
-					</button>
-				</div>
-				<div class="swiper-container swiper4">
-					<div class="swiper-wrapper">
-						<div class="swiper-slide">
-							<div class="wrap_b_img">
-								<a href="javascript://">
-									<img src="<%=cp%>/resources/image/main/4203179.jpg">
-								</a>
-								<dl class="rb_title">
-									<dt>설거지 누가 할래</dt>
-									<dd>야먀우치 마리코</dd>
-								</dl>
-							</div>
-						</div>
-						<div class="swiper-slide">
-							<div class="wrap_b_img">
-							 	<a href="javascript://">
-									<img src="<%=cp%>/resources/image/main/4202644.jpg">
-								</a>
-								<dl class="rb_title">
-									<dt>설거지 누가 할래</dt>
-									<dd>야먀우치 마리코</dd>
-								</dl>
-							</div>
-						</div>
-						<div class="swiper-slide">
-							<div class="wrap_b_img">
-							<a href="javascript://">
-								<img src="<%=cp%>/resources/image/main/4201858.jpg">
-							</a>
-							<dl class="rb_title">
-								<dt>설거지 누가 할래</dt>
-								<dd>야먀우치 마리코</dd>
-							</dl>
-							</div>
-						</div>
-						<div class="swiper-slide">
-							<div class="wrap_b_img">
-								<a href="javascript://">
-									<img src="<%=cp%>/resources/image/main/4203116.jpg">
-								</a>
-								<dl class="rb_title">
-									<dt>설거지 누가 할래</dt>
-									<dd>야먀우치 마리코</dd>
-								</dl>
-							</div>	
-						</div>
-						<div class="swiper-slide">
-							<div class="wrap_b_img">
-								<a href="javascript://">
-									<img src="<%=cp%>/resources/image/main/4201995.jpg">
-								</a>
-								<dl class="rb_title">
-									<dt>설거지 누가 할래</dt>
-									<dd>야먀우치 마리코</dd>
-								</dl>
-							</div>
-						</div>
-						<div class="swiper-slide">
-							<div class="wrap_b_img">
-								<a href="javascript://">
-									<img src="<%=cp%>/resources/image/main/4202623.jpg">
-								</a>
-								<dl class="rb_title">
-									<dt>설거지 누가 할래</dt>
-									<dd>야먀우치 마리코</dd>
-								</dl>
-							</div>
-						</div>
-						<div class="swiper-slide first">
-							<div class="wrap_b_img">
-								<a href="javascript://">
-									<img src="<%=cp%>/resources/image/main/4200746.jpg">
-								</a>
-								<dl class="rb_title">
-									<dt>설거지 누가 할래</dt>
-									<dd>야먀우치 마리코</dd>
-								</dl>
-							</div>	
-						</div>
-						<div class="swiper-slide">
-							<div class="wrap_b_img">
-								<a href="javascript://">
-									<img src="<%=cp%>/resources/image/main/4203203.jpg">
-								</a>
-								<dl class="rb_title">
-									<dt>열 살, 변하기 시작한 아들에게 해서는 안...</dt>
-									<dd>오야노 메구미</dd>
-								</dl>
-							</div>
-						</div>
-						<div class="swiper-slide">
-							<div class="wrap_b_img">
-								<a href="javascript://">
-									<img src="<%=cp%>/resources/image/main/4198414.jpg">
-								</a>
-								<dl class="rb_title">
-									<dt>설거지 누가 할래</dt>
-									<dd>야먀우치 마리코</dd>
-								</dl>
-							</div>	
-						</div>
-						<div class="swiper-slide">
-							<div class="wrap_b_img">
-								<a href="javascript://">
-									<img src="<%=cp%>/resources/image/main/4192753.jpg">
-								</a>
-								<dl class="rb_title">
-									<dt>설거지 누가 할래</dt>
-									<dd>야먀우치 마리코</dd>
-								</dl>
-							</div>	
-						</div>
-					</div>
-				</div>
+			<div class="nb_list1" id="new_book">
 			</div>
 		</div>
 		<div class="issue_book">
 			<h3 class="ib_title"></h3>
-			<h4 class="ib_subtitle">도대체 행복이 뭐에요?</h4>
-			<div class="ib_list">
-				<div class="b_arrow_box">
-					<button class="slide_aw left" id="ib_awL">
-						<span class="aw_count_ib"></span>
-					</button>	
-					<button class="slide_aw right" id="ib_awR">
-						<span class="aw_count_ib"></span>
-					</button>
-				</div>
-				<div class="swiper-container swiper5">
-					<div class="swiper-wrapper">
-						<div class="swiper-slide">
-							<div class="wrap_ib_img">
-								<a href="javascript://">
-									<img src="<%=cp%>/resources/image/main/3785296.jpg">
-								</a>
-								<dl class="rb_title">
-									<dt>설거지 누가 할래</dt>
-									<dd>야먀우치 마리코</dd>
-								</dl>
-							</div>
-						</div>
-						<div class="swiper-slide">
-							<div class="wrap_ib_img">
-								<a href="javascript://">
-									<img src="<%=cp%>/resources/image/main/3054578.jpg">
-								</a>
-								<dl class="rb_title">
-									<dt>설거지 누가 할래</dt>
-									<dd>야먀우치 마리코</dd>
-								</dl>
-							</div>
-						</div>
-						<div class="swiper-slide">
-							<div class="wrap_ib_img">
-								<a href="javascript://">
-									<img src="<%=cp%>/resources/image/main/4106911.jpg">
-								</a>
-								<dl class="rb_title">
-									<dt>설거지 누가 할래</dt>
-									<dd>야먀우치 마리코</dd>
-								</dl>
-							</div>
-						</div>
-						<div class="swiper-slide">
-							<div class="wrap_ib_img">
-								<a href="javascript://">
-									<img src="<%=cp%>/resources/image/main/4200744.jpg">
-								</a>
-								<dl class="rb_title">
-									<dt>설거지 누가 할래</dt>
-									<dd>야먀우치 마리코</dd>
-								</dl>
-							</div>
-						</div>
-						<div class="swiper-slide">
-							<div class="wrap_ib_img">
-								<a href="javascript://">
-									<img src="<%=cp%>/resources/image/main/4198136.jpg">
-								</a>
-								<dl class="rb_title">
-									<dt>설거지 누가 할래</dt>
-									<dd>야먀우치 마리코</dd>
-								</dl>
-							</div>
-						</div>
-						<div class="swiper-slide">
-							<div class="wrap_ib_img">
-								<a href="javascript://">
-									<img src="<%=cp%>/resources/image/main/4197660.jpg">
-								</a>
-								<dl class="rb_title">
-									<dt>설거지 누가 할래</dt>
-									<dd>야먀우치 마리코</dd>
-								</dl>
-							</div>
-						</div>
-						<div class="swiper-slide">
-							<div class="wrap_ib_img">
-								<a href="javascript://">
-									<img src="<%=cp%>/resources/image/main/4194760.jpg">
-								</a>
-								<dl class="rb_title">
-									<dt>설거지 누가 할래</dt>
-									<dd>야먀우치 마리코</dd>
-								</dl>
-							</div>
-						</div>
-						<div class="swiper-slide">
-							<div class="wrap_ib_img">
-								<a href="javascript://">
-									<img src="<%=cp%>/resources/image/main/4191313.jpg">
-								</a>
-								<dl class="rb_title">
-									<dt>설거지 누가 할래</dt>
-									<dd>야먀우치 마리코</dd>
-								</dl>
-							</div>
-						</div>
-						<div class="swiper-slide">
-							<div class="wrap_ib_img">
-								<a href="javascript://">
-									<img src="<%=cp%>/resources/image/main/4191050.jpg">
-								</a>
-								<dl class="rb_title">
-									<dt>설거지 누가 할래</dt>
-									<dd>야먀우치 마리코</dd>
-								</dl>
-							</div>
-						</div>
-						<div class="swiper-slide">
-							<div class="wrap_ib_img">
-								<a href="javascript://">
-									<img src="<%=cp%>/resources/image/main/4189057.jpg">
-								</a>
-								<dl class="rb_title">
-									<dt>설거지 누가 할래</dt>
-									<dd>야먀우치 마리코</dd>
-								</dl>
-							</div>
-						</div>
-					</div>
-				</div>
+			<h4 class="ib_subtitle">나를 빛나게 만드는 습관</h4>
+			<div class="ib_list" id="issue_book">
 			</div>
 		</div>
 	</div>
@@ -867,16 +730,126 @@
 				</dl>
 			</li>
 		</ul>
-	</div>	
+	</div>
+</div>
+<div class="body_section_tale">
+	<div class="bandi_n_lunis">
+		<h3 class="bnl_title"></h3>
+		<div class="bnl_info">
+			<div class="info_box">
+				<div class="swiper-container bnl_swiper1">
+					<div class="swiper-wrapper">
+						<div class="swiper-slide">	
+							<dl>
+								<dt>
+									<a href="javascript://">
+										<img src="<%=cp%>/resources/image/main/bnl_info01.jpg">
+									</a>
+								</dt>
+								<dd class="ifb_title">반디앤루니스를 읽다</dd>
+								<dd class="ifb_txt">한 손으로 쉽고 빠르게 모든 혜택을 누려보세요!</dd>
+							</dl>
+						</div>
+						<div class="swiper-slide">
+							<dl>
+								<dt>
+									<a href="javascript://">
+										<img src="<%=cp%>/resources/image/main/bnl_info02.jpg">
+									</a>
+								</dt>
+								<dd class="ifb_title">나는 책 입니다</dd>
+								<dd class="ifb_txt">일상에 묻혀 잠시 잊고 있었던 책을 떠올려 보세요.</dd>
+							</dl>
+						</div>
+					</div>
+					<div class="arrow_box ">
+						<span class="arrow_count"></span>
+						<button class="ban_awN"></button>
+						<button class="ban_awP"></button>
+					</div>
+				</div>
+			</div>
+			<div class="info_box">
+				<div class="swiper-container bnl_swiper2">
+					<div class="swiper-wrapper">
+						<div class="swiper-slide">
+							<dl>
+								<dt>
+									<a href="javascript://">
+										<img src="<%=cp%>/resources/image/main/bnl_store01.jpg">
+									</a>
+								</dt>
+								<dd class="ifb_title">반디앤루니스 롯데피트인산본점</dd>
+								<dd class="ifb_txt">책나라 군포의 문화 힐링 스팟</dd>
+							</dl>
+						</div>
+						<div class="swiper-slide">
+							<dl>
+								<dt>
+									<a href="javascript://">
+										<img src="<%=cp%>/resources/image/main/bnl_store02.jpg">
+									</a>
+								</dt>
+								<dd class="ifb_title">반디앤루니스 대구신세계점</dd>
+								<dd class="ifb_txt">대구 서점의 새로운 랜드마크</dd>
+							</dl>
+						</div>
+						<div class="swiper-slide">
+							<dl>
+								<dt>
+									<a href="javascript://">
+										<img src="<%=cp%>/resources/image/main/bnl_store03.jpg">
+									</a>
+								</dt>
+								<dd class="ifb_title">반디앤루니스 신세계센텀시티점</dd>
+								<dd class="ifb_txt">배움과 체험이 가득한 멀티컬쳐스토어</dd>
+							</dl>
+						</div>
+					</div>
+					<div class="arrow_box">
+						<span class="arrow_count"></span>
+						<button class="ban_awN"></button>
+						<button class="ban_awP"></button>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="bnl_custom">
+			<h4 class="bnlc_title">자주묻는 질문</h4>
+			<a href="javascript://" class="more_link"></a>
+			<ul class="q_list">
+				<li>
+					<a href="javascript://">자주묻는 질문 넣기</a>
+				</li>
+				<li>
+					<a href="javascript://">자주묻는 질문 넣기</a>
+				</li>
+				<li>
+					<a href="javascript://">자주묻는 질문 넣기</a>
+				</li>
+				<li>
+					<a href="javascript://">자주묻는 질문 넣기</a>
+				</li>
+				<li>
+					<a href="javascript://">자주묻는 질문 넣기</a>
+				</li>
+				<li>
+					<a href="javascript://">자주묻는 질문 넣기</a>
+				</li>
+			</ul>
+			<div class="bnl_banner">
+			<a href="javascript://">
+				<img src="<%=cp%>/resources/image/main/bnl_banner.jpg">
+			</a>
+		</div>
+		</div>
+	</div>
 </div>
 
-	
 	<script src="<%=cp%>/resources/js/swiper_min.js"></script>
 	<script src="<%=cp%>/resources/js/main.js"></script>
 	
-<br><br><br><br><br><br><br><br><br><br><br>
-<br><br><br><br><br><br><br><br><br><br><br>
-<br><br><br><br><br><br><br><br><br><br><br>
-<br><br><br><br><br><br><br><br><br><br><br>
+<jsp:include page="./footer.jsp" flush="false"/>
+
 </body>
 </html>

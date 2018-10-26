@@ -33,11 +33,109 @@
 	    }
 	}
 	
+	var newURL =  window.location.pathname;
+    if (newURL == '/webproject/main.action') {
+        scrollHeight = 924;
+       } else {
+  	  	scrollHeight = 500;
+    } 
+
+	
+	$(function() {
+		$(window).scroll(function(){
+		      if ($(this).scrollTop() > 450) {
+		    	  $('.top_btn').show();
+		      }else{
+		    	  $('.top_btn').hide();
+		      }
+
+			if ($(this).scrollTop() > scrollHeight) {
+		          $('#side_service').addClass('ss_fixed');
+		      } else {
+		          $('#side_service').removeClass('ss_fixed');
+		      }
+		});
+		
+		$("#onTop").click(function(){
+			$('html, body').animate({scrollTop:0}, 350);
+		});
+	});
+	
 
 
 </script>
 </head>
 <body>
+<div id="onTop" class="top_btn">
+	<a href="javascript://">
+		<img src="<%=cp%>/resources/image/main/btn_top.png">
+	</a>
+</div>
+<div class="side_banner" style="margin-left: 575px;">
+	<div>
+		<a href="javascript://">
+			<img src="<%=cp%>/resources/image/main/side_banner01.jpg">
+		</a>
+	</div>
+	<div>
+		<a href="javascript://">
+			<img src="<%=cp%>/resources/image/main/side_banner02.jpg">
+		</a>
+	</div>
+</div>
+<div id="side_service" style="margin-left: 575px;">
+	<div class="today_view">
+		<h4>최근 본 상품</h4>
+		<div class="swiper-container side_swiper">
+			<div class="swiper-wrapper">
+				<ul class="swiper-slide">
+					<li class="tv_item">
+						<a href="javascript://">
+							<img src="">
+						</a>
+					</li>
+					<li class="tv_item">
+						<a href="javascript://">
+							<img src="">
+						</a>
+					</li>
+				</ul>
+				<ul class="swiper-slide">
+					<li class="tv_item">
+						<a href="javascript://">
+							<img src="">
+						</a>
+					</li>
+					<li class="tv_item">
+						<a href="javascript://">
+							<img src="">
+						</a>
+					</li>
+				</ul>
+			</div>
+		</div>
+		<div class="aw_box_tv">
+			<button class="tv_aw left" id="tv_awl"></button>
+			<span class="tv_aw_count"></span>
+			<button class="tv_aw right" id="tv_awr"></button>
+		</div>
+	</div>
+	<div class="ss_myshop">
+		<a href="javascript://">
+			나의 쇼핑
+		</a>
+	</div>
+	<div class="ss_myshop">
+		<a href="javascript://">
+			위시리스트
+		</a>
+	</div>
+	<div class="ss_myshop">
+		<a href="javascript://">
+			구매히스토리
+		</a>
+	</div>
+</div>
 <div id="head">
 	<div id="top_wrap">
 		<div class="head_top" style="width: 1100px;">
@@ -53,7 +151,7 @@
 						<a href="<%=cp %>/login.action" class="t_menu_link btn_login">로그인</a>
 					</li>
 					<li class="t_menu join">
-						<a href="<%=cp %>/logout.action" class="t_menu_link">회원가입</a>
+						<a href="<%=cp%>/login/mem_agree.action" class="t_menu_link">회원가입</a>
 					</li>
 					<li class="t_menu">
 						<a href="javascript://" class="t_menu_link">쇼핑카트</a>
@@ -61,7 +159,7 @@
  					</c:if>
 					<c:if test="${!empty sessionScope.userInfo.userId }"> 
 						<li class="t_menu logout">
-							<a href="javascript://" class="t_menu_link btn_logout">로그아웃</a>
+							<a href="<%=cp %>/logout.action" class="t_menu_link btn_logout">로그아웃</a>
 						</li>
 						<li class="t_menu join">
 						<a href="javascript://" class="t_menu_link">쇼핑카트</a>
@@ -69,13 +167,15 @@
  					</c:if>
 					
 					<li class="t_menu myShopping">
-						<a href="javascript://" class="t_menu_link" 
+						<a href="<%=cp%>/myShoppingMain.action" class="t_menu_link" 
 						onmouseover="javascript:toggleDisplay2('01')" onmouseout="javascript:toggleDisplay2('01')">
 						나의쇼핑</a>
 						<div id="top_layer01" class="display_top"  style="display: none; width: 90px;"
 						onmouseover="javascript:toggleDisplay2('01')" onmouseout="javascript:toggleDisplay2('01')">
 							<div style="margin-top: 5px;">
-								<a href="javascript://">나의쇼핑정보</a>
+
+								<a href="<%=cp%>/myShoppingMain.action">나의쇼핑정보</a>
+                
 							</div>
 							<div>
 								<a href="javascript://">주문배송조회</a>
@@ -98,7 +198,7 @@
 						<a href="javascript://" class="t_menu_link">고객센터</a>
 					</li>
 					<li class="t_menu store">
-						<a href="javascript://" class="t_menu_link"
+						<a href="<%=cp %>/store.action" class="t_menu_link"
 						onmouseover="javascript:toggleDisplay2('02')" onmouseout="javascript:toggleDisplay2('02')">
 						영업점안내</a>
 						<div id="top_layer02" class="display_top"  style="display: none; width: 130px;"
@@ -374,5 +474,9 @@
 		</div>
 	</div>
 </div>
+
+	<script src="<%=cp%>/resources/js/swiper_min.js"></script>
+	<script src="<%=cp%>/resources/js/main.js"></script>
+
 </body>
 </html>

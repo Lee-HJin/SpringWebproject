@@ -1,3 +1,18 @@
+var swiper = new Swiper('.side_swiper', {
+	spaceBetween: 0,
+	centeredSlides: true,
+	simulateTouch : false,
+	loop: true,
+	pagination: {
+		el: '.tv_aw_count',
+		type: 'fraction',
+	},
+	navigation: {
+		nextEl: '#tv_awr',
+		prevEl: '#tv_awl',
+	},
+}); 
+
 var swiper = new Swiper('.swiper1', {
 	spaceBetween: 0,
 	centeredSlides: true,
@@ -87,37 +102,6 @@ var swiper = new Swiper('.swiper3', {
 	},
 });
 
-var swiper = new Swiper('.swiper4', {
-	slidesPerView: 5,
-	spaceBetween: 10,
-	slidesPerGroup: 5,
-	loopFillGroupWithBlank: true,
-	loop: true,
-	pagination: {
-		el: '.aw_count_nb',
-		type: 'fraction',
-	},
-	navigation: {
-		nextEl: '#nb_awR',
-		prevEl: '#nb_awL',
-	},
-});
-
-var swiper = new Swiper('.swiper5', {
-	slidesPerView: 5,
-	spaceBetween: 10,
-	slidesPerGroup: 5,
-	loopFillGroupWithBlank: true,
-	loop: true,
-	pagination: {
-		el: '.aw_count_ib',
-		type: 'fraction',
-	},
-	navigation: {
-		nextEl: '#ib_awR',
-		prevEl: '#ib_awL',
-	},
-});
 
 var swiper = new Swiper('.swiper6', {
 	spaceBetween: 0,
@@ -132,4 +116,38 @@ var swiper = new Swiper('.swiper6', {
 		prevEl: '#tb_awL',
 	},
 });
+
+var swiper = new Swiper('.bnl_swiper1', {
+	spaceBetween: 0,
+	centeredSlides: true,
+	loop: true,
+	simulateTouch : false,
+	pagination: {
+		el: '.arrow_count',
+		type: 'fraction',
+	},
+	navigation: {
+		nextEl: '.ban_awP',
+		prevEl: '.ban_awN',
+	},
+}); 
+
+var swiper = new Swiper('.bnl_swiper2', {
+	spaceBetween: 0,
+	centeredSlides: true,
+	loop: true,
+	simulateTouch : false,
+	autoplay: {
+		delay: 7000,
+		disableOnInteraction: false,
+	},
+	pagination: {
+		el: '.arrow_count',
+		type: 'fraction',
+	},
+	navigation: {
+		nextEl: '.ban_awP',
+		prevEl: '.ban_awN',
+	},
+}); 
 

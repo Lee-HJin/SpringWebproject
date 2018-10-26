@@ -6,24 +6,24 @@
 <head>
 <meta charset="UTF-8">
 
-<link rel="stylesheet" href="/ra/resources/common/css/bnlBSList2.css" type="text/css">
+<link rel="stylesheet" href="/webproject/resources/common/css/bnlBSList2.css" type="text/css">
 <link rel="shortcut icon" href="http://image.bandinlunis.com/favicon.ico" type="image/x-icon">
 <title>2조 반디앤루니스</title>
 
-<script type="text/javascript" src="/ra/resources/common/js/common.js"></script>
-<script type="text/javascript" src="/ra/resources/common/js/swfobject.js"></script>
-<script type="text/javascript" src="/ra/resources/common/js/flashcommon.js"></script>
-<script type="text/javascript" src="/ra/resources/common/js/AC_RunActiveContent.js"></script>
+<script type="text/javascript" src="/webproject/resources/common/js/common.js"></script>
+<script type="text/javascript" src="/webproject/resources/common/js/swfobject.js"></script>
+<script type="text/javascript" src="/webproject/resources/common/js/flashcommon.js"></script>
+<script type="text/javascript" src="/webproject/resources/common/js/AC_RunActiveContent.js"></script>
 
-<script type="text/javascript" src="/ra/resources/js/common.js" charset="utf-8"></script>
-<script type="text/javascript" src="/ra/resources/js/JUTIL/JUTIL.js" charset="utf-8"></script>
-<script type="text/javascript" src="/ra/resources/js/navi.js" charset="utf-8"></script>
-<script type="text/javascript" src="/ra/resources/js/partnerHeaderInfo.js"></script>
+<script type="text/javascript" src="/webproject/resources/js/common.js" charset="utf-8"></script>
+<script type="text/javascript" src="/webproject/resources/js/JUTIL/JUTIL.js" charset="utf-8"></script>
+<script type="text/javascript" src="/webproject/resources/js/navi.js" charset="utf-8"></script>
+<script type="text/javascript" src="/webproject/resources/js/partnerHeaderInfo.js"></script>
 
-<script type="text/javascript" src="/ra/resources/js/jquery/jquery.min.js"></script>
-<script type="text/javascript" src="/ra/resources/js/jquery/jquery-ui.js"></script>
-<script type="text/javascript" src="/ra/resources/js/jquery/jquery.blockUI.js"></script>
-<script type="text/javascript" src="/ra/resources/js/jquery/idangerous.swiper.js"></script>
+<script type="text/javascript" src="/webproject/resources/js/jquery/jquery.min.js"></script>
+<script type="text/javascript" src="/webproject/resources/js/jquery/jquery-ui.js"></script>
+<script type="text/javascript" src="/webproject/resources/js/jquery/jquery.blockUI.js"></script>
+<script type="text/javascript" src="/webproject/resources/js/jquery/idangerous.swiper.js"></script>
 
 <script type="text/javascript" src="https://wcs.naver.net/wcslog.js"></script>
 
@@ -1078,7 +1078,14 @@ $(document).ready(function(){
 								</ul></div>
 						</div>
 					</div>
-					<div class="pagination"><span class="swiper-pagination-switch"></span><span class="swiper-pagination-switch swiper-visible-switch swiper-active-switch"></span><span class="swiper-pagination-switch"></span><span class="swiper-pagination-switch"></span><span class="swiper-pagination-switch"></span><span class="swiper-pagination-switch"></span></div>
+					<div class="pagination">
+						<span class="swiper-pagination-switch"></span>
+						<span class="swiper-pagination-switch swiper-visible-switch swiper-active-switch"></span>
+						<span class="swiper-pagination-switch"></span>
+						<span class="swiper-pagination-switch"></span>
+						<span class="swiper-pagination-switch"></span>
+						<span class="swiper-pagination-switch"></span>
+					</div>
 					<ul class="d_md_list">
 						
 						<li class="">
@@ -1129,9 +1136,10 @@ $(document).ready(function(){
 							<button class="aw_r" id="recommAreaRt"><span class="ns">다음</span><span class="aw_count"><span class="start_index">1</span>/<span class="end_index">3</span></span></button>
 			 			</div>
 						<div class="swiper-container">
-							<ul class="swiper-wrapper" style="width: 4790px; transform: translate3d(-958px, 0px, 0px); transition-duration: 0s; height: 384px;"><li class="swiper-slide swiper-slide-duplicate" style="width: 958px; height: 384px;">
+							<ul class="swiper-wrapper" style="width: 4790px; transform: translate3d(-958px, 0px, 0px); transition-duration: 0s; height: 384px;">
+								<li class="swiper-slide swiper-slide-duplicate" style="width: 958px; height: 384px;">
 									<ul class="d_area_list">
-								
+									
 										<li>
 											<div class="t_cate">[유아]</div>
 											<div class="b_img">
@@ -1146,9 +1154,7 @@ $(document).ready(function(){
 												<dd class="price">판매가 : <strong>4,500원</strong></dd>
 											</dl>
 										</li>
-								
-								
-								
+									
 										<li>
 											<div class="t_cate">[역사/신화/문화]</div>
 											<div class="b_img">
@@ -1163,9 +1169,7 @@ $(document).ready(function(){
 												<dd class="price">판매가 : <strong>6,000원</strong></dd>
 											</dl>
 										</li>
-								
-								
-								
+							
 										<li>
 											<div class="t_cate">[가정/생활/요리]</div>
 											<div class="b_img">

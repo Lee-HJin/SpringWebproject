@@ -8,11 +8,11 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 @Controller
-public class bnlContoller {
+public class bookSectionsController {
 
 	@RequestMapping(value="/bnlBSList.action", method= {RequestMethod.GET, RequestMethod.POST})
 	public String list(HttpServletRequest request, HttpServletResponse response) throws Exception {
-		
+			
 		return "bookSections/bnlBSList";
 	}
 	

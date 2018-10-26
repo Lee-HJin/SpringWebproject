@@ -6,24 +6,24 @@
 <meta http-equiv="Content-Type" content="text/html; charset=euc-kr">
 <meta http-equiv="X-UA-Compatible" content="IE=Edge">
 
-<link rel="stylesheet" href="/ra/resources/common/css/bnlBSList2.css" type="text/css">
+<link rel="stylesheet" href="/webproject/resources/common/css/bnlBSList2.css" type="text/css">
 <link rel="shortcut icon" href="http://image.bandinlunis.com/favicon.ico" type="image/x-icon">
 <title>2조 반디앤루니스</title>
 
-<script type="text/javascript" src="/ra/resources/common/js/common.js"></script>
-<script type="text/javascript" src="/ra/resources/common/js/swfobject.js"></script>
-<script type="text/javascript" src="/ra/resources/common/js/flashcommon.js"></script>
-<script type="text/javascript" src="/ra/resources/common/js/AC_RunActiveContent.js"></script>
+<script type="text/javascript" src="/webproject/resources/common/js/common.js"></script>
+<script type="text/javascript" src="/webproject/resources/common/js/swfobject.js"></script>
+<script type="text/javascript" src="/webproject/resources/common/js/flashcommon.js"></script>
+<script type="text/javascript" src="/webproject/resources/common/js/AC_RunActiveContent.js"></script>
 
-<script type="text/javascript" src="/ra/resources/js/common.js" charset="utf-8"></script>
-<script type="text/javascript" src="/ra/resources/js/JUTIL/JUTIL.js" charset="utf-8"></script>
-<script type="text/javascript" src="/ra/resources/js/navi.js" charset="utf-8"></script>
-<script type="text/javascript" src="/ra/resources/js/partnerHeaderInfo.js"></script>
+<script type="text/javascript" src="/webproject/resources/js/common.js" charset="utf-8"></script>
+<script type="text/javascript" src="/webproject/resources/js/JUTIL/JUTIL.js" charset="utf-8"></script>
+<script type="text/javascript" src="/webproject/resources/js/navi.js" charset="utf-8"></script>
+<script type="text/javascript" src="/webproject/resources/js/partnerHeaderInfo.js"></script>
 
-<script type="text/javascript" src="/ra/resources/js/jquery/jquery.min.js"></script>
-<script type="text/javascript" src="/ra/resources/js/jquery/jquery-ui.js"></script>
-<script type="text/javascript" src="/ra/resources/js/jquery/jquery.blockUI.js"></script>
-<script type="text/javascript" src="/ra/resources/js/jquery/idangerous.swiper.js"></script>
+<script type="text/javascript" src="/webproject/resources/js/jquery/jquery.min.js"></script>
+<script type="text/javascript" src="/webproject/resources/js/jquery/jquery-ui.js"></script>
+<script type="text/javascript" src="/webproject/resources/js/jquery/jquery.blockUI.js"></script>
+<script type="text/javascript" src="/webproject/resources/js/jquery/idangerous.swiper.js"></script>
 
 <script type="text/javascript" src="https://wcs.naver.net/wcslog.js"></script>
 
@@ -840,11 +840,11 @@ $(document).ready(function(){
 
 <link rel="stylesheet" href="http://image.bandinlunis.com/common/css/pStyle.css" type="text/css">
 
-<script type="text/javascript" src="/ra/resources/js/dwr.js" charset="euc-kr"></script>
-<script type="text/javascript" src="/ra/resources/js/dwr/engine.js"></script>
-<script type="text/javascript" src="/ra/resources/js/dwr/util.js"></script>
-<script type="text/javascript" src="/ra/resources/js/jquery/jquery.min.js"></script><!-- IE8 에서 오류로 인해 일부러 넣음(jQuery 보다 dwr.util.js 가 밑에 있음 오류 발생) -->
-<script type="text/javascript" src="/ra/resources/js/multiCart.js"></script>
+<script type="text/javascript" src="/webproject/resources/js/dwr.js" charset="euc-kr"></script>
+<script type="text/javascript" src="/webproject/resources/js/dwr/engine.js"></script>
+<script type="text/javascript" src="/webproject/resources/js/dwr/util.js"></script>
+<script type="text/javascript" src="/webproject/resources/js/jquery/jquery.min.js"></script><!-- IE8 에서 오류로 인해 일부러 넣음(jQuery 보다 dwr.util.js 가 밑에 있음 오류 발생) -->
+<script type="text/javascript" src="/webproject/resources/js/multiCart.js"></script>
 <script type="text/javascript">
 
 	navi.type = "path";

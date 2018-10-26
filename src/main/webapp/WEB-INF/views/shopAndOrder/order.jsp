@@ -6,26 +6,26 @@
 <head>
 <meta charset="UTF-8">
 
-<link rel="stylesheet" href="/ra/resources/common/css/bnlBSList2.css" type="text/css">
-<link rel="stylesheet" href="/ra/resources/common/css/shopCartList.css" type="text/css"/>
+<link rel="stylesheet" href="/webproject/resources/common/css/bnlBSList2.css" type="text/css">
+<link rel="stylesheet" href="/webproject/resources/common/css/shopCartList.css" type="text/css"/>
 
 <link rel="shortcut icon" href="http://image.bandinlunis.com/favicon.ico" type="image/x-icon">
 <title>2조 반디앤루니스</title>
 
-<script type="text/javascript" src="/ra/resources/common/js/common.js"></script>
-<script type="text/javascript" src="/ra/resources/common/js/swfobject.js"></script>
-<script type="text/javascript" src="/ra/resources/common/js/flashcommon.js"></script>
-<script type="text/javascript" src="/ra/resources/common/js/AC_RunActiveContent.js"></script>
+<script type="text/javascript" src="/webproject/resources/common/js/common.js"></script>
+<script type="text/javascript" src="/webproject/resources/common/js/swfobject.js"></script>
+<script type="text/javascript" src="/webproject/resources/common/js/flashcommon.js"></script>
+<script type="text/javascript" src="/webproject/resources/common/js/AC_RunActiveContent.js"></script>
 
-<script type="text/javascript" src="/ra/resources/js/common.js" charset="utf-8"></script>
-<script type="text/javascript" src="/ra/resources/js/JUTIL/JUTIL.js" charset="utf-8"></script>
-<script type="text/javascript" src="/ra/resources/js/navi.js" charset="utf-8"></script>
-<script type="text/javascript" src="/ra/resources/js/partnerHeaderInfo.js"></script>
+<script type="text/javascript" src="/webproject/resources/js/common.js" charset="utf-8"></script>
+<script type="text/javascript" src="/webproject/resources/js/JUTIL/JUTIL.js" charset="utf-8"></script>
+<script type="text/javascript" src="/webproject/resources/js/navi.js" charset="utf-8"></script>
+<script type="text/javascript" src="/webproject/resources/js/partnerHeaderInfo.js"></script>
 
-<script type="text/javascript" src="/ra/resources/js/jquery/jquery.min.js"></script>
-<script type="text/javascript" src="/ra/resources/js/jquery/jquery-ui.js"></script>
-<script type="text/javascript" src="/ra/resources/js/jquery/jquery.blockUI.js"></script>
-<script type="text/javascript" src="/ra/resources/js/jquery/idangerous.swiper.js"></script>
+<script type="text/javascript" src="/webproject/resources/js/jquery/jquery.min.js"></script>
+<script type="text/javascript" src="/webproject/resources/js/jquery/jquery-ui.js"></script>
+<script type="text/javascript" src="/webproject/resources/js/jquery/jquery.blockUI.js"></script>
+<script type="text/javascript" src="/webproject/resources/js/jquery/idangerous.swiper.js"></script>
 
 <script type="text/javascript" src="https://wcs.naver.net/wcslog.js"></script>
 
@@ -34,175 +34,7 @@
 <script type="text/javascript" src="https://sc.11h11m.net/s/E799.js"></script>
 <script language="javascript">
 $(document).ready(function(){
-	//자동완성
-	$("#sch_keyword").keyup(function(){
-		if(akcOn) {
-			if(event.keyCode == 38 || event.keyCode == 40) {	//상,하 방향키 event
-				timeB = new Date();	//한타입력 후 방향키 입력시 두번찍힘...
-				if((timeB-timeA) > 100) {
-					var len = $("#AREA_AKC_WORDS li").size();
-					if(len > 0) {
-						if(event.keyCode == 40) {	//down
-							akcIdx++;
-							if((len-1) < akcIdx) akcIdx = 0;
-						}else if(event.keyCode == 38) {	//up
-							akcIdx--;
-							if(akcIdx < 0) akcIdx = len-1;
-						}
-						$("#AREA_AKC_WORDS li").attr("style","background-color:#fff").delay(1000);
-						$("#AREA_AKC_WORDS li").eq(akcIdx).attr("style","background-color:#f5f5f5");
-						$("#sch_keyword").val($(".akc_hidden_words").eq(akcIdx).val());
-						viewAkcExact($("#AREA_AKC_WORDS li").eq(akcIdx).val());
-					}
-				}
-				timeA=timeB;
-			}else {
-				SCH_API_akc($("#sch_keyword").val());
-			}
-		}
-	});
-
-	//자동완성끄기
-	$(".inner_func").click(function(){
-		akcOn = false;
-		$("#AREA_AKC").addClass("blind");
-	});
-
-	//자동완성켜기
-	$(".auto_word").click(function(){
-		if($("#AREA_AKC").attr("class").indexOf("blind") > -1) {
-			akcOn = true;
-			SCH_API_akc($("#sch_keyword").val());
-			$("#AREA_AKC").removeClass("blind");
-		}else {
-			akcOn = false;
-			$("#AREA_AKC").addClass("blind");
-		}
-	});
-
-	//본문영역 클릭시 자동완성 닫기
-	$("#sch_keyword").focusout(function() {
-		setTimeout("closeAkcArea()",200);
-	});
 	
-	/* 통합검색 셀렉트 */
-	$(".search_select").hover(function() {
-		$("#sch_prodType").removeClass("blind");
-		},function() {
-		$("#sch_prodType").addClass("blind");
-	});
-	$("#sch_prodType").hover(function() {
-		$("#sch_prodType").removeClass("blind");
-		},function() {
-		$("#sch_prodType").addClass("blind");
-	});
-	$("#sch_prodType ul li").click(function() {
-		$("#frm_pt").val(this.id);
-		$(".search_select").html($("#sch_prodType ul li").eq(this.value).html());
-		$("#sch_prodType").addClass("blind");
-	});
-	/* 통합검색 셀렉트 */
-	
-	 
-	var newURL =  window.location.pathname; 
-      if (newURL == '/front/main.do') {
-          scrollHeight = 899
-         } else {
-    	  scrollHeight = 500
-      } 
-      
-	/* 스크롤에 따른 검색과 날개 영역 변경 */
-	$(window).scroll(function(){
-	      if ($(this).scrollTop() > 450) {	 
-	          $('.gnb_add_btn').addClass('abs_view');
-	          $('.ss_top').show();
-	          if(!$('.add_search').is(':visible')){
-	        	  $('#head').addClass('head_mini');
-	          }
-	      } else {
-	    	  $('#head').removeClass('head_mini');
-	          $('.gnb_add_btn').removeClass('abs_view');
-	          $('.ss_top').hide();
-	      } 
-	      
-	      if ($(this).scrollTop() > scrollHeight) {
-	          $('#serviceWrap').addClass('ss_fixed');
-	      } else {
-	          $('#serviceWrap').removeClass('ss_fixed');
-	      }
-	  });
-
-	$(".add_search").click(function(){
-		 $('#head').show();
-		 $('#head').addClass('head_mini');
-		 $('.head_mini').show();
-		 $('.add_cart').hide();
-		 $('.add_search').hide();
-		 $('.add_close').show();
-		 $('.abs_view').css('top','80px');
-		});
-	$(".add_close").click(function(){			
-		 $('#head').removeClass('head_mini');
-		 $('#head').removeAttr('style');
-		 $('.head_mini').hide()
-		 $('.add_cart').show();
-		 $('.add_search').show();
-		 $('.add_close').hide();
-		 $('.abs_view').css('top','0');
-		});
-
-	/* 쉽게찾기 */
-	$(".ez_search").hover(function() {
-		$(".search_more_pop").show();
-		},function() {
-		$(".search_more_pop").hide();
-	});
-	$(".search_more_pop").hover(function() {
-		$(".search_more_pop").show();
-		},function() {
-		$(".search_more_pop").hide();
-	});
-	/* 쉽게찾기 */
-
-	//검색 submit
-	$("#searchForm").submit(function() {
-		var ad_url = $("#ad_url").val();
-		
-		if(ad_url != ""){
-       		location.href = ad_url;
-       		return false;
-       	}
-		
-		$("#sch_keyword").val($("#sch_keyword").val().trim());
-		if($("#sch_keyword").val() == "") {
-			alert("검색어를 입력하세요.");
-			$("#sch_keyword").focus();
-			return false;
-		}
-		
-		var sch_prod_type = $("#frm_pt").val();
-		if (sch_prod_type == "03" || sch_prod_type == "07"){
- 			$("#frm_ps").val("01");
-  			$("#frm_s").val("pt");
-		}else{
- 			$("#frm_ps").val("");
-  			$("#frm_s").val("");
-		}
-	});
-
-	/* 바로온 */
-	$("#favoriteBanner").hover(function() {
-		$(".bookmark_pop").show();
-		},function() {
-		$(".bookmark_pop").hide();
-	});
-	$(".bookmark_pop").hover(function() {
-		$(".bookmark_pop").show();
-		},function() {
-		$(".bookmark_pop").hide();
-	});	
-	/* 바로온 */
-
 	/* 나의쇼핑 */
 	$(".myShopping").hover(function() {
 		$("#myShopping").show();
@@ -834,7 +666,7 @@ $(document).ready(function(){
 </script>
 <script type="text/javascript" charset="UTF-8" async="" src="http://s.n2s.co.kr/_n2s_ck_log.php"></script>
 
-<script type="text/javascript" src="/ra/resources/jsforJ/order.js"></script>
+<script type="text/javascript" src="/webproject/resources/jsforJ/order.js"></script>
 
 </head>
 <body>
@@ -843,7 +675,7 @@ $(document).ready(function(){
         <div id="contentWrap">          
             <div class="conWrap">
             	<div class="orderStepN">
-                    <h2><img src="/ra/resources/images/order/h2_order.gif" alt="주문/결제"></h2>
+                    <h2><img src="/webproject/resources/images/order/h2_order.gif" alt="주문/결제"></h2>
 
 	                    <dl class="benefitA bf_order">
 	                   		<dt class="bftit">나의 사용가능 혜택:</dt>
@@ -853,7 +685,7 @@ $(document).ready(function(){
 	                    </dl>
                     
 					<!-- 복합결제 아닐 시 -->
-                   		<p class="step"> <img src="/ra/resources/images/order/navi_step02.gif" alt="쇼핑카트 > 주문/결제 > 주문완료"> </p>
+                   		<p class="step"> <img src="/webproject/resources/images/order/navi_step02.gif" alt="쇼핑카트 > 주문/결제 > 주문완료"> </p>
                 </div>
                 
 				<form name="frmMain" id="KCP_PAYINFO" method="post">
@@ -1057,7 +889,7 @@ $(document).ready(function(){
 	            	<fieldset>
 					
 		            	<h3 class="orderTit mt20 pos_rel">
-		            		<img src="/ra/resources/images/order/h3_order_step01.gif" alt="1. 주문상품 확인">
+		            		<img src="/webproject/resources/images/order/h3_order_step01.gif" alt="1. 주문상품 확인">
 		            		
 			            		<span class="dedu_txt">도서 소득공제 상품</span> <span class="sp_btn sp_help" onmouseover="javascript:popLayer('deductionInfo')" onmouseout="javascript:popHidden('deductionInfo')"><span>?</span></span>
 		            			<div class="bookViewPop al_left" id="deductionInfo" style="visibility: hidden; left 20px; top: 22px; width: 320px;">
@@ -1088,7 +920,7 @@ $(document).ready(function(){
 		            		
 		            		<tr class="prodViewRepr">
 		            			<td>
-		            				<span class="book_img"><img src="/ra/resources/upload/product/4034/4034224_s.jpg" onerror="this.src='http://image.bandinlunis.com/images/common/noimg_type04.gif'"></span>
+		            				<span class="book_img"><img src="/webproject/resources/upload/product/4034/4034224_s.jpg" onerror="this.src='http://image.bandinlunis.com/images/common/noimg_type04.gif'"></span>
 		            			</td> 
 		            			<td class="prod_name">[도서] 돌이킬 수 없는 약속 외 1종 </td>
 		            			<td>총2종(2개)</td>
@@ -1100,7 +932,7 @@ $(document).ready(function(){
 
 		            		<tr class="prodViewAll" style="display:none;">
 		            			<td>
-		            				<span class="book_img"><img src="/ra/resources/upload/product/4034/4034224_s.jpg"></span>
+		            				<span class="book_img"><img src="/webproject/resources/upload/product/4034/4034224_s.jpg"></span>
 		            			</td>
 		            			<td class="prod_name"> [도서] 돌이킬 수 없는 약속</td>
 		            			<td>1개</td>
@@ -1115,7 +947,7 @@ $(document).ready(function(){
 	            			
 		            		<tr class="prodViewAll" style="display:none;">
 		            			<td>
-		            				<span class="book_img"><img src="/ra/resources/upload/product/4181/4181047_s.jpg"></span>
+		            				<span class="book_img"><img src="/webproject/resources/upload/product/4181/4181047_s.jpg"></span>
 		            			</td>
 		            			<td class="prod_name"> [도서] 죽고 싶지만 떡볶이는 먹고 싶어</td>
 		            			<td>1개</td>
@@ -1133,12 +965,12 @@ $(document).ready(function(){
 				            </div>
 			            	<div class="fl_right mt10">
 			            		<span class="t_11gr mr5">주문상품 변경을 원하시면 </span>
-		            			<a href="javascript:goCart();"><img src="/ra/resources/images/order/btn_order_cartmodify.gif" alt="쇼핑카트 수정하기"></a>
-		            			<a href="javascript://"><img src="/ra/resources/images/order/btn_order_prodview.gif" id="btn_switchView" alt="전체상품 보기"></a>
+		            			<a href="javascript:goCart();"><img src="/webproject/resources/images/order/btn_order_cartmodify.gif" alt="쇼핑카트 수정하기"></a>
+		            			<a href="javascript://"><img src="/webproject/resources/images/order/btn_order_prodview.gif" id="btn_switchView" alt="전체상품 보기"></a>
 			            	</div>
 		            	</div>
 		            	
-	            		<h3 class="orderTit mt40 fl_clear"><img src="/ra/resources/images/order/h3_order_step02.gif" alt="2. 배송방법 선택"></h3>
+	            		<h3 class="orderTit mt40 fl_clear"><img src="/webproject/resources/images/order/h3_order_step02.gif" alt="2. 배송방법 선택"></h3>
 		            	
           					
 		            	<div class="order_deli">
@@ -1167,7 +999,7 @@ $(document).ready(function(){
 			            				<span class="ml15"><input type="radio" name="deli_input_type" id="deli2_02" value="02" class="mt3m mr3"><label for="deli2_02">새로입력</label></span>
 			            				<span class="ml15"><input type="radio" name="deli_input_type" id="deli2_04" value="04" class="mt3m mr3"><label for="deli2_04">회원정보와 동일</label> </span>
 			            				<span class="ml15"><input type="radio" name="deli_input_type" id="deli2_03" value="03" class="mt3m mr3"><label for="deli2_03" id="label_addr_name">최근배송지()</label> </span>
-			            				<img src="/ra/resources/images/order/btn_order_deli.gif" alt="배송지 더 보기" class="mt3m mr3" id="btn_deliAddrMore" style="cursor:pointer;">
+			            				<img src="/webproject/resources/images/order/btn_order_deli.gif" alt="배송지 더 보기" class="mt3m mr3" id="btn_deliAddrMore" style="cursor:pointer;">
 			            				<p class="mt5 t_11gr">'최근 배송지 목록’에 추가하시려면 [새로입력]을 선택하여 입력해주세요.</p>
 			            			</td>
 			            		</tr>
@@ -1201,7 +1033,7 @@ $(document).ready(function(){
 			            					<input type="text" name="rcvr_zip1" size="6" value="" class="o_input" readonly="">
 			            					<input type="hidden" name="rcvr_zip2" value="">
 			            					
-			            						<img src="/ra/resources/images/order/btn_order_zipcode.gif" class="mt2 btn_popPost" alt="우편번호찾기" style="cursor:pointer;">
+			            						<img src="/webproject/resources/images/order/btn_order_zipcode.gif" class="mt2 btn_popPost" alt="우편번호찾기" style="cursor:pointer;">
 			            					
 			            				</p>
 			            				<p class="mt5">
@@ -1232,7 +1064,7 @@ $(document).ready(function(){
 				            				<span>선물포장을 하시겠습니까? (1,000원 추가)</span>
 				            				<span class="ml15"><input type="radio" name="gift_yn" value="Y" class="mt3m mr3 btn_giftYn"><label for="">예</label></span> 
 				            				<span class="ml15"><input type="radio" name="gift_yn" value="N" class="mt3m mr3 btn_giftYn" checked=""><label for="">아니오</label></span>
-				            				<span class="ml10"><img src="/ra/resources/images/order/btn_order_pack.gif" id="btn_giftInfo" alt="선물포장 안내" class="mt3m" style="cursor:pointer;"></span>
+				            				<span class="ml10"><img src="/webproject/resources/images/order/btn_order_pack.gif" id="btn_giftInfo" alt="선물포장 안내" class="mt3m" style="cursor:pointer;"></span>
 			            				</div>
 			            				
 			            				<div id="div_giftMsg" style="display:none">
@@ -1777,8 +1609,8 @@ $(document).ready(function(){
 			            		<h4 class="order_deli_tit">편의점 택배 안내</h4>
 			            		<div class="mt10 ml10 mr10">주문 시 가까운 편의점을 선택하시면 24시간 영업을 하고 있는 편의점에서 주문하신 도서를 받으실 수 있습니다.</div>
 			            		<div class="mt10 ml10 mr10 al_center">
-			            			<img src="/ra/resources/images/order/btn_order_cvsinfo.gif" id="btn_cvsNetInfo" alt="편의점 택배 더 보기" style="cursor:pointer;">
-			            			<img src="/ra/resources/images/order/btn_order_cvsdeli.gif" id="btn_cvsNetInfo2" alt="편의점 배송 시간 안내" style="cursor:pointer;">
+			            			<img src="/webproject/resources/images/order/btn_order_cvsinfo.gif" id="btn_cvsNetInfo" alt="편의점 택배 더 보기" style="cursor:pointer;">
+			            			<img src="/webproject/resources/images/order/btn_order_cvsdeli.gif" id="btn_cvsNetInfo2" alt="편의점 배송 시간 안내" style="cursor:pointer;">
 			            		</div>
 			            		
 			            		<ul class="dotList mt10 ml10 mr10">
@@ -1788,14 +1620,14 @@ $(document).ready(function(){
 			            		</ul>
 			            		
 			            		<div class="deli_box_close">
-			            			<img src="/ra/resources/images/order/btn_order_close.gif" alt="닫기" style="cursor:pointer;">
+			            			<img src="/webproject/resources/images/order/btn_order_close.gif" alt="닫기" style="cursor:pointer;">
 			            		</div>
 			            	</div>
 			            	
 			            	<div class="order_deli_box foreignInfo" style="display:none">
 			            		<h4 class="order_deli_tit">해외 배송 안내  </h4>
 			            		<div class="mt10 ml10 mr10 al_center">
-			            			<img src="/ra/resources/images/order/btn_order_foreign.gif" id="btn_globalDeliCost" alt="해외배송비 안내" style="cursor:pointer;">
+			            			<img src="/webproject/resources/images/order/btn_order_foreign.gif" id="btn_globalDeliCost" alt="해외배송비 안내" style="cursor:pointer;">
 			            		</div>
 			            		<ul class="dotList mt10 ml10 mr10">
 			            			<li>해외 배송 시 주소는 <strong class="t_org">필히 영문으로 입력</strong> 해 주세요.</li>
@@ -1806,7 +1638,7 @@ $(document).ready(function(){
 			            			추가된 관련 관세는 <strong class="t_org">수령인 부담이니</strong> 유의하시기 바랍니다. (수령인의 서류미비로 인하여 통관 또는 배송이 지연될 수도 있습니다.)</li>
 			            		</ul>
 			            		<div class="deli_box_close">
-			            			<img src="/ra/resources/images/order/btn_order_close.gif" alt="닫기" style="cursor:pointer;">
+			            			<img src="/webproject/resources/images/order/btn_order_close.gif" alt="닫기" style="cursor:pointer;">
 			            		</div>
 			            	</div>
 			            	
@@ -1819,7 +1651,7 @@ $(document).ready(function(){
 			            			
 			            		</ul>
 			            		<div class="deli_box_close">
-			            			<img src="/ra/resources/images/order/btn_order_close.gif" alt="닫기" style="cursor:pointer;">
+			            			<img src="/webproject/resources/images/order/btn_order_close.gif" alt="닫기" style="cursor:pointer;">
 			            		</div>
 			            	</div>
 			            	
@@ -1848,7 +1680,7 @@ $(document).ready(function(){
 		            	</tbody></table>
 		            	
 		            	
-		            	<h3 class="orderTit mt40"><img src="/ra/resources/images/order/h3_order_step03.gif" alt="3. 할인정보"></h3>
+		            	<h3 class="orderTit mt40"><img src="/webproject/resources/images/order/h3_order_step03.gif" alt="3. 할인정보"></h3>
 		            	<table cellpadding="0" cellspacing="0" class="orderTable2" width="960" style="display:;">
 		            		<colgroup><col width="140"><col width="270"><col></colgroup>
 		            		<tbody><tr>
@@ -1885,17 +1717,17 @@ $(document).ready(function(){
 		            				<span class="s_con02">원 / <strong class="t_org">0원</strong></span>
 		            				<input type="hidden" id="conv_point_max" value="0">
 		            			</td>
-		            			<td><input type="checkbox" name="conv_point_all" id="conv_point_all" value="conv_point" class="mt3m mr3 use_all"><label for="conv_point_all">모두사용</label> <img src="/ra/resources/images/order/btn_order_exchange.gif" id="btn_giftCardInfo" alt="상품권 환전하기" class="ml10 mt3m" style="cursor:pointer;">
+		            			<td><input type="checkbox" name="conv_point_all" id="conv_point_all" value="conv_point" class="mt3m mr3 use_all"><label for="conv_point_all">모두사용</label> <img src="/webproject/resources/images/order/btn_order_exchange.gif" id="btn_giftCardInfo" alt="상품권 환전하기" class="ml10 mt3m" style="cursor:pointer;">
 		            			<!-- <span class="t_11gr ml10" style="color: Blue">※ 모바일팝 10% 캐시백 이벤트  </span> <a href="http://www.bandinlunis.com/front/event/bandi/event1030776.do?evtSeq=30776" target="_blank"><span class="btn_w_comm btype_a2" style="cursor:pointer;">자세히보기</span></a> -->
 		            			</td>
 		            		</tr>
 		            		<tr id="tr_giftCardInfo" style="display:none;">
 		            			<th>반디앤루니스<br>제휴상품권</th>
 		            			<td colspan="2">
-		            				<a href="http://www.bandinlunis.com/pages/front/service/serviceUseGiftCard.jsp?tab=cl#st02" target="_blank"><img src="/ra/resources/images/service/thr_culture.gif" alt="컬쳐랜드"></a>
-		            				<a href="http://www.bandinlunis.com/pages/front/service/serviceUseGiftCard.jsp?tab=hm#st02" target="_blank"><img src="/ra/resources/images/service/thr_happy.gif" alt="해피머니"></a>
-		            				<a href="http://www.bandinlunis.com/pages/front/service/serviceUseGiftCard.jsp?tab=bnl#st02" target="_blank"><img src="/ra/resources/images/service/thr_bookN.gif" alt="북앤라이프"></a>
-		            				<a href="http://www.bandinlunis.com/pages/front/service/serviceUseGiftCard.jsp?tab=hm#st02" target="_blank"><img src="/ra/resources/images/service/thr_mobilepop.gif" alt="모바일팝"></a>
+		            				<a href="http://www.bandinlunis.com/pages/front/service/serviceUseGiftCard.jsp?tab=cl#st02" target="_blank"><img src="/webproject/resources/images/service/thr_culture.gif" alt="컬쳐랜드"></a>
+		            				<a href="http://www.bandinlunis.com/pages/front/service/serviceUseGiftCard.jsp?tab=hm#st02" target="_blank"><img src="/webproject/resources/images/service/thr_happy.gif" alt="해피머니"></a>
+		            				<a href="http://www.bandinlunis.com/pages/front/service/serviceUseGiftCard.jsp?tab=bnl#st02" target="_blank"><img src="/webproject/resources/images/service/thr_bookN.gif" alt="북앤라이프"></a>
+		            				<a href="http://www.bandinlunis.com/pages/front/service/serviceUseGiftCard.jsp?tab=hm#st02" target="_blank"><img src="/webproject/resources/images/service/thr_mobilepop.gif" alt="모바일팝"></a>
 		            			</td>
 		            		</tr>
 						
@@ -1993,7 +1825,7 @@ $(document).ready(function(){
 		            				<span class="s_con02">원</span>
 		            				<input type="hidden" id="benepia_point_max" value="">
 		            			</td>
-		            			<td><a href="javascript:useBenePoint();"><img src="/ra/resources/images/order/btn_order_point.gif" alt="포인트조회"></a></td>
+		            			<td><a href="javascript:useBenePoint();"><img src="/webproject/resources/images/order/btn_order_point.gif" alt="포인트조회"></a></td>
 		            		</tr>
 		            		<tr style="display:none">
 		            			<th>E1 오렌지 포인트</th>
@@ -2002,7 +1834,7 @@ $(document).ready(function(){
 		            				<span class="s_con02">원</span>
 		            				<input type="hidden" id="e1_point_max" value="">
 		            			</td>
-		            			<td><a href="javascript:useE1Point();"><img src="/ra/resources/images/order/btn_order_point.gif" alt="포인트조회"></a></td>
+		            			<td><a href="javascript:useE1Point();"><img src="/webproject/resources/images/order/btn_order_point.gif" alt="포인트조회"></a></td>
 		            		</tr>
 		            		<tr style="display:none">
 		            			<th>컬쳐캐쉬</th>
@@ -2014,7 +1846,7 @@ $(document).ready(function(){
 		            				<input type="hidden" name="UserID" value="">
 		            				<input type="hidden" name="HashNo" value="">
 		            			</td>
-		            			<td><a href="javascript:useCultureCash();"><img src="/ra/resources/images/order/btn_order_point.gif" alt="포인트조회"></a></td>
+		            			<td><a href="javascript:useCultureCash();"><img src="/webproject/resources/images/order/btn_order_point.gif" alt="포인트조회"></a></td>
 		            		</tr>
 		            		<tr id="exanadu_point_tr" style="display:none">
 		            			<th></th>
@@ -2024,7 +1856,7 @@ $(document).ready(function(){
 		            				<input type="hidden" name="exanadu_point_max" id="exanadu_point_max" value="0">
 		            				<input type="hidden" name="exanadu_key" value="">
 		            			</td>
-		            			<td><a href="javascript:useExanaduPoint();"><img src="/ra/resources/images/order/btn_order_point.gif" alt="포인트사용"></a></td>
+		            			<td><a href="javascript:useExanaduPoint();"><img src="/webproject/resources/images/order/btn_order_point.gif" alt="포인트사용"></a></td>
 		            		</tr>
 		            		
 		            		
@@ -2035,7 +1867,7 @@ $(document).ready(function(){
 		            				<span class="s_con02">원</span>
 		            			</td>
 		            			<td>
-		            				<img src="/ra/resources/images/order/btn_order_coupon.gif" id="btn_popCoupon" name="N" alt="쿠폰선택" class="mt3m" style="cursor:pointer;">
+		            				<img src="/webproject/resources/images/order/btn_order_coupon.gif" id="btn_popCoupon" name="N" alt="쿠폰선택" class="mt3m" style="cursor:pointer;">
 		            				
 			            				<!-- <span class="t_11gr ml10">사용가능 쿠폰: <strong>3</strong>장</span>  -->
 		            				
@@ -2091,7 +1923,7 @@ $(document).ready(function(){
 			            	<span id="span_partner_text" style="float:right"></span>
 		            	</div>
 		            	
-		           		<h3 class="orderTit mt40"><img src="/ra/resources/images/order/h3_order_step04.gif" alt="4. 결제정보"></h3>
+		           		<h3 class="orderTit mt40"><img src="/webproject/resources/images/order/h3_order_step04.gif" alt="4. 결제정보"></h3>
 		           		<div class="order_pay">
 		            		<div class="payInfo">
 			            		<div class="payInfo_wrap">
@@ -2110,10 +1942,10 @@ $(document).ready(function(){
 					            			<span style="display:none;"><input type="radio" name="settle_type" id="sett_50" value="50" class="mt3m mr3" disabled=""><label for="">사이버머니</label></span>
 				            			</div>
 				            		<h5>간편결제</h5>
-				            			<span id="span_settleType_68" class="mr15" style=""><input type="radio" name="settle_type" id="sett_68" value="68" class="mt3m mr3"><label for="sett_68"><img src="/ra/resources/images/order/ico_naverpay.gif" class="mt3m" alt="NaverPay"></label></span>
-				            			<span id="span_settleType_12" class="mr15" style=""><input type="radio" name="settle_type" id="sett_12" value="12" class="mt3m mr3"><label for="sett_12"><img src="/ra/resources/images/order/ico_kakao.gif" class="mt3m" alt="Kakao Pay"></label></span>
-				            			<span id="span_settleType_14" class="mr15" style=""><input type="radio" name="settle_type" id="sett_14" value="14" class="mt3m mr3"><label for="sett_14"><img src="/ra/resources/images/order/ico_payco.gif" class="mt3m" alt="Payco"></label></span>
-				            			<span id="span_settleType_13" class="mr15" style="display:none;"><input type="radio" name="settle_type" id="sett_13" value="13" class="mt3m mr3"><label for="sett_13"><img src="/ra/resources/images/order/ico_paynow.gif" class="mt3m" alt="Paynow"></label></span>
+				            			<span id="span_settleType_68" class="mr15" style=""><input type="radio" name="settle_type" id="sett_68" value="68" class="mt3m mr3"><label for="sett_68"><img src="/webproject/resources/images/order/ico_naverpay.gif" class="mt3m" alt="NaverPay"></label></span>
+				            			<span id="span_settleType_12" class="mr15" style=""><input type="radio" name="settle_type" id="sett_12" value="12" class="mt3m mr3"><label for="sett_12"><img src="/webproject/resources/images/order/ico_kakao.gif" class="mt3m" alt="Kakao Pay"></label></span>
+				            			<span id="span_settleType_14" class="mr15" style=""><input type="radio" name="settle_type" id="sett_14" value="14" class="mt3m mr3"><label for="sett_14"><img src="/webproject/resources/images/order/ico_payco.gif" class="mt3m" alt="Payco"></label></span>
+				            			<span id="span_settleType_13" class="mr15" style="display:none;"><input type="radio" name="settle_type" id="sett_13" value="13" class="mt3m mr3"><label for="sett_13"><img src="/webproject/resources/images/order/ico_paynow.gif" class="mt3m" alt="Paynow"></label></span>
 				            		</div>
 				            		
 				            		<div class="pi_box">
@@ -2198,13 +2030,13 @@ $(document).ready(function(){
 				            	<div class="pay_wrap">
 				            		<div class="pay_total">
 				            			<dl class="pan_con01">
-				            				<dt><img src="/ra/resources/images/order/h3_order_totalpay.gif" alt="최종 결제 금액"></dt>
+				            				<dt><img src="/webproject/resources/images/order/h3_order_totalpay.gif" alt="최종 결제 금액"></dt>
 				            				<dd><span class="finalCashCost">25,920</span><span class="t_14">원</span></dd>
 				            			</dl>
 				            		</div> 
 				            		<div class="mt10">
-				            			<img src="/ra/resources/images/order/btn_order_pay.gif" id="btn_order" alt="결제하기" style="cursor:pointer;">
-				            			<img src="/ra/resources/images/ajax-loader.gif" id="btn_order_loading" alt="로딩" style="display:none;width:212px;">
+				            			<img src="/webproject/resources/images/order/btn_order_pay.gif" id="btn_order" alt="결제하기" style="cursor:pointer;">
+				            			<img src="/webproject/resources/images/ajax-loader.gif" id="btn_order_loading" alt="로딩" style="display:none;width:212px;">
 				            		</div>
 				            		<div class="mt10">
 				            			<!-- 약관체크 인증시 비회원은 동의했으므로 생략 -->
@@ -2240,7 +2072,7 @@ $(document).ready(function(){
 				            	<div id="cashReceiptDiv" style="display:none;">
 
 				            	<div>
-				            		<h3 class="orderTit mt40" style="width:715px;"><img src="/ra/resources/images/order/h3_order_step05.gif" alt="5. 현금영수증"></h3>
+				            		<h3 class="orderTit mt40" style="width:715px;"><img src="/webproject/resources/images/order/h3_order_step05.gif" alt="5. 현금영수증"></h3>
 				            	</div>
 				            	<table cellspacing="0" cellpadding="0" width="715px" class="orderTable2">
 					            	<tbody><tr>
@@ -2332,11 +2164,11 @@ $(document).ready(function(){
 											<title>휴대폰 소액 결제 이용 안내</title>
 											<link rel="stylesheet" href="/common/css/base.css" type="text/css">
 											<link rel="stylesheet" href="/common/css/order.css" type="text/css">
-											<script type="text/javascript" src="/ra/resources/common/js/common.js" charset="euc-kr"></script>
+											<script type="text/javascript" src="/webproject/resources/common/js/common.js" charset="euc-kr"></script>
 											</head>
 										<body>
 											<div class="order_info mt20">
-												<h2 class="mt5"><img src="/ra/resources/images/order/h3_order_info_02.gif" alt="휴대폰 소액 결제 이용 안내"></h2>
+												<h2 class="mt5"><img src="/webproject/resources/images/order/h3_order_info_02.gif" alt="휴대폰 소액 결제 이용 안내"></h2>
 												<div class="con01 mt15">			
 													<h3 class="subtit">휴대폰 소액결제 한도는 각 통신사 회원 별 상태에 따라  한도금액에 차이가 있사오니 이용에 참고 해 주십시오 </h3>
 													<h3 class="subtit mt30">휴대폰 결제 시 현금영수증 발행 안내</h3>
@@ -2347,9 +2179,9 @@ $(document).ready(function(){
 													<p class="mt5 ml10 t_gr">휴대폰 결제 취소는 주문하신 당월에만 가능하며 익월 취소 시에는 예치금으로 환불됩니다.</p>
 												</div>
 												<div class="con02 mt10 al_center">
-													<h3><img src="/ra/resources/images/order/help_pay_txt.gif" alt="결제가 안되세요?"></h3>
-													<div class="mt20"><a href="https://pay.kcp.co.kr/plugin_new/file/KCPPaymentPluginSetup.exe" target="blank"><img src="/ra/resources/images/order/btn_setup.gif" alt="결제 모듈 수동 설치"></a></div>
-													<div class="mt5"><a href="http://www.kcp.co.kr/technique.plugIn.do?cmd=pluginerr" target="blank"><img src="/ra/resources/images/order/btn_setup_help.gif" alt="수동설치 후에도 문제가 있으세요?"></a></div>
+													<h3><img src="/webproject/resources/images/order/help_pay_txt.gif" alt="결제가 안되세요?"></h3>
+													<div class="mt20"><a href="https://pay.kcp.co.kr/plugin_new/file/KCPPaymentPluginSetup.exe" target="blank"><img src="/webproject/resources/images/order/btn_setup.gif" alt="결제 모듈 수동 설치"></a></div>
+													<div class="mt5"><a href="http://www.kcp.co.kr/technique.plugIn.do?cmd=pluginerr" target="blank"><img src="/webproject/resources/images/order/btn_setup_help.gif" alt="수동설치 후에도 문제가 있으세요?"></a></div>
 												</div>
 											</div>
 											<script type="text/javascript">
