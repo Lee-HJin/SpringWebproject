@@ -23,29 +23,39 @@
 		
 		f = document.myForm;
 		
-		str = f.subject.value;
+		str = f.reviewTitle.value;
 		str = str.trim();
 		if(!str){
 			alert("\n제목을 입력하세요.");
-			f.subject.focus();
+			f.reviewTitle.focus();
 			return;
 		}
-		f.subject.value = str;
+		f.reviewTitle.value = str;
 		
 		
-		str = f.content.value;
+		str = f.contents.value;
 		str = str.trim();
 		if(!str){
 			alert("\n내용을 입력하세요.");
-			f.content.focus();
+			f.contents.focus();
 			return;
 		}
-		f.content.value = str;
+		f.contents.value = str;
 		
 		
-		f.action = "<%=cp%>/book_review_created_ok.action";
+// 		var rate = $("#usr_point option:selected").val();
+		var rate = document.getElementById('usr_point').options[document.getElementById('usr_point').selectedIndex].value;
+		
+		f.action = "<%=cp%>/book_review_created_ok.action?rate=" +rate;
 		f.submit();
 
+	}
+	
+	function goBack(){
+		f =document.myForm;
+		
+		f.action = "<%=cp%>/book_info.action";
+		f.submit;
 	}
 </script>
 
@@ -161,65 +171,65 @@ img:hover {
 <body>
 
 	<div id="bbs">
-		<div id="bbs_title">도서 리뷰</div>
+		<form action="" name="myForm" method="post">
+			<div id="bbs_title">도서 리뷰</div>
 
 
-		<div class="brBox3 pd10 mb15"
-			style="overflow: auto; padding-top: 15px; padding-left: 15px; padding-bottom: 15px;">
+			<div class="brBox3 pd10 mb15"
+				style="overflow: auto; padding-top: 15px; padding-left: 15px; padding-bottom: 15px;">
 
-			<div class="fl_clear searchBook">
-				<div class="thumbNail_type01">
-					<div class="photo">
-						<a href="#"><img id="book_title_img" name="book_title_img"
-							src="http://www.bandinlunis.com/upload/product/4189/4189934_s.jpg"
-							width="70" alt="" class="d_imgLine"
-							style="border: 1px solid #ddd; border-radius: 4px; padding: 5px; width: 150px;"></a>
-					</div>
-					<div class="info" style="margin-top: 3px;">
-						<p class="booktit" style="margin-bottom: 20px;">
-							<a href="#" id="book_title_txt"
-								style="font-size: 15pt; font-style: italic; font-weight: bold;">책
-								제목</a>
-						</p>
-
-						<p class="t_11gr" id="book_etc" style="margin-bottom: 20px;">
-							저자 | 출판사 | 도서 등록일</p>
-						<div id="scoreDiv" class="btmA" style="display: block;">
-							<select name="usr_point">
-								<option value="">나의 평점 선택</option>
-								<option value="10">10점</option>
-								<option value="9">9점</option>
-								<option value="8">8점</option>
-								<option value="7">7점</option>
-								<option value="6">6점</option>
-								<option value="5">5점</option>
-								<option value="4">4점</option>
-								<option value="3">3점</option>
-								<option value="2">2점</option>
-								<option value="1">1점</option>
-							</select> <input type="hidden" name="usr_point" id="usr_point" value="0">
-
-
-
+				<div class="fl_clear searchBook">
+					<div class="thumbNail_type01">
+						<div class="photo">
+							<a href="#"><img id="book_title_img" name="book_title_img"
+								src="http://www.bandinlunis.com/upload/product/4189/4189934_s.jpg"
+								width="70" alt="" class="d_imgLine"
+								style="border: 1px solid #ddd; border-radius: 4px; padding: 5px; width: 150px;"></a>
 						</div>
+						<div class="info" style="margin-top: 3px;">
+							<p class="booktit" style="margin-bottom: 20px;">
+								<a href="#" id="book_title_txt"
+									style="font-size: 15pt; font-style: italic; font-weight: bold;">${dto.bookTitle }</a>
+							</p>
+
+							<p class="t_11gr" id="book_etc" style="margin-bottom: 20px;">
+								${dto.authorName }저자 | ${dto.publisher }출판사 | ${dto.publishDate }</p>
+							<div id="scoreDiv" class="btmA" style="display: block;">
+								<select id = "usr_point">
+									<option value="">나의 평점 선택</option>
+									<option value="10">10점</option>
+									<option value="9">9점</option>
+									<option value="8">8점</option>
+									<option value="7">7점</option>
+									<option value="6">6점</option>
+									<option value="5">5점</option>
+									<option value="4">4점</option>
+									<option value="3">3점</option>
+									<option value="2">2점</option>
+									<option value="1">1점</option>
+								</select>
+
+
+
+							</div>
+						</div>
+						<div class="fl_clear"></div>
 					</div>
-					<div class="fl_clear"></div>
 				</div>
+
+
 			</div>
 
 
-		</div>
+			<br>
 
 
-		<br>
-
-		<form action="" name="myForm" method="post">
 			<div id="bbsCreated">
 				<div class="bbsCreated_bottomLine">
 					<dl>
 						<dt>리뷰 제목</dt>
 						<dd>
-							<input type="text" name="subject" size="75" maxlength="100"
+							<input type="text" name="reviewTitle" size="75" maxlength="100"
 								class="boxTF" />
 						</dd>
 					</dl>
@@ -228,7 +238,7 @@ img:hover {
 				<div class="bbsCreated_bottomLine">
 					<dl>
 						<dt>작 성 자</dt>
-						<dd>${sessionScope.session.userName}</dd>
+						<dd>${userName }</dd>
 					</dl>
 				</div>
 
@@ -236,7 +246,7 @@ img:hover {
 					<dl>
 						<dt>내&nbsp;&nbsp;&nbsp;&nbsp;용</dt>
 						<dd>
-							<textarea rows="12" cols="74" name="content" class="boxTA"></textarea>
+							<textarea rows="12" cols="74" name="contents" class="boxTA"></textarea>
 						</dd>
 					</dl>
 				</div>
@@ -246,11 +256,13 @@ img:hover {
 			<div id="bbsCreated_footer">
 				<button class="button2" onclick="sendIt();">등록하기</button>
 
-				<button class="button3" onclick="document.myForm.subject.focus();" type="reset">
+				<button class="button3" onclick="document.myForm.reviewTitle.focus();"
+					type="reset">
 					<span>다시입력 </span>
 				</button>
-				<button class="button1" 
-					onclick="javascript:location.href='<%=cp%>/book_info.action';">
+				<input type="hidden" value = ${isbn } name ="isbn" >
+				<button class="button1"
+					onclick="javascript:goBack();">
 					<span>작성취소</span>
 				</button>
 			</div>

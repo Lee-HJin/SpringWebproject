@@ -845,8 +845,8 @@ a.more:active	{text-decoration:none; color:#999999;}
 
 /*¾ÆÀÌÁÁ¾Æ,°ø°¨*/
 .ilike{display:inline-block}
-.ilike .btn_ilike{display:inline-block;width:66px;height:19px;background:url(/images/common/2014/ico_ilike_comm.gif) no-repeat 0 1px;padding:0 0 0 14px;font:normal 11px 돋움; color:#777}
-.ilike .btn_ilike:hover{background:url(/images/common/2014/ico_ilike_comm_on.gif) no-repeat;}
+.ilike .btn_ilike{display:inline-block;width:66px;height:19px;background:url(/webproject/resources/book_image/ico_ilike_comm.gif) no-repeat 0 1px;padding:0 0 0 14px;font:normal 11px 돋움; color:#777}
+.ilike .btn_ilike:hover{background:url(/webproject/resources/book_image/ico_ilike_comm_on.gif) no-repeat;}
 .ilike .on{background:url(/images/common/2014/ico_ilike_comm_on.gif) no-repeat;}
 .ilike .ilike_count{display:inline-block;font:normal 11px verdana,돋움; color:#777;width:20px;height:19px;padding-top:4px;text-align:center}
 

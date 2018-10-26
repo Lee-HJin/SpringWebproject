@@ -5,10 +5,58 @@ public class ReviewDTO {
 	private int reviewId;
 	private String userId;
 	private String reviewTitle;
-	private String date;
-	private int parentsId;
+	private String created;
 	private String contents;
 	private String sentence;
+	private int hitCount; // 조회수
+
+	private String username; // 사용자 이름
+	private int rate; // 평점
+	private int thumbup; // 공감수
+	
+	private int rnum; // 데이터 개수
+	
+	
+
+	public int getRnum() {
+		return rnum;
+	}
+
+	public void setRnum(int rnum) {
+		this.rnum = rnum;
+	}
+
+	public int getHitCount() {
+		return hitCount;
+	}
+
+	public void setHitCount(int hitCount) {
+		this.hitCount = hitCount;
+	}
+
+	public int getThumbup() {
+		return thumbup;
+	}
+
+	public void setThumbup(int thumbup) {
+		this.thumbup = thumbup;
+	}
+
+	public int getRate() {
+		return rate;
+	}
+
+	public void setRate(int rate) {
+		this.rate = rate;
+	}
+
+	public String getUsername() {
+		return username;
+	}
+
+	public void setUsername(String username) {
+		this.username = username;
+	}
 
 	public String getIsbn() {
 		return isbn;
@@ -42,20 +90,12 @@ public class ReviewDTO {
 		this.reviewTitle = reviewTitle;
 	}
 
-	public String getDate() {
-		return date;
+	public String getCreated() {
+		return created;
 	}
 
-	public void setDate(String date) {
-		this.date = date;
-	}
-
-	public int getParentsId() {
-		return parentsId;
-	}
-
-	public void setParentsId(int parentsId) {
-		this.parentsId = parentsId;
+	public void setCreated(String created) {
+		this.created = created;
 	}
 
 	public String getContents() {
