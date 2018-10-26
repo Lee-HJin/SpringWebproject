@@ -185,7 +185,7 @@ public class MyShoppingController {
 	//주문/배송조회 리스트 가져오기
 	@RequestMapping(value = "myShopping/getOrderList.action", method = {RequestMethod.POST, RequestMethod.GET})
 	public String getOrderList(HttpServletRequest request) {
-		
+
 		UserDTO dto = (UserDTO) request.getSession().getAttribute("userInfo");
 		String userId = dto.getUserId();
 
@@ -226,9 +226,9 @@ public class MyShoppingController {
 			hMap.put("userId", userId);
 
 			List<OrderListDTO> orderList = dao.getOrderList(hMap);
-			
+
 			request.setAttribute("lists", orderList);
-			
+
 		}
 		//2.기간별 조회
 		if(fromDate!=null && fromDate!="" && !fromDate.equals("undefined")) {
@@ -242,7 +242,7 @@ public class MyShoppingController {
 			hMap.put("userId", userId);
 			hMap.put("fromDate", fromDate);
 			hMap.put("toDate", toDate);
-			
+
 			List<OrderListDTO> orderList  = dao.getOrderListByDate(hMap);
 
 			request.setAttribute("lists", orderList);
@@ -411,7 +411,6 @@ public class MyShoppingController {
 
 		//소멸 예정 적립금 검색
 		int exPoint = dao.getExPoint(userId);
-
 		request.setAttribute("exPoint", exPoint);
 
 		return "myShopping/myPointHistory";
@@ -546,13 +545,80 @@ public class MyShoppingController {
 
 		return "myShopping/lists_pointList";
 	}
-	
-	//적립금 자세히 보기
+
+	//소멸예정 적립금 보기
 	@RequestMapping(value = "myShopping/expPointDetail.action", method = RequestMethod.GET)
 	public String expPointDetail(HttpServletRequest request) {
 		
-		return "myShopping/expPointDetail";
+		//소멸 예정 적립금 검색
+		UserDTO dto = (UserDTO) request.getSession().getAttribute("userInfo");
+		String userId = dto.getUserId();
 		
+		int exPoint = dao.getExPoint(userId);
+		request.setAttribute("exPoint", exPoint);
+
+		return "myShopping/expPointDetail";
+
+	}
+	//소멸예정 적립금 리스트불러오기
+	@RequestMapping(value = "myShopping/expPointList.action", method = RequestMethod.POST)
+	public String expPointList(HttpServletRequest request) {
+
+		UserDTO dto = (UserDTO) request.getSession().getAttribute("userInfo");
+		String userId = dto.getUserId();
+
+		String pageNum = request.getParameter("pageNum");
+		String mode = request.getParameter("mode");
+		
+		if(mode==null || mode.equals("")) {
+			mode = "exp";
+		}
+
+		//한 페이지당 출력 건수
+		int numPerPage = 3;
+		//전체 페이징 페이지
+		int totalPage = 0;
+		//전체 출력 건수
+		int totalDataCount = 0;
+
+		//현재 페이지
+		int currentPage = 1;
+		if(pageNum!=null && pageNum!="") {
+			currentPage = Integer.parseInt(pageNum);
+		}
+		else {
+			pageNum = "1";
+		}
+		
+		//totalDataCount = dao.
+		
+
+		int start = (currentPage-1) * numPerPage + 1;
+		int end = currentPage * numPerPage;
+
+		Map<String, Object> hMap = new HashMap<String, Object>();
+		hMap.put("start", start);
+		hMap.put("end", end);
+		hMap.put("userId", userId);
+
+		List<PointDTO> lists = dao.expPointList(hMap);
+		
+		System.out.println(lists.size() +"size");
+
+		request.setAttribute("lists", lists);
+
+		//출력 건수가 0이 아니면 페이징 작업
+		if(totalDataCount!=0) {
+			totalPage = ajaxPaging.getPageCount(numPerPage, totalDataCount);
+		}
+		
+		String pageIndexList = ajaxPaging.pageIndexList(currentPage, totalPage, "", mode);
+		request.setAttribute("pageIndexList", pageIndexList);
+		
+		System.out.println(pageIndexList);
+
+		return "myShopping/lists_expPoint";
+
 	}
 
 	//최근 본 상품 페이지

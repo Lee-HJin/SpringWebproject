@@ -167,4 +167,5 @@ a:hover {text-decoration: underline; color: #886e45;}
 .exp_point_detail_table table {border-top: 2px solid #d5d5d5; border-bottom: 1px solid #d5d5d5; border-collapse: collapse; border-spacing: 0px; font-size: 10pt; text-align: center; margin-top: 10px;}
 .exp_point_detail_table th {background-color: #f8f8f8; border-bottom: 1px solid #d5d5d5; height: 30px; width: 100px; line-height: 30px; }
 .exp_point_detail_table td {border-bottom: 1px solid #d5d5d5; height: 30px; line-height: 30px;}
-
+.exp_point_notice {margin-top: 20px; padding: 0 10px 10px 20px;}
+.exp_point_notice ul {list-style: disc;}
