@@ -13,8 +13,8 @@
 			<span class="side_navi_span">주문관리</span>
 			<div class="side_navi_line">
 				<ul>
-					<li><a href="">주문/배송 조회</a></li>
-					<li style="padding-bottom: 10px;"><a href="">취소/반품/교환 내역</a></li>
+					<li><a href="<%=cp%>/myShopping/myOrderList.action">주문/배송 조회</a></li>
+					<li style="padding-bottom: 10px;"><a href="<%=cp%>/myShopping/myOrderRetList.action">취소/반품/교환 내역</a></li>
 				</ul>
 			</div>
 		</li>
@@ -22,7 +22,7 @@
 			<span class="side_navi_span">포인트와 혜택</span>
 			<div class="side_navi_line">
 				<ul>
-					<li style="padding-bottom: 10px;">적립금</li>
+					<li style="padding-bottom: 10px;"><a href="<%=cp%>/myShopping/myPointHistory.action">적립금</a></li>
 				</ul>
 			</div>
 		</li>
@@ -30,7 +30,7 @@
 			<span class="side_navi_span">관심 리스트</span>
 			<div class="side_navi_line">
 				<ul>
-					<li>최근 본 상품</li>
+					<li><a href="<%=cp%>/myShopping/myLatesBooksList.action">최근 본 상품</a></li>
 					<li style="padding-bottom: 10px;">위시리스트</li>
 				</ul>
 			</div>

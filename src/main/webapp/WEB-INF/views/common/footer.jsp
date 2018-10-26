@@ -5,6 +5,7 @@
 	
 %>
 
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -14,6 +15,7 @@
 </head>
 <body>
 <div class="f_margin"></div>
+
 <div class="footer">
 	<div class="copyright">
 		<div class="f_menu">
@@ -74,8 +76,6 @@
 	<div class="copy_award">
 		<img src="<%=cp%>/resources/image/main/footer_award.jpg">
 	</div>
-</div>
-
 
 
 
@@ -83,3 +83,4 @@
 
 </body>
 </html>
+
