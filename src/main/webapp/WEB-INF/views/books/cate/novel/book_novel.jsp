@@ -8,8 +8,8 @@
 
 <!-- 베스트셀러 css -->
 
-<link rel="stylesheet" href="/webproject/resources/common/css/bnlBSList2.css"
-	type="text/css">
+<link rel="stylesheet"
+	href="/webproject/resources/common/css/bnlBSList2.css" type="text/css">
 
 <link rel="stylesheet" href="/webproject/resources/book_css/class.css"
 	type="text/css">
@@ -18,7 +18,8 @@
 	type="text/css">
 
 <link rel="stylesheet"
-	href="/webproject/resources/book_css/detail_default.css" type="text/css">
+	href="/webproject/resources/book_css/detail_default.css"
+	type="text/css">
 
 <link rel="stylesheet" href="/webproject/resources/book_css/pStyle.css"
 	type="text/css">
@@ -2010,10 +2011,7 @@
 										<li><a id="sort11" style="cursor: pointer;">정가인하순</a></li>
 										<li class="alt"><a id="sort10" style="cursor: pointer;">가격순</a></li>
 									</ul>
-									<div class="con02">
-					
-										
-									</div>
+									<div class="con02"></div>
 								</div>
 
 								<h4>
@@ -2024,104 +2022,109 @@
 
 
 								</h4>
-								<p class="btn_cart">
-					
-								</p>
+								<p class="btn_cart"></p>
 							</div>
+
 							<div class="fl_clear ml5">
-								<div class="prod_list_type  ">
+								<div class="prod_list_type prod_best_type">
 
 									<ul>
 
-										<!-- 리스트 1개 시작  -->
-										<li>
+										<li><input class="checkbox" type="checkbox"
+											value="4034224" name="prodId">
 											<div class="prod_thumb">
+												<span class="ranking"> <span class="rank_num">
+
+
+														1 </span>
+												</span>
 												<div class="prod_thumb_img">
-													<a href="/front/product/detailProduct.do?prodId=3795041"
+													<a href="/front/product/detailProduct.do?prodId=4034224"
 														onfocus="this.blur();"> <img
-														src="http://image.bandinlunis.com/upload/product/3795/3795041.jpg"
+														src="http://image.bandinlunis.com/upload/product/4034/4034224.jpg"
 														onerror="this.src='/images/common/noimg_type01.gif';">
 
+
 													</a> <a class="btn_popup" target="_blank"
-														href="/front/product/detailProduct.do?prodId=3795041"><span
+														href="/front/product/detailProduct.do?prodId=4034224"><span
 														class="ico_new">새창열기</span></a>
 												</div>
+
+												<a class="btn_preview"
+													href="javascript:popPreview('4034224');">미리 보기</a>
 
 											</div>
 											<dl class="prod_info">
 												<dt>
-													<a href="/front/product/detailProduct.do?prodId=3795041"
-														onfocus="this.blur();"> [정가인하] 한국사를 바꿀 14가지 거짓과 진실 </a>
+													<a href="/front/product/detailProduct.do?prodId=4034224"
+														onfocus="this.blur();"> 돌이킬 수 없는 약속 </a>
 													<!-- <span class="tit_sub">- 덧셈구구</span> -->
 													<span class="tag_area"> <span class="tag_best"><span>베스트</span></span>
 
+														<span class="tag_free"><span>무료배송</span></span>
 
 													</span>
 												</dt>
 												<dd class="txt_block">
-													<span>KBS역사추적팀, 윤영수</span> <span class="gap">|</span> <span>지식파수꾼</span>
-													<span class="txt_date"><span class="gap">|</span> <span>2011.05.11</span></span>
+													<span>야쿠마루 가쿠</span> <span class="gap">|</span> <span>북플라자</span>
+													<span class="txt_date"><span class="gap">|</span> <span>2017.02.02</span></span>
 												</dd>
-
-
 												<dd class="mt5">
 													<p>
-														<span class="txt_junga">정가 <span class="txt_junga">13,000원</span></span><span
-															class="txt_arrow">→</span> <span class="txt_reprice2">4,000원
-															[<strong>69%</strong> 정가인하]
-														</span>
-													</p>
-													<p class="mt5">
-														<span class="txt_price"><strong><em>3,600</em>원</strong>
+														<span class="txt_reprice">15,000원</span> <span
+															class="txt_arrow">→</span> <span class="txt_price"><strong><em>13,500</em>원</strong>
 															(10%↓+5%P)</span>
 													</p>
 												</dd>
 												<dd class="txt_desc">
 													<div class="review_point">
-														<span style="width: 80.50%"></span>
+														<span style="width: 89%;"></span>
 													</div>
-													<span class="ratings_num"> <strong>8.05</strong> <a
-														href="/front/product/detailProduct.do?prodId=3795041#sub10"
-														target="_blank">리뷰<em>(19)</em></a>
-													</span>
+													<strong>8.94</strong> <a
+														href="/front/product/detailProduct.do?prodId=4034224#sub10"
+														target="_blank">리뷰<em>(18)</em></a>
 												</dd>
-												<dd class="txt_bex">추적과 추리의 역사 장금이는 요리사였을까? 정말 계백장군은
-													위대했고, 의자왕은 무기력했을까? KBS 역사추적은 ‘과연?’이라는 물음에서 시작된다. 전혀 관계없을 것
-													같던 흉노와 신...</dd>
+												<dd class="txt_bex">일본 아마존 베스트셀러!15년 전 버려버린 과거에서 도착한 한
+													통의 편지가 봉인해 둔 기억을 되살아나게 한다!“그들은 지금 교도소에서 나왔습니다!”자신이 일하던 가게의
+													손님이었던 ...</dd>
+
+
+
 												<dd class="txt_ebook">
-													<span>지금 주문하면<strong class="t_red">2018년
-															10월 20일(토) 이내</strong>받을 수 있습니다.
+													<span><a
+														href="/front/product/detailProduct.do?prodId=5258991"
+														target="_blank">이 책의 eBook : <strong>11,000</strong>원
+													</a></span>
+												</dd>
+
+
+												<dd class="txt_ebook">
+													<span>지금 주문하면<strong class="t_red"> 오늘 </strong>받을 수
+														있습니다.
 													</span>
 												</dd>
 
 											</dl>
 											<dl class="prod_btn">
 												<dt>
-													<span class="txt_num">수량</span> <input name="quantity"
-														id="quantity"
-														style="vertical-align: middle; text-align: right" size="5"
-														maxlength="4" value="1" /> <img
-														style="vertical-align: middle;" alt="수량 증가 감소"
-														src="/springwebview/resources/images/book/common/2014/btn_cnt.gif"
-														usemap="#map_name_quantity" />
-													<map id="map_name_quantity" name="map_name_quantity">
-														<area
-															href="javascript:modifyProductQuantity('quantity',1);"
-															shape="rect" alt="수량 증가" coords="0,0,9,10" />
-														<area
-															href="javascript:modifyProductQuantity('quantity',-1);"
-															shape="rect" alt="수량 감소" coords="0,10,9,20" />
-													</map>
+													<span class="num_txt">수량</span> <input type="text"
+														id="cntVal_4034224" value="1" class="num" size="3"
+														maxlength="2" onkeydown="onlyNumber();" onkeyup="">
+													<span class="btn_updn_wrap"><a
+														href="javascript:cntUp('4034224','01');"
+														class="btn_num_up">▲</a><a
+														href="javascript:cntDown('4034224','01');"
+														class="btn_num_dn">▼</a></span>
 												</dt>
 
 
 
 												<dd>
-													<a href="javascript:addCart('3795041');"><span
+													<a href="javascript:addCart('4034224');"><span
 														class="btn_b_comm btype_f1">쇼핑카트</span></a>
 												</dd>
 												<dd class="mt3">
-													<a href="javascript:goOrder('3795041');"><span
+													<a href="javascript:goOrder('4034224');"><span
 														class="btn_w_comm btype_f1">바로구매</span></a>
 												</dd>
 
@@ -2130,37 +2133,2140 @@
 
 												<dd class="mt3">
 													<a
-														href="javascript:add_wish_array_common('3795041', true);"><span
+														href="javascript:add_wish_array_common('4034224', true);"><span
 														class="btn_w_comm btype_f1">위시리스트</span></a>
 												</dd>
 											</dl></li>
-										<!-- 리스트 1개 끝  -->
+
+
+
+										<li><input class="checkbox" type="checkbox"
+											value="4189269" name="prodId">
+											<div class="prod_thumb">
+												<span class="ranking"> <span class="rank_num">
+
+
+														2 </span>
+												</span>
+												<div class="prod_thumb_img">
+													<a href="/front/product/detailProduct.do?prodId=4189269"
+														onfocus="this.blur();"> <img
+														src="http://image.bandinlunis.com/upload/product/4189/4189269.jpg"
+														onerror="this.src='/images/common/noimg_type01.gif';">
+
+
+													</a> <a class="btn_popup" target="_blank"
+														href="/front/product/detailProduct.do?prodId=4189269"><span
+														class="ico_new">새창열기</span></a>
+												</div>
+
+												<a class="btn_preview"
+													href="javascript:popPreview('4189269');">미리 보기</a>
+
+											</div>
+											<dl class="prod_info">
+												<dt>
+													<a href="/front/product/detailProduct.do?prodId=4189269"
+														onfocus="this.blur();"> 인생 우화 </a>
+													<!-- <span class="tit_sub">- 덧셈구구</span> -->
+													<span class="tag_area"> <span class="tag_best"><span>베스트</span></span>
+
+														<span class="tag_free"><span>무료배송</span></span>
+
+													</span>
+												</dt>
+												<dd class="txt_block">
+													<span>류시화</span> <span class="gap">|</span> <span>연금술사</span>
+													<span class="txt_date"><span class="gap">|</span> <span>2018.07.30</span></span>
+												</dd>
+												<dd class="mt5">
+													<p>
+														<span class="txt_reprice">16,000원</span> <span
+															class="txt_arrow">→</span> <span class="txt_price"><strong><em>14,400</em>원</strong>
+															(10%↓+5%P)</span>
+													</p>
+												</dd>
+												<dd class="txt_desc">
+													<div class="review_point">
+														<span style="width: 97%;"></span>
+													</div>
+													<strong>9.73</strong> <a
+														href="/front/product/detailProduct.do?prodId=4189269#sub10"
+														target="_blank">리뷰<em>(11)</em></a>
+												</dd>
+												<dd class="txt_bex">천사의 실수로세상의 바보들이 한 마을에 모여 살게 되었다 우화는
+													두 천사 이야기로 시작된다. 인간 세상을 내려다보며 지혜로운 자는 줄고 어리석은 자가 나날이 늘어나는 것이
+													걱정된 ...</dd>
+
+
+
+												<dd class="txt_ebook">
+													<span><a
+														href="/front/product/detailProduct.do?prodId=5277846"
+														target="_blank">이 책의 eBook : <strong>10,080</strong>원
+													</a></span>
+												</dd>
+
+
+												<dd class="txt_ebook">
+													<span>지금 주문하면<strong class="t_red"> 오늘 </strong>받을 수
+														있습니다.
+													</span>
+												</dd>
+
+											</dl>
+											<dl class="prod_btn">
+												<dt>
+													<span class="num_txt">수량</span> <input type="text"
+														id="cntVal_4189269" value="1" class="num" size="3"
+														maxlength="2" onkeydown="onlyNumber();" onkeyup="">
+													<span class="btn_updn_wrap"><a
+														href="javascript:cntUp('4189269','01');"
+														class="btn_num_up">▲</a><a
+														href="javascript:cntDown('4189269','01');"
+														class="btn_num_dn">▼</a></span>
+												</dt>
+
+
+
+												<dd>
+													<a href="javascript:addCart('4189269');"><span
+														class="btn_b_comm btype_f1">쇼핑카트</span></a>
+												</dd>
+												<dd class="mt3">
+													<a href="javascript:goOrder('4189269');"><span
+														class="btn_w_comm btype_f1">바로구매</span></a>
+												</dd>
+
+
+
+
+												<dd class="mt3">
+													<a
+														href="javascript:add_wish_array_common('4189269', true);"><span
+														class="btn_w_comm btype_f1">위시리스트</span></a>
+												</dd>
+											</dl></li>
+
+
+
+										<li><input class="checkbox" type="checkbox"
+											value="4175277" name="prodId">
+											<div class="prod_thumb">
+												<span class="ranking"> <span class="rank_num">
+
+
+														3 </span>
+												</span>
+												<div class="prod_thumb_img">
+													<a href="/front/product/detailProduct.do?prodId=4175277"
+														onfocus="this.blur();"> <img
+														src="http://image.bandinlunis.com/upload/product/4175/4175277.jpg"
+														onerror="this.src='/images/common/noimg_type01.gif';">
+
+
+													</a> <a class="btn_popup" target="_blank"
+														href="/front/product/detailProduct.do?prodId=4175277"><span
+														class="ico_new">새창열기</span></a>
+												</div>
+
+												<a class="btn_preview"
+													href="javascript:popPreview('4175277');">미리 보기</a>
+
+											</div>
+											<dl class="prod_info">
+												<dt>
+													<a href="/front/product/detailProduct.do?prodId=4175277"
+														onfocus="this.blur();"> 고양이 1 </a>
+													<!-- <span class="tit_sub">- 덧셈구구</span> -->
+													<span class="tag_area"> <span class="tag_best"><span>베스트</span></span>
+														<span class="tag_recom"><span>반디추천</span></span> <span
+														class="tag_free"><span>무료배송</span></span>
+
+													</span>
+												</dt>
+												<dd class="txt_block">
+													<span>베르나르 베르베르</span> <span class="gap">|</span> <span>열린책들</span>
+													<span class="txt_date"><span class="gap">|</span> <span>2018.05.30</span></span>
+												</dd>
+												<dd class="mt5">
+													<p>
+														<span class="txt_reprice">12,800원</span> <span
+															class="txt_arrow">→</span> <span class="txt_price"><strong><em>11,520</em>원</strong>
+															(10%↓+5%P)</span>
+													</p>
+												</dd>
+												<dd class="txt_desc">
+													<div class="review_point">
+														<span style="width: 87%;"></span>
+													</div>
+													<strong>8.67</strong> <a
+														href="/front/product/detailProduct.do?prodId=4175277#sub10"
+														target="_blank">리뷰<em>(18)</em></a>
+												</dd>
+												<dd class="txt_bex">베르베르가 이번에는 고양이의 눈으로 인간의 미래를
+													바라본다한국인이 가장 사랑하는 작가 1위(2016년 3월, 교보문고 최근 10년간 국내외 작가별 소설 누적
+													판매량 집계), 베르나...</dd>
+
+
+
+												<dd class="txt_ebook">
+													<span><a
+														href="/front/product/detailProduct.do?prodId=5250280"
+														target="_blank">이 책의 eBook : <strong>9,500</strong>원
+													</a></span>
+												</dd>
+
+
+												<dd class="txt_ebook">
+													<span>지금 주문하면<strong class="t_red"> 오늘 </strong>받을 수
+														있습니다.
+													</span>
+												</dd>
+
+											</dl>
+											<dl class="prod_btn">
+												<dt>
+													<span class="num_txt">수량</span> <input type="text"
+														id="cntVal_4175277" value="1" class="num" size="3"
+														maxlength="2" onkeydown="onlyNumber();" onkeyup="">
+													<span class="btn_updn_wrap"><a
+														href="javascript:cntUp('4175277','01');"
+														class="btn_num_up">▲</a><a
+														href="javascript:cntDown('4175277','01');"
+														class="btn_num_dn">▼</a></span>
+												</dt>
+
+
+
+												<dd>
+													<a href="javascript:addCart('4175277');"><span
+														class="btn_b_comm btype_f1">쇼핑카트</span></a>
+												</dd>
+												<dd class="mt3">
+													<a href="javascript:goOrder('4175277');"><span
+														class="btn_w_comm btype_f1">바로구매</span></a>
+												</dd>
+
+
+
+
+												<dd class="mt3">
+													<a
+														href="javascript:add_wish_array_common('4175277', true);"><span
+														class="btn_w_comm btype_f1">위시리스트</span></a>
+												</dd>
+											</dl></li>
+
+
+
+										<li><input class="checkbox" type="checkbox"
+											value="4195328" name="prodId">
+											<div class="prod_thumb">
+												<span class="ranking"> <span class="rank_num">
+
+
+														4 </span>
+												</span>
+												<div class="prod_thumb_img">
+													<a href="/front/product/detailProduct.do?prodId=4195328"
+														onfocus="this.blur();"> <img
+														src="http://image.bandinlunis.com/upload/product/4195/4195328.jpg"
+														onerror="this.src='/images/common/noimg_type01.gif';">
+
+
+													</a> <a class="btn_popup" target="_blank"
+														href="/front/product/detailProduct.do?prodId=4195328"><span
+														class="ico_new">새창열기</span></a>
+												</div>
+
+												<a class="btn_preview"
+													href="javascript:popPreview('4195328');">미리 보기</a>
+
+											</div>
+											<dl class="prod_info">
+												<dt>
+													<a href="/front/product/detailProduct.do?prodId=4195328"
+														onfocus="this.blur();"> 곁에 남아 있는 사람 </a>
+													<!-- <span class="tit_sub">- 덧셈구구</span> -->
+													<span class="tag_area"> <span class="tag_best"><span>베스트</span></span>
+														<span class="tag_recom"><span>반디추천</span></span> <span
+														class="tag_free"><span>무료배송</span></span>
+
+													</span>
+												</dt>
+												<dd class="txt_block">
+													<span>임경선</span> <span class="gap">|</span> <span>위즈덤하우스</span>
+													<span class="txt_date"><span class="gap">|</span> <span>2018.09.05</span></span>
+												</dd>
+												<dd class="mt5">
+													<p>
+														<span class="txt_reprice">13,000원</span> <span
+															class="txt_arrow">→</span> <span class="txt_price"><strong><em>11,700</em>원</strong>
+															(10%↓+5%P)</span>
+													</p>
+												</dd>
+												<dd class="txt_desc">
+													<div class="review_point">
+														<span style="width: 90%;"></span>
+													</div>
+													<strong>9</strong> <a
+														href="/front/product/detailProduct.do?prodId=4195328#sub10"
+														target="_blank">리뷰<em>(1)</em></a>
+												</dd>
+												<dd class="txt_bex">“그 사람을 너무나 사랑하면 절로 알게 되는 것들이
+													있었다”저마다의 자리에서 저마다의 고통을 품고 살아가는강인하고도 사랑스러운 사람들의 이야기―동시대 사람들의
+													생생한 이야기를 간결...</dd>
+
+
+
+												<dd class="txt_ebook">
+													<span><a
+														href="/front/product/detailProduct.do?prodId=5279312"
+														target="_blank">이 책의 eBook : <strong>9,100</strong>원
+													</a></span>
+												</dd>
+
+
+												<dd class="txt_ebook">
+													<span>지금 주문하면<strong class="t_red"> 2018년
+															10월 23일(화) 이내 </strong>받을 수 있습니다.
+													</span>
+												</dd>
+
+											</dl>
+											<dl class="prod_btn">
+												<dt>
+													<span class="num_txt">수량</span> <input type="text"
+														id="cntVal_4195328" value="1" class="num" size="3"
+														maxlength="2" onkeydown="onlyNumber();" onkeyup="">
+													<span class="btn_updn_wrap"><a
+														href="javascript:cntUp('4195328','01');"
+														class="btn_num_up">▲</a><a
+														href="javascript:cntDown('4195328','01');"
+														class="btn_num_dn">▼</a></span>
+												</dt>
+
+
+
+												<dd>
+													<a href="javascript:addCart('4195328');"><span
+														class="btn_b_comm btype_f1">쇼핑카트</span></a>
+												</dd>
+												<dd class="mt3">
+													<a href="javascript:goOrder('4195328');"><span
+														class="btn_w_comm btype_f1">바로구매</span></a>
+												</dd>
+
+
+
+
+												<dd class="mt3">
+													<a
+														href="javascript:add_wish_array_common('4195328', true);"><span
+														class="btn_w_comm btype_f1">위시리스트</span></a>
+												</dd>
+											</dl></li>
 
 									</ul>
 
+
+
+
+									<ul>
+
+										<li><input class="checkbox" type="checkbox"
+											value="4002576" name="prodId">
+											<div class="prod_thumb">
+												<span class="ranking"> <span class="rank_num">
+
+
+														5 </span>
+												</span>
+												<div class="prod_thumb_img">
+													<a href="/front/product/detailProduct.do?prodId=4002576"
+														onfocus="this.blur();"> <img
+														src="http://image.bandinlunis.com/upload/product/4002/4002576.jpg"
+														onerror="this.src='/images/common/noimg_type01.gif';">
+
+
+													</a> <a class="btn_popup" target="_blank"
+														href="/front/product/detailProduct.do?prodId=4002576"><span
+														class="ico_new">새창열기</span></a>
+												</div>
+
+												<a class="btn_preview"
+													href="javascript:popPreview('4002576');">미리 보기</a>
+
+											</div>
+											<dl class="prod_info">
+												<dt>
+													<a href="/front/product/detailProduct.do?prodId=4002576"
+														onfocus="this.blur();"> 82년생 김지영 </a>
+													<!-- <span class="tit_sub">- 덧셈구구</span> -->
+													<span class="tag_area"> <span class="tag_best"><span>베스트</span></span>
+														<span class="tag_recom"><span>반디추천</span></span> <span
+														class="tag_free"><span>무료배송</span></span>
+
+													</span>
+												</dt>
+												<dd class="txt_block">
+													<span>조남주</span> <span class="gap">|</span> <span>민음사</span>
+													<span class="txt_date"><span class="gap">|</span> <span>2016.10.14</span></span>
+												</dd>
+												<dd class="mt5">
+													<p>
+														<span class="txt_reprice">13,000원</span> <span
+															class="txt_arrow">→</span> <span class="txt_price"><strong><em>11,700</em>원</strong>
+															(10%↓+5%P)</span>
+													</p>
+												</dd>
+												<dd class="txt_desc">
+													<div class="review_point">
+														<span style="width: 91%;"></span>
+													</div>
+													<strong>9.1</strong> <a
+														href="/front/product/detailProduct.do?prodId=4002576#sub10"
+														target="_blank">리뷰<em>(96)</em></a>
+												</dd>
+												<dd class="txt_bex">“사람들이 나보고 맘충이래.”한국에서 여자로 살아가는 일그
+													공포, 피로, 당황, 놀람, 혼란, 좌절의연속에 대한 인생 현장 보고서 조남주 장편소설 『82년생
+													김지영』이 민음사 ‘오...</dd>
+
+
+												<dd class="txt_contents">
+													<span class="tag_relation">연관</span> <a
+														href="/front/product/bookSeriesView.do?prodRelSeq=43488&listType=series&cateId=3"
+														target="_blank"><em>[관련 시리즈]</em>대통령 추천도서</a>
+												</dd>
+
+
+												<dd class="txt_ebook">
+													<span><a
+														href="/front/product/detailProduct.do?prodId=7973420"
+														target="_blank">이 책의 eBook : <strong>9,100</strong>원
+													</a></span>
+												</dd>
+
+
+												<dd class="txt_ebook">
+													<span>지금 주문하면<strong class="t_red"> 오늘 </strong>받을 수
+														있습니다.
+													</span>
+												</dd>
+
+											</dl>
+											<dl class="prod_btn">
+												<dt>
+													<span class="num_txt">수량</span> <input type="text"
+														id="cntVal_4002576" value="1" class="num" size="3"
+														maxlength="2" onkeydown="onlyNumber();" onkeyup="">
+													<span class="btn_updn_wrap"><a
+														href="javascript:cntUp('4002576','01');"
+														class="btn_num_up">▲</a><a
+														href="javascript:cntDown('4002576','01');"
+														class="btn_num_dn">▼</a></span>
+												</dt>
+
+
+
+												<dd>
+													<a href="javascript:addCart('4002576');"><span
+														class="btn_b_comm btype_f1">쇼핑카트</span></a>
+												</dd>
+												<dd class="mt3">
+													<a href="javascript:goOrder('4002576');"><span
+														class="btn_w_comm btype_f1">바로구매</span></a>
+												</dd>
+
+
+
+
+												<dd class="mt3">
+													<a
+														href="javascript:add_wish_array_common('4002576', true);"><span
+														class="btn_w_comm btype_f1">위시리스트</span></a>
+												</dd>
+											</dl></li>
+
+
+
+										<li><input class="checkbox" type="checkbox"
+											value="4144482" name="prodId">
+											<div class="prod_thumb">
+												<span class="ranking"> <span class="rank_num">
+
+
+														6 </span>
+												</span>
+												<div class="prod_thumb_img">
+													<a href="/front/product/detailProduct.do?prodId=4144482"
+														onfocus="this.blur();"> <img
+														src="http://image.bandinlunis.com/upload/product/4144/4144482.jpg"
+														onerror="this.src='/images/common/noimg_type01.gif';">
+
+
+													</a> <a class="btn_popup" target="_blank"
+														href="/front/product/detailProduct.do?prodId=4144482"><span
+														class="ico_new">새창열기</span></a>
+												</div>
+
+												<a class="btn_preview"
+													href="javascript:popPreview('4144482');">미리 보기</a>
+
+											</div>
+											<dl class="prod_info">
+												<dt>
+													<a href="/front/product/detailProduct.do?prodId=4144482"
+														onfocus="this.blur();"> 죄의 목소리 </a>
+													<!-- <span class="tit_sub">- 덧셈구구</span> -->
+													<span class="tag_area"> <span class="tag_best"><span>베스트</span></span>
+														<span class="tag_recom"><span>반디추천</span></span> <span
+														class="tag_free"><span>무료배송</span></span>
+
+													</span>
+												</dt>
+												<dd class="txt_block">
+													<span>시오타 타케시</span> <span class="gap">|</span> <span>비앤엘</span>
+													<span class="txt_date"><span class="gap">|</span> <span>2018.03.02</span></span>
+												</dd>
+												<dd class="mt5">
+													<p>
+														<span class="txt_reprice">14,800원</span> <span
+															class="txt_arrow">→</span> <span class="txt_price"><strong><em>13,320</em>원</strong>
+															(10%↓+5%P)</span>
+													</p>
+												</dd>
+												<dd class="txt_desc">
+													<div class="review_point">
+														<span style="width: 93%;"></span>
+													</div>
+													<strong>9.33</strong> <a
+														href="/front/product/detailProduct.do?prodId=4144482#sub10"
+														target="_blank">리뷰<em>(6)</em></a>
+												</dd>
+												<dd class="txt_bex">일본 쇼와시대 최대의 미제 ‘구리코·모리나가 사건’그 오랜
+													미스터리의 진실을 추적해가는 실화 소설31년 전 미해결 사건에 감춰진 삶을 그리다 2017 제14회
+													서점대상 3위《주간문...</dd>
+
+
+
+
+												<dd class="txt_ebook">
+													<span>지금 주문하면<strong class="t_red"> 오늘 </strong>받을 수
+														있습니다.
+													</span>
+												</dd>
+
+											</dl>
+											<dl class="prod_btn">
+												<dt>
+													<span class="num_txt">수량</span> <input type="text"
+														id="cntVal_4144482" value="1" class="num" size="3"
+														maxlength="2" onkeydown="onlyNumber();" onkeyup="">
+													<span class="btn_updn_wrap"><a
+														href="javascript:cntUp('4144482','01');"
+														class="btn_num_up">▲</a><a
+														href="javascript:cntDown('4144482','01');"
+														class="btn_num_dn">▼</a></span>
+												</dt>
+
+
+
+												<dd>
+													<a href="javascript:addCart('4144482');"><span
+														class="btn_b_comm btype_f1">쇼핑카트</span></a>
+												</dd>
+												<dd class="mt3">
+													<a href="javascript:goOrder('4144482');"><span
+														class="btn_w_comm btype_f1">바로구매</span></a>
+												</dd>
+
+
+
+
+												<dd class="mt3">
+													<a
+														href="javascript:add_wish_array_common('4144482', true);"><span
+														class="btn_w_comm btype_f1">위시리스트</span></a>
+												</dd>
+											</dl></li>
+
+
+
+										<li><input class="checkbox" type="checkbox"
+											value="4175281" name="prodId">
+											<div class="prod_thumb">
+												<span class="ranking"> <span class="rank_num">
+
+
+														7 </span>
+												</span>
+												<div class="prod_thumb_img">
+													<a href="/front/product/detailProduct.do?prodId=4175281"
+														onfocus="this.blur();"> <img
+														src="http://image.bandinlunis.com/upload/product/4175/4175281.jpg"
+														onerror="this.src='/images/common/noimg_type01.gif';">
+
+
+													</a> <a class="btn_popup" target="_blank"
+														href="/front/product/detailProduct.do?prodId=4175281"><span
+														class="ico_new">새창열기</span></a>
+												</div>
+
+												<a class="btn_preview"
+													href="javascript:popPreview('4175281');">미리 보기</a>
+
+											</div>
+											<dl class="prod_info">
+												<dt>
+													<a href="/front/product/detailProduct.do?prodId=4175281"
+														onfocus="this.blur();"> 고양이 2 </a>
+													<!-- <span class="tit_sub">- 덧셈구구</span> -->
+													<span class="tag_area"> <span class="tag_best"><span>베스트</span></span>
+
+														<span class="tag_free"><span>무료배송</span></span>
+
+													</span>
+												</dt>
+												<dd class="txt_block">
+													<span>베르나르 베르베르</span> <span class="gap">|</span> <span>열린책들</span>
+													<span class="txt_date"><span class="gap">|</span> <span>2018.05.30</span></span>
+												</dd>
+												<dd class="mt5">
+													<p>
+														<span class="txt_reprice">12,800원</span> <span
+															class="txt_arrow">→</span> <span class="txt_price"><strong><em>11,520</em>원</strong>
+															(10%↓+5%P)</span>
+													</p>
+												</dd>
+												<dd class="txt_desc">
+													<div class="review_point">
+														<span style="width: 90%;"></span>
+													</div>
+													<strong>9</strong> <a
+														href="/front/product/detailProduct.do?prodId=4175281#sub10"
+														target="_blank">리뷰<em>(7)</em></a>
+												</dd>
+												<dd class="txt_bex">베르베르가 이번에는 고양이의 눈으로 인간의 미래를 바라본다
+													한국인이 가장 사랑하는 작가 1위(2016년 3월, 교보문고 최근 10년간 국내외 작가별 소설 누적 판매량
+													집계), 베르...</dd>
+
+
+
+												<dd class="txt_ebook">
+													<span><a
+														href="/front/product/detailProduct.do?prodId=5250282"
+														target="_blank">이 책의 eBook : <strong>9,500</strong>원
+													</a></span>
+												</dd>
+
+
+												<dd class="txt_ebook">
+													<span>지금 주문하면<strong class="t_red"> 오늘 </strong>받을 수
+														있습니다.
+													</span>
+												</dd>
+
+											</dl>
+											<dl class="prod_btn">
+												<dt>
+													<span class="num_txt">수량</span> <input type="text"
+														id="cntVal_4175281" value="1" class="num" size="3"
+														maxlength="2" onkeydown="onlyNumber();" onkeyup="">
+													<span class="btn_updn_wrap"><a
+														href="javascript:cntUp('4175281','01');"
+														class="btn_num_up">▲</a><a
+														href="javascript:cntDown('4175281','01');"
+														class="btn_num_dn">▼</a></span>
+												</dt>
+
+
+
+												<dd>
+													<a href="javascript:addCart('4175281');"><span
+														class="btn_b_comm btype_f1">쇼핑카트</span></a>
+												</dd>
+												<dd class="mt3">
+													<a href="javascript:goOrder('4175281');"><span
+														class="btn_w_comm btype_f1">바로구매</span></a>
+												</dd>
+
+
+
+
+												<dd class="mt3">
+													<a
+														href="javascript:add_wish_array_common('4175281', true);"><span
+														class="btn_w_comm btype_f1">위시리스트</span></a>
+												</dd>
+											</dl></li>
+
+
+
+										<li><input class="checkbox" type="checkbox"
+											value="4200433" name="prodId">
+											<div class="prod_thumb">
+												<span class="ranking"> <span class="rank_num">
+
+
+														8 </span>
+												</span>
+												<div class="prod_thumb_img">
+													<a href="/front/product/detailProduct.do?prodId=4200433"
+														onfocus="this.blur();"> <img
+														src="http://image.bandinlunis.com/upload/product/4200/4200433.jpg"
+														onerror="this.src='/images/common/noimg_type01.gif';">
+
+
+													</a> <a class="btn_popup" target="_blank"
+														href="/front/product/detailProduct.do?prodId=4200433"><span
+														class="ico_new">새창열기</span></a>
+												</div>
+
+											</div>
+											<dl class="prod_info">
+												<dt>
+													<a href="/front/product/detailProduct.do?prodId=4200433"
+														onfocus="this.blur();"> 메르타 할머니의 우아한 강도인생 </a>
+													<!-- <span class="tit_sub">- 덧셈구구</span> -->
+													<span class="tag_area"> <span class="tag_best"><span>베스트</span></span>
+
+														<span class="tag_free"><span>무료배송</span></span>
+
+													</span>
+												</dt>
+												<dd class="txt_block">
+													<span>카타리나 잉엘만순드베리</span> <span class="gap">|</span> <span>열린책들</span>
+													<span class="txt_date"><span class="gap">|</span> <span>2018.10.10</span></span>
+												</dd>
+												<dd class="mt5">
+													<p>
+														<span class="txt_reprice">14,800원</span> <span
+															class="txt_arrow">→</span> <span class="txt_price"><strong><em>13,320</em>원</strong>
+															(10%↓+5%P)</span>
+													</p>
+												</dd>
+												<dd class="txt_desc">
+													<div class="review_point">
+														<span style="width: 0%;"></span>
+													</div>
+													<strong>0</strong> <a
+														href="/front/product/detailProduct.do?prodId=4200433#sub10"
+														target="_blank">리뷰<em>(0)</em></a>
+												</dd>
+												<dd class="txt_bex">79세 노인 강도 메르타 할머니가 다시 돌아왔다메르타 할머니
+													시리즈 세 번째 책, 드디어 출간스웨덴의 베스트셀러 작가 카타리나 잉엘만순드베리의 장편소설 『메르타
+													할머니의 우아한 강...</dd>
+
+
+
+												<dd class="txt_ebook">
+													<span><a
+														href="/front/product/detailProduct.do?prodId=5287043"
+														target="_blank">이 책의 eBook : <strong>9,900</strong>원
+													</a></span>
+												</dd>
+
+
+												<dd class="txt_ebook">
+													<span>지금 주문하면<strong class="t_red"> 2018년
+															10월 25일(목) 이내 </strong>받을 수 있습니다.
+													</span>
+												</dd>
+
+											</dl>
+											<dl class="prod_btn">
+												<dt>
+													<span class="num_txt">수량</span> <input type="text"
+														id="cntVal_4200433" value="1" class="num" size="3"
+														maxlength="2" onkeydown="onlyNumber();" onkeyup="">
+													<span class="btn_updn_wrap"><a
+														href="javascript:cntUp('4200433','01');"
+														class="btn_num_up">▲</a><a
+														href="javascript:cntDown('4200433','01');"
+														class="btn_num_dn">▼</a></span>
+												</dt>
+
+
+
+												<dd>
+													<a href="javascript:addCart('4200433');"><span
+														class="btn_b_comm btype_f1">쇼핑카트</span></a>
+												</dd>
+												<dd class="mt3">
+													<a href="javascript:goOrder('4200433');"><span
+														class="btn_w_comm btype_f1">바로구매</span></a>
+												</dd>
+
+
+
+
+												<dd class="mt3">
+													<a
+														href="javascript:add_wish_array_common('4200433', true);"><span
+														class="btn_w_comm btype_f1">위시리스트</span></a>
+												</dd>
+											</dl></li>
+
+									</ul>
+
+
+
+
+									<ul>
+
+										<li><input class="checkbox" type="checkbox"
+											value="4194431" name="prodId">
+											<div class="prod_thumb">
+												<span class="ranking"> <span class="rank_num">
+
+
+														9 </span>
+												</span>
+												<div class="prod_thumb_img">
+													<a href="/front/product/detailProduct.do?prodId=4194431"
+														onfocus="this.blur();"> <img
+														src="http://image.bandinlunis.com/upload/product/4194/4194431.jpg"
+														onerror="this.src='/images/common/noimg_type01.gif';">
+
+
+													</a> <a class="btn_popup" target="_blank"
+														href="/front/product/detailProduct.do?prodId=4194431"><span
+														class="ico_new">새창열기</span></a>
+												</div>
+
+											</div>
+											<dl class="prod_info">
+												<dt>
+													<a href="/front/product/detailProduct.do?prodId=4194431"
+														onfocus="this.blur();"> 매스커레이드 나이트 </a>
+													<!-- <span class="tit_sub">- 덧셈구구</span> -->
+													<span class="tag_area"> <span class="tag_best"><span>베스트</span></span>
+														<span class="tag_recom"><span>반디추천</span></span> <span
+														class="tag_free"><span>무료배송</span></span>
+
+													</span>
+												</dt>
+												<dd class="txt_block">
+													<span>히가시노 게이고</span> <span class="gap">|</span> <span>현대문학</span>
+													<span class="txt_date"><span class="gap">|</span> <span>2018.08.30</span></span>
+												</dd>
+												<dd class="mt5">
+													<p>
+														<span class="txt_reprice">14,800원</span> <span
+															class="txt_arrow">→</span> <span class="txt_price"><strong><em>13,320</em>원</strong>
+															(10%↓+5%P)</span>
+													</p>
+												</dd>
+												<dd class="txt_desc">
+													<div class="review_point">
+														<span style="width: 95%;"></span>
+													</div>
+													<strong>9.5</strong> <a
+														href="/front/product/detailProduct.do?prodId=4194431#sub10"
+														target="_blank">리뷰<em>(6)</em></a>
+												</dd>
+												<dd class="txt_bex">히가시노 게이고 2018년 최신작절대 속지 마라, 범인도 가면을
+													쓰고 있다★ 시리즈 일본 누적 판매 300만 부 돌파!★ 출간 즉시 오리콘 주간 도서 종합 랭킹 1위!★
+													시리즈 제...</dd>
+
+												<dd class="txt_contents">
+													<span class="tag_event">행사</span> <a
+														style="text-decoration: none;"
+														href="/front/event/viewPromotionEvent.do?evtSeq=37693"
+														target="_blank">매스커레이드 시리즈의 귀환! </a>
+
+
+												</dd>
+
+
+
+												<dd class="txt_ebook">
+													<span><a
+														href="/front/product/detailProduct.do?prodId=5281786"
+														target="_blank">이 책의 eBook : <strong>10,000</strong>원
+													</a></span>
+												</dd>
+
+
+												<dd class="txt_ebook">
+													<span>지금 주문하면<strong class="t_red"> 오늘 </strong>받을 수
+														있습니다.
+													</span>
+												</dd>
+
+											</dl>
+											<dl class="prod_btn">
+												<dt>
+													<span class="num_txt">수량</span> <input type="text"
+														id="cntVal_4194431" value="1" class="num" size="3"
+														maxlength="2" onkeydown="onlyNumber();" onkeyup="">
+													<span class="btn_updn_wrap"><a
+														href="javascript:cntUp('4194431','01');"
+														class="btn_num_up">▲</a><a
+														href="javascript:cntDown('4194431','01');"
+														class="btn_num_dn">▼</a></span>
+												</dt>
+
+
+
+												<dd>
+													<a href="javascript:addCart('4194431');"><span
+														class="btn_b_comm btype_f1">쇼핑카트</span></a>
+												</dd>
+												<dd class="mt3">
+													<a href="javascript:goOrder('4194431');"><span
+														class="btn_w_comm btype_f1">바로구매</span></a>
+												</dd>
+
+
+
+
+												<dd class="mt3">
+													<a
+														href="javascript:add_wish_array_common('4194431', true);"><span
+														class="btn_w_comm btype_f1">위시리스트</span></a>
+												</dd>
+											</dl></li>
+
+
+
+										<li><input class="checkbox" type="checkbox"
+											value="4198234" name="prodId">
+											<div class="prod_thumb">
+												<span class="ranking"> <span class="rank_num">
+
+
+														10 </span>
+												</span>
+												<div class="prod_thumb_img">
+													<a href="/front/product/detailProduct.do?prodId=4198234"
+														onfocus="this.blur();"> <img
+														src="http://image.bandinlunis.com/upload/product/4198/4198234.jpg"
+														onerror="this.src='/images/common/noimg_type01.gif';">
+
+
+													</a> <a class="btn_popup" target="_blank"
+														href="/front/product/detailProduct.do?prodId=4198234"><span
+														class="ico_new">새창열기</span></a>
+												</div>
+
+												<a class="btn_preview"
+													href="javascript:popPreview('4198234');">미리 보기</a>
+
+											</div>
+											<dl class="prod_info">
+												<dt>
+													<a href="/front/product/detailProduct.do?prodId=4198234"
+														onfocus="this.blur();"> 70세 사망법안, 가결 </a>
+													<!-- <span class="tit_sub">- 덧셈구구</span> -->
+													<span class="tag_area"> <span class="tag_best"><span>베스트</span></span>
+
+														<span class="tag_free"><span>무료배송</span></span>
+
+													</span>
+												</dt>
+												<dd class="txt_block">
+													<span>가키야 미우</span> <span class="gap">|</span> <span>왼쪽주머니</span>
+													<span class="txt_date"><span class="gap">|</span> <span>2018.10.01</span></span>
+												</dd>
+												<dd class="mt5">
+													<p>
+														<span class="txt_reprice">15,000원</span> <span
+															class="txt_arrow">→</span> <span class="txt_price"><strong><em>13,500</em>원</strong>
+															(10%↓+5%P)</span>
+													</p>
+												</dd>
+												<dd class="txt_desc">
+													<div class="review_point">
+														<span style="width: 88%;"></span>
+													</div>
+													<strong>8.8</strong> <a
+														href="/front/product/detailProduct.do?prodId=4198234#sub10"
+														target="_blank">리뷰<em>(5)</em></a>
+												</dd>
+												<dd class="txt_bex">70세 사망법안이 가결되었다‘이 나라 국적을 지닌 자는 누구나
+													70세가 되는 생일로부터 30일 이내에 반드시 죽어야 한다. 더불어 정부는 안락사 방법을 몇 종류 준비할
+													방침이다. ...</dd>
+
+
+
+
+												<dd class="txt_ebook">
+													<span>지금 주문하면<strong class="t_red"> 2018년
+															10월 25일(목) 이내 </strong>받을 수 있습니다.
+													</span>
+												</dd>
+
+											</dl>
+											<dl class="prod_btn">
+												<dt>
+													<span class="num_txt">수량</span> <input type="text"
+														id="cntVal_4198234" value="1" class="num" size="3"
+														maxlength="2" onkeydown="onlyNumber();" onkeyup="">
+													<span class="btn_updn_wrap"><a
+														href="javascript:cntUp('4198234','01');"
+														class="btn_num_up">▲</a><a
+														href="javascript:cntDown('4198234','01');"
+														class="btn_num_dn">▼</a></span>
+												</dt>
+
+
+
+												<dd>
+													<a href="javascript:addCart('4198234');"><span
+														class="btn_b_comm btype_f1">쇼핑카트</span></a>
+												</dd>
+												<dd class="mt3">
+													<a href="javascript:goOrder('4198234');"><span
+														class="btn_w_comm btype_f1">바로구매</span></a>
+												</dd>
+
+
+
+
+												<dd class="mt3">
+													<a
+														href="javascript:add_wish_array_common('4198234', true);"><span
+														class="btn_w_comm btype_f1">위시리스트</span></a>
+												</dd>
+											</dl></li>
+
+
+
+										<li><input class="checkbox" type="checkbox"
+											value="4095190" name="prodId">
+											<div class="prod_thumb">
+												<span class="ranking"> <span class="rank_num">
+
+
+														11 </span>
+												</span>
+												<div class="prod_thumb_img">
+													<a href="/front/product/detailProduct.do?prodId=4095190"
+														onfocus="this.blur();"> <img
+														src="http://image.bandinlunis.com/upload/product/4095/4095190.jpg"
+														onerror="this.src='/images/common/noimg_type01.gif';">
+
+
+													</a> <a class="btn_popup" target="_blank"
+														href="/front/product/detailProduct.do?prodId=4095190"><span
+														class="ico_new">새창열기</span></a>
+												</div>
+
+												<a class="btn_preview"
+													href="javascript:popPreview('4095190');">미리 보기</a>
+
+											</div>
+											<dl class="prod_info">
+												<dt>
+													<a href="/front/product/detailProduct.do?prodId=4095190"
+														onfocus="this.blur();"> 노르웨이의 숲 </a>
+													<!-- <span class="tit_sub">- 덧셈구구</span> -->
+													<span class="tag_area"> <span class="tag_best"><span>베스트</span></span>
+														<span class="tag_recom"><span>반디추천</span></span> <span
+														class="tag_free"><span>무료배송</span></span>
+
+													</span>
+												</dt>
+												<dd class="txt_block">
+													<span>무라카미 하루키</span> <span class="gap">|</span> <span>민음사</span>
+													<span class="txt_date"><span class="gap">|</span> <span>2017.08.07</span></span>
+												</dd>
+												<dd class="mt5">
+													<p>
+														<span class="txt_reprice">15,000원</span> <span
+															class="txt_arrow">→</span> <span class="txt_price"><strong><em>13,500</em>원</strong>
+															(10%↓+5%P)</span>
+													</p>
+												</dd>
+												<dd class="txt_desc">
+													<div class="review_point">
+														<span style="width: 100%;"></span>
+													</div>
+													<strong>10</strong> <a
+														href="/front/product/detailProduct.do?prodId=4095190#sub10"
+														target="_blank">리뷰<em>(7)</em></a>
+												</dd>
+												<dd class="txt_bex">“나를 언제까지나 잊지 마, 내가 여기 있었다는 걸 기억해
+													줘.” 하루키 월드의 빛나는 다이아몬드무라카미 하루키를 만나기 위해 가장 먼저 읽어야 할 책! 페이지를
+													처음 펼치는 오늘...</dd>
+
+
+
+
+												<dd class="txt_ebook">
+													<span>지금 주문하면<strong class="t_red"> 오늘 </strong>받을 수
+														있습니다.
+													</span>
+												</dd>
+
+											</dl>
+											<dl class="prod_btn">
+												<dt>
+													<span class="num_txt">수량</span> <input type="text"
+														id="cntVal_4095190" value="1" class="num" size="3"
+														maxlength="2" onkeydown="onlyNumber();" onkeyup="">
+													<span class="btn_updn_wrap"><a
+														href="javascript:cntUp('4095190','01');"
+														class="btn_num_up">▲</a><a
+														href="javascript:cntDown('4095190','01');"
+														class="btn_num_dn">▼</a></span>
+												</dt>
+
+
+
+												<dd>
+													<a href="javascript:addCart('4095190');"><span
+														class="btn_b_comm btype_f1">쇼핑카트</span></a>
+												</dd>
+												<dd class="mt3">
+													<a href="javascript:goOrder('4095190');"><span
+														class="btn_w_comm btype_f1">바로구매</span></a>
+												</dd>
+
+
+
+
+												<dd class="mt3">
+													<a
+														href="javascript:add_wish_array_common('4095190', true);"><span
+														class="btn_w_comm btype_f1">위시리스트</span></a>
+												</dd>
+											</dl></li>
+
+
+
+										<li><input class="checkbox" type="checkbox"
+											value="4089088" name="prodId">
+											<div class="prod_thumb">
+												<span class="ranking"> <span class="rank_num">
+
+
+														12 </span>
+												</span>
+												<div class="prod_thumb_img">
+													<a href="/front/product/detailProduct.do?prodId=4089088"
+														onfocus="this.blur();"> <img
+														src="http://image.bandinlunis.com/upload/product/4089/4089088.jpg"
+														onerror="this.src='/images/common/noimg_type01.gif';">
+
+
+													</a> <a class="btn_popup" target="_blank"
+														href="/front/product/detailProduct.do?prodId=4089088"><span
+														class="ico_new">새창열기</span></a>
+												</div>
+
+												<a class="btn_preview"
+													href="javascript:popPreview('4089088');">미리 보기</a>
+
+											</div>
+											<dl class="prod_info">
+												<dt>
+													<a href="/front/product/detailProduct.do?prodId=4089088"
+														onfocus="this.blur();"> 그해, 여름 손님 </a>
+													<!-- <span class="tit_sub">- 덧셈구구</span> -->
+													<span class="tag_area"> <span class="tag_best"><span>베스트</span></span>
+
+														<span class="tag_free"><span>무료배송</span></span>
+
+													</span>
+												</dt>
+												<dd class="txt_block">
+													<span>안드레 애치먼</span> <span class="gap">|</span> <span>잔</span>
+													<span class="txt_date"><span class="gap">|</span> <span>2017.08.01</span></span>
+												</dd>
+												<dd class="mt5">
+													<p>
+														<span class="txt_reprice">13,800원</span> <span
+															class="txt_arrow">→</span> <span class="txt_price"><strong><em>12,420</em>원</strong>
+															(10%↓+5%P)</span>
+													</p>
+												</dd>
+												<dd class="txt_desc">
+													<div class="review_point">
+														<span style="width: 90%;"></span>
+													</div>
+													<strong>9</strong> <a
+														href="/front/product/detailProduct.do?prodId=4089088#sub10"
+														target="_blank">리뷰<em>(10)</em></a>
+												</dd>
+												<dd class="txt_bex">하나의 책, 세 가지 디자인으로 만나는 소설 《그해, 여름
+													손님》 책표지는 띠지와 재킷의 유무에 따라 각기 다른 분위기를 내면서도, 소설이 담은 이국적인 매력을
+													고스란히 품고 있다...</dd>
+
+
+
+												<dd class="txt_ebook">
+													<span><a
+														href="/front/product/detailProduct.do?prodId=5095282"
+														target="_blank">이 책의 eBook : <strong>9,660</strong>원
+													</a></span>
+												</dd>
+
+
+												<dd class="txt_ebook">
+													<span>지금 주문하면<strong class="t_red"> 오늘 </strong>받을 수
+														있습니다.
+													</span>
+												</dd>
+
+											</dl>
+											<dl class="prod_btn">
+												<dt>
+													<span class="num_txt">수량</span> <input type="text"
+														id="cntVal_4089088" value="1" class="num" size="3"
+														maxlength="2" onkeydown="onlyNumber();" onkeyup="">
+													<span class="btn_updn_wrap"><a
+														href="javascript:cntUp('4089088','01');"
+														class="btn_num_up">▲</a><a
+														href="javascript:cntDown('4089088','01');"
+														class="btn_num_dn">▼</a></span>
+												</dt>
+
+
+
+												<dd>
+													<a href="javascript:addCart('4089088');"><span
+														class="btn_b_comm btype_f1">쇼핑카트</span></a>
+												</dd>
+												<dd class="mt3">
+													<a href="javascript:goOrder('4089088');"><span
+														class="btn_w_comm btype_f1">바로구매</span></a>
+												</dd>
+
+
+
+
+												<dd class="mt3">
+													<a
+														href="javascript:add_wish_array_common('4089088', true);"><span
+														class="btn_w_comm btype_f1">위시리스트</span></a>
+												</dd>
+											</dl></li>
+
+									</ul>
+
+
+
+
+									<ul>
+
+										<li><input class="checkbox" type="checkbox"
+											value="4053957" name="prodId">
+											<div class="prod_thumb">
+												<span class="ranking"> <span class="rank_num">
+
+
+														13 </span>
+												</span>
+												<div class="prod_thumb_img">
+													<a href="/front/product/detailProduct.do?prodId=4053957"
+														onfocus="this.blur();"> <img
+														src="http://image.bandinlunis.com/upload/product/4053/4053957.jpg"
+														onerror="this.src='/images/common/noimg_type01.gif';">
+
+
+													</a> <a class="btn_popup" target="_blank"
+														href="/front/product/detailProduct.do?prodId=4053957"><span
+														class="ico_new">새창열기</span></a>
+												</div>
+
+												<a class="btn_preview"
+													href="javascript:popPreview('4053957');">미리 보기</a>
+
+											</div>
+											<dl class="prod_info">
+												<dt>
+													<a href="/front/product/detailProduct.do?prodId=4053957"
+														onfocus="this.blur();"> 아몬드 </a>
+													<!-- <span class="tit_sub">- 덧셈구구</span> -->
+													<span class="tag_area"> <span class="tag_best"><span>베스트</span></span>
+														<span class="tag_recom"><span>반디추천</span></span> <span
+														class="tag_free"><span>무료배송</span></span>
+
+													</span>
+												</dt>
+												<dd class="txt_block">
+													<span>손원평</span> <span class="gap">|</span> <span>창비</span>
+													<span class="txt_date"><span class="gap">|</span> <span>2017.03.31</span></span>
+												</dd>
+												<dd class="mt5">
+													<p>
+														<span class="txt_reprice">12,000원</span> <span
+															class="txt_arrow">→</span> <span class="txt_price"><strong><em>10,800</em>원</strong>
+															(10%↓+5%P)</span>
+													</p>
+												</dd>
+												<dd class="txt_desc">
+													<div class="review_point">
+														<span style="width: 93%;"></span>
+													</div>
+													<strong>9.28</strong> <a
+														href="/front/product/detailProduct.do?prodId=4053957#sub10"
+														target="_blank">리뷰<em>(25)</em></a>
+												</dd>
+												<dd class="txt_bex">공감 불능 사회, 차가움을 녹이는 아몬드매혹적인 문체, 독특한
+													캐릭터, 속도감 넘치는 전개!?“고통과 공감의 능력을 깨우치게 할 강력한 소설” 영화보다 강렬하고
+													드라마처럼 팽팽한,...</dd>
+
+
+
+												<dd class="txt_ebook">
+													<span><a
+														href="/front/product/detailProduct.do?prodId=5033714"
+														target="_blank">이 책의 eBook : <strong>8,400</strong>원
+													</a></span>
+												</dd>
+
+
+												<dd class="txt_ebook">
+													<span>지금 주문하면<strong class="t_red"> 2018년
+															10월 25일(목) 이내 </strong>받을 수 있습니다.
+													</span>
+												</dd>
+
+											</dl>
+											<dl class="prod_btn">
+												<dt>
+													<span class="num_txt">수량</span> <input type="text"
+														id="cntVal_4053957" value="1" class="num" size="3"
+														maxlength="2" onkeydown="onlyNumber();" onkeyup="">
+													<span class="btn_updn_wrap"><a
+														href="javascript:cntUp('4053957','01');"
+														class="btn_num_up">▲</a><a
+														href="javascript:cntDown('4053957','01');"
+														class="btn_num_dn">▼</a></span>
+												</dt>
+
+
+
+												<dd>
+													<a href="javascript:addCart('4053957');"><span
+														class="btn_b_comm btype_f1">쇼핑카트</span></a>
+												</dd>
+												<dd class="mt3">
+													<a href="javascript:goOrder('4053957');"><span
+														class="btn_w_comm btype_f1">바로구매</span></a>
+												</dd>
+
+
+
+
+												<dd class="mt3">
+													<a
+														href="javascript:add_wish_array_common('4053957', true);"><span
+														class="btn_w_comm btype_f1">위시리스트</span></a>
+												</dd>
+											</dl></li>
+
+
+
+										<li><input class="checkbox" type="checkbox"
+											value="4201643" name="prodId">
+											<div class="prod_thumb">
+												<span class="ranking"> <span class="rank_num">
+
+
+														14 </span>
+												</span>
+												<div class="prod_thumb_img">
+													<a href="/front/product/detailProduct.do?prodId=4201643"
+														onfocus="this.blur();"> <img
+														src="http://image.bandinlunis.com/upload/product/4201/4201643.jpg"
+														onerror="this.src='/images/common/noimg_type01.gif';">
+
+
+													</a> <a class="btn_popup" target="_blank"
+														href="/front/product/detailProduct.do?prodId=4201643"><span
+														class="ico_new">새창열기</span></a>
+												</div>
+
+												<a class="btn_preview"
+													href="javascript:popPreview('4201643');">미리 보기</a>
+
+											</div>
+											<dl class="prod_info">
+												<dt>
+													<a href="/front/product/detailProduct.do?prodId=4201643"
+														onfocus="this.blur();"> 불안 </a>
+													<!-- <span class="tit_sub">- 덧셈구구</span> -->
+													<span class="tag_area"> <span class="tag_best"><span>베스트</span></span>
+
+														<span class="tag_free"><span>무료배송</span></span>
+
+													</span>
+												</dt>
+												<dd class="txt_block">
+													<span>O. Z. 리반엘리</span> <span class="gap">|</span> <span>가쎄</span>
+													<span class="txt_date"><span class="gap">|</span> <span>2018.09.29</span></span>
+												</dd>
+												<dd class="mt5">
+													<p>
+														<span class="txt_reprice">13,800원</span> <span
+															class="txt_arrow">→</span> <span class="txt_price"><strong><em>12,420</em>원</strong>
+															(10%↓+5%P)</span>
+													</p>
+												</dd>
+												<dd class="txt_desc">
+													<div class="review_point">
+														<span style="width: 0%;"></span>
+													</div>
+													<strong>0</strong> <a
+														href="/front/product/detailProduct.do?prodId=4201643#sub10"
+														target="_blank">리뷰<em>(0)</em></a>
+												</dd>
+												<dd class="txt_bex">2017년 출간돼 단기간 40만 부가 읽힌 베스트셀러40개국에
+													소개된 터키 유명 작가 리반엘리의 신작리반엘리의 소설 『불안(Huzursuzluk)』은 단기간에 40만
+													부가 팔려나가...</dd>
+
+												<dd class="txt_contents">
+													<span class="tag_event">행사</span> <a
+														style="text-decoration: none;"
+														href="http://www.bandinlunis.com/front/event/bandi/event1020619.do"
+														target="_blank">투표하고 반디상품권 받자</a>
+
+												</dd>
+
+
+
+
+												<dd class="txt_ebook">
+													<span>지금 주문하면<strong class="t_red"> 오늘 </strong>받을 수
+														있습니다.
+													</span>
+												</dd>
+
+											</dl>
+											<dl class="prod_btn">
+												<dt>
+													<span class="num_txt">수량</span> <input type="text"
+														id="cntVal_4201643" value="1" class="num" size="3"
+														maxlength="2" onkeydown="onlyNumber();" onkeyup="">
+													<span class="btn_updn_wrap"><a
+														href="javascript:cntUp('4201643','01');"
+														class="btn_num_up">▲</a><a
+														href="javascript:cntDown('4201643','01');"
+														class="btn_num_dn">▼</a></span>
+												</dt>
+
+
+
+												<dd>
+													<a href="javascript:addCart('4201643');"><span
+														class="btn_b_comm btype_f1">쇼핑카트</span></a>
+												</dd>
+												<dd class="mt3">
+													<a href="javascript:goOrder('4201643');"><span
+														class="btn_w_comm btype_f1">바로구매</span></a>
+												</dd>
+
+
+
+
+												<dd class="mt3">
+													<a
+														href="javascript:add_wish_array_common('4201643', true);"><span
+														class="btn_w_comm btype_f1">위시리스트</span></a>
+												</dd>
+											</dl></li>
+
+
+
+										<li><input class="checkbox" type="checkbox"
+											value="3458073" name="prodId">
+											<div class="prod_thumb">
+												<span class="ranking"> <span class="rank_num">
+
+
+														15 </span>
+												</span>
+												<div class="prod_thumb_img">
+													<a href="/front/product/detailProduct.do?prodId=3458073"
+														onfocus="this.blur();"> <img
+														src="http://image.bandinlunis.com/upload/product/3458/3458073.jpg"
+														onerror="this.src='/images/common/noimg_type01.gif';">
+
+
+													</a> <a class="btn_popup" target="_blank"
+														href="/front/product/detailProduct.do?prodId=3458073"><span
+														class="ico_new">새창열기</span></a>
+												</div>
+
+												<a class="btn_preview"
+													href="javascript:popPreview('3458073');">미리 보기</a>
+
+											</div>
+											<dl class="prod_info">
+												<dt>
+													<a href="/front/product/detailProduct.do?prodId=3458073"
+														onfocus="this.blur();"> 몽실언니 [개정판] </a>
+													<!-- <span class="tit_sub">- 덧셈구구</span> -->
+													<span class="tag_area"> <span class="tag_best"><span>베스트</span></span>
+														<span class="tag_recom"><span>반디추천</span></span>
+
+
+													</span>
+												</dt>
+												<dd class="txt_block">
+													<span>권정생</span> <span class="gap">|</span> <span>창비</span>
+													<span class="txt_date"><span class="gap">|</span> <span>2012.04.25</span></span>
+												</dd>
+												<dd class="mt5">
+													<p>
+														<span class="txt_reprice">10,000원</span> <span
+															class="txt_arrow">→</span> <span class="txt_price"><strong><em>9,000</em>원</strong>
+															(10%↓+5%P)</span>
+													</p>
+												</dd>
+												<dd class="txt_desc">
+													<div class="review_point">
+														<span style="width: 93%;"></span>
+													</div>
+													<strong>9.33</strong> <a
+														href="/front/product/detailProduct.do?prodId=3458073#sub10"
+														target="_blank">리뷰<em>(8)</em></a>
+												</dd>
+												<dd class="txt_bex">- 북트레일러 유튜브:
+													http://youtu.be/7RMTF2epKdo 비메오: http://vimeo.com/40913856
+													권정생 대표작 [몽실 언니](1984)의 개정 4판...</dd>
+
+
+
+
+												<dd class="txt_ebook">
+													<span>지금 주문하면<strong class="t_red"> 오늘 </strong>받을 수
+														있습니다.
+													</span>
+												</dd>
+
+											</dl>
+											<dl class="prod_btn">
+												<dt>
+													<span class="num_txt">수량</span> <input type="text"
+														id="cntVal_3458073" value="1" class="num" size="3"
+														maxlength="2" onkeydown="onlyNumber();" onkeyup="">
+													<span class="btn_updn_wrap"><a
+														href="javascript:cntUp('3458073','01');"
+														class="btn_num_up">▲</a><a
+														href="javascript:cntDown('3458073','01');"
+														class="btn_num_dn">▼</a></span>
+												</dt>
+
+
+
+												<dd>
+													<a href="javascript:addCart('3458073');"><span
+														class="btn_b_comm btype_f1">쇼핑카트</span></a>
+												</dd>
+												<dd class="mt3">
+													<a href="javascript:goOrder('3458073');"><span
+														class="btn_w_comm btype_f1">바로구매</span></a>
+												</dd>
+
+
+
+
+												<dd class="mt3">
+													<a
+														href="javascript:add_wish_array_common('3458073', true);"><span
+														class="btn_w_comm btype_f1">위시리스트</span></a>
+												</dd>
+											</dl></li>
+
+
+
+										<li><input class="checkbox" type="checkbox"
+											value="4186586" name="prodId">
+											<div class="prod_thumb">
+												<span class="ranking"> <span class="rank_num">
+
+
+														16 </span>
+												</span>
+												<div class="prod_thumb_img">
+													<a href="/front/product/detailProduct.do?prodId=4186586"
+														onfocus="this.blur();"> <img
+														src="http://image.bandinlunis.com/upload/product/4186/4186586.jpg"
+														onerror="this.src='/images/common/noimg_type01.gif';">
+
+
+													</a> <a class="btn_popup" target="_blank"
+														href="/front/product/detailProduct.do?prodId=4186586"><span
+														class="ico_new">새창열기</span></a>
+												</div>
+
+												<a class="btn_preview"
+													href="javascript:popPreview('4186586');">미리 보기</a>
+
+											</div>
+											<dl class="prod_info">
+												<dt>
+													<a href="/front/product/detailProduct.do?prodId=4186586"
+														onfocus="this.blur();"> 11문자 살인사건 </a>
+													<!-- <span class="tit_sub">- 덧셈구구</span> -->
+													<span class="tag_area"> <span class="tag_best"><span>베스트</span></span>
+
+														<span class="tag_free"><span>무료배송</span></span>
+
+													</span>
+												</dt>
+												<dd class="txt_block">
+													<span>히가시노 게이고</span> <span class="gap">|</span> <span>RHK</span>
+													<span class="txt_date"><span class="gap">|</span> <span>2018.07.13</span></span>
+												</dd>
+												<dd class="mt5">
+													<p>
+														<span class="txt_reprice">14,800원</span> <span
+															class="txt_arrow">→</span> <span class="txt_price"><strong><em>13,320</em>원</strong>
+															(10%↓+5%P)</span>
+													</p>
+												</dd>
+												<dd class="txt_desc">
+													<div class="review_point">
+														<span style="width: 91%;"></span>
+													</div>
+													<strong>9.08</strong> <a
+														href="/front/product/detailProduct.do?prodId=4186586#sub10"
+														target="_blank">리뷰<em>(24)</em></a>
+												</dd>
+												<dd class="txt_bex">“죽어도 되는 사람도 있는 거야.”그날, 애인은 어째서 살해당한
+													것일까?11글자에서 시작된 의문의 연쇄 살인이것이 바로 히가시노 게이고 미스터리의 진수!일본 최고의
+													이야기꾼 히가시...</dd>
+
+
+
+												<dd class="txt_ebook">
+													<span><a
+														href="/front/product/detailProduct.do?prodId=5275683"
+														target="_blank">이 책의 eBook : <strong>10,360</strong>원
+													</a></span>
+												</dd>
+
+
+											</dl>
+											<dl class="prod_btn">
+												<dt>
+													<span class="num_txt">수량</span> <input type="text"
+														id="cntVal_4186586" value="1" class="num" size="3"
+														maxlength="2" onkeydown="onlyNumber();" onkeyup="">
+													<span class="btn_updn_wrap"><a
+														href="javascript:cntUp('4186586','01');"
+														class="btn_num_up">▲</a><a
+														href="javascript:cntDown('4186586','01');"
+														class="btn_num_dn">▼</a></span>
+												</dt>
+
+
+
+
+
+												<dd class="mt3">
+													<span class="btn_w_comm btype_f1"><a
+														style="cursor: default;">품절</a></span>
+												</dd>
+
+
+												<dd class="mt3">
+													<a
+														href="javascript:add_wish_array_common('4186586', true);"><span
+														class="btn_w_comm btype_f1">위시리스트</span></a>
+												</dd>
+											</dl></li>
+
+									</ul>
+
+
+
+
+									<ul>
+
+										<li><input class="checkbox" type="checkbox"
+											value="2935330" name="prodId">
+											<div class="prod_thumb">
+												<span class="ranking"> <span class="rank_num">
+
+
+														17 </span>
+												</span>
+												<div class="prod_thumb_img">
+													<a href="/front/product/detailProduct.do?prodId=2935330"
+														onfocus="this.blur();"> <img
+														src="http://image.bandinlunis.com/upload/product/2935/2935330.jpg"
+														onerror="this.src='/images/common/noimg_type01.gif';">
+
+
+													</a> <a class="btn_popup" target="_blank"
+														href="/front/product/detailProduct.do?prodId=2935330"><span
+														class="ico_new">새창열기</span></a>
+												</div>
+
+												<a class="btn_preview"
+													href="javascript:popPreview('2935330');">미리 보기</a>
+
+											</div>
+											<dl class="prod_info">
+												<dt>
+													<a href="/front/product/detailProduct.do?prodId=2935330"
+														onfocus="this.blur();"> 데미안-세계문학전집44 </a>
+													<!-- <span class="tit_sub">- 덧셈구구</span> -->
+													<span class="tag_area"> <span class="tag_best"><span>베스트</span></span>
+														<span class="tag_recom"><span>반디추천</span></span>
+
+
+													</span>
+												</dt>
+												<dd class="txt_block">
+													<span>헤르만헤세</span> <span class="gap">|</span> <span>민음사</span>
+													<span class="txt_date"><span class="gap">|</span> <span>2000.12.20</span></span>
+												</dd>
+												<dd class="mt5">
+													<p>
+														<span class="txt_reprice">8,000원</span> <span
+															class="txt_arrow">→</span> <span class="txt_price"><strong><em>7,200</em>원</strong>
+															(10%↓+5%P)</span>
+													</p>
+												</dd>
+												<dd class="txt_desc">
+													<div class="review_point">
+														<span style="width: 86%;"></span>
+													</div>
+													<strong>8.62</strong> <a
+														href="/front/product/detailProduct.do?prodId=2935330#sub10"
+														target="_blank">리뷰<em>(50)</em></a>
+												</dd>
+												<dd class="txt_bex">자아의 삶을 추구하는 한 젊음의 통과의례 기록인 이 책은 내
+													속에서 솟아 나오려는 것, 바로 그것을 나는 살아보려고 했다. 왜 그것이 그토록 어려웠을까라는 모토를
+													앞세운 짧은 철학...</dd>
+
+
+												<dd class="txt_contents">
+													<span class="tag_relation">연관</span> <a
+														href="/front/product/bookSeriesView.do?prodRelSeq=11833&listType=series&cateId=2"
+														target="_blank"><em>[관련 시리즈]</em>민음사 세계문학전집</a>
+												</dd>
+
+
+												<dd class="txt_ebook">
+													<span><a
+														href="/front/product/detailProduct.do?prodId=7309865"
+														target="_blank">이 책의 eBook : <strong>0</strong>원
+													</a></span>
+												</dd>
+
+
+												<dd class="txt_ebook">
+													<span>지금 주문하면<strong class="t_red"> 오늘 </strong>받을 수
+														있습니다.
+													</span>
+												</dd>
+
+											</dl>
+											<dl class="prod_btn">
+												<dt>
+													<span class="num_txt">수량</span> <input type="text"
+														id="cntVal_2935330" value="1" class="num" size="3"
+														maxlength="2" onkeydown="onlyNumber();" onkeyup="">
+													<span class="btn_updn_wrap"><a
+														href="javascript:cntUp('2935330','01');"
+														class="btn_num_up">▲</a><a
+														href="javascript:cntDown('2935330','01');"
+														class="btn_num_dn">▼</a></span>
+												</dt>
+
+
+
+												<dd>
+													<a href="javascript:addCart('2935330');"><span
+														class="btn_b_comm btype_f1">쇼핑카트</span></a>
+												</dd>
+												<dd class="mt3">
+													<a href="javascript:goOrder('2935330');"><span
+														class="btn_w_comm btype_f1">바로구매</span></a>
+												</dd>
+
+
+
+
+												<dd class="mt3">
+													<a
+														href="javascript:add_wish_array_common('2935330', true);"><span
+														class="btn_w_comm btype_f1">위시리스트</span></a>
+												</dd>
+											</dl></li>
+
+
+
+										<li><input class="checkbox" type="checkbox"
+											value="4023105" name="prodId">
+											<div class="prod_thumb">
+												<span class="ranking"> <span class="rank_num">
+
+
+														18 </span>
+												</span>
+												<div class="prod_thumb_img">
+													<a href="/front/product/detailProduct.do?prodId=4023105"
+														onfocus="this.blur();"> <img
+														src="http://image.bandinlunis.com/upload/product/4023/4023105.jpg"
+														onerror="this.src='/images/common/noimg_type01.gif';">
+
+
+													</a> <a class="btn_popup" target="_blank"
+														href="/front/product/detailProduct.do?prodId=4023105"><span
+														class="ico_new">새창열기</span></a>
+												</div>
+
+												<a class="btn_preview"
+													href="javascript:popPreview('4023105');">미리 보기</a>
+
+											</div>
+											<dl class="prod_info">
+												<dt>
+													<a href="/front/product/detailProduct.do?prodId=4023105"
+														onfocus="this.blur();"> 곰돌이 푸 이야기 전집 </a>
+													<!-- <span class="tit_sub">- 덧셈구구</span> -->
+													<span class="tag_area"> <span class="tag_best"><span>베스트</span></span>
+
+														<span class="tag_free"><span>무료배송</span></span>
+
+													</span>
+												</dt>
+												<dd class="txt_block">
+													<span>알란 알렉산더 밀른, 어니스트 하워드 쉐퍼드</span> <span class="gap">|</span>
+													<span>현대지성</span> <span class="txt_date"><span
+														class="gap">|</span> <span>2016.12.24</span></span>
+												</dd>
+												<dd class="mt5">
+													<p>
+														<span class="txt_reprice">13,800원</span> <span
+															class="txt_arrow">→</span> <span class="txt_price"><strong><em>12,420</em>원</strong>
+															(10%↓+5%P)</span>
+													</p>
+												</dd>
+												<dd class="txt_desc">
+													<div class="review_point">
+														<span style="width: 92%;"></span>
+													</div>
+													<strong>9.25</strong> <a
+														href="/front/product/detailProduct.do?prodId=4023105#sub10"
+														target="_blank">리뷰<em>(8)</em></a>
+												</dd>
+												<dd class="txt_bex">세계에서 가장 유명한 곰 ‘곰돌이 푸’오리지널 컬러 일러스트
+													독점 수록원작 동화 2권을 한 권에 모두 담아 출간!이 작품은 아들이 가지고 놀던 동물 인형들을 의인화한
+													작품으로, 1...</dd>
+
+
+
+												<dd class="txt_ebook">
+													<span><a
+														href="/front/product/detailProduct.do?prodId=5211585"
+														target="_blank">이 책의 eBook : <strong>8,800</strong>원
+													</a></span>
+												</dd>
+
+
+												<dd class="txt_ebook">
+													<span>지금 주문하면<strong class="t_red"> 오늘 </strong>받을 수
+														있습니다.
+													</span>
+												</dd>
+
+											</dl>
+											<dl class="prod_btn">
+												<dt>
+													<span class="num_txt">수량</span> <input type="text"
+														id="cntVal_4023105" value="1" class="num" size="3"
+														maxlength="2" onkeydown="onlyNumber();" onkeyup="">
+													<span class="btn_updn_wrap"><a
+														href="javascript:cntUp('4023105','01');"
+														class="btn_num_up">▲</a><a
+														href="javascript:cntDown('4023105','01');"
+														class="btn_num_dn">▼</a></span>
+												</dt>
+
+
+
+												<dd>
+													<a href="javascript:addCart('4023105');"><span
+														class="btn_b_comm btype_f1">쇼핑카트</span></a>
+												</dd>
+												<dd class="mt3">
+													<a href="javascript:goOrder('4023105');"><span
+														class="btn_w_comm btype_f1">바로구매</span></a>
+												</dd>
+
+
+
+
+												<dd class="mt3">
+													<a
+														href="javascript:add_wish_array_common('4023105', true);"><span
+														class="btn_w_comm btype_f1">위시리스트</span></a>
+												</dd>
+											</dl></li>
+
+
+
+										<li><input class="checkbox" type="checkbox"
+											value="2914567" name="prodId">
+											<div class="prod_thumb">
+												<span class="ranking"> <span class="rank_num">
+
+
+														19 </span>
+												</span>
+												<div class="prod_thumb_img">
+													<a href="/front/product/detailProduct.do?prodId=2914567"
+														onfocus="this.blur();"> <img
+														src="http://image.bandinlunis.com/upload/product/2914/2914567.jpg"
+														onerror="this.src='/images/common/noimg_type01.gif';">
+
+
+													</a> <a class="btn_popup" target="_blank"
+														href="/front/product/detailProduct.do?prodId=2914567"><span
+														class="ico_new">새창열기</span></a>
+												</div>
+
+												<a class="btn_preview"
+													href="javascript:popPreview('2914567');">미리 보기</a>
+
+											</div>
+											<dl class="prod_info">
+												<dt>
+													<a href="/front/product/detailProduct.do?prodId=2914567"
+														onfocus="this.blur();"> 인간실격 - 세계문학전집 103(20쇄) </a>
+													<!-- <span class="tit_sub">- 덧셈구구</span> -->
+													<span class="tag_area"> <span class="tag_best"><span>베스트</span></span>
+														<span class="tag_recom"><span>반디추천</span></span>
+
+
+													</span>
+												</dt>
+												<dd class="txt_block">
+													<span>다자이 오사무</span> <span class="gap">|</span> <span>민음사</span>
+													<span class="txt_date"><span class="gap">|</span> <span>2004.05.15</span></span>
+												</dd>
+												<dd class="mt5">
+													<p>
+														<span class="txt_reprice">8,000원</span> <span
+															class="txt_arrow">→</span> <span class="txt_price"><strong><em>7,200</em>원</strong>
+															(10%↓+5%P)</span>
+													</p>
+												</dd>
+												<dd class="txt_desc">
+													<div class="review_point">
+														<span style="width: 85%;"></span>
+													</div>
+													<strong>8.52</strong> <a
+														href="/front/product/detailProduct.do?prodId=2914567#sub10"
+														target="_blank">리뷰<em>(42)</em></a>
+												</dd>
+												<dd class="txt_bex">작가가 자전적인 체험을 바탕으로, 오직 순수함만을 갈망하던 여린
+													심성의 한 젊은이가 인간들의 위선과 잔임함에 의해 파멸되어 가는 과정을 그렸다. 은 어느 누구도 쉽게
+													접근할 수 없...</dd>
+
+
+												<dd class="txt_contents">
+													<span class="tag_relation">연관</span> <a
+														href="/front/product/bookSeriesView.do?prodRelSeq=11833&listType=series&cateId=2"
+														target="_blank"><em>[관련 시리즈]</em>민음사 세계문학전집</a>
+												</dd>
+
+
+												<dd class="txt_ebook">
+													<span><a
+														href="/front/product/detailProduct.do?prodId=7298398"
+														target="_blank">이 책의 eBook : <strong>5,600</strong>원
+													</a></span>
+												</dd>
+
+
+												<dd class="txt_ebook">
+													<span>지금 주문하면<strong class="t_red"> 2018년
+															10월 25일(목) 이내 </strong>받을 수 있습니다.
+													</span>
+												</dd>
+
+											</dl>
+											<dl class="prod_btn">
+												<dt>
+													<span class="num_txt">수량</span> <input type="text"
+														id="cntVal_2914567" value="1" class="num" size="3"
+														maxlength="2" onkeydown="onlyNumber();" onkeyup="">
+													<span class="btn_updn_wrap"><a
+														href="javascript:cntUp('2914567','01');"
+														class="btn_num_up">▲</a><a
+														href="javascript:cntDown('2914567','01');"
+														class="btn_num_dn">▼</a></span>
+												</dt>
+
+
+
+												<dd>
+													<a href="javascript:addCart('2914567');"><span
+														class="btn_b_comm btype_f1">쇼핑카트</span></a>
+												</dd>
+												<dd class="mt3">
+													<a href="javascript:goOrder('2914567');"><span
+														class="btn_w_comm btype_f1">바로구매</span></a>
+												</dd>
+
+
+
+
+												<dd class="mt3">
+													<a
+														href="javascript:add_wish_array_common('2914567', true);"><span
+														class="btn_w_comm btype_f1">위시리스트</span></a>
+												</dd>
+											</dl></li>
+
+
+
+										<li><input class="checkbox" type="checkbox"
+											value="4200746" name="prodId">
+											<div class="prod_thumb">
+												<span class="ranking"> <span class="rank_num">
+
+
+														20 </span>
+												</span>
+												<div class="prod_thumb_img">
+													<a href="/front/product/detailProduct.do?prodId=4200746"
+														onfocus="this.blur();"> <img
+														src="http://image.bandinlunis.com/upload/product/4200/4200746.jpg"
+														onerror="this.src='/images/common/noimg_type01.gif';">
+
+
+													</a> <a class="btn_popup" target="_blank"
+														href="/front/product/detailProduct.do?prodId=4200746"><span
+														class="ico_new">새창열기</span></a>
+												</div>
+
+												<a class="btn_preview"
+													href="javascript:popPreview('4200746');">미리 보기</a>
+
+											</div>
+											<dl class="prod_info">
+												<dt>
+													<a href="/front/product/detailProduct.do?prodId=4200746"
+														onfocus="this.blur();"> 반짝반짝 공화국 </a>
+													<!-- <span class="tit_sub">- 덧셈구구</span> -->
+													<span class="tag_area"> <span class="tag_best"><span>베스트</span></span>
+
+														<span class="tag_free"><span>무료배송</span></span>
+
+													</span>
+												</dt>
+												<dd class="txt_block">
+													<span>오가와 이토</span> <span class="gap">|</span> <span>위즈덤하우스</span>
+													<span class="txt_date"><span class="gap">|</span> <span>2018.10.05</span></span>
+												</dd>
+												<dd class="mt5">
+													<p>
+														<span class="txt_reprice">14,000원</span> <span
+															class="txt_arrow">→</span> <span class="txt_price"><strong><em>12,600</em>원</strong>
+															(10%↓+5%P)</span>
+													</p>
+												</dd>
+												<dd class="txt_desc">
+													<div class="review_point">
+														<span style="width: 98%;"></span>
+													</div>
+													<strong>9.78</strong> <a
+														href="/front/product/detailProduct.do?prodId=4200746#sub10"
+														target="_blank">리뷰<em>(9)</em></a>
+												</dd>
+												<dd class="txt_bex">전하고 싶었던 마음, 듣고 싶었던 말…‘츠바키 문구점’이 다시
+													한 번 당신의 마음을 배달합니다. 아름다운 손편지로 누군가의 간절한 마음을 대신 전해주는 가슴 뭉클한
+													기적으로 많은 ...</dd>
+
+
+
+												<dd class="txt_ebook">
+													<span><a
+														href="/front/product/detailProduct.do?prodId=5284569"
+														target="_blank">이 책의 eBook : <strong>9,800</strong>원
+													</a></span>
+												</dd>
+
+
+												<dd class="txt_ebook">
+													<span>지금 주문하면<strong class="t_red"> 오늘 </strong>받을 수
+														있습니다.
+													</span>
+												</dd>
+
+											</dl>
+											<dl class="prod_btn">
+												<dt>
+													<span class="num_txt">수량</span> <input type="text"
+														id="cntVal_4200746" value="1" class="num" size="3"
+														maxlength="2" onkeydown="onlyNumber();" onkeyup="">
+													<span class="btn_updn_wrap"><a
+														href="javascript:cntUp('4200746','01');"
+														class="btn_num_up">▲</a><a
+														href="javascript:cntDown('4200746','01');"
+														class="btn_num_dn">▼</a></span>
+												</dt>
+
+
+
+												<dd>
+													<a href="javascript:addCart('4200746');"><span
+														class="btn_b_comm btype_f1">쇼핑카트</span></a>
+												</dd>
+												<dd class="mt3">
+													<a href="javascript:goOrder('4200746');"><span
+														class="btn_w_comm btype_f1">바로구매</span></a>
+												</dd>
+
+
+
+
+												<dd class="mt3">
+													<a
+														href="javascript:add_wish_array_common('4200746', true);"><span
+														class="btn_w_comm btype_f1">위시리스트</span></a>
+												</dd>
+											</dl></li>
+
+									</ul>
+
+
+
 								</div>
 
-							</div>
+
+								<!-- 페이징 -->
+								<div class="pageTypeA">
+
+									<span class="prev-btn"> <!-- <img src="/images/common/btn_pagePrevG.gif" align="absmiddle" border="0"> -->
+
+										<!-- <img src="/images/common/btn_pagePrev.gif" align="absmiddle" hspace="2" border="0"> -->
+									</span> <span class="pageNum"> <a class="on">1</a> <a
+										href="/front/product/bookCategoryMain.do?page=2&cateId=2&listType=best">2</a>
+										<a
+										href="/front/product/bookCategoryMain.do?page=3&cateId=2&listType=best">3</a>
+										<a
+										href="/front/product/bookCategoryMain.do?page=4&cateId=2&listType=best">4</a>
+										<a
+										href="/front/product/bookCategoryMain.do?page=5&cateId=2&listType=best">5</a>
+									</span> <span class="next-btn"> <!-- <img src="/images/common/btn_pageNext.gif" align="absmiddle" hspace="2" border="0"> -->
+
+									</span>
+
+
+								</div>
 							
-
-							<!-- 페이징 -->
-							<div class="pageTypeA">
-								<span class="prev-btn"> <!-- <img src="/images/common/btn_pagePrevG.gif" align="absmiddle" border="0"> -->
-
-									<!-- <img src="/images/common/btn_pagePrev.gif" align="absmiddle" hspace="2" border="0"> -->
-								</span> <span class="pageNum"> <a class="on">1</a> <a
-									href="/front/display/discountBookList.do?page=2#tabMenu">2</a>
-									<a href="/front/display/discountBookList.do?page=3#tabMenu">3</a>
-									<a href="/front/display/discountBookList.do?page=4#tabMenu">4</a>
-									<a href="/front/display/discountBookList.do?page=5#tabMenu">5</a>
-								</span> 
-
 							</div>
-
 
 						</div>
-
-					</div><!-- 베스트셀러 끝 -->
+						<!-- con_t2 -->
+					</div>
+					<!-- 베스트셀러 끝 -->
 
 					<!-- 새로나온 책 시작  -->
 					<div id="menu_new" class="tab-pane fade">
@@ -2200,7 +4306,7 @@
 
 								<h4>
 
-									<span><strong>전체</strong>에 총 <strong>5,314</strong> 권의
+									<span><strong>새로나온 책</strong>에 총 <strong>5,314</strong> 권의
 										정가인하 도서가 등록되어 있습니다. </span>
 
 
@@ -2316,8 +4422,8 @@
 												</dd>
 											</dl></li>
 										<!-- 리스트 1개 끝  -->
-										
-										
+
+
 										<!-- 리스트 2번째 시작  -->
 										<li><input class="checkbox" type="checkbox"
 											value="3795041" name="prodId">
@@ -2414,8 +4520,8 @@
 												</dd>
 											</dl></li>
 										<!-- 리스트 2번째 끝  -->
-										
-										
+
+
 										<!-- 리스트 3번째 시작  -->
 										<li><input class="checkbox" type="checkbox"
 											value="3795041" name="prodId">
@@ -2512,7 +4618,7 @@
 												</dd>
 											</dl></li>
 										<!-- 리스트 3번째 끝  -->
-										
+
 
 									</ul>
 
@@ -2561,7 +4667,7 @@
 					</div>
 					<!-- 새로나온 책 끝  -->
 
-					
+
 
 					<!-- 정가인하 시작 -->
 					<div id="menu_discount" class="tab-pane fade">
@@ -2777,8 +4883,5 @@
 
 		<!-- 가운데 레이아웃 -->
 	</div>
-
-
-
 </body>
 </html>

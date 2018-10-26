@@ -845,8 +845,8 @@ a.more:active	{text-decoration:none; color:#999999;}
 
 /*¾ÆÀÌÁÁ¾Æ,°ø°¨*/
 .ilike{display:inline-block}
-.ilike .btn_ilike{display:inline-block;width:66px;height:19px;background:url(/images/common/2014/ico_ilike_comm.gif) no-repeat 0 1px;padding:0 0 0 14px;font:normal 11px 돋움; color:#777}
-.ilike .btn_ilike:hover{background:url(/images/common/2014/ico_ilike_comm_on.gif) no-repeat;}
+.ilike .btn_ilike{display:inline-block;width:66px;height:19px;background:url(/webproject/resources/book_image/ico_ilike_comm.gif) no-repeat 0 1px;padding:0 0 0 14px;font:normal 11px 돋움; color:#777}
+.ilike .btn_ilike:hover{background:url(/webproject/resources/book_image/ico_ilike_comm_on.gif) no-repeat;}
 .ilike .on{background:url(/images/common/2014/ico_ilike_comm_on.gif) no-repeat;}
 .ilike .ilike_count{display:inline-block;font:normal 11px verdana,돋움; color:#777;width:20px;height:19px;padding-top:4px;text-align:center}
 
@@ -998,10 +998,10 @@ a.more:active	{text-decoration:none; color:#999999;}
 .pop_wrap .pop_head .btnClose{position:absolute; top:10px; right:10px; width: 25px; height: 32px;}
 .pop_wrap h4{font:bolder 14px 돋움;color:#333;text-align:left;margin:15px 0 5px 5px}
 
-/* N2S °øÅë½ºÅ©¸³Æ® °¡¸®±â */
+
 #n2s_log_div{position:absolute;margin-left:-100000px}
 
-/* »çÀºÇ° ½ÅÃ» Æû */
+
 .event_register{overflow:hidden;position:relative; border:#e1e1e1 1px solid; background:#fcfcfc; padding:20px 200px 15px 20px;margin:15px auto }
 .event_register .event_register_tit{font: bolder 15px '맑은 고딕','돋움'; color:#3192dd;padding:0 !important;margin:0 !important;margin-bottom:12px !important;font-size:15px !important}
 .event_register .event_register_btn{position:absolute;right:20px;top:20px;border:1px solid #009ddc;background:#009ddc;height:60px;width:150px;padding-top:32px;color:#FFF;font:bolder 16px '맑은 고딕','돋움';text-align:center;cursor:pointer}
@@ -1018,7 +1018,7 @@ a.more:active	{text-decoration:none; color:#999999;}
 .pop_shotreview .btn_zone2 span .btn_summit{border:1px solid #048ec5;background:#009ddc;color:#fff}
 .pop_shotreview .btn_zone2 span .btn_close{border:1px solid #ccc;background-color:#fff;color:#333}
 
-/* ±â°£Á¶È¸ °øÅë */
+
 .box_sort{border:1px solid #e1e1e1;overflow:hidden;padding-top:14px;margin-bottom:15px}
 .box_sort dl{padding:0 10px 14px 30px;overflow:hidden}
 .box_sort dt{float:left;width:102px;font-weight:bolder}

@@ -43,13 +43,52 @@ public class MainDAO {
 		for(i=0;i<num.length;i++) {
 			
 			list.add(lst.get(num[i]));
-			System.out.println(num[i]);
 		}
-		
-		
-		
-		
 		return list;
 	}
-
+	
+	
+	//기대신간
+	public List<MainDTO> newBook(int categoryId){
+		
+		List<MainDTO> lst = sessionTemplate.selectList("mainMapper.newBook",categoryId);
+		
+		return lst;	
+	}
+	
+	//기대신간 -전체
+	public List<MainDTO> newBookAll(){
+		
+		List<MainDTO> lst = sessionTemplate.selectList("mainMapper.newBookAll");
+		
+		return lst;
+	}
+	
+	//이슈북
+	public List<MainDTO> issueBook(){
+		
+		List<MainDTO> lst = sessionTemplate.selectList("mainMapper.issueBook");
+		
+		return lst;
+	}
+	
+	//베스트셀러
+	public List<MainDTO> bestSeller(){
+		
+		List<MainDTO> lst = sessionTemplate.selectList("mainMapper.bestSeller");
+		
+		return lst;
+	}
+	
+	
+	//임시 책 정보
+	public MainDTO tempBook(String isbn){
+		
+		MainDTO dto = sessionTemplate.selectOne("mainMapper.tempBook",isbn);
+		
+		return dto;
+	}
+		
 }
+
+
