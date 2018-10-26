@@ -4,6 +4,16 @@
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="myShopping">
+<!-- 위시리스트 권수 -->
+<select id="getWishCount" parameterType="java.lang.String" resultType="int">
+	select nvl(count(*),0) from wishList where userId=#{userId}
+</select>
+
+<!-- 최근 본 상품 권수 -->
+<select id="getRecentCount" parameterType="java.lang.String" resultType="int">
+	select nvl(count(*),0) from recentList where userId=#{userId}
+</select>
+
 <!-- 패스워드 검사 -->
 <select id="getUserPwd" parameterType="java.lang.String" resultType="java.lang.String">
 	select userPwd from users where userId=#{userId}
@@ -69,6 +79,82 @@
 	inner join books on a.isbn=books.isbn where books.isbn=#{searchValue} or booktitle like '%' || #{searchValue} || '%') <![CDATA[where rnum>=#{start} and rnum<=#{end}]]>
 </select>
 
+<!-- 취소/반품/교환 내역 리스트 count -->
+<select id="getCountRetListNormal" parameterType="java.lang.String" resultType="int">
+	select nvl(count(*),0) from orderList where userId=#{userId} and status not in('주문','구매완료')
+</select>
+
+<!-- 취소/반품/교환 내역 리스트 -->
+<select id="getRetList" parameterType="map" resultType="com.spring.webproject.dto.OrderListDTO">
+	select * from (select rownum rnum, data.* from (select userid,orderid,orderprice,shipmentsstatuscode,to_char(HANDLINGDATE,'YYYY-MM-DD') HANDLINGDATE,to_char(EXPECTEDDATE,'YYYY-MM-DD') EXPECTEDDATE, status, mainTitle, quantity 
+	from orderList where userid=#{userId} and status not in('주문','구매완료') order by orderid desc) data) <![CDATA[where rnum>=#{start} and rnum<=#{end}]]>
+</select>
+
+<!-- 취소/반품/교환 내역 리스트 count (날짜 조건) -->
+<select id="getCountRetListByDate" parameterType="map" resultType="int">
+	select nvl(count(*),0) from orderList where userId=#{userId} and status not in('주문','구매완료') 
+	and handlingdate between to_date(#{fromDate} || '000000', 'YYYY-MM-DD-HH24MISS') and to_date(#{toDate} || '235959' ,'YYYY-MM-DD-HH24MISS')
+</select>
+
+<!-- 취소/반품/교환 내역 리스트 (날짜 조건) -->
+<select id="getRetListByDate" parameterType="map" resultType="com.spring.webproject.dto.OrderListDTO">
+	select * from (select rownum rnum, data.* from (select userId, orderId,orderPrice,shipmentsStatusCode,to_char(HANDLINGDATE,'YYYY-MM-DD') HANDLINGDATE,to_char(EXPECTEDDATE,'YYYY-MM-DD') EXPECTEDDATE, status, mainTitle,quantity 
+	from orderList where userId=#{userId} and status not in('주문','구매완료') 
+	and handlingdate between to_date(#{fromDate} || '000000', 'YYYY-MM-DD-HH24MISS') and to_date(#{toDate} || '235959' ,'YYYY-MM-DD-HH24MISS') order by orderId desc) data) <![CDATA[where rnum>=#{start} and rnum<=#{end}]]>
+</select>
+
+<!-- 소멸예정 적립금 조회 -->
+<select id="getExPoint" parameterType="java.lang.String" resultType="int">
+	select nvl(sum(value),0) from point where userId=#{userId} and <![CDATA[expirationdate>sysdate and expirationdate<=sysdate+60]]>
+</select>
+
+<!-- 적립금 리스트 count -->
+<select id="getCountPointList" parameterType="java.lang.String" resultType="int">
+	select nvl(count(*),0) from point where userId=#{userId}
+</select>
+
+<!-- 적립금 리스트 -->
+<select id="getTotalPointList" parameterType="map" resultType="com.spring.webproject.dto.PointDTO">
+select * from (select rownum rnum, data.* from (select to_char(savingdate,'YYYY-MM-DD') savingdate,to_char(expirationdate,'YYYY-MM-DD') expirationdate,orderid,value,pointitem,pointid from point where userid=#{userId} order by savingdate desc, orderid desc, pointid desc) data) <![CDATA[where rnum>=#{start} and rnum<=#{end}]]>
+</select>
+
+<!-- 적립금 리스트 count (날짜 조건) -->
+<select id="getCountPointListByDate" parameterType="map" resultType="int">
+	select nvl(count(*),0) from point where userId=#{userId} and savingdate between to_date(#{fromDate} || '000000', 'YYYY-MM-DD-HH24MISS') and to_date(#{toDate} || '235959' ,'YYYY-MM-DD-HH24MISS')
+</select>
+
+<!-- 적립금 리스트 (날짜 조건) -->
+<select id="getPointListByDate" parameterType="map" resultType="com.spring.webproject.dto.PointDTO">
+	select * from(select rownum rnum, data.* from (select to_char(savingdate,'YYYY-MM-DD') savingdate,to_char(expirationdate,'YYYY-MM-DD') expirationdate,orderid,value,pointitem,pointid from point where userId=#{userId} and savingdate between to_date(#{fromDate} || '000000', 'YYYY-MM-DD-HH24MISS') and to_date(#{toDate} || '235959' ,'YYYY-MM-DD-HH24MISS') order by savingdate desc, orderid desc, pointid desc) data)
+	  <![CDATA[where rnum>=#{start} and rnum<=#{end}]]>
+</select>
+
+<!-- 적립금 리스트 count (날짜+적립내역) -->
+<select id="getCountSavePoint" parameterType="map" resultType="int">
+	select nvl(count(*),0) from point where userId=#{userId} and <![CDATA[value>0]]> and savingdate between to_date(#{fromDate} || '000000', 'YYYY-MM-DD-HH24MISS') and to_date(#{toDate} || '235959' ,'YYYY-MM-DD-HH24MISS') 
+</select>
+
+<!-- 적립금 리스트 (날짜+적립내역) -->
+<select id="getSavePointList" parameterType="map" resultType="com.spring.webproject.dto.PointDTO">
+	select * from(select rownum rnum, data.* from (select to_char(savingdate,'YYYY-MM-DD') savingdate,to_char(expirationdate,'YYYY-MM-DD') expirationdate,orderid,value,pointitem,pointid from point where userId=#{userId} and <![CDATA[ value>0 ]]> and savingdate between to_date(#{fromDate} || '000000', 'YYYY-MM-DD-HH24MISS') and to_date(#{toDate} || '235959' ,'YYYY-MM-DD-HH24MISS') order by savingdate desc, orderid desc, pointid desc) data)
+	  <![CDATA[where rnum>=#{start} and rnum<=#{end}]]>
+</select>
+
+<!-- 적립금 리스트 count (날짜+사용내역) -->
+<select id="getCountUsePoint" parameterType="map" resultType="int">
+	select nvl(count(*),0) from point where userId=#{userId} and <![CDATA[value<0]]> and savingdate between to_date(#{fromDate} || '000000', 'YYYY-MM-DD-HH24MISS') and to_date(#{toDate} || '235959' ,'YYYY-MM-DD-HH24MISS') 
+</select>
+
+<!-- 적립금 리스트 (날짜+사용내역) -->
+<select id="getUsePointList" parameterType="map" resultType="com.spring.webproject.dto.PointDTO">
+	select * from(select rownum rnum, data.* from (select to_char(savingdate,'YYYY-MM-DD') savingdate,to_char(expirationdate,'YYYY-MM-DD') expirationdate,orderid,value,pointitem,pointid from point where userId=#{userId} and <![CDATA[value<0]]> and savingdate between to_date(#{fromDate} || '000000', 'YYYY-MM-DD-HH24MISS') and to_date(#{toDate} || '235959' ,'YYYY-MM-DD-HH24MISS') order by savingdate desc, orderid desc, pointid desc) data)
+	  <![CDATA[where rnum>=#{start} and rnum<=#{end}]]>
+</select>
+
+<!-- 주문 상세내역 -->
+<select id="getOrderDetailList" parameterType="java.lang.String" resultType="com.spring.webproject.dto.OrderDetailDTO">
+	select orderid, orderbooks.isbn, booktitle, quantity, bookprice, (bookprice*0.05)as point from orderbooks, books where orderbooks.isbn=books.isbn and orderid=#{orderId}
+</select>
 
 
 </mapper>

@@ -15,6 +15,71 @@
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 	<script src="<%=cp%>/resources/js/myShopping.js"></script>
 	
+	<script type="text/javascript">
+	
+	$(document).ready(function(){
+		
+		$.ajax({
+			
+			url:"getRetList.action",
+			type:"POST",
+			success:function(data){
+				$('#myRetLists').html(data);	
+			},
+			error:function(e){
+				alert(e.responseText);
+			}
+
+		});
+		
+		//취소/반품/교환 내역
+		//기간별 조회		
+		$('#getRetList').on('click',function(){
+			
+			var fromMonth = '0' + $('#fromMonth option:selected').val();
+			fromMonth = fromMonth.substring(fromMonth.length, fromMonth.length-2);
+			var fromDay = '0' + $('#fromDay option:selected').val();
+			fromDay = fromDay.substring(fromDay.length, fromDay.length-2);
+			var toMonth = '0' + $('#toMonth option:selected').val();
+			toMonth = toMonth.substring(toMonth.length, toMonth.length-2);
+			var toDay = '0' + $('#toDay option:selected').val();
+			toDay = toDay.substring(toDay.length, toDay.length-2);
+			
+			var fromDate = $('#fromYear option:selected').val() + '-' 
+							+ fromMonth + '-'+ fromDay;
+
+			var toDate = $('#toYear option:selected').val() + '-' 
+							+ toMonth + '-'	+ toDay;
+			
+			//파라미터 정리
+			var pageNum = '${pageNum}';
+			
+			params = 'fromDate=' + fromDate + '&toDate=' + toDate;
+			
+			if(pageNum!=''){
+				params += "&pageNum=" + pageNum;
+			}
+			
+			$.ajax({
+				
+				url:"getRetList.action",
+				data:params,
+				type:"POST",
+				success:function(data){
+					$('#myRetLists').html(data);	
+				},
+				error:function(e){
+					alert(e.responseText);
+				}
+
+			});
+			
+		});	
+	
+	});
+	
+	</script>
+	
 </head>
 <body style="padding: 0; margin: 0;">
 
@@ -55,14 +120,14 @@
 					<span><select name="toMonth" id="toMonth"></select></span>
 					<span><select name="toDay" id="toDay"></select></span>
 					<span style="display: inline; height: 22px;">
-						<a href="#"><img alt="조회" src="<%=cp%>/resources/img/myShopping/btn_sort_search.gif" style="vertical-align: top;"></a>
+						<a href="#"><img alt="조회" src="<%=cp%>/resources/img/myShopping/btn_sort_search.gif" style="vertical-align: top;" id="getRetList"></a>
 					</span>	
 				</span>	
 			</dd>
 		</dl>
 	</div>
 	
-	<div class="myOrderList_table">
+	<div class="myOrderList_table" id="myRetLists">
 		<table>
 			<tr>
 				<th>처리일자</th>

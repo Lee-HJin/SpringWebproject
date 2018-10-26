@@ -1,7 +1,27 @@
 $(document).ready(function(){
 	
+	//이미지 호버 - 새창열기
+	$('.wish_book_img').on('mouseover',function(){
+		$(this).children('.wish_book_popup').addClass('on');
+	});
+	$('.wish_book_img').on('mouseleave',function(){
+		$(this).children('.wish_book_popup').removeClass('on');
+	});
+	
+	//체크박스 전체선택(위시리스트/최근 본 상품)
+	$('.check_all').click( function() {
+		$('.checkbox').prop('checked', this.checked);
+	});
+	
 	//셀렉트 박스 날짜 지정(기본값)
-	setDefaultDate();
+	setDefaultDate();	
+	
+	//주문/배송조회 - ISBN/책서명으로 검색시
+	$('#orderListSearchValue').keypress(function(evt){
+		if(evt.keyCode==13){
+			$('#searchOrdersByName').trigger('click');
+		}
+	});	
 	
 	//날짜 셀렉트 박스 onchange 이벤트 발생시 
 	$('#fromYear').on('change', function(){	//검색 시작 날짜 연도 변경시
@@ -57,6 +77,7 @@ $(document).ready(function(){
 		$('#toDay').val(toDay).attr("selected","selected");
 		
 	});	
+	
 	
 	//숫자만 입력할 수 있도록
 	$('.onlyNum_2').on('keyup',function(){
@@ -481,6 +502,23 @@ function setDate(month, day){
 		toDay = today.getDate();
 		toLastDay =  getDays(toYear, toMonth);
 	}
+	else if(month==12){
+		//조회 시작 날짜
+		today = new Date();
+		
+		fromYear = today.getFullYear()-1;
+		fromMonth = today.getMonth()+1;
+		fromDay = today.getDate()
+		fromLastDay = getDays(fromYear, fromMonth);
+		
+		//조회 끝 날짜
+		today = new Date();	
+		
+		toYear = today.getFullYear();
+		toMonth = today.getMonth()+1;
+		toDay = today.getDate();
+		toLastDay =  getDays(toYear, toMonth);
+	}
 	else{	//최근 1개월,3개월, 6개월 조회
 		
 		//조회 시작 날짜
@@ -575,4 +613,76 @@ function setDate(month, day){
 	
 }
 
+//주문 조회(주문/배송+취소/반품/교환 내역)
+function getList(pageNum, fromDate, toDate, searchValue){
+	
+	var params = 'pageNum=' + pageNum;
+	
+	if(fromDate!=''){
+		params += '&fromDate=' + fromDate + '&toDate=' + toDate;
+	}
+	if(searchValue!=''){
+		params = 'pageNum=' + pageNum + '&searchValue=' + searchValue;
+	}
+
+	jQuery.ajax({
+		url:"getOrderList.action",
+		data:params,
+		type:"POST",
+		success:function(data){
+			$('#myOrderList').html(data);	
+		},
+		error:function(e){
+			alert(e.responseText);
+		}	
+	});
+	
+}
+
+function getPointList(pageNum, fromDate, toDate, mode){
+	
+	var params = 'pageNum=' + pageNum;
+	
+	if(fromDate!=''){
+		params += '&fromDate=' + fromDate + '&toDate=' + toDate;
+	}
+	if(mode!=''){
+		params += '&pageNum=' + pageNum + '&mode=' + mode;
+	}
+
+	jQuery.ajax({
+		url:"getPointList.action",
+		data:params,
+		type:"POST",
+		success:function(data){
+			$('#myPointList').html(data);	
+		},
+		error:function(e){
+			alert(e.responseText);
+		}	
+	});
+	
+}
+
+//주문 조회 isbn or 책이름 입력 유효성 검사
+function checkValue(){
+	if(!$('#orderListSearchValue').val()){
+		alert("상품명 또는 ISBN을 입력해주세요.");
+		return false;
+	}
+	return true;
+}
+
+/*//적립금 조회 - 내역별 조회
+function selectMode(option){
+	
+	var mode = option.value;
+	
+	if(mode=='all'){
+		
+	}
+	else if(mode==save){
+		
+	}
+}*/
 
