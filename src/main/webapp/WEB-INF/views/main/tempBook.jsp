@@ -36,7 +36,7 @@
 	function addCookie(cValue){
 		
 		var items = getCookie('book');
-		var maxItemNum = 10;
+		var maxItemNum = 6;
 		if(items){
 			var itemArray=items.split(',');
 
@@ -50,7 +50,7 @@
 		
 				itemArray.unshift(cValue);
 				if(itemArray.length>maxItemNum){
-					itemArray.length=10;}	
+					itemArray.length=6;}	
 				items = itemArray.join(',');
 				setCookie('book',items,1);
 				
@@ -58,7 +58,7 @@
 				alert("들어감");
 				itemArray.unshift(cValue);
 				if(itemArray.length>maxItemNum){
-					itemArray.length=10;}	
+					itemArray.length=6;}	
 				items = itemArray.join(',');
 				setCookie('book',items,1);
 			}

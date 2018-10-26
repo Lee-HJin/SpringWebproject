@@ -42,6 +42,8 @@
 		var noData = document.getElementById("no_data");
 		
 		var ck = getCookie('book');
+		alert(ck);
+		
 		if(ck!=null){
 			var ckone = ck.split(',');
 			ckone = ckone.splice(0,1);
@@ -68,25 +70,6 @@
 		todayView();	
 		
 	});	
-	
-	//추천도서 새로고침 버튼
-	$(document).ready(function() {
-		$('#recommend_btn,#rb_awL,#rb_awR').click(function() {
-		
-			var isbn = $('.swiper-slide-active #isbn').val();
-			$.ajax({
-				type:"POST",
-				url:"<%=cp%>/recomm.action",
-				data: {isbn:isbn},
-				success:function(args){
-					$('#recommend_books').html(args);
-				},
-				error:function(e){
-					alert(e.responseText);
-				}
-			});
-		});
-	});
 	
 	//추천도서 불러오기
 	function listRecomm(isbn) {
@@ -153,12 +136,13 @@
 		    if(cookiearray[i].indexOf(cookiename)!=-1){
 		        var nameVal = cookiearray[i].split("=");
 		        nameVal = nameVal[1].trim();
-		        
-		        flag = false;
-		        
+
 		        return unescape(nameVal);     		
+		    }else{
+		    	var cookie = null;
 		    }
 		}
+		return cookie;
 	}
 		
 /* 	

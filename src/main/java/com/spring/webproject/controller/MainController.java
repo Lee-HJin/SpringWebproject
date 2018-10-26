@@ -44,6 +44,8 @@ public class MainController {
 	public String recomm(HttpServletRequest req, HttpServletResponse resp) {
 		
 		String isbn = req.getParameter("isbn");
+	
+		System.out.println("CONTROLLER: " +isbn);
 		
 		List<MainDTO> lst = new ArrayList<MainDTO>();
 		

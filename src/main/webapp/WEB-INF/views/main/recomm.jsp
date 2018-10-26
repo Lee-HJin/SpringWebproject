@@ -4,7 +4,7 @@
 	String cp = request.getContextPath();
 %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-
+<c:if test="${!empty lst }">
 <ul class="rc_books_list">
 	<c:forEach var="rc" items="${lst }">
 	<li>
@@ -20,3 +20,10 @@
 	</li>
 	</c:forEach>
 </ul>
+</c:if>
+<c:if test="${empty lst }">
+	<div class="rc_books_list">
+		유사 분야 서적이 없습니다
+	</div>
+</c:if>
+
