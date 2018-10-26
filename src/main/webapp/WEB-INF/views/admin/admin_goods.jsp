@@ -23,54 +23,70 @@
 	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 
 <script type="text/javascript">
-
-
-	
 	
 	function popUp(obj) {
-		url = "<%=cp %>/admin_search_";
+		url = "<%=cp%>/admin_search_";
 		url += obj.value;
 		url += ".action";
 		window.open(url,'window','left=200,top=200,width=400,height=500');
 	}
 	
-	<%-- $(function(){
-		$('.translatorId-search').click(
-				function(){
-					
-					window.open('<%=cp %>/admin_search_translator.action','window','left=200,top=200,width=400,height=500');
+
+	$(function(){
+		$('.category').mouseover(
+			function(){
 				
+			if($(this).attr('name') == '1'){
+				var url = "<%=cp %>/admin_categoryList.action"
+					
+				$("select[name='1']").load(url);
+				
+			}else if($(this).attr('name') == '2'){
+				
+				var id = $("select[name='1']").val();
+				
+				var url = "<%=cp %>/admin_categoryList.action"
+				
+				$.post(url,
+					    {
+					        parentsId : id
+					    },
+					    function(data, status){
+					        $("select[name='2']").html(data);
+					    });
+				
+			}else if($(this).attr('name') == '3'){
+				
+				var id = $("select[name='2']").val();
+				
+				var url = "<%=cp %>/admin_categoryList.action"
+				
+				$.post(url,
+					    {
+					        parentsId : id
+					    },
+					    function(data, status){
+					        $("select[name='3']").html(data);
+					    });
+				
+			}
+			
+		});
+	});
+	
+	$(function(){
+		$("select[name='3']").change(
+				function(){
+					$("#categoryId").val($(this).val());
+					
 				});
 	});
- --%>
-
+	
 
 	$(function() {
 		$('.preview-add-button').click(
 				function() {
-					var form_data = {};
-					form_data["tableOfContents"] = $(
-							'.goods-form textarea[name="tableOfContents"]')
-							.val();
-
-					form_data["amount"] = parseFloat(
-							$('.goods-form input[name="amount"]').val())
-							.toFixed(2);
-
-					form_data["warehouse"] = $(
-							'.goods-form #warehouse option:selected').text();
-
-					form_data["publishdate"] = $(
-							'.goods-form input[name="publishdate"]').val();
-
-					var row = $('<tr></tr>');
-
-					$.each(form_data, function(type, value) {
-
-						alert(value);
-
-					});
-
+					
 				});
 	});
 </script>
@@ -87,11 +103,11 @@
 			<div class="col-lg-12">
 				<div class="panel panel-default">
 					<div class="panel-body form-horizontal goods-form">
-						<form action="<%=cp%>/admin_goods_ok.action" method="post">
+						<form action="<%=cp%>/admin_goods_ok.action" method="get">
 							<div class="col-lg-6 form-group">
-								<label for="bookTitle" class="col-lg-4 control-label">책제목
+								<label for="bookTitle" class="col-lg-3 control-label">책제목
 									:</label>
-								<div class="col-lg-8">
+								<div class="col-lg-9">
 									<input type="text" class="form-control" id="bookTitle"
 										name="bookTitle">
 								</div>
@@ -107,14 +123,16 @@
 							</div>
 
 							<div class="col-lg-6 form-group">
-								<label for="authorId" class="col-lg-4 control-label">작가
+								<label for="authorId" class="col-lg-3 control-label">작가
 									아이디 :</label>
-								<div class="col-lg-6">
-									<input type="text" class="form-control" id="authorId" disabled="disabled"
-										name="authorId">
+								<div class="col-lg-7">
+									<input type="text" class="form-control" id="authorId"
+										disabled="disabled" >
+									<input type="hidden" name="authorId" value="">
 								</div>
 								<div class="col-lg-2">
-									<button type="button" class="btn btn-default authorId-search" value="author" onclick="popUp(this)">검색</button>
+									<button type="button" class="btn btn-default authorId-search"
+										value="author" onclick="popUp(this)">검색</button>
 								</div>
 							</div>
 
@@ -122,19 +140,22 @@
 								<label for="translatorId" class="col-lg-4 control-label">번역가
 									아이디 :</label>
 								<div class="col-lg-6">
-									<input type="text" class="form-control" id="translatorId" disabled="disabled"
-										name="translatorId">
+									<input type="text" class="form-control" id="translatorId"
+										disabled="disabled" >
+									<input type="hidden" name="translatorId" value="">
 								</div>
 								<div class="col-lg-2">
-									<button type="button" class="btn btn-default translatorId-search" value="translator" onclick="popUp(this)">검색</button>
+									<button type="button"
+										class="btn btn-default translatorId-search" value="translator"
+										onclick="popUp(this)">검색</button>
 								</div>
 							</div>
 
 
 							<div class="col-lg-6 form-group">
-								<label for="publisher" class="col-lg-4 control-label">출판사
+								<label for="publisher" class="col-lg-3 control-label">출판사
 									:</label>
-								<div class="col-lg-8">
+								<div class="col-lg-9">
 									<input type="text" class="form-control" id="publisher"
 										name="publisher">
 								</div>
@@ -148,30 +169,40 @@
 							</div>
 
 							<div class="col-lg-6 form-group">
-								<label for="categoryId" class="col-lg-4 control-label">카테고리
-									아이디 :</label>
-								<div class="col-lg-6">
-									<input type="text" class="form-control" id="categoryId"
-										name="categoryId">
+								<label for="categoryId" class="col-lg-3 control-label">카테고리:</label>
+								<div class="col-lg-3 category">
+									<select class="form-control category" name="1">
+										<option>1분류</option>
+									</select>
 								</div>
-								<div class="col-lg-2">
-									<button type="button" class="btn btn-default">검색</button>
+								<div class="col-lg-3">
+									<select class="form-control category" name="2">
+										<option>2분류</option>
+									</select>
 								</div>
+								<div class="col-lg-3">
+									<select class="form-control category" name="3">
+										<option>3분류</option>
+									</select>
+									<input type="hidden" id="categoryId" name="categoryId" value="">
+								</div>
+
 							</div>
+							
 
 							<div class="col-lg-6 form-group">
 								<label for="publishdate" class="col-lg-4 control-label">출판일
 									:</label>
 								<div class="col-lg-8">
-									<input type="date" class="form-control" id="publishdate"
-										name="publishdate">
+									<input type="date" class="form-control" id="publishDate"
+										name="publishDate">
 								</div>
 							</div>
 
 							<div class="col-lg-6 form-group">
-								<label for="introduction" class="col-lg-4 control-label">책소개
+								<label for="introduction" class="col-lg-3 control-label">책소개
 									:</label>
-								<div class="col-lg-8">
+								<div class="col-lg-9">
 									<textarea class="form-control" id="introduction"
 										name="introduction" rows="17"></textarea>
 								</div>
@@ -212,9 +243,9 @@
 							</div>
 
 							<div class="col-lg-6 form-group">
-								<label for="discountRate" class="col-lg-4 control-label">할인률
+								<label for="discountRate" class="col-lg-3 control-label">할인률
 									:</label>
-								<div class="col-lg-8">
+								<div class="col-lg-9">
 									<input type="number" class="form-control" id="discountRate"
 										name="discountRate">
 								</div>
@@ -224,18 +255,20 @@
 								<label for="warehouseId" class="col-lg-4 control-label">매장
 									아이디 :</label>
 								<div class="col-lg-6">
-									<input type="text" class="form-control" id="warehouseId" disabled="disabled"
-										name="warehouseId">
+									<input type="text" class="form-control" id="warehouseId"
+										disabled="disabled">
+									<input type="hidden" name="warehouseId" value="">
 								</div>
 								<div class="col-lg-2">
-									<button type="button" class="btn btn-default" value="warehouse" onclick="popUp(this);">검색</button>
+									<button type="button" class="btn btn-default" value="warehouse"
+										onclick="popUp(this);">검색</button>
 								</div>
 							</div>
 
 							<div class="col-lg-6 form-group">
-								<label for="quantity" class="col-lg-4 control-label">수량
+								<label for="quantity" class="col-lg-3 control-label">수량
 									:</label>
-								<div class="col-lg-8">
+								<div class="col-lg-9">
 									<input type="number" class="form-control" id="quantity"
 										name="quantity">
 								</div>
@@ -253,31 +286,11 @@
 								</div>
 							</div>
 
-							<!-- 
-						
-						<div class="col-lg-6 form-group">
-							<label for="warehouse" class="col-lg-3 control-label">지점</label>
-							<div class="col-lg-9">
-								<select class="form-control" id="warehouse" name="warehouse">
-									<option>--</option>
-									<option>a</option>
-									<option>b</option>
-									<option>c</option>
-								</select>
-							</div>
-						</div>
-						
-						<div class="col-lg-6 form-group" style="height: 34px;">
-							<label class="">&nbsp;</label>
-							
-						</div> 
-						
-						-->
 							<div class="form-group">
 								<div class="col-lg-11 text-right">
 									<button type="submit"
 										class="btn btn-default preview-add-button">
-										<span class="glyphicon glyphicon-ok"></span> 체크
+										<span class="glyphicon glyphicon-ok"></span> 등록
 									</button>
 								</div>
 							</div>

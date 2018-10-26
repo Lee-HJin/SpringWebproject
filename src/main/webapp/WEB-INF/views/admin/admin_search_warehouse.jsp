@@ -28,6 +28,7 @@
 		
 		$(".warehouseId").click(function(){
 			window.opener.$("#warehouseId").val($(this).val());
+			window.opener.$("input[name=warehouseId]").val($(this).val());
 			window.close();
 		})
 		

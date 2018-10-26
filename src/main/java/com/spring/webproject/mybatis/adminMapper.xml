@@ -184,5 +184,31 @@ where b.rnum>=#{start}
 
 <!-- warehouse end -->
 
+<!-- category -->
+
+<select id="categoryList" parameterType="map" resultType="com.spring.webproject.dto.AdminCategoryDTO">
+	select 
+		categoryId, categoryName, parentsId
+	from 
+		booksCategoryList
+	<where>
+		<if test="parentsId == null">
+			parentsId is null
+		</if>
+		<if test="parentsId != null">
+			parentsId = #{parentsId}
+		</if>
+	</where>
+	
+</select>
+
+<!-- category end -->
+
+<!-- books -->
+
+
+
+<!-- books end -->
+
 
 </mapper>

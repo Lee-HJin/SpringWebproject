@@ -28,6 +28,7 @@
 		
 		$(".translatorId").click(function(){
 			window.opener.$("#translatorId").val($(this).val());
+			window.opener.$("input[name=translatorId]").val($(this).val());
 			window.close();
 		})
 		

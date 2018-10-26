@@ -27,6 +27,7 @@
 	$(document).ready(function(){
 		
 		$(".authorId").click(function(){
+			window.opener.$("input[name=authorId]").val($(this).val());
 			window.opener.$("#authorId").val($(this).val());
 			window.close();
 		})

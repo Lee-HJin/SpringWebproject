@@ -123,6 +123,29 @@ public class AdminBooksDTO {
 	public void setQuantity(String quantity) {
 		this.quantity = quantity;
 	}
+	@Override
+	public String toString() {
+		
+		return
+		subTitle + "\n" +
+		authorId + "\n" +
+		translatorId + "\n" +
+		publisher + "\n" +
+		isbn + "\n" +
+		publishDate + "\n" +
+		introduction + "\n" +
+		page + "\n" +
+		bookSize + "\n" +
+		tableOfContents + "\n" +
+		bookPrice + "\n" +
+		discountRate + "\n" +
+		categoryId + "\n" +
+		bookImage + "\n" +
+		warehouseId + "\n" +
+		quantity + "\n";
+	}
+	
+	
 	
 	
 	

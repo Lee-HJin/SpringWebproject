@@ -15,6 +15,7 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import com.spring.webproject.dao.AdminDAO;
 import com.spring.webproject.dto.AdminAuthorDTO;
 import com.spring.webproject.dto.AdminBooksDTO;
+import com.spring.webproject.dto.AdminCategoryDTO;
 import com.spring.webproject.dto.AdminTranslatorDTO;
 import com.spring.webproject.dto.AdminUsersDTO;
 import com.spring.webproject.dto.AdminWarehouseDTO;
@@ -74,12 +75,14 @@ public class AdminController {
 		return "admin/admin_goods";
 	}
 
-	@RequestMapping(value = "/admin_goods_ok.action", method = { RequestMethod.POST })
+	@RequestMapping(value = "/admin_goods_ok.action", method = { RequestMethod.GET,RequestMethod.POST })
 	public String goodsOK(AdminBooksDTO dto) {
+		
+		//System.out.println(dto.toString());
+		
+		
 
-		System.out.println(dto.getBookTitle());
-
-		return "admin/admin_goods";
+		return "redirect:/admin_goods.action";
 	}
 
 	// author
@@ -131,6 +134,18 @@ public class AdminController {
 		model.addAttribute("warehouseList", warehouseList);
 
 		return "admin/admin_search_warehouse";
+	}
+	
+	//category
+	
+	@RequestMapping(value = "/admin_categoryList.action", method = {RequestMethod.POST, RequestMethod.GET })
+	public String categoryList(Model model, AdminCategoryDTO dto) {
+		
+		List<AdminCategoryDTO> categoryList = dao.getCategoryList(dto);
+		
+		model.addAttribute("categoryList", categoryList);
+		
+		return "admin/admin_categoryList";
 	}
 
 }
