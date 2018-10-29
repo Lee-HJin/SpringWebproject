@@ -613,7 +613,7 @@ function setDate(month, day){
 	
 }
 
-//주문 조회(주문/배송+취소/반품/교환 내역)
+//주문 조회(주문/배송) 리스트 
 function getList(pageNum, fromDate, toDate, searchValue){
 	
 	var params = 'pageNum=' + pageNum;
@@ -638,6 +638,8 @@ function getList(pageNum, fromDate, toDate, searchValue){
 	});
 	
 }
+
+//취소/반품/교환 내역 조회 리스트 
 function getRetList(pageNum, fromDate, toDate, mode){
 	
 	var params = 'pageNum=' + pageNum;
@@ -663,6 +665,7 @@ function getRetList(pageNum, fromDate, toDate, mode){
 	
 }
 
+//적립금 리스트
 function getPointList(pageNum, fromDate, toDate, mode){
 	
 	var params = 'pageNum=' + pageNum;
@@ -671,7 +674,7 @@ function getPointList(pageNum, fromDate, toDate, mode){
 		params += '&fromDate=' + fromDate + '&toDate=' + toDate;
 	}
 	if(mode!=''){
-		params += '&pageNum=' + pageNum + '&mode=' + mode;
+		params += '&mode=' + mode;
 	}
 
 	jQuery.ajax({
@@ -680,6 +683,78 @@ function getPointList(pageNum, fromDate, toDate, mode){
 		type:"POST",
 		success:function(data){
 			$('#myPointList').html(data);	
+		},
+		error:function(e){
+			alert(e.responseText);
+		}	
+	});
+	
+}
+
+//소멸예정 적립금 리스트
+function getExpPointList(pageNum, fromDate, toDate, mode){
+	
+	var params = 'pageNum=' + pageNum;
+	
+	if(fromDate!=''){
+		params += '&fromDate=' + fromDate + '&toDate=' + toDate;
+	}
+	if(mode!=''){
+		params += '&mode=' + mode;
+	}
+
+	jQuery.ajax({
+		url:"expPointList.action",
+		data:params,
+		type:"POST",
+		success:function(data){
+			$('#expPointList').html(data);	
+		},
+		error:function(e){
+			alert(e.responseText);
+		}	
+	});
+	
+}
+
+//리뷰를 기다리는 책 리스트
+function getReadyReivewList(pageNum, mode){
+	
+	var params = 'pageNum=' + pageNum;
+	
+	if(mode!=''){
+		params += '&mode=' + mode;
+	}
+
+	jQuery.ajax({
+		url:"getReadyReviewList.action",
+		data:params,
+		type:"POST",
+		success:function(data){
+			$('#readyReviewList').html(data);	
+		},
+		error:function(e){
+			alert(e.responseText);
+		}	
+	});
+	
+}
+
+//리뷰를 기다리는 책 리스트
+function getLatesBooksList(pageNum, mode){
+	
+	var params = 'pageNum=' + pageNum;
+	
+	if(mode!=''){
+		params += '&mode=' + mode;
+	}
+
+	jQuery.ajax({
+		url:"getLatesBooksList.action",
+		data:params,
+		type:"POST",
+		success:function(data){
+			$('#LatesBooksList').html(data);	
 		},
 		error:function(e){
 			alert(e.responseText);
@@ -753,7 +828,60 @@ function exchangeOrder(orderId){
 	}
 }
 
+//도서 미리보기 팝업
+function popPreview(isbn) {
 
+    if (typeof(isbn) == "undefined" || isbn == "") {
+        return;
+    }
+    
+    window.open("/webproject/book_preview.action?isbn=" + isbn, "preview", "width="+screen.availWidth+",height="+screen.availHeight+",resizable=yes,scrollbars=yes");
+}
 
+//쇼핑카트에 담기
+function goShoppingCart(){
+	
+}
 
+function goWish(){
+	
+}
 
+function recentDelete(){
+	
+	//체크박스 선택된 값을 담을 array
+	var checkArray = new Array();
+	//체크박스 객체
+	var chkbox = $('.checkbox');
+	
+	for(var i=0;i<chkbox.length;i++){
+		if(chkbox[i].checked == true){
+			checkArray.push(chkbox[i].value);
+		}
+	}
+	
+	if(checkArray.length == 0){
+		alert("삭제할 상품을 선택하세요.");
+	}
+	else{
+		if(confirm("선택하신 상품을 삭제하시겠습니까?") == true){
+			$.ajax ({
+				url:"deleteLatesBooks.action",
+				data:{checkArray:checkArray},
+				type:"POST",
+				success:function(){
+					location.href="myLatesBooksList.action";
+				},
+				error:function(e){
+					alert(e.responseText);
+				}
+				
+			});
+		}
+		else{
+			return;
+		}
+	}
+	
+
+}

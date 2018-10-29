@@ -126,7 +126,7 @@
 			})
 		}
 	}
-
+/* 
 	//쿠키 가져오기
 	function getCookie(cookiename){
 		var cookiestring  = document.cookie;
@@ -143,7 +143,7 @@
 		    }
 		}
 		return cookie;
-	}
+	} */
 		
 /* 	
 	//쿠키 뿌리기

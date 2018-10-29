@@ -44,6 +44,8 @@ public class LoginController {
 			
 			//회원 등급 정보 불러오기
 			
+			//최근 본 상품 불러오기
+
 			//세션 - dto, pointValue 올리기
 			request.getSession().setAttribute("userInfo", dto);
 			request.getSession().setAttribute("pointValue", pointValue);

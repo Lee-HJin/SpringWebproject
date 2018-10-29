@@ -115,42 +115,42 @@
 			<span class="contents_title">최근 본 상품</span><span class="count">[${recentCount }]</span>
 			<span class="sapn_right"><a href="<%=cp%>/myShopping/myLatesBooksList.action">더보기></a></span>
 		</div>
-		<div class="wish_list_content" style="border-bottom: none;">
-		<ul>
-			<li>
+		<div class="wish_list_content" style="border-bottom: none; padding: 0; margin: 0; padding-left: 20px;">
+		<c:if test="${!empty recentList }">
+		<c:forEach var="dto" items="${recentList }">
+		<ul style="width: 180px;">
+			<li style="width: 170px;">
 				<!-- 상단 -->
 				<div>
-					<!-- 체크박스 -->
-					<div style="float: left;">
-						<input type="checkbox" class="checkbox" name="seq" value="">
-					</div>
 					<!-- 이미지 -->
 					<div class="wish_book_up">
-						<div class="wish_book_img">
-							<a href=""><img alt="" src="<%=cp%>/resources/image/book/3054578.jpg"></a>
-							<a href="" target="_blank" class="wish_book_popup">
+						<div class="wish_book_img" style="margin-left: 10px;">
+							<a href="<%=cp%>/book_info.action?isbn=${dto.isbn}"><img alt="" src="<%=cp%>/resources/image/book/${dto.bookImage}"></a>
+							<a href="<%=cp%>/book_info.action?isbn=${dto.isbn}" target="_blank" class="wish_book_popup">
 								<span>새창열기</span>
 							</a>
 						</div>
-						<div style="margin-top: 5px; text-align: center;">
-							<a href=""><img alt="미리보기" src="<%=cp%>/resources/img/myShopping/btn_comm_2.png"> </a>
+						<div style="margin-top: 5px; text-align: center; margin-left: 10px;">
+							<a href="javascript:popPreview(${dto.isbn });"><img alt="미리보기" src="<%=cp%>/resources/img/myShopping/btn_comm_2.png"></a>
 						</div>
 					</div>
 				</div>
 				<!-- 하단 -->
-				<div style="margin-left: 15px;">
+				<div style="width: 160px;">
 					<dl>
-						<dt><a href="">서명</a></dt>
-						<dd>저자 | 출판사</dd>
+						<dt><a href="<%=cp%>/book_info.action?isbn=${dto.isbn}"><b>${dto.bookTitle }</b></a></dt>
+						<dd>${dto.authorName } | ${dto.publisher }</dd>
 						<dd>
 							<p>
-								<span class="point_red"><b>정가</b> (10%↓+5%P)</span>
+								<span class="point_red"><b><fmt:formatNumber value="${dto.discountedPrice }" pattern="#,###"/>원</b> (${dto.discountRate }%↓+5%P)</span>
 							</p>
 						</dd>
 					</dl>
 				</div>
 			</li>
-		</ul>	
+		</ul>
+		</c:forEach>
+		</c:if>	
 		</div>
 	</div>
 	<div class="main_CounselList">
