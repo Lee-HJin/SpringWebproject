@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="mainMapper">
+
+<!-- 유사 카테고리 책 -->
+<select id="similCate" parameterType="java.lang.String" resultType="com.spring.webproject.dto.MainDTO">
+	select bookTitle,bookImage.isbn,authorName,bookImage from (
+	select bookTitle,isbn,b.authorName from (
+	select authorId,bookTitle,a.isbn from books a,
+	(select isbn from bookCategory where 
+	categoryId=(select categoryId from bookCategory where isbn=#{isbn}) and isbn!=#{isbn}) b
+	where a.isbn=b.isbn) a, (select authorName,authorId from author) b where a.authorId=b.authorId) a,
+	bookImage where a.isbn=bookImage.isbn and bookImage like '%cover%'
+</select>
+
+<!-- 기대 신간도서 -->
+<select id="newBook" parameterType="int" resultType="com.spring.webproject.dto.MainDTO">
+	select a.isbn,bookTitle,authorName,bookImage from bookImage a,
+	(select isbn,bookTitle,authorName from author a,
+	(select a.isbn,bookTitle,authorId from books a,
+	(select distinct a.categoryId,isbn,categoryName from bookCategory a,
+	(select distinct categoryId, a.categoryName from booksCategoryList a,
+	(select * from (
+	select level, LPAD('',2*(level-1)) || categoryName as categoryName,connect_by_isleaf as leaf from 
+	booksCategoryList start with parentsId is null and categoryId=#{categoryId} connect by prior categoryId = parentsId) 
+	where leaf=1) b where a.categoryName=b.categoryName) b where a.categoryId=b.categoryId) b 
+	where a.isbn=b.isbn and publishDate>'2018-09-01') b where a.authorId=b.authorId) b where a.isbn=b.isbn and bookImage like '%cover%'
+</select>
+
+<!-- 기대 신간도서 전체 -->
+<select id="newBookAll" resultType="com.spring.webproject.dto.MainDTO">
+	select a.isbn,bookTitle,authorName,bookImage from bookImage a,
+	(select isbn,bookTitle,authorName from author a,
+	(select a.isbn,bookTitle,authorId from books a,
+	(select distinct a.categoryId,isbn,categoryName from bookCategory a,
+	(select distinct categoryId, a.categoryName from booksCategoryList a,
+	(select * from (
+	select level, LPAD('',2*(level-1)) || categoryName as categoryName,connect_by_isleaf as leaf from 
+	booksCategoryList start with parentsId is null connect by prior categoryId = parentsId) 
+	where leaf=1) b where a.categoryName=b.categoryName) b where a.categoryId=b.categoryId) b 
+	where a.isbn=b.isbn and publishDate>'2018-09-01') b where a.authorId=b.authorId) b where a.isbn=b.isbn and bookImage like '%cover%'
+</select>
+
+<!-- 이슈북 -->
+<select id="issueBook" resultType="com.spring.webproject.dto.MainDTO">
+	select bookTitle,authorName,bookImage,a.isbn from bookImage a,
+	(select bookTitle,isbn,authorName from author a,
+	(select a.* from books a,
+	(select * from bookCategory where categoryId=17) b where a.isbn=b.isbn) b 
+	where a.authorId=b.authorId) b 
+	where a.isbn=b.isbn and bookImage like '%cover%'
+</select>
+
+<!-- 베스트셀러 -->
+<select id="bestSeller" resultType="com.spring.webproject.dto.MainDTO">
+	select rownum listNum,bookTitle,bookImage,a.isbn from bookImage a,
+	(select sellC,a.* from books a,
+	(select count(*) sellC,isbn from orderBooks group by isbn order by sellC desc) b 
+<![CDATA[	
+	where a.isbn=b.isbn) b where a.isbn=b.isbn and rownum<=10 and bookImage like '%cover%'
+]]>
+</select>
+
+<!-- temp 책 정보 가져오기 -->
+<select id="tempBook" resultType="com.spring.webproject.dto.MainDTO">
+	select bookTitle,a.isbn,authorName,bookImage from bookImage a,
+	(select bookTitle,isbn,authorName from author a,
+	(select * from books where isbn=#{isbn}) b where a.authorid=b.authorid) b where a.isbn=b.isbn and bookImage like '%cover%'
+</select>
+
+<!-- 오늘 본 상품 책 정보 -->
+<select id="todayView" parameterType="java.lang.String" resultType="com.spring.webproject.dto.MainDTO">
+	select a.isbn,bookTitle,authorName,bookImage from bookImage a,
+	(select isbn,bookTitle,authorName from author a,
+	(select * from books where isbn=#{isbn}) b where a.authorId=b.authorId) b where a.isbn=b.isbn and bookImage like '%cover%'
+</select>
+
+
+
+</mapper>

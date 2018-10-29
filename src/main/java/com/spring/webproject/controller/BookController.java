@@ -19,6 +19,7 @@ import com.spring.webproject.dto.BooksImageDTO;
 import com.spring.webproject.dto.ReviewDTO;
 import com.spring.webproject.dto.SimpleReviewDTO;
 import com.spring.webproject.dto.UserDTO;
+import com.spring.webproject.dto.WareHouseDTO;
 
 @Controller
 public class BookController {
@@ -62,11 +63,16 @@ public class BookController {
 			request.setAttribute("userId", userId);
 		}
 		int reviewNum = dao.getReviewDataCount(isbn);
+		
+		List<WareHouseDTO> list2 = dao.getWareHouseData(isbn); // 창고 재고 받아오기
+		request.setAttribute("list2", list2); // 웨어하우스 재고 넘겨주기
+		
 		request.setAttribute("dto", dto); // 책 정보 넘겨주기
 		request.setAttribute("dto2", dto2); // 작가 정보 넘겨주기
 
 		request.setAttribute("isbn", isbn); // 책 번호 넘겨주기
-		System.out.println("게시물개수 : " + reviewNum);
+		
+		
 		request.setAttribute("reviewNum", reviewNum);
 		return "/books/book_info";
 	}
@@ -101,6 +107,8 @@ public class BookController {
 
 		ReviewDTO dto = dao.getReadReviewData(reviewId);
 
+		dao.updateHitCount(reviewId);
+		
 		request.setAttribute("dto", dto);
 
 		return "/books/review/book_review_main";
@@ -134,6 +142,7 @@ public class BookController {
 
 		UserDTO dto3 = (UserDTO) request.getSession().getAttribute("userInfo");
 		String userId = dto3.getUserId();
+		int rate = Integer.parseInt(request.getParameter("rate"));
 
 		int maxReviewId = dao.getMaxNum(); // 리뷰게시물 최대번호
 		System.out.println("게시물 맥스넘버 : " + maxReviewId);
@@ -141,14 +150,23 @@ public class BookController {
 		dto.setIsbn(isbn);
 		dto.setReviewId(maxReviewId + 1);
 		dto.setUserId(userId);
-		dto.setSentence(dto.getContents());
-
+		dto.setContents(dto.getContents());
+		
+		System.out.println("isbn = " + dto.getIsbn());
+		System.out.println("maxReviewId = " + dto.getReviewId());
+		System.out.println("userId = "+ userId);
+		System.out.println("contents = " + dto.getContents());
+		System.out.println("reviewTitle = " + dto.getReviewTitle());
+		
 		dao.insertReviewData(dto); // 리뷰게시물 등록
+		System.out.println("게시물등록완료");
 
-		int rate = Integer.parseInt(request.getParameter("rate"));
 		System.out.println("rate : " + rate);
 		dao.insertReviewRateData(isbn, userId, rate); // 평점 등록
+		System.out.println("평점 등록완료");
 
+		dao.insertReviewThumbUpData(userId,dto.getReviewId());
+		
 		return "redirect:/book_info.action?isbn=" + isbn;
 
 	}
@@ -159,7 +177,18 @@ public class BookController {
 
 		int isbn = Integer.parseInt(request.getParameter("isbn")); // 책 고유번호 가져오기
 		
+		UserDTO dto3 = (UserDTO) request.getSession().getAttribute("userInfo");
+		
+		if (dto3 != null) {
+			String userId = dto3.getUserId();
+			request.setAttribute("userId", userId);
+		}
+		
+		request.setAttribute("isbn", isbn);
+		
 		return "/books/review/book_simpleReview";
+		
+		
 	}
 
 	// 도서 간단평 등록
@@ -167,14 +196,27 @@ public class BookController {
 	public String enroll_simpleReview(SimpleReviewDTO dto,HttpServletRequest request, HttpServletResponse response) {
 
 		String isbn = request.getParameter("isbn"); // 책 고유번호 가져오기
+		String sentence = request.getParameter("sentence");
 		
 		UserDTO dto3 = (UserDTO) request.getSession().getAttribute("userInfo");
 		String userId = dto3.getUserId();
-		
+		int maxReviewId = dao.getMaxNum(); // 리뷰게시물 최대번호
 		dto.setIsbn(isbn);
+		dto.setReviewId(maxReviewId + 1);
 		dto.setUserId(userId);
+		dto.setSentence(sentence);
+		System.out.println(isbn + " / " + (maxReviewId+1) + " / "+ userId + " / " + dto.getSentence());
+		System.out.println("유저 아이디 : " + userId );
+		System.out.println("리뷰 번호 : " + maxReviewId+1);
 		
 		dao.insertSimpleReviewData(dto); // 간단평 등록
+		System.out.println("간단평 등록1 완료");
+		dao.insertSimpleReviewData2(userId,(maxReviewId+1));
+		System.out.println("간단평 등록2 완료");
+		
+		System.out.println(userId + " / " + (maxReviewId+1));
+		
+		
 		
 		return "redirect:/book_simpleReview.action?isbn=" + isbn;
 	}
@@ -185,7 +227,7 @@ public class BookController {
 
 		int isbn = Integer.parseInt(request.getParameter("isbn")); // 책 고유번호 가져오기
 
-		List<ReviewDTO> lists = dao.getReadReviewList(isbn);
+		List<SimpleReviewDTO> lists = dao.getReadSimpleReviewList(isbn);
 
 		request.setAttribute("lists", lists);
 
@@ -213,7 +255,9 @@ public class BookController {
 	@RequestMapping(value = "/login2.action", method = RequestMethod.GET)
 	public String login2(HttpServletRequest request, HttpServletResponse response) {
 		int isbn = Integer.parseInt(request.getParameter("isbn")); // 책 고유번호 가져오기
-
+		
+		
+		request.setAttribute("isbn", isbn);
 		return "books/book_login2";
 	}
 
@@ -248,5 +292,21 @@ public class BookController {
 		}
 
 		return returnUrl;
+	}
+	
+	@RequestMapping(value ="/book_review_vote.action" ,method = { RequestMethod.GET, RequestMethod.POST })
+	public String book_review_vote(HttpServletRequest request) {
+		
+		String isbn = request.getParameter("isbn"); // 책 고유번호 가져오기
+		
+		int reviewId = Integer.parseInt(request.getParameter("reviewId"));
+		
+		dao.updateThumbUp(reviewId);
+		
+		System.out.println("공감수 업데이트 완료");
+		
+		return "redirect:/book_review_main.action?isbn=" + isbn +"&reviewId="+reviewId;
+		
+		
 	}
 }
