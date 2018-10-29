@@ -62,8 +62,8 @@
 				</li>
 				
 				<li class="menu">
-					<a href="javascript://" >
-						<font></font>
+					<a href="<%=cp %>/admin_goods.action" >
+						<font>도서등록</font>
 					</a>
 				</li>
 				<li class="menu">

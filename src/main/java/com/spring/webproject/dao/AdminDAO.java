@@ -8,6 +8,7 @@ import org.apache.ibatis.session.SqlSession;
 import org.springframework.stereotype.Repository;
 
 import com.spring.webproject.dto.AdminAuthorDTO;
+import com.spring.webproject.dto.AdminBooksDTO;
 import com.spring.webproject.dto.AdminCategoryDTO;
 import com.spring.webproject.dto.AdminTranslatorDTO;
 import com.spring.webproject.dto.AdminUsersDTO;
@@ -75,6 +76,29 @@ public class AdminDAO {
 		List<AdminCategoryDTO> list = sessionTemplate.selectList("adminMapper.categoryList", dto);
 		return list;
 	}
+	
+	//books
+	
+	public void insertBook(AdminBooksDTO dto) {
+		sessionTemplate.insert("adminMapper.insertBook", dto);
+	}
+	
+	//bookSpecial
+	public void insertBookSpecial(AdminBooksDTO dto) {
+		sessionTemplate.insert("adminMapper.insertbookSpecial", dto);
+	}
+	
+	//bookCategory
+	public void insertBookCategory(AdminBooksDTO dto) {
+		sessionTemplate.insert("adminMapper.insertBookCategory", dto);
+	}
+	
+	//bookImage
+	public void insertBookImage(AdminBooksDTO dto) {
+		sessionTemplate.insert("adminMapper.insertBookImage", dto);
+	}
+	
+	
 
 }
 

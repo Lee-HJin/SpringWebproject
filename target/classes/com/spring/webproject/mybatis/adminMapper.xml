@@ -206,9 +206,58 @@ where b.rnum>=#{start}
 
 <!-- books -->
 
-
+<insert id="insertBook" parameterType="map" >
+insert 
+into 
+	books(authorId,translatorId, publisher, bookTitle, bookPrice, isbn, publishDate, introduction, page, subTitle, bookSize, tableOfContents) 
+values(#{authorId},#{translatorId},#{publisher},#{bookTitle},#{bookPrice},#{isbn},to_date(#{publishDate},'YYYY-MM-DD'),#{introduction},#{page},#{subTitle},#{bookSize},#{tableOfContents})
+</insert>
 
 <!-- books end -->
 
 
+<!-- bookSpecial -->
+
+<insert id="insertbookSpecial" parameterType="map">
+insert
+into
+	bookSpecial(isbn,discountRate)
+values(#{isbn},#{discountRate})
+</insert>
+
+<!-- bookSpecial end -->
+
+<!-- bookCategory -->
+<insert id="insertBookCategory" parameterType="map">
+insert
+into
+	bookCategory(isbn,categoryId)
+values(#{isbn},#{categoryId})
+</insert>
+<!-- bookCategory end -->
+
+<!-- bookImage -->
+<insert id="insertBookImage" parameterType="map">
+insert
+into
+	bookImage(isbn,bookImage)
+values(#{isbn},#{bookImage})
+</insert>
+<!-- bookImage end -->
+
 </mapper>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

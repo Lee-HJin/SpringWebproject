@@ -1,15 +1,21 @@
 package com.spring.webproject.controller;
 
+import java.io.File;
+import java.io.IOException;
 import java.util.List;
 
+import javax.servlet.ServletContext;
 import javax.servlet.http.HttpServletRequest;
 
+import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.util.FileCopyUtils;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.spring.webproject.dao.AdminDAO;
@@ -20,6 +26,7 @@ import com.spring.webproject.dto.AdminTranslatorDTO;
 import com.spring.webproject.dto.AdminUsersDTO;
 import com.spring.webproject.dto.AdminWarehouseDTO;
 import com.spring.webproject.util.Criteria;
+import com.spring.webproject.util.FileUtil;
 import com.spring.webproject.util.PageMaker;
 import com.spring.webproject.util.SearchCriteria;
 
@@ -28,6 +35,8 @@ public class AdminController {
 
 	@Autowired
 	AdminDAO dao;
+	
+	@Autowired private ServletContext servletContext; 
 
 	@RequestMapping(value = "/admin.action", method = { RequestMethod.GET, RequestMethod.POST })
 	public String home() {
@@ -76,10 +85,22 @@ public class AdminController {
 	}
 
 	@RequestMapping(value = "/admin_goods_ok.action", method = { RequestMethod.GET,RequestMethod.POST })
-	public String goodsOK(AdminBooksDTO dto) {
+	public String goodsOK(AdminBooksDTO dto,MultipartFile file, FileUtil fileutil) throws IOException {
 		
-		//System.out.println(dto.toString());
+		String bookImagePath = servletContext.getRealPath("/")+"\\resources\\image\\book";
 		
+		System.out.println(servletContext.getRealPath("/")+"\\resources\\image\\book");
+		
+		dto.setBookImage(fileutil.fileNameMaker(file.getOriginalFilename()));
+	
+		File target = new File(bookImagePath, dto.getBookImage());
+		
+		FileCopyUtils.copy(file.getBytes(), target);
+		
+		dao.insertBook(dto);
+		dao.insertBookSpecial(dto);
+		dao.insertBookCategory(dto);
+		dao.insertBookImage(dto);
 		
 
 		return "redirect:/admin_goods.action";

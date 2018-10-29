@@ -103,7 +103,7 @@
 			<div class="col-lg-12">
 				<div class="panel panel-default">
 					<div class="panel-body form-horizontal goods-form">
-						<form action="<%=cp%>/admin_goods_ok.action" method="get">
+						<form action="<%=cp%>/admin_goods_ok.action" method="post"  enctype="multipart/form-data" >
 							<div class="col-lg-6 form-group">
 								<label for="bookTitle" class="col-lg-3 control-label">책제목
 									:</label>
@@ -275,14 +275,10 @@
 							</div>
 
 							<div class="col-lg-6 form-group">
-								<label for="bookImage" class="col-lg-4 control-label">도서이미지
+								<label for="bookImage" class="col-lg-4 control-label">도서커버이미지
 									:</label>
-								<div class="col-lg-6">
-									<input type="text" class="form-control" id="bookImage"
-										name="bookImage">
-								</div>
-								<div class="col-lg-2">
-									<button type="button" class="btn btn-default">검색</button>
+								<div class="col-lg-8">
+									<input type="file" class="form-control"  name="file">									
 								</div>
 							</div>
 
