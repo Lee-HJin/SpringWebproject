@@ -15,7 +15,9 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.spring.webproject.dao.LoginDAO;
 import com.spring.webproject.dao.MyShoppingDAO;
+import com.spring.webproject.dto.OrderDetailDTO;
 import com.spring.webproject.dto.OrderListDTO;
+import com.spring.webproject.dto.PointDTO;
 import com.spring.webproject.dto.UserDTO;
 import com.spring.webproject.util.AjaxPageIndex;
 
@@ -38,10 +40,15 @@ public class MyShoppingController {
 		UserDTO dto = (UserDTO) request.getSession().getAttribute("userInfo");
 		String userId = dto.getUserId();
 
-		//진행중 주문건 건수 - 세션
+		//진행중 주문건 건수, 최근 본 상품 리스트 갯수 - 세션
 		int orderCount = dao.getCountOrderListNormal(userId);
+		int recentCount = dao.getRecentCount(userId);
 		request.getSession().setAttribute("orderCount", orderCount);
+		request.getSession().setAttribute("recentCount", recentCount);
 
+		//위시리스트 갯수
+		int wishCount = dao.getWishCount(userId);	
+		request.setAttribute("wishCount", wishCount);
 
 		//최근 주문/배송 내역 간략리스트(최대 3개)
 		int start = 1;
@@ -186,10 +193,138 @@ public class MyShoppingController {
 		String fromDate = request.getParameter("fromDate");
 		String toDate = request.getParameter("toDate");
 		String searchValue = request.getParameter("searchValue");
-		
-		System.out.println(fromDate+ "fromDate!!!!!");
-		
-		System.out.println(searchValue + "searchValue");
+
+		//한 페이지당 출력 건수
+		int numPerPage = 3;
+		//전체 페이징 페이지
+		int totalPage = 0;
+		//전체 출력 건수
+		int totalDataCount = 0;
+
+		//현재 페이지
+		int currentPage = 1;
+		if(pageNum!=null && !pageNum.equals("")) {
+			currentPage = Integer.parseInt(pageNum);
+		}
+		else {
+			pageNum = "1";
+		}
+
+		int start = (currentPage-1) * numPerPage + 1;
+		int end = currentPage * numPerPage;
+
+		//전체 출력 건수 가져오기
+		//1.기본 검색(조건 없음)
+		if(fromDate==null || fromDate.equals("undefined") || toDate==null || toDate.equals("undefined")) {
+
+			totalDataCount = dao.getCountOrderListNormal(userId);
+
+			//출력 건수에 맞춰 내용 가져오기
+			Map<String, Object> hMap = new HashMap<String, Object>();
+			hMap.put("start", start);
+			hMap.put("end", end);
+			hMap.put("userId", userId);
+
+			List<OrderListDTO> orderList = dao.getOrderList(hMap);
+
+			request.setAttribute("lists", orderList);
+
+		}
+		//2.기간별 조회
+		if(fromDate!=null && fromDate!="" && !fromDate.equals("undefined")) {
+
+			totalDataCount = dao.getCountOrderListByDate(userId, fromDate, toDate);
+
+			//출력 건수에 맞춰 내용 가져오기
+			Map<String, Object> hMap = new HashMap<String, Object>();
+			hMap.put("start", start);
+			hMap.put("end", end);
+			hMap.put("userId", userId);
+			hMap.put("fromDate", fromDate);
+			hMap.put("toDate", toDate);
+
+			List<OrderListDTO> orderList  = dao.getOrderListByDate(hMap);
+
+			request.setAttribute("lists", orderList);
+
+		}
+		//3.상품명 또는 ISBN 검색
+		if(searchValue!=null) {
+
+			totalDataCount = dao.getCountOrderListByName(userId,searchValue);
+
+			Map<String, Object> hMap = new HashMap<String, Object>();
+			hMap.put("start", start);
+			hMap.put("end", end);
+			hMap.put("userId", userId);
+			hMap.put("searchValue", searchValue);
+
+			List<OrderListDTO> orderList  = dao.getOrderListByName(hMap);
+
+			request.setAttribute("lists", orderList);
+
+		}
+
+		//출력 건수가 0이 아니면 페이징 작업
+		if(totalDataCount!=0) {
+			totalPage = ajaxPaging.getPageCount(numPerPage, totalDataCount);
+		}
+
+		//페이징 인덱스
+		//1.기본 검색(조건 없음)
+		if(fromDate==null || fromDate=="" || fromDate.equals("undefined")) {	//
+			String pageIndexList = ajaxPaging.pageIndexList(currentPage, totalPage, "", "");
+			request.setAttribute("pageIndexList", pageIndexList);
+		}
+		//2.기간별 조회
+		if(fromDate!=null && fromDate!="" && !fromDate.equals("undefined")) {
+			String params = "'" + fromDate + "','" + toDate + "',''";
+			String pageIndexList = ajaxPaging.pageIndexList(currentPage, totalPage, params, "");
+			request.setAttribute("pageIndexList", pageIndexList);
+		}
+		//3.상품명 또는 ISBN 검색
+		if(searchValue!=null && !searchValue.equals("")) {
+			String params = "'" + fromDate + "','" + toDate + "','" + searchValue + "'";
+			String pageIndexList = ajaxPaging.pageIndexList(currentPage, totalPage, params, "");
+			request.setAttribute("pageIndexList", pageIndexList);
+		}
+
+
+		return "myShopping/lists";
+	}
+
+	//주문내역 상세페이지
+	@RequestMapping(value = "myShopping/myOrderDetail.action", method = RequestMethod.GET)
+	public String myOrderDetail(HttpServletRequest request) {
+
+		String orderId = request.getParameter("orderId");
+
+		//주문 도서 리스트 가져오기
+		List<OrderDetailDTO> lists = dao.getOrderDetailList(orderId);
+		request.setAttribute("lists", lists);
+
+		OrderListDTO dto = dao.getOrderDetailInfo(orderId);
+		request.setAttribute("orderInfo", dto);
+
+		return "myShopping/myOrderDetail";
+	}
+
+	//취소/반품/교환 내역 페이지
+	@RequestMapping(value = "myShopping/myOrderRetList.action", method = RequestMethod.GET)
+	public String myOrderRetList(HttpServletRequest request) {
+
+		return "myShopping/myOrderRetList";
+	}
+
+	@RequestMapping(value = "myShopping/getRetList.action", method = {RequestMethod.POST, RequestMethod.GET})
+	public String getRetList(HttpServletRequest request) {
+
+		UserDTO dto = (UserDTO) request.getSession().getAttribute("userInfo");
+		String userId = dto.getUserId();
+
+		String pageNum = request.getParameter("pageNum");	
+		String fromDate = request.getParameter("fromDate");
+		String toDate = request.getParameter("toDate");
 
 		//한 페이지당 출력 건수
 		int numPerPage = 3;
@@ -211,28 +346,26 @@ public class MyShoppingController {
 		int end = currentPage * numPerPage;
 
 		//전체 출력 건수 가져오기
-		//1.기본 검색(아무조건 없음)
+		//1.기본 검색(조건 없음)
 		if(fromDate==null || fromDate.equals("undefined") || toDate==null || toDate.equals("undefined")) {
-			
-			totalDataCount = dao.getCountOrderListNormal(userId);
-			
+
+			totalDataCount = dao.getCountRetListNormal(userId);
+
 			//출력 건수에 맞춰 내용 가져오기
 			Map<String, Object> hMap = new HashMap<String, Object>();
 			hMap.put("start", start);
 			hMap.put("end", end);
 			hMap.put("userId", userId);
-	
-			List<OrderListDTO> orderList = dao.getOrderList(hMap);
-			
+
+			List<OrderListDTO> orderList = dao.getRetList(hMap);
+
 			request.setAttribute("lists", orderList);
 		}
 		//2.기간별 조회
 		if(fromDate!=null && fromDate!="" && !fromDate.equals("undefined")) {
-			
-			System.out.println(fromDate+"????");
-			
-			totalDataCount = dao.getCountOrderListByDate(userId, fromDate, toDate);
-			
+
+			totalDataCount = dao.getCountRetListByDate(userId, fromDate, toDate);
+
 			//출력 건수에 맞춰 내용 가져오기
 			Map<String, Object> hMap = new HashMap<String, Object>();
 			hMap.put("start", start);
@@ -240,73 +373,252 @@ public class MyShoppingController {
 			hMap.put("userId", userId);
 			hMap.put("fromDate", fromDate);
 			hMap.put("toDate", toDate);
-			
-			System.out.println(fromDate + "fromDate");
-			System.out.println(toDate + "toDate");
-			
-			List<OrderListDTO> orderList  = dao.getOrderListByDate(hMap);
-			
+
+			List<OrderListDTO> orderList  = dao.getRetListByDate(hMap);
+
 			request.setAttribute("lists", orderList);
-			
+
 		}
-		//3.상품명 또는 ISBN 검색
-		if(searchValue!=null) {
-			
-			totalDataCount = dao.getCountOrderListByName(userId,searchValue);
-			
-			Map<String, Object> hMap = new HashMap<String, Object>();
-			hMap.put("start", start);
-			hMap.put("end", end);
-			hMap.put("userId", userId);
-			hMap.put("searchValue", searchValue);
-			
-			List<OrderListDTO> orderList  = dao.getOrderListByName(hMap);
-			
-			request.setAttribute("lists", orderList);
-			
-		}
-		
-		
+
 		//출력 건수가 0이 아니면 페이징 작업
 		if(totalDataCount!=0) {
 			totalPage = ajaxPaging.getPageCount(numPerPage, totalDataCount);
 		}
 
 		//페이징 인덱스
-		//1.기본검색(아무조건 없음)
+		//1.기본 검색(조건 없음)
 		if(fromDate==null || fromDate=="" || fromDate.equals("undefined")) {	//
-			String pageIndexList = ajaxPaging.pageIndexList(currentPage, totalPage, "");
+			String pageIndexList = ajaxPaging.pageIndexList(currentPage, totalPage, "", "ret");
 			request.setAttribute("pageIndexList", pageIndexList);
 		}
 		//2.기간별 조회
 		if(fromDate!=null && fromDate!="" && !fromDate.equals("undefined")) {
-			String params = "'" + fromDate + "','" + toDate + "'";
-			String pageIndexList = ajaxPaging.pageIndexList(currentPage, totalPage, params);
+			String params = "'" + fromDate + "','" + toDate + "','ret'";
+			String pageIndexList = ajaxPaging.pageIndexList(currentPage, totalPage, params, "ret");
 			request.setAttribute("pageIndexList", pageIndexList);
 		}
-		//3.상품명 또는 ISBN 검색
-		if(searchValue!=null && !searchValue.equals("")) {
-			String params = "'" + fromDate + "','" + toDate + "','" + searchValue + "'";
-			String pageIndexList = ajaxPaging.pageIndexList(currentPage, totalPage, params);
-			request.setAttribute("pageIndexList", pageIndexList);
-		}
-		
-		
-		return "myShopping/lists";
+
+		return "myShopping/lists_retList";
 	}
 
-	//취소/반품/교환 내역 페이지
-	@RequestMapping(value = "myShopping/myOrderRetList.action", method = RequestMethod.GET)
-	public String myOrderRetList(HttpServletRequest request) {
-
-		return "myShopping/myOrderRetList";
-	}
 
 	//적립금 페이지
 	@RequestMapping(value = "myShopping/myPointHistory.action", method = RequestMethod.GET)
 	public String myPointHistory(HttpServletRequest request) {
 
+		UserDTO dto = (UserDTO) request.getSession().getAttribute("userInfo");
+		String userId = dto.getUserId();
+
+		//소멸 예정 적립금 검색
+		int exPoint = dao.getExPoint(userId);
+		request.setAttribute("exPoint", exPoint);
+
 		return "myShopping/myPointHistory";
+	}
+
+	//적립금 리스트 불러오기
+	@RequestMapping(value = "myShopping/getPointList.action", method = RequestMethod.POST)
+	public String getTotalPointList(HttpServletRequest request) {
+
+		UserDTO dto = (UserDTO) request.getSession().getAttribute("userInfo");
+		String userId = dto.getUserId();
+
+		String pageNum = request.getParameter("pageNum");	
+		String fromDate = request.getParameter("fromDate");
+		String toDate = request.getParameter("toDate");	
+		String mode = request.getParameter("mode");
+
+		if(mode==null || mode.equals("")) {
+			mode = "all";
+		}
+
+		//한 페이지당 출력 건수
+		int numPerPage = 3;
+		//전체 페이징 페이지
+		int totalPage = 0;
+		//전체 출력 건수
+		int totalDataCount = 0;
+
+		//현재 페이지
+		int currentPage = 1;
+		if(pageNum!=null && pageNum!="") {
+			currentPage = Integer.parseInt(pageNum);
+		}
+		else {
+			pageNum = "1";
+		}
+
+		int start = (currentPage-1) * numPerPage + 1;
+		int end = currentPage * numPerPage;
+
+		//전체 출력 건수 가져오기
+		//1.기본 검색(조건 없음)
+		if(fromDate==null || fromDate.equals("undefined") || toDate==null || toDate.equals("undefined")) {
+
+			totalDataCount = dao.getCountPointList(userId);
+
+			//출력 건수에 맞춰 내용 가져오기
+			Map<String, Object> hMap = new HashMap<String, Object>();
+			hMap.put("start", start);
+			hMap.put("end", end);
+			hMap.put("userId", userId);
+
+			List<PointDTO> pointList = dao.getTotalPointList(hMap);
+
+			request.setAttribute("lists", pointList);
+		}
+		//2.기간별 조회
+		if(fromDate!=null && fromDate!="" && !fromDate.equals("undefined")) {
+
+			//mode로(내역별조회) 리스트 불러오기
+			//기본 조회, 전체 조회
+			if(mode==null || mode.equals("") || mode.equals("undefined") || mode.equals("all")) {
+
+				totalDataCount = dao.getCountPointListByDate(userId, fromDate, toDate);
+
+				//출력 건수에 맞춰 내용 가져오기
+				Map<String, Object> hMap = new HashMap<String, Object>();
+				hMap.put("start", start);
+				hMap.put("end", end);
+				hMap.put("userId", userId);
+				hMap.put("fromDate", fromDate);
+				hMap.put("toDate", toDate);
+
+				List<PointDTO> pointList  = dao.getPointListByDate(hMap);
+
+				request.setAttribute("lists", pointList);
+
+			}
+			else if(mode.equals("save")) {	//적립내역
+
+				totalDataCount = dao.getCountSavePoint(userId, fromDate, toDate);
+
+				Map<String, Object> hMap = new HashMap<String, Object>();
+				hMap.put("start", start);
+				hMap.put("end", end);
+				hMap.put("userId", userId);
+				hMap.put("fromDate", fromDate);
+				hMap.put("toDate", toDate);
+
+				List<PointDTO> pointList = dao.getSavePointList(hMap);
+
+				request.setAttribute("lists", pointList);
+
+			}
+			else if(mode.equals("use")) {	//사용내역
+
+				totalDataCount = dao.getCountUsePoint(userId, fromDate, toDate);
+
+				Map<String, Object> hMap = new HashMap<String, Object>();
+				hMap.put("start", start);
+
+				hMap.put("end", end);
+				hMap.put("userId", userId);
+				hMap.put("fromDate", fromDate);
+				hMap.put("toDate", toDate);
+
+				List<PointDTO> pointList = dao.getUsePointList(hMap);
+
+				request.setAttribute("lists", pointList);
+
+			}
+
+		}
+
+		//출력 건수가 0이 아니면 페이징 작업
+		if(totalDataCount!=0) {
+			totalPage = ajaxPaging.getPageCount(numPerPage, totalDataCount);
+		}
+
+		//페이징 인덱스
+		//1.기본 검색(조건 없음)
+		if(fromDate==null || fromDate=="" || fromDate.equals("undefined")) {	//
+			String pageIndexList = ajaxPaging.pageIndexList(currentPage, totalPage, "",mode);
+			request.setAttribute("pageIndexList", pageIndexList);
+		}
+		//2.기간별 조회
+		if(fromDate!=null && fromDate!="" && !fromDate.equals("undefined")) {
+			String params = "'" + fromDate + "','" + toDate + "','" + mode + "'";
+			String pageIndexList = ajaxPaging.pageIndexList(currentPage, totalPage, params, mode);
+			request.setAttribute("pageIndexList", pageIndexList);
+		}
+
+		return "myShopping/lists_pointList";
+	}
+
+	//소멸예정 적립금 보기
+	@RequestMapping(value = "myShopping/expPointDetail.action", method = RequestMethod.GET)
+	public String expPointDetail(HttpServletRequest request) {
+		
+		//소멸 예정 적립금 검색
+		UserDTO dto = (UserDTO) request.getSession().getAttribute("userInfo");
+		String userId = dto.getUserId();
+		
+		int exPoint = dao.getExPoint(userId);
+		request.setAttribute("exPoint", exPoint);
+
+		return "myShopping/expPointDetail";
+
+	}
+	//소멸예정 적립금 리스트불러오기
+	@RequestMapping(value = "myShopping/expPointList.action", method = RequestMethod.POST)
+	public String expPointList(HttpServletRequest request) {
+
+		UserDTO dto = (UserDTO) request.getSession().getAttribute("userInfo");
+		String userId = dto.getUserId();
+
+		String pageNum = request.getParameter("pageNum");
+		String mode = request.getParameter("mode");
+		
+		if(mode==null || mode.equals("")) {
+			mode = "exp";
+		}
+
+		//한 페이지당 출력 건수
+		int numPerPage = 3;
+		//전체 페이징 페이지
+		int totalPage = 0;
+		//전체 출력 건수
+		int totalDataCount = 0;
+
+		//현재 페이지
+		int currentPage = 1;
+		if(pageNum!=null && pageNum!="") {
+			currentPage = Integer.parseInt(pageNum);
+		}
+		else {
+			pageNum = "1";
+		}
+		
+		//totalDataCount = dao.
+		
+
+		int start = (currentPage-1) * numPerPage + 1;
+		int end = currentPage * numPerPage;
+
+		Map<String, Object> hMap = new HashMap<String, Object>();
+		hMap.put("start", start);
+		hMap.put("end", end);
+		hMap.put("userId", userId);
+
+		List<PointDTO> lists = dao.expPointList(hMap);
+		
+		System.out.println(lists.size() +"size");
+
+		request.setAttribute("lists", lists);
+
+		//출력 건수가 0이 아니면 페이징 작업
+		if(totalDataCount!=0) {
+			totalPage = ajaxPaging.getPageCount(numPerPage, totalDataCount);
+		}
+		
+		String pageIndexList = ajaxPaging.pageIndexList(currentPage, totalPage, "", mode);
+		request.setAttribute("pageIndexList", pageIndexList);
+		
+		System.out.println(pageIndexList);
+
+		return "myShopping/lists_expPoint";
+
 	}
 
 	//최근 본 상품 페이지
@@ -395,6 +707,54 @@ public class MyShoppingController {
 
 		return "common/alert";
 
+	}
+
+	//주문 취소
+	@RequestMapping(value = "myShopping/cancelOrder.action", method = RequestMethod.GET)
+	public String cancelOrder(HttpServletRequest request) {
+
+		String orderId = request.getParameter("orderId");
+
+		dao.cancelOrder(orderId);
+
+
+		return "redirect:/myShopping/myOrderDetail.action?orderId=" + orderId;
+	}
+
+	//반품 신청
+	@RequestMapping(value = "myShopping/returnOrder.action", method = RequestMethod.GET)
+	public String returnOrder(HttpServletRequest request) {
+
+		String orderId = request.getParameter("orderId");
+
+		dao.returnOrder(orderId);
+
+
+		return "redirect:/myShopping/myOrderDetail.action?orderId=" + orderId;
+	}
+
+	//구매 완료
+	@RequestMapping(value = "myShopping/confirmOrder.action", method = RequestMethod.GET)
+	public String confirmOrder(HttpServletRequest request) {
+
+		String orderId = request.getParameter("orderId");
+
+		dao.confirmOrder(orderId);
+
+
+		return "redirect:/myShopping/myOrderDetail.action?orderId=" + orderId;
+	}
+
+	//교환 신청
+	@RequestMapping(value = "myShopping/exchangeOrder.action", method = RequestMethod.GET)
+	public String exchangeOrder(HttpServletRequest request) {
+
+		String orderId = request.getParameter("orderId");
+
+		dao.exchangeOrder(orderId);
+
+
+		return "redirect:/myShopping/myOrderDetail.action?orderId=" + orderId;
 	}
 
 

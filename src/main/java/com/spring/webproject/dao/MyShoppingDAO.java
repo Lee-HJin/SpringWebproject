@@ -6,7 +6,9 @@ import java.util.Map;
 
 import org.mybatis.spring.SqlSessionTemplate;
 
+import com.spring.webproject.dto.OrderDetailDTO;
 import com.spring.webproject.dto.OrderListDTO;
+import com.spring.webproject.dto.PointDTO;
 import com.spring.webproject.dto.UserDTO;
 
 public class MyShoppingDAO {
@@ -99,5 +101,164 @@ public class MyShoppingDAO {
 		return lists;
 	}
 
+	public int getCountRetListNormal(String userId) {
+
+		return sessionTemplate.selectOne("myShopping.getCountRetListNormal", userId);
+	}
+	
+	public List<OrderListDTO> getRetList (Map<String, Object> map){
+
+		List<OrderListDTO> lists = sessionTemplate.selectList("myShopping.getRetList",map);
+
+		return lists;
+	}
+	
+	public int getCountRetListByDate(String userId, String fromDate, String toDate) {
+
+		HashMap<String, Object> hMap = new HashMap<String, Object>();
+
+		hMap.put("userId", userId);
+		hMap.put("fromDate",fromDate);
+		hMap.put("toDate",toDate);
+		
+		return sessionTemplate.selectOne("myShopping.getCountRetListByDate", hMap);
+	}
+	
+	public List<OrderListDTO> getRetListByDate (Map<String, Object> map){
+
+		List<OrderListDTO> lists = sessionTemplate.selectList("myShopping.getRetListByDate",map);
+
+		return lists;
+	}
+	
+	public int getExPoint(String userId) {
+
+		return sessionTemplate.selectOne("myShopping.getExPoint", userId);
+	}
+	
+	public int getCountPointList(String userId) {
+
+		return sessionTemplate.selectOne("myShopping.getCountPointList", userId);
+	}
+	
+	public List<PointDTO> getTotalPointList (Map<String, Object> map){
+
+		List<PointDTO> lists = sessionTemplate.selectList("myShopping.getTotalPointList",map);
+
+		return lists;
+	}
+	
+	public int getCountPointListByDate(String userId, String fromDate, String toDate) {
+		
+		HashMap<String, Object> hMap = new HashMap<String, Object>();
+
+		hMap.put("userId", userId);
+		hMap.put("fromDate",fromDate);
+		hMap.put("toDate",toDate);
+
+		return sessionTemplate.selectOne("myShopping.getCountPointListByDate", hMap);
+	}
+	
+	public List<PointDTO> getPointListByDate (Map<String, Object> map){
+
+		List<PointDTO> lists = sessionTemplate.selectList("myShopping.getPointListByDate",map);
+
+		return lists;
+	}
+	
+	public int getCountSavePoint(String userId, String fromDate, String toDate) {
+		
+		HashMap<String, Object> hMap = new HashMap<String, Object>();
+
+		hMap.put("userId", userId);
+		hMap.put("fromDate",fromDate);
+		hMap.put("toDate",toDate);
+
+		return sessionTemplate.selectOne("myShopping.getCountSavePoint", hMap);
+	}
+	
+	public int getCountUsePoint(String userId, String fromDate, String toDate) {
+		
+		HashMap<String, Object> hMap = new HashMap<String, Object>();
+
+		hMap.put("userId", userId);
+		hMap.put("fromDate",fromDate);
+		hMap.put("toDate",toDate);
+
+		return sessionTemplate.selectOne("myShopping.getCountUsePoint", hMap);
+	}
+	
+	public List<PointDTO> getSavePointList (Map<String, Object> map){
+
+		List<PointDTO> lists = sessionTemplate.selectList("myShopping.getSavePointList",map);
+
+		return lists;
+	}
+	
+	public List<PointDTO> getUsePointList (Map<String, Object> map){
+
+		List<PointDTO> lists = sessionTemplate.selectList("myShopping.getUsePointList",map);
+
+		return lists;
+	}
+	
+	public int getWishCount(String userId) {
+		
+		return sessionTemplate.selectOne("myShopping.getWishCount",userId);
+	}
+	
+	public int getRecentCount(String userId) {
+		
+		return sessionTemplate.selectOne("myShopping.getRecentCount",userId);
+	}
+	
+	public List<OrderDetailDTO> getOrderDetailList(String orderId){
+		
+		List<OrderDetailDTO> lists = sessionTemplate.selectList("myShopping.getOrderDetailList",orderId);
+		
+		return lists;
+	}
+	
+	public OrderListDTO getOrderDetailInfo(String orderId) {
+		
+		OrderListDTO dto = sessionTemplate.selectOne("myShopping.getOrderDetailInfo", orderId);
+		
+		return dto;
+	}
+	
+	public void cancelOrder(String orderId) {
+		
+		sessionTemplate.update("myShopping.cancelOrder",orderId);
+		
+	}
+	
+	public void returnOrder(String orderId) {
+		
+		sessionTemplate.update("myShopping.returnOrder",orderId);
+		
+	}
+	
+	public void confirmOrder(String orderId) {
+		
+		sessionTemplate.update("myShopping.confirmOrder",orderId);
+		
+	}
+	
+	public void exchangeOrder(String orderId) {
+		
+		sessionTemplate.update("myShopping.exchangeOrder",orderId);
+		
+	}
+	
+	public List<PointDTO> expPointList(Map<String, Object> map){
+		
+		List<PointDTO> lists = sessionTemplate.selectList("myShopping.expPointList",map);
+		
+		return lists;
+		
+	}
+	
+	
+	
 
 }

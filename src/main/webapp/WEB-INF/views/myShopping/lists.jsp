@@ -24,10 +24,10 @@
 	<tr>
 		<td>${dto.orderId }</td>
 		<c:if test="${dto.quantity>1 }">
-			<td style="text-align: left;">${dto.mainTitle } 외 ${dto.quantity-1 }개</td>
+			<td style="text-align: left;"><a href="<%=cp%>/myShopping/myOrderDetail.action?orderId=${dto.orderId}">${dto.mainTitle } 외 ${dto.quantity-1 }개</a></td>
 		</c:if>
 		<c:if test="${dto.quantity==1 }">
-			<td style="text-align: left;">${dto.mainTitle }</td>
+			<td style="text-align: left;"><a href="<%=cp%>/myShopping/myOrderDetail.action?orderId=${dto.orderId}">${dto.mainTitle }</a></td>
 		</c:if>
 		<td>${dto.handlingDate }</td>
 		<td>${dto.expectedDate }</td>
@@ -42,7 +42,7 @@
 			${pageIndexList }
 		</c:if>
 		<c:if test="${totalDataCount==0 }">
-			등록된 게시글이 없습니다.
+		
 		</c:if>
 	</p>
 </div>

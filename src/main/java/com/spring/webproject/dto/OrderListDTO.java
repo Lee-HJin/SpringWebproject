@@ -4,12 +4,16 @@ public class OrderListDTO {
 	
 	private int orderId;
 	private int orderPrice;
+	private int point;
 	private String shipmentsStatusCode;
 	private String handlingDate;
 	private String expectedDate;
 	private String status;
 	private String mainTitle;
 	private String quantity;
+	private String zipCode;
+	private String address1;
+	private String address2;
 	
 	public int getOrderId() {
 		return orderId;
@@ -22,6 +26,12 @@ public class OrderListDTO {
 	}
 	public void setOrderPrice(int orderPrice) {
 		this.orderPrice = orderPrice;
+	}
+	public int getPoint() {
+		return point;
+	}
+	public void setPoint(int point) {
+		this.point = point;
 	}
 	public String getShipmentsStatusCode() {
 		return shipmentsStatusCode;
@@ -58,6 +68,24 @@ public class OrderListDTO {
 	}
 	public void setQuantity(String quantity) {
 		this.quantity = quantity;
+	}
+	public String getZipCode() {
+		return zipCode;
+	}
+	public void setZipCode(String zipCode) {
+		this.zipCode = zipCode;
+	}
+	public String getAddress1() {
+		return address1;
+	}
+	public void setAddress1(String address1) {
+		this.address1 = address1;
+	}
+	public String getAddress2() {
+		return address2;
+	}
+	public void setAddress2(String address2) {
+		this.address2 = address2;
 	}
 	
 }

@@ -86,7 +86,7 @@ var swiper = new Swiper('.swiper2', {
 		prevEl: '#slide_awL',
 	},
 });
-
+/*
 var swiper = new Swiper('.swiper3', {
 	spaceBetween: 0,
 	centeredSlides: true,
@@ -100,39 +100,8 @@ var swiper = new Swiper('.swiper3', {
 		nextEl: '#rb_awR',
 		prevEl: '#rb_awL',
 	},
-});
+});*/
 
-var swiper = new Swiper('.swiper4', {
-	slidesPerView: 5,
-	spaceBetween: 10,
-	slidesPerGroup: 5,
-	loopFillGroupWithBlank: true,
-	loop: true,
-	pagination: {
-		el: '.aw_count_nb',
-		type: 'fraction',
-	},
-	navigation: {
-		nextEl: '#nb_awR',
-		prevEl: '#nb_awL',
-	},
-});
-
-var swiper = new Swiper('.swiper5', {
-	slidesPerView: 5,
-	spaceBetween: 10,
-	slidesPerGroup: 5,
-	loopFillGroupWithBlank: true,
-	loop: true,
-	pagination: {
-		el: '.aw_count_ib',
-		type: 'fraction',
-	},
-	navigation: {
-		nextEl: '#ib_awR',
-		prevEl: '#ib_awL',
-	},
-});
 
 var swiper = new Swiper('.swiper6', {
 	spaceBetween: 0,

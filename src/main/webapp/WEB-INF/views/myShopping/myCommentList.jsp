@@ -32,6 +32,66 @@
 <jsp:include page="./sideNavi.jsp" flush="false"/>
 
 <div class="contents">
+	<div style="font-size: 13pt; font-weight: bold; padding-bottom: 10px;">덧글관리 <span style="font-size: 10pt; font-weight: normal;">상품 구매 및 각종 활동 참여 시 적립금이 지급됩니다.</span></div>
+	
+	<div class="comm_sort">
+		<a href="">전체 (0)</a><span>|</span>
+		<a href="">남이 쓴 덧글(0)</a><span>|</span>
+		<a href="">내가 쓴 덧글(0)</a>
+	</div>
+	<div class="comm_table">
+		<table>
+			<tr>
+				<th>작성자</th>
+				<th style="width: 450px;">내용</th>
+				<th>작성일</th>
+				<th style="width: 80px;">삭제</th>
+			</tr>
+			<tr>
+				<td>남</td>
+				<td style="text-align: left;">아이고</td>
+				<td>오늘이며칠?</td>
+				<td>
+					<input type="button" class="comm_table_btn" value="삭제">
+				</td>
+			</tr>
+			<tr>
+				<td>남</td>
+				<td style="text-align: left;">아이고</td>
+				<td>오늘이며칠?</td>
+				<td>
+					<input type="button" class="comm_table_btn" value="삭제">
+				</td>
+			</tr>
+			<tr>
+				<td>남</td>
+				<td style="text-align: left;">아이고</td>
+				<td>오늘이며칠?</td>
+				<td>
+					<input type="button" class="comm_table_btn" value="삭제">
+				</td>
+			</tr>
+			<tr>
+				<td>남</td>
+				<td style="text-align: left;">아이고</td>
+				<td>오늘이며칠?</td>
+				<td>
+					<input type="button" class="comm_table_btn" value="삭제">
+				</td>
+			</tr>
+			<tr>
+				<td>남</td>
+				<td style="text-align: left;">아이고</td>
+				<td>오늘이며칠?</td>
+				<td>
+					<input type="button" class="comm_table_btn" value="삭제">
+				</td>
+			</tr>
+			
+		</table>
+	
+	</div>
+
 </div>
 
 
