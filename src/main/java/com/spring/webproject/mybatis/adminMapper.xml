@@ -234,6 +234,14 @@ into
 	bookCategory(isbn,categoryId)
 values(#{isbn},#{categoryId})
 </insert>
+
+<insert id="insertCategory" parameterType="map">
+insert
+into
+	booksCategoryList(categoryId, categoryName, parentsId)
+values(#{categoryId}, #{categoryName}, #{parentsId})
+</insert>
+
 <!-- bookCategory end -->
 
 <!-- bookImage -->

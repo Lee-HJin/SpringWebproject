@@ -93,6 +93,10 @@ public class AdminDAO {
 		sessionTemplate.insert("adminMapper.insertBookCategory", dto);
 	}
 	
+	public void insertCategory(AdminCategoryDTO dto) {
+		sessionTemplate.insert("adminMapper.insertCategory", dto);
+	}
+	
 	//bookImage
 	public void insertBookImage(AdminBooksDTO dto) {
 		sessionTemplate.insert("adminMapper.insertBookImage", dto);

@@ -168,5 +168,37 @@ public class AdminController {
 		
 		return "admin/admin_categoryList";
 	}
+	
+	@RequestMapping(value = "/admin_category.action", method = {RequestMethod.POST, RequestMethod.GET })
+	public String category(Model model, AdminCategoryDTO dto) {
+		
+		List<AdminCategoryDTO> categoryList = dao.getCategoryList(dto);
+		
+		model.addAttribute("categoryList", categoryList);
+		
+		return "admin/admin_category";
+	}
+	
+	
+	@RequestMapping(value = "/admin_category_ok.action", method = {RequestMethod.POST, RequestMethod.GET })
+	public String categoryOK(Model model, AdminCategoryDTO dto, AdminBooksDTO bookDTO) {
+		
+		try {
+			dao.insertCategory(dto);
+			
+			if(bookDTO.getIsbn()!=null) {
+				dao.insertBookCategory(bookDTO);
+			}
+		} catch (Exception e) {
+			// TODO: handle exception
+			return "redirect:/admin_category.action";
+		}
+		
+		
+		return "redirect:/admin_category.action";
+	}
+	
+	
+	
 
 }

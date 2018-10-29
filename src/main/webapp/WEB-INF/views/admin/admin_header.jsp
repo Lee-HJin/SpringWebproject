@@ -62,8 +62,8 @@
 				</li>
 				
 				<li class="menu">
-					<a href="<%=cp %>/admin_goods.action" >
-						<font>도서등록</font>
+					<a href="<%=cp %>/admin_category.action" >
+						<font>카테고리관리</font>
 					</a>
 				</li>
 				<li class="menu">
