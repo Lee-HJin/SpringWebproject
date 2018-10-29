@@ -1,11 +1,13 @@
 package com.spring.webproject.dao;
 
 import java.util.HashMap;
+import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 
 import org.mybatis.spring.SqlSessionTemplate;
 
+import com.spring.webproject.dto.MainDTO;
 import com.spring.webproject.dto.OrderDetailDTO;
 import com.spring.webproject.dto.OrderListDTO;
 import com.spring.webproject.dto.PointDTO;
@@ -250,6 +252,13 @@ public class MyShoppingDAO {
 		
 	}
 	
+	public int expPointCount(String userId) {
+		
+		return sessionTemplate.selectOne("myShopping.expPointCount",userId);
+				
+	}
+	
+	
 	public List<PointDTO> expPointList(Map<String, Object> map){
 		
 		List<PointDTO> lists = sessionTemplate.selectList("myShopping.expPointList",map);
@@ -258,6 +267,48 @@ public class MyShoppingDAO {
 		
 	}
 	
+	public int readyReviewCount(String userId) {
+		
+		return sessionTemplate.selectOne("myShopping.readyReviewCount",userId);
+		
+	}
+	
+	public List<MainDTO> readyReviewList (Map<String, Object> map) {
+		
+		List<MainDTO> lists = sessionTemplate.selectList("myShopping.readyReviewList",map);
+		
+		return lists;
+		
+	}
+	
+	public int LatesBooksCount(String userId) {
+		
+		return sessionTemplate.selectOne("myShopping.LatesBooksCount",userId);
+		
+	}
+	
+	public List<MainDTO> LatesBooksList (Map<String, Object> map){
+		
+		List<MainDTO> lists = sessionTemplate.selectList("myShopping.LatesBooksList",map);
+		
+		return lists;
+	}
+	
+	public void deleteLatesBooks(List<String> delList, String userId) {
+		
+		String isbn = "";
+		
+		Iterator<String> it = delList.iterator();
+		
+		while(it.hasNext()) {
+			isbn = it.next();
+			Map<String, Object> map = new HashMap<String, Object>();
+			map.put("isbn", isbn);
+			map.put("userId", userId);
+			sessionTemplate.delete("myShopping.deleteLatesBooks",map);
+		}
+		
+	}
 	
 	
 

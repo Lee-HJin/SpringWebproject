@@ -15,7 +15,7 @@
 			</b>
 		</div>
 		<div class="right_div">
-			<img alt="" src="<%=cp%>/resources/img/myShopping/btn_mem_modify.gif" onclick="location.href='<%=cp %>/myShopping/pre_updateMyInfo.action';">
+			<img alt="" src="<%=cp%>/resources/img/myShopping/btn_mem_modify.gif" onclick="location.href='<%=cp %>/myShopping/pre_updateMyInfo.action?mode=update';">
 			<img alt="" src="<%=cp%>/resources/img/myShopping/btn_mem_wishlist.gif" onclick="location.href='<%=cp%>/myShopping/myWishList.action';">
 		</div>
 	</div>

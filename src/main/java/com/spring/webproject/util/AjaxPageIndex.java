@@ -140,7 +140,7 @@ public class AjaxPageIndex {
 					sb.append("<span class='page_on'>" + page + "</span>&nbsp;");				
 				}
 				else{
-					sb.append("<span class='page_off'><a href=\"javascript:getPointList(" +  page + ",'','','exp')\">"
+					sb.append("<span class='page_off'><a href=\"javascript:getExpPointList(" +  page + ",'','','exp')\">"
 							+ page + "</a></span>&nbsp;");		
 				}				
 				page++;		
@@ -149,5 +149,57 @@ public class AjaxPageIndex {
 
 		return sb.toString();
 
+	}
+	
+	public String pageIndexList(int currentPage, int totalPage, String mode) {
+		
+		int numPerBlock = 5; //1◀이전 6 7 8 9 10 다음▶11(6-10까지 표시되는 페이지 갯수)
+		int currentPageSetup; //표시할 첫 페이지(6)의 – 1 해준 값(5,10,15,20...)
+		int page;
+
+		StringBuffer sb = new StringBuffer();
+
+		if(currentPage==0 || totalPage==0)	//데이터가 없을 경우
+			return "";
+
+		//표시할 첫 페이지의 – 1 해준 값
+		currentPageSetup = (currentPage/numPerBlock)*numPerBlock;
+
+		if(currentPage % numPerBlock == 0)
+			currentPageSetup = currentPageSetup - numPerBlock;
+
+		//바로가기 페이지
+		page = currentPageSetup + 1;
+		
+		//리뷰를 기다리는 책 페이지
+		if(mode.equals("readyReivew")) {
+			while(page <= totalPage && page <= (currentPageSetup + numPerBlock)){
+				if(page == currentPage){				
+					sb.append("<span class='page_on'>" + page + "</span>&nbsp;");				
+				}
+				else{
+					sb.append("<span class='page_off'><a href=\"javascript:getReadyReivewList(" +  page + ",'readyReivew')\">"
+							+ page + "</a></span>&nbsp;");		
+				}				
+				page++;		
+			}	
+		}
+		//최근 본 상품
+		else if(mode.equals("LatesBooks")) {
+			while(page <= totalPage && page <= (currentPageSetup + numPerBlock)){
+				if(page == currentPage){				
+					sb.append("<span class='page_on'>" + page + "</span>&nbsp;");				
+				}
+				else{
+					sb.append("<span class='page_off'><a href=\"javascript:getLatesBooksList(" +  page + ",'LatesBooks')\">"
+							+ page + "</a></span>&nbsp;");
+				}				
+				page++;		
+			}			
+		}
+		
+		
+		return sb.toString();
+		
 	}
 }
