@@ -559,7 +559,14 @@ function go_login() {
 
 function enroll_SimpleReview(Val){
 	alert("간단평이 등록되었습니다.");
-	location.href = '<%=cp%>/enroll_simpleReview.action?isbn=' + Val;
+	f = document.mainForm;
+	
+	str = f.sentence.value;
+	
+	
+	
+	location.href = '<%=cp%>/enroll_simpleReview.action?isbn=' + Val
+				+ '&sentence=' + str;
 		return;
 	}
 
@@ -740,32 +747,25 @@ function enroll_SimpleReview(Val){
 				<div class="bookInfo_subCon">
 
 					<!-- boardList02 -->
-					<form name="mainForm" method="post"
-						action="/front/product/iframeSimpleReview.do">
-						<input type="hidden" name="actionType" value=""> <input
-							type="hidden" name="prodId" value="4189934"> <input
-							type="hidden" name="seq" value=""> <input type="hidden"
-							name="modTitle" value=""> <input type="hidden"
-							name="usedYn" value=""> <input type="hidden" name="page"
-							value="1">
+					<form name="mainForm" method="post">
+						
+						<input type="hidden" name="isbn" value=${isbn }>
 						<div style="width: 100%;">
 							<div class="shotReview">
-								<textarea name="title" onclick="onChangeText(this,'title_stat')"
+								<textarea name="sentence"
+									onclick="onChangeText(this,'title_stat')"
 									onkeyup="onChangeText(this,'title_stat')"
 									onkeypress="onChangeText(this,'title_stat')"></textarea>
 								<p class="btn_show_register">
 									<c:choose>
-										<c:when test="${empty sessionSope.userInfo.userId }">
+										<c:when test="${empty userId }">
 											<a class="box_tag" href="javascript:go_login();">등록</a>
 										</c:when>
 										<c:otherwise>
 											<a class="box_tag"
-												href="javascript:enroll_SimpleReview(${dto.isbn });">등록</a>
+												href="javascript:enroll_SimpleReview(${isbn });">등록</a>
 										</c:otherwise>
 									</c:choose>
-
-
-
 
 								</p>
 								<p class="check" id="title_stat">0/200</p>
@@ -791,45 +791,48 @@ function enroll_SimpleReview(Val){
 
 </body>
 <script>
-
-
 	function simpleReviewTitle() {
-		sendRequest("/webproject/book_simpleReview_ok.action?isbn=" + <%=isbn%>,null, displaySimpleReviewTitle, "GET");
+		sendRequest(
+				"/webproject/book_simpleReview_ok.action?isbn=" +
+<%=isbn%>
+	,
+				null, displaySimpleReviewTitle, "GET");
 
 	}
-	
-	
+
 	function displaySimpleReviewTitle() {
-		
+
 		if (httpRequest.readyState == 4) {
 			if (httpRequest.status == 200) {
-				alert("?");
+				
 				var doc = httpRequest.responseXML;
-				var titleNL = doc.getElementsByTagName("title");
-				var userName = doc.getElementsByTagName("username");
-				var thumbup = doc.getElementsByTagName("thumbup");
+				var titleNL = doc.getElementsByTagName("sentence");
+				var userName = doc.getElementsByTagName("userName");
+				var thumbup = doc.getElementsByTagName("thumbUp");
 				var reviewId = doc.getElementsByTagName("reviewId");
 				var htmlData = "<table width='100%' border='0' cellpadding='0' cellspacing='0' class='boardList02 mt10'>";
 				htmlData += "<colgroup>	<col width='135'><col width=''>	<col width='135'> </colgroup>";
 				htmlData += "<tbody> <tr> <td colspan='6' class='line'> </td> </tr>";
-				htmlData += "<tr>";
 
 				for (var i = 0; i < titleNL.length; i++) {
-					htmlData += "<td class='td_L15' style='width:15%'>" + userName.item(i).firstChild.nodeValue;
+					htmlData += "<tr>";
+					htmlData += "<td class='td_L15' style='width:15%'>"
+							+ userName.item(i).firstChild.nodeValue;
 					htmlData += "</td>";
 					htmlData += "<td class='td_L15' style='width:70%'> ";
 					htmlData += titleNL.item(i).firstChild.nodeValue;
 					htmlData += "</td>";
 					htmlData += "<td class='td_R10'style='width:15%'> ";
-					htmlData += "<span class='ilike'><button onclick='recommandCnt('', 0)'"; 
+					htmlData += "<span class='ilike'><button onclick='recommandCnt('', 0)'";
 					htmlData += "class='btn_ilike'><span>공감하기</span></button>";
 					htmlData += "<span class='ilike_count'>";
 					htmlData += thumbup.item(i).firstChild.nodeValue;
 					htmlData += "</span></span></td>";
-							
+					htmlData += "</tr>";
+
 				}
 
-				htmlData += "</tr> 	</tbody>  </table>";
+				htmlData += "</tbody>  </table>";
 
 				var simpleReviewDiv = document
 						.getElementById("simpleReviewTitle");
@@ -837,15 +840,11 @@ function enroll_SimpleReview(Val){
 			} else {
 				alert(httpRequest.status + " : " + httpRequest.statusText);
 			}
-			
-			
-		
-			
-	
+
 		}
 
 	}
-	
+
 	window.onload = function() {
 		simpleReviewTitle();
 	}

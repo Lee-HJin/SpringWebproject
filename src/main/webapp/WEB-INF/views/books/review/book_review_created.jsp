@@ -45,8 +45,12 @@
 		
 // 		var rate = $("#usr_point option:selected").val();
 		var rate = document.getElementById('usr_point').options[document.getElementById('usr_point').selectedIndex].value;
+		if(!rate){
+			alert("\n평점을 입력해주세요.");
+			return;
+		}
 		
-		f.action = "<%=cp%>/book_review_created_ok.action?rate=" +rate;
+		f.action = "<%=cp%>/book_review_created_ok.action?rate="+rate;
 		f.submit();
 
 	}
@@ -254,13 +258,13 @@ img:hover {
 			</div>
 
 			<div id="bbsCreated_footer">
+				<input type="hidden" value = ${isbn } name ="isbn" >
 				<button class="button2" onclick="sendIt();">등록하기</button>
 
 				<button class="button3" onclick="document.myForm.reviewTitle.focus();"
 					type="reset">
 					<span>다시입력 </span>
 				</button>
-				<input type="hidden" value = ${isbn } name ="isbn" >
 				<button class="button1"
 					onclick="javascript:goBack();">
 					<span>작성취소</span>

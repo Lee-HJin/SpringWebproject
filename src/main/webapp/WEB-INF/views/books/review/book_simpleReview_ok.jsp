@@ -5,10 +5,10 @@
 <result>
   <data> 
   <c:forEach var="dto" items="${lists }">
-  	 <username>${dto.username}</username>
-	 <title>${dto.contents}</title>
-	 <thumbup>${dto.thumbup}</thumbup>
+  	 <userName>${dto.userName}</userName>
+	 <sentence>${dto.sentence}</sentence>
+	 <thumbUp>${dto.thumbUp}</thumbUp>
 	 <reviewId>${dto.reviewId}</reviewId>
    </c:forEach>
-    </data> 
+  </data> 
 </result>

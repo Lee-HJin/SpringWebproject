@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<%@ taglib prefix="fmt" uri ="http://java.sun.com/jsp/jstl/fmt" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <%
 	request.setCharacterEncoding("UTF-8");
 	String cp = request.getContextPath();
@@ -167,67 +167,70 @@ i {
 	}
 </script>
 
+<!-- TOP 버튼 jQuery -->
+
+<script>
+	// When the user scrolls down 20px from the top of the document, show the button
+	window.onscroll = function() {
+		scrollFunction()
+	};
+
+	function scrollFunction() {
+		if (document.body.scrollTop > 20
+				|| document.documentElement.scrollTop > 20) {
+			document.getElementById("myBtn").style.display = "block";
+		} else {
+			document.getElementById("myBtn").style.display = "none";
+		}
+	}
+
+	// When the user clicks on the button, scroll to the top of the document
+	function topFunction() {
+		document.body.scrollTop = 0;
+		document.documentElement.scrollTop = 0;
+	}
+</script>
+
+
+<!-- 수량 jQuery -->
+<script type="text/javascript">
+	function modifyProductQuantity(id, quantity) {
+
+		if (isNaN($("#" + id).val())) {
+			alert('숫자만 입력가능 합니다.');
+			$("#" + id).focus();
+			$("#" + id).val(0);
+			return;
+		}
+
+		//var v = parseFloat($("#"+id).val())+parseFloat(quantity);    
+		//$("#"+id).val(Math.round(v*10)/10);
+
+		var q = parseInt($("#" + id).val()) + parseInt(quantity);
+		if (q < 0) {
+			$("#" + id).val() = 1;
+		}
+		$("#" + id).val(q);
+
+	};
+</script>
+
+
 </head>
 
-
 <body>
-	<div id="wrapDetail">
-		<button onclick="topFunction()" id="myBtn" title="Go to top">
-			<i class="up"></i><br />Top
-		</button>
+	<!-- header -->
+	<jsp:include page="../common/header.jsp" flush="false" />
+
+	<button onclick="topFunction()" id="myBtn" title="Go to top">
+		<i class="up"></i><br />Top
+	</button>
+
+	<div style="margin: 0 auto; width: 1100px;">
+
+		<div id="wrapDetail" style="margin-top: 30px;">
 
 
-		<!-- TOP 버튼 jQuery -->
-
-		<script>
-			// When the user scrolls down 20px from the top of the document, show the button
-			window.onscroll = function() {
-				scrollFunction()
-			};
-
-			function scrollFunction() {
-				if (document.body.scrollTop > 20
-						|| document.documentElement.scrollTop > 20) {
-					document.getElementById("myBtn").style.display = "block";
-				} else {
-					document.getElementById("myBtn").style.display = "none";
-				}
-			}
-
-			// When the user clicks on the button, scroll to the top of the document
-			function topFunction() {
-				document.body.scrollTop = 0;
-				document.documentElement.scrollTop = 0;
-			}
-		</script>
-
-
-		<!-- 수량 jQuery -->
-		<script type="text/javascript">
-			function modifyProductQuantity(id, quantity) {
-
-				if (isNaN($("#" + id).val())) {
-					alert('숫자만 입력가능 합니다.');
-					$("#" + id).focus();
-					$("#" + id).val(0);
-					return;
-				}
-
-				//var v = parseFloat($("#"+id).val())+parseFloat(quantity);    
-				//$("#"+id).val(Math.round(v*10)/10);
-
-				var q = parseInt($("#" + id).val()) + parseInt(quantity);
-				if (q < 0) {
-					$("#" + id).val() = 1;
-				}
-				$("#" + id).val(q);
-
-			};
-		</script>
-		</head>
-
-
-		<body>
 			<div class="wrap_contents">
 				<!-- 왼쪽 영역 -->
 				<div class="inner_left">
@@ -265,6 +268,7 @@ i {
 									<col width="71">
 								</colgroup>
 								<tbody>
+
 									<tr>
 										<th>인터넷</th>
 										<th>신세계<br>강남점
@@ -273,9 +277,37 @@ i {
 										</th>
 									</tr>
 									<tr>
-										<td>6</td>
-										<td><a href="javascript:popBookshelf('05');">0</a></td>
-										<td><a href="javascript:popBookshelf('03');">0</a></td>
+
+
+										<c:forEach var="dto4" items="${list2 }">
+											<c:choose>
+												<c:when test="${dto4.warehouseName eq '인터넷'}">
+													<td>${dto4.quantity }</td>
+												</c:when>
+												<c:otherwise>
+													<td>0</td>
+												</c:otherwise>
+											</c:choose>
+
+											<c:choose>
+
+												<c:when test="${dto4.warehouseName eq '강남'}">
+													<td>${dto4.quantity }</td>
+												</c:when>
+												<c:otherwise>
+													<td>0</td>
+												</c:otherwise>
+											</c:choose>
+
+											<c:choose>
+												<c:when test="${dto4.warehouseName eq '부산'}">
+													<td>${dto4.quantity }</td>
+												</c:when>
+												<c:otherwise>
+													<td>0</td>
+												</c:otherwise>
+											</c:choose>
+										</c:forEach>
 									</tr>
 									<tr>
 										<th>롯데<br>스타시티점
@@ -285,9 +317,35 @@ i {
 										<th>신림역점</th>
 									</tr>
 									<tr>
-										<td><a href="javascript:popBookshelf('15');">26</a></td>
-										<td><a href="javascript:popBookshelf('09');">16</a></td>
-										<td><a href="javascript:popBookshelf('17');">17</a></td>
+										<c:forEach var="dto4" items="${list2 }">
+											<c:choose>
+												<c:when test="${dto4.warehouseName eq '스타시티'}">
+													<td>${dto4.quantity }</td>
+												</c:when>
+												<c:otherwise>
+													<td>0</td>
+												</c:otherwise>
+											</c:choose>
+
+											<c:choose>
+
+												<c:when test="${dto4.warehouseName eq '월드몰'}">
+													<td>${dto4.quantity }</td>
+												</c:when>
+												<c:otherwise>
+													<td>0</td>
+												</c:otherwise>
+											</c:choose>
+
+											<c:choose>
+												<c:when test="${dto4.warehouseName eq '신림역'}">
+													<td>${dto4.quantity }</td>
+												</c:when>
+												<c:otherwise>
+													<td>0</td>
+												</c:otherwise>
+											</c:choose>
+										</c:forEach>
 									</tr>
 									<tr>
 										<th>사당역점</th>
@@ -296,9 +354,35 @@ i {
 										</th>
 									</tr>
 									<tr>
-										<td><a href="javascript:popBookshelf('14');">20</a></td>
-										<td><a href="javascript:popBookshelf('21');">1</a></td>
-										<td><a href="javascript:popBookshelf('04');">19</a></td>
+										<c:forEach var="dto4" items="${list2 }">
+											<c:choose>
+												<c:when test="${dto4.warehouseName eq '사당역'}">
+													<td>${dto4.quantity }</td>
+												</c:when>
+												<c:otherwise>
+													<td>0</td>
+												</c:otherwise>
+											</c:choose>
+
+											<c:choose>
+
+												<c:when test="${dto4.warehouseName eq '목동'}">
+													<td>${dto4.quantity }</td>
+												</c:when>
+												<c:otherwise>
+													<td>0</td>
+												</c:otherwise>
+											</c:choose>
+
+											<c:choose>
+												<c:when test="${dto4.warehouseName eq '수원'}">
+													<td>${dto4.quantity }</td>
+												</c:when>
+												<c:otherwise>
+													<td>0</td>
+												</c:otherwise>
+											</c:choose>
+										</c:forEach>
 									</tr>
 									<tr>
 										<th>대구<br>신세계점
@@ -309,9 +393,35 @@ i {
 										</th>
 									</tr>
 									<tr>
-										<td><a href="javascript:popBookshelf('37');">19</a></td>
-										<td><a href="javascript:popBookshelf('19');">1</a></td>
-										<td><a href="javascript:popBookshelf('36');">10</a></td>
+										<c:forEach var="dto4" items="${list2 }">
+											<c:choose>
+												<c:when test="${dto4.warehouseName eq '대구'}">
+													<td>${dto4.quantity }</td>
+												</c:when>
+												<c:otherwise>
+													<td>0</td>
+												</c:otherwise>
+											</c:choose>
+
+											<c:choose>
+
+												<c:when test="${dto4.warehouseName eq '울산'}">
+													<td>${dto4.quantity }</td>
+												</c:when>
+												<c:otherwise>
+													<td>0</td>
+												</c:otherwise>
+											</c:choose>
+
+											<c:choose>
+												<c:when test="${dto4.warehouseName eq '김해'}">
+													<td>${dto4.quantity }</td>
+												</c:when>
+												<c:otherwise>
+													<td>0</td>
+												</c:otherwise>
+											</c:choose>
+										</c:forEach>
 									</tr>
 									<tr>
 										<th>롯데피트인<br>산본점
@@ -321,9 +431,28 @@ i {
 										<th></th>
 									</tr>
 									<tr>
-										<td><a href="javascript:popBookshelf('38');">10</a></td>
-										<td><a href="javascript:popBookshelf('39');">0</a></td>
-										<td></td>
+										<c:forEach var="dto4" items="${list2 }">
+											<c:choose>
+												<c:when test="${dto4.warehouseName eq '산본'}">
+													<td>${dto4.quantity }</td>
+												</c:when>
+												<c:otherwise>
+													<td>0</td>
+												</c:otherwise>
+											</c:choose>
+
+											<c:choose>
+
+												<c:when test="${dto4.warehouseName eq '여의도'}">
+													<td>${dto4.quantity }</td>
+												</c:when>
+												<c:otherwise>
+													<td>0</td>
+												</c:otherwise>
+											</c:choose>
+
+											<td></td>
+										</c:forEach>
 									</tr>
 								</tbody>
 							</table>
@@ -392,7 +521,7 @@ i {
 
 						<div class="group_inside" style="padding: 0px;">
 							<ul style="height: 13px;">
-								<li>${dto2.authorname } 저</li>
+								<li>${dto2.authorname }저</li>
 
 
 								<li>${dto.publisher }</li>
@@ -414,7 +543,9 @@ i {
 										<span>정가</span>
 									</div>
 									<div class="tbl_right">
-										<span class="list_price"><fmt:formatNumber value ="${dto.bookPrice }" type="number"></fmt:formatNumber> 원</span>
+										<span class="list_price"><fmt:formatNumber
+												value="${dto.bookPrice }" type="number"></fmt:formatNumber>
+											원</span>
 									</div>
 								</li>
 
@@ -424,14 +555,15 @@ i {
 										<span>판매가</span>
 									</div>
 									<div class="tbl_right" style="">
-										<span class="sale_price"> <fmt:formatNumber value ="${dto.bookPrice * 0.9 }" type = "number"></fmt:formatNumber>   <span>원</span></span> 
-										<span class="point_red">[10% 할인]</span>
+										<span class="sale_price"> <fmt:formatNumber
+												value="${dto.bookPrice * 0.9 }" type="number"></fmt:formatNumber>
+											<span>원</span></span> <span class="point_red">[10% 할인]</span>
 
 									</div>
 								</li>
 
 
-								
+
 
 								<li>
 									<div class="tbl_left mt3">
@@ -573,10 +705,11 @@ i {
 										<span>적립금</span>
 									</div>
 									<div class="tbl_right">
-										<span class="save_price"><fmt:formatNumber value ="${dto.bookPrice * 0.05 }" type="number"></fmt:formatNumber> <span>원 적립</span></span> <span
-											class="sub_info">[5%P]</span> <span class="ml5 lspM">-
-											5만원이상 구매시 2천원 / 멤버십 최대3% <strong>추가적립</strong> <a
-											href="javascript:popLayer('addPoint')"><span
+										<span class="save_price"><fmt:formatNumber
+												value="${dto.bookPrice * 0.05 }" type="number"></fmt:formatNumber>
+											<span>원 적립</span></span> <span class="sub_info">[5%P]</span> <span
+											class="ml5 lspM">- 5만원이상 구매시 2천원 / 멤버십 최대3% <strong>추가적립</strong>
+											<a href="javascript:popLayer('addPoint')"><span
 												class="sp_btn help">?</span></a>
 										</span>
 										<div style="margin: 7px 0 0 122px">
@@ -634,7 +767,7 @@ i {
 										</div>
 									</div>
 								</li>
-								
+
 							</ul>
 						</div>
 
@@ -1044,8 +1177,8 @@ i {
 							<div class="medium_ratings">
 								<span style="width: 93%"></span>
 							</div>
-							<span class="medium_ratings_num"> 리뷰평점 평균 <span class="ml10">리뷰[${reviewNum}]
-									간단평[<strong>간단평개수</strong>] 
+							<span class="medium_ratings_num"> 리뷰평점 평균 <span
+								class="ml10">리뷰[${reviewNum}] 간단평[<strong>간단평개수</strong>]
 							</span>
 							</span> <a href="#sub02" class="btn_w_comm btype_a4">참여하기</a>
 						</div>
@@ -1071,7 +1204,7 @@ i {
 
 				<div class="inner_merge">
 					<div class="row_item">
-						
+
 						<div class="section_center">
 							<h4 class="txt_title">이 분야의 베스트셀러</h4>
 
@@ -1426,14 +1559,15 @@ i {
 							<div class="group_profile">
 								<div class="txt_profile_left mt10">
 									<span class="author_name"> <a
-										href="/front/author/authorProfile.do?authorSeq=8840">${dto2.authorname }</a> <span>(1952)</span>
+										href="/front/author/authorProfile.do?authorSeq=8840">${dto2.authorname }</a>
+										<span>(1952)</span>
 									</span>
 									<ul>
 										<li>구분 : 저서</li>
 										<li>국적 : ${dto2.nationality }</li>
 										<li>분류 : ${dto2.category }</li>
-										
-						
+
+
 									</ul>
 								</div>
 								<div class="txt_profile_right mt10">
@@ -1460,9 +1594,7 @@ i {
 								</div>
 								<div class="txt_profile_marge">
 									<p></p>
-									<p>
-										${dto2.introduction }
-									</p>
+									<p>${dto2.introduction }</p>
 									<p>&nbsp;</p>
 									<p></p>
 								</div>
@@ -1487,9 +1619,7 @@ i {
 							<h3 class="txt_title">책 속에서</h3>
 						</div>
 						<div class="box_contents">
-							<div class="group_txt">
-								${dto.introduction }
-							</div>
+							<div class="group_txt">${dto.introduction }</div>
 						</div>
 					</div>
 					<!-- //책 속에서 -->
@@ -1504,9 +1634,8 @@ i {
 						<div class="box_contents">
 							<div class="group_txt">
 
-								${dto.tableOfContents }
-								<span id="dots2">...</span> <span id="more2"> 이하 생략 
-								</span>
+								${dto.tableOfContents } <span id="dots2">...</span> <span
+									id="more2"> 이하 생략 </span>
 
 							</div>
 							<div id="bookDescBtn" class="pr20">
@@ -1540,7 +1669,7 @@ i {
 						src="http://image.bandinlunis.com/upload/design/bn/2017/01/bandipoint_info.jpg"
 						usemap="#bandipoint_info">
 				</div>
-				
+
 
 
 				<!-- 리뷰 -->
@@ -1571,14 +1700,12 @@ i {
 									</tr>
 								</tbody>
 							</table>
-							<div class="al_center mt10">
-								
-							</div>
+							<div class="al_center mt10"></div>
 							<h4 class="mt20">반딧불이란?</h4>
 							<div class="t_11gr mt5" style="line-height: 140%">반디앤루니스에서
 								메일 구독, 간단평/서평 작성, 공감하기 등 책과 관련된 컨텐츠 활동을 하는 모든 회원님께 드리는 특별 포인트
 								입니다. 반딧불은 10개부터 적립금으로 환전하여 현금처럼 사용할 수 있습니다.</div>
-							
+
 						</div>
 						<p class="btnClose">
 							<img
@@ -1587,23 +1714,22 @@ i {
 								onclick="javascript:popHidden('reviewInfo')">
 						</p>
 					</div>
-				
-					<iframe style="overflow: auto;"
-					id="blogReview" 
-						src="<%=cp%>/book_review.action?isbn=${isbn }"
-						width="100%"  height="600px" class="iframe_review" frameborder="0"
-						scrolling="no" ></iframe>
-					
-				
-					
-					
+
+					<iframe style="overflow: auto;" id="blogReview"
+						src="<%=cp%>/book_review.action?isbn=${isbn }" width="100%"
+						height="600px" class="iframe_review" frameborder="0"
+						scrolling="no"></iframe>
+
+
+
+
 				</div>
 				<!-- //리뷰 -->
 
 				<!-- 간단평 -->
 				<!-- 			src="/front/product/iframeSimpleReview.do?prodId=4189934" -->
 				<iframe id="simpleReview" width="100%" class="iframe_review"
-					src ="<%=cp %>/book_simpleReview.action?isbn=${isbn}"
+					src="<%=cp %>/book_simpleReview.action?isbn=${isbn}"
 					style="margin-left: 0" frameborder="0" scrolling="no" height="422"></iframe>
 				<!-- //간단평 -->
 
@@ -1701,16 +1827,12 @@ i {
 				</div>
 				<!--// 반품/교환 -->
 			</div>
-			<br />
-			<br />
-			<br />
-			<br />
-			<br />
-			<br />
-			<br />
-			
+			<br /> <br /> <br /> <br />
+		</div>
 	</div>
-
+	
+	<!-- footer -->
+	<jsp:include page="../common/footer.jsp" flush="false" />
 
 </body>
 </html>

@@ -20,6 +20,10 @@
 	function goReview(Val) {
 		location.href = '<%=cp%>/book_review.action?isbn=' + Val;
 	}
+	
+	function reviewVote(Val){
+		location.href ='<%=cp%>/book_review_vote.action?reviewId=' + Val;
+	}
 </script>
 
 </head>
@@ -56,7 +60,7 @@
 							<li class="contents" style="LINE-HEIGHT: 20px;">
 								
 								<p class="info mb15">
-									<span class="t_11br3 ">조회: <strong>${dto.hitCount }</strong></span>
+									<span class="t_11br3 ">조회: <strong>${dto.hitCount +1}</strong></span>
 									| <span class="t_11br3 ">공감: <strong>${dto.thumbup }</strong></span>
 									| <span class="t_11br3 ">작성일: ${dto.created }</span>
 								</p>
@@ -78,10 +82,12 @@
 
 						<!-- btn area -->
 						<div class="btnA">
-							<span class="ilike"><button onclick="reviewVote('0')"
+							<span class="ilike">
+							<input type="hidden" value ="${isbn }" name ="isbn" >
+							<button onclick="reviewVote(${dto.reviewId})"
 									class="btn_ilike 0">
 									<span>공감하기</span>
-								</button> <span class="ilike_count">0</span></span>
+								</button> <span class="ilike_count">${dto.thumbup }</span></span>
 
 						</div>
 
