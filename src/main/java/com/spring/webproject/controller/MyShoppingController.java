@@ -19,6 +19,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import com.spring.webproject.dao.LoginDAO;
 import com.spring.webproject.dao.MyShoppingDAO;
 import com.spring.webproject.dto.MainDTO;
+import com.spring.webproject.dto.MyReviewDTO;
 import com.spring.webproject.dto.OrderDetailDTO;
 import com.spring.webproject.dto.OrderListDTO;
 import com.spring.webproject.dto.PointDTO;
@@ -66,7 +67,7 @@ public class MyShoppingController {
 		List<OrderListDTO> orderList = dao.getOrderList(hMap);
 		request.setAttribute("orderList", orderList);
 		hMap.clear();
-		
+
 		//최근본 상품
 		start = 1;
 		end = 4;
@@ -76,7 +77,7 @@ public class MyShoppingController {
 		List<MainDTO> recentList = dao.LatesBooksList(hMap);
 		request.setAttribute("recentList", recentList);
 		hMap.clear();
-		
+
 
 		return "myShopping/myShoppingMain";
 	}
@@ -708,6 +709,9 @@ public class MyShoppingController {
 
 		dao.deleteLatesBooks(delList, userId);
 
+		int recentCount = dao.getRecentCount(userId);
+		request.getSession().setAttribute("recentCount", recentCount);
+
 		return "redirect:/myShopping/myLatesBooksList.action";	
 	}
 
@@ -721,13 +725,16 @@ public class MyShoppingController {
 	//위시리스트 가져오기
 	@RequestMapping(value = "myShopping/getWishList.action", method = RequestMethod.GET)
 	public String getWishList(HttpServletRequest request) {
-		
-		
-		
-		
-		
-		
-		
+
+		UserDTO dto = (UserDTO) request.getSession().getAttribute("userInfo");
+		String userId = dto.getUserId();
+
+
+
+
+
+
+
 
 		return "myShopping/myWishList";
 	}
@@ -741,9 +748,75 @@ public class MyShoppingController {
 	@RequestMapping(value = "myShopping/myReviewList.action", method = RequestMethod.GET)
 	public String myReviewList(HttpServletRequest request) {
 
+		UserDTO dto = (UserDTO) request.getSession().getAttribute("userInfo");
+		String userId = dto.getUserId();
+
+		int reviewCount = dao.myReviewCount(userId);
+
+		request.setAttribute("reviewCount", reviewCount);
+
 		return "myShopping/myReviewList";
 	}
 
+	//리뷰가 있는 책 리스트 가져오기
+	@RequestMapping(value = "myShopping/getReviewList.action", method = RequestMethod.POST)
+	public String getReviewList(HttpServletRequest request) {
+
+		UserDTO dto = (UserDTO) request.getSession().getAttribute("userInfo");
+		String userId = dto.getUserId();
+		String pageNum = request.getParameter("pageNum");
+		String mode = request.getParameter("mode");
+
+		if(mode==null || mode.equals("")) {
+			mode = "myReviewDefault";
+		}
+
+		//한 페이지당 출력 건수
+		int numPerPage = 12;
+		//전체 페이징 페이지
+		int totalPage = 0;
+		//전체 출력 건수
+		int totalDataCount = 0;
+
+		//현재 페이지
+		int currentPage = 1;
+		if(pageNum!=null && pageNum!="") {
+			currentPage = Integer.parseInt(pageNum);
+		}
+		else {
+			pageNum = "1";
+		}
+
+		//전체 출력 건수 가져오기
+		totalDataCount = dao.myReviewCount(userId);
+
+		int start = (currentPage-1) * numPerPage + 1;
+		int end = currentPage * numPerPage;
+
+		Map<String, Object> hMap = new HashMap<String, Object>();
+		hMap.put("start", start);
+		hMap.put("end", end);
+		hMap.put("userId", userId);
+
+		List<MyReviewDTO> lists = dao.myReviewList(hMap);
+
+		request.setAttribute("lists", lists);
+
+		//출력 건수가 0이 아니면 페이징 작업
+		if(totalDataCount!=0) {
+			totalPage = ajaxPaging.getPageCount(numPerPage, totalDataCount);
+		}
+
+		String pageIndexList = ajaxPaging.pageIndexList(currentPage, totalPage, mode);
+		request.setAttribute("pageIndexList", pageIndexList);	
+
+
+
+		return "myShopping/lists/lists_myReview";
+	}
+
+
+	//리뷰를 기다리는 책 페이지
 	@RequestMapping(value = "myShopping/readyReviewList.action", method = RequestMethod.GET)
 	public String readyReviewList(HttpServletRequest request) {
 

@@ -763,6 +763,33 @@ function getLatesBooksList(pageNum, mode){
 	
 }
 
+//리뷰가 있는 책 리스트
+function getMyReviewList(pageNum, mode){
+	
+	var params = 'pageNum=' + pageNum;
+	
+	if(mode!=''){
+		params += '&mode=' + mode;
+	}
+
+	jQuery.ajax({
+		url:"getReviewList.action",
+		data:params,
+		type:"POST",
+		success:function(data){
+			$('#myReviewList').html(data);	
+		},
+		error:function(e){
+			alert(e.responseText);
+		}	
+	});
+	
+}
+
+
+
+
+
 //주문 조회 isbn or 책이름 입력 유효성 검사
 function checkValue(){
 	if(!$('#orderListSearchValue').val()){

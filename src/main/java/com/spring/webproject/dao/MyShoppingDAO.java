@@ -8,6 +8,7 @@ import java.util.Map;
 import org.mybatis.spring.SqlSessionTemplate;
 
 import com.spring.webproject.dto.MainDTO;
+import com.spring.webproject.dto.MyReviewDTO;
 import com.spring.webproject.dto.OrderDetailDTO;
 import com.spring.webproject.dto.OrderListDTO;
 import com.spring.webproject.dto.PointDTO;
@@ -309,6 +310,20 @@ public class MyShoppingDAO {
 		}
 		
 	}
+	
+	public int myReviewCount(String userId) {
+		
+		return sessionTemplate.selectOne("myShopping.myReviewCount",userId);
+				
+	}
+	
+	public List<MyReviewDTO> myReviewList(Map<String, Object> map){
+		
+		List<MyReviewDTO> lists = sessionTemplate.selectList("myShopping.myReviewList",map);
+		
+		return lists;
+	}
+	
 	
 	
 

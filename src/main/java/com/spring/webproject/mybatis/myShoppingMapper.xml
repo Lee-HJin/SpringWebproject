@@ -220,4 +220,16 @@ select * from (select rownum rnum, a.isbn,booktitle, authorName, publisher, book
 delete recentList where userId=#{userId} and isbn=#{isbn}
 </delete>
 
+<!-- 리뷰가 있는 책 count -->
+<select id="myReviewCount" parameterType="java.lang.String"  resultType="int">
+select nvl(count(*),0) from review where userId=#{userId} and reviewTitle is not null
+</select>
+
+<!-- 리뷰가 있는 책 가져오기 -->
+<select id="myReviewList" parameterType="map" resultType="com.spring.webproject.dto.MyReviewDTO">
+select * from (select rownum rnum,a.*, bookTitle,authorName,publisher,publishDate,bookImage from (select a.isbn,a.reviewId,reviewTitle,created,contents,hitCount, thumbup from 
+(select isbn,reviewId,userId,reviewTitle,created,contents,hitCount from review where userId=#{userId} order by created desc) a left join (select reviewid, nvl(count(thumbup),0) as thumbup  from thumbup group by reviewId)b on a.reviewId=b.reviewId) a,
+booksections where a.isbn=booksections.isbn) <![CDATA[where rnum>=#{start} and rnum<=#{end}]]>
+</select>
+
 </mapper>

@@ -128,7 +128,7 @@ a:hover {text-decoration: underline; color: #886e45;}
 	
 .on {display: block;}
 
-.sentence_list_box {border-top: 3px solid #e1e1e1; margin-top: 10px; padding: 10px;}
+.sentence_list_box {margin-top: 10px; padding: 10px; border-bottom: 3px solid #e1e1e1; border-top: 3px solid #e1e1e1;}
 .sentence_list_box ul {width: 740px; list-style: none; vertical-align: top;}
 .sentence_list_box li {position: relative; overflow: hidden; border-bottom: 1px solid #e1e1e1; padding-bottom: 10px; padding-top: 10px;}
 .sentence_head {float: left;}
