@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.spring.webproject.dao.MainDAO;
 import com.spring.webproject.dto.MainDTO;
+import com.spring.webproject.dto.StoreDTO;
 import com.spring.webproject.util.MyUtil;
 
 @Controller
@@ -120,7 +121,30 @@ public class MainController {
 		return "main/todayView";
 	}
 	
+	@RequestMapping(value="/imbook.action",method= {RequestMethod.GET,RequestMethod.POST})
+	public String imBook() {
+		
+		return "main/imBook";
+	}
 	
+	@RequestMapping(value="/readbnl.action",method= {RequestMethod.GET,RequestMethod.POST})
+	public String readBnl() {
+		
+		return "main/readBnl";
+	}
+	
+	@RequestMapping(value="/storeinfo.action",method= {RequestMethod.GET,RequestMethod.POST})
+	public String storeInfo(HttpServletRequest req) {
+		
+		int warehouseId = Integer.parseInt(req.getParameter("params"));
+		
+		StoreDTO dto= new StoreDTO();
+		
+		dto = dao.storeInfo(warehouseId);
+		
+		req.setAttribute("dto", dto);
+		return "main/storeInfo";
+	}
 	
 	@RequestMapping(value="/store.action",method= {RequestMethod.GET,RequestMethod.POST})
 	public String store() {

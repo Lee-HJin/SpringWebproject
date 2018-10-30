@@ -30,7 +30,7 @@
     if (newURL == '/webproject/main.action') {
         scrollHeight = 924;
        } else {
-  	  	scrollHeight = 500;
+  	  	scrollHeight = 540;
     } 
 
 
@@ -179,8 +179,11 @@
 </div>
 <div id="side_service" style="top: 554px;">
 	<div class="today_view" id="side_today_nodata" style="display: none;">
-		<div>
-			최근 본 상품이 없습니다.
+		<h4>최근 본 상품</h4>
+		<div style="width: 92px;margin: 0 auto;overflow: hidden;">
+			<div class="nodata">
+				최근 본 상품이<br>없습니다.
+			</div>
 		</div>
 	</div>
 	<div class="today_view" id="side_today_view" style="display: block;"></div>

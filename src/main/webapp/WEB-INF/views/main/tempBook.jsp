@@ -46,7 +46,6 @@
 			var itemArray=items.split('/');
 			
 			if(itemArray.indexOf(cValue)!=-1){//중복시 기존 제거 후 맨앞으로 가져옴
-				alert("중복");
 				var idx = itemArray.findIndex(function(item) {
 					return item === cValue;
 				});		
@@ -59,7 +58,6 @@
 				setCookie('book',items,1);
 				
 			}else{
-				alert("들어감");
 				itemArray.unshift(cValue);
 				if(itemArray.length>maxItemNum){
 					itemArray.length=10;}	
