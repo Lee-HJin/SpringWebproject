@@ -13,7 +13,7 @@
 
 </head>
 <body>
-<div class="f_margin"></div>
+<!-- <div class="f_margin"></div> -->
 <div class="footer" style="width: 1100px;">
 	<div class="copyright" style="width: 1100px;">
 		<div class="f_menu" style="width: 1100px;">
@@ -22,18 +22,33 @@
 					<a href="javascript://">회사소개</a>
 				</li>
 				<li>
-					<a href="javascript://">이용약관</a>
+					<a href="<%=cp%>/main.action">채용정보</a>
 				</li>
 				<li>
-					<a href="javascript://" 
+					<a href="<%=cp%>/main.action">이용약관</a>
+				</li>
+				<li>
+					<a href="<%=cp%>/main.action" 
 					style="color: #7B5A2B; font-weight: bold;">개인정보 처리방침</a>
+				</li>
+				<li>
+					<a href="<%=cp%>/main.action">출판사를위한안내</a>
+				</li>
+				<li>
+					<a href="<%=cp%>/main.action">광고안내</a>
+				</li>
+				<li>
+					<a href="<%=cp%>/main.action">SCM</a>
+				</li>
+				<li>
+					<a href="<%=cp%>/main.action">제휴/입점문의</a>
 				</li>
 			</ul>
 			<div class="sns_btn">
-				<a href="javascript://">
+				<a href="https://www.instagram.com/bandinlunis_book/" target="_blank">
 					<button class="btn_inst"></button>
 				</a>
-				<a href="javascript://">
+				<a href="http://blog.naver.com/bandinbook" target="_blank">
 					<button class="btn_nb"></button>
 				</a>
 			</div>

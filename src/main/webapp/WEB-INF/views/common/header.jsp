@@ -33,6 +33,7 @@
   	  	scrollHeight = 500;
     } 
 
+
 	
 	$(function() {
 		$(window).scroll(function(){
@@ -52,7 +53,105 @@
 		$("#onTop").click(function(){
 			$('html, body').animate({scrollTop:0}, 350);
 		});
+		
+		var sck = cookieInfo(getCookie('book'));
+		var sData = document.getElementById("side_today_view");
+		var sNoData = document.getElementById("side_today_nodata");
+		
+		todaySView(sck);
+		
+   		if(sck!=null){
+   			sNoData.style.display = 'none';
+   			sData.style.display = 'block';
+		}else if(sck==null){
+			sNoData.style.display = 'block';
+			sData.style.display = 'none';
+		}
 	});
+	
+	
+	//오늘 본 상품
+	function todaySView(ck) {
+		if(ck==null){
+			return;
+		}else{
+			var shtml= '<h4>최근 본 상품</h4>';
+			shtml+= '<div class="swiper-container side_swiper">';
+			shtml+= '	<ul class="swiper-wrapper">';
+
+			for(var i=0;i<ck.length;i++){
+				if(i==0||i%2==0){
+					shtml+= '<li class="swiper-slide">';
+				}
+				shtml+= '	<div class="tv_item">';
+				shtml+= '		<a href="<%=cp%>/tempbook.action?isbn='+ ck[i].isbn +'">';
+				shtml+= '			<img src="<%=cp%>/resources/image/book/'+ck[i].bookImage+'">';
+				shtml+= '		</a>';
+				shtml+= '	</div>';
+				if(i==1||i%2==1){
+					shtml+= '</li>';
+				}	
+			}		
+			shtml+= '</ul></div>';
+			shtml+= '<div class="aw_box_tv">';
+			shtml+= '	<button class="tv_aw left" id="tv_awl"></button>';
+			shtml+= '	<span class="tv_aw_count"></span>';
+			shtml+= '	<button class="tv_aw right" id="tv_awr"></button>';
+			shtml+= '</div>';
+			
+			$("#side_today_view").html(shtml);	
+		}
+		
+		var swiper = new Swiper('.side_swiper', {
+			spaceBetween: 0,
+			centeredSlides: true,
+			simulateTouch : false,
+			loop: true,
+			pagination: {
+				el: '.tv_aw_count',
+				type: 'fraction',
+			},
+			navigation: {
+				nextEl: '#tv_awr',
+				prevEl: '#tv_awl',
+			},
+		});
+	}		
+	
+	//쿠키 가져오기
+	function getCookie(cookiename){
+		var cookiestring  = document.cookie;
+		var cookiearray = cookiestring.split(';');
+		for(var i=0; i<cookiearray.length; ++i){ 
+		    if(cookiearray[i].indexOf(cookiename)!=-1){
+		        var nameVal = cookiearray[i].split("=");
+		        nameVal = nameVal[1].trim();
+		        
+		        return unescape(nameVal);
+		    }else{
+		    	var cookie = null;
+		    } 
+		}
+		return cookie;
+	}
+ 	
+	//쿠키 뿌리기
+	function cookieInfo(cValue) {		
+ 		var cookie = cValue;
+ 		
+ 		if(cookie!=null){
+ 			cookie = cookie.split("/");
+ 	 		var ck = new Array();
+ 	 		
+ 	 		for(i=0;i<cookie.length;i++){
+ 	 			ck[i] = JSON.parse(cookie[i]);
+ 	 		} 		
+ 	 		return ck;
+ 		}else{
+ 			return null;
+ 		}
+	}
+
 </script>
 
 <link rel="stylesheet" href="<%=cp%>/resources/css/swiper_min.css">
@@ -79,42 +178,12 @@
 	</div>
 </div>
 <div id="side_service" style="top: 554px;">
-	<div class="today_view">
-		<h4>최근 본 상품</h4>
-		<div class="swiper-container side_swiper">
-			<div class="swiper-wrapper">
-				<ul class="swiper-slide">
-					<li class="tv_item">
-						<a href="javascript://">
-							<img src="">
-						</a>
-					</li>
-					<li class="tv_item">
-						<a href="javascript://">
-							<img src="">
-						</a>
-					</li>
-				</ul>
-				<ul class="swiper-slide">
-					<li class="tv_item">
-						<a href="javascript://">
-							<img src="">
-						</a>
-					</li>
-					<li class="tv_item">
-						<a href="javascript://">
-							<img src="">
-						</a>
-					</li>
-				</ul>
-			</div>
-		</div>
-		<div class="aw_box_tv">
-			<button class="tv_aw left" id="tv_awl"></button>
-			<span class="tv_aw_count"></span>
-			<button class="tv_aw right" id="tv_awr"></button>
+	<div class="today_view" id="side_today_nodata" style="display: none;">
+		<div>
+			최근 본 상품이 없습니다.
 		</div>
 	</div>
+	<div class="today_view" id="side_today_view" style="display: block;"></div>
 	<div class="ss_myshop">
 		<a href="javascript://">
 			나의 쇼핑
@@ -466,7 +535,7 @@
 </div>
 
 	<script src="<%=cp%>/resources/js/swiper_min.js"></script>
-	<script src="<%=cp%>/resources/js/main.js"></script>
+	<script src="<%=cp%>/resources/js/swiper.js"></script>
 	
 </body>
 	
