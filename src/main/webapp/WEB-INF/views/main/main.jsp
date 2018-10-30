@@ -97,7 +97,7 @@
 		
 	//기대신간 전체
 	function newBookAll() {
-		
+		$("#first_born").addClass('active');
 		var url = "<%=cp%>/newbookall.action";
 		
 		$.post(url,function(args){
@@ -512,7 +512,7 @@
 		<div class="new_book">
 			<h3 class="nb_title"></h3>
 			<ul class="nb_tab_menu">
-				<li>
+				<li id="first_born">
 					<a href="#" onclick="newBookAll();return false;">전체</a>
 				</li>
 				<li>

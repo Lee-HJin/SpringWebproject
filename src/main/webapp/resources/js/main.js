@@ -17,7 +17,6 @@ $(function() {
 	var noData = document.getElementById("no_data");
 	
 	var ck = cookieInfo(getCookie('book'));
-		alert(ck);
 		todayView(ck); 
  
    		if($('.swiper-slide-active #isbn').val()!=null){

@@ -92,7 +92,7 @@
     text-align: center;
     text-decoration: none;
 }
-.storeMenu li a:hover, .storeInfoMenu li a.on{
+.storeMenu li a:hover, .storeMenu li a.on{
 	background:#2977cf;
 	border:1px solid #2977cf;
 	font-weight:bolder;
@@ -110,6 +110,7 @@
     padding: 0;
     background: 0 none;
     font: bold 12px 돋움;
+    color: #7B5A2B;
 }
 .detail{
     width: 100%;
@@ -154,13 +155,10 @@
     line-height: 1.5em;
     background: url(/webproject/resources/image/main/notice_icon01.gif) no-repeat 0 6px;
 }
-.map{
+ .map{
     width: 685px !important;
     margin-top: 10px;
 }
-
-
-
 
 
 * {margin:0; padding:0;}

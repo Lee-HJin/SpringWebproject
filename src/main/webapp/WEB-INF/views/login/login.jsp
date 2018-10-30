@@ -73,7 +73,7 @@
 <jsp:include page="../common/footer.jsp" flush="false"/>
 
 	<script src="<%=cp%>/resources/js/swiper_min.js"></script>
-	<script src="<%=cp%>/resources/js/main.js"></script>
+	<script src="<%=cp%>/resources/js/swiper.js"></script>
 
 </body>
 </html>
