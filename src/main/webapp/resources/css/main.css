@@ -871,9 +871,7 @@ body{font-size: 12px;
 }
 
 .nb_list1 .swiper-wrapper{
-	width: 5490px;
     height: 350px;
-    transform: translate3d(-1098px, 0px, 0px);
     transition-duration: 0s;
 }
 

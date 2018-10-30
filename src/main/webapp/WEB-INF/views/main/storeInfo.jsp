@@ -37,28 +37,32 @@
 		<img alt="찾아오시는 길" src="<%=cp %>/resources/image/main/txt_findmap.gif">
 	</dt>
 	<dd>
-		<strong class="way_title">지하철이용시</strong>
-		<p class="way_content">${dto.waySub }</p>
-		<strong class="way_title">버스 이용시</strong>
-		<ul class="way_content">
-			<li class="wc_list">
-				${dto.wayBus }
-			</li>
-		</ul>
+		<c:if test="${dto.warehouseId==13 }">
+			<strong class="way_title">시내버스</strong>
+			<p class="way_content">${dto.waySub }</p>
+			<strong class="way_title">좌석버스</strong>
+			<p class="way_content">${dto.wayBus }</p>
+		</c:if>
+		<c:if test="${dto.warehouseId!=13 }">
+			<strong class="way_title">지하철이용시</strong>
+			<p class="way_content">${dto.waySub }</p>
+			<strong class="way_title">버스 이용시</strong>
+			<ul class="way_content">
+				<li class="wc_list">
+					${dto.wayBus }
+				</li>
+			</ul>
+		</c:if>
 	</dd>
 	<dd class="map">
-
-		<!-- 1. 약도 노드 -->
-		<div id="daumRoughmapContainer1540836964077" class="root_daum_roughmap root_daum_roughmap_landing"></div>
+		<!-- 약도 노드 -->
+		<div id="daumRoughmapContainer${dto.timeStamp }" class="root_daum_roughmap root_daum_roughmap_landing"></div>
 		
-		<!-- 2. 설치 스크립트 -->
-		<script charset="UTF-8" class="daum_roughmap_loader_script" src="http://dmaps.daum.net/map_js_init/roughmapLoader.js"></script>
-		
-		<!-- 3. 실행 스크립트 -->
+		<!-- 실행 스크립트 -->
 		<script charset="UTF-8">
 			new daum.roughmap.Lander({
-				"timestamp" : "1540836964077",
-				"key" : "qmv8",
+				"timestamp" : "${dto.timeStamp}",
+				"key" : "${dto.key}",
 				"mapWidth" : "685",
 				"mapHeight" : "340"
 			}).render();

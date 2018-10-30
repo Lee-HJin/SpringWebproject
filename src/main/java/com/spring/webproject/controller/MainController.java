@@ -45,8 +45,6 @@ public class MainController {
 	public String recomm(HttpServletRequest req, HttpServletResponse resp) {
 		
 		String isbn = req.getParameter("isbn");
-	
-		System.out.println("CONTROLLER: " +isbn);
 		
 		List<MainDTO> lst = new ArrayList<MainDTO>();
 		
@@ -141,6 +139,12 @@ public class MainController {
 		StoreDTO dto= new StoreDTO();
 		
 		dto = dao.storeInfo(warehouseId);
+
+		dto.setIntro(dto.getIntro().replaceAll("\\\\", "<br>"));
+		dto.setTime(dto.getTime().replaceAll("\\\\", "<br>"));
+		dto.setWayBus(dto.getWayBus().replaceAll("\\\\", "<br>"));
+		dto.setWaySub(dto.getWaySub().replaceAll("\\\\", "<br>"));
+		
 		
 		req.setAttribute("dto", dto);
 		return "main/storeInfo";
