@@ -9,7 +9,7 @@
 	<c:forEach var="rc" items="${lst }">
 	<li>
 		<div class="rb_image">
-			<a href="javascript://">
+			<a href="<%=cp%>/tempbook.action?isbn=${rc.isbn}">
 				<img src="<%=cp%>/resources/image/book/${rc.bookImage}">
 			</a>
 			<dl class="rb_title">
