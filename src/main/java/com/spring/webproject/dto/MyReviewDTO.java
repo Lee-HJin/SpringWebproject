@@ -14,6 +14,7 @@ public class MyReviewDTO {
 	private String publisher;
 	private String publishDate;
 	private String bookImage;
+	private String sentence;
 	
 	public int getReviewId() {
 		return reviewId;
@@ -86,5 +87,11 @@ public class MyReviewDTO {
 	}
 	public void setBookImage(String bookImage) {
 		this.bookImage = bookImage;
+	}
+	public String getSentence() {
+		return sentence;
+	}
+	public void setSentence(String sentence) {
+		this.sentence = sentence;
 	}
 }

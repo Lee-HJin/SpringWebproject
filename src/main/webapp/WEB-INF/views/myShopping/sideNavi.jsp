@@ -41,8 +41,7 @@
 				<ul>
 					<li><a href="<%=cp%>/myShopping/myReviewList.action">리뷰가 있는 책</a></li>
 					<li><a href="<%=cp%>/myShopping/readyReviewList.action">리뷰를 기다리는 책</a></li>
-					<li><a href="<%=cp%>/myShopping/mySentenceList.action">간단평</a></li>
-					<li style="padding-bottom: 10px;"><a href="<%=cp%>/myShopping/myCommentList.action">덧글 관리</a></li>
+					<li style="padding-bottom: 10px;"><a href="<%=cp%>/myShopping/mySentenceList.action">간단평</a></li>
 				</ul>
 			</div>
 		</li>

@@ -73,5 +73,9 @@
 </c:if>
 
 <c:if test="${empty lists }">
-<div style="text-align: center; padding-top: 100px;">최근 본 상품이 없습니다.</div>
+<div style="text-align: center; padding-top: 100px;">${emptyMsg }</div>
 </c:if>
+
+
+
+<div style="text-align: center; padding-top: 100px;">${emptyMsg }</div>

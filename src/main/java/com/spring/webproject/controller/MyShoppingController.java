@@ -15,6 +15,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.spring.webproject.dao.LoginDAO;
 import com.spring.webproject.dao.MyShoppingDAO;
@@ -76,8 +77,10 @@ public class MyShoppingController {
 		hMap.put("userId", userId);
 		List<MainDTO> recentList = dao.LatesBooksList(hMap);
 		request.setAttribute("recentList", recentList);
-		hMap.clear();
 
+		//위시리스트
+		List<MainDTO> wishList = dao.getWishListDefault(hMap);
+		request.setAttribute("wishList", wishList);
 
 		return "myShopping/myShoppingMain";
 	}
@@ -687,12 +690,52 @@ public class MyShoppingController {
 		if(totalDataCount!=0) {
 			totalPage = ajaxPaging.getPageCount(numPerPage, totalDataCount);
 		}
+		else {
+			String emptyMsg = "최근 본 상품이 없습니다.";
+			request.setAttribute("emptyMsg", emptyMsg);
+		}
 
 		String pageIndexList = ajaxPaging.pageIndexList(currentPage, totalPage, mode);
 		request.setAttribute("pageIndexList", pageIndexList);
 
 		return "myShopping/lists/lists_LatesBooks";
 	}
+
+	//최근 본 상품 => 위시리스트로 이동
+	@ResponseBody
+	@RequestMapping(value = "myShopping/addWishList.action", method = RequestMethod.POST)
+	public boolean addWishList(HttpServletRequest request, @RequestParam(value="checkArray[]") List<String> checkList) {
+
+		UserDTO dto = (UserDTO) request.getSession().getAttribute("userInfo");
+		String userId = dto.getUserId();
+
+		List<String> goWish = new ArrayList<String>();
+
+		for(int i=0;i<checkList.size();i++) {
+			String isbn = checkList.get(i);
+
+			Map<String, Object> hMap = new HashMap<String, Object>();
+			hMap.put("userId", userId);
+			hMap.put("isbn", isbn);
+
+			//위시리스트 중복검사함
+			String result = dao.wishOverlapCheck(hMap);
+			if(result==null || result.equals("")) {
+				goWish.add(checkList.get(i));
+				hMap.clear();
+			}
+			else {
+				return false;
+			}
+
+		}
+
+		//위시리스트에 넣기
+		dao.addWishList(goWish, userId);
+
+		return true;
+	}
+
 
 	//최근 본 상품 삭제
 	@RequestMapping(value = "myShopping/deleteLatesBooks.action", method = RequestMethod.POST)
@@ -719,29 +762,115 @@ public class MyShoppingController {
 	@RequestMapping(value = "myShopping/myWishList.action", method = RequestMethod.GET)
 	public String myWishList(HttpServletRequest request) {
 
+		UserDTO dto = (UserDTO) request.getSession().getAttribute("userInfo");
+		String userId = dto.getUserId();
+		int wishCount = dao.getWishCount(userId);
+		request.setAttribute("wishCount",wishCount);
+
 		return "myShopping/myWishList";
 	}
 
 	//위시리스트 가져오기
-	@RequestMapping(value = "myShopping/getWishList.action", method = RequestMethod.GET)
+	@RequestMapping(value = "myShopping/getWishList.action", method = RequestMethod.POST)
 	public String getWishList(HttpServletRequest request) {
 
 		UserDTO dto = (UserDTO) request.getSession().getAttribute("userInfo");
 		String userId = dto.getUserId();
+		String pageNum = request.getParameter("pageNum");
+		String mode = request.getParameter("mode");
+
+		if(mode==null || mode.equals("")) {
+			mode = "wishDefault";
+		}
+
+		//한 페이지당 출력 건수
+		int numPerPage = 12;
+		//전체 페이징 페이지
+		int totalPage = 0;
+		//전체 출력 건수
+		int totalDataCount = 0;
+
+		//현재 페이지
+		int currentPage = 1;
+		if(pageNum!=null && pageNum!="") {
+			currentPage = Integer.parseInt(pageNum);
+		}
+		else {
+			pageNum = "1";
+		}
+
+		//전체 출력 건수 가져오기
+		totalDataCount = dao.getWishCount(userId);
+
+		int start = (currentPage-1) * numPerPage + 1;
+		int end = currentPage * numPerPage;
+
+		Map<String, Object> hMap = new HashMap<String, Object>();
+		hMap.put("start", start);
+		hMap.put("end", end);
+		hMap.put("userId", userId);
+
+		List<MainDTO> lists = new ArrayList<MainDTO>();
+		if(mode.equals("wishDefault")) {	//최근순
+			lists = dao.getWishListDefault(hMap);
+		}
+		else if(mode.equals("wishOldDate")) {	//오래된순
+			lists = dao.getWishListOld(hMap);
+		}
+		else if(mode.equals("wishName")) {	//상품명순
+			lists = dao.getWishListName(hMap);
+		}
+		else if(mode.equals("wishHighPrice")) {	//높은가격순
+			lists = dao.getWishListHighPrice(hMap);
+		}
+		else if(mode.equals("wishLowPrice")) {	//낮은가격순
+			lists = dao.getWishListLowPrice(hMap);
+		}
+		else if(mode.equals("wishBuy")) {	//구매한상품만
+			totalDataCount = dao.getWishBuyCount(userId);
+			lists = dao.getWishListBuy(hMap);
+		}
+		else {	//mode=wishNoBuy	//구매하지않은 상품만
+			totalDataCount = dao.getWishNoBuyCount(userId);
+			lists = dao.getWishListNoBuy(hMap);
+		}
+
+		request.setAttribute("lists", lists);
+
+		//출력 건수가 0이 아니면 페이징 작업
+		if(totalDataCount!=0) {
+			totalPage = ajaxPaging.getPageCount(numPerPage, totalDataCount);
+		}
+		else {
+			String emptyMsg = "위시리스트에 담긴 상품이 없습니다.";
+			request.setAttribute("emptyMsg", emptyMsg);
+		}
+
+		String pageIndexList = ajaxPaging.pageIndexList(currentPage, totalPage, mode);
+		request.setAttribute("pageIndexList", pageIndexList);
 
 
-
-
-
-
-
-
-		return "myShopping/myWishList";
+		return "myShopping/lists/lists_LatesBooks";
 	}
 
+	//위시리스트 삭제하기
+	@RequestMapping(value = "myShopping/deleteWish.action", method = RequestMethod.POST)
+	public String deleteWish(HttpServletRequest request, @RequestParam(value="checkArray[]") List<String> checkList) {
 
+		UserDTO dto = (UserDTO) request.getSession().getAttribute("userInfo");
+		String userId = dto.getUserId();
 
+		List<String> delList = new ArrayList<String>();
 
+		for(int i=0;i<checkList.size();i++) {
+			delList.add(checkList.get(i));
+		}
+
+		dao.deleteWish(delList, userId);
+
+		return "redirect:/myShopping/myWishList.action";
+
+	}
 
 
 	//리뷰가 있는 책 페이지
@@ -772,7 +901,7 @@ public class MyShoppingController {
 		}
 
 		//한 페이지당 출력 건수
-		int numPerPage = 12;
+		int numPerPage = 10;
 		//전체 페이징 페이지
 		int totalPage = 0;
 		//전체 출력 건수
@@ -810,9 +939,18 @@ public class MyShoppingController {
 		String pageIndexList = ajaxPaging.pageIndexList(currentPage, totalPage, mode);
 		request.setAttribute("pageIndexList", pageIndexList);	
 
-
-
 		return "myShopping/lists/lists_myReview";
+	}
+
+	//리뷰 삭제
+	@RequestMapping(value = "myShopping/deleteReview.action", method = RequestMethod.POST)
+	public String deleteReview(HttpServletRequest request) {
+
+		int reviewId = Integer.parseInt(request.getParameter("reviewId"));
+
+		dao.deleteReview(reviewId);
+
+		return "redirect:/myShopping/myReviewList.action";
 	}
 
 
@@ -883,6 +1021,61 @@ public class MyShoppingController {
 	public String mySentenceList(HttpServletRequest request) {
 
 		return "myShopping/mySentenceList";
+	}
+
+	//간단평 리스트 가져오기
+	@RequestMapping(value = "myShopping/getSentenceList.action", method = RequestMethod.POST)
+	public String getSentenceList(HttpServletRequest request) {
+
+		UserDTO dto = (UserDTO) request.getSession().getAttribute("userInfo");
+		String userId = dto.getUserId();
+		String pageNum = request.getParameter("pageNum");
+		String mode = request.getParameter("mode");
+
+		if(mode==null || mode.equals("")) {
+			mode = "sentence";
+		}
+
+		//한 페이지당 출력 건수
+		int numPerPage = 10;
+		//전체 페이징 페이지
+		int totalPage = 0;
+		//전체 출력 건수
+		int totalDataCount = 0;
+
+		//현재 페이지
+		int currentPage = 1;
+		if(pageNum!=null && pageNum!="") {
+			currentPage = Integer.parseInt(pageNum);
+		}
+		else {
+			pageNum = "1";
+		}
+
+		//전체 출력 건수 가져오기
+		totalDataCount = dao.sentenceCount(userId);
+
+		int start = (currentPage-1) * numPerPage + 1;
+		int end = currentPage * numPerPage;
+
+		Map<String, Object> hMap = new HashMap<String, Object>();
+		hMap.put("start", start);
+		hMap.put("end", end);
+		hMap.put("userId", userId);
+
+		List<MyReviewDTO> lists = dao.getSentenceList(hMap);
+
+		request.setAttribute("lists", lists);
+
+		//출력 건수가 0이 아니면 페이징 작업
+		if(totalDataCount!=0) {
+			totalPage = ajaxPaging.getPageCount(numPerPage, totalDataCount);
+		}
+
+		String pageIndexList = ajaxPaging.pageIndexList(currentPage, totalPage, mode);
+		request.setAttribute("pageIndexList", pageIndexList);		
+
+		return "myShopping/lists/lists_sentence";
 	}
 
 	//최근덧글 페이지

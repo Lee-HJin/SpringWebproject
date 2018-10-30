@@ -228,8 +228,93 @@ select nvl(count(*),0) from review where userId=#{userId} and reviewTitle is not
 <!-- 리뷰가 있는 책 가져오기 -->
 <select id="myReviewList" parameterType="map" resultType="com.spring.webproject.dto.MyReviewDTO">
 select * from (select rownum rnum,a.*, bookTitle,authorName,publisher,publishDate,bookImage from (select a.isbn,a.reviewId,reviewTitle,created,contents,hitCount, thumbup from 
-(select isbn,reviewId,userId,reviewTitle,created,contents,hitCount from review where userId=#{userId} order by created desc) a left join (select reviewid, nvl(count(thumbup),0) as thumbup  from thumbup group by reviewId)b on a.reviewId=b.reviewId) a,
+(select isbn,reviewId,userId,reviewTitle,created,contents,hitCount from review where userId=#{userId} and sentence is null order by created desc) a left join (select reviewid, nvl(count(thumbup),0) as thumbup  from thumbup group by reviewId)b on a.reviewId=b.reviewId) a,
 booksections where a.isbn=booksections.isbn) <![CDATA[where rnum>=#{start} and rnum<=#{end}]]>
 </select>
+
+<!-- 위시리스트 가져오기(Default : 최근순) -->
+<select id="getWishListDefault" parameterType="map" resultType="com.spring.webproject.dto.MainDTO">
+select * from (select rownum rnum, a.isbn,booktitle, authorName, publisher, bookimage, discountedPrice, discountRate,wishDate from (select isbn,wishDate from wishList where userId=#{userId}) a, booksections where a.isbn=booksections.isbn order by wishDate desc) <![CDATA[where rnum>=#{start} and rnum<=#{end}]]>
+</select>
+
+<!-- 위시리스트 가져오기(oldDate : 오래된순) -->
+<select id="getWishListOld" parameterType="map" resultType="com.spring.webproject.dto.MainDTO">
+select * from (select rownum rnum, a.isbn,booktitle, authorName, publisher, bookimage, discountedPrice, discountRate,wishDate from (select isbn,wishDate from wishList where userId=#{userId}) a, booksections where a.isbn=booksections.isbn order by wishDate) <![CDATA[where rnum>=#{start} and rnum<=#{end}]]>
+</select>
+
+<!-- 위시리스트 가져오기(Name : 상품명순) -->
+<select id="getWishListName" parameterType="map" resultType="com.spring.webproject.dto.MainDTO">
+select * from (select rownum rnum, a.isbn,booktitle, authorName, publisher, bookimage, discountedPrice, discountRate,wishDate from (select isbn,wishDate from wishList where userId=#{userId}) a, booksections where a.isbn=booksections.isbn order by bookTitle) <![CDATA[where rnum>=#{start} and rnum<=#{end}]]>
+</select>
+
+<!-- 위시리스트 가져오기(HighPrice : 높은가격순) -->
+<select id="getWishListHighPrice" parameterType="map" resultType="com.spring.webproject.dto.MainDTO">
+select * from (select rownum rnum, a.isbn,booktitle, authorName, publisher, bookimage, discountedPrice, discountRate,wishDate from (select isbn,wishDate from wishList where userId=#{userId}) a, booksections where a.isbn=booksections.isbn order by discountedprice desc) <![CDATA[where rnum>=#{start} and rnum<=#{end}]]>
+</select>
+
+<!-- 위시리스트 가져오기(LowPrice : 낮은가격순) -->
+<select id="getWishListLowPrice" parameterType="map" resultType="com.spring.webproject.dto.MainDTO">
+select * from (select rownum rnum, a.isbn,booktitle, authorName, publisher, bookimage, discountedPrice, discountRate,wishDate from (select isbn,wishDate from wishList where userId=#{userId}) a, booksections where a.isbn=booksections.isbn order by discountedprice) <![CDATA[where rnum>=#{start} and rnum<=#{end}]]>
+</select>
+
+<!-- 위시리스트 가져오기(Buy : 구매한 상품만) count -->
+<select id="getWishBuyCount" parameterType="java.lang.String" resultType="int">
+select nvl(count(*),0) from(select rownum rnum,c.isbn,authorname,booktitle,publisher,publishDate,bookimage,discountedPrice,discountRate from(
+select a.isbn from (select isbn from wishlist where userid=#{userId})a inner join (select distinct isbn from orderbooks inner join orders on orderbooks.orderid=orders.orderid where userid='4')b on a.isbn=b.isbn) c inner join booksections on c.isbn=booksections.isbn)
+</select>
+
+<!-- 위시리스트 가져오기(NoBuy : 구매하지 않은 상품만) count -->
+<select id="getWishNoBuyCount" parameterType="java.lang.String" resultType="int">
+select nvl(count(*),0) from (select rownum rnum, a.isbn,authorname,booktitle,publisher,publishDate,bookimage,discountedPrice,discountRate from (
+select isbn from wishlist where userid=#{userId} minus select distinct isbn from orderbooks inner join orders on orderbooks.orderid=orders.orderid where userid=#{userId}) a inner join booksections on a.isbn=booksections.isbn)
+</select>
+
+<!-- 위시리스트 가져오기(Buy : 구매한 상품만) -->
+<select id="getWishListBuy" parameterType="map" resultType="com.spring.webproject.dto.MainDTO">
+select * from(select rownum rnum,c.isbn,authorname,booktitle,publisher,publishDate,bookimage,discountedPrice,discountRate from(
+select a.isbn from (select isbn from wishlist where userid='4')a inner join (select distinct isbn from orderbooks inner join orders on orderbooks.orderid=orders.orderid where userid='4')b on a.isbn=b.isbn) c inner join booksections on c.isbn=booksections.isbn) <![CDATA[where rnum>=#{start} and rnum<=#{end}]]>
+</select>
+
+<!-- 위시리스트 가져오기(NoBuy : 구매하지 않은 상품만) -->
+<select id="getWishListNoBuy" parameterType="map" resultType="com.spring.webproject.dto.MainDTO">
+select * from (select rownum rnum, a.isbn,authorname,booktitle,publisher,publishDate,bookimage,discountedPrice,discountRate from (
+select isbn from wishlist where userid=#{userId} minus select distinct isbn from orderbooks inner join orders on orderbooks.orderid=orders.orderid where userid=#{userId}) a inner join booksections on a.isbn=booksections.isbn) <![CDATA[where rnum>=#{start} and rnum<=#{end}]]>
+</select>
+
+<!-- 위시리스트 중복 검사 -->
+<select id="wishOverlapCheck" parameterType="map" resultType="java.lang.String">
+select isbn from wishList where userId=#{userId} and isbn=#{isbn}
+</select>
+
+<!-- 위시리스트 넣기 -->
+<select id="addWish" parameterType="map">
+insert into wishList(userId,isbn,wishDate) values(#{userId},#{isbn},sysdate)
+</select>
+
+<!-- 위시리스트 삭제 -->
+<delete id="deleteWish" parameterType="map">
+delete wishList where userId=#{userId} and isbn=#{isbn}
+</delete>
+
+<!-- 리뷰 삭제 -->
+<delete id="deleteReview" parameterType="int">
+delete review where reviewId=#{reviewId}
+</delete>
+
+<!-- 간단평 리스트 count -->
+<select id="sentenceCount" parameterType="java.lang.String" resultType="int">
+select nvl(count(*),0) from review where userId=#{userId} and reviewTitle is null
+</select>
+
+<!-- 간단평 가져오기 -->
+<select id="getSentenceList" parameterType="map" resultType="com.spring.webproject.dto.MyReviewDTO">
+select * from (select rownum rnum,a.*, bookTitle,authorName,publisher,publishDate,bookImage from (select a.isbn,a.reviewId,created,sentence, thumbup from 
+(select isbn,reviewId,userId,created,sentence from review where userId=#{userId} and reviewTitle is null order by created desc) a left join (select reviewid, nvl(count(thumbup),0) as thumbup  from thumbup group by reviewId)b on a.reviewId=b.reviewId) a,
+booksections where a.isbn=booksections.isbn) <![CDATA[where rnum>=#{start} and rnum<=#{end}]]>
+</select>
+
+
+
+
 
 </mapper>
