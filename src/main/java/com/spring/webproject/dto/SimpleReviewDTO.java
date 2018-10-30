@@ -9,9 +9,6 @@ public class SimpleReviewDTO {
 
 	private String isbn;
 	private String userId;
-
-	
-	
 	
 	public String getUserId() {
 		return userId;

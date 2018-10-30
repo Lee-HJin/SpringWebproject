@@ -18,8 +18,6 @@ public class BooksDTO {
 	private String authorName; // 저자 이름
 
 	
-	
-	
 	public String getAuthorName() {
 		return authorName;
 	}
