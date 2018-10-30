@@ -67,8 +67,25 @@
 					</a>
 				</li>
 				<li class="menu">
-					<a href="javascript://" >
-						<font></font>
+					<a href="<%=cp %>/admin_author.action" >
+						<font>작가/번역가 등록</font>
+					</a>
+				</li>
+				<li class="menu">
+					<a href="<%=cp %>/admin_warehouse.action" >
+						<font>지점 관리</font>
+					</a>
+				</li>
+				
+				<li class="menu">
+					<a href="<%=cp %>/admin.action" >
+						<font>재고현황</font>
+					</a>
+				</li>
+				
+				<li class="menu">
+					<a href="<%=cp %>/admin.action" >
+						<font>고객상담</font>
 					</a>
 				</li>
 			</ul>	

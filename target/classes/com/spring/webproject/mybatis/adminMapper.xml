@@ -124,6 +124,12 @@ where b.rnum>=#{start}
 	
 </select>
 
+<insert id="insertAuthor" parameterType="map">
+insert
+into
+	author(authorId, authorName, nationality, category, introduction, image)
+values(#{authorId}, #{authorName}, #{nationality}, #{category}, #{introduction}, #{image})
+</insert>
 
 <!-- author end -->
 
@@ -153,15 +159,21 @@ where b.rnum>=#{start}
 	
 </select>
 
+<insert id="insertTranslator" parameterType="map">
+insert
+into
+	translator(translatorId, translatorName, nationality, category, introduction, image)
+values(#{translatorId}, #{translatorName}, #{nationality}, #{category}, #{introduction}, #{image})
+</insert>
 
-<!-- warehouse end -->
+<!-- warehouse -->
 
 
 <select id="warehouseList" parameterType="map" resultType="com.spring.webproject.dto.AdminWarehouseDTO">
-select warehouseid, warehousename, lat, lng, addr, time, intro, waybus, waysub from (
-	select rownum as rnum, warehouseid, warehousename, lat, lng, addr, time, intro, waybus, waysub
+select warehouseId, warehouseName, timestamp, key, addr, time, intro, waybus, waysub, tel from (
+	select rownum as rnum, warehouseId, warehouseName, timestamp, key, addr, time, intro, waybus, waysub, tel
 	from(
-		select warehouseid, warehousename, lat, lng, addr, time, intro, waybus, waysub 
+		select warehouseId, warehouseName, timestamp, key, addr, time, intro, waybus, waysub, tel
 		from warehouse
 		where warehouseName like '%${searchValue}%' order by warehouseName) A
 <![CDATA[
@@ -181,6 +193,27 @@ where b.rnum>=#{start}
 	
 </select>
 
+<insert id="insertWarehouse" parameterType="map">
+insert
+into 
+	warehouse(warehouseId, warehouseName, timestamp, key, addr, time, intro, waybus, waysub, tel)
+values(#{warehouseId}, #{warehouseName}, #{timestamp}, #{key}, #{addr}, #{time}, #{intro}, #{waybus}, #{waysub}, #{tel})
+</insert>
+
+<insert id="insertBooksAtWarehouse" parameterType="map">
+insert
+into
+	booksAtWarehouse(isbn, warehouseId, quantity)
+values(#{isbn}, #{warehouseId}, #{quantity})
+</insert>
+
+<select id="getQuantityList" resultType="com.spring.webproject.dto.AdminQuantityDTO">
+select 
+	booktitle,isbn,total,a,b,c,d,e,f,g,h,i,j,k,l,m 
+from 
+	quantitylist
+
+</select>
 
 <!-- warehouse end -->
 

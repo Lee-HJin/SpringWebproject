@@ -2,11 +2,13 @@ package com.spring.webproject.controller;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.Iterator;
 import java.util.List;
 
 import javax.servlet.ServletContext;
 import javax.servlet.http.HttpServletRequest;
 
+import org.apache.commons.fileupload.UploadContext;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -16,6 +18,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.multipart.MultipartHttpServletRequest;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.spring.webproject.dao.AdminDAO;
@@ -85,11 +88,11 @@ public class AdminController {
 	}
 
 	@RequestMapping(value = "/admin_goods_ok.action", method = { RequestMethod.GET,RequestMethod.POST })
-	public String goodsOK(AdminBooksDTO dto,MultipartFile file, FileUtil fileutil) throws IOException {
+	public String goodsOK(AdminBooksDTO dto, MultipartFile file, FileUtil fileutil) throws IOException {
 		
 		String bookImagePath = servletContext.getRealPath("/")+"\\resources\\image\\book";
 		
-		System.out.println(servletContext.getRealPath("/")+"\\resources\\image\\book");
+		//System.out.println(servletContext.getRealPath("/")+"\\resources\\image\\book");
 		
 		dto.setBookImage(fileutil.fileNameMaker(file.getOriginalFilename()));
 	
@@ -101,7 +104,7 @@ public class AdminController {
 		dao.insertBookSpecial(dto);
 		dao.insertBookCategory(dto);
 		dao.insertBookImage(dto);
-		
+		dao.insertQuantity(dto);
 
 		return "redirect:/admin_goods.action";
 	}
@@ -157,6 +160,19 @@ public class AdminController {
 		return "admin/admin_search_warehouse";
 	}
 	
+	@RequestMapping(value = "/admin_warehouse.action", method = {RequestMethod.GET, RequestMethod.POST})
+	public String warehouse() {
+		
+		return "admin/admin_warehouse";
+	}
+	
+	@RequestMapping(value = "/admin_warehouse_ok.action", method = {RequestMethod.POST})
+	public String warehouseOK(AdminWarehouseDTO dto) {
+		
+		dao.insertWarehouse(dto);
+		
+		return "redirect:/admin_warehouse.action";
+	}
 	//category
 	
 	@RequestMapping(value = "/admin_categoryList.action", method = {RequestMethod.POST, RequestMethod.GET })
@@ -198,7 +214,107 @@ public class AdminController {
 		return "redirect:/admin_category.action";
 	}
 	
+	//bookimage
+	@RequestMapping(value = "/admin_image.action", method = {RequestMethod.POST, RequestMethod.GET })
+	public String image(AdminBooksDTO dto, MultipartHttpServletRequest multipartFile ) throws IOException {
+		
+		String sampleImagePath = servletContext.getRealPath("/")+"\\resources\\book_image\\sample";
+		
+		List<MultipartFile> fileList = multipartFile.getFiles("file");
+		
+		Iterator<MultipartFile> iter = fileList.iterator();
+		
+		while(iter.hasNext()) {
+			
+			MultipartFile temp = iter.next();
+			
+			File tempTarget = new File(sampleImagePath, temp.getOriginalFilename());
+			
+			dto.setBookImage(temp.getOriginalFilename());
+			
+			FileCopyUtils.copy(temp.getBytes(), tempTarget);
+			
+			dao.insertBookImage(dto);
+			
+		}
+		
+		
+		return "redirect:/admin_goods.action";
+	}
 	
+	//author translator
+	@RequestMapping(value = "/admin_author.action", method = {RequestMethod.POST, RequestMethod.GET})
+	public String image(Model model, SearchCriteria cri) {
+		
+		cri.setNumPerPage(5);
+
+		List<AdminAuthorDTO> authorList = dao.getAuthorList(cri);
+
+		PageMaker pageMaker = new PageMaker(cri);
+		pageMaker.setTotalDataCount(dao.getAuthorTotalCount(cri));
+
+		model.addAttribute("pageMaker", pageMaker);
+		model.addAttribute("authorList", authorList);
+		
+		return "admin/admin_author";
+	}
 	
+	@RequestMapping(value = "/admin_author_ok.action", method = {RequestMethod.POST})
+	public String imageOK(HttpServletRequest request ,AdminAuthorDTO author, AdminTranslatorDTO translator, MultipartFile file) throws IOException {
+		
+		String path = servletContext.getRealPath("/")+"\\resources";
+		String id = request.getParameter("id");
+		String name = request.getParameter("name");
+		String select = request.getParameter("select");
+		
+		System.out.println(author.getCategory());
+		System.out.println(translator.getCategory());
+		
+		if(select.equals("author")) {
+			
+			author.setAuthorId(id);
+			author.setAuthorName(name);
+			author.setImage(file.getOriginalFilename());
+			
+			dao.insertAuthor(author);
+			
+			File target = new File(path+"\\author_image", file.getOriginalFilename());
+			
+			FileCopyUtils.copy(file.getBytes(), target);
+			
+			
+		}else if(select.equals("translator")) {
+			
+			translator.setTranslatorId(id);
+			translator.setTranslatorName(name);
+			translator.setImage(file.getOriginalFilename());
+			
+			dao.insertTranslator(translator);
+			
+			File target = new File(path+"\\translator_image", file.getOriginalFilename());
+			
+			FileCopyUtils.copy(file.getBytes(), target);
+			
+		}
+		
+		return "redirect:/admin_author.action";
+	}
 
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

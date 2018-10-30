@@ -294,6 +294,32 @@
 					</div>
 				</div>
 			</div>
+			
+			<div class="col-lg-12">
+				<div class="panel panel-default">
+					<div class="panel-body form-horizontal goods-form">
+						<form action="admin_image.action" method="post" enctype="multipart/form-data">
+							<div class="col-lg-12 form-group">
+								<label for="bookImage" class="col-lg-4 control-label">도서 미리보기 이미지 등록
+									:</label>
+								<div class="col-lg-4">
+									<input  multiple="multiple"  type="file" class="form-control"  name="file">									
+								</div>
+								<div class="col-lg-2">
+									<input type="text" name="isbn" placeholder="isbn" class="form-control">
+								</div>
+								<div class="col-lg-2 text-right">
+									<button type="submit"
+										class="btn btn-default preview-add-button">
+										<span class="glyphicon glyphicon-ok"></span> 등록
+									</button>
+								</div>
+							</div>
+						</form>
+					</div>
+				</div>
+			</div>
+			
 		</div>
 	</div>
 

@@ -49,6 +49,10 @@ public class AdminDAO {
 		List<AdminAuthorDTO> list = sessionTemplate.selectList("adminMapper.authorList", cri);
 		return list;
 	}
+	
+	public void insertAuthor(AdminAuthorDTO dto) {
+		sessionTemplate.insert("adminMapper.insertAuthor", dto);
+	}
 
 	// translator
 	public int getTranslatorTotalCount(SearchCriteria cri) {
@@ -59,6 +63,10 @@ public class AdminDAO {
 		List<AdminTranslatorDTO> list = sessionTemplate.selectList("adminMapper.translatorList", cri);
 		return list;
 	}
+	
+	public void insertTranslator(AdminTranslatorDTO dto) {
+		sessionTemplate.insert("adminMapper.insertTranslator", dto);
+	}
 
 	// warehouse
 	public int getWarehouseTotalCount(SearchCriteria cri) {
@@ -68,6 +76,14 @@ public class AdminDAO {
 	public List<AdminWarehouseDTO> getWarehouseList(SearchCriteria cri) {
 		List<AdminWarehouseDTO> list = sessionTemplate.selectList("adminMapper.warehouseList", cri);
 		return list;
+	}
+	
+	public void insertWarehouse(AdminWarehouseDTO dto) {
+		sessionTemplate.insert("adminMapper.insertWarehouse", dto);
+	}
+	
+	public void insertQuantity(AdminBooksDTO dto) {
+		sessionTemplate.insert("adminMapper.insertBooksAtWarehouse", dto);
 	}
 	
 	//category
