@@ -16,71 +16,7 @@
 
 <script type="text/javascript">
 	
-	$(function() {
-		
-		if(document.cookie.indexOf('book')==-1){
-			setCookie('book',${isbn},1);
-		}else if(document.cookie.indexOf('book')!=-1){
-			addCookie(${isbn});
-		}
-	});
-	
-	function setCookie(cName, cValue, cDay){
-		var expire = new Date();
-        expire.setDate(expire.getDate() + cDay);
-        cookies = cName + '=' + escape(cValue) + '; path=/ ';
-        if(typeof cDay != 'undefined') cookies += ';expires=' + expire.toGMTString() + ';';
-        document.cookie = cookies;
-	}
-	
-	function addCookie(cValue){
-		
-		var items = getCookie('book');
-		var maxItemNum = 6;
-		if(items){
-			var itemArray=items.split(',');
-
-			if(itemArray.indexOf('${isbn}')!=-1){//중복시 기존 제거 후 맨앞으로 가져옴
-				alert("중복");
-				var idx = itemArray.findIndex(function(item) {
-					return item === '${isbn}';
-				});		
-			
-				itemArray.splice(idx,1);
-		
-				itemArray.unshift(cValue);
-				if(itemArray.length>maxItemNum){
-					itemArray.length=6;}	
-				items = itemArray.join(',');
-				setCookie('book',items,1);
-				
-			}else{
-				alert("들어감");
-				itemArray.unshift(cValue);
-				if(itemArray.length>maxItemNum){
-					itemArray.length=6;}	
-				items = itemArray.join(',');
-				setCookie('book',items,1);
-			}
-		}
-	}
-	
-	function getCookie(cookie_name) {
-		  var x, y;
-		  var val = document.cookie.split(';');
-
-		  for (var i = 0; i < val.length; i++) {
-		    x = val[i].substr(0, val[i].indexOf('='));
-		    y = val[i].substr(val[i].indexOf('=') + 1);
-		    x = x.replace(/^\s+|\s+$/g, ''); // 앞과 뒤의 공백 제거하기
-		    if (x == cookie_name) {
-		      return unescape(y);
-		    }
-		  }
-		}
-
-	
-/* 	 $(function() {
+ 	 $(function() {
 	
 		var cookieValue = JSON.stringify({"isbn":"${isbn}","bookImage":"${dto.bookImage}",
 			"bookTitle":"${dto.bookTitle}","authorName":"${dto.authorName}"});
@@ -104,7 +40,7 @@
 	//기존 쿠키에 추가
 	function addCookie(cValue){
 		var items = getCookie('book');
-		var maxItemNum = 5;
+		var maxItemNum = 10;
 		
 		if(items){
 			var itemArray=items.split('/');
@@ -118,7 +54,7 @@
 		
 				itemArray.unshift(cValue);
 				if(itemArray.length>maxItemNum){
-					itemArray.length=5;}	
+					itemArray.length=10;}	
 				items = itemArray.join('/');
 				setCookie('book',items,1);
 				
@@ -126,7 +62,7 @@
 				alert("들어감");
 				itemArray.unshift(cValue);
 				if(itemArray.length>maxItemNum){
-					itemArray.length=5;}	
+					itemArray.length=10;}	
 				items = itemArray.join('/');
 				setCookie('book',items,1);
 			}
@@ -145,7 +81,7 @@
 		    }
 		} 
 		return unescape(ck);
-	}  */
+	}
 	        
 	
 </script>
