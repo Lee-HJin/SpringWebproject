@@ -1,5 +1,6 @@
 <%@ page contentType="text/html; charset=UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <% 
 	request.setCharacterEncoding("UTF-8");
 	String cp = request.getContextPath();
@@ -18,10 +19,11 @@
 				<br/>
 				${dto.authorName } | ${dto.publisher } | ${dto.publishDate }<span>조회 ${dto.hitCount } | 공감 ${dto.thumbUp }</span>
 				<br/>
-				<span><a href="">수정</a> | <a href="">삭제</a></span>
+				<b><span><a href="">수정</a> | <a href="javascript:deleteReview('${dto.reviewId }');">삭제</a></span></b>
 				<br/>
 				<div style="margin-top: 5px;">
-					${dto.contents }
+				${fn:substring(dto.contents,0,150)}
+				<c:if test="${dto.contents.length()>150 }">...</c:if>
 				</div>
 				
 			</div>
