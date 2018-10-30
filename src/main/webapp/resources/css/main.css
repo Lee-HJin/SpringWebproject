@@ -1138,6 +1138,7 @@ body{font-size: 12px;
     padding-bottom: 30px;
     overflow: hidden;
 }
+
 .today_view h4{
 	font: bolder 11px 돋움;
     color: #666;
@@ -1147,6 +1148,14 @@ body{font-size: 12px;
 .today_view li img{
     height: 90px;
     max-width: 90px;
+}
+.nodata{
+	height: 35px;
+    padding-top: 15px;
+    text-align: center;
+    color: rgb(136, 136, 136);
+    letter-spacing: -0.03em;
+    font: 11px 돋움;
 }
 
 .ss_myshop{

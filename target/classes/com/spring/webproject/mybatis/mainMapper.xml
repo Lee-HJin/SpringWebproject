@@ -28,7 +28,7 @@
 	select level, LPAD('',2*(level-1)) || categoryName as categoryName,connect_by_isleaf as leaf from 
 	booksCategoryList start with parentsId is null and categoryId=#{categoryId} connect by prior categoryId = parentsId) 
 	where leaf=1) b where a.categoryName=b.categoryName) b where a.categoryId=b.categoryId) b 
-	where a.isbn=b.isbn and publishDate>'2018-09-01') b where a.authorId=b.authorId) b where a.isbn=b.isbn and bookImage like '%cover%'
+	where a.isbn=b.isbn and publishDate>'2018-05-01') b where a.authorId=b.authorId) b where a.isbn=b.isbn and bookImage like '%cover%'
 </select>
 
 <!-- 기대 신간도서 전체 -->
@@ -42,7 +42,7 @@
 	select level, LPAD('',2*(level-1)) || categoryName as categoryName,connect_by_isleaf as leaf from 
 	booksCategoryList start with parentsId is null connect by prior categoryId = parentsId) 
 	where leaf=1) b where a.categoryName=b.categoryName) b where a.categoryId=b.categoryId) b 
-	where a.isbn=b.isbn and publishDate>'2018-09-01') b where a.authorId=b.authorId) b where a.isbn=b.isbn and bookImage like '%cover%'
+	where a.isbn=b.isbn and publishDate>'2018-05-01') b where a.authorId=b.authorId) b where a.isbn=b.isbn and bookImage like '%cover%'
 </select>
 
 <!-- 이슈북 -->
@@ -79,6 +79,9 @@
 	(select * from books where isbn=#{isbn}) b where a.authorId=b.authorId) b where a.isbn=b.isbn and bookImage like '%cover%'
 </select>
 
-
+<!-- 매장정보 가져오기 -->
+<select id="storeInfo" parameterType="java.lang.Integer" resultType="com.spring.webproject.dto.StoreDTO">
+	select * from warehouse where warehouseId=#{warehouseId}
+</select>
 
 </mapper>

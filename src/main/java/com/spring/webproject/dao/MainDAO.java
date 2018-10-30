@@ -7,6 +7,7 @@ import java.util.Random;
 import org.mybatis.spring.SqlSessionTemplate;
 
 import com.spring.webproject.dto.MainDTO;
+import com.spring.webproject.dto.StoreDTO;
 
 public class MainDAO {
 	
@@ -21,15 +22,38 @@ public class MainDAO {
 	public List<MainDTO> similCate(String isbn){
 		
 		List<MainDTO> lst = sessionTemplate.selectList("mainMapper.similCate",isbn);
-		System.out.println("DAO: "+ isbn);
-		System.out.println(lst);
-		if(!lst.isEmpty()) {
+		
+		if(lst.size()>=3) {
 			Random rd = new Random();
 			int[] num = new int[3];
 			
 			int i,n;
 			n=0;
 			while(n<3){
+				num[n] = rd.nextInt(lst.size());
+				
+				for(i=0;i<n;i++) {
+					if(num[i]==num[n]) {
+						n--;
+						break;
+					}
+				}
+				n++;
+			}
+			List<MainDTO> list = new ArrayList<MainDTO>();
+			
+			for(i=0;i<num.length;i++) {
+				
+				list.add(lst.get(num[i]));
+			}
+			return list;
+		}else if(lst.size()<3){
+			Random rd = new Random();
+			int[] num = new int[lst.size()];
+			
+			int i,n;
+			n=0;
+			while(n<lst.size()){
 				num[n] = rd.nextInt(lst.size());
 				
 				for(i=0;i<n;i++) {
@@ -106,6 +130,14 @@ public class MainDAO {
 			lst.add(dto);
 		}
 		return lst;
+	}
+	
+	//매장 정보
+	public StoreDTO storeInfo(int warehouseId){
+		
+		StoreDTO dto = sessionTemplate.selectOne("mainMapper.storeInfo",warehouseId);
+		
+		return dto;	
 	}
 		
 }
