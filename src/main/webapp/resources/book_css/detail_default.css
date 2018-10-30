@@ -106,7 +106,7 @@
 .wrap_contents .ico_blue{width:50px;background-position:-431px -17px}
 
 /* 도서 구매 왼쪽 영역 */
-.wrap_contents .inner_left{float:left;position:relative;width:202px;margin-right:15px}
+.wrap_contents .inner_left{float:left;position:relative;width:202px;margin-right:20px}
 .wrap_contents .inner_left .thumb_bookCover{margin-bottom:10px;text-align:center}
 .wrap_contents .inner_left .thumb_bookCover img{max-width:200px;border:1px solid #dbdbdb;_width: expression( this.clientWidth > 199 ? "200px" : "auto" );}
 .wrap_contents .inner_left .flag_used_book{position:absolute;left:-7px;top:-7px}

@@ -226,9 +226,9 @@ i {
 		<i class="up"></i><br />Top
 	</button>
 
-	<div style="margin: 0 auto; width: 1100px;">
+	<div style="margin: 0 auto; width: 1000px;">
 
-		<div id="wrapDetail" style="margin-top: 30px;">
+		<div id="wrapDetail" style="margin-top: 60px;">
 
 
 			<div class="wrap_contents">
