@@ -12,7 +12,7 @@
 <link rel="stylesheet" href="<%=cp%>/resources/css/swiper_min.css">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 
-<title>Insert title here</title>
+<title>반디앤루니스 인터넷서점</title>
 <style type="text/css">
 
 .contentBody{

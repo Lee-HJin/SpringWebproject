@@ -11,8 +11,9 @@
 		${dto.intro }
 	</p>
 	<p>
-		<img src="<%=cp%>/resources/image/main/img_findmap17_01.jpg">
-		<img src="<%=cp%>/resources/image/main/img_findmap17_02.jpg">
+		<c:forEach var="lst" items="${lst }">
+			<img src="<%=cp%>/resources/image/main/${lst.image}">
+		</c:forEach>
 	</p>
 </div>
 <dl>
@@ -45,7 +46,11 @@
 		</c:if>
 		<c:if test="${dto.warehouseId!=13 }">
 			<strong class="way_title">지하철이용시</strong>
-			<p class="way_content">${dto.waySub }</p>
+			<ul class="way_content">
+				<li class="wc_list">
+					${dto.waySub }
+				</li>
+			</ul>
 			<strong class="way_title">버스 이용시</strong>
 			<ul class="way_content">
 				<li class="wc_list">

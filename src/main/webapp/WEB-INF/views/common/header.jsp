@@ -249,7 +249,9 @@
 								<a href="<%=cp %>/myShopping/myPointHistory.action">적립내역</a>
 							</div>
 							<div>
+                
 								<a href="<%=cp %>/myShopping/myReviewList.action">나의 리뷰</a>
+                
 							</div>
 							<div>
 								<a href="<%=cp %>/myShopping/myWishList.action">위시리스트</a>
@@ -263,49 +265,49 @@
 						<a href="javascript://" class="t_menu_link">고객센터</a>
 					</li>
 					<li class="t_menu store">
-						<a href="javascript://" class="t_menu_link"
+						<a href="<%=cp%>/store.action" class="t_menu_link"
 						onmouseover="javascript:toggleDisplay2('02')" onmouseout="javascript:toggleDisplay2('02')">
 						영업점안내</a>
 						<div id="top_layer02" class="display_top"  style="display: none; width: 130px;"
 						onmouseover="javascript:toggleDisplay2('02')" onmouseout="javascript:toggleDisplay2('02')">
 							<div style="margin-top: 5px;">
-								<a href="javascript://">신세계강남점</a>
+								<a href="<%=cp%>/store.action?params=1">신세계강남점</a>
 							</div>
 							<div>
-								<a href="javascript://">신세계센텀시티점(부산)</a>
+								<a href="<%=cp%>/store.action?params=2">신세계센텀시티점(부산)</a>
 							</div>
 							<div>
-								<a href="javascript://">롯데월드몰점</a>
+								<a href="<%=cp%>/store.action?params=3">롯데월드몰점</a>
 							</div>
 							<div>
-								<a href="javascript://">여의도신영증권점</a>
+								<a href="<%=cp%>/store.action?params=4">여의도신영증권점</a>
 							</div>
 							<div>
-								<a href="javascript://">대구신세계점</a>
+								<a href="<%=cp%>/store.action?params=5">대구신세계점</a>
 							</div>
 							<div>
-								<a href="javascript://">롯데몰수원점</a>
+								<a href="<%=cp%>/store.action?params=6">롯데몰수원점</a>
 							</div>
 							<div>
-								<a href="javascript://">신세계김해점</a>
+								<a href="<%=cp%>/store.action?params=7">신세계김해점</a>
 							</div>
 							<div>
-								<a href="javascript://">롯데스타시티점</a>
+								<a href="<%=cp%>/store.action?params=8">롯데스타시티점</a>
 							</div>
 							<div>
-								<a href="javascript://">신림역점</a>
+								<a href="<%=cp%>/store.action?params=9">신림역점</a>
 							</div>
 							<div>
-								<a href="javascript://">사당역점</a>
+								<a href="<%=cp%>/store.action?params=10">사당역점</a>
 							</div>
 							<div>
-								<a href="javascript://">목동점</a>
+								<a href="<%=cp%>/store.action?params=11">목동점</a>
 							</div>
 							<div>
-								<a href="javascript://">롯데피트인산본점</a>
+								<a href="<%=cp%>/store.action?params=12">롯데피트인산본점</a>
 							</div>
 							<div>
-								<a href="javascript://">롯데울산점</a>
+								<a href="<%=cp%>/store.action?params=13">롯데울산점</a>
 							</div>
 						</div>
 					</li>

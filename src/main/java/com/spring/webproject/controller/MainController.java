@@ -137,9 +137,11 @@ public class MainController {
 		int warehouseId = Integer.parseInt(req.getParameter("params"));
 		
 		StoreDTO dto= new StoreDTO();
+		List<StoreDTO> lst = new ArrayList<StoreDTO>();
 		
+		lst = dao.storeImage(warehouseId);
 		dto = dao.storeInfo(warehouseId);
-
+		
 		dto.setIntro(dto.getIntro().replaceAll("\\\\", "<br>"));
 		dto.setTime(dto.getTime().replaceAll("\\\\", "<br>"));
 		dto.setWayBus(dto.getWayBus().replaceAll("\\\\", "<br>"));
@@ -147,13 +149,26 @@ public class MainController {
 		
 		
 		req.setAttribute("dto", dto);
+		req.setAttribute("lst", lst);
 		return "main/storeInfo";
 	}
 	
 	@RequestMapping(value="/store.action",method= {RequestMethod.GET,RequestMethod.POST})
-	public String store() {
+	public String store(HttpServletRequest req) {
 		
+		String warehouseId = req.getParameter("params");
+		
+		if(warehouseId==null) 
+			warehouseId = "0";
+		
+		req.setAttribute("warehouseId", warehouseId);
 		return "main/store";
+	}
+	
+	@RequestMapping(value="/company.action",method= {RequestMethod.GET,RequestMethod.POST})
+	public String company(HttpServletRequest req) {
+		
+		return "main/company";
 	}
 		
 }

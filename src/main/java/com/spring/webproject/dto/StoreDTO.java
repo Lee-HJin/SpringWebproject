@@ -13,6 +13,8 @@ public class StoreDTO {
 	String waySub;
 	String key;
 	String tel;
+	String image;
+	
 	
 	public int getWarehouseId() {
 		return warehouseId;
@@ -73,6 +75,12 @@ public class StoreDTO {
 	}
 	public void setTel(String tel) {
 		this.tel = tel;
+	}
+	public String getImage() {
+		return image;
+	}
+	public void setImage(String image) {
+		this.image = image;
 	}
 	
 	
