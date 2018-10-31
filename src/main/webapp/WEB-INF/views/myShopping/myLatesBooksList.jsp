@@ -61,8 +61,8 @@
 		</div>
 		<div class="wish_sort_right">
 			<span style="line-height: 20px;"><input type="checkbox" class="check_all" height="150px;">전체선택</span>
-			<input type="button" value="쇼핑카트" class="wish_sort_btn">
-			<input type="button" value="위시리스트" class="wish_sort_btn">
+			<input type="button" value="쇼핑카트" class="wish_sort_btn" onclick="javascript:goShoppingCart();">
+			<input type="button" value="위시리스트" class="wish_sort_btn" onclick="javascript:addWishList();">
 			<input type="button" value="삭제" class="wish_sort_btn" onclick="javascript:recentDelete();">
 		</div>
 	</div>
