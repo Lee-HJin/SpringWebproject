@@ -17,7 +17,7 @@
 <link rel="stylesheet" href="<%=cp%>/resources/css/swiper_min.css">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 
-<title>Insert title here</title>
+<title>반디앤루니스 인터넷서점</title>
 <script type="text/javascript">
 	
 	//베스트셀러 hover시 이미지 띄우기
@@ -760,7 +760,7 @@
 							<dl>
 								<dt>
 									<a href="javascript://">
-										<img src="<%=cp%>/resources/image/main/bnl_store01.jpg">
+										<img src="<%=cp%>/resources/image/main/banner_lottepit.jpg">
 									</a>
 								</dt>
 								<dd class="ifb_title">반디앤루니스 롯데피트인산본점</dd>
@@ -771,7 +771,7 @@
 							<dl>
 								<dt>
 									<a href="javascript://">
-										<img src="<%=cp%>/resources/image/main/bnl_store02.jpg">
+										<img src="<%=cp%>/resources/image/main/banner_daegu.jpg">
 									</a>
 								</dt>
 								<dd class="ifb_title">반디앤루니스 대구신세계점</dd>
@@ -782,11 +782,110 @@
 							<dl>
 								<dt>
 									<a href="javascript://">
-										<img src="<%=cp%>/resources/image/main/bnl_store03.jpg">
+										<img src="<%=cp%>/resources/image/main/banner_ccity.jpg">
 									</a>
 								</dt>
 								<dd class="ifb_title">반디앤루니스 신세계센텀시티점</dd>
 								<dd class="ifb_txt">배움과 체험이 가득한 멀티컬쳐스토어</dd>
+							</dl>
+						</div>
+						<div class="swiper-slide">
+							<dl>
+								<dt>
+									<a href="javascript://">
+										<img src="<%=cp%>/resources/image/main/banner_lotteworld.jpg">
+									</a>
+								</dt>
+								<dd class="ifb_title">반디앤루니스 롯데월드몰점</dd>
+								<dd class="ifb_txt">오감의 풍요로움을 느낄 수 있는 서점</dd>
+							</dl>
+						</div>
+						<div class="swiper-slide">
+							<dl>
+								<dt>
+									<a href="javascript://">
+										<img src="<%=cp%>/resources/image/main/banner_kimhae.jpg">
+									</a>
+								</dt>
+								<dd class="ifb_title">반디앤루니스 신세계김해점</dd>
+								<dd class="ifb_txt">문화의 도시, 김해가 선택한 문화생활공간</dd>
+							</dl>
+						</div>
+						<div class="swiper-slide">
+							<dl>
+								<dt>
+									<a href="javascript://">
+										<img src="<%=cp%>/resources/image/main/banner_suwon.jpg">
+									</a>
+								</dt>
+								<dd class="ifb_title">반디앤루니스 롯데몰수원점</dd>
+								<dd class="ifb_txt">역사와 전통의 수원, 새로운 문화소통공간</dd>
+							</dl>
+						</div>
+						<div class="swiper-slide">
+							<dl>
+								<dt>
+									<a href="javascript://">
+										<img src="<%=cp%>/resources/image/main/banner_gangnam.jpg">
+									</a>
+								</dt>
+								<dd class="ifb_title">반디앤루니스 신세계강남점</dd>
+								<dd class="ifb_txt">강남지역 대표 문화의 관문</dd>
+							</dl>
+						</div>
+						<div class="swiper-slide">
+							<dl>
+								<dt>
+									<a href="javascript://">
+										<img src="<%=cp%>/resources/image/main/banner_sadang.jpg">
+									</a>
+								</dt>
+								<dd class="ifb_title">반디앤루니스 사당역점</dd>
+								<dd class="ifb_txt">쾌적하고 깔끔한, 사당 지역 최대 서점</dd>
+							</dl>
+						</div>
+						<div class="swiper-slide">
+							<dl>
+								<dt>
+									<a href="javascript://">
+										<img src="<%=cp%>/resources/image/main/banner_sinrim.jpg">
+									</a>
+								</dt>
+								<dd class="ifb_title">반디앤루니스 신림역점</dd>
+								<dd class="ifb_txt">포도몰 7층, 신림의 대표 만남의 장소</dd>
+							</dl>
+						</div>
+						<div class="swiper-slide">
+							<dl>
+								<dt>
+									<a href="javascript://">
+										<img src="<%=cp%>/resources/image/main/banner_lottewool.jpg">
+									</a>
+								</dt>
+								<dd class="ifb_title">반디앤루니스 롯데울산점</dd>
+								<dd class="ifb_txt">울산의 북마크, 지역 최대 규모 서점</dd>
+							</dl>
+						</div>
+						<div class="swiper-slide">
+							<dl>
+								<dt>
+									<a href="javascript://">
+										<img src="<%=cp%>/resources/image/main/banner_lottestar.jpg">
+									</a>
+								</dt>
+								<dd class="ifb_title">반디앤루니스 롯데스타시티점</dd>
+								<dd class="ifb_txt">핫플레이스 건대입구의 랜드마크</dd>
+							</dl>
+						</div>
+						<div class="swiper-slide">
+							<dl>
+								<dt>
+									<a href="javascript://">
+										<img src="<%=cp%>/resources/image/main/banner_mokdong.jpg">
+									</a>
+								</dt>
+								<dd class="ifb_title">반디앤루니스 목동점</dd>
+								<dd class="ifb_txt">Again & Renew</dd>
 							</dl>
 						</div>
 					</div>

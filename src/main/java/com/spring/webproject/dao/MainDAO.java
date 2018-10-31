@@ -139,6 +139,16 @@ public class MainDAO {
 		
 		return dto;	
 	}
+	
+	//매장 이미지
+		public List<StoreDTO> storeImage(int warehouseId){
+			
+			List<StoreDTO> lst = new ArrayList<StoreDTO>();
+			lst = sessionTemplate.selectList("mainMapper.storeImage",warehouseId);
+			
+			return lst;	
+		}
+	
 		
 }
 

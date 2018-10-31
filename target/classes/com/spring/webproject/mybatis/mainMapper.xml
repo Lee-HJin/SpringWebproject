@@ -84,4 +84,13 @@
 	select * from warehouse where warehouseId=#{warehouseId}
 </select>
 
+<!-- 매장 이미지 가져오기 -->
+<select id="storeImage" parameterType="java.lang.Integer" resultType="com.spring.webproject.dto.StoreDTO">
+	select image from warehouseImage where warehouseId=#{warehouseId}
+</select>
+
+
+
+
+
 </mapper>
