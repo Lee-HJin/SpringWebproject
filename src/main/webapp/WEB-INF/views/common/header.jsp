@@ -204,7 +204,7 @@
 	</div>
 </div>
 <div id="head">
-	<div id="top_wrap">
+
 		<div class="head_top">
 			<h1 class="logo">
 				<a href="<%=cp%>/main.action">
@@ -314,7 +314,6 @@
 				</ul>
 			</div>
 		</div>
-	</div>
 	
 	<div class="wrap_header">
 		<div class="header_menu">

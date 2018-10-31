@@ -169,7 +169,6 @@
 	</div>
 </div>
 <div id="head">
-	<div id="top_wrap">
 		<div class="head_top" style="width: 1100px;">
 			<h1 class="logo">
 				<a href="<%=cp%>/main.action">
@@ -281,7 +280,6 @@
 				</ul>
 			</div>
 		</div>
-	</div>
 	
 	<div class="wrap_header">
 		<div class="header_menu" style="width: 1100px;">
