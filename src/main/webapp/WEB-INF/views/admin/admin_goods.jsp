@@ -42,7 +42,7 @@
 				$("select[name='1']").load(url);
 				
 			}else if($(this).attr('name') == '2'){
-				
+								
 				var id = $("select[name='1']").val();
 				
 				var url = "<%=cp %>/admin_categoryList.action"

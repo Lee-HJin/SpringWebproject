@@ -10,6 +10,7 @@ import org.springframework.stereotype.Repository;
 import com.spring.webproject.dto.AdminAuthorDTO;
 import com.spring.webproject.dto.AdminBooksDTO;
 import com.spring.webproject.dto.AdminCategoryDTO;
+import com.spring.webproject.dto.AdminQuantityDTO;
 import com.spring.webproject.dto.AdminTranslatorDTO;
 import com.spring.webproject.dto.AdminUsersDTO;
 import com.spring.webproject.dto.AdminWarehouseDTO;
@@ -85,6 +86,19 @@ public class AdminDAO {
 	public void insertQuantity(AdminBooksDTO dto) {
 		sessionTemplate.insert("adminMapper.insertBooksAtWarehouse", dto);
 	}
+	
+	
+	//quantity
+	public List<AdminQuantityDTO> getQuantityList(SearchCriteria cri){
+		List<AdminQuantityDTO> list = sessionTemplate.selectList("adminMapper.getQuantityList", cri);
+		return list;
+	}
+	
+	public int getQuantityTotalCount(SearchCriteria cri) {
+		return sessionTemplate.selectOne("adminMapper.getQuantityTotalCount", cri);
+	}
+	
+	
 	
 	//category
 	

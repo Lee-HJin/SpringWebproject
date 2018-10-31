@@ -207,16 +207,54 @@ into
 values(#{isbn}, #{warehouseId}, #{quantity})
 </insert>
 
-<select id="getQuantityList" resultType="com.spring.webproject.dto.AdminQuantityDTO">
-select 
-	booktitle,isbn,total,a,b,c,d,e,f,g,h,i,j,k,l,m 
-from 
-	quantitylist
-
-</select>
-
 <!-- warehouse end -->
 
+<!-- quantity -->
+
+<select id="getQuantityTotalCount" parameterType="map" resultType="int">
+select
+	count(isbn)
+from
+	quantitylist
+<where>
+			
+	<if test="searchKey=='booktitle'">
+		booktitle like '%${searchValue}%'
+	</if>
+			
+	<if test="searchKey=='isbn'">
+		isbn = '${searchValue}'
+	</if>
+</where>
+		
+</select>
+
+<select id="getQuantityList"  parameterType="map" resultType="com.spring.webproject.dto.AdminQuantityDTO">
+
+select a.rnum, a.booktitle, a.isbn, a.total, a.a, a.b, a.c, a.d, a.e, a.f, a.g, a.h, a.i, a.j, a.k, a.l, a.m
+	from (select rownum as rnum, a.booktitle, a.isbn, a.total, a.a, a.b, a.c, a.d, a.e, a.f, a.g, a.h, a.i, a.j, a.k, a.l, a.m
+		from (select booktitle, isbn, total, a,b,c,d,e,f,g,h,i,j,k,l,m 
+		from quantitylist 
+		<where>
+			
+			<if test="searchKey=='booktitle'">
+				booktitle like '%${searchValue}%'
+			</if>
+			
+			<if test="searchKey=='isbn'">
+				isbn = '${searchValue}'
+			</if>
+		</where>
+		order by booktitle) a
+<![CDATA[		
+		where rownum <= #{end}) a
+	where a.rnum>= #{start}
+]]>
+</select>
+
+
+
+<!-- quantity end -->
 <!-- category -->
 
 <select id="categoryList" parameterType="map" resultType="com.spring.webproject.dto.AdminCategoryDTO">
@@ -285,6 +323,11 @@ into
 values(#{isbn},#{bookImage})
 </insert>
 <!-- bookImage end -->
+
+<!-- consultation -->
+
+
+<!-- consultation end -->
 
 </mapper>
 

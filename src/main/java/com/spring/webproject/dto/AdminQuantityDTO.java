@@ -3,6 +3,7 @@ package com.spring.webproject.dto;
 public class AdminQuantityDTO {
 	private String isbn;
 	private String total;
+	private String booktitle;
 	private String a;//신세계강남점
 	private String b;//신세계센텀시티점,
 	private String c;//롯데월드몰점,
@@ -16,6 +17,14 @@ public class AdminQuantityDTO {
 	private String k;//목동점,
 	private String l;//롯데피트인산본점,
 	private String m;//롯데울산점
+	
+	
+	public String getBooktitle() {
+		return booktitle;
+	}
+	public void setBooktitle(String booktitle) {
+		this.booktitle = booktitle;
+	}
 	public String getIsbn() {
 		return isbn;
 	}
