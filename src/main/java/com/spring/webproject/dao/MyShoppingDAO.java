@@ -444,7 +444,19 @@ public class MyShoppingDAO {
 
 		return lists;
 	}
-
+	
+	public MyReviewDTO getReviewArticle(int reviewId) {
+		
+		MyReviewDTO dto = sessionTemplate.selectOne("myShopping.getReviewArticle",reviewId);
+		
+		return dto;
+	}
+	
+	public void reviewUpdate(Map<String, Object> map) {
+	
+		sessionTemplate.update("myShopping.reviewUpdate",map);
+		
+	}
 
 
 
