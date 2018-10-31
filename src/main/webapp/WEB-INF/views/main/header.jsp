@@ -156,18 +156,18 @@
 	</div>
 	<div class="today_view" id="side_today_view" style="display: block;"></div>
 	<div class="ss_myshop">
-		<a href="javascript://">
+		<a href="<%=cp%>/myShoppingMain.action">
 			나의 쇼핑
 		</a>
 	</div>
 	<div class="ss_myshop">
-		<a href="javascript://">
+		<a href="<%=cp%>/myShopping/myWishList.action">
 			위시리스트
 		</a>
 	</div>
 	<div class="ss_myshop">
-		<a href="javascript://">
-			구매히스토리
+		<a href="<%=cp%>/myShopping/myReviewList.action">
+			나의 리뷰
 		</a>
 	</div>
 </div>
@@ -213,19 +213,19 @@
                 
 							</div>
 							<div>
-								<a href="javascript://">주문배송조회</a>
+								<a href="<%=cp%>/myShopping/myOrderList.action">주문배송조회</a>
 							</div>
 							<div>
-								<a href="javascript://">적립내역</a>
+								<a href="<%=cp%>/myShopping/myPointHistory.action">적립내역</a>
 							</div>
 							<div>
-								<a href="javascript://">구매히스토리</a>
+								<a href="<%=cp%>/myShopping/myReviewList.action">나의 리뷰</a>
 							</div>
 							<div>
-								<a href="javascript://">위시리스트</a>
+								<a href="<%=cp%>/myShopping/myWishList.action">위시리스트</a>
 							</div>
 							<div>
-								<a href="javascript://">회원정보</a>
+								<a href="<%=cp%>/myShopping/pre_updateMyInfo.action?mode=update">회원정보</a>
 							</div>
 						</div>
 					</li>

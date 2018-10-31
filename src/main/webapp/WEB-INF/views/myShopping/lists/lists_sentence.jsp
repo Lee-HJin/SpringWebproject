@@ -16,7 +16,7 @@
 				<div class="sentence_body">
 					<b><a href="<%=cp%>/book_info.action?isbn=${dto.isbn}">${dto.bookTitle }</a></b><span>(${dto.created})</span>
 					<br/>
-					${dto.authorName } | ${dto.publisher } | ${dto.publishDate }<span><a href="">수정</a> | <a href="">삭제</a></span>
+					${dto.authorName } | ${dto.publisher } | ${dto.publishDate }<span><a href="">수정</a> | <a href="javascript:deleteSentence('${dto.reviewId }');">삭제</a></span>
 					<br/><br/>
 					${dto.sentence }
 				</div>
@@ -35,5 +35,7 @@
 	</div>
 </c:if>
 <c:if test="${empty lists }">
+<div style="text-align: center; height: 150px; font-weight: bold; font-size: 15pt; line-height: 15;">
 	등록된 한줄평이 없습니다.
+</div>
 </c:if>

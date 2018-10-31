@@ -1041,5 +1041,50 @@ function deleteReview(reviewId){
 	
 }
 
+//간단평 삭제하기
+function deleteSentence(reviewId){
+	
+	if(confirm("리뷰를 삭제하시겠습니까?") == true){
+		$.ajax ({
+			url:"deleteSentence.action",
+			data:'reviewId='+reviewId,
+			type:"POST",
+			success:function(){
+				location.href="mySentenceList.action";
+			},
+			error:function(e){
+				alert(e.responseText);
+			}
+			
+		});
+	}
+	else{
+		return;
+	}
+	
+}
+
+//리뷰 수정하기
+function updateReview(){
+	
+	var f = document.reviewUpdateForm;
+	
+	if(!f.reviewTitle.value.trim()){
+		alert("리뷰 제목을 입력해주세요.")
+		return;
+	}
+	if(!f.contents.value.trim()){
+		alert("내용을 입력해주세요.")
+		return;
+	}
+	
+	f.action = "reviewUpdate_ok.action";	
+	f.submit();
+	
+}
+
+
+
+
 
 

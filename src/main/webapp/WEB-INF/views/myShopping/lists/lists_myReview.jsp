@@ -19,10 +19,10 @@
 				<br/>
 				${dto.authorName } | ${dto.publisher } | ${dto.publishDate }<span>조회 ${dto.hitCount } | 공감 ${dto.thumbUp }</span>
 				<br/>
-				<b><span><a href="">수정</a> | <a href="javascript:deleteReview('${dto.reviewId }');">삭제</a></span></b>
+				<b><span><a href="<%=cp%>/myShopping/reviewUpdate.action?reviewId=${dto.reviewId}&back=list">수정</a> | <a href="javascript:deleteReview('${dto.reviewId }');">삭제</a></span></b>
 				<br/>
 				<div style="margin-top: 5px;">
-				${fn:substring(dto.contents,0,150)}
+				<a href="<%=cp%>/myShopping/reviewArticle.action?reviewId=${dto.reviewId}">${fn:substring(dto.contents,0,150)}</a>
 				<c:if test="${dto.contents.length()>150 }">...</c:if>
 				</div>
 				
@@ -39,5 +39,10 @@
 		<c:if test="${totalDataCount==0 }">
 		</c:if>
 	</p>
+</div>
+</c:if>
+<c:if test="${empty lists }">
+<div style="text-align: center; height: 150px; font-weight: bold; font-size: 15pt; line-height: 15;">
+	작성한 리뷰가 없습니다.
 </div>
 </c:if>

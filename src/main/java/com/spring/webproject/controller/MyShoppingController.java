@@ -212,7 +212,7 @@ public class MyShoppingController {
 		String searchValue = request.getParameter("searchValue");
 
 		//한 페이지당 출력 건수
-		int numPerPage = 3;
+		int numPerPage = 10;
 		//전체 페이징 페이지
 		int totalPage = 0;
 		//전체 출력 건수
@@ -344,7 +344,7 @@ public class MyShoppingController {
 		String toDate = request.getParameter("toDate");
 
 		//한 페이지당 출력 건수
-		int numPerPage = 3;
+		int numPerPage = 10;
 		//전체 페이징 페이지
 		int totalPage = 0;
 		//전체 출력 건수
@@ -450,7 +450,7 @@ public class MyShoppingController {
 		}
 
 		//한 페이지당 출력 건수
-		int numPerPage = 3;
+		int numPerPage = 10;
 		//전체 페이징 페이지
 		int totalPage = 0;
 		//전체 출력 건수
@@ -592,7 +592,7 @@ public class MyShoppingController {
 		}
 
 		//한 페이지당 출력 건수
-		int numPerPage = 3;
+		int numPerPage = 10;
 		//전체 페이징 페이지
 		int totalPage = 0;
 		//전체 출력 건수
@@ -952,7 +952,56 @@ public class MyShoppingController {
 
 		return "redirect:/myShopping/myReviewList.action";
 	}
+	
+	//리뷰 내용 보기
+	@RequestMapping(value = "myShopping/reviewArticle.action", method = RequestMethod.GET)
+	public String reviewArticle(HttpServletRequest request) {
+		
+		int reviewId = Integer.parseInt(request.getParameter("reviewId"));
+		
+		MyReviewDTO dto = dao.getReviewArticle(reviewId);
+		
+		dto.setContents(dto.getContents().replaceAll("\n", "<br/>"));
+		
+		request.setAttribute("dto", dto);
+		
+		return "myShopping/myReviewArticle";
+	}
+	
+	//리뷰 수정하기 페이지
+	@RequestMapping(value = "myShopping/reviewUpdate.action", method = RequestMethod.GET)
+	public String reviewUpdate(HttpServletRequest request) {
+		
+		int reviewId = Integer.parseInt(request.getParameter("reviewId"));
+		String back = request.getParameter("back");
+		
+		MyReviewDTO dto = dao.getReviewArticle(reviewId);
+		
+		request.setAttribute("dto", dto);
+		request.setAttribute("back", back);
+		
+		return "myShopping/myReviewUpdate";
+	}
+	
+	//리뷰 수정 진행
+	@RequestMapping(value = "myShopping/reviewUpdate_ok.action", method = RequestMethod.POST)
+	public String reviewUpdate_ok(HttpServletRequest request) {
+		
+		int reviewId = Integer.parseInt(request.getParameter("reviewId"));
+		String reviewTitle = request.getParameter("reviewTitle");
+		String contents = request.getParameter("contents");
+		
+		Map<String, Object> hMap = new HashMap<String, Object>();
+		hMap.put("reviewId", reviewId);
+		hMap.put("reviewTitle", reviewTitle);
+		hMap.put("contents", contents);
+		
+		dao.reviewUpdate(hMap);
+		
+		return "redirect:/myShopping/myReviewList.action";
 
+	}
+	
 
 	//리뷰를 기다리는 책 페이지
 	@RequestMapping(value = "myShopping/readyReviewList.action", method = RequestMethod.GET)
@@ -1077,12 +1126,17 @@ public class MyShoppingController {
 
 		return "myShopping/lists/lists_sentence";
 	}
+	
+	//간단평 삭제하기
+	@RequestMapping(value = "myShopping/deleteSentence.action", method = RequestMethod.POST)
+	public String deleteSentence(HttpServletRequest request) {
+		
+		int reviewId = Integer.parseInt(request.getParameter("reviewId"));
+		
+		dao.deleteReview(reviewId);
 
-	//최근덧글 페이지
-	@RequestMapping(value = "myShopping/myCommentList.action", method = RequestMethod.GET)
-	public String myCommentList(HttpServletRequest request) {
-
-		return "myShopping/myCommentList";
+		return "redirect:/myShopping/mySentenceList.action";
+		
 	}
 
 	//1:1상담내역 페이지
@@ -1093,10 +1147,10 @@ public class MyShoppingController {
 	}
 
 	//1:1상담하기 페이지
-	/*@RequestMapping(value = "myShopping/myCounselHistory.action", method = RequestMethod.GET)
-	public String myCounselHistory(HttpServletRequest request) {
+	/*@RequestMapping(value = "myShopping/goCounsel.action", method = RequestMethod.GET)
+	public String goCounsel(HttpServletRequest request) {
 
-		return "myShopping/myCounselHistory";
+		return "";
 	}*/
 
 
@@ -1178,10 +1232,5 @@ public class MyShoppingController {
 
 		return "redirect:/myShopping/myOrderDetail.action?orderId=" + orderId;
 	}
-
-
-
-
-
 
 }
