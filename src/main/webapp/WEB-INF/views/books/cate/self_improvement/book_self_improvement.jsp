@@ -13,8 +13,7 @@
 	type="text/css">
 
 <link rel="stylesheet"
-	href="/webproject/resources/book_css/detail_default.css"
-	type="text/css">
+	href="/webproject/resources/book_css/detail_default.css" type="text/css">
 
 <link rel="stylesheet" href="/webproject/resources/book_css/pStyle.css"
 	type="text/css">
@@ -49,15 +48,6 @@
 
 	function toggleDisplay2(num) {
 		var con = document.getElementById("left_layer" + num);
-		if (con.style.display == 'none') {
-			con.style.display = 'block';
-		} else {
-			con.style.display = 'none';
-		}
-	}
-
-	function toggleDisplay3(num) {
-		var con = document.getElementById("left2_layer" + num);
 		if (con.style.display == 'none') {
 			con.style.display = 'block';
 		} else {
@@ -131,15 +121,7 @@
 </head>
 <body>
 
-	<jsp:include page="../../../common/header.jsp" flush="false" />
-
-	<br />
-	<br />
-	<br />
-
-
-
-	<div id="contentBody" style="width: 1100px;">
+	<div id="contentBody">
 		<!-- 좌측 템플릿 시작 -->
 
 		<div class="side_t2 ml5">
@@ -148,11 +130,11 @@
 				<ul class="cate_d1">
 					<!-- 중분류 -->
 					<li id="kidsCate_821" class="cate_d1_li "><a href="/"
-						class="cate_d1_link" onmouseover="javascript:toggleDisplay3('01')"
-						onmouseout="javascript:toggleDisplay3('01')">성공/처세</a> <!-- 소분류 -->
-						<div class="cate_d2" id="left2_layer01"
-							onmouseover="javascript:toggleDisplay3('01')"
-							onmouseout="javascript:toggleDisplay3('01')"
+						class="cate_d1_link" onmouseover="javascript:toggleDisplay2('01')"
+						onmouseout="javascript:toggleDisplay2('01')">성공/처세</a> <!-- 소분류 -->
+						<div class="cate_d2" id="left_layer01"
+							onmouseover="javascript:toggleDisplay2('01')"
+							onmouseout="javascript:toggleDisplay2('01')"
 							style="display: none;">
 
 							<div class="pos_rel">
@@ -186,13 +168,13 @@
 
 					<li id="kidsCate_841" class="cate_d1_li "><a
 						href="/front/product/bookCategoryMain.do?cateId=841"
-						class="cate_d1_link" onmouseover="javascript:toggleDisplay3('02')"
-						onmouseout="javascript:toggleDisplay3('02')">자기능력계발</a> <!-- 소분류 -->
+						class="cate_d1_link" onmouseover="javascript:toggleDisplay2('02')"
+						onmouseout="javascript:toggleDisplay2('02')">자기능력계발</a> <!-- 소분류 -->
 
 
-						<div class="cate_d2" id="left2_layer02"
-							onmouseover="javascript:toggleDisplay3('02')"
-							onmouseout="javascript:toggleDisplay3('02')"
+						<div class="cate_d2" id="left_layer02"
+							onmouseover="javascript:toggleDisplay2('02')"
+							onmouseout="javascript:toggleDisplay2('02')"
 							style="display: none;">
 
 							<div class="pos_rel">
@@ -254,12 +236,12 @@
 
 					<li id="kidsCate_853" class="cate_d1_li "><a
 						href="/front/product/bookCategoryMain.do?cateId=853"
-						class="cate_d1_link" onmouseover="javascript:toggleDisplay3('03')"
-						onmouseout="javascript:toggleDisplay3('03')">비즈니스능력계발</a> <!-- 소분류 -->
+						class="cate_d1_link" onmouseover="javascript:toggleDisplay2('03')"
+						onmouseout="javascript:toggleDisplay2('03')">비즈니스능력계발</a> <!-- 소분류 -->
 
-						<div class="cate_d2" id="left2_layer03"
-							onmouseover="javascript:toggleDisplay3('03')"
-							onmouseout="javascript:toggleDisplay3('03')"
+						<div class="cate_d2" id="left_layer03"
+							onmouseover="javascript:toggleDisplay2('03')"
+							onmouseout="javascript:toggleDisplay2('03')"
 							style="display: none;">
 
 							<div class="pos_rel">
@@ -315,14 +297,14 @@
 
 					<li id="kidsCate_864" class="cate_d1_li "><a
 						href="/front/product/bookCategoryMain.do?cateId=864"
-						class="cate_d1_link" onmouseover="javascript:toggleDisplay3('04')"
-						onmouseout="javascript:toggleDisplay3('04')">인간관계</a> <!-- 소분류 -->
+						class="cate_d1_link" onmouseover="javascript:toggleDisplay2('04')"
+						onmouseout="javascript:toggleDisplay2('04')">인간관계</a> <!-- 소분류 -->
 
 
 
-						<div class="cate_d2" id="left2_layer04"
-							onmouseover="javascript:toggleDisplay3('04')"
-							onmouseout="javascript:toggleDisplay3('04')"
+						<div class="cate_d2" id="left_layer04"
+							onmouseover="javascript:toggleDisplay2('04')"
+							onmouseout="javascript:toggleDisplay2('04')"
 							style="display: none;">
 
 							<div class="pos_rel">
@@ -387,14 +369,14 @@
 
 					<li id="kidsCate_873" class="cate_d1_li "><a
 						href="/front/product/bookCategoryMain.do?cateId=873"
-						class="cate_d1_link" onmouseover="javascript:toggleDisplay3('05')"
-						onmouseout="javascript:toggleDisplay3('05')">화술/협상</a> <!-- 소분류 -->
+						class="cate_d1_link" onmouseover="javascript:toggleDisplay2('05')"
+						onmouseout="javascript:toggleDisplay2('05')">화술/협상</a> <!-- 소분류 -->
 
 
 
-						<div class="cate_d2" id="left2_layer05"
-							onmouseover="javascript:toggleDisplay3('05')"
-							onmouseout="javascript:toggleDisplay3('05')"
+						<div class="cate_d2" id="left_layer05"
+							onmouseover="javascript:toggleDisplay2('05')"
+							onmouseout="javascript:toggleDisplay2('05')"
 							style="display: none;">
 
 							<div class="pos_rel">
@@ -447,14 +429,14 @@
 
 					<li id="kidsCate_878" class="cate_d1_li "><a
 						href="/front/product/bookCategoryMain.do?cateId=878"
-						class="cate_d1_link" onmouseover="javascript:toggleDisplay3('06')"
-						onmouseout="javascript:toggleDisplay3('06')">세일즈/매너</a> <!-- 소분류 -->
+						class="cate_d1_link" onmouseover="javascript:toggleDisplay2('06')"
+						onmouseout="javascript:toggleDisplay2('06')">세일즈/매너</a> <!-- 소분류 -->
 
 
 
-						<div class="cate_d2" id="left2_layer06"
-							onmouseover="javascript:toggleDisplay3('06')"
-							onmouseout="javascript:toggleDisplay3('06')"
+						<div class="cate_d2" id="left_layer06"
+							onmouseover="javascript:toggleDisplay2('06')"
+							onmouseout="javascript:toggleDisplay2('06')"
 							style="display: none;">
 
 							<div class="pos_rel">
@@ -503,14 +485,14 @@
 
 					<li id="kidsCate_883" class="cate_d1_li "><a
 						href="/front/product/bookCategoryMain.do?cateId=883"
-						class="cate_d1_link" onmouseover="javascript:toggleDisplay3('07')"
-						onmouseout="javascript:toggleDisplay3('07')">오디오북</a> <!-- 소분류 -->
+						class="cate_d1_link" onmouseover="javascript:toggleDisplay2('07')"
+						onmouseout="javascript:toggleDisplay2('07')">오디오북</a> <!-- 소분류 -->
 
 
 
-						<div class="cate_d2" id="left2_layer07"
-							onmouseover="javascript:toggleDisplay3('07')"
-							onmouseout="javascript:toggleDisplay3('07')"
+						<div class="cate_d2" id="left_layer07"
+							onmouseover="javascript:toggleDisplay2('07')"
+							onmouseout="javascript:toggleDisplay2('07')"
 							style="display: none;">
 
 							<div class="pos_rel">
@@ -798,7 +780,7 @@
 
 		<div class="con_t2">
 
-			<div class="container" style="width: 850px;">
+			<div class="container">
 				<!-- 		<div class="tap_menu_d2 mb15"> -->
 				<ul class="nav nav-tabs">
 					<li class="active"><a href="#home">전체목록</a></li>
@@ -2034,8 +2016,7 @@
 		<!-- 가운데 레이아웃 -->
 
 	</div>
-	<!-- footer -->
-	<jsp:include page="../../../common/footer.jsp" flush="false" />
+
 
 </body>
 </html>

@@ -23,7 +23,7 @@
 .cateNaviNewS .d2Layer .d2 li a:visited { font:normal 11px 고딕; color:#888888; padding:5px 10px ;}
 .cateNaviNewS .d2Layer .d2 li a:hover { font:normal 11px 고딕; color:#ce7e3e; text-decoration:none; padding:5px 10px ; background:#f6f6f6;}
 .cateNaviNewS .depth1 li a.d1 {position:static; display:block;height:14px}
-.cateiNewS .depth3 li a.d1 {padding:8px 0 7px 15px; }
+.cateNaviNewS .depth3 li a.d1 {padding:8px 0 7px 15px; }
 .cateNaviNewS .depth3 .d2List .d2 li {background:none}.cateNaviNewS .depth3 .d2List .d2 li a:hover{background:none}
 .cateNaviNewS .depth3 li.on a.d1{color:#555;}
 .cateNaviNewS .depth3 .d2List .d3 {margin:0 0 7px 16px; border-bottom:none}

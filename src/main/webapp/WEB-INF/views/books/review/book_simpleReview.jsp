@@ -23,43 +23,6 @@
 	padding: 0
 }
 
-.ilike {
-	display: inline-block
-}
-
-.ilike .btn_ilike {
-	display: inline-block;
-	width: 66px;
-	height: 19px;
-	background: url('/webproject/resources/book_image/ico_ilike_comm.gif')
-		no-repeat 0 1px;
-	padding: 0 0 0 14px;
-	font: normal 11px 돋움;
-	color: #777
-}
-
-.ilike .btn_ilike:hover {
-	background:
-		url('/webproject/resources/book_image/ico_ilike_comm_on.gif')
-		no-repeat;
-}
-
-.ilike .on {
-	background:
-		url('/webproject/resources/book_image/ico_ilike_comm_on.gif')
-		no-repeat;
-}
-
-.ilike .ilike_count {
-	display: inline-block;
-	font: normal 11px verdana, 돋움;
-	color: #777;
-	width: 20px;
-	height: 19px;
-	padding-top: 4px;
-	text-align: center
-}
-
 body, ul, li {
 	margin: 0;
 	padding: 0
@@ -587,13 +550,6 @@ table	th.td_Left {
 
 <script type="text/javascript">
 
-function reviewVote2(Val){
-	alert("한줄평에 공감하셨습니다.");
-	
-	location.href ='<%=cp%>/book_review_vote2.action?isbn='+ <%=isbn%> + '&reviewId='+Val;
-	
-}
-
 function go_login() {
 
 	alert("로그인 하셔야 간단평을 쓰실수 있습니다.");
@@ -792,7 +748,7 @@ function enroll_SimpleReview(Val){
 
 					<!-- boardList02 -->
 					<form name="mainForm" method="post">
-
+						
 						<input type="hidden" name="isbn" value=${isbn }>
 						<div style="width: 100%;">
 							<div class="shotReview">
@@ -848,7 +804,7 @@ function enroll_SimpleReview(Val){
 
 		if (httpRequest.readyState == 4) {
 			if (httpRequest.status == 200) {
-
+				
 				var doc = httpRequest.responseXML;
 				var titleNL = doc.getElementsByTagName("sentence");
 				var userName = doc.getElementsByTagName("userName");
@@ -867,15 +823,13 @@ function enroll_SimpleReview(Val){
 					htmlData += titleNL.item(i).firstChild.nodeValue;
 					htmlData += "</td>";
 					htmlData += "<td class='td_R10'style='width:15%'> ";
-					htmlData += "<span class='ilike'><button onclick='reviewVote2(";
-					htmlData += reviewId.item(i).firstChild.nodeValue;
-					htmlData += ")'";
+					htmlData += "<span class='ilike'><button onclick='recommandCnt('', 0)'";
 					htmlData += "class='btn_ilike'><span>공감하기</span></button>";
 					htmlData += "<span class='ilike_count'>";
 					htmlData += thumbup.item(i).firstChild.nodeValue;
 					htmlData += "</span></span></td>";
 					htmlData += "</tr>";
-					onclick = "reviewVote(${dto.reviewId})"
+
 				}
 
 				htmlData += "</tbody>  </table>";
