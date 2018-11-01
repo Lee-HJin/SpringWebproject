@@ -34,70 +34,8 @@
 
 	}
 
+
 	
-
-	function viewArt(inValue) {
-		//this.location.href = "http://www.bandinlunis.com/front/product/detailProduct.do?prodId=4189934&art_seq_no="+inValue;
-		this.location.href = "/bandi_blog/extention/prodView.do?prod_id=4189934&usedYn=&page=1&art_seq_no="
-				+ inValue;
-	}
-
-	//ajax로 회원정보 가져오기-------------------------------------------------
-
-	function getDescription(url, inform, inflag, appendTxt) {
-		try {
-			var url = url;
-			var req = null;
-			if (window.XMLHttpRequest) {
-				req = new XMLHttpRequest();
-
-			} else {
-				req = new ActiveXObject("microsoft.XMLHTTP");
-				//req.overrideMimeType('text/xml');
-			}
-
-			req.onreadystatechange = function() {
-				if (req.readyState == 4) {
-					if (req.status == 200) {
-						//alert(req.responseText);
-						//alert(req.responseText.length); req.responseText.length 가 3107이면 페이지 못찾음.
-						if (req.responseText.length < 1000) {
-							if (req.responseText == 5)
-								inform.src = "http://blog.bandinlunis.com/bandi_blog/images/common/ico_moon1.gif";
-							else if (req.responseText == 4)
-								inform.src = "http://blog.bandinlunis.com/bandi_blog/images/common/ico_moon10.gif";
-							else if (req.responseText == 3)
-								inform.src = "http://blog.bandinlunis.com/bandi_blog/images/common/ico_moon30.gif";
-							else if (req.responseText == 2)
-								inform.src = "http://blog.bandinlunis.com/bandi_blog/images/common/ico_moon60.gif";
-							else if (req.responseText == 1)
-								inform.src = "http://blog.bandinlunis.com/bandi_blog/images/common/ico_moon100.gif";
-						} else {
-							//alert("회원정보를 가져오지 못했습니다.");
-							if (inform.id == "member_icon_tmp") {
-								//inform.src = "";
-							} else {
-								var tmpform = eval(inform);
-								tmpform.innerHTML = "" + appendTxt;
-
-								if (inform.id == "member_bandi_point"
-										|| inform.id == "member_sell_point")
-									tmpform.innerHTML = "0" + appendTxt;
-							}
-						}
-					} else {
-						//alert("접속실패");
-					}
-				}
-			}
-
-			//동기로 순차적으로 부름.		
-			req.open("GET", url, true);
-			req.send("");
-
-		} catch (e) {
-		}
-	}
 </script>
 
 
@@ -405,8 +343,9 @@
 											alt="">
 										<!-- 나뭇잎1 -->
 									</c:if></td>
-								<td style="text-align: left;"><a href ="javascript:goReviewMain(${dto.reviewId })"> ${dto.reviewTitle }
-								</a></td>
+								<td style="text-align: left;"><a
+									href="javascript:goReviewMain(${dto.reviewId })">
+										${dto.reviewTitle } </a></td>
 								<td class="t_gr">${dto.username }</td>
 								<td class="t_11gr">${dto.hitCount }</td>
 								<td class="t_11gr">${dto.thumbup }</td>
@@ -425,18 +364,13 @@
 				<div class="pageBG pageBGNone">
 					<div class="page">
 						<span class="pageNum">
-							<div class="page">
-								<span class="prev-btn"><a
-									href="javascript:goNextPage('1')"><img
-										src="/bandi_blog/images/myLibrary/btn_pagePrevG.gif" alt=""></a><a
-									href="javascript:goNextPage('1')"><img
-										src="/bandi_blog/images/myLibrary/btn_pagePrev.gif" alt=""></a></span><span
-									class="pageNum"><a href="javascript:goNextPage('1');"
-									class="on">1</a></span><span class="next-btn"><a
-									href="javascript:goNextPage('1')"><img
-										src="/bandi_blog/images/myLibrary/btn_pageNext.gif" alt=""></a><a
-									href="javascript:goNextPage('1')"><img
-										src="/bandi_blog/images/myLibrary/btn_pageNextG.gif" alt=""></a></span>
+							<div class="page" style="font-size: 12pt;">
+								<c:if test="${reviewNum!=0 }">
+					${pageIndexList }
+				</c:if>
+								<c:if test="${reviewNum==0 }">
+					등록된게시물이 없습니다.
+				</c:if>
 							</div>
 						</span>
 					</div>
@@ -444,13 +378,19 @@
 					<div class="pageConR">
 						<script>
 						function goReview() {
+							
+							if(${check_review} == 1){
+								alert("이미 리뷰를 한번 등록하셨습니다.");	
+								return ;
+							}									
 							parent.location.href = '<%=cp%>/book_review_created.action?isbn='+ ${isbn};
 							
 						}
 						
 						function goReviewMain(Val){
 							location.href = '<%=cp%>/book_review_main.action?reviewId='+ Val;
-						}
+							}
+						
 						</script>
 						<form action="" name="reviewForm" method="post">
 							<c:choose>
@@ -461,6 +401,8 @@
 										class="al_middle" alt="리뷰쓰기">
 									</a>
 								</c:when>
+
+
 
 								<c:otherwise>
 									<a href="javascript:goReview()"> <img
@@ -478,10 +420,6 @@
 			</div>
 		</div>
 	</div>
-
-
-
-
 
 
 

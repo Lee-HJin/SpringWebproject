@@ -51,35 +51,48 @@ public class BooksDAO {
 
 	}
 
+	// 북 커버 이미지 가져오기
+	public String getReadBookImage(int isbn) {
+
+		String str = sessionTemplate.selectOne("bookMapper.getReadBookImage", isbn);
+		return str;
+	}
+
 	// 리뷰 테이블 가져오기
 
-	public List<ReviewDTO> getReadReviewList(int isbn) {
+	public List<ReviewDTO> getReadReviewList(int start, int end, int isbn) {
 
-		List<ReviewDTO> lists = sessionTemplate.selectList("bookMapper.getReadReviewList", isbn);
+		HashMap<String, Object> params = new HashMap<String, Object>();
+
+		params.put("start", start);
+		params.put("end", end);
+		params.put("isbn", isbn);
+
+		List<ReviewDTO> lists = sessionTemplate.selectList("bookMapper.getReadReviewList", params);
 		return lists;
 
 	}
-	
+
 	// 심플리뷰 가져오기
-	public List<SimpleReviewDTO> getReadSimpleReviewList(int isbn){
+	public List<SimpleReviewDTO> getReadSimpleReviewList(int isbn) {
 		List<SimpleReviewDTO> lists = sessionTemplate.selectList("bookMapper.getReadSimpleReviewList", isbn);
 		return lists;
 	}
-	
+
 	// 심플리뷰 입력하기
 	public void insertSimpleReviewData(SimpleReviewDTO dto) {
-		
+
 		sessionTemplate.insert("bookMapper.insertSimpleReviewData", dto);
 	}
-	
+
 	// 심플 리뷰 입력2
 	public void insertSimpleReviewData2(String userId, int reviewId) {
 		HashMap<String, Object> params2 = new HashMap<String, Object>();
-		
+
 		params2.put("userId", userId);
 		params2.put("reviewId", reviewId);
 		sessionTemplate.insert("bookMapper.insertSimpleReviewData2", params2);
-		
+
 	}
 
 	// 리뷰 상세 정보 가져오기
@@ -92,6 +105,12 @@ public class BooksDAO {
 	public int getReviewDataCount(int isbn) {
 		int result = sessionTemplate.selectOne("bookMapper.getReviewDataCount", isbn);
 		return result;
+	}
+
+	public int getSimpleReivewDataCount(int isbn) {
+		int result = sessionTemplate.selectOne("bookMapper.getSimpleReivewDataCount", isbn);
+		return result;
+
 	}
 
 	// 리뷰 맥스값 가져오기
@@ -107,13 +126,13 @@ public class BooksDAO {
 	public void insertReviewData(ReviewDTO dto) {
 		sessionTemplate.insert("bookMapper.insertReviewData", dto);
 	}
-	
+
 	public void insertReviewThumbUpData(String userId, int reviewId) {
 		HashMap<String, Object> params = new HashMap<String, Object>();
 
 		params.put("userId", userId);
 		params.put("reviewId", reviewId);
-		
+
 		sessionTemplate.insert("bookMapper.insertReviewThumbUpData", params);
 	}
 
@@ -135,17 +154,28 @@ public class BooksDAO {
 		sessionTemplate.update("bookMapper.updateHitCount", reviewId);
 
 	}
-	
+
 	// 공감수 증가
 	public void updateThumbUp(int reviewId) {
-		sessionTemplate.update("bookMapper.updateThumbUp",reviewId);
+		sessionTemplate.update("bookMapper.updateThumbUp", reviewId);
+	}
+
+	// 재고 데이터 가져오기
+	public WareHouseDTO getWareHouseData(int isbn) {
+		WareHouseDTO dto = sessionTemplate.selectOne("bookMapper.getWareHouseList", isbn);
+		return dto;
 	}
 	
-	
-	//재고 데이터 가져오기
-	public List<WareHouseDTO> getWareHouseData(int isbn){
-		List<WareHouseDTO> lists = sessionTemplate.selectList("bookMapper.getWareHouseList", isbn);
-		return lists;
+	// 리뷰 체크
+	public int getReviewCheck(int isbn , String userId) {
+		
+		HashMap<String, Object> params = new HashMap<String, Object>();
+		
+		params.put("isbn", isbn);
+		params.put("userId", userId);
+		
+		int result = sessionTemplate.selectOne("bookMapper.getReviewCheck", params);
+		return result;
 	}
 	
 
