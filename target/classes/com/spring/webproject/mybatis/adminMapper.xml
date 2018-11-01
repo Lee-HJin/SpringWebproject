@@ -326,6 +326,72 @@ values(#{isbn},#{bookImage})
 
 <!-- consultation -->
 
+<select id="getConsultationTotalCount" parameterType="map" resultType="int">
+
+	select 
+		count(consultId)
+	from
+		consultation
+	<where>
+		<if test="searchValue!=null">
+			${searchKey} like '%${searchValue}%'
+		</if>
+		<if test="fromDate!=null">
+			and consultationDate >= to_date(#{fromDate},'YYYY-MM-DD')
+		</if>
+		<if test="toDate!=null">
+			<![CDATA[and consultationDate < to_date(#{toDate},'YYYY-MM-DD')]]>
+		</if>
+		<if test="answerCheck==null">
+			and answercheck is null
+		</if>
+		<if test="answerCheck!=null">
+			and answercheck is not null
+		</if>
+	</where>
+
+</select>
+
+<select id="getCounsultationList" parameterType="map" resultType="com.spring.webproject.dto.AdminCounsultationDTO">
+	select
+		a.rnum, a.consultId, a.userId, a.email, a.subject, a.contents, a.consultationDate, a.answerCheck, a.typeName
+	from
+	(select
+		rownum as rnum, a.consultId, a.userId, a.email, a.subject, a.contents, a.consultationDate, a.answerCheck, a.typeName
+	from
+	(select
+		a.consultId, a.userId, a.email, a.subject, a.contents, a.consultationDate, a.answerCheck, a.typeName
+	from
+		(select a.consultId, a.userId, a.email, a.subject, a.contents, a.consultationDate, a.answerCheck, b.typeName
+		from 
+			consultation a,
+			consultationtype b
+		where a.typeId = b.typeId) a
+	<where>
+		<if test="searchValue!=null">
+			${searchKey} like '%${searchValue}%'
+		</if>
+		<if test="fromDate!=null">
+			and consultationDate >= to_date(#{fromDate},'YYYY-MM-DD')
+		</if>
+		<if test="toDate!=null">
+			<![CDATA[and consultationDate < to_date(#{toDate},'YYYY-MM-DD')]]>
+		</if>
+		<if test="answerCheck==null">
+			and answercheck is null
+		</if>
+		<if test="answerCheck!=null">
+			and answercheck is not null
+		</if>
+	</where>
+	order by consultId)a
+	<![CDATA[		
+		where rownum <= #{end}) a
+	where a.rnum>= #{start}
+]]>
+	 
+	
+</select>
 
 <!-- consultation end -->
 

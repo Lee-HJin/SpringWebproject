@@ -22,6 +22,31 @@
 <script
 	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 
+<script type="text/javascript"> 
+
+$(function(){
+	$('.answerCheck').change(
+			function(){
+				
+				var checkbox = document.getElementsByName("answerCheck");
+				var num = 0;
+				for(i=0; i<checkbox.length; i++){
+					if(checkbox[i].checked){
+						num++;
+					}
+				}
+				
+				if(num>=2){
+					alert("하나만 체크하세요")
+					$('.answerCheck').prop('checked', false); 
+					
+				}
+				
+			});
+});
+
+</script>
+
 </head>
 <body>
 	<div class="container">
@@ -30,12 +55,11 @@
 			<div class="panel panel-default">
 				<div class="panel-heading">검색</div>
 				<div class="panel-body">
-					<form action="/admin_consultation.action" method="get">
+					<form action="<%=cp %>/admin_consultation.action" method="get">
 						<div class="col-lg-10">
 							<div class="col-lg-2 form-group">
 								<select class="form-control" name="searchKey">
-									<option value="">선택</option>
-									<option value="consultId">상담아이디</option>
+									<option value=null>선택</option>
 									<option value="userId">사용자아이디</option>
 									<option value="email">이메일</option>
 									<option value="subject">제목</option>
@@ -45,7 +69,7 @@
 							<div class="col-lg-10 form-group">
 								<div class="col-lg-6">
 									<input type="text" class="form-control" id="searchValue"
-										placeholder="검색어를 입력하세요" name="searchValue">
+										placeholder="검색어를 입력하세요" name="searchValue" >
 								</div>
 								<div class="col-lg-2">
 									<button type="submit" class="btn btn-default">검색</button>
@@ -60,16 +84,16 @@
 
 							<div class="col-lg-3">
 
-								<input type="date" class="form-control" name="startDate">
+								<input type="date" class="form-control" name="fromDate" value=null>
 							</div>
 
 							<div class="col-lg-3">
-								<input type="date" class="form-control" name="endDate">
+								<input type="date" class="form-control" name="toDate" value=null>							
 							</div>
 
 							<div class="col-lg-4 checkbox">
-								<label><input type="checkbox" name="solved"> 처리</label>
-								<label><input type="checkbox" name="unsolved">미처리</label>
+								<label><input type="checkbox" class="answerCheck" name="answerCheck" value="y"> 처리</label>
+								<label><input type="checkbox" class="answerCheck" name="answerCheck" value="">미처리</label>
 							</div>
 						</div>
 
@@ -86,31 +110,35 @@
 									<tr>
 										<th scope="col">no</th>
 										<th scope="col">상담아이디</th>
-										<th scope="col">유저아이디</th>
+										<th scope="col">사용자아이디</th>
 										<th scope="col">이메일</th>
 										<th scope="col">제목</th>
 										<th scope="col">내용</th>
 										<th scope="col">상담일자</th>
 										<th scope="col">처리여부</th>
+										<th scope="col">상담유형</th>
 									</tr>
 								</thead>
 								<tbody>
 
-									<c:forEach var="user" items="${userList}" varStatus="status">
+									<c:forEach var="consultation" items="${consultationList}" varStatus="status">
 										<tr>
 											<td>${(status.index + pageMaker.cri.numPerPage * (pageMaker.cri.page-1))+1 }</td>
-											<td>${user.userId }</td>
-											<td>${user.userName }</td>
-											<td>${user.nickName }</td>
-											<td>${user.memberGrade }</td>
-											<td>${user.point }</td>
-											<td>${user.email}</td>
-											<td>${user.phone }</td>
-											<td>${user.zipCode}${user.address1 }${user.address2 }</td>
-											<td>
-												<button type="button" class="btn" id="del_btn"
-													onclick="deleteUser('${user.userId}')">삭제</button> 
-											</td>
+											<td>${consultation.consultId }</td>
+											<td>${consultation.userId }</td>
+											<td>${consultation.email }</td>
+											<td>${consultation.subject }</td>
+											<td>${consultation.contents }</td>
+											<td>${consultation.consultationDate}</td>
+											<c:choose>
+												<c:when test="${empty consultation.answerCheck }">
+													<td>N</td>
+												</c:when>
+												<c:otherwise>
+													<td>Y</td>
+												</c:otherwise>
+											</c:choose>
+											<td>${consultation.typeName }</td>
 										</tr>
 									</c:forEach>
 								</tbody>
@@ -124,16 +152,16 @@
 						<ul class="pagination">
 							<c:if test="${pageMaker.pre }">
 								<li><a
-									onclick="paging('<%=cp %>/admin_users.action?page=${pageMaker.startPage-1}')">&lt;</a></li>
+									onclick="paging('<%=cp %>/admin_consultation.action?page=${pageMaker.startPage-1}')">&lt;</a></li>
 							</c:if>
 							<c:forEach begin="${pageMaker.startPage }"
 								end="${pageMaker.endPage }" var="idx">
 								<li><a
-									href="<%=cp %>/admin_users.action?page=${idx}&searchKey=${pageMaker.cri.searchKey}&searchValue=${pageMaker.cri.searchValue}">${idx }</a></li>
+									href="<%=cp %>/admin_consultation.action?page=${idx}&searchKey=${pageMaker.cri.searchKey}&searchValue=${pageMaker.cri.searchValue}">${idx }</a></li>
 							</c:forEach>
 							<c:if test="${pageMaker.nex }">
 								<li><a
-									href="<%=cp %>/admin_users.action?page=${pageMaker.endPage+1}&searchKey=${pageMaker.cri.searchKey}&searchValue=${pageMaker.cri.searchValue}">&gt;</a></li>
+									href="<%=cp %>/admin_consultation.action?page=${pageMaker.endPage+1}&searchKey=${pageMaker.cri.searchKey}&searchValue=${pageMaker.cri.searchValue}">&gt;</a></li>
 							</c:if>
 						</ul>
 					</div>

@@ -10,10 +10,12 @@ import org.springframework.stereotype.Repository;
 import com.spring.webproject.dto.AdminAuthorDTO;
 import com.spring.webproject.dto.AdminBooksDTO;
 import com.spring.webproject.dto.AdminCategoryDTO;
+import com.spring.webproject.dto.AdminCounsultationDTO;
 import com.spring.webproject.dto.AdminQuantityDTO;
 import com.spring.webproject.dto.AdminTranslatorDTO;
 import com.spring.webproject.dto.AdminUsersDTO;
 import com.spring.webproject.dto.AdminWarehouseDTO;
+import com.spring.webproject.util.ConsultationCriteria;
 import com.spring.webproject.util.SearchCriteria;
 
 @Repository
@@ -132,7 +134,15 @@ public class AdminDAO {
 		sessionTemplate.insert("adminMapper.insertBookImage", dto);
 	}
 	
+	//consultation
+	public int getCounsultationTotalCount(ConsultationCriteria cri) {
+		return sessionTemplate.selectOne("adminMapper.getConsultationTotalCount", cri);
+	}
 	
+	public List<AdminCounsultationDTO> getCounsultationList(ConsultationCriteria cri){
+		List<AdminCounsultationDTO> list = sessionTemplate.selectList("adminMapper.getCounsultationList", cri);
+		return list;
+	}
 
 }
 

@@ -25,10 +25,12 @@ import com.spring.webproject.dao.AdminDAO;
 import com.spring.webproject.dto.AdminAuthorDTO;
 import com.spring.webproject.dto.AdminBooksDTO;
 import com.spring.webproject.dto.AdminCategoryDTO;
+import com.spring.webproject.dto.AdminCounsultationDTO;
 import com.spring.webproject.dto.AdminQuantityDTO;
 import com.spring.webproject.dto.AdminTranslatorDTO;
 import com.spring.webproject.dto.AdminUsersDTO;
 import com.spring.webproject.dto.AdminWarehouseDTO;
+import com.spring.webproject.util.ConsultationCriteria;
 import com.spring.webproject.util.Criteria;
 import com.spring.webproject.util.FileUtil;
 import com.spring.webproject.util.PageMaker;
@@ -232,9 +234,30 @@ public class AdminController {
 
 	// consultation
 	@RequestMapping(value = "/admin_consultation.action", method = { RequestMethod.POST, RequestMethod.GET })
-	public String consultation() {
+	public String consultation(Model model ,HttpServletRequest request,ConsultationCriteria cri) {
 		
-		
+		if(cri.getAnswerCheck()==null || cri.getAnswerCheck().equals("")) {
+			cri.setAnswerCheck(null);
+		}
+		if(cri.getToDate()==null || cri.getToDate().equals("")) {
+			cri.setToDate(null);
+		}
+		if(cri.getFromDate()==null || cri.getFromDate().equals("")) {
+			cri.setFromDate(null);
+		}
+		if(cri.getSearchValue()==null || cri.getSearchValue().equals("")) {
+			cri.setSearchValue(null);
+		}
+		if(cri.getSearchKey()==null || cri.getSearchKey().equals("")) {
+			cri.setSearchKey(null);
+		}
+		List<AdminCounsultationDTO> consultationList = dao.getCounsultationList(cri);
+
+		PageMaker pageMaker = new PageMaker(cri);
+		pageMaker.setTotalDataCount(dao.getCounsultationTotalCount(cri));
+
+		model.addAttribute("pageMaker", pageMaker);
+		model.addAttribute("consultationList", consultationList);
 		
 		return "admin/admin_consultation";
 	}
