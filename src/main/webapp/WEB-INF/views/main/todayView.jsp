@@ -14,12 +14,12 @@
 </div>
 <h4>오늘본 상품</h4>
 <div class="swiper-container swiper3">
-	<div class="swiper-wrapper">
+	<ul class="swiper-wrapper list">
 		<c:forEach var="ck" items="${lst }">
-			<div class="swiper-slide">
+			<li class="swiper-slide">
 				<input id="isbn" value="${ck.isbn }" type="hidden"/>
 				<div class="rb_image">
-					<a href="javascript://">
+					<a href="<%=cp%>/tempbook.action?isbn=${ck.isbn}">
 						<img src="<%=cp%>/resources/image/book/${ck.bookImage }">
 					</a>
 					<dl class="rb_title">
@@ -27,9 +27,9 @@
 						<dd>${ck.authorName }</dd>
 					</dl>
 				</div>
-			</div>
+			</li>
 		</c:forEach>
-	</div>
+	</ul>
 </div>
 
 <script src="<%=cp%>/resources/js/swiper_min.js"></script>
@@ -52,24 +52,7 @@ var swiper = new Swiper('.swiper3', {
 
 
 
-//추천도서 새로고침 버튼
-$(document).ready(function() {
-	$('#recommend_btn,#rb_awL,#rb_awR').click(function() {
-	
-		var params = $('.swiper-slide-active #isbn').val();
-		$.ajax({
-			type:"POST",
-			url:"<%=cp%>/recomm.action",
-			data: {isbn:params},
-			success:function(args){
-				$('#recommend_books').html(args);
-			},
-			error:function(e){
-				alert(e.responseText);
-			}
-		});
-	});
-});
+
 
 
 </script>

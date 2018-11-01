@@ -15,6 +15,25 @@
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 	<script src="<%=cp%>/resources/js/myShopping.js"></script>
 	
+	<script type="text/javascript">	
+	$(document).ready(function(){
+		
+		//초기 리스트 자동 불러오기
+		$.ajax({			
+			url:"getSentenceList.action",
+			type:"POST",
+			success:function(data){
+				$('#mySentenceList').html(data);	
+			},
+			error:function(e){
+				alert(e.responseText);
+			}
+		});
+
+	});	
+	</script>
+	
+	
 </head>
 <body style="padding: 0; margin: 0;">
 
@@ -34,87 +53,11 @@
 <div class="contents">
 	<div style="font-size: 13pt; font-weight: bold; padding-bottom: 10px;">간단평 | <span style="font-size: 10pt; font-weight: normal;">(총 1권의 책이 담겨 있습니다.)</span></div>
 	
-	<div class="sentence_list_box">
-		<ul>
-			<li>
-				<div class="sentence_head">
-					<a href=""><img alt="" src="<%=cp%>/resources/image/book/3054578.jpg"></a>
-				</div>
-				<div class="sentence_body">
-					<b><a href="">책제목-bookTitle</a></b><span>(2018-10-04 17:42)</span>
-					<br/>
-					저자 | 출판사 | 출판년도<span><a href="">수정</a> | <a href="">삭제</a></span>
-					<br/><br/>
-					간단평! 너무 재밌습니다! 몇번 째 보는지 모르겠네요.!!!!!!!
-				</div>
-			</li>
-		</ul>
-		<ul>
-			<li>
-				<div class="sentence_head">
-					<a href=""><img alt="" src="<%=cp%>/resources/image/book/3054578.jpg"></a>
-				</div>
-				<div class="sentence_body">
-					<b><a href="">책제목-bookTitle</a></b><span>(2018-10-04 17:42)</span>
-					<br/>
-					저자 | 출판사 | 출판년도<span><a href="">수정</a> | <a href="">삭제</a></span>
-					<br/><br/>
-					간단평! 너무 재밌습니다! 몇번 째 보는지 모르겠네요.!!!!!!!
-				</div>
-			</li>
-		</ul>
-		<ul>
-			<li>
-				<div class="sentence_head">
-					<a href=""><img alt="" src="<%=cp%>/resources/image/book/3054578.jpg"></a>
-				</div>
-				<div class="sentence_body">
-					<b><a href="">책제목-bookTitle</a></b><span>(2018-10-04 17:42)</span>
-					<br/>
-					저자 | 출판사 | 출판년도<span><a href="">수정</a> | <a href="">삭제</a></span>
-					<br/><br/>
-					간단평! 너무 재밌습니다! 몇번 째 보는지 모르겠네요.!!!!!!!
-				</div>
-			</li>
-		</ul>
-		<ul>
-			<li>
-				<div class="sentence_head">
-					<a href=""><img alt="" src="<%=cp%>/resources/image/book/3054578.jpg"></a>
-				</div>
-				<div class="sentence_body">
-					<b><a href="">책제목-bookTitle</a></b><span>(2018-10-04 17:42)</span>
-					<br/>
-					저자 | 출판사 | 출판년도<span><a href="">수정</a> | <a href="">삭제</a></span>
-					<br/><br/>
-					간단평! 너무 재밌습니다! 몇번 째 보는지 모르겠네요.!!!!!!!
-				</div>
-			</li>
-		</ul>
-		<ul>
-			<li>
-				<div class="sentence_head">
-					<a href=""><img alt="" src="<%=cp%>/resources/image/book/3054578.jpg"></a>
-				</div>
-				<div class="sentence_body">
-					<b><a href="">책제목-bookTitle</a></b><span>(2018-10-04 17:42)</span>
-					<br/>
-					저자 | 출판사 | 출판년도<span><a href="">수정</a> | <a href="">삭제</a></span>
-					<br/><br/>
-					간단평! 너무 재밌습니다! 몇번 째 보는지 모르겠네요.!!!!!!!그러게말이다..
-				</div>
-			</li>
-		</ul>
-	
+	<div id="mySentenceList">
+
 	</div>
 
-
-
-
 </div>
-
-
-
 
 </div>
 

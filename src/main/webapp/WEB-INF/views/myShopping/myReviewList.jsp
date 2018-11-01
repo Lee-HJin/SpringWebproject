@@ -15,6 +15,24 @@
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 	<script src="<%=cp%>/resources/js/myShopping.js"></script>
 	
+	<script type="text/javascript">	
+	$(document).ready(function(){
+		
+		//초기 리스트 자동 불러오기
+		$.ajax({			
+			url:"getReviewList.action",
+			type:"POST",
+			success:function(data){
+				$('#myReviewList').html(data);	
+			},
+			error:function(e){
+				alert(e.responseText);
+			}
+		});
+
+	});	
+	</script>
+	
 </head>
 <body style="padding: 0; margin: 0;">
 
@@ -32,6 +50,11 @@
 <jsp:include page="./sideNavi.jsp" flush="false"/>
 
 <div class="contents">
+	<div style="font-size: 13pt; font-weight: bold; padding-bottom: 10px;">리뷰가 있는 책 | <span style="font-size: 10pt; font-weight: normal;">(총 ${reviewCount }권의 책이 담겨 있습니다.)</span></div>
+	<div id="myReviewList">
+
+	</div>
+
 </div>
 
 

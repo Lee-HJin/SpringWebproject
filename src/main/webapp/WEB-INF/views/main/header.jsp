@@ -1,18 +1,14 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%
+
 	request.setCharacterEncoding("UTF-8");
 	String cp = request.getContextPath();
 %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<!DOCTYPE html>
-<html>
-<head>
-<meta charset="UTF-8">
 
 <link rel="stylesheet" href="<%=cp%>/resources/css/main.css" type="text/css"/>
 
-<title>Insert title here</title>
 <script type="text/javascript">
 	
 	function toggleDisplay(num){
@@ -59,9 +55,70 @@
 		$("#onTop").click(function(){
 			$('html, body').animate({scrollTop:0}, 350);
 		});
+		
+		var sck = cookieInfo(getCookie('book'));
+		var sData = document.getElementById("side_today_view");
+		var sNoData = document.getElementById("side_today_nodata");
+		
+		todaySView(sck);
+		
+   		if(sck!=null){
+   			sNoData.style.display = 'none';
+   			sData.style.display = 'block';
+		}else if(sck==null){
+			sNoData.style.display = 'block';
+			sData.style.display = 'none';
+		}
 	});
 	
+	
+	//오늘 본 상품
+	function todaySView(ck) {
+		if(ck==null){
+			return;
+		}else{
+			var shtml= '<h4>최근 본 상품</h4>';
+			shtml+= '<div class="swiper-container side_swiper">';
+			shtml+= '	<ul class="swiper-wrapper">';
 
+			for(var i=0;i<ck.length;i++){
+				if(i==0||i%2==0){
+					shtml+= '<li class="swiper-slide">';
+				}
+				shtml+= '	<div class="tv_item">';
+				shtml+= '		<a href="<%=cp%>/tempbook.action?isbn='+ ck[i].isbn +'">';
+				shtml+= '			<img src="<%=cp%>/resources/image/book/'+ck[i].bookImage+'">';
+				shtml+= '		</a>';
+				shtml+= '	</div>';
+				if(i==1||i%2==1){
+					shtml+= '</li>';
+				}	
+			}		
+			shtml+= '</ul></div>';
+			shtml+= '<div class="aw_box_tv">';
+			shtml+= '	<button class="tv_aw left" id="tv_awl"></button>';
+			shtml+= '	<span class="tv_aw_count"></span>';
+			shtml+= '	<button class="tv_aw right" id="tv_awr"></button>';
+			shtml+= '</div>';
+			
+			$("#side_today_view").html(shtml);	
+		}
+		
+		var swiper = new Swiper('.side_swiper', {
+			spaceBetween: 0,
+			centeredSlides: true,
+			simulateTouch : false,
+			loop: true,
+			pagination: {
+				el: '.tv_aw_count',
+				type: 'fraction',
+			},
+			navigation: {
+				nextEl: '#tv_awr',
+				prevEl: '#tv_awl',
+			},
+		});
+	}
 
 </script>
 </head>
@@ -84,60 +141,34 @@
 	</div>
 </div>
 <div id="side_service" style="margin-left: 575px;">
-	<div class="today_view">
+	<div class="today_view" id="side_today_nodata" style="display: none;">
 		<h4>최근 본 상품</h4>
-		<div class="swiper-container side_swiper">
-			<div class="swiper-wrapper">
-				<ul class="swiper-slide">
-					<li class="tv_item">
-						<a href="javascript://">
-							<img src="">
-						</a>
-					</li>
-					<li class="tv_item">
-						<a href="javascript://">
-							<img src="">
-						</a>
-					</li>
-				</ul>
-				<ul class="swiper-slide">
-					<li class="tv_item">
-						<a href="javascript://">
-							<img src="">
-						</a>
-					</li>
-					<li class="tv_item">
-						<a href="javascript://">
-							<img src="">
-						</a>
-					</li>
-				</ul>
+		<div style="width: 92px;margin: 0 auto;overflow: hidden;">
+			<div class="nodata">
+				최근 본 상품이<br>없습니다.
 			</div>
 		</div>
-		<div class="aw_box_tv">
-			<button class="tv_aw left" id="tv_awl"></button>
-			<span class="tv_aw_count"></span>
-			<button class="tv_aw right" id="tv_awr"></button>
-		</div>
 	</div>
+	<div class="today_view" id="side_today_view" style="display: block;"></div>
 	<div class="ss_myshop">
-		<a href="javascript://">
+		<a href="<%=cp%>/myShoppingMain.action">
 			나의 쇼핑
 		</a>
 	</div>
 	<div class="ss_myshop">
-		<a href="javascript://">
+		<a href="<%=cp%>/myShopping/myWishList.action">
 			위시리스트
 		</a>
 	</div>
 	<div class="ss_myshop">
-		<a href="javascript://">
-			구매히스토리
+    
+		<a href="<%=cp%>/myShopping/myReviewList.action">
+
+			나의 리뷰
 		</a>
 	</div>
 </div>
 <div id="head">
-	<div id="top_wrap">
 		<div class="head_top" style="width: 1100px;">
 			<h1 class="logo">
 				<a href="<%=cp%>/main.action">
@@ -178,19 +209,21 @@
                 
 							</div>
 							<div>
-								<a href="javascript://">주문배송조회</a>
+								<a href="<%=cp%>/myShopping/myOrderList.action">주문배송조회</a>
 							</div>
 							<div>
-								<a href="javascript://">적립내역</a>
+								<a href="<%=cp%>/myShopping/myPointHistory.action">적립내역</a>
 							</div>
 							<div>
-								<a href="javascript://">구매히스토리</a>
+
+								<a href="<%=cp%>/myShopping/myReviewList.action">나의 리뷰</a>
+
 							</div>
 							<div>
-								<a href="javascript://">위시리스트</a>
+								<a href="<%=cp%>/myShopping/myWishList.action">위시리스트</a>
 							</div>
 							<div>
-								<a href="javascript://">회원정보</a>
+								<a href="<%=cp%>/myShopping/pre_updateMyInfo.action?mode=update">회원정보</a>
 							</div>
 						</div>
 					</li>
@@ -204,50 +237,49 @@
 						<div id="top_layer02" class="display_top"  style="display: none; width: 130px;"
 						onmouseover="javascript:toggleDisplay2('02')" onmouseout="javascript:toggleDisplay2('02')">
 							<div style="margin-top: 5px;">
-								<a href="javascript://">신세계강남점</a>
+								<a href="<%=cp%>/store.action?params=1">신세계강남점</a>
 							</div>
 							<div>
-								<a href="javascript://">신세계센텀시티점(부산)</a>
+								<a href="<%=cp%>/store.action?params=2">신세계센텀시티점(부산)</a>
 							</div>
 							<div>
-								<a href="javascript://">롯데월드몰점</a>
+								<a href="<%=cp%>/store.action?params=3">롯데월드몰점</a>
 							</div>
 							<div>
-								<a href="javascript://">여의도신영증권점</a>
+								<a href="<%=cp%>/store.action?params=4">여의도신영증권점</a>
 							</div>
 							<div>
-								<a href="javascript://">대구신세계점</a>
+								<a href="<%=cp%>/store.action?params=5">대구신세계점</a>
 							</div>
 							<div>
-								<a href="javascript://">롯데몰수원점</a>
+								<a href="<%=cp%>/store.action?params=6">롯데몰수원점</a>
 							</div>
 							<div>
-								<a href="javascript://">신세계김해점</a>
+								<a href="<%=cp%>/store.action?params=7">신세계김해점</a>
 							</div>
 							<div>
-								<a href="javascript://">롯데스타시티점</a>
+								<a href="<%=cp%>/store.action?params=8">롯데스타시티점</a>
 							</div>
 							<div>
-								<a href="javascript://">신림역점</a>
+								<a href="<%=cp%>/store.action?params=9">신림역점</a>
 							</div>
 							<div>
-								<a href="javascript://">사당역점</a>
+								<a href="<%=cp%>/store.action?params=10">사당역점</a>
 							</div>
 							<div>
-								<a href="javascript://">목동점</a>
+								<a href="<%=cp%>/store.action?params=11">목동점</a>
 							</div>
 							<div>
-								<a href="javascript://">롯데피트인산본점</a>
+								<a href="<%=cp%>/store.action?params=12">롯데피트인산본점</a>
 							</div>
 							<div>
-								<a href="javascript://">롯데울산점</a>
+								<a href="<%=cp%>/store.action?params=13">롯데울산점</a>
 							</div>
 						</div>
 					</li>
 				</ul>
 			</div>
 		</div>
-	</div>
 	
 	<div class="wrap_header">
 		<div class="header_menu" style="width: 1100px;">
@@ -476,7 +508,6 @@
 </div>
 
 	<script src="<%=cp%>/resources/js/swiper_min.js"></script>
-	<script src="<%=cp%>/resources/js/main.js"></script>
+	<script src="<%=cp%>/resources/js/swiper.js"></script>
 
 </body>
-</html>

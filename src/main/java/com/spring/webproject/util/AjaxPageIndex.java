@@ -197,6 +197,44 @@ public class AjaxPageIndex {
 				page++;		
 			}			
 		}
+		//리뷰가 있는 책
+		else if(mode.equals("myReviewDefault")) {
+			
+			while(page <= totalPage && page <= (currentPageSetup + numPerBlock)){
+				if(page == currentPage){				
+					sb.append("<span class='page_on'>" + page + "</span>&nbsp;");				
+				}
+				else{
+					sb.append("<span class='page_off'><a href=\"javascript:getMyReviewList(" +  page + ",'myReviewDefault')\">"
+							+ page + "</a></span>&nbsp;");
+				}				
+				page++;		
+			}	
+		}
+		else if(mode.indexOf("wish")!=-1) {
+			while(page <= totalPage && page <= (currentPageSetup + numPerBlock)){
+				if(page == currentPage){				
+					sb.append("<span class='page_on'>" + page + "</span>&nbsp;");				
+				}
+				else{
+					sb.append("<span class='page_off'><a href=\"javascript:getWishList(" +  page + ",'" + mode + "')\">"
+							+ page + "</a></span>&nbsp;");
+				}				
+				page++;		
+			}	
+		}
+		else if(mode.equals("sentence")) {
+			while(page <= totalPage && page <= (currentPageSetup + numPerBlock)){
+				if(page == currentPage){				
+					sb.append("<span class='page_on'>" + page + "</span>&nbsp;");				
+				}
+				else{
+					sb.append("<span class='page_off'><a href=\"javascript:getSentenceList(" +  page + ",'" + mode + "')\">"
+							+ page + "</a></span>&nbsp;");
+				}				
+				page++;		
+			}	
+		}
 		
 		
 		return sb.toString();

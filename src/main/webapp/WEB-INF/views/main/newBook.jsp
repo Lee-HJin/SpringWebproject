@@ -14,7 +14,6 @@
 </div>
 <div class="swiper-container swiper4">
 	<div class="swiper-wrapper">
-		<c:set var="i" value="0"/>
 		<c:forEach var="nb" items="${lst }">
 			<div class="swiper-slide">
 				<div class="wrap_b_img">

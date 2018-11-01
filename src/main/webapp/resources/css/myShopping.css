@@ -128,7 +128,7 @@ a:hover {text-decoration: underline; color: #886e45;}
 	
 .on {display: block;}
 
-.sentence_list_box {border-top: 3px solid #e1e1e1; margin-top: 10px; padding: 10px;}
+.sentence_list_box {margin-top: 10px; padding: 10px; border-top: 3px solid #e1e1e1;}
 .sentence_list_box ul {width: 740px; list-style: none; vertical-align: top;}
 .sentence_list_box li {position: relative; overflow: hidden; border-bottom: 1px solid #e1e1e1; padding-bottom: 10px; padding-top: 10px;}
 .sentence_head {float: left;}
@@ -187,3 +187,23 @@ a:hover {text-decoration: underline; color: #886e45;}
 .Lates_list_content li {float: left; width: 180px; border-bottom: none; vertical-align: top;}
 .Lates_list_content dt {clear: both;	}	
 .Lates_list_content input {display: block;}
+
+.review_article_title {border-bottom: 1px solid #e1e1e1; height: 50px; line-height: 4; font-size: 12pt; color: #775d43; padding-left: 10px;}
+.review_article_title span {float: right; font-size: 10pt; line-height: 5; color: #555555;}
+.review_article_box {margin-top: 10px; padding: 5px;}
+.review_article_box ul {width: 740px; list-style: none; vertical-align: top;}
+.review_article_box li {position: relative; overflow: hidden; padding-bottom: 10px;}
+.sentence_head {float: left;}
+.sentence_head img{width: 70px; height: 100px;}
+.sentence_body {margin-left: 20px; float: left; width: 630px; line-height: 20px;}
+.review_article_contents {padding: 10px; border: 1px solid #d5d5d5;}
+.review_article_contents table {font-family: 맑은고딕; border-collapse: collapse;}
+.review_article_contents tr {border-bottom: 1px solid #d5d5d5; border-top: 1px solid #d5d5d5; text-align: left; height: 45px;}
+.review_article_contents th {background-color: #fafafa; width: 150px; padding-left: 20px; font-size: 10pt;}
+.review_article_contents td {padding-left: 10px; width: 700px;}
+.review_article_contents textarea {font-family: 맑은고딕;}
+.review_article_btn {color: #555555; background-color: #fafafa; border: 1px solid #d5d5d5; height: 30px; width: 100px; font-weight: bold; cursor: pointer; font-size: 11pt;}
+.review_article_btn:hover {color: #555555; background-color: #fafafa; border: 1px solid #555555; height: 30px; width: 100px; font-weight: bold; cursor: pointer; font-size: 11pt;}
+
+
+
