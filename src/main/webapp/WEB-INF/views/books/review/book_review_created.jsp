@@ -185,8 +185,9 @@ img:hover {
 				<div class="fl_clear searchBook">
 					<div class="thumbNail_type01">
 						<div class="photo">
+					
 							<a href="#"><img id="book_title_img" name="book_title_img"
-								src="http://www.bandinlunis.com/upload/product/4189/4189934_s.jpg"
+								src="/webproject/resources/image/book/${book_image}" 
 								width="70" alt="" class="d_imgLine"
 								style="border: 1px solid #ddd; border-radius: 4px; padding: 5px; width: 150px;"></a>
 						</div>

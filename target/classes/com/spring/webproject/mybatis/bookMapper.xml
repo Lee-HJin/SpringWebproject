@@ -17,7 +17,6 @@
 	</select>
 
 	<!-- 작가 정보 가져오기 -->
-
 	<select id="getReadAuthorData" parameterType="Integer"
 		resultType="com.spring.webproject.dto.AuthorDTO">
 		select authorname, nationality, category, introduction,
@@ -25,6 +24,7 @@
 		isbn = #{isbn})
 	</select>
 
+	<!-- 미리보기 이미지 가져오기 -->
 	<select id="getReadBookList" parameterType="Integer"
 		resultType="com.spring.webproject.dto.BooksImageDTO">
 		select * from(
@@ -36,20 +36,38 @@
 
 	</select>
 
+	<!-- 커버 이미지 가져오기 -->
+	<select id="getReadBookImage" parameterType="int"
+		resultType="String">
+		select bookimage from bookImage where isbn = #{isbn} and
+		BOOKIMAGE like '%cover%'
+	</select>
+
 	<!-- 전체 리뷰 테이블 가져오기 -->
-	<select id="getReadReviewList" parameterType="Integer"
+	<select id="getReadReviewList" parameterType="map"
 		resultType="com.spring.webproject.dto.ReviewDTO">
-		select R.isbn, R.reviewId, R.userId, R.reviewTitle,
-		to_char(R.created,'YYYY-MM-DD') as created, R.contents, R.sentence,
-		R.hitCount, U.USERNAME, S.RATE,T.thumbup from review R
-		left join USERS U on
+		select * from(
+		select rownum rnum, data.* from (
+		select R.isbn,
+		R.reviewId, R.userId, R.reviewTitle,
+		to_char(R.created,'YYYY-MM-DD') as
+		created, R.contents, R.sentence,
+		R.hitCount, U.USERNAME,
+		S.RATE,T.thumbup from review R
+		left join USERS
+		U on
 		U.userid = R.userid
 		left join RATING S on S.USERID = R.USERID and
 		R.isbn = S.isbn
-		left join thumbup T on T.userid = R.userid and
+		left join
+		thumbup T on T.userid = R.userid and
 		R.reviewId = T.reviewId
-		where R.isbn =#{isbn} and R.contents is not
-		null
+		where
+		R.isbn =#{isbn} and R.contents is not
+		null) data)
+		<![CDATA[
+		where rnum >= #{start} and rnum <= #{end}
+	]]>
 	</select>
 
 	<!-- 한개의 리뷰 테이블 가져오기 -->
@@ -58,7 +76,8 @@
 		select R.isbn, R.reviewId, R.userId, R.reviewTitle,
 		to_char(R.created,'YYYY-MM-DD') as created, R.contents, R.sentence,
 		R.hitCount, U.USERNAME, S.RATE,T.thumbup from review R
-		left join USERS U on
+		left join USERS
+		U on
 		U.userid = R.userid
 		left join RATING S on S.USERID = R.USERID and
 		S.isbn = R.isbn
@@ -114,6 +133,12 @@
 		contents is not null
 	</select>
 
+	<!-- 간단평 전체 개수 가져오기 -->
+	<select id="getSimpleReivewDataCount" parameterType="int"
+		resultType="int">
+		select nvl(count(*),0) from review where isbn = #{isbn} and
+		sentence is null
+	</select>
 
 	<!-- 리뷰 테이블 num 최대값 가져오기 -->
 	<select id="getReadMaxNum" resultType="int">
@@ -145,11 +170,9 @@
 	<!-- 도서 재고 정보 가져오기 -->
 	<select id="getWareHouseList" parameterType="int"
 		resultType="com.spring.webproject.dto.WareHouseDTO">
-		select b.warehousename as warehouseName, a.quantity as
-		quantity from
-		booksAtwarehouse a, warehouse b where a.isbn = #{isbn}
-		and
-		a.warehouseid = b.warehouseid
+		select A,B,C,D,E,F,G,H,I,J,K,L,M
+		from quantitylist where
+		isbn =#{isbn}
 	</select>
 
 	<!-- 조회수 수정 -->
@@ -165,4 +188,9 @@
 		thumbup = thumbup +1 where reviewId = #{reviewId}
 	</update>
 
+	<!-- 리뷰 작성 확인 -->
+	<select id="getReviewCheck" parameterType="map" resultType="int">
+		select count(*) from review where isbn = #{isbn} and userid = #{userId} and
+		contents is not null
+	</select>
 </mapper>
