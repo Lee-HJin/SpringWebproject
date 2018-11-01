@@ -51,6 +51,15 @@
 			con.style.display = 'none';
 		}
 	}
+	
+	function toggleDisplay3(num) {
+		var con = document.getElementById("left2_layer" + num);
+		if (con.style.display == 'none') {
+			con.style.display = 'block';
+		} else {
+			con.style.display = 'none';
+		}
+	}
 </script>
 <!-- Carousel BS -->
 <!-- Tabs with Dropdown Menu-->
@@ -172,12 +181,12 @@
 
 	<jsp:include page="../../../common/header.jsp" flush="false" />
 	
-	<div style="margin: 0 auto; width: 1100px;">
+	<br/><br/><br/>
 
-		<div id="contentBody">
+		<div id="contentBody" style="width: 1100px; ">
 
 			<!-- 좌측 템플릿 시작 -->
-			<div class="side_t2 ml5" style="margin-top: 40px; width: 170px;">
+			<div class="side_t2 ml5">
 				<div class="cate_comm">
 					<h2 class="cate_tit">소설</h2>
 					<ul class="cate_d1">
@@ -185,11 +194,11 @@
 						<li id="kidsCate_821" class="cate_d1_li "><a
 							href="/front/product/bookCategoryMain.do?cateId=821"
 							class="cate_d1_link"
-							onmouseover="javascript:toggleDisplay2('01')"
-							onmouseout="javascript:toggleDisplay2('01')">한국소설</a> <!-- 소분류 -->
-							<div class="cate_d2" id="left_layer01"
-								onmouseover="javascript:toggleDisplay2('01')"
-								onmouseout="javascript:toggleDisplay2('01')"
+							onmouseover="javascript:toggleDisplay3('01')"
+							onmouseout="javascript:toggleDisplay3('01')">한국소설</a> <!-- 소분류 -->
+							<div class="cate_d2" id="left2_layer01"
+								onmouseover="javascript:toggleDisplay3('01')"
+								onmouseout="javascript:toggleDisplay3('01')"
 								style="display: none;">
 
 								<div class="pos_rel">
@@ -259,14 +268,14 @@
 						<li id="kidsCate_841" class="cate_d1_li "><a
 							href="/front/product/bookCategoryMain.do?cateId=841"
 							class="cate_d1_link"
-							onmouseover="javascript:toggleDisplay2('02')"
-							onmouseout="javascript:toggleDisplay2('02')">일본소설</a> <!-- 소분류 -->
+							onmouseover="javascript:toggleDisplay3('02')"
+							onmouseout="javascript:toggleDisplay3('02')">일본소설</a> <!-- 소분류 -->
 
 
 
-							<div class="cate_d2" id="left_layer02"
-								onmouseover="javascript:toggleDisplay2('02')"
-								onmouseout="javascript:toggleDisplay2('02')"
+							<div class="cate_d2" id="left2_layer02"
+								onmouseover="javascript:toggleDisplay3('02')"
+								onmouseout="javascript:toggleDisplay3('02')"
 								style="display: none;">
 
 								<div class="pos_rel">
@@ -332,12 +341,12 @@
 						<li id="kidsCate_853" class="cate_d1_li "><a
 							href="/front/product/bookCategoryMain.do?cateId=853"
 							class="cate_d1_link"
-							onmouseover="javascript:toggleDisplay2('03')"
-							onmouseout="javascript:toggleDisplay2('03')">영미소설</a> <!-- 소분류 -->
+							onmouseover="javascript:toggleDisplay3('03')"
+							onmouseout="javascript:toggleDisplay3('03')">영미소설</a> <!-- 소분류 -->
 
-							<div class="cate_d2" id="left_layer03"
-								onmouseover="javascript:toggleDisplay2('03')"
-								onmouseout="javascript:toggleDisplay2('03')"
+							<div class="cate_d2" id="left2_layer03"
+								onmouseover="javascript:toggleDisplay3('03')"
+								onmouseout="javascript:toggleDisplay3('03')"
 								style="display: none;">
 
 								<div class="pos_rel">
@@ -401,14 +410,14 @@
 						<li id="kidsCate_864" class="cate_d1_li "><a
 							href="/front/product/bookCategoryMain.do?cateId=864"
 							class="cate_d1_link"
-							onmouseover="javascript:toggleDisplay2('04')"
-							onmouseout="javascript:toggleDisplay2('04')">기타외국소설</a> <!-- 소분류 -->
+							onmouseover="javascript:toggleDisplay3('04')"
+							onmouseout="javascript:toggleDisplay3('04')">기타외국소설</a> <!-- 소분류 -->
 
 
 
-							<div class="cate_d2" id="left_layer04"
-								onmouseover="javascript:toggleDisplay2('04')"
-								onmouseout="javascript:toggleDisplay2('04')"
+							<div class="cate_d2" id="left2_layer04"
+								onmouseover="javascript:toggleDisplay3('04')"
+								onmouseout="javascript:toggleDisplay3('04')"
 								style="display: none;">
 
 								<div class="pos_rel">
@@ -455,14 +464,14 @@
 						<li id="kidsCate_873" class="cate_d1_li "><a
 							href="/front/product/bookCategoryMain.do?cateId=873"
 							class="cate_d1_link"
-							onmouseover="javascript:toggleDisplay2('05')"
-							onmouseout="javascript:toggleDisplay2('05')">고전/명작소설</a> <!-- 소분류 -->
+							onmouseover="javascript:toggleDisplay3('05')"
+							onmouseout="javascript:toggleDisplay3('05')">고전/명작소설</a> <!-- 소분류 -->
 
 
 
-							<div class="cate_d2" id="left_layer05"
-								onmouseover="javascript:toggleDisplay2('05')"
-								onmouseout="javascript:toggleDisplay2('05')"
+							<div class="cate_d2" id="left2_layer05"
+								onmouseover="javascript:toggleDisplay3('05')"
+								onmouseout="javascript:toggleDisplay3('05')"
 								style="display: none;">
 
 								<div class="pos_rel">
@@ -502,13 +511,13 @@
 						<li id="kidsCate_878" class="cate_d1_li "><a
 							href="/front/product/bookCategoryMain.do?cateId=878"
 							class="cate_d1_link"
-							onmouseover="javascript:toggleDisplay2('06')"
-							onmouseout="javascript:toggleDisplay2('06')">장르소설</a> <!-- 소분류 -->
+							onmouseover="javascript:toggleDisplay3('06')"
+							onmouseout="javascript:toggleDisplay3('06')">장르소설</a> <!-- 소분류 -->
 
 
-							<div class="cate_d2" id="left_layer06"
-								onmouseover="javascript:toggleDisplay2('06')"
-								onmouseout="javascript:toggleDisplay2('06')"
+							<div class="cate_d2" id="left2_layer06"
+								onmouseover="javascript:toggleDisplay3('06')"
+								onmouseout="javascript:toggleDisplay3('06')"
 								style="display: none;">
 
 								<div class="pos_rel">
@@ -545,14 +554,14 @@
 						<li id="kidsCate_883" class="cate_d1_li "><a
 							href="/front/product/bookCategoryMain.do?cateId=883"
 							class="cate_d1_link"
-							onmouseover="javascript:toggleDisplay2('07')"
-							onmouseout="javascript:toggleDisplay2('07')">테마소설</a> <!-- 소분류 -->
+							onmouseover="javascript:toggleDisplay3('07')"
+							onmouseout="javascript:toggleDisplay3('07')">테마소설</a> <!-- 소분류 -->
 
 
 
-							<div class="cate_d2" id="left_layer07"
-								onmouseover="javascript:toggleDisplay2('07')"
-								onmouseout="javascript:toggleDisplay2('07')"
+							<div class="cate_d2" id="left2_layer07"
+								onmouseover="javascript:toggleDisplay3('07')"
+								onmouseout="javascript:toggleDisplay3('07')"
 								style="display: none;">
 
 								<div class="pos_rel">
@@ -792,17 +801,7 @@
 
 			</div>
 
-
-
 			<!-- 좌측 템플릿 끝 -->
-
-
-
-
-
-
-
-
 
 
 
@@ -811,9 +810,9 @@
 
 			<!-- 가운데 레이아웃 -->
 
-			<div class="con_t2">
+			<div class="con_t2" style="width: 850px;">
 
-				<div class="container" style="width: 960px;">
+				<div class="container" style="width: 850px;">
 					<!-- 		<div class="tap_menu_d2 mb15"> -->
 					<ul class="nav nav-tabs">
 						<li class="active"><a href="#home">전체목록</a></li>
@@ -830,7 +829,7 @@
 
 					<!-- 탭 메뉴 -->
 
-					<div class="tab-content" style="width: 750px;">
+					<div class="tab-content" style="width: 800px;">
 
 						<div id="home" class="tab-pane fade in active">
 							<div class="cateM pos_rel">
@@ -1030,7 +1029,7 @@
 
 							</div>
 
-							<div class="cateS">
+							<div class="cateS" style="margin-left: 20px;">
 
 								<br /> <br /> <br /> <br /> <br /> <br /> <br />
 								<!-- 분야 주간 베스트 -->
@@ -4896,7 +4895,6 @@
 			<!-- 가운데 레이아웃 -->
 		</div>
 
-	</div>
 	<!-- footer -->
 	<jsp:include page="../../../common/footer.jsp" flush="false" />
 </body>

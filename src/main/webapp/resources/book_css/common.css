@@ -365,7 +365,7 @@ a.more:active	{text-decoration:none; color:#999999;}
 .side_t1 {float:left; width:190px}
 .side_t2 {float:left; width:170px}
 .con_t1 {float:left; width:745px;margin-left:3px}
-.con_t2 {float:left; width:760px;margin-left:3px}
+.con_t2 {float:left; width:800px;margin-left:3px}
 .con_t3 {float:left; width:760px;margin-left:3px}
 
 /* GNB 2014 */
@@ -844,11 +844,7 @@ a.more:active	{text-decoration:none; color:#999999;}
 .sp_help{width:16px;height:14px;background-position:-53px -42px}
 
 /*¾ÆÀÌÁÁ¾Æ,°ø°¨*/
-.ilike{display:inline-block}
-.ilike .btn_ilike{display:inline-block;width:66px;height:19px;background:url(/webproject/resources/book_image/ico_ilike_comm.gif) no-repeat 0 1px;padding:0 0 0 14px;font:normal 11px 돋움; color:#777}
-.ilike .btn_ilike:hover{background:url(/webproject/resources/book_image/ico_ilike_comm_on.gif) no-repeat;}
-.ilike .on{background:url(/images/common/2014/ico_ilike_comm_on.gif) no-repeat;}
-.ilike .ilike_count{display:inline-block;font:normal 11px verdana,돋움; color:#777;width:20px;height:19px;padding-top:4px;text-align:center}
+
 
 /* »óÇ° ¸®½ºÆ® ÀÚ¼¼È÷ º¸±â */
 .p_list_tit{border-bottom:1px solid #e1e1e1;font:normal 20px '맑은 고딕''돋움';padding:10px 0 7px 7px}
