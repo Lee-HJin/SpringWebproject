@@ -1,7 +1,7 @@
-document.domain = "bandinlunis.com";
-var hostDomain = "http://www.bandinlunis.com";
-var hostDomains = "https://www.bandinlunis.com";
-var blogDomain = "http://blog.bandinlunis.com";
+document.domain = "localhost:8080/webproject";
+var hostDomain = "localhost:8080/webproject";
+var hostDomains = "localhost:8080/webproject";
+var blogDomain = "localhost:8080/webproject";
 
 
 /*************************************
@@ -1603,8 +1603,8 @@ function add_basket_array_common(prod_id, opt_seq, cnt, book_mem_id, isArlert_, 
 *********************************************************/
 function add_basket(isbn, cnt_, opt_, book_mem_id_, callBack_){
     //OrderDwr.createShopCarts({
-    ajaxRequest("createShopCarts", {
-            "prod_id"       : isbn, 
+    ajaxRequest("shopCartList", {
+            "isbn"       : isbn, 
             "opt_seq"       : opt_ ? opt_ : "", 
             "cnt"           : cnt_ ? cnt_ : 1, 
             "book_mem_id"   : "" 
@@ -2269,20 +2269,20 @@ function goBuy(prodId, prodCnt, naverYn) {
 }
 
 // 바로구매 (옵션상품)
-function goBuyOpt(prodId, prodCnt, optSeq, naverYn) {
+function goBuyOpt(isbn, prodCnt) {
     
     ajaxRequest("existsProdOption", {
-		"prodId" : prodId
+		"isbn" : isbn
 	}, function(data) {
 		if (data == -10 && optSeq == 0) {
 			alert("옵션이 있는 상품은 상품상세에서 옵션 선택 후 주문이 가능합니다.");
 			return;
 		} else{
 			if (isLogin() == false) {
-		        goBuyLoginPopUp('goOrderPageOpt(' + prodId + ', ' + prodCnt + ', ' + optSeq + ', \'' + naverYn + '\')');
+		        goBuyLoginPopUp('goOrderPageOpt(' + isbn + ', ' + prodCnt + '\')');
 		    } 
 		    else {
-		        document.location.href = hostDomains + '/front/order/order.do?prod_id=' + prodId + '&ord_cnt=' + prodCnt + '&opt_seq=' + optSeq+'&naverYn=' + naverYn;
+		        document.location.href = hostDomains + '/order.action?isbn=' + isbn + '&ord_cnt=' + prodCnt;
 		    }
 		}
 	});

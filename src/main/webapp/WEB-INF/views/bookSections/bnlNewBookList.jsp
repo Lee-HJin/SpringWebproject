@@ -1,4 +1,10 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri ="http://java.sun.com/jsp/jstl/fmt" %>
+<%
+	request.setCharacterEncoding("UTF-8");
+	String cp = request.getContextPath();
+%> 
 <!DOCTYPE html>
 <html>
 <head>
@@ -1044,33 +1050,33 @@ function goSearch(sort) {
 						</h2>
 						
 						<ul class="cate_d1">
-							<li class="cate_d1_li on"><a href="/front/display/listBest.do?searchType=top&amp;sort=sort8&amp;page=1" class="cate_d1_link">종합</a></li>
-							<li class="cate_d1_li "><a href="/front/display/listBest.do?searchType=top&amp;sort=sort8&amp;page=1&amp;cateId=2" class="cate_d1_link">소설</a></li>
-							<li class="cate_d1_li "><a href="/front/display/listBest.do?searchType=top&amp;sort=sort8&amp;page=1&amp;cateId=7216" class="cate_d1_link">장르소설</a></li>
-							<li class="cate_d1_li "><a href="/front/display/listBest.do?searchType=top&amp;sort=sort8&amp;page=1&amp;cateId=3" class="cate_d1_link">시/에세이/기행</a></li>
-							<li class="cate_d1_li "><a href="/front/display/listBest.do?searchType=top&amp;sort=sort8&amp;page=1&amp;cateId=4" class="cate_d1_link">인문/교양/철학</a></li>
-							<li class="cate_d1_li "><a href="/front/display/listBest.do?searchType=top&amp;sort=sort8&amp;page=1&amp;cateId=5" class="cate_d1_link">역사/신화/문화</a></li>
-							<li class="cate_d1_li "><a href="/front/display/listBest.do?searchType=top&amp;sort=sort8&amp;page=1&amp;cateId=6" class="cate_d1_link">종교</a></li>
-							<li class="cate_d1_li "><a href="/front/display/listBest.do?searchType=top&amp;sort=sort8&amp;page=1&amp;cateId=7" class="cate_d1_link">사회/정치/법률</a></li>
-							<li class="cate_d1_li "><a href="/front/display/listBest.do?searchType=top&amp;sort=sort8&amp;page=1&amp;cateId=8" class="cate_d1_link">경제/경영</a></li>
-							<li class="cate_d1_li "><a href="/front/display/listBest.do?searchType=top&amp;sort=sort8&amp;page=1&amp;cateId=9" class="cate_d1_link">자기계발</a></li>
-							<li class="cate_d1_li "><a href="/front/display/listBest.do?searchType=top&amp;sort=sort8&amp;page=1&amp;cateId=11" class="cate_d1_link">외국어/사전</a></li>
-							<li class="cate_d1_li "><a href="/front/display/listBest.do?searchType=top&amp;sort=sort8&amp;page=1&amp;cateId=12" class="cate_d1_link">가정/생활/요리</a></li>
-							<li class="cate_d1_li "><a href="/front/display/listBest.do?searchType=top&amp;sort=sort8&amp;page=1&amp;cateId=13" class="cate_d1_link">건강/의학/미용</a></li>
-							<li class="cate_d1_li "><a href="/front/kids/kidsBest.do?cateId=3138" class="cate_d1_link">유아</a></li>
-							<li class="cate_d1_li "><a href="/front/kids/kidsBest.do?cateId=3139" class="cate_d1_link">어린이</a></li>
-							<li class="cate_d1_li "><a href="/front/display/listBest.do?searchType=top&amp;sort=sort8&amp;page=1&amp;cateId=17" class="cate_d1_link">청소년교양</a></li>
-							<li class="cate_d1_li "><a href="/front/display/listBest.do?searchType=top&amp;sort=sort8&amp;page=1&amp;cateId=18" class="cate_d1_link">예술/대중문화</a></li>
-							<li class="cate_d1_li "><a href="/front/display/listBest.do?searchType=top&amp;sort=sort8&amp;page=1&amp;cateId=19" class="cate_d1_link">여행/취미/레저</a></li>
-							<li class="cate_d1_li "><a href="/front/display/listBest.do?searchType=top&amp;sort=sort8&amp;page=1&amp;cateId=20" class="cate_d1_link">잡지</a></li>
-							<li class="cate_d1_li "><a href="/front/display/listBest.do?searchType=top&amp;sort=sort8&amp;page=1&amp;cateId=21" class="cate_d1_link">만화</a></li>
-							<li class="cate_d1_li "><a href="/front/display/listBest.do?searchType=top&amp;sort=sort8&amp;page=1&amp;cateId=22" class="cate_d1_link">컴퓨터/IT</a></li>
-							<li class="cate_d1_li "><a href="/front/display/listBest.do?searchType=top&amp;sort=sort8&amp;page=1&amp;cateId=23" class="cate_d1_link">자연과학/공학</a></li>
-							<li class="cate_d1_li "><a href="/front/display/listBest.do?searchType=top&amp;sort=sort8&amp;page=1&amp;cateId=24" class="cate_d1_link">대학교재</a></li>
-							<li class="cate_d1_li "><a href="/front/display/listBest.do?searchType=top&amp;sort=sort8&amp;page=1&amp;cateId=4207" class="cate_d1_link">아동전집</a></li>
-							<li class="cate_d1_li "><a href="/front/display/listBest.do?searchType=top&amp;sort=sort8&amp;page=1&amp;cateId=4208" class="cate_d1_link">서양서</a></li>
-							<li class="cate_d1_li "><a href="/front/kids/kidsBest.do?cateId=3140" class="cate_d1_link">초등참고서</a></li>
-							<li class="cate_d1_li "><a href="/front/display/listBest.do?searchType=top&amp;sort=sort8&amp;page=1&amp;cateId=6706" class="cate_d1_link">중/고등참고서</a></li>
+							<li class="cate_d1_li on"><a href="<%=cp%>/bnlNewBookList.action?pageNum=1" class="cate_d1_link">종합</a></li>
+							<li class="cate_d1_li "><a href="<%=cp%>/bnlNewBookList.action?pageNum=1&sort1st=4&sort2nd=13" class="cate_d1_link">소설</a></li>
+							<li class="cate_d1_li "><a href="" class="cate_d1_link" class="cate_d1_link">장르소설</a></li>
+							<li class="cate_d1_li "><a href="<%=cp%>/bnlNewBookList.action?pageNum=1&sort1st=1&sort2nd=3" class="cate_d1_link">시/에세이/기행</a></li>
+							<li class="cate_d1_li "><a href="" class="cate_d1_link" class="cate_d1_link">인문/교양/철학</a></li>
+							<li class="cate_d1_li "><a href="" class="cate_d1_link" class="cate_d1_link">역사/신화/문화</a></li>
+							<li class="cate_d1_li "><a href="" class="cate_d1_link" class="cate_d1_link">종교</a></li>
+							<li class="cate_d1_li "><a href="" class="cate_d1_link" class="cate_d1_link">사회/정치/법률</a></li>
+							<li class="cate_d1_li "><a href="" class="cate_d1_link" class="cate_d1_link">경제/경영</a></li>
+							<li class="cate_d1_li "><a href="<%=cp%>/bnlNewBookList.action?pageNum=1&sort1st=14&sort2nd=17" class="cate_d1_link">자기계발</a></li>
+							<li class="cate_d1_li "><a href="" class="cate_d1_link" class="cate_d1_link">외국어/사전</a></li>
+							<li class="cate_d1_li "><a href="" class="cate_d1_link" class="cate_d1_link">가정/생활/요리</a></li>
+							<li class="cate_d1_li "><a href="" class="cate_d1_link" class="cate_d1_link">건강/의학/미용</a></li>
+							<li class="cate_d1_li "><a href="" class="cate_d1_link" class="cate_d1_link">유아</a></li>
+							<li class="cate_d1_li "><a href="" class="cate_d1_link" class="cate_d1_link">어린이</a></li>
+							<li class="cate_d1_li "><a href="" class="cate_d1_link" class="cate_d1_link">청소년교양</a></li>
+							<li class="cate_d1_li "><a href="" class="cate_d1_link" class="cate_d1_link">예술/대중문화</a></li>
+							<li class="cate_d1_li "><a href="" class="cate_d1_link" class="cate_d1_link">여행/취미/레저</a></li>
+							<li class="cate_d1_li "><a href="" class="cate_d1_link" class="cate_d1_link">잡지</a></li>
+							<li class="cate_d1_li "><a href="" class="cate_d1_link" class="cate_d1_link">만화</a></li>
+							<li class="cate_d1_li "><a href="" class="cate_d1_link" class="cate_d1_link">컴퓨터/IT</a></li>
+							<li class="cate_d1_li "><a href="" class="cate_d1_link" class="cate_d1_link">자연과학/공학</a></li>
+							<li class="cate_d1_li "><a href="" class="cate_d1_link" class="cate_d1_link">대학교재</a></li>
+							<li class="cate_d1_li "><a href="" class="cate_d1_link" class="cate_d1_link">아동전집</a></li>
+							<li class="cate_d1_li "><a href="" class="cate_d1_link" class="cate_d1_link">서양서</a></li>
+							<li class="cate_d1_li "><a href="" class="cate_d1_link" class="cate_d1_link">초등참고서</a></li>
+							<li class="cate_d1_li "><a href="" class="cate_d1_link" class="cate_d1_link">중/고등참고서</a></li>
 						</ul>
 					</div>
 				</div>
@@ -1080,397 +1086,59 @@ function goSearch(sort) {
 				<h3 class="cateTit p10"><span>종합
 				
 				<!-- 관리자 전시 시작 -->
+				
 				<div class="book_new_list" id="newCateList">
 				<h4>주목할만한 신간도서</h4>
+				
 				<div class="aw_type_box">
 					<button class="aw_l" id="cateListLt"><span class="ns">이전</span>
 						<span class="aw_count">
-							<span class="start_index">1</span>
+							<span class="start_index">${start }</span>
 							/
-							<span class="end_index">3</span>
+							<span class="end_index">${end }</span>
 						</span>
 					</button>
 					
-					<button class="aw_r" id="cateListRt"><span class="ns">다음</span><span class="aw_count"><span class="start_index">1</span>/<span class="end_index">3</span></span></button>
+					<button class="aw_r" id="cateListRt"><span class="ns">다음</span><span class="aw_count"><span class="start_index">${start }</span>/<span class="end_index">${end }</span></span></button>
 				</div>
+				
 				<div class="swiper-container">
-					<div class="swiper-wrapper" style="width: 3640px; transform: translate3d(-728px, 0px, 0px); transition-duration: 0s; height: 265px;"><ul class="swiper-slide swiper-slide-duplicate" style="width: 728px; height: 265px;">
-						
-						<li>
-							<p class="pimg">
-								<a href="/front/product/detailProduct.do?prodId=4198423" class="sw">
-									<img src="http://image.bandinlunis.com/upload/product/4198/4198423.jpg" class="mPimg" alt="" onerror="this.src='http://image.bandinlunis.com/images/common/noimg_type04.gif'">
-								</a>
-							</p>
-							<p class="booktit mt10"><a href="/front/product/detailProduct.do?prodId=4198423">젊은 베르테르의 슬픔 [블랙에디션]</a></p>
-							<p class="writer mt5">요한 볼프강 폰 괴테 저 | 단한권의책</p>
-							<p class="price mt10">11,700원</p>
-						</li>
-						
-						
-						
+					<div class="swiper-wrapper" style="width: 3640px; transform: translate3d(-728px, 0px, 0px); transition-duration: 0s; height: 265px;">
+						<c:set var="i" value="0"/>
+						<c:forEach var="dto" items="${adLists }">
+						<ul class="swiper-slide swiper-slide-duplicate" style="width: 728px; height: 265px;">
 							<li>
 								<p class="pimg">
-									<a href="/front/product/detailProduct.do?prodId=4197666" class="sw">
-									
-										
-										
-											<img src="http://image.bandinlunis.com/upload/product/4197/4197666.jpg" class="mPimg" alt="" onerror="this.src='http://image.bandinlunis.com/images/common/noimg_type04.gif'">
-										
-									
+									<a href="" class="sw">
+										<img src="<%=cp %>/resources/image/book/${dto.bookImage }" class="mPimg" alt="" onerror="this.src='http://image.bandinlunis.com/images/common/noimg_type04.gif'">
 									</a>
 								</p>
-								<p class="booktit mt10"><a href="/front/product/detailProduct.do?prodId=4197666">심리학으로 들여다 본 그리스 로마 신화</a></p>
-								<p class="writer mt5">이동연 저 | 평단</p>
-								<p class="price mt10">14,400원</p>
+								<p class="booktit mt10"><a href="/front/product/detailProduct.do?prodId=4198423">${dto.bookTitle }</a></p>
+								<p class="writer mt5">${dto.authorName } | ${dto.publisher }</p>
+								<p class="price mt10">${dto.discountedPrice }원</p>
 							</li>
-						
-						
-						
-							<li>
-								<p class="pimg">
-									<a href="/front/product/detailProduct.do?prodId=4201020" class="sw">
-									
-										
-										
-											<img src="http://image.bandinlunis.com/upload/product/4201/4201020.jpg" class="mPimg" alt="" onerror="this.src='http://image.bandinlunis.com/images/common/noimg_type04.gif'">
-										
-									
-									</a>
-								</p>
-								<p class="booktit mt10"><a href="/front/product/detailProduct.do?prodId=4201020">오해하지 않는 연습, 오해받지 않을 권리</a></p>
-								<p class="writer mt5">김보광 저 | 웨일북</p>
-								<p class="price mt10">13,500원</p>
-							</li>
-						
-						
-						
-							<li>
-								<p class="pimg">
-									<a href="/front/product/detailProduct.do?prodId=4197224" class="sw">
-									
-										
-										
-											<img src="http://image.bandinlunis.com/upload/product/4197/4197224.jpg" class="mPimg" alt="" onerror="this.src='http://image.bandinlunis.com/images/common/noimg_type04.gif'">
-										
-									
-									</a>
-								</p>
-								<p class="booktit mt10"><a href="/front/product/detailProduct.do?prodId=4197224">헬라어 수업</a></p>
-								<p class="writer mt5">김영인 저 | 리빙북스</p>
-								<p class="price mt10">13,500원</p>
-							</li>
-						
-							</ul>									
-						
-						
-						<ul class="swiper-slide swiper-slide-visible swiper-slide-active" style="width: 728px; height: 265px;">
-						
-							<li>
-								<p class="pimg">
-									<a href="/front/product/detailProduct.do?prodId=4200931" class="sw">
-									
-										
-										
-											<img src="http://image.bandinlunis.com/upload/product/4200/4200931.jpg" class="mPimg" alt="" onerror="this.src='http://image.bandinlunis.com/images/common/noimg_type04.gif'">
-										
-									
-									</a>
-								</p>
-								<p class="booktit mt10"><a href="/front/product/detailProduct.do?prodId=4200931">스무고개 탐정의 탐정수업 </a></p>
-								<p class="writer mt5">허교범 저 | 비룡소</p>
-								<p class="price mt10">8,100원</p>
-							</li>
-						
-						
-						
-							<li>
-								<p class="pimg">
-									<a href="/front/product/detailProduct.do?prodId=4200813" class="sw">
-									
-										
-										
-											<img src="http://image.bandinlunis.com/upload/product/4200/4200813.jpg" class="mPimg" alt="" onerror="this.src='http://image.bandinlunis.com/images/common/noimg_type04.gif'">
-										
-									
-									</a>
-								</p>
-								<p class="booktit mt10"><a href="/front/product/detailProduct.do?prodId=4200813">구스범스 호러특급 7</a></p>
-								<p class="writer mt5">R. L. 스타인 저 | 고릴라박스</p>
-								<p class="price mt10">8,100원</p>
-							</li>
-						
-						
-						
-							<li>
-								<p class="pimg">
-									<a href="/front/product/detailProduct.do?prodId=4200511" class="sw">
-									
-										
-										
-											<img src="http://image.bandinlunis.com/upload/product/4200/4200511.jpg" class="mPimg" alt="" onerror="this.src='http://image.bandinlunis.com/images/common/noimg_type04.gif'">
-										
-									
-									</a>
-								</p>
-								<p class="booktit mt10"><a href="/front/product/detailProduct.do?prodId=4200511">우리 이불 어디 갔어</a></p>
-								<p class="writer mt5">하수정 저 | 웅진주니어</p>
-								<p class="price mt10">10,800원</p>
-							</li>
-						
-						
-						
-							<li>
-								<p class="pimg">
-									<a href="/front/product/detailProduct.do?prodId=4199867" class="sw">
-									
-										
-										
-											<img src="http://image.bandinlunis.com/upload/product/4199/4199867.jpg" class="mPimg" alt="" onerror="this.src='http://image.bandinlunis.com/images/common/noimg_type04.gif'">
-										
-									
-									</a>
-								</p>
-								<p class="booktit mt10"><a href="/front/product/detailProduct.do?prodId=4199867">작은 벽돌</a></p>
-								<p class="writer mt5">조슈아 데이비드 스타인 저 | 그레이트북스</p>
-								<p class="price mt10">11,700원</p>
-							</li>
-						
-							</ul>
-						
-						
-						
-						<ul class="swiper-slide" style="width: 728px; height: 265px;">
-						
-							<li>
-								<p class="pimg">
-									<a href="/front/product/detailProduct.do?prodId=4201086" class="sw">
-									
-										
-										
-											<img src="http://image.bandinlunis.com/upload/product/4201/4201086.jpg" class="mPimg" alt="" onerror="this.src='http://image.bandinlunis.com/images/common/noimg_type04.gif'">
-										
-									
-									</a>
-								</p>
-								<p class="booktit mt10"><a href="/front/product/detailProduct.do?prodId=4201086">헌터걸 2</a></p>
-								<p class="writer mt5">김혜정 저 | 사계절</p>
-								<p class="price mt10">10,800원</p>
-							</li>
-						
-						
-						
-							<li>
-								<p class="pimg">
-									<a href="/front/product/detailProduct.do?prodId=4200863" class="sw">
-									
-										
-										
-											<img src="http://image.bandinlunis.com/upload/product/4200/4200863.jpg" class="mPimg" alt="" onerror="this.src='http://image.bandinlunis.com/images/common/noimg_type04.gif'">
-										
-									
-									</a>
-								</p>
-								<p class="booktit mt10"><a href="/front/product/detailProduct.do?prodId=4200863">비블리온</a></p>
-								<p class="writer mt5">문지혁 저 | 위즈덤하우스</p>
-								<p class="price mt10">11,700원</p>
-							</li>
-						
-						
-						
-							<li>
-								<p class="pimg">
-									<a href="/front/product/detailProduct.do?prodId=4196521" class="sw">
-									
-										
-										
-											<img src="http://image.bandinlunis.com/upload/product/4196/4196521.jpg" class="mPimg" alt="" onerror="this.src='http://image.bandinlunis.com/images/common/noimg_type04.gif'">
-										
-									
-									</a>
-								</p>
-								<p class="booktit mt10"><a href="/front/product/detailProduct.do?prodId=4196521">신의 대리인, 메슈바</a></p>
-								<p class="writer mt5">권무언 저 | 나무옆의자</p>
-								<p class="price mt10">13,500원</p>
-							</li>
-						
-						
-						
-							<li>
-								<p class="pimg">
-									<a href="/front/product/detailProduct.do?prodId=4197356" class="sw">
-									
-										
-										
-											<img src="http://image.bandinlunis.com/upload/product/4197/4197356.jpg" class="mPimg" alt="" onerror="this.src='http://image.bandinlunis.com/images/common/noimg_type04.gif'">
-										
-									
-									</a>
-								</p>
-								<p class="booktit mt10"><a href="/front/product/detailProduct.do?prodId=4197356">시트콤</a></p>
-								<p class="writer mt5">배준 저 | 자음과모음</p>
-								<p class="price mt10">11,700원</p>
-							</li>
-						
-							</ul>
-						
-						
-						
-						<ul class="swiper-slide" style="width: 728px; height: 265px;">
-						
-							<li>
-								<p class="pimg">
-									<a href="/front/product/detailProduct.do?prodId=4198423" class="sw">
-									
-										
-										
-											<img src="http://image.bandinlunis.com/upload/product/4198/4198423.jpg" class="mPimg" alt="" onerror="this.src='http://image.bandinlunis.com/images/common/noimg_type04.gif'">
-										
-									
-									</a>
-								</p>
-								<p class="booktit mt10"><a href="/front/product/detailProduct.do?prodId=4198423">젊은 베르테르의 슬픔 [블랙에디션]</a></p>
-								<p class="writer mt5">요한 볼프강 폰 괴테 저 | 단한권의책</p>
-								<p class="price mt10">11,700원</p>
-							</li>
-						
-						
-						
-							<li>
-								<p class="pimg">
-									<a href="/front/product/detailProduct.do?prodId=4197666" class="sw">
-									
-										
-										
-											<img src="http://image.bandinlunis.com/upload/product/4197/4197666.jpg" class="mPimg" alt="" onerror="this.src='http://image.bandinlunis.com/images/common/noimg_type04.gif'">
-										
-									
-									</a>
-								</p>
-								<p class="booktit mt10"><a href="/front/product/detailProduct.do?prodId=4197666">심리학으로 들여다 본 그리스 로마 신화</a></p>
-								<p class="writer mt5">이동연 저 | 평단</p>
-								<p class="price mt10">14,400원</p>
-							</li>
-						
-						
-						
-							<li>
-								<p class="pimg">
-									<a href="/front/product/detailProduct.do?prodId=4201020" class="sw">
-									
-										
-										
-											<img src="http://image.bandinlunis.com/upload/product/4201/4201020.jpg" class="mPimg" alt="" onerror="this.src='http://image.bandinlunis.com/images/common/noimg_type04.gif'">
-										
-									
-									</a>
-								</p>
-								<p class="booktit mt10"><a href="/front/product/detailProduct.do?prodId=4201020">오해하지 않는 연습, 오해받지 않을 권리</a></p>
-								<p class="writer mt5">김보광 저 | 웨일북</p>
-								<p class="price mt10">13,500원</p>
-							</li>
-						
-						
-						
-							<li>
-								<p class="pimg">
-									<a href="/front/product/detailProduct.do?prodId=4197224" class="sw">
-									
-										
-										
-											<img src="http://image.bandinlunis.com/upload/product/4197/4197224.jpg" class="mPimg" alt="" onerror="this.src='http://image.bandinlunis.com/images/common/noimg_type04.gif'">
-										
-									
-									</a>
-								</p>
-								<p class="booktit mt10"><a href="/front/product/detailProduct.do?prodId=4197224">헬라어 수업</a></p>
-								<p class="writer mt5">김영인 저 | 리빙북스</p>
-								<p class="price mt10">13,500원</p>
-							</li>
-						
-							</ul>
-						
-															 
-					<ul class="swiper-slide swiper-slide-duplicate" style="width: 728px; height: 265px;">
-						
-							<li>
-								<p class="pimg">
-									<a href="/front/product/detailProduct.do?prodId=4200931" class="sw">
-									
-										
-										
-											<img src="http://image.bandinlunis.com/upload/product/4200/4200931.jpg" class="mPimg" alt="" onerror="this.src='http://image.bandinlunis.com/images/common/noimg_type04.gif'">
-										
-									
-									</a>
-								</p>
-								<p class="booktit mt10"><a href="/front/product/detailProduct.do?prodId=4200931">스무고개 탐정의 탐정수업 </a></p>
-								<p class="writer mt5">허교범 저 | 비룡소</p>
-								<p class="price mt10">8,100원</p>
-							</li>
-						
-						
-						
-							<li>
-								<p class="pimg">
-									<a href="/front/product/detailProduct.do?prodId=4200813" class="sw">
-									
-										
-										
-											<img src="http://image.bandinlunis.com/upload/product/4200/4200813.jpg" class="mPimg" alt="" onerror="this.src='http://image.bandinlunis.com/images/common/noimg_type04.gif'">
-										
-									
-									</a>
-								</p>
-								<p class="booktit mt10"><a href="/front/product/detailProduct.do?prodId=4200813">구스범스 호러특급 7</a></p>
-								<p class="writer mt5">R. L. 스타인 저 | 고릴라박스</p>
-								<p class="price mt10">8,100원</p>
-							</li>
-						
-						
-						
-							<li>
-								<p class="pimg">
-									<a href="/front/product/detailProduct.do?prodId=4200511" class="sw">
-									
-										
-										
-											<img src="http://image.bandinlunis.com/upload/product/4200/4200511.jpg" class="mPimg" alt="" onerror="this.src='http://image.bandinlunis.com/images/common/noimg_type04.gif'">
-										
-									
-									</a>
-								</p>
-								<p class="booktit mt10"><a href="/front/product/detailProduct.do?prodId=4200511">우리 이불 어디 갔어</a></p>
-								<p class="writer mt5">하수정 저 | 웅진주니어</p>
-								<p class="price mt10">10,800원</p>
-							</li>
-						
-						
-						
-							<li>
-								<p class="pimg">
-									<a href="/front/product/detailProduct.do?prodId=4199867" class="sw">
-									
-										
-										
-											<img src="http://image.bandinlunis.com/upload/product/4199/4199867.jpg" class="mPimg" alt="" onerror="this.src='http://image.bandinlunis.com/images/common/noimg_type04.gif'">
-										
-									
-									</a>
-								</p>
-								<p class="booktit mt10"><a href="/front/product/detailProduct.do?prodId=4199867">작은 벽돌</a></p>
-								<p class="writer mt5">조슈아 데이비드 스타인 저 | 그레이트북스</p>
-								<p class="price mt10">11,700원</p>
-							</li>
-						
-							</ul></div>
+							
+						</ul>
+						</c:forEach>
+					</div>
 				</div>
-				<div class="pagination"><span class="swiper-pagination-switch swiper-visible-switch swiper-active-switch"></span><span class="swiper-pagination-switch"></span><span class="swiper-pagination-switch"></span></div>
+				
+			
+				
+				<div class="pagination">
+					<span class="swiper-pagination-switch swiper-visible-switch swiper-active-switch"></span>
+					<span class="swiper-pagination-switch"></span>
+					<span class="swiper-pagination-switch"></span>
+					<span class="swiper-pagination-switch"></span>
+				</div>
 			</div>	
+			
 			
 			<script type="text/javascript">
 			var bookCateList = new Swiper('#newCateList .swiper-container',{
 			    pagination: '#newCateList .pagination',
+			   slidesPerView: 4,
+			   spaceBetween: 10,
 			   loop:true,
 			   simulateTouch: true,
 			   paginationClickable : true,
@@ -1499,12 +1167,11 @@ function goSearch(sort) {
 				<div class="prod_sort sort_ver02">								
 					<div class="sorting">
 						<ul class="con01">
-							<li><a id="sort8" style="cursor:pointer;" class="on">순위 높은 순</a></li>
-							<li><a id="sort9" style="cursor:pointer;">전주대비 급상승</a></li> 
-							<li><a id="sort2" style="cursor:pointer;">발행일순</a></li>
-							<li><a id="sort6" style="cursor:pointer;">상품명순</a></li>
-							<li><a id="sort3" style="cursor:pointer;">평점순</a></li>
-							<li class="alt"><a id="sort4" style="cursor:pointer;">리뷰순</a></li> 
+							<li><a style="cursor:pointer;" href="<%=cp%>/bnlNewBookList.action?pageNum=1&sort=&sort1st=${sort1st}&sort2nd=${sort2nd}" >순위 높은 순</a></li>
+							<li><a style="cursor:pointer;" href="<%=cp%>/bnlNewBookList.action?pageNum=1&sort=sort1&sort1st=${sort1st}&sort2nd=${sort2nd}">발행일순</a></li>
+							<li><a style="cursor:pointer;" href="<%=cp%>/bnlNewBookList.action?pageNum=1&sort=sort2&sort1st=${sort1st}&sort2nd=${sort2nd}">상품명순</a></li>
+							<li><a style="cursor:pointer;" href="<%=cp%>/bnlNewBookList.action?pageNum=1&sort=sort3&sort1st=${sort1st}&sort2nd=${sort2nd}">평점순</a></li>
+							<li class="alt"><a style="cursor:pointer;" href="<%=cp%>/bnlNewBookList.action?pageNum=1&sort=sort4&sort1st=${sort1st}&sort2nd=${sort2nd}">리뷰순</a></li>
 						</ul> 
 					 	<div class="con02">
 							<p class="t_11gr"><input type="checkbox" name="prodStat" id="prodStat" value="Y" class="chk"> 품절/절판제외</p>
@@ -1574,99 +1241,92 @@ function goSearch(sort) {
 
 					<div class="pageTypeA pageTypeB">
 						
-						<a class="on">1~20위</a>
-
-						<a href="/front/display/listBest.do?page=2&amp;searchType=top&amp;recommendYear=2018&amp;recommendMonth=10&amp;recommendWeek=2&amp;cateId=&amp;sex=&amp;age=&amp;prodStat=&amp;sort=sort8">21~40위</a>
-						<a href="/front/display/listBest.do?page=3&amp;searchType=top&amp;recommendYear=2018&amp;recommendMonth=10&amp;recommendWeek=2&amp;cateId=&amp;sex=&amp;age=&amp;prodStat=&amp;sort=sort8">41~60위</a>
-						<a href="/front/display/listBest.do?page=4&amp;searchType=top&amp;recommendYear=2018&amp;recommendMonth=10&amp;recommendWeek=2&amp;cateId=&amp;sex=&amp;age=&amp;prodStat=&amp;sort=sort8">61~80위</a>
-						<a href="/front/display/listBest.do?page=5&amp;searchType=top&amp;recommendYear=2018&amp;recommendMonth=10&amp;recommendWeek=2&amp;cateId=&amp;sex=&amp;age=&amp;prodStat=&amp;sort=sort8">81~100위</a>
+						<a href="<%=cp%>/bnlNewBookList.action?pageNum=1&sort=${sort }&sort1st=${sort1st}&sort2nd=${sort2nd}">1~20위</a>
+						<a href="<%=cp%>/bnlNewBookList.action?pageNum=2&sort=${sort }&sort1st=${sort1st}&sort2nd=${sort2nd}">21~40위</a>
+						<a href="<%=cp%>/bnlNewBookList.action?pageNum=3&sort=${sort }&sort1st=${sort1st}&sort2nd=${sort2nd}">41~60위</a>
+						<a href="<%=cp%>/bnlNewBookList.action?pageNum=4&sort=${sort }&sort1st=${sort1st}&sort2nd=${sort2nd}">61~80위</a>
+						<a href="<%=cp%>/bnlNewBookList.action?pageNum=5&sort=${sort }&sort1st=${sort1st}&sort2nd=${sort2nd}">81~100위</a>
 
 					</div>
 
-				<div class="prod_list_type prod_best_type">
-					<ul>	        	
-		         	<li>
-		         		<input class="checkbox" type="checkbox" value="4181047" name="prodId">
-						<input type="hidden" name="orderCnt" value="1">
-						<div class="prod_thumb">
-							<span class="ranking">
-								<span class="rank_num">1</span>
-								<span class="rank_change">
-										<img src="http://image.bandinlunis.com/images/common/2014/ico_best_same.gif" alt="-">
-										0
+<!-- EL / JSTL / Foreach  -->
+					<c:forEach var="dto" items="${lists }">
+					<div class="prod_list_type prod_best_type">
+						<ul>	        	
+			         	<li>
+							<div class="prod_thumb">
+								<span class="ranking">
+									<span class="rank_num">${dto.rnum }</span>
+									<span class="rank_change">
+											<img src="http://image.bandinlunis.com/images/common/2014/ico_best_same.gif" alt="-">
+											0
+									</span>
 								</span>
-							</span>
-							<div class="prod_thumb_img">
-								<a href="/front/product/detailProduct.do?prodId=4181047" onfocus="this.blur();">
-									<img src="http://image.bandinlunis.com/upload/product/4181/4181047.jpg" onerror="this.src='/images/common/noimg_type01.gif';">
-								</a>
-								<a class="btn_popup" target="_blank" href="/front/product/detailProduct.do?prodId=4181047"><span class="ico_new">새창열기</span></a>
+								<div class="prod_thumb_img">
+									<a href="/front/product/detailProduct.do?isbn=4181047" onfocus="this.blur();">
+										<img src="<%=cp %>/resources/image/book/${dto.bookImage }"> <!-- onerror="this.src='/images/common/noimg_type01.gif';"  -->
+									</a>
+									<a class="btn_popup" target="_blank" href="/front/product/detailProduct.do?isbn=4181047"><span class="ico_new">새창열기</span></a>
+								</div>
+									<a class="btn_preview" href="javascript:popPreview('${dto.isbn }');">미리 보기</a>			
 							</div>
-								<a class="btn_preview" href="javascript:popPreview('4181047');">미리 보기</a>			
-						</div>
-						<dl class="prod_info">
-							<dt>
-								<a href="/front/product/detailProduct.do?prodId=4181047" onfocus="this.blur();">
-									  죽고 싶지만 떡볶이는 먹고 싶어
-								</a> 												
-								<span class="tag_area">
-									<span class="tag_best"><span>베스트</span></span>
-									<span class="tag_recom"><span>반디추천</span></span>
-									
-									<span class="tag_free"><span>무료배송</span></span>
-								</span>
-							</dt>
-							<dd class="txt_block">
-								<span>백세희</span> <span class="gap">|</span> <span>흔</span>
-								<span class="txt_date"><span class="gap">|</span> <span>2018.06.20</span></span>
-							</dd>
-							<dd class="mt5"><p><span class="txt_reprice">13,800원</span> <span class="txt_arrow">→</span> 
-												<span class="txt_price"><strong><em>12,420</em>원</strong>
-												 (10%↓+5%P)</span></p></dd>
-							<dd class="txt_desc">
-								<div class="review_point"><span style="width: 81%;"></span></div>
-								<strong>8.13</strong> 
-								<a href="/front/product/detailProduct.do?prodId=4181047#sub10" target="_blank">리뷰<em>(8)</em></a>
-							</dd>
-							<dd class="txt_bex">
-								“자기가 지금 힘든 줄도 모르고 사는 사람이 많아요. 이유 없는 허전함에 시달리면서.” 전국 동네 서점에서 시작된 입소문 베스트셀러 이 책에 쏟아진 수많은 찬사들 “페이지를 못 넘기고 머무르게 된다. 몇 번을 읽는지 모르겠다.” - seoyoniiiiii “내가 발가벗겨지는 기분이라 부끄러웠지만 개운하기도 했다.” - ta_tha_ta “받자마자 한숨에 읽...
-							</dd>
-								<dd class="txt_ebook"><span><a href="/front/product/detailProduct.do?prodId=5258417" target="_blank">이 책의 eBook : <strong>9,660</strong>원</a></span></dd>
-								<dd class="txt_ebook">
-								<span>지금 주문하면 <strong class="t_red">내일</strong>받을 수 있습니다.</span>
+							
+							<dl class="prod_info">
+								<dt>
+									<a href="/front/product/detailProduct.do?isbn=4181047" onfocus="this.blur();">
+										  ${dto.bookTitle }
+									</a> 												
+									<span class="tag_area">
+										<span class="tag_best"><span>베스트</span></span>
+										<span class="tag_recom"><span>반디추천</span></span>
+										<span class="tag_free"><span>무료배송</span></span>
+									</span>
+								</dt>
+								<dd class="txt_block">
+									<span>${dto.authorName }</span> <span class="gap">|</span> <span>${dto.publisher }</span>
+									<span class="txt_date"><span class="gap">|</span> <span>${dto.publishDate }</span></span>
 								</dd>
-							<dd class="txt_ebook" id="divHistory0">
-								<span>
-									<strong>최고순위 :</strong> <a href="javascript:goTopHistory(2018, 10, 2, 1);"><strong>1위</strong> (2018/10 2째주)</a>
-									<strong>기간 : 15주</strong>
-								</span>
-							</dd>
+								<dd class="mt5"><p><span class="txt_reprice">${dto.bookPrice }</span> <span class="txt_arrow">→</span> 
+													<span class="txt_price"><strong><em>${dto.discountedPrice }</em>원</strong>
+													 (${dto.discountRate }%↓+5%P)</span></p></dd>
+								<dd class="txt_desc">
+									<div class="review_point"><span style="width: ${dto.rate*10 }%;"></span></div>
+									<strong>${dto.rate }</strong>
+									<a href="/front/product/detailProduct.do?isbn=4181047#sub10" target="_blank">리뷰<em>(${dto.reviewCnt })</em></a>
+								</dd>
+								<dd class="txt_bex">
+									${dto.introduction }
+								</dd>
+									<dd class="txt_ebook">
+									<span>지금 주문하면 <strong class="t_red">내일</strong>받을 수 있습니다.</span>
+									</dd>
+							</dl>
 							
-						</dl>
-						<dl class="prod_btn">
-							<dt>
-								<span class="num_txt">수량</span>
-								<input type="text" id="cntVal_4181047" value="1" class="num" size="3" maxlength="2" onkeydown="onlyNumber();" onkeyup="">
-								<span class="btn_updn_wrap"><a href="javascript:cntUp('4181047','01');" class="btn_num_up">▲</a><a href="javascript:cntDown('4181047','01');" class="btn_num_dn">▼</a></span>
-							</dt>
-							
-							<dd><a href="javascript:addCart('4181047');"><span class="btn_b_comm btype_f1">쇼핑카트</span></a></dd>
-							<dd class="mt3"><a href="javascript:goOrder('4181047');"><span class="btn_w_comm btype_f1">바로구매</span></a></dd>
-							<dd class="mt3"><a href="javascript:add_wish_array_common('4181047', true);"><span class="btn_w_comm btype_f1">위시리스트</span></a></dd>
-						</dl>
-					</li>						
-					</ul>							
-				</div>
+							<dl class="prod_btn">
+								<dt>
+									<span class="num_txt">수량</span>
+									<input type="text" id="cntVal_${dto.isbn }" value="1" class="num" size="3" maxlength="2" onkeydown="onlyNumber();" onkeyup="">
+									<span class="btn_updn_wrap"><a href="javascript:cntUp('${dto.isbn }');" class="btn_num_up">▲</a><a href="javascript:cntDown('${dto.isbn }');" class="btn_num_dn">▼</a></span>
+								</dt>
+								
+								<dd><a href="javascript:addCart('${dto.isbn }');"><span class="btn_b_comm btype_f1">쇼핑카트</span></a></dd>
+								<dd class="mt3"><a href="javascript:goOrder('${dto.isbn }');"><span class="btn_w_comm btype_f1">바로구매</span></a></dd>
+								<dd class="mt3"><a href="javascript:add_wish_array_common('${dto.isbn }', true);"><span class="btn_w_comm btype_f1">위시리스트</span></a></dd>
+							</dl>
+						</li>						
+						</ul>							
+					</div>
+					</c:forEach>
 			
 
 					<!-- page -->
 					<div class="pageTypeA pageTypeB">
 
-						<a class="on">1~20위</a>
-						<a href="/front/display/listBest.do?page=2&amp;searchType=top&amp;recommendYear=2018&amp;recommendMonth=10&amp;recommendWeek=2&amp;cateId=&amp;sex=&amp;age=&amp;prodStat=&amp;sort=sort8">21~40위</a>
-						<a href="/front/display/listBest.do?page=3&amp;searchType=top&amp;recommendYear=2018&amp;recommendMonth=10&amp;recommendWeek=2&amp;cateId=&amp;sex=&amp;age=&amp;prodStat=&amp;sort=sort8">41~60위</a>	
-						<a href="/front/display/listBest.do?page=4&amp;searchType=top&amp;recommendYear=2018&amp;recommendMonth=10&amp;recommendWeek=2&amp;cateId=&amp;sex=&amp;age=&amp;prodStat=&amp;sort=sort8">61~80위</a>
-						<a href="/front/display/listBest.do?page=5&amp;searchType=top&amp;recommendYear=2018&amp;recommendMonth=10&amp;recommendWeek=2&amp;cateId=&amp;sex=&amp;age=&amp;prodStat=&amp;sort=sort8">81~100위</a>
+						<a href="<%=cp%>/bnlNewBookList.action?pageNum=1&sort=${sort }&sort1st=${sort1st}&sort2nd=${sort2nd}">1~20위</a>
+						<a href="<%=cp%>/bnlNewBookList.action?pageNum=2&sort=${sort }&sort1st=${sort1st}&sort2nd=${sort2nd}">21~40위</a>
+						<a href="<%=cp%>/bnlNewBookList.action?pageNum=3&sort=${sort }&sort1st=${sort1st}&sort2nd=${sort2nd}">41~60위</a>
+						<a href="<%=cp%>/bnlNewBookList.action?pageNum=4&sort=${sort }&sort1st=${sort1st}&sort2nd=${sort2nd}">61~80위</a>
+						<a href="<%=cp%>/bnlNewBookList.action?pageNum=5&sort=${sort }&sort1st=${sort1st}&sort2nd=${sort2nd}">81~100위</a>
 
 					</div>
 					<!-- //page --> 
