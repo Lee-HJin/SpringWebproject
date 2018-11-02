@@ -13,8 +13,8 @@
 <meta http-equiv="X-UA-Compatible" content="IE=Edge">
 
 
-<link rel="stylesheet" href="/webproject/resources/common/css/bnlBSList2.css" type="text/css">
 <link rel="stylesheet" href="/webproject/resources/css/main.css" type="text/css">
+<link rel="stylesheet" href="/webproject/resources/common/css/bnlBSList2.css" type="text/css">
 <link rel="shortcut icon" href="http://image.bandinlunis.com/favicon.ico" type="image/x-icon">
 <title>2조 반디앤루니스</title>
 
@@ -40,192 +40,6 @@
 <!-- ADSSOM 신규 버전 17-11-20 -->
 <!-- ADSSOM 공통 SCRIPT -->
 <script type="text/javascript" src="https://sc.11h11m.net/s/E799.js"></script>
-<script language="javascript">
-
-	//타입별 텍스트 return
-	function DispProdType(val){
-
-		var str = "";
-		
-		if(val === "01")		str = "도서";
-		else if(val === "02")	str = "도서";
-		else if(val === "03")	str = "음반";
-		else if(val === "04")	str = "GIFT";
-		else if(val === "05")	str = "중고샵";
-		else if(val === "06")	str = "eBook";
-		else if(val === "07")	str = "DVD";
-		else if(val === "08")	str = "해외주문도서";
-		else if(val === "09")	str = "중고샵";
-		else if(val === "11")	str = "뷰티";
-		else if(val === "12")	str = "오피스문구";
-		else 					str = "통합검색";
-
-		return str;
-	}
-
-	//자동완성 키워드 선택시
-	function akcChangeKwd(idx) {
-		$("#sch_keyword").val($(".akc_hidden_words").eq(idx).val());
-		$("#searchForm").submit();		
-	}
-
-	//하이라이팅 태그 삭제
-	function EraseHighlightingTag(val) {
-		var str = val.replace("<em class= 'emph_on'>","").replace("</em>","").replace("<em class= 'emph_on'>","").replace("</em>","").replace("<em class= 'emph_on'>","").replace("</em>","").replace("<em class= 'emph_on'>","").replace("</em>","").replace("<em class= 'emph_on'>","").replace("</em>","");
-		return str;
-	}
-
-	//쇼핑카트
-	function addCart(isbn) {
-		var ordCnt = $("#cntVal_"+isbn).val();
-		if(isNaN(ordCnt)) {
-			ordCnt = 1;
-		}
-		add_basket(isbn, ordCnt);
-	}
-
-	//메뉴 마우스 오버
-	function toggleLayer(id) {
-		if (document.getElementById("cLayer"+id).style.display == "block"){
-			document.getElementById("cLayer"+id).style.display = "none";
-		}else{
-			document.getElementById("cLayer"+id).style.display = "block";
-		}
-	}
-
-	//추천빅데이터
-	function goRecommendInside() {
-		jutil.cookie.set_cookie("lastPath", location.pathname+location.search);
-		document.location.href = "http://www.bandinlunis.com/front/recommend/linkedBook.do";
-	}
-
-	function checkMemType(value) {				
-		var flag = false;
-		var temp = "01";
-							
-		if(temp == undefined || temp == ""){ return flag; }
-		
-		var memType = temp.split(",");
-		if(value != "" && memType != "" && 0 < memType.length){
-			for(var i = 0; i < memType.length; i++) {
-                if(value == memType[i]) { flag = true;  break; }
-            }
-		}
-
-		return flag;
-	}
-	
-	
-	
-	function searchAdClear() {
-		isSchKeywordFocus = true;
-		$("#sch_keyword").val("");
-		$("#ad_url").val("");
-	}
-	
-	var isSchKeywordFocus = false;	// 키워드 로딩전 포커싱 갔을때 문제점 수정
-	
-	function setHeaderKeyword() {
-		var prodType = '';
-		if(prodType == null || prodType == ""){
-			prodType = "01";
-		}
-		var keywordHtml = "";
-		$.getScript("/ajax/getHeaderKeyword.do?prodType="+prodType+"&keywordDpAreas=01,02&sort=random",
-			function(){
-				if (data != null && data.length > 0 && typeof(data) == "object") {
-					
-					var loopCnt = 0;
-					
-					for(var j = 0; j < data.length; j++){
-						if(data[j].keyword_dp_area == '01'){
-							if(loopCnt < 4){
-								keywordHtml += "<dd><a href=\""+data[j].url+"\">"+data[j].keyword+"</a></dd>";
-								loopCnt++;
-							}
-							$("#seachIssue").html(keywordHtml);
-						}
-						
-						if(data[j].keyword_dp_area == '02'){
-							if (!isSchKeywordFocus) {
-								$("#sch_keyword").val(data[j].keyword);
-								$("#ad_url").val(data[j].url);
-							}
-						}
-						
-					}
-				}
-			}
-		);
-	}
-	
-	
-	function latestBookCartInfo(){
-		$.ajax({
-			url: "/ajax/latestBookCartInfo.do",
-			type: "post",
-			data: {"page":1,"listSize":5},
-			dataType: "json",
-			success: function(data)	{
-				if(data != null){
-					var HTML = '<dt>최근담긴 상품</dt>';
-					if(data.latestBookCartList != null && data.latestBookCartList.length > 0){
-						for(var i=0;i<data.latestBookCartList.length;i++){
-							HTML += '<dd>';
-							HTML += '	<span class="cart_pimg"><a href="http://www.bandinlunis.com/front/product/detailProduct.do?isbn='+data.latestBookCartList[i].prod_id+'"><img src="http://image.bandinlunis.com/upload'+data.latestBookCartList[i].prod_img+'" onerror="this.src=\'/images/common/noimg_type02.gif\'"  ></a></span>';
-							HTML += '	<span class="cart_pname"><a href="http://www.bandinlunis.com/front/product/detailProduct.do?isbn='+data.latestBookCartList[i].prod_id+'">'+data.latestBookCartList[i].prod_name+'</a></span>';
-							HTML += '</dd>';	
-						}
-					}else{
-						HTML += '<dd class="nodata">';
-						HTML += '	쇼핑카트에 담긴 상품이<br> 없습니다.';
-						HTML += '</dd>';
-					}
-					$("#cartListArea").html(HTML);
-					$("#cartCnt").html("<span>"+data.latestBookCartTotCnt+"</span>");
-					$("#cartCnt2").html(data.latestBookCartTotCnt);
-				}
-			},
-			error: function(){
-				
-			}
-		});
-	}
-	
-	function tourSearch(url,add){
-		document.getElementById("tourUrl").value=url;
-		document.getElementById("add").value=add;
-		document.tourForm.submit();
-	}
-	
-	function tourPage(menu){
-		tourSearch("http://hanatour.bandinlunis.com/app/default.asp?menu="+menu);
-	}
-	
-	
-	
-    function showTimeBanner() {
-    	
-    	var _date = new Date();
-    	
-    	var _year = _date.getFullYear();
-    	var _month = _date.getMonth()+1;
-    	var _day = _date.getDate();
-    	var _hour = _date.getHours();
-
-    	var std = "" + LPAD2(_month) + LPAD2(_day) + LPAD2(_hour);
-    	var fullStd = "" + LPAD2(_year) + LPAD2(_month) + LPAD2(_day) + LPAD2(_hour);  
- 
-    	if(fullStd >= "2017090109" && fullStd <= "2017093023") {
-    		$("#paycoLayer").show();
-    	} 
-    	
-    	if(fullStd >= "2017110109" && fullStd <= "2018033123") {
-    		$("#paycoLayer2").show();
-    	} 
-     }
-	
-</script>
 <script type="text/javascript" charset="UTF-8" async="" src="http://s.n2s.co.kr/_n2s_ck_log.php"></script>
 
 <!-- 스크립트2 시작 -->
@@ -310,8 +124,8 @@
 		frmObj.recommendWeek.value = recommendWeek;
 		
 		frmObj.page.value = Math.ceil(rank / 20);
-		frmObj.sort.value = "sort8";
-		frmObj.searchType.value = "top";
+		frmObj.sort.value = "sort";
+		//frmObj.searchType.value = "top";
 		//frmObj.cateId.value = "";
 		//frmObj.sex.value = "";
 		//frmObj.age.value = "";
@@ -342,7 +156,7 @@ function goSearch(sort) {
 		frmObj.sort.value = frmObj.sorts[0].value;
 		*/
 		if (frmObj.sort.value == "") {
-			frmObj.sort.value = "sort8";
+			frmObj.sort.value = "";
 		}
 		
 		var cageId = document.getElementsByName("cageId");
@@ -386,7 +200,6 @@ function goSearch(sort) {
 	
 </script>
 <!-- 스트립트2 끝  -->
-
 
 </head>
 
@@ -448,11 +261,11 @@ function goSearch(sort) {
 					<div class="prod_sort sort_ver02">								
 						<div class="sorting">
 							<ul class="con01">
-								<li><a style="cursor:pointer;" href="<%=cp%>/bnlBSList.action?pageNum=1&sort=sort0" >순위 높은 순</a></li>
-								<li><a style="cursor:pointer;" href="<%=cp%>/bnlBSList.action?pageNum=1&sort=sort1">발행일순</a></li>
-								<li><a style="cursor:pointer;" href="<%=cp%>/bnlBSList.action?pageNum=1&sort=sort2">상품명순</a></li>
-								<li><a style="cursor:pointer;" href="<%=cp%>/bnlBSList.action?pageNum=1&sort=sort3">평점순</a></li>
-								<li class="alt"><a style="cursor:pointer;" href="<%=cp%>/bnlBSList.action?pageNum=1&sort=sort4">리뷰순</a></li> 
+								<li><a style="cursor:pointer;" href="<%=cp%>/bnlBSList.action?pageNum=1&sort=&sort1st=${sort1st}&sort2nd=${sort2nd}" >순위 높은 순</a></li>
+								<li><a style="cursor:pointer;" href="<%=cp%>/bnlBSList.action?pageNum=1&sort=sort1&sort1st=${sort1st}&sort2nd=${sort2nd}">발행일순</a></li>
+								<li><a style="cursor:pointer;" href="<%=cp%>/bnlBSList.action?pageNum=1&sort=sort2&sort1st=${sort1st}&sort2nd=${sort2nd}">상품명순</a></li>
+								<li><a style="cursor:pointer;" href="<%=cp%>/bnlBSList.action?pageNum=1&sort=sort3&sort1st=${sort1st}&sort2nd=${sort2nd}">평점순</a></li>
+								<li class="alt"><a style="cursor:pointer;" href="<%=cp%>/bnlBSList.action?pageNum=1&sort=sort4&sort1st=${sort1st}&sort2nd=${sort2nd}">리뷰순</a></li> 
 							</ul> 
 						 	<div class="con02">
 								<p class="t_11gr"><input type="checkbox" name="prodStat" id="prodStat" value="Y" class="chk"> 품절/절판제외</p>
@@ -514,7 +327,7 @@ function goSearch(sort) {
 						 </h4>
 						 
 						<p class="btn_cart">
-							<span><input type="checkbox" name="isbns" class="chk" onclick="javascript:check_all(document.getElementsByName('isbn'), this.checked);"> 전체</span>
+							<span><input type="checkbox" name="ibsns" class="chk" onclick="javascript:check_all(document.getElementsByName('isbn'), this.checked);"> 전체</span>
 							<a href="javascript:addCarts();"><span class="btn_w_comm btype_a2">쇼핑카트</span></a>
 							<a href="javascript:addWishes();"><span class="btn_w_comm btype_a2">위시리스트</span></a>
 						</p>
@@ -524,11 +337,11 @@ function goSearch(sort) {
 						<div class="pageTypeA pageTypeB">
 							
 							<!-- jQuery로 class on 하는 거 나중에 하기  -->
-							<a href="<%=cp%>/bnlBSList.action?pageNum=1">1~10위</a>
-							<a href="<%=cp%>/bnlBSList.action?pageNum=2">21~40위</a>
-							<a href="<%=cp%>/bnlBSList.action?pageNum=3">41~60위</a>
-							<a href="<%=cp%>/bnlBSList.action?pageNum=4">61~80위</a>
-							<a href="<%=cp%>/bnlBSList.action?pageNum=5">81~100위</a>
+							<a href="<%=cp%>/bnlBSList.action?pageNum=1&sort=${sort }&sort1st=${sort1st}&sort2nd=${sort2nd}">1~10위</a>
+							<a href="<%=cp%>/bnlBSList.action?pageNum=2&sort=${sort }&sort1st=${sort1st}&sort2nd=${sort2nd}">21~40위</a>
+							<a href="<%=cp%>/bnlBSList.action?pageNum=3&sort=${sort }&sort1st=${sort1st}&sort2nd=${sort2nd}">41~60위</a>
+							<a href="<%=cp%>/bnlBSList.action?pageNum=4&sort=${sort }&sort1st=${sort1st}&sort2nd=${sort2nd}">61~80위</a>
+							<a href="<%=cp%>/bnlBSList.action?pageNum=5&sort=${sort }&sort1st=${sort1st}&sort2nd=${sort2nd}">81~100위</a>
 
 						</div>
 					<!-- //page --> 
@@ -538,6 +351,7 @@ function goSearch(sort) {
 					<div class="prod_list_type prod_best_type">
 						<ul>	        	
 			         	<li>
+			         		<input class="checkbox" type="checkbox" value="${dto.isbn }" name="isbn">
 							<div class="prod_thumb">
 								<span class="ranking">
 									<span class="rank_num">${dto.rnum }</span>
@@ -548,7 +362,7 @@ function goSearch(sort) {
 								</span>
 								<div class="prod_thumb_img">
 									<a href="/front/product/detailProduct.do?isbn=4181047" onfocus="this.blur();">
-										<img src="<%=cp %>/resources/images/coverImage/${dto.bookImage }" onerror="this.src='/images/common/noimg_type01.gif';">
+										<img src="<%=cp %>/resources/image/book/${dto.bookImage }"> <!-- onerror="this.src='/images/common/noimg_type01.gif';"  -->
 									</a>
 									<a class="btn_popup" target="_blank" href="/front/product/detailProduct.do?isbn=4181047"><span class="ico_new">새창열기</span></a>
 								</div>
@@ -590,7 +404,10 @@ function goSearch(sort) {
 								<dt>
 									<span class="num_txt">수량</span>
 									<input type="text" id="cntVal_${dto.isbn }" value="1" class="num" size="3" maxlength="2" onkeydown="onlyNumber();" onkeyup="">
-									<span class="btn_updn_wrap"><a href="javascript:cntUp('${dto.isbn }');" class="btn_num_up">▲</a><a href="javascript:cntDown('${dto.isbn }');" class="btn_num_dn">▼</a></span>
+									<span class="btn_updn_wrap">
+										<a href="javascript:cntUp('${dto.isbn }');" class="btn_num_up">▲</a>
+										<a href="javascript:cntDown('${dto.isbn }');" class="btn_num_dn">▼</a>
+									</span>
 								</dt>
 								
 								<dd><a href="javascript:addCart('${dto.isbn }');"><span class="btn_b_comm btype_f1">쇼핑카트</span></a></dd>
@@ -604,11 +421,11 @@ function goSearch(sort) {
 					<!-- page -->
 					<div class="pageTypeA pageTypeB">
 
-						<a href="<%=cp%>/bnlBSList.action?pageNum=1">1~20위</a>
-						<a href="<%=cp%>/bnlBSList.action?pageNum=2">21~40위</a>
-						<a href="<%=cp%>/bnlBSList.action?pageNum=3">41~60위</a>
-						<a href="<%=cp%>/bnlBSList.action?pageNum=4">61~80위</a>
-						<a href="<%=cp%>/bnlBSList.action?pageNum=5">81~100위</a>
+						<a href="<%=cp%>/bnlBSList.action?pageNum=1&sort=${sort }&sort1st=${sort1st}&sort2nd=${sort2nd}">1~20위</a>
+						<a href="<%=cp%>/bnlBSList.action?pageNum=2&sort=${sort }&sort1st=${sort1st}&sort2nd=${sort2nd}">21~40위</a>
+						<a href="<%=cp%>/bnlBSList.action?pageNum=3&sort=${sort }&sort1st=${sort1st}&sort2nd=${sort2nd}">41~60위</a>
+						<a href="<%=cp%>/bnlBSList.action?pageNum=4&sort=${sort }&sort1st=${sort1st}&sort2nd=${sort2nd}">61~80위</a>
+						<a href="<%=cp%>/bnlBSList.action?pageNum=5&sort=${sort }&sort1st=${sort1st}&sort2nd=${sort2nd}">81~100위</a>
 
 					</div>
 
