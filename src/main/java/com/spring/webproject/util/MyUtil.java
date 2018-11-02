@@ -83,4 +83,82 @@ public class MyUtil {
 		return sb.toString();
 		
 	}
+	
+public String pageIndexListforJ(int currentPage, int totalPage, String listUrl){
+		
+		int numPerBlock = 3; //1◀이전 6 7 8 9 10 다음▶11(6-10까지 표시되는 페이지 갯수)
+		int currentPageSetup; //표시할 첫 페이지(6)의 – 1 해준 값(5,10,15,20...)
+		int page;
+		
+		StringBuffer sb = new StringBuffer();
+		
+		if(currentPage==0 || totalPage==0)	//데이터가 없을 경우
+			return "";
+		
+		//abc.jsp?a=1
+		if(listUrl.indexOf("?") != -1)  //주소줄에 ?표가 있다면
+			listUrl = listUrl + "&";
+		else
+			listUrl = listUrl + "?";
+		
+		//표시할 첫 페이지의 – 1 해준 값
+		currentPageSetup = (currentPage/numPerBlock)*numPerBlock;
+		
+		if(currentPage % numPerBlock == 0)
+			currentPageSetup = currentPageSetup - numPerBlock;
+		
+		sb.append("<div class='pageTypeA'>");
+		
+		//◀이전
+		if(totalPage > numPerBlock && currentPageSetup > 0){
+			
+			sb.append("<span class='prev-btn'>");
+			sb.append("<a href=\"" + listUrl + "pageNum=" + currentPageSetup + "\">"
+					+ "<img src='/webproject/resources/images/searchN/btn_pagePrev.gif' align='absmiddle' hspace='2' border='0'>"
+					+ "</a></span>&nbsp;");
+			
+		}
+		
+		sb.append("<span class='pageNum'>");
+		
+		//바로가기 페이지
+		page = currentPageSetup + 1;
+		
+		while(page <= totalPage && page <= (currentPageSetup + numPerBlock)){
+			
+			if(page == currentPage){				
+				
+				sb.append("<a class='on'>" + page + "</a>&nbsp;");				
+			
+			}else{
+				
+				sb.append("<a href=\"" + listUrl + "pageNum=" + page + "#tabMenu\">"
+						+ page + "</a>&nbsp;");
+				
+			}
+			
+			page++;
+			
+		}
+		
+		sb.append("</span>");
+		
+		//다음▶
+		if(totalPage - currentPageSetup > numPerBlock){
+			
+			sb.append("<span class='next-btn'>");
+			sb.append("<a href=\"" + listUrl + "pageNum=" + page + "\">"
+					+ "<img src='/webproject/resources/images/searchN/btn_pageNext.gif' align='absmiddle' hspace='2' border='0'>"
+					+ "</a></span>&nbsp;");
+			
+			
+			
+		}
+		
+		sb.append("</div>");
+		
+		
+		return sb.toString();
+		
+	}
 }
