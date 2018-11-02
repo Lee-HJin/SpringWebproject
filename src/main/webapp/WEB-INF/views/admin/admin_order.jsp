@@ -22,92 +22,96 @@
 <script
 	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 
+<script type="text/javascript">
+	
+function formSubmit(type) {
+	
+	var urltemp = "<%=cp%>/admin_";
+		urltemp += type;
+		urltemp += "_ok.action";
+
+		if (type == 'order') {
+			var params = jQuery("#orderForm").serialize(); // serialize() : 입력된 모든Element(을)를 문자열의 데이터에 serialize 한다.
+		} else if (type == 'shipments') {
+			var params = jQuery("#shipmentsForm").serialize(); // serialize() : 입력된 모든Element(을)를 문자열의 데이터에 serialize 한다.
+		}
+
+		jQuery.ajax({
+			url : urltemp,
+			type : 'POST',
+			data : params,
+			contentType : 'application/x-www-form-urlencoded; charset=UTF-8',
+			dataType : 'html',
+			success : function(data, status) {
+				if (type == 'order') {
+					$(".orderlist").html(data);
+				} else if (type == 'shipments') {
+					$(".shipmentslist").html(data);
+				}
+			}
+		});
+	}
+
+	function orderPaging(url) {
+
+		$(".orderlist").load(url);
+
+	}
+
+	function shipmentsPaging(url) {
+
+		$(".shipmentslist").load(url);
+
+	}
+</script>
+
 </head>
 <body>
 	<div class="container">
-		<h2>고객 상담</h2>
+		<h2>주문 현황</h2>
 		<div class="panel-group">
 			<div class="panel panel-default">
-				<div class="panel-heading">검색</div>
-				<div class="panel-body">
-					<form action="/admin_consultation.action" method="get">
-						<div class="col-lg-10">
-							<div class="col-lg-2 form-group">
-								<select class="form-control" name="searchKey">
-									<option value="">선택</option>
-									<option value="consultId">상담아이디</option>
-									<option value="userId">사용자아이디</option>
-									<option value="email">이메일</option>
-									<option value="subject">제목</option>
-									<option value="contents">내용</option>
-								</select>
-							</div>
-							<div class="col-lg-10 form-group">
-								<div class="col-lg-6">
-									<input type="text" class="form-control" id="searchValue"
-										placeholder="검색어를 입력하세요" name="searchValue">
-								</div>
-								<div class="col-lg-2">
-									<button type="submit" class="btn btn-default">검색</button>
-								</div>
-							</div>
-						</div>
-
-						<div class="col-lg-10 form-group">
-							<div class="col-lg-1">
-								<label for="pwd">기간</label>
-							</div>
-
-							<div class="col-lg-3">
-
+				<div class="panel-heading">주문 조회</div>
+				<div class="panel-body orderlist">
+					<form id="orderForm">
+						<div class="col-lg-6 form-group">
+							<div class="col-lg-6">
 								<input type="date" class="form-control" name="fromDate">
 							</div>
 
-							<div class="col-lg-3">
+							<div class="col-lg-6">
 								<input type="date" class="form-control" name="toDate">
 							</div>
 						</div>
-
+						<div class="col-lg-6 form-group">
+							<div class="col-lg-8">
+								<input type="hidden" name="searchKey" value="userId"> <input
+									type="text" class="form-control" placeholder="사용자 아이디"
+									name="searchValue">
+							</div>
+							<div class="col-lg-4">
+								<button type="button" class="btn btn-default"
+									onclick="formSubmit('order');">검색</button>
+							</div>
+						</div>
 					</form>
-				</div>
-			</div>
-			<div class="panel panel-default">
-				<div class="panel-heading">상담 리스트</div>
-				<div class="panel-body">
+
 					<div class="table">
 						<form name="userList" method="post" action="">
 							<table class="table table-bordered">
 								<thead>
 									<tr>
 										<th scope="col">no</th>
-										<th scope="col">상담아이디</th>
-										<th scope="col">유저아이디</th>
-										<th scope="col">이메일</th>
-										<th scope="col">제목</th>
-										<th scope="col">내용</th>
-										<th scope="col">상담일자</th>
-										<th scope="col">처리여부</th>
+										<th scope="col">주문번호</th>
+										<th scope="col">사용자아이디</th>
+										<th scope="col">주문현황</th>
+										<th scope="col">처리날짜</th>
+										<th scope="col">주문금액</th>
+										<th scope="col">주소</th>
+										<th scope="col">상세내역</th>
 									</tr>
 								</thead>
 								<tbody>
-
-									<c:forEach var="user" items="${userList}" varStatus="status">
-										<tr>
-											<td>${(status.index + pageMaker.cri.numPerPage * (pageMaker.cri.page-1))+1 }</td>
-											<td>${user.userId }</td>
-											<td>${user.userName }</td>
-											<td>${user.nickName }</td>
-											<td>${user.memberGrade }</td>
-											<td>${user.point }</td>
-											<td>${user.email}</td>
-											<td>${user.phone }</td>
-											<td>${user.zipCode}${user.address1 }${user.address2 }</td>
-											<td>
-												<button type="button" class="btn" id="del_btn"
-													onclick="deleteUser('${user.userId}')">삭제</button> 
-											</td>
-										</tr>
-									</c:forEach>
 								</tbody>
 							</table>
 						</form>
@@ -117,23 +121,56 @@
 
 					<div style="display: table; margin: 0 auto;">
 						<ul class="pagination">
-							<c:if test="${pageMaker.pre }">
-								<li><a
-									onclick="paging('<%=cp %>/admin_users.action?page=${pageMaker.startPage-1}')">&lt;</a></li>
-							</c:if>
-							<c:forEach begin="${pageMaker.startPage }"
-								end="${pageMaker.endPage }" var="idx">
-								<li><a
-									href="<%=cp %>/admin_users.action?page=${idx}&searchKey=${pageMaker.cri.searchKey}&searchValue=${pageMaker.cri.searchValue}">${idx }</a></li>
-							</c:forEach>
-							<c:if test="${pageMaker.nex }">
-								<li><a
-									href="<%=cp %>/admin_users.action?page=${pageMaker.endPage+1}&searchKey=${pageMaker.cri.searchKey}&searchValue=${pageMaker.cri.searchValue}">&gt;</a></li>
-							</c:if>
+							<li><a style="cursor: pointer">0</a></li>
 						</ul>
 					</div>
 				</div>
 			</div>
+			<div class="panel panel-default">
+				<div class="panel-heading">배송 조회</div>
+				<div class="panel-body shipmentslist">
+					<form id="shipmentsForm">
+						<div class="col-lg-6 form-group">
+							<div class="col-lg-8">
+								<input type="hidden" name="searchKey" value="userId"> <input
+									type="text" class="form-control" placeholder="사용자 아이디"
+									name="searchValue">
+							</div>
+							<div class="col-lg-4">
+								<button type="button" class="btn btn-default"
+									onclick="formSubmit('shipments');">검색</button>
+							</div>
+						</div>
+					</form>
+					<div class="table">
+						<form name="userList" method="post" action="">
+							<table class="table table-bordered">
+								<thead>
+									<tr>
+										<th scope="col">no</th>
+										<th scope="col">주문번호</th>
+										<th scope="col">배송번호</th>
+										<th scope="col">사용자아이디</th>
+										<th scope="col">배송현황</th>
+										<th scope="col">수령예상일</th>
+									</tr>
+								</thead>
+								<tbody>
+								</tbody>
+							</table>
+						</form>
+
+					</div>
+					<div style="display: table; margin: 0 auto;">
+						<ul class="pagination">
+							<li><a style="cursor: pointer">0</a></li>
+						</ul>
+					</div>
+
+				</div>
+			</div>
 		</div>
+	</div>
+
 </body>
 </html>

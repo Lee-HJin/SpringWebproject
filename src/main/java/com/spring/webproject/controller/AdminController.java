@@ -26,15 +26,17 @@ import com.spring.webproject.dto.AdminAuthorDTO;
 import com.spring.webproject.dto.AdminBooksDTO;
 import com.spring.webproject.dto.AdminCategoryDTO;
 import com.spring.webproject.dto.AdminCounsultationDTO;
+import com.spring.webproject.dto.AdminOrderDTO;
 import com.spring.webproject.dto.AdminQuantityDTO;
+import com.spring.webproject.dto.AdminShipmentsDTO;
 import com.spring.webproject.dto.AdminTranslatorDTO;
 import com.spring.webproject.dto.AdminUsersDTO;
 import com.spring.webproject.dto.AdminWarehouseDTO;
-import com.spring.webproject.util.ConsultationCriteria;
 import com.spring.webproject.util.Criteria;
 import com.spring.webproject.util.FileUtil;
 import com.spring.webproject.util.PageMaker;
 import com.spring.webproject.util.SearchCriteria;
+import com.spring.webproject.util.SearchDateCriteria;
 
 @Controller
 public class AdminController {
@@ -234,21 +236,21 @@ public class AdminController {
 
 	// consultation
 	@RequestMapping(value = "/admin_consultation.action", method = { RequestMethod.POST, RequestMethod.GET })
-	public String consultation(Model model ,HttpServletRequest request,ConsultationCriteria cri) {
-		
-		if(cri.getAnswerCheck()==null || cri.getAnswerCheck().equals("")) {
+	public String consultation(Model model, HttpServletRequest request, SearchDateCriteria cri) {
+
+		if (cri.getAnswerCheck() == null || cri.getAnswerCheck().equals("")) {
 			cri.setAnswerCheck(null);
 		}
-		if(cri.getToDate()==null || cri.getToDate().equals("")) {
+		if (cri.getToDate() == null || cri.getToDate().equals("")) {
 			cri.setToDate(null);
 		}
-		if(cri.getFromDate()==null || cri.getFromDate().equals("")) {
+		if (cri.getFromDate() == null || cri.getFromDate().equals("")) {
 			cri.setFromDate(null);
 		}
-		if(cri.getSearchValue()==null || cri.getSearchValue().equals("")) {
+		if (cri.getSearchValue() == null || cri.getSearchValue().equals("")) {
 			cri.setSearchValue(null);
 		}
-		if(cri.getSearchKey()==null || cri.getSearchKey().equals("")) {
+		if (cri.getSearchKey() == null || cri.getSearchKey().equals("")) {
 			cri.setSearchKey(null);
 		}
 		List<AdminCounsultationDTO> consultationList = dao.getCounsultationList(cri);
@@ -258,7 +260,7 @@ public class AdminController {
 
 		model.addAttribute("pageMaker", pageMaker);
 		model.addAttribute("consultationList", consultationList);
-		
+
 		return "admin/admin_consultation";
 	}
 
@@ -349,9 +351,60 @@ public class AdminController {
 
 	// order
 	@RequestMapping(value = "/admin_order.action", method = { RequestMethod.POST, RequestMethod.GET })
-	public String adminOder() {
-
+	public String adminOrder() {
+		
 		return "admin/admin_order";
 	}
+
+	@RequestMapping(value = "/admin_order_ok.action", method = { RequestMethod.POST, RequestMethod.GET })
+	public String adminOrderOk(SearchDateCriteria cri, Model model) {
+		
+		cri.setNumPerPage(5);
+		
+		
+		if (cri.getToDate() == null || cri.getToDate().equals("")) {
+			cri.setToDate(null);
+		}
+		if (cri.getFromDate() == null || cri.getFromDate().equals("")) {
+			cri.setFromDate(null);
+		}
+		if (cri.getSearchValue() == null || cri.getSearchValue().equals("")) {
+			cri.setSearchValue(null);
+		}
+		
+		List<AdminOrderDTO> orderList = dao.getOrderList(cri);
+		
+		PageMaker pageMaker = new PageMaker(cri);
+		pageMaker.setTotalDataCount(dao.getOrderTotalCount(cri));
+
+		model.addAttribute("pageMaker", pageMaker);
+		model.addAttribute("orderList", orderList);
+		
+		return "admin/admin_order_ok";
+	}
+	
+	//shipments
+	@RequestMapping(value = "/admin_shipments_ok.action", method = { RequestMethod.POST, RequestMethod.GET })
+	public String adminShipmentsOk(SearchCriteria cri, Model model) {
+		
+		cri.setNumPerPage(5);
+		
+		if (cri.getSearchValue() == null || cri.getSearchValue().equals("")) {
+			cri.setSearchValue(null);
+		}
+		
+		List<AdminShipmentsDTO> shipmentsList = dao.getShipmentsList(cri);
+		
+		PageMaker pageMaker = new PageMaker(cri);
+		pageMaker.setTotalDataCount(dao.getShipmentsTotalCount(cri));
+
+		model.addAttribute("pageMaker", pageMaker);
+		model.addAttribute("shipmentsList", shipmentsList);
+		
+		return "admin/admin_shipments_ok";
+	}
+	
+	
+	
 
 }

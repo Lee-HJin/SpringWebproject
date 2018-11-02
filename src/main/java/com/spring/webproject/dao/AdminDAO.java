@@ -11,12 +11,14 @@ import com.spring.webproject.dto.AdminAuthorDTO;
 import com.spring.webproject.dto.AdminBooksDTO;
 import com.spring.webproject.dto.AdminCategoryDTO;
 import com.spring.webproject.dto.AdminCounsultationDTO;
+import com.spring.webproject.dto.AdminOrderDTO;
 import com.spring.webproject.dto.AdminQuantityDTO;
+import com.spring.webproject.dto.AdminShipmentsDTO;
 import com.spring.webproject.dto.AdminTranslatorDTO;
 import com.spring.webproject.dto.AdminUsersDTO;
 import com.spring.webproject.dto.AdminWarehouseDTO;
-import com.spring.webproject.util.ConsultationCriteria;
 import com.spring.webproject.util.SearchCriteria;
+import com.spring.webproject.util.SearchDateCriteria;
 
 @Repository
 public class AdminDAO {
@@ -135,15 +137,35 @@ public class AdminDAO {
 	}
 	
 	//consultation
-	public int getCounsultationTotalCount(ConsultationCriteria cri) {
+	public int getCounsultationTotalCount(SearchDateCriteria cri) {
 		return sessionTemplate.selectOne("adminMapper.getConsultationTotalCount", cri);
 	}
 	
-	public List<AdminCounsultationDTO> getCounsultationList(ConsultationCriteria cri){
+	public List<AdminCounsultationDTO> getCounsultationList(SearchDateCriteria cri){
 		List<AdminCounsultationDTO> list = sessionTemplate.selectList("adminMapper.getCounsultationList", cri);
 		return list;
 	}
-
+	
+	//order
+	public int getOrderTotalCount(SearchDateCriteria cri) {
+		return sessionTemplate.selectOne("adminMapper.getOrdersTotalcount", cri);
+	}
+	
+	public List<AdminOrderDTO> getOrderList(SearchDateCriteria cri){
+		List<AdminOrderDTO> list = sessionTemplate.selectList("adminMapper.getOrderList", cri);
+		return list;
+	}
+	
+	//shipments
+	
+	public int getShipmentsTotalCount(SearchCriteria cri) {
+		return sessionTemplate.selectOne("adminMapper.getShipmentsTotalCount", cri);
+	}
+	
+	public List<AdminShipmentsDTO> getShipmentsList(SearchCriteria cri){
+		List<AdminShipmentsDTO> list = sessionTemplate.selectList("adminMapper.getShipmentList", cri);
+		return list;
+	}
 }
 
 

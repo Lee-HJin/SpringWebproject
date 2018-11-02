@@ -1,6 +1,6 @@
 package com.spring.webproject.util;
 
-public class ConsultationCriteria extends SearchCriteria{
+public class SearchDateCriteria extends SearchCriteria{
 	
 	private String fromDate;
 	private String toDate;
@@ -33,6 +33,5 @@ public class ConsultationCriteria extends SearchCriteria{
 				+ getPage() + ", getNumPerPage()=" + getNumPerPage() + ", getStart()=" + getStart() + ", getEnd()="
 				+ getEnd() + "]";
 	}
-	
 	
 }

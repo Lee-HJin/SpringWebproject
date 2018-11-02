@@ -395,6 +395,112 @@ values(#{isbn},#{bookImage})
 
 <!-- consultation end -->
 
+<!-- orders -->
+
+<select id="getOrdersTotalcount" parameterType="map" resultType="int">
+	select 
+		count(orderid)
+	from
+		orders
+	<where>
+		<if test="searchValue!=null">
+			${searchKey} like '%${searchValue}%'
+		</if>
+		<if test="fromDate!=null">
+			and handlingDate >= to_date(#{fromDate},'YYYY-MM-DD')
+		</if>
+		<if test="toDate!=null">
+			<![CDATA[and handlingDate < to_date(#{toDate},'YYYY-MM-DD')]]>
+		</if>
+	</where>
+</select>
+
+<select id="getOrderList" parameterType="map" resultType="com.spring.webproject.dto.AdminOrderDTO">
+	select
+		a.rnum, a.orderId, a.userId, a.status, a.orderPrice, a.handlingDate, a.zipcode, a.address1, a.address2
+	from (select
+		rownum as rnum, a.orderId, a.userId, a.status, a.orderPrice, a.handlingDate, a.zipcode, a.address1, a.address2
+	from (select
+		a.orderId, a.userId, b.status, a.orderPrice, a.handlingDate, a.zipcode, a.address1, a.address2
+	from
+		orders a,
+		orderstatus b
+	
+		<where>
+		<if test="searchKey!=null">
+			a.orderstatuscode = b.orderstatuscode
+		</if>
+		<if test="searchValue!=null">
+			and ${searchKey} like '%${searchValue}%'
+		</if>
+		<if test="fromDate!=null">
+			and handlingDate >= to_date(#{fromDate},'YYYY-MM-DD')
+		</if>
+		<if test="toDate!=null">
+			<![CDATA[and handlingDate < to_date(#{toDate},'YYYY-MM-DD')]]>
+		</if>
+		</where>
+		order by handlingDate) a
+	<![CDATA[
+	where 
+		rownum <= #{end}) a
+	where 
+		a.rnum >= #{start}
+	]]>
+</select>
+
+<!-- orders end -->
+
+<!-- shipments -->
+
+<select id="getShipmentsTotalCount" parameterType="map" resultType="int">
+	select 
+		count(a.orderId)
+	from
+		shipments a,
+		orders b
+	<where>
+		<if test="searchKey!=null">
+			a.orderid = b.orderid
+		</if>
+		<if test="searchValue!=null">
+			and userid like '%${searchValue}%'
+		</if>
+	</where>
+</select>
+
+<select id="getShipmentList" parameterType="map" resultType="com.spring.webproject.dto.AdminShipmentsDTO">
+	
+	select 
+		rnum, a.orderId, a.shipmentsid, a.userid, a.status, a.expecteddate
+	from (select
+		rownum as rnum, a.orderId, a.shipmentsid, a.userid, a.status, a.expecteddate
+	from (select
+		a.orderId, a.shipmentsid, c.userid, b.status, a.expecteddate
+	from
+		shipments a,
+		shipmentsstatus b,
+		orders c
+	<where>
+		<if test="searchKey!=null">
+			a.orderId = c.orderId
+			and a.shipmentsstatuscode = b.shipmentsstatuscode
+		</if>
+		<if test="searchValue!=null">
+			and ${searchKey} like '%${searchValue}%'
+		</if>
+	</where>
+		order by userId)a
+	<![CDATA[
+		where
+			rownum <= #{end})a
+		where
+			a.rnum >= #{start}
+	]]>	
+</select>
+
+<!-- shipments end -->
+
 </mapper>
 
 
