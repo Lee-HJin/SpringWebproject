@@ -15,6 +15,10 @@
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 	<script src="<%=cp%>/resources/js/myShopping.js"></script>
 	
+	<script type="text/javascript">
+	
+	</script>
+	
 </head>
 <body style="padding: 0; margin: 0;">
 

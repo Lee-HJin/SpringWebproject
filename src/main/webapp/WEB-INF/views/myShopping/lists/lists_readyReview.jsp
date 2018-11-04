@@ -43,7 +43,7 @@
 </c:if>
 
 <c:if test="${empty lists }">
-	<div class="ready_review_list">
+	<div style="font-size: 12pt; text-align: center; height: 100px; line-height: 10;">
 		리뷰를 기다리는 책이 없습니다.
 	</div>
 </c:if>

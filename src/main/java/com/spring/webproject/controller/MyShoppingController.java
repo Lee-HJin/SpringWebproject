@@ -1160,6 +1160,27 @@ public class MyShoppingController {
 
 		return "myShopping/memberOut";
 	}
+	
+	//회원 탈퇴 전 주문내역 확인(주문/반품진행중/교환진행중 상태일 때는 회원탈퇴 제한)
+	@ResponseBody
+	@RequestMapping(value="myShopping/memberOut_pre.action", method = RequestMethod.POST)
+	public boolean memberOut_pre(HttpServletRequest request) {
+		
+		UserDTO dto = (UserDTO) request.getSession().getAttribute("userInfo");
+		String userId = dto.getUserId();
+		
+		//진행중인 주문 갯수를 반환함(반환값이 0인 경우에만 회원탈퇴 진행하도록)
+		int check = dao.checkOrderStatus(userId);
+		
+		if(check>0) {
+			return false;
+		}
+		else {
+			return true;
+		}
+		
+	}
+	
 
 	//회원 탈퇴 진행
 	@RequestMapping(value = "myShopping/memberOut_ok.action", method = RequestMethod.GET)

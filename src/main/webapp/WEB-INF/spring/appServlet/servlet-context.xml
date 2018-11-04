@@ -94,7 +94,7 @@
 		<beans:property name="driverClassName"
 			value="oracle.jdbc.driver.OracleDriver" />
 		<beans:property name="url"
-			value="jdbc:oracle:thin:@192.168.16.25:1521:TestDB" />
+			value="jdbc:oracle:thin:@127.0.0.1:1521:orcl" />
 		<beans:property name="username" value="springwebuser" />
 		<beans:property name="password" value="springwebpwd" />
 	</beans:bean>
