@@ -46,14 +46,11 @@
 	</div >
 		
 	<div style="text-align: center;">
-		<input type="button" value="탈퇴하기" class="myInfo_update_ok" onclick="javascript:location.href='<%=cp %>/myShopping/memberOut_ok.action';">
+		<input type="button" value="탈퇴하기" class="myInfo_update_ok" onclick="memOutCheck();">
 		<input type="button" value="돌아가기" class="myInfo_update_cancel"  onclick="javascript:location.href='<%=cp %>/myShoppingMain.action';">	
 	</div>
 
-
 </div>
-
-
 
 
 </div>

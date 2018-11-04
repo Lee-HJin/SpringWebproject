@@ -73,9 +73,5 @@
 </c:if>
 
 <c:if test="${empty lists }">
-<div style="text-align: center; padding-top: 100px;">${emptyMsg }</div>
+<div style="text-align: center; padding-top: 100px; font-size: 12pt;">${emptyMsg }</div>
 </c:if>
-
-
-
-<div style="text-align: center; padding-top: 100px;">${emptyMsg }</div>

@@ -36,6 +36,11 @@ from users where userId=#{userId}
 update users set userPwd=#{userPwd} where userId=#{userId}
 </update>
 
+<!-- 회원 탈퇴 전 주문상태 확인 -->
+<select id="checkOrderStatus" parameterType="java.lang.String" resultType="int">
+select nvl(count(*),0) from orders where orderstatuscode in (1,2,4) and userId=#{userId}
+</select>
+
 <!-- 회원 탈퇴 -->
 <delete id="memberOut" parameterType="java.lang.String">
 delete users where userId=#{userId}
@@ -105,7 +110,9 @@ and handlingdate between to_date(#{fromDate} || '000000', 'YYYY-MM-DD-HH24MISS')
 
 <!-- 소멸예정 적립금 조회 -->
 <select id="getExPoint" parameterType="java.lang.String" resultType="int">
-select nvl(sum(value),0) from point where userId=#{userId} and <![CDATA[expirationdate<=sysdate+60]]>
+select nvl(sum(value),0) from (select userid, savingdate, expirationdate,orderid,value,pointitem from point where userId=#{userId} and <![CDATA[ expirationdate<=sysdate+60 ]]>
+minus(select a.userid,a.savingdate,a.expirationdate,a.orderid,a.value,a.pointitem from point a, point b where a.orderid=b.orderid and a.value+b.value=0 and a.userId=#{userId}
+union select a.userid,a.savingdate,a.expirationdate,a.orderid,a.value,a.pointitem from point a, point b where a.savingdate=b.savingdate and a.expirationdate=b.expirationdate and a.value+b.value=0 and a.userId=#{userId}))
 </select>
 
 <!-- 적립금 리스트 count -->

@@ -11,9 +11,7 @@
 <title>alert</title>
 <script type="text/javascript">
 		alert('${alertMsg}');
-		if(${nextUrl}!=''){
-			location.href='<%=cp%>/${nextUrl}';
-		}
+		location.href='<%=cp%>/${nextUrl}';
 		${windowClose}
 </script>
 </head>

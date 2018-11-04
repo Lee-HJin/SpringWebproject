@@ -1,14 +1,18 @@
 package com.spring.webproject.controller;
 
 import java.io.UnsupportedEncodingException;
-import java.net.URLDecoder;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.spring.webproject.dao.LoginDAO;
@@ -19,6 +23,8 @@ public class LoginController {
 
 	@Autowired
 	LoginDAO dao;
+	
+	List<String> bookCookie;	//최근 본 상품 쿠키 리스트
 
 	//로그인페이지
 	@RequestMapping(value = "/login.action", method = RequestMethod.GET)
@@ -26,15 +32,35 @@ public class LoginController {
 
 		return "login/login";
 	}
-
+	
+	//최근 본 상품 쿠키+DB
+	@RequestMapping(value = "/recentCookie.action", method = RequestMethod.POST)
+	public @ResponseBody String recentCookie(HttpServletRequest request, @RequestParam(value="cookieArray[]") List<String> recentCookie) {
+		
+		bookCookie = new ArrayList<String>();
+		
+		for(int i=0;i<recentCookie.size();i++) {
+			bookCookie.add(recentCookie.get(i));
+		}
+		
+		///////////////////////////////
+		Iterator<String> it = bookCookie.iterator();
+		while(it.hasNext()) {
+			System.out.println(it.next());
+		}
+		
+		return "login_ok.action";
+	}
+	
+	
 	//로그인 진행
-	@RequestMapping(value = "/login_ok.action", method = RequestMethod.POST)
+	@RequestMapping(value = "/login_ok.action", method = {RequestMethod.POST,RequestMethod.GET})
 	public String loginProcess(HttpServletRequest request) {
 
 		String returnUrl = "";
 		String userId = request.getParameter("user_id");
 		String userPwd = request.getParameter("userPwd");
-
+		
 		UserDTO dto = dao.login(userId, userPwd);
 
 		if(dto!=null) {	//로그인 성공
@@ -44,7 +70,8 @@ public class LoginController {
 			
 			//회원 등급 정보 불러오기
 			
-			//최근 본 상품 불러오기
+			//최근 본 상품 불러오기(쿠키에 있는 상품을 DB에 합침)
+			//쿠키 가져오기
 
 			//세션 - dto, pointValue 올리기
 			request.getSession().setAttribute("userInfo", dto);

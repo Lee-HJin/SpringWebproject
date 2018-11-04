@@ -284,16 +284,71 @@ function login() {
 	}
 	f.userPwd.value = pwd;
 
-	f.action = "/webproject/login_ok.action";
-
 	if(f.idSave.checked){
 		setCookie('userInputId',id,30);
 	}
 	else{
 		deleteCookie('userInputId');
 	}
+	
+	//최근 본 상품 쿠키 챙기기
+	var ck = bookCookieInfo(getBookCookie('book'));
+	
+	//isbn만 array에 옮겨 담음
+	var cookieArray = new Array();
+	for(var i=0;i<ck.length;i++){
+		cookieArray.push(ck[i].isbn);
+	}
 
-	f.submit();
+	$.ajax ({
+		url:"recentCookie.action",
+		data:{cookieArray:cookieArray},
+		type:"POST",
+		success:function(){
+			f.action = "login_ok.action";
+			f.submit();
+		},
+		error:function(e){
+			alert(e.responseText);
+		}
+		
+	});
+	
+}
+
+//최근 본 상품 쿠키 가져오기
+function getBookCookie(cookiename){
+	var cookiestring  = document.cookie;
+	var cookiearray = cookiestring.split(';');
+	
+	for(var i=0; i<cookiearray.length; ++i){ 	
+	    if(cookiearray[i].indexOf(cookiename)!=-1){
+	        var nameVal = cookiearray[i].split("=");
+	        nameVal = nameVal[1].trim();
+	        return unescape(nameVal);
+	    }else{
+	    	var cookie = null;
+	    }
+	}
+	
+	return cookie;
+}
+
+//최근 본 상품 쿠키 split
+function bookCookieInfo(cValue) {		
+		var cookie = cValue;
+		
+		if(cookie!=null){
+			cookie = cookie.split("/");
+	 		var ck = new Array();
+	 		
+	 		for(i=0;i<cookie.length;i++){
+	 			ck[i] = JSON.parse(cookie[i]);
+	 		} 		
+	 		return ck;
+		}else{
+			return null;
+		}
 }
 
 //한글만 입력하도록
