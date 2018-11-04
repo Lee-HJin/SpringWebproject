@@ -5,7 +5,7 @@
 	//카운트 증가
 	function cntUp(isbn) {
 		
-		var ordCnt = parseInt($("#cntVal_"+isbn).val(),10);
+		var ordCnt = parseInt($("#cntVal_"+isbn).val());
 		if(isNaN(ordCnt)) {
 			ordCnt = 1;
 		}else {
@@ -22,7 +22,7 @@
 	//카운트 감소
 	function cntDown(isbn) {
 		
-		var ordCnt = parseInt($("#cntVal_"+isbn).val(),10);
+		var ordCnt = parseInt($("#cntVal_"+isbn).val());
 		if(isNaN(ordCnt)) {
 			ordCnt = 1;
 		}else {
@@ -50,5 +50,5 @@
 		if(isNaN(ordCnt)) {
 			ordCnt = 1;
 		}
-		goBuyOpt(isbn, ordCnt, 0);
+		goBuyOpt(isbn, ordCnt);
 	}
