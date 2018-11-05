@@ -331,6 +331,10 @@ select * from (select rownum rnum,a.*, bookTitle,authorName,publisher,publishDat
 booksections where a.isbn=booksections.isbn) <![CDATA[where rnum>=#{start} and rnum<=#{end}]]>
 </select>
 
+<!-- 책 1권 정보 -->
+<select id="readBook" parameterType="java.lang.String" resultType="com.spring.webproject.dto.MyReviewDTO">
+select bookImage, isbn, bookTitle, authorName, publisher, publishDate from booksections where isbn=#{isbn}
+</select>
 
 
 

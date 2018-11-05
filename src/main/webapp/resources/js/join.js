@@ -292,28 +292,35 @@ function login() {
 	}
 	
 	//최근 본 상품 쿠키 챙기기
-	var ck = bookCookieInfo(getBookCookie('book'));
+	var ck = bookCookieInfo(getBookCookie('rcbook'));
 	
 	//isbn만 array에 옮겨 담음
 	var cookieArray = new Array();
-	for(var i=0;i<ck.length;i++){
-		cookieArray.push(ck[i].isbn);
-	}
-
-	$.ajax ({
-		url:"recentCookie.action",
-		data:{cookieArray:cookieArray},
-		type:"POST",
-		success:function(){
-			f.action = "login_ok.action";
-			f.submit();
-		},
-		error:function(e){
-			alert(e.responseText);
+	
+	if(ck!=null){
+		
+		for(var i=0;i<ck.length;i++){
+			cookieArray.push(ck[i].isbn);
 		}
 		
-	});
-	
+		$.ajax ({
+			url:"recentCookie.action",
+			data:{cookieArray:cookieArray},
+			type:"POST",
+			success:function(){
+				f.action = "login_ok.action";
+				f.submit();
+			},
+			error:function(e){
+				alert(e.responseText);
+			}
+			
+		});
+	}
+	else{
+		f.action = "login_ok.action";
+		f.submit();
+	}
 }
 
 //최근 본 상품 쿠키 가져오기
