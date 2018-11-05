@@ -1074,7 +1074,7 @@ function deleteReview(reviewId){
 //간단평 삭제하기
 function deleteSentence(reviewId){
 	
-	if(confirm("리뷰를 삭제하시겠습니까?") == true){
+	if(confirm("간단평을 삭제하시겠습니까?") == true){
 		$.ajax ({
 			url:"deleteSentence.action",
 			data:'reviewId='+reviewId,
@@ -1113,8 +1113,17 @@ function updateReview(){
 	
 }
 
-
-
-
-
+//한줄평 등록하기
+function createSentence(){
+	
+	var f = document.sentenceCreateForm;
+	
+	if(!f.contents.value.trim()){
+		alert("간단평 내용을 입력해주세요.")
+		return;
+	}
+	
+	f.action = "sentenceCreate_ok.action";
+	f.submit();
+}
 

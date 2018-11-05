@@ -463,6 +463,14 @@ public class MyShoppingDAO {
 		sessionTemplate.update("myShopping.reviewUpdate",map);
 		
 	}
+	
+	public MyReviewDTO readBook(String isbn) {
+		
+		MyReviewDTO dto = sessionTemplate.selectOne("myShopping.readBook",isbn);
+		
+		return dto;
+		
+	}
 
 
 
