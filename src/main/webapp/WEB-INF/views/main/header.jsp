@@ -56,7 +56,7 @@
 			$('html, body').animate({scrollTop:0}, 350);
 		});
 		
-		var sck = cookieInfo(getCookie('book'));
+		var sck = cookieInfo(getCookie('rcbook'));
 		var sData = document.getElementById("side_today_view");
 		var sNoData = document.getElementById("side_today_nodata");
 		

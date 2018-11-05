@@ -215,6 +215,76 @@ i {
 	};
 </script>
 
+<!-- cookie test -->
+<script type="text/javascript">
+	
+	$(function() {
+		
+		var cookieValue = JSON.stringify({"isbn":"${isbn}","bookImage":"${book_image}",
+			"bookTitle":"${dto.bookTitle}","authorName":"${dto2.authorname}"});
+		
+		if(document.cookie.indexOf('rcbook')==-1){
+			setCookie('rcbook',cookieValue,1);
+		}else if(document.cookie.indexOf('rcbook')!=-1){
+			addCookie(cookieValue);
+		}
+	});
+	
+	//쿠키 생성
+	function setCookie(cName, cValue, cDay){
+		var expire = new Date();
+	    expire.setDate(expire.getDate() + cDay);
+	    cookies = cName + '=' + escape(cValue) + '; path=/ ';
+	    if(typeof cDay != 'undefined') cookies += ';expires=' + expire.toGMTString() + ';';
+	    document.cookie = cookies;
+	}
+	
+	//기존 쿠키에 추가
+	function addCookie(cValue){
+		var items = getCookie('rcbook');
+		var maxItemNum = 10;
+		
+		if(items){
+			var itemArray=items.split('/');
+			
+			if(itemArray.indexOf(cValue)!=-1){//중복시 기존 제거 후 맨앞으로 가져옴
+				var idx = itemArray.findIndex(function(item) {
+					return item === cValue;
+				});		
+				itemArray.splice(idx,1);
+		
+				itemArray.unshift(cValue);
+				if(itemArray.length>maxItemNum){
+					itemArray.length=10;}	
+				items = itemArray.join('/');
+				setCookie('rcbook',items,1);
+				
+			}else{
+				itemArray.unshift(cValue);
+				if(itemArray.length>maxItemNum){
+					itemArray.length=10;}	
+				items = itemArray.join('/');
+				setCookie('rcbook',items,1);
+			}
+		}
+	}
+			
+	function getCookie(cookiename){
+		var cookiestring  = document.cookie;
+		var cookiearray = cookiestring.split(';');
+		for(var i =0 ; i < cookiearray.length ; ++i){ 
+		    if(cookiearray[i].indexOf(cookiename)!=-1){ 
+		        var ck = [];
+		        var nameVal = cookiearray[i].split( "=" );
+	            var value = nameVal[1].trim();
+		        ck+= value;
+		    }
+		} 
+		return unescape(ck);
+	}
+
+</script>
+
 
 </head>
 

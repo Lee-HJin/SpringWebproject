@@ -37,7 +37,7 @@
 		var data = document.getElementById("data");
 		var noData = document.getElementById("no_data");
 		
-		var ck = cookieInfo(getCookie('book'));
+		var ck = cookieInfo(getCookie('rcbook'));
 		todayView(ck); 
  
    		if($('.swiper-slide-active #isbn').val()!=null){
