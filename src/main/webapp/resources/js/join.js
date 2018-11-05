@@ -292,7 +292,7 @@ function login() {
 	}
 	
 	//최근 본 상품 쿠키 챙기기
-	var ck = bookCookieInfo(getBookCookie('book'));
+	var ck = bookCookieInfo(getBookCookie('rcbook'));
 	
 	//isbn만 array에 옮겨 담음
 	var cookieArray = new Array();

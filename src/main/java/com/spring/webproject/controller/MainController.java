@@ -150,7 +150,7 @@ public class MainController {
 		
 		req.setAttribute("dto", dto);
 		req.setAttribute("lst", lst);
-		return "main/storeInfo";
+		return "company/storeInfo";
 	}
 	
 	@RequestMapping(value="/store.action",method= {RequestMethod.GET,RequestMethod.POST})
@@ -162,13 +162,34 @@ public class MainController {
 			warehouseId = "0";
 		
 		req.setAttribute("warehouseId", warehouseId);
-		return "main/store";
+		return "company/store";
 	}
 	
 	@RequestMapping(value="/company.action",method= {RequestMethod.GET,RequestMethod.POST})
 	public String company(HttpServletRequest req) {
 		
-		return "main/company";
+		return "company/company";
 	}
+	
 		
+	@RequestMapping(value="/bi.action",method= {RequestMethod.GET,RequestMethod.POST})
+	public String bi(HttpServletRequest req) {
+		
+		return "company/bi";
+	}
+	
+	
+	@RequestMapping(value="/history.action",method= {RequestMethod.GET,RequestMethod.POST})
+	public String history(HttpServletRequest req) {
+		
+		return "company/history";
+	}
+	
+	
+	
+	
+	
+	
+	
+	
 }
