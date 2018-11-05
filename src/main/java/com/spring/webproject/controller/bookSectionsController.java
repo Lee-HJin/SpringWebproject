@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.spring.webproject.dao.BookSectionsDAO;
+import com.spring.webproject.dao.LoginDAO;
 import com.spring.webproject.dto.BookSectionsDTO;
 import com.spring.webproject.util.MyUtil;
 
@@ -21,6 +22,10 @@ public class bookSectionsController {
 	@Autowired
 	@Qualifier("bookSectionsDAO")
 	BookSectionsDAO raDao;
+	
+	@Autowired
+	@Qualifier("loginDAO")
+	LoginDAO leeDao; /* UserDTO*/
 	
 	@Autowired
 	MyUtil raMyUtil;
@@ -437,7 +442,7 @@ public class bookSectionsController {
 	
 	@RequestMapping(value="shopCartList.action", method= {RequestMethod.GET, RequestMethod.POST})
 	public String shopCartList(HttpServletRequest request, HttpServletResponse response) throws Exception {
-		
+
 		return "shopAndOrder/shopCartList";
 	}
 	

@@ -13,7 +13,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=Edge">
 
 
-<link rel="stylesheet" href="/webproject/resources/css/main.css" type="text/css">
+<!-- <link rel="stylesheet" href="/webproject/resources/css/main.css" type="text/css"> -->
 <link rel="stylesheet" href="/webproject/resources/common/css/bnlBSList2.css" type="text/css">
 <link rel="shortcut icon" href="http://image.bandinlunis.com/favicon.ico" type="image/x-icon">
 <title>2조 반디앤루니스</title>
@@ -102,19 +102,6 @@
 		}
 	}
 	
-	// 정렬
-	function changeSort(index) {
-	
-		var sort = document.getElementsByName("sorts");
-		
-		sort[0].selectedIndex = index;
-		sort[1].selectedIndex = index;
-		
-		document.bestForm.page.value = "1";
-		
-		goSearch();
-	}
-
 	function goTopHistory(recommendYear, recommendMonth, recommendWeek, rank) {
 		
 		frmObj = document.bestForm;
@@ -204,6 +191,7 @@ function goSearch(sort) {
 </head>
 
 <body>
+<jsp:include page="../common/header.jsp" flush="false"/>
 
 <div id="wrap">
 	
@@ -438,7 +426,8 @@ function goSearch(sort) {
 		</div>
 	</div>
 	<!-- //body -->
-	
+
 </div>
+<jsp:include page="../common/footer.jsp" flush="false" />
 </body>
 </html>
