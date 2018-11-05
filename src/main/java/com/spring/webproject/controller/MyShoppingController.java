@@ -2,7 +2,6 @@ package com.spring.webproject.controller;
 
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 
@@ -1050,7 +1049,7 @@ public class MyShoppingController {
 		hMap.put("end", end);
 		hMap.put("userId", userId);
 
-		List<MainDTO> lists = dao.readyReviewList(hMap);
+		List<MyReviewDTO> lists = dao.readyReviewList(hMap);
 
 		request.setAttribute("lists", lists);
 
@@ -1130,24 +1129,42 @@ public class MyShoppingController {
 	//간단평 작성하기 페이지 출력
 	@RequestMapping(value = "myShopping/createSentence.action", method = RequestMethod.GET)
 	public String createSentence(HttpServletRequest request) {
-		
+
 		String isbn = request.getParameter("isbn");
-		
+
 		MyReviewDTO dto = dao.readBook(isbn);
-		
+
 		request.setAttribute("dto", dto);
 
 		return "myShopping/mySentenceCreate";
-		
+
 	}
-	
+
 	//간단평 등록하기
 	@RequestMapping(value = "myShopping/sentenceCreate_ok.action", method = RequestMethod.POST)
 	public String sentenceCreate_ok(HttpServletRequest request) {
-		
-		//
-		
-		
+
+		UserDTO dto = (UserDTO) request.getSession().getAttribute("userInfo");
+		String userId = dto.getUserId();	
+		String isbn = request.getParameter("isbn");
+		String sentence = request.getParameter("sentence");
+
+		//리뷰 아이디 가져오기
+		int reviewId = dao.getReviewId();
+
+		Map<String, Object> map = new HashMap<String, Object>();
+		map.put("userId", userId);
+		map.put("isbn", isbn);
+		map.put("sentence", sentence);
+		map.put("reviewId", reviewId);
+
+		//DB에 간단평 입력
+		dao.createSentence(map);
+
+		request.setAttribute("alertMsg", "간단평 등록이 완료되었습니다.");
+		request.setAttribute("nextUrl", "/myShopping/mySentenceList.action");
+		return "common/alert";
+
 	}
 
 	//간단평 삭제하기
@@ -1161,6 +1178,34 @@ public class MyShoppingController {
 		return "redirect:/myShopping/mySentenceList.action";
 
 	}
+
+	//간단평 수정하기 페이지 
+	@RequestMapping(value = "myShopping/updateSentence.action", method = RequestMethod.GET)
+	public String updateSentence(HttpServletRequest request) {
+
+		int reviewId = Integer.parseInt(request.getParameter("reviewId"));
+
+		MyReviewDTO dto = dao.getReviewArticle(reviewId);
+
+		request.setAttribute("dto", dto);
+
+		return "myShopping/mySentenceUpdate";
+
+	}
+
+	//간단평 수정하기 진행
+	@RequestMapping(value = "myShopping/updateSentence_ok.action", method = RequestMethod.POST)
+	public String updateSentence_ok(HttpServletRequest request) {
+
+		int reviewId = Integer.parseInt(request.getParameter("reviewId"));
+		String sentence = request.getParameter("sentence");
+		
+		dao.updateSentence(reviewId, sentence);
+
+		return "redirect:/myShopping/mySentenceList.action";
+
+	}
+
 
 	//1:1상담내역 페이지
 	@RequestMapping(value = "myShopping/myCounselHistory.action", method = RequestMethod.GET)

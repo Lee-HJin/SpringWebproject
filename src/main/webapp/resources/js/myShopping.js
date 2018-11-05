@@ -1118,12 +1118,33 @@ function createSentence(){
 	
 	var f = document.sentenceCreateForm;
 	
-	if(!f.contents.value.trim()){
+	if(!f.sentence.value.trim()){
 		alert("간단평 내용을 입력해주세요.")
 		return;
 	}
 	
 	f.action = "sentenceCreate_ok.action";
 	f.submit();
+}
+
+//한줄평 수정하기
+function updateSentence(reviewId){
+	
+	var f = document.sentenceUpdateForm;
+	
+	if(!f.sentence.value.trim()){
+		alert("간단평 내용을 입력해주세요")
+		return;
+	}
+	else{
+		if(confirm("간단평을 수정하시겠습니까?") == true){
+			f.action = "updateSentence_ok.action?reviewId=" + reviewId;
+			f.submit();
+		}
+		else{
+			return;
+		}
+	}
+
 }
 

@@ -210,10 +210,10 @@ select nvl(count(*),0) from (select a.isbn, booktitle from (select distinct isbn
 </select>
 
 <!-- 리뷰를 기다리는 책 리스트 -->
-<select id="readyReviewList" parameterType="map" resultType="com.spring.webproject.dto.MainDTO">
-select * from (select  rownum rnum, c.*, bookimage from (select a.isbn, booktitle from (select distinct isbn from (select orderid from orderlist where userid=#{userId} order by orderid desc) orderlist, orderbooks where orderlist.orderid=orderbooks.orderid) a inner join books on a.isbn=books.isbn
- minus select b.isbn, booktitle from (select isbn from review where userid=#{userId} and reviewtitle is not null) b inner join books on b.isbn=books.isbn) c, 
- (select * from bookimage where bookimage like '%cover%') d where c.isbn=d.isbn) <![CDATA[where rnum>=#{start} and rnum<=#{end}]]>
+<select id="readyReviewList" parameterType="map" resultType="com.spring.webproject.dto.MyReviewDTO">
+select * from (select rownum rnum, c.*, booktitle, bookimage from (select a.isbn, b.reviewid,b.reviewtitle,b.sentence from (select distinct isbn from(select * from orderbooks) a inner join (select orderid from orderlist where userid=#{userId} order by orderid desc)b on a.orderid=b.orderid
+minus select isbn from (select isbn, nvl(count(isbn),0) reviewcount from review where userid=#{userId} group by isbn) where reviewcount=2) a left join (select * from review where userid=#{userId}) b on a.isbn=b.isbn) c left join
+(select books.isbn,booktitle,bookimage from books left join (select isbn, bookimage from bookimage where bookimage like '%cover%') bookimage on books.isbn=bookimage.isbn) d on c.isbn=d.isbn) <![CDATA[where rnum>=#{start} and rnum<=#{end}]]>
 </select>
 
 <!-- 최근 본 상품 리스트  -->
@@ -239,10 +239,10 @@ select * from (select rownum rnum,a.*, bookTitle,authorName,publisher,publishDat
 booksections where a.isbn=booksections.isbn) <![CDATA[where rnum>=#{start} and rnum<=#{end}]]>
 </select>
 
-<!-- 하나의 리뷰 가져오기 -->
+<!-- 하나의 리뷰&간단평 가져오기 -->
 <select id="getReviewArticle" parameterType="int" resultType="com.spring.webproject.dto.MyReviewDTO">
-select a.*, bookTitle,authorName,publisher,publishDate,bookImage from (select a.isbn,a.reviewId,reviewTitle,created,contents,hitCount, thumbup from 
-(select isbn,reviewId,userId,reviewTitle,created,contents,hitCount from review where reviewId=#{reviewId} and sentence is null order by created desc) a left join (select reviewid, nvl(count(thumbup),0) as thumbup  from thumbup group by reviewId)b on a.reviewId=b.reviewId) a,booksections where a.isbn=booksections.isbn
+select a.*, bookTitle,authorName,publisher,publishDate,bookImage from (select a.isbn,a.reviewId,reviewTitle,created,contents,hitCount, thumbup,sentence from 
+(select isbn,reviewId,userId,reviewTitle,created,contents,hitCount,sentence from review where reviewId=#{reviewId} order by created desc) a left join (select reviewid, nvl(count(thumbup),0) as thumbup  from thumbup group by reviewId)b on a.reviewId=b.reviewId) a,booksections where a.isbn=booksections.isbn
 </select>
 
 <!-- 리뷰 수정하기 -->
@@ -278,7 +278,7 @@ select * from (select rownum rnum, a.isbn,booktitle, authorName, publisher, book
 <!-- 위시리스트 가져오기(Buy : 구매한 상품만) count -->
 <select id="getWishBuyCount" parameterType="java.lang.String" resultType="int">
 select nvl(count(*),0) from(select rownum rnum,c.isbn,authorname,booktitle,publisher,publishDate,bookimage,discountedPrice,discountRate from(
-select a.isbn from (select isbn from wishlist where userid=#{userId})a inner join (select distinct isbn from orderbooks inner join orders on orderbooks.orderid=orders.orderid where userid='4')b on a.isbn=b.isbn) c inner join booksections on c.isbn=booksections.isbn)
+select a.isbn from (select isbn from wishlist where userid=#{userId})a inner join (select distinct isbn from orderbooks inner join orders on orderbooks.orderid=orders.orderid where userid=#{userId})b on a.isbn=b.isbn) c inner join booksections on c.isbn=booksections.isbn)
 </select>
 
 <!-- 위시리스트 가져오기(NoBuy : 구매하지 않은 상품만) count -->
@@ -290,7 +290,7 @@ select isbn from wishlist where userid=#{userId} minus select distinct isbn from
 <!-- 위시리스트 가져오기(Buy : 구매한 상품만) -->
 <select id="getWishListBuy" parameterType="map" resultType="com.spring.webproject.dto.MainDTO">
 select * from(select rownum rnum,c.isbn,authorname,booktitle,publisher,publishDate,bookimage,discountedPrice,discountRate from(
-select a.isbn from (select isbn from wishlist where userid='4')a inner join (select distinct isbn from orderbooks inner join orders on orderbooks.orderid=orders.orderid where userid='4')b on a.isbn=b.isbn) c inner join booksections on c.isbn=booksections.isbn) <![CDATA[where rnum>=#{start} and rnum<=#{end}]]>
+select a.isbn from (select isbn from wishlist where userid=#{userId})a inner join (select distinct isbn from orderbooks inner join orders on orderbooks.orderid=orders.orderid where userid=#{userId})b on a.isbn=b.isbn) c inner join booksections on c.isbn=booksections.isbn) <![CDATA[where rnum>=#{start} and rnum<=#{end}]]>
 </select>
 
 <!-- 위시리스트 가져오기(NoBuy : 구매하지 않은 상품만) -->
@@ -324,7 +324,7 @@ delete review where reviewId=#{reviewId}
 select nvl(count(*),0) from review where userId=#{userId} and reviewTitle is null
 </select>
 
-<!-- 간단평 가져오기 -->
+<!-- 간단평 리스트 가져오기 -->
 <select id="getSentenceList" parameterType="map" resultType="com.spring.webproject.dto.MyReviewDTO">
 select * from (select rownum rnum,a.*, bookTitle,authorName,publisher,publishDate,bookImage from (select a.isbn,a.reviewId,created,sentence, thumbup from 
 (select isbn,reviewId,userId,created,sentence from review where userId=#{userId} and reviewTitle is null order by created desc) a left join (select reviewid, nvl(count(thumbup),0) as thumbup  from thumbup group by reviewId)b on a.reviewId=b.reviewId) a,
@@ -336,7 +336,19 @@ booksections where a.isbn=booksections.isbn) <![CDATA[where rnum>=#{start} and r
 select bookImage, isbn, bookTitle, authorName, publisher, publishDate from booksections where isbn=#{isbn}
 </select>
 
+<!-- reviewId 가져오기 -->
+<select id="getReviewId" resultType="int">
+select nvl(max(reviewId),0)+1 from review
+</select>
 
+<!-- 간단평 등록하기 -->
+<insert id="createSentence" parameterType="map">
+insert into review(isbn,reviewId,userId,created,sentence,hitcount) values(#{isbn},#{reviewId},#{userId},sysdate,#{sentence},0)
+</insert>
 
+<!-- 간단평 수정하기 -->
+<update id="updateSentence" parameterType="map">
+update review set sentence=#{sentence} where reviewId=#{reviewId}
+</update>
 
 </mapper>

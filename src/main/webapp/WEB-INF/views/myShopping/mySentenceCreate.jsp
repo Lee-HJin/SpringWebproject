@@ -18,10 +18,10 @@
 	<script type="text/javascript">
 	$(document).ready(function(){
 		
-		var text = $('#contents').val();
+		var text = $('#sentence').val();
 		$('#checkLength').text(text.length);
 		
-		$('#contents').on('keyup',function(){
+		$('#sentence').on('keyup',function(){
 			
 			var text = $(this).val();	
 			$('#checkLength').text(text.length);
@@ -30,9 +30,9 @@
 				if(event.keyCode !='8'){	//백스페이스 제외
 					alert("한줄평은 200자까지 입력할 수 있습니다.");
 				}
-				$('#contents').val(text.substring(0,200));
+				$('#sentence').val(text.substring(0,200));
 				
-				text = $('#contents').val();	
+				text = $('#sentence').val();	
 				$('#checkLength').text(text.length);
 			}
 			
@@ -80,7 +80,7 @@
 			<tr>
 				<th>간단평<br/>내용</th>
 				<td height="135px;" style="padding-left: 20px;">
-					<textarea rows="5" cols="100" name="contents" id="contents" ></textarea>
+					<textarea rows="5" cols="100" name="sentence" id="sentence" ></textarea>
 					<br/>
 					<div style="float: right; padding-right: 32px;"><span id="checkLength"></span>/200</div>
 				</td>
@@ -88,6 +88,7 @@
 		</table>
 		
 		<div style="text-align: center; margin-top: 10px;">
+			<input type="hidden" name="isbn" value="${dto.isbn}">
 			<input type="button" class="review_article_btn" value="등록하기" onclick="createSentence()">
 			<input type="button" class="review_article_btn" value="취소" onclick="javascript:location.href='<%=cp%>/myShopping/readyReviewList.action';">
 		</div>	
