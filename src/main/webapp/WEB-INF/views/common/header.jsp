@@ -5,15 +5,6 @@
 <%
 	request.setCharacterEncoding("UTF-8");
 	String cp = request.getContextPath();
-
-	CookieUtil cookieUtil = new CookieUtil();
-
-	if (cookieUtil.isExist("bookCookie", request)) {
-		List<String> list2 = cookieUtil.getValueList("bookCookie", request); // 쿠키 가져와서 리스트로 반환			
-		request.setAttribute("list2", list2);
-	}
-
-	List<String> cList = cookieUtil.getValueList("bookCookie", request);
 	
 %>
 
@@ -64,7 +55,7 @@
 			}, 350);
 		});
 		
-		var sck = cookieInfo(getCookie('book'));
+		var sck = cookieInfo(getCookie('rcbook'));
 		var sData = document.getElementById("side_today_view");
 		var sNoData = document.getElementById("side_today_nodata");
 		
@@ -189,42 +180,15 @@
 		</div>
 	</div>
 	<div id="side_service" style="top: 554px;">
-		<div class="today_view">
-			<h4>최근 본 상품</h4>
-			<div class="swiper-container side_swiper">
-				<div class="swiper-wrapper">
-					<c:set var="i" value="0" />
-					<c:forEach var="cImg" items="<%=cList%>">
-						<c:choose>
-							<c:when test="${empty cImg }">
-								최근본 상품이 없습니다.
-							</c:when>
-							<c:otherwise>
-								<c:if test="${i%2 == 0 }">
-									<ul class="swiper-slide">
-								</c:if>
-
-								<li class="tv_item"><img
-									style="height: 102px; width: 92px;"
-									src="/webproject/resources/image/book/${cImg }"></li>
-
-								<c:if test="${i%2 == 1 }">
-									</ul>
-								</c:if>
-								<c:set var="i" value="${i+1 }" />
-							</c:otherwise>
-						</c:choose>
-
-					</c:forEach>
-
-				</div>
-			</div>
-			<div class="aw_box_tv">
-				<button class="tv_aw left" id="tv_awl"></button>
-				<span class="tv_aw_count"></span>
-				<button class="tv_aw right" id="tv_awr"></button>
+		<div class="today_view" id="side_today_nodata" style="display: none;">
+		<h4>최근 본 상품</h4>
+		<div style="width: 92px;margin: 0 auto;overflow: hidden;">
+			<div class="nodata">
+				최근 본 상품이<br>없습니다.
 			</div>
 		</div>
+	</div>
+	<div class="today_view" id="side_today_view" style="display: block;"></div>
 		<div class="ss_myshop">
 			<a href="javascript://"> 나의 쇼핑 </a>
 		</div>
