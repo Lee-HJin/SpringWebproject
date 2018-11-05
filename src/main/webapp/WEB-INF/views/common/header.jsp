@@ -85,7 +85,7 @@
 					shtml+= '<li class="swiper-slide">';
 				}
 				shtml+= '	<div class="tv_item">';
-				shtml+= '		<a href="<%=cp%>/tempbook.action?isbn='+ ck[i].isbn +'">';
+				shtml+= '		<a href="<%=cp%>/book_info.action?isbn='+ ck[i].isbn +'">';
 				shtml+= '			<img src="<%=cp%>/resources/image/book/'+ck[i].bookImage+'">';
 				shtml+= '		</a>';
 				shtml+= '	</div>';

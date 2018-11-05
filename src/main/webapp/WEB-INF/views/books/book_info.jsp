@@ -215,7 +215,7 @@ i {
 	};
 </script>
 
-<!-- cookie test -->
+<!-- 쿠키 생성 -->
 <script type="text/javascript">
 	
 	$(function() {
