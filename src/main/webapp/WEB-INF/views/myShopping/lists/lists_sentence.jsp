@@ -16,7 +16,7 @@
 				<div class="sentence_body">
 					<b><a href="<%=cp%>/book_info.action?isbn=${dto.isbn}">${dto.bookTitle }</a></b><span>(${dto.created})</span>
 					<br/>
-					${dto.authorName } | ${dto.publisher } | ${dto.publishDate }<span><a href="">수정</a> | <a href="javascript:deleteSentence('${dto.reviewId }');">삭제</a></span>
+					${dto.authorName } | ${dto.publisher } | ${dto.publishDate }<span><a href="<%=cp%>/myShopping/updateSentence.action?reviewId=${dto.reviewId}">수정</a> | <a href="javascript:deleteSentence('${dto.reviewId }');">삭제</a></span>
 					<br/><br/>
 					${dto.sentence }
 				</div>

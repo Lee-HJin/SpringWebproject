@@ -15,6 +15,32 @@
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 	<script src="<%=cp%>/resources/js/myShopping.js"></script>
 	
+	<script type="text/javascript">
+	$(document).ready(function(){
+		
+		var text = $('#sentence').val();
+		$('#checkLength').text(text.length);
+		
+		$('#sentence').on('keyup',function(){
+			
+			var text = $(this).val();	
+			$('#checkLength').text(text.length);
+			
+			if(text.length>200){
+				if(event.keyCode !='8'){	//백스페이스 제외
+					alert("한줄평은 200자까지 입력할 수 있습니다.");
+				}
+				$('#sentence').val(text.substring(0,200));
+				
+				text = $('#sentence').val();	
+				$('#checkLength').text(text.length);
+			}
+			
+		});
+		
+	});
+	
+	</script>
 </head>
 <body style="padding: 0; margin: 0;">
 
@@ -25,7 +51,7 @@
 <div style="margin: 0 auto; width: 960px;">
 
 <div style="margin-top: 12px;">
-	<a href="<%=cp %>/main.action">홈</a> > <a href="<%=cp %>/myShoppingMain.action">나의쇼핑</a> > 나의 리뷰 > <b>리뷰가 있는 책</b>
+	<a href="<%=cp %>/main.action">홈</a> > <a href="<%=cp %>/myShoppingMain.action">나의쇼핑</a> > 나의 리뷰 > <b>간단평</b>
 </div>
 <!-- navigation -->
 <jsp:include page="./topNavi.jsp" flush="false"/>
@@ -33,7 +59,7 @@
 
 <!-- 본문 -->
 <div class="contents">
-	<div style="font-size: 13pt; font-weight: bold; padding-bottom: 10px; border-bottom: 2px solid #e1e1e1;">리뷰가 있는 책</div>
+	<div style="font-size: 13pt; font-weight: bold; padding-bottom: 10px; border-bottom: 2px solid #e1e1e1;">간단평</div>
 	<div class="review_article_box">
 		<ul>
 			<li style="padding: 0;">
@@ -48,38 +74,26 @@
 			</li>
 		</ul>
 	</div>
-	<div class="review_article_contents" style="border: none;">
-		<form action="" name="reviewUpdateForm" method="post">
+	<div class="sentence_contents" style="border: none;">
+		<form action="" name="sentenceUpdateForm" method="post">
 		<table>
 			<tr>
-				<th>리뷰 제목</th>
-				<td><input type="text" name="reviewTitle" value="${dto.reviewTitle }" style="height: 20px; width: 300px;"></td>
-			</tr>
-			<tr>
-				<th>내용</th>
-				<td height="240px;"><textarea rows="12" cols="100" name="contents">${dto.contents }</textarea></td>
+				<th>간단평<br/>내용</th>
+				<td height="135px;" style="padding-left: 20px;">
+					<textarea rows="5" cols="100" name="sentence" id="sentence" >${dto.sentence }</textarea>
+					<br/>
+					<div style="float: right; padding-right: 32px;"><span id="checkLength"></span>/200</div>
+				</td>
 			</tr>
 		</table>
 		
 		<div style="text-align: center; margin-top: 10px;">
-			<input type="hidden" name="reviewId" value="${dto.reviewId }">
-			<input type="button" class="review_article_btn" value="수정하기" onclick="updateReview()">
-			<c:if test="${back == 'list'}">
-				<input type="button" class="review_article_btn" value="취소" onclick="javascript:location.href='<%=cp%>/myShopping/myReviewList.action';">
-			</c:if>
-			<c:if test="${back == 'article'}">
-				<input type="button" class="review_article_btn" value="취소" onclick="javascript:location.href='<%=cp%>/myShopping/reviewArticle.action?reviewId=${dto.reviewId}';">
-			</c:if>
+			<input type="button" class="review_article_btn" value="수정하기" onclick="updateSentence('${dto.reviewId}')">
+			<input type="button" class="review_article_btn" value="취소" onclick="javascript:location.href='<%=cp%>/myShopping/mySentenceList.action';">
 		</div>	
 		</form>
 	</div>
-
-
-
 </div>
-
-
-
 
 </div>
 

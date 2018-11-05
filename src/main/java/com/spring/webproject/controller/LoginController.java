@@ -44,13 +44,6 @@ public class LoginController {
 			bookCookie.add(recentCookie.get(i));
 		}
 		
-		///////////////////////////////
-		Iterator<String> it = bookCookie.iterator();
-		while(it.hasNext()) {
-			System.out.println(it.next()+"쿠키 냠냠");
-		}
-		///////////////////////////////
-		
 		return "login_ok.action";
 	}
 	
