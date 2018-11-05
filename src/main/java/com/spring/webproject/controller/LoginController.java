@@ -4,6 +4,7 @@ import java.io.UnsupportedEncodingException;
 import java.net.URLDecoder;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.xml.ws.Response;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -47,10 +48,12 @@ public class LoginController {
 			//최근 본 상품 불러오기
 
 			//세션 - dto, pointValue 올리기
+			request.getSession().setAttribute("userId", userId);
 			request.getSession().setAttribute("userInfo", dto);
 			request.getSession().setAttribute("pointValue", pointValue);
 			request.getSession().removeAttribute("message");
 			returnUrl = "redirect:/main.action";
+			
 
 		}
 		else {	//로그인 실패

@@ -8695,10 +8695,10 @@ jutil.bandi.dynamicRoll = function(action, objName, dispCnt) {
 
 
 //var siteUrl	= SiteConf["url"]["site"] + "/";
-siteUrl			= "localhost:8080/webproject/";
-blogUrl			= "localhost:8080/webproject/";			// 블로그 서비스 경로
-bandiUrl		= "localhost:8080/webproject/";
-bandiSslUrl		= "localhost:8080/webproject/";
+siteUrl			= "127.0.0.1:8080/webproject/";
+blogUrl			= "127.0.0.1:8080/webproject/";			// 블로그 서비스 경로
+bandiUrl		= "127.0.0.1:8080/webproject/";
+bandiSslUrl		= "127.0.0.1:8080/webproject/";
 
 // 클라이언트측에서 직접 사용하는 XML 파일들을 모아 놓은 정보 => jutil.xml.getXmlInfoBase 에서 사용하는 기본 경로값
 jutil.xml.getXmlInfoBasePath	= siteUrl + "manager/info/";
