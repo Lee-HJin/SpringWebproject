@@ -22,6 +22,21 @@
 	from users where userId=#{userId} and userPwd=#{userPwd}
 </select>
 
+<!-- 최근 본 상품 중복 검색 -->
+<select id="checkRecentBook" parameterType="map" resultType="int">
+	select nvl(count(*),0) from recentlist where userId=#{userId} and isbn=#{isbn}
+</select>
+
+<!-- 로그인 시 최근 본 상품 쿠키+DB -->
+<insert id="recentBookAdd" parameterType="map">
+	insert into recentlist values(#{userId},#{isbn},sysdate)
+</insert>
+
+<!-- 최근 본 상품 본 시간 update -->
+<update id="updateRecentBookTime" parameterType="map">
+	update recentlist set viewDate=sysdate where userId=#{userId} and isbn=#{isbn}
+</update>
+
 <!-- 적립금 pointId 찾기 -->
 <select id="getPointId" resultType="int">
 	select nvl(max(pointId),0) from point

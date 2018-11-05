@@ -952,56 +952,56 @@ public class MyShoppingController {
 
 		return "redirect:/myShopping/myReviewList.action";
 	}
-	
+
 	//리뷰 내용 보기
 	@RequestMapping(value = "myShopping/reviewArticle.action", method = RequestMethod.GET)
 	public String reviewArticle(HttpServletRequest request) {
-		
+
 		int reviewId = Integer.parseInt(request.getParameter("reviewId"));
-		
+
 		MyReviewDTO dto = dao.getReviewArticle(reviewId);
-		
+
 		dto.setContents(dto.getContents().replaceAll("\n", "<br/>"));
-		
+
 		request.setAttribute("dto", dto);
-		
+
 		return "myShopping/myReviewArticle";
 	}
-	
+
 	//리뷰 수정하기 페이지
 	@RequestMapping(value = "myShopping/reviewUpdate.action", method = RequestMethod.GET)
 	public String reviewUpdate(HttpServletRequest request) {
-		
+
 		int reviewId = Integer.parseInt(request.getParameter("reviewId"));
 		String back = request.getParameter("back");
-		
+
 		MyReviewDTO dto = dao.getReviewArticle(reviewId);
-		
+
 		request.setAttribute("dto", dto);
 		request.setAttribute("back", back);
-		
+
 		return "myShopping/myReviewUpdate";
 	}
-	
+
 	//리뷰 수정 진행
 	@RequestMapping(value = "myShopping/reviewUpdate_ok.action", method = RequestMethod.POST)
 	public String reviewUpdate_ok(HttpServletRequest request) {
-		
+
 		int reviewId = Integer.parseInt(request.getParameter("reviewId"));
 		String reviewTitle = request.getParameter("reviewTitle");
 		String contents = request.getParameter("contents");
-		
+
 		Map<String, Object> hMap = new HashMap<String, Object>();
 		hMap.put("reviewId", reviewId);
 		hMap.put("reviewTitle", reviewTitle);
 		hMap.put("contents", contents);
-		
+
 		dao.reviewUpdate(hMap);
-		
+
 		return "redirect:/myShopping/myReviewList.action";
 
 	}
-	
+
 
 	//리뷰를 기다리는 책 페이지
 	@RequestMapping(value = "myShopping/readyReviewList.action", method = RequestMethod.GET)
@@ -1126,17 +1126,40 @@ public class MyShoppingController {
 
 		return "myShopping/lists/lists_sentence";
 	}
+
+	//간단평 작성하기 페이지 출력
+	@RequestMapping(value = "myShopping/createSentence.action", method = RequestMethod.GET)
+	public String createSentence(HttpServletRequest request) {
+		
+		String isbn = request.getParameter("isbn");
+		
+		MyReviewDTO dto = dao.readBook(isbn);
+		
+		request.setAttribute("dto", dto);
+
+		return "myShopping/mySentenceCreate";
+		
+	}
 	
+	//간단평 등록하기
+	@RequestMapping(value = "myShopping/sentenceCreate_ok.action", method = RequestMethod.POST)
+	public String sentenceCreate_ok(HttpServletRequest request) {
+		
+		//
+		
+		
+	}
+
 	//간단평 삭제하기
 	@RequestMapping(value = "myShopping/deleteSentence.action", method = RequestMethod.POST)
 	public String deleteSentence(HttpServletRequest request) {
-		
+
 		int reviewId = Integer.parseInt(request.getParameter("reviewId"));
-		
+
 		dao.deleteReview(reviewId);
 
 		return "redirect:/myShopping/mySentenceList.action";
-		
+
 	}
 
 	//1:1상담내역 페이지
@@ -1146,41 +1169,33 @@ public class MyShoppingController {
 		return "myShopping/myCounselHistory";
 	}
 
-	//1:1상담하기 페이지
-	/*@RequestMapping(value = "myShopping/goCounsel.action", method = RequestMethod.GET)
-	public String goCounsel(HttpServletRequest request) {
-
-		return "";
-	}*/
-
-
 	//회원 탈퇴 페이지
 	@RequestMapping(value = "myShopping/memberOut.action", method = RequestMethod.GET)
 	public String memberOut(HttpServletRequest request) {
 
 		return "myShopping/memberOut";
 	}
-	
+
 	//회원 탈퇴 전 주문내역 확인(주문/반품진행중/교환진행중 상태일 때는 회원탈퇴 제한)
 	@ResponseBody
 	@RequestMapping(value="myShopping/memberOut_pre.action", method = RequestMethod.POST)
 	public boolean memberOut_pre(HttpServletRequest request) {
-		
+
 		UserDTO dto = (UserDTO) request.getSession().getAttribute("userInfo");
 		String userId = dto.getUserId();
-		
+
 		//진행중인 주문 갯수를 반환함(반환값이 0인 경우에만 회원탈퇴 진행하도록)
 		int check = dao.checkOrderStatus(userId);
-		
+
 		if(check>0) {
 			return false;
 		}
 		else {
 			return true;
 		}
-		
+
 	}
-	
+
 
 	//회원 탈퇴 진행
 	@RequestMapping(value = "myShopping/memberOut_ok.action", method = RequestMethod.GET)
