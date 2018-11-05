@@ -307,6 +307,36 @@ function updateUserInfo(){
 	
 }
 
+//회원 탈퇴
+function memOutCheck(){
+	
+	if(confirm("탈퇴하시겠습니까?\n모든 회원 정보는 즉시 삭제됩니다.")){
+		
+		$.ajax ({
+			url:"memberOut_pre.action",
+			type:"POST",
+			success:function(result){
+				if(result==true){
+					location.href = 'memberOut_ok.action';
+				}
+				else {
+					alert("진행중인 주문내역이 있습니다. \n진행중인 주문이 완료되어야 회원 탈퇴가 가능합니다.");
+				}
+			},
+			error:function(e){
+				alert(e.responseText);
+			}
+			
+		});
+		
+		
+	}
+	else{
+		return;
+	}
+	
+}
+
 //비밀번호 변경 팝업
 function showWindow(addr,width) {
 	

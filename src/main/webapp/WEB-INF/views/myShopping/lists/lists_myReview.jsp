@@ -42,7 +42,7 @@
 </div>
 </c:if>
 <c:if test="${empty lists }">
-<div style="text-align: center; height: 150px; font-weight: bold; font-size: 15pt; line-height: 15;">
+<div style="text-align: center; height: 150px; font-size: 12pt; line-height: 15;">
 	작성한 리뷰가 없습니다.
 </div>
 </c:if>

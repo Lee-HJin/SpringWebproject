@@ -50,6 +50,12 @@ public class MyShoppingDAO {
 
 		sessionTemplate.update("myShopping.updatePwd",hMap);
 	}
+	
+	public int checkOrderStatus(String userId) {
+		
+		return sessionTemplate.selectOne("myShopping.checkOrderStatus",userId);
+	}
+	
 
 	public void deleteUser(String userId) {
 
