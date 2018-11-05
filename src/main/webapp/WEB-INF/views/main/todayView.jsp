@@ -19,7 +19,7 @@
 			<li class="swiper-slide">
 				<input id="isbn" value="${ck.isbn }" type="hidden"/>
 				<div class="rb_image">
-					<a href="<%=cp%>/tempbook.action?isbn=${ck.isbn}">
+					<a href="<%=cp%>/book_info.action?isbn=${ck.isbn}">
 						<img src="<%=cp%>/resources/image/book/${ck.bookImage }">
 					</a>
 					<dl class="rb_title">

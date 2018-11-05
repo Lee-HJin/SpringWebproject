@@ -149,7 +149,7 @@
 				html+= '<div class="swiper-slide">';
 				html+= '	<input id="isbn" value="'+ ck[i].isbn +'" type="hidden"/>';
 				html+= '	<div class="rb_image">';
-				html+= '		<a href="<%=cp%>/tempbook.action?isbn='+ ck[i].isbn +'">';
+				html+= '		<a href="<%=cp%>/book_info.action?isbn='+ ck[i].isbn +'">';
 				html+= '			<img src="<%=cp%>/resources/image/book/'+ck[i].bookImage+'">';
 				html+= '		</a>';
 				html+= '		<dl class="rb_title">';
@@ -226,12 +226,12 @@
 	<div class="swiper-container swiper1">
    		<div class="swiper-wrapper">
      		<div class="swiper-slide">
-     			<a href="<%=cp%>/tempbook.action?isbn=18"><img src="<%=cp%>/resources/image/main/box1_1.jpg"></a>
+     			<a href="<%=cp%>/book_info.action?isbn=18"><img src="<%=cp%>/resources/image/main/box1_1.jpg"></a>
      		</div>
      		<div class="swiper-slide">
      			<ul>
      				<li class="s_box03">
-     					<a href="<%=cp%>/tempbook.action?isbn=16"><img src="<%=cp%>/resources/image/main/box3_1.jpg"></a>
+     					<a href="<%=cp%>/book_info.action?isbn=16"><img src="<%=cp%>/resources/image/main/box3_1.jpg"></a>
      				</li>
      				<li class="s_box03">
      					<a href="javascript://"><img src="<%=cp%>/resources/image/main/box3_2.jpg"></a>
@@ -242,7 +242,7 @@
      			</ul>
      		</div>
      		<div class="swiper-slide">
-     			<a href="<%=cp%>/tempbook.action?isbn=42"><img src="<%=cp%>/resources/image/main/box1_2.jpg"></a>
+     			<a href="<%=cp%>/book_info.action?isbn=42"><img src="<%=cp%>/resources/image/main/box1_2.jpg"></a>
      		</div>
      	</div>
      	
@@ -458,7 +458,7 @@
 					<ul class="rank_list">
 						<c:forEach var="bs" items="${lst }">
 						<li>
-							<a id="img_link${bs.listNum }" class="list_title" href="<%=cp %>/tempbook.action?isbn=${bs.isbn}" 
+							<a id="img_link${bs.listNum }" class="list_title" href="<%=cp %>/book_info.action?isbn=${bs.isbn}" 
 							onmouseover="hoverImg('${bs.listNum}')">
 								<span class="list_n">${bs.listNum }</span>
 								<c:choose>
@@ -470,7 +470,7 @@
 									</c:otherwise>
 								</c:choose>
 							</a>
-							<a href="<%=cp %>/tempbook.action?isbn=${bs.isbn}">
+							<a href="<%=cp %>/book_info.action?isbn=${bs.isbn}">
 								<img id="link_img${bs.listNum }" src="<%=cp%>/resources/image/book/${bs.bookImage}" style="display: none;">
 							</a>	
 						</li>
@@ -566,7 +566,7 @@
 					<ul class="tb_list">
 						<li>
 							<div class="tb_img">
-								<a href="<%=cp%>/tempbook.action?isbn=41">
+								<a href="<%=cp%>/book_info.action?isbn=41">
 									<img src="<%=cp%>/resources/image/book/4174166_cover.jpg">
 								</a>
 							</div>
@@ -577,7 +577,7 @@
 						</li>
 						<li>
 							<div class="tb_img">
-								<a href="<%=cp%>/tempbook.action?isbn=42">
+								<a href="<%=cp%>/book_info.action?isbn=42">
 									<img src="<%=cp%>/resources/image/book/4170946_cover.jpg">
 								</a>
 							</div>
@@ -588,7 +588,7 @@
 						</li>
 						<li>
 							<div class="tb_img">
-								<a href="<%=cp%>/tempbook.action?isbn=43">
+								<a href="<%=cp%>/book_info.action?isbn=43">
 									<img src="<%=cp%>/resources/image/book/3539093_cover.jpg">
 								</a>
 							</div>
@@ -604,7 +604,7 @@
 					<ul class="tb_list">
 						<li>
 							<div class="tb_img">
-								<a href="<%=cp%>/tempbook.action?isbn=44">
+								<a href="<%=cp%>/book_info.action?isbn=44">
 									<img src="<%=cp%>/resources/image/book/4188956_cover.jpg">
 								</a>
 							</div>
@@ -615,7 +615,7 @@
 						</li>
 						<li>
 							<div class="tb_img">
-								<a href="<%=cp%>/tempbook.action?isbn=45">
+								<a href="<%=cp%>/book_info.action?isbn=45">
 									<img src="<%=cp%>/resources/image/book/4143978_cover.jpg">
 								</a>
 							</div>
@@ -626,7 +626,7 @@
 						</li>
 						<li>
 							<div class="tb_img">
-								<a href="<%=cp%>/tempbook.action?isbn=46">
+								<a href="<%=cp%>/book_info.action?isbn=46">
 									<img src="<%=cp%>/resources/image/book/4116300_cover.jpg">
 								</a>
 							</div>
@@ -642,7 +642,7 @@
 					<ul class="tb_list">
 						<li>
 							<div class="tb_img">
-								<a href="<%=cp%>/tempbook.action?isbn=47">
+								<a href="<%=cp%>/book_info.action?isbn=47">
 									<img src="<%=cp%>/resources/image/book/4204247_cover.jpg">
 								</a>
 							</div>
@@ -653,7 +653,7 @@
 						</li>
 						<li>
 							<div class="tb_img">
-								<a href="<%=cp%>/tempbook.action?isbn=48">
+								<a href="<%=cp%>/book_info.action?isbn=48">
 									<img src="<%=cp%>/resources/image/book/4200948_cover.jpg">
 								</a>
 							</div>
@@ -664,7 +664,7 @@
 						</li>
 						<li>
 							<div class="tb_img">
-								<a href="<%=cp%>/tempbook.action?isbn=49">
+								<a href="<%=cp%>/book_info.action?isbn=49">
 									<img src="<%=cp%>/resources/image/book/3915600_cover.jpg">
 								</a>
 							</div>
