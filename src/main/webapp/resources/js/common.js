@@ -1,7 +1,7 @@
-document.domain = "localhost:8080/webproject";
-var hostDomain = "localhost:8080/webproject";
-var hostDomains = "localhost:8080/webproject";
-var blogDomain = "localhost:8080/webproject";
+/*document.domain = "127.0.0.1:8080/webproject";*/
+var hostDomain = "127.0.0.1:8080/webproject";
+var hostDomains = "127.0.0.1:8080/webproject";
+var blogDomain = "127.0.0.1:8080/webproject";
 
 
 /*************************************

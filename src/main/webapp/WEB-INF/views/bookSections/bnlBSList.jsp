@@ -48,6 +48,7 @@
 <script type="text/javascript" src="/webproject/resources/js/dwr.js" charset="euc-kr"></script>
 <script type="text/javascript" src="/webproject/resources/js/jquery/jquery.min.js"></script><!-- IE8 에서 오류로 인해 일부러 넣음(jQuery 보다 dwr.util.js 가 밑에 있음 오류 발생) -->
 <script type="text/javascript" src="/webproject/resources/js/multiCart.js"></script>
+
 <script type="text/javascript">
 
 	// 쇼핑카트
@@ -90,114 +91,47 @@
 		jutil.bandi.reloadWiseCart("cart");
 	}
 	
-	// 위시리스트
-	function addWishes() 
-	{
-		var isbns = jutil.form.getCheckboxValue("isbn");
+	$(function() {
 		
-		if(isbns.length > 0){
-			add_wish_array_common(isbns.join(","), true);
-		}else{
-			alert("상품을 선택해 주십시오");
+		var ck = getCookie('cartlist');
+		alert(ck);
+		var ckOne = cookieInfo(ck);
+	});
+	
+	
+	//쿠키 가져오기
+	function getCookie(cookiename){
+		var cookiestring  = document.cookie;
+		var cookiearray = cookiestring.split(';');
+		for(var i=0; i<cookiearray.length; ++i){ 
+		    if(cookiearray[i].indexOf(cookiename)!=-1){
+		        var nameVal = cookiearray[i].split("=");
+		        nameVal = nameVal[1].trim();
+		        return unescape(nameVal);
+		    }else{
+		    	var cookie = null;
+		    } 
 		}
+		return cookie;
 	}
-	
-	// 정렬
-	function changeSort(index) {
-	
-		var sort = document.getElementsByName("sorts");
-		
-		sort[0].selectedIndex = index;
-		sort[1].selectedIndex = index;
-		
-		document.bestForm.page.value = "1";
-		
-		goSearch();
+ 	
+	//쿠키 뿌리기
+	function cookieInfo(cValue) {		
+ 		var cookie = cValue;
+ 		
+ 		if(cookie!=null){
+ 			cookie = cookie.split("/");
+ 	 		var ck = new Array();
+ 	 		
+ 	 		for(i=0;i<cookie.length;i++){
+ 	 			ck[i] = JSON.parse(cookie[i]);
+ 	 		} 		
+ 	 		return ck;
+ 		}else{
+ 			return null;
+ 		}
 	}
 
-	function goTopHistory(recommendYear, recommendMonth, recommendWeek, rank) {
-		
-		frmObj = document.bestForm;
-		
-		frmObj.recommendYear.value = recommendYear;
-		frmObj.recommendMonth.value = recommendMonth;
-		frmObj.recommendWeek.value = recommendWeek;
-		
-		frmObj.page.value = Math.ceil(rank / 20);
-		frmObj.sort.value = "sort";
-		//frmObj.searchType.value = "top";
-		//frmObj.cateId.value = "";
-		//frmObj.sex.value = "";
-		//frmObj.age.value = "";
-		
-		frmObj.submit();
-	}	
-
-function goSearch(sort) {
-		
-		// 폼 검증
-		if (!jutil.form.validate("bestForm")) {
-			return;
-		}
-		
-		var totalPage = Number("5");
-		if (totalPage == 0) {
-			totalPage = 1;
-		}
-		
-		var frmObj = document.bestForm;
-	/*
-		if (typeof(sort) != "undefined") {
-			
-			frmObj.sorts[0].value = sort;
-			frmObj.sorts[1].value = sort;
-		}
-		
-		frmObj.sort.value = frmObj.sorts[0].value;
-		*/
-		if (frmObj.sort.value == "") {
-			frmObj.sort.value = "";
-		}
-		
-		var cageId = document.getElementsByName("cageId");
-		
-		
-		//frmObj.cateId.value = frmObj.sorts[0].value;
-		//frmObj.cateId.value = cateId;
-		/*
-		if (frmObj.prodStats[0].checked == true) {
-			frmObj.prodStat.value = "Y";
-		}
-		
-		if (Number(frmObj.pages[0].value) > totalPage) {
-			alert("이동할 수 없는 페이지 번호 입니다.");
-			return;
-		} 
-		else {
-			frmObj.page.value = frmObj.pages[0].value;
-		}*/
-		
-		var isbn = document.getElementsByName("isbn");
-		var orderCnt = document.getElementsByName("orderCnt");
-		
-		for (var i = 0; i < isbn.length; i++) {
-		
-			isbn[i].disabled = true;
-			orderCnt[i].disabled = true;
-		}
-		/*
-		frmObj.sorts[0].disabled = true;
-		frmObj.sorts[1].disabled = true;
-		
-		frmObj.prodStats[0].disabled = true;
-		frmObj.prodStats[1].disabled = true;
-		
-		frmObj.pages[0].disabled = true;
-		frmObj.pages[1].disabled = true;
-		*/
-		frmObj.submit();
-	}
-	
 </script>
 <!-- 스트립트2 끝  -->
 
@@ -351,7 +285,7 @@ function goSearch(sort) {
 					<div class="prod_list_type prod_best_type">
 						<ul>	        	
 			         	<li>
-			         		<input class="checkbox" type="checkbox" value="${dto.isbn }" name="isbn">
+			         		<input class="checkbox" type="checkbox" value="${dto.isbn }" name="isbn" id="cart_isbn${dto.isbn }">
 							<div class="prod_thumb">
 								<span class="ranking">
 									<span class="rank_num">${dto.rnum }</span>

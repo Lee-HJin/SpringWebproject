@@ -476,7 +476,7 @@
 						</li>
 						</c:forEach>
 					</ul>
-					<a class="more_link" href="javascript://"></a>
+					<a class="more_link" href="<%=cp%>/bnlBSList.action"></a>
 				</div>
 				<div class="bs_image">
 					<a id="bs_link" href="javascript://">

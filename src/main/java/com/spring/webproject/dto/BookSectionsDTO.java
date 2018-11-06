@@ -37,6 +37,7 @@ public class BookSectionsDTO {
 	private int point;
 	private int reviewCnt;
 	private int soldBookCnt;
+	private String orderCount;
 	
 	public int getCategoryId() {
 		return categoryId;
@@ -140,8 +141,14 @@ public class BookSectionsDTO {
 	public void setInputDCDate(String inputDCDate) {
 		this.inputDCDate = inputDCDate;
 	}
-
-
+	public String getOrderCount() {
+		return orderCount;
+	}
+	public void setOrderCount(String orderCount) {
+		this.orderCount = orderCount;
+	}
+	
+	
 
 	
 	
