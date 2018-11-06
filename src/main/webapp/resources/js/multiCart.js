@@ -40,8 +40,79 @@
 		var ordCnt = $("#cntVal_"+isbn).val();
 		if(isNaN(ordCnt)) {
 			ordCnt = 1;
-		}
-		add_basket(isbn, ordCnt);
+		}else{
+			$(function() {
+				
+				var cookieValue = JSON.stringify({"isbn":isbn,"orderCount":ordCnt});
+				var ck = $("#cart_isbn"+isbn).val();
+				
+				if(document.cookie.indexOf('cartlist')==-1){
+					setCookie('cartlist',cookieValue,1);
+				}else if(document.cookie.indexOf('cartlist')!=-1){
+					addCookie(cookieValue,ck);
+				}
+			});
+			
+			//쿠키 생성
+			function setCookie(cName, cValue, cDay){
+				var expire = new Date();
+			    expire.setDate(expire.getDate() + cDay);
+			    cookies = cName + '=' + escape(cValue) + '; path=/ ';
+			    if(typeof cDay != 'undefined') cookies += ';expires=' + expire.toGMTString() + ';';
+			    document.cookie = cookies;
+			}
+			
+			//기존 쿠키에 추가
+			function addCookie(cValue,cVal){
+				var items = getCookie('cartlist');
+				//var maxItemNum = 10;
+				var flag = true;
+				
+				alert(cVal);
+				
+				if(items){
+					var itemArray=items.split('/');
+					var ck = new Array();
+					
+					for(i=0;i<itemArray.length;i++){
+		 	 			ck[i] = JSON.parse(itemArray[i]);
+		 	 		}
+					for(i=0;i<ck.length;i++){
+						
+						if(ck[i].isbn==cVal){
+							
+							alert("이미 있는 상품입니다.");
+							return;
+							
+						}else{
+							flag= false;
+						}	
+					}
+					if(flag==false){
+						alert("왔다");
+						itemArray.unshift(cValue);
+/*						if(itemArray.length>maxItemNum){
+							itemArray.length=10;}*/
+						items = itemArray.join('/');
+						setCookie('cartlist',items,1);
+					}
+				}
+			}
+					
+			function getCookie(cookiename){
+				var cookiestring  = document.cookie;
+				var cookiearray = cookiestring.split(';');
+				for(var i =0 ; i < cookiearray.length ; ++i){ 
+				    if(cookiearray[i].indexOf(cookiename)!=-1){ 
+				        var ck = [];
+				        var nameVal = cookiearray[i].split( "=" );
+			            var value = nameVal[1].trim();
+				        ck+= value;
+				    }
+				} 
+				return unescape(ck);
+			}
+		}		
 	}
 	
 	//바로구매
