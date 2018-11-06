@@ -36,13 +36,10 @@
 			<li>
 				<span>최근 본 상품</span>
 				<span class="under">${recentCount }건</span>
-				<!-- 로그인시 DB에서 최근 본 상품 dto를 불러옴 메인에 있는 최근 본 상품이랑 연동 session 이용해야할듯  -->
-				<!-- 최근 본 상품 dto 생성 후 작업하자!  -->
 			</li>
 			<li>
-				<span>나의 상담</span>
-				<span class="under">-건</span>
-				<!-- 상담쪽 dto 이용 내용 불러올 예정 -->
+				<span>최근 1:1 상담 내역</span>
+				<span class="under">${counselCount }건</span>
 			</li>
 		</ul>
 	</div>

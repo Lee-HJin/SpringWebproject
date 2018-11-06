@@ -65,7 +65,12 @@
 
 <!-- 적립금 불러오기 -->
 <select id="getPointValue" parameterType="java.lang.String" resultType="int">
-	select nvl(sum(value),0) from point where userId=#{userId}
+	select nvl(sum(leftValue),0) from point where userId=#{userId}
+</select>
+
+<!-- 상담내역 가져오기 -->
+<select id="getCounselCount" parameterType="java.lang.String" resultType="int">
+	select nvl(count(*),0) from consultation where userId=#{userId} and consultationdate between sysdate-14 and sysdate
 </select>
 
 </mapper>
