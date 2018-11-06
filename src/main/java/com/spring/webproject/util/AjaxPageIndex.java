@@ -132,7 +132,34 @@ public class AjaxPageIndex {
 			}
 
 		}
-
+		//1:1상담내역에서 넘어온 리스트 페이징
+		else if(mode.equals("counselAll") || mode.equals("yes") || mode.equals("no")) {	
+			if(params==null || params.equals("")) {
+				while(page <= totalPage && page <= (currentPageSetup + numPerBlock)){
+					if(page == currentPage){				
+						sb.append("<span class='page_on'>" + page + "</span>&nbsp;");				
+					}
+					else{
+						sb.append("<span class='page_off'><a href=\"javascript:getCounselList(" +  page + ",'','','" +mode+"')\">"
+								+ page + "</a></span>&nbsp;");		
+					}				
+					page++;		
+				}		
+			}
+			else {
+				while(page <= totalPage && page <= (currentPageSetup + numPerBlock)){
+					if(page == currentPage){				
+						sb.append("<span class='page_on'>" + page + "</span>&nbsp;");				
+					}
+					else{
+						sb.append("<span class='page_off'><a href=\"javascript:getCounselList(" 
+								+ page + "," + params + ",'"+ mode+"')\">"
+								+ page + "</a></span>&nbsp;");		
+					}				
+					page++;		
+				}
+			}	
+		}
 		//소멸예정 포인트 조회 리스트에서 넘어온 리스트 페이징
 		else {
 			while(page <= totalPage && page <= (currentPageSetup + numPerBlock)){

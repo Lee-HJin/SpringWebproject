@@ -9,15 +9,12 @@
 <!DOCTYPE html>
 <html>
 <title>반디앤루니스 인터넷서점</title>
-
+<head>
 	<link rel="stylesheet" href="<%=cp%>/resources/css/main.css" type="text/css">
 	<link rel="stylesheet" href="<%=cp%>/resources/css/myShopping.css" type="text/css">
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 	<script src="<%=cp%>/resources/js/myShopping.js"></script>
-	
-	<script type="text/javascript">
-	
-	</script>
+	<script type="text/javascript"></script>
 	
 </head>
 <body style="padding: 0; margin: 0;">
@@ -164,7 +161,7 @@
 		</div>
 	</div>
 	<div class="main_CounselList">
-		<span class="contents_title">나의 상담 내역</span>  <span class="sapn_right"><a href="">더보기></a></span>
+		<span class="contents_title">나의 상담 내역</span> | 최근 14일 내 1:1 상담 내역입니다.  <span class="sapn_right"><a href="">더보기></a></span>
 		<table>
 			<tr>
 				<th>상담날짜</th>

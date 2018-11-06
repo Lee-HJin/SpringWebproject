@@ -23,7 +23,10 @@
 	<c:forEach var="dto" items="${lists }">
 	<tr>
 		<td>${dto.savingDate }</td>
-		<td>${dto.orderId }</td>
+		<td>
+			<c:if test="${dto.orderId==0 }"></c:if>
+			<c:if test="${dto.orderId!=0 }">${dto.orderId }</c:if>
+		</td>
 		<td style="text-align: left;">${dto.pointItem }</td>
 		<td>
 			<c:if test="${dto.value>0 }">적립</c:if>

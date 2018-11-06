@@ -15,6 +15,117 @@
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 	<script src="<%=cp%>/resources/js/myShopping.js"></script>
 	
+	<script type="text/javascript">
+	$(document).ready(function(){
+		
+		//초기 리스트 자동 불러오기
+		$.ajax({
+			
+			url:"getCounselList.action",
+			type:"POST",
+			success:function(data){
+				$('#myCounselList').html(data);	
+			},
+			error:function(e){
+				alert(e.responseText);
+			}
+
+		});
+		
+		//기간별 조회		
+		$('#getCounselList').on('click',function(){
+			
+			var fromMonth = '0' + $('#fromMonth option:selected').val();
+			fromMonth = fromMonth.substring(fromMonth.length, fromMonth.length-2);
+			var fromDay = '0' + $('#fromDay option:selected').val();
+			fromDay = fromDay.substring(fromDay.length, fromDay.length-2);
+			var toMonth = '0' + $('#toMonth option:selected').val();
+			toMonth = toMonth.substring(toMonth.length, toMonth.length-2);
+			var toDay = '0' + $('#toDay option:selected').val();
+			toDay = toDay.substring(toDay.length, toDay.length-2);
+			
+			var fromDate = $('#fromYear option:selected').val() + '-' 
+							+ fromMonth + '-'+ fromDay;
+
+			var toDate = $('#toYear option:selected').val() + '-' 
+							+ toMonth + '-'	+ toDay;
+			
+			var mode = $('#counselMode option:selected').val();
+			
+			//파라미터 정리
+			var pageNum = '${pageNum}';
+			
+			params = 'fromDate=' + fromDate + '&toDate=' + toDate + "&mode=" + mode;
+			
+			if(pageNum!=''){
+				params += "&pageNum=" + pageNum;
+			}
+			
+			$.ajax({
+				
+				url:"getCounselList.action",
+				data:params,
+				type:"POST",
+				success:function(data){
+					$('#myCounselList').html(data);	
+				},
+				error:function(e){
+					alert(e.responseText);
+				}
+
+			});
+			
+		});
+		
+		//내역별조회
+		$('#counselMode').on('change',function(){
+			
+			var fromMonth = '0' + $('#fromMonth option:selected').val();
+			fromMonth = fromMonth.substring(fromMonth.length, fromMonth.length-2);
+			var fromDay = '0' + $('#fromDay option:selected').val();
+			fromDay = fromDay.substring(fromDay.length, fromDay.length-2);
+			var toMonth = '0' + $('#toMonth option:selected').val();
+			toMonth = toMonth.substring(toMonth.length, toMonth.length-2);
+			var toDay = '0' + $('#toDay option:selected').val();
+			toDay = toDay.substring(toDay.length, toDay.length-2);
+			
+			var fromDate = $('#fromYear option:selected').val() + '-' 
+							+ fromMonth + '-'+ fromDay;
+
+			var toDate = $('#toYear option:selected').val() + '-' 
+							+ toMonth + '-'	+ toDay;
+			
+			var mode = $('#counselMode option:selected').val();
+			
+			//파라미터 정리
+			var pageNum = '${pageNum}';
+			var params = 'fromDate=' + fromDate + '&toDate=' + toDate + '&mode=' + mode;
+			
+			if(pageNum!=''){
+				params += "&pageNum=" + pageNum;
+			}
+			
+			$.ajax({
+				
+				url:"getCounselList.action",
+				data:params,
+				type:"POST",
+				success:function(data){
+					$('#myCounselList').html(data);	
+				},
+				error:function(e){
+					alert(e.responseText);
+				}
+
+			});
+			
+			
+			
+		});
+		
+	});
+	</script>
+	
 </head>
 <body style="padding: 0; margin: 0;">
 
@@ -53,7 +164,7 @@
 					<span><select name="toMonth" id="toMonth"></select></span>
 					<span><select name="toDay" id="toDay"></select></span>
 					<span style="display: inline; height: 22px;">
-						<a href="#"><img alt="조회" src="<%=cp%>/resources/img/myShopping/btn_sort_search.gif" style="vertical-align: top;"></a>
+						<a href="#"><img alt="조회" src="<%=cp%>/resources/img/myShopping/btn_sort_search.gif" style="vertical-align: top;" id="getCounselList"></a>
 					</span>	
 				</span>	
 			</dd>
@@ -62,30 +173,17 @@
 			<dt>내역별 조회</dt>
 			<dd>
 				<span>
-					<select>
-						<option>전체상담내역</option>
-						<option>답변내역</option>
-						<option>미답변내역</option>
+					<select id="counselMode">
+						<option value="counselAll">전체상담내역</option>
+						<option value="yes">답변내역</option>
+						<option value="no">미답변내역</option>
 					</select>
 				</span>
-				<span style="margin-right: 5px;"><a href="#"><img alt="조회" src="<%=cp%>/resources/img/myShopping/btn_sort_search.gif" style="vertical-align: top;"></a></span>
 			</dd>
 		</dl>
 	</div>
 	
-	<div class="myOrderList_table">
-		<table>
-			<tr>
-				<th>상담일자</th>
-				<th>상담종류</th>
-				<th style="width: 467px;">제목</th>		
-				<th>답변여부</th>
-			</tr>
-			<tr>
-				<td colspan="4" height="100px;">최근 문의 내역이 없습니다.</td>
-			</tr>
-		</table>
-	</div>
+	<div id="myCounselList" class="myOrderList_table"></div>
 	
 </div>
 
