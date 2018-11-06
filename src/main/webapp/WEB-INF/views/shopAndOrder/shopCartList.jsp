@@ -1,10 +1,9 @@
+<%@ page contentType="text/html; charset=UTF-8"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%@ taglib prefix="fmt" uri ="http://java.sun.com/jsp/jstl/fmt" %>
 <%
 	request.setCharacterEncoding("UTF-8");
 	String cp = request.getContextPath();
-%> 
+%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -37,6 +36,80 @@
 <!-- ADSSOM 공통 SCRIPT -->
 <script type="text/javascript" src="https://sc.11h11m.net/s/E799.js"></script>
 <script type="text/javascript" charset="UTF-8" async="" src="http://s.n2s.co.kr/_n2s_ck_log.php"></script>
+
+<script type="text/javascript">
+	
+	
+	$(function() {
+	
+		var ck = cookieInfo(getCookie('cartlist'));
+		
+		var cIsbn = new Array();
+		var ordCount = new Array();
+		
+		if(ck!=null){
+			for(i=0;i<ck.length;i++){
+				cIsbn.push(ck[i].isbn);
+				ordCount.push(ck[i].orderCount);
+			}
+		}else{
+			return;
+		}
+		cartList(cIsbn,ordCount);		
+	});
+	
+	
+	//카트 목록 뿌리기
+	function cartList(cIsbn,ordCount) {
+		var params = "isbn=" + cIsbn;
+		params+= "&orderCount=" + ordCount; 
+	
+		var url = "<%=cp%>/cartList.action";
+		alert(params);
+		
+		 $.post(url,params,function(args){
+			$("#nuriwork").html(args);
+		}); 
+	}
+		
+	
+	
+	//쿠키 가져오기
+	function getCookie(cookiename){
+		var cookiestring  = document.cookie;
+		var cookiearray = cookiestring.split(';');
+		for(var i=0; i<cookiearray.length; ++i){ 
+		    if(cookiearray[i].indexOf(cookiename)!=-1){
+		        var nameVal = cookiearray[i].split("=");
+		        nameVal = nameVal[1].trim();
+		        
+		        return unescape(nameVal);
+		    }else{
+		    	var cookie = null;
+		    } 
+		}
+		return cookie;
+	}
+ 	
+	//쿠키 뿌리기
+	function cookieInfo(cValue) {		
+ 		var cookie = cValue;
+ 		
+ 		if(cookie!=null){
+ 			cookie = cookie.split("/");
+ 	 		var ck = new Array();
+ 	 		
+ 	 		for(i=0;i<cookie.length;i++){
+ 	 			ck[i] = JSON.parse(cookie[i]);
+ 	 		} 		
+ 	 		return ck;
+ 		}else{
+ 			return null;
+ 		}
+	}
+
+</script>
+
 
 </head>
 <body>
@@ -124,84 +197,7 @@
 						<a id="bandiDeduction" class="btn_del" style="cursor:pointer;"><img src="/webproject/resources/images/searchN/btn_cart_del02.gif" alt="선택상품 삭제"></a>
 					</div>
             	
-	            	<table cellpadding="0" cellspacing="0" class="orderTable">
-	            		<colgroup><col width="55"><col>
-	            			<col width="92">
-	            			
-	            			<col width="92"><col width="72"><col width="92"><col width="90"><col width="40"></colgroup>
-	            		<tbody><tr>
-	            			<th colspan="2">상품명</th>
-	            			
-		            			<th>수령예상일</th>
-	            			
-	            			<th>판매가</th>
-	            			<th>수량</th>
-	            			<th>합계</th>
-	            			<th>담기/삭제</th>   
-	            			<th><input type="checkbox" id="bandiDeduction" class="checkAll"></th>                			
-	            		</tr>
-
-	            		<tr>
-	            			<td>
-	            				<span class="book_img"><img src="http://image.bandinlunis.com/upload/product/4034/4034224_s.jpg" onerror="this.src='http://image.bandinlunis.com/images/common/noimg_type02.gif'"></span> 
-	            			</td>
-	            			<td class="prod_name">
-	            				<span class="block t_14">
-
-            						<a href="/front/product/detailProduct.do?prodId=4034224">[도서]돌이킬 수 없는 약속</a>
-
-	            				</span>
-	            				<span class="block mt3 t_gr">야쿠마루 가쿠 | 북플라자</span>
-	            				
-	            			</td>
-	            			
-	            			<td id="bandi_deli_term_48116888">
-            							2018년<br>10월 13일(토)
-	            			</td>
-	            			
-	            			<td>
-	            				<strong>13,500원</strong><br>
-	            				(10%<strong class="point_b">↓</strong>)<br>
-	            				(<strong class="point_o">P</strong> 750원)
-	            			</td>
-	            			
-	            			<td>
-	            				<span class="num_c">
-	            					<input type="text" name="cntVal" id="cntVal_48116888" value="1" class="o_input_num fl_left" size="3" onkeydown="onlyNumber();" onkeyup="cntChange('48116888');" style="text-align:right;ime-mode:disabled;">
-	            					<span class="num_c_up"><img src="/webproject/resources/images/searchN/btn_num_up.gif" alt="" onclick="cntUp('48116888');" style="cursor:pointer;"></span>
-	            					<span class="num_c_dn"><img src="/webproject/resources/images/searchN/btn_num_down.gif" alt="" onclick="cntDown('48116888');" style="cursor:pointer;"></span>
-	            				</span>
-            					<img src="/webproject/resources/images/searchN/btn_cart_modify.gif" alt="수정" class="mt5" onclick="updateShopCart(48116888)" style="cursor:pointer;">
-	            			</td>
-
-	            			<td><strong id="costVal_48116888">13,500원</strong></td>  
-	            			          			
-	            			<td>
-	            				<img src="/webproject/resources/images/searchN/btn_cart_wishlist.gif" alt="위시리스트 담기" onclick="add_wish_common('4034224');" style="cursor:pointer;"><br>
-	            				<img src="/webproject/resources/images/searchN/btn_cart_del.gif" alt="삭제" class="mt5" onclick="deleteShopCart('48116888')" style="cursor:pointer;">
-	            			</td>
-	            			
-	            			<td>
-	            				<input type="checkbox" id="checkBox_48116888" name="seqArr3" class="check_bandiDeduction" value="48116888" checked="checked">
-	            				<input type="hidden" class="storeId_1" value="48116888">
-	            				<input type="hidden" id="storeIdVal_48116888" value="1">
-	            				<input type="hidden" id="saleCostVal_48116888" value="13500">
-	            				<input type="hidden" id="marketSaleVal_48116888" value="15000">
-	            				<input type="hidden" id="prodPointVal_48116888" value="750">
-	            				<input type="hidden" id="deliCostCondiVal_48116888" value="10000">
-	            				<input type="hidden" id="deliCostVal_48116888" value="2000">
-	            				<input type="hidden" id="bundleDeliYnVal_48116888" value="Y">
-	            				<input type="hidden" id="prodIdArr_48116888" name="prodIdArr" value="4034224">
-	            				<input type="hidden" id="prod_name_48116888" name="prod_name" value="돌이킬 수 없는 약속">
-	            				<input type="hidden" id="optSeqVal_48116888" name="optSeqVal_48116888" value="">
-	            				<input type="hidden" name="is_sale_yn" value="Y">
-	            				<input type="hidden" id="prodTypeArr_48116888" name="prodType" value="01">
-	            				<input type="hidden" id="flag_48116888" value="0">
-	            				<input type="hidden" id="preSaleYnVal_48116888" value="N">
-	            				<input type="hidden" id="maxVal_48116888" value="999">
-	            			</td>
-	            		</tr>
-	            	</tbody></table>
+	            	<div id="nuriwork"></div>
 	            	
 	            	<div class="cart_pay_total">
 	            		<span class="fl_left mt3 ml10" id="bandiDeduction_totOrdCnt">수량: 1종(1개)</span>

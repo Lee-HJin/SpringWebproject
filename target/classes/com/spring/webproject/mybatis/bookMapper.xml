@@ -190,7 +190,79 @@
 
 	<!-- 리뷰 작성 확인 -->
 	<select id="getReviewCheck" parameterType="map" resultType="int">
-		select count(*) from review where isbn = #{isbn} and userid = #{userId} and
+		select count(*) from review where isbn = #{isbn} and userid =
+		#{userId} and
 		contents is not null
 	</select>
+
+
+	<!-- 전체데이터 -->
+	<select id="getLists" parameterType="hashMap"
+		resultType="com.spring.webproject.dto.BookSectionsDTO">
+		select * from (
+		select rownum rnum, data.* from (
+		select * from bookSections
+		where categoryId between ${sort1st } and ${sort2nd }
+		order by soldBookCnt desc
+		) data)
+	<![CDATA[
+	where rnum >= #{start } and rnum <= #{end }
+	]]>
+	</select>
+
+	<!-- getListSort1 -->
+	<select id="getListsSort1" parameterType="hashMap"
+		resultType="com.spring.webproject.dto.BookSectionsDTO">
+		select * from (
+		select rownum rnum, data.* from (
+		select * from bookSections
+		where categoryId between ${sort1st } and ${sort2nd }
+		order by publishDate desc
+		) data)
+	<![CDATA[
+	where rnum >= #{start } and rnum <= #{end }
+	]]>
+	</select>
+
+	<!-- getListSort2 -->
+	<select id="getListsSort2" parameterType="hashMap"
+		resultType="com.spring.webproject.dto.BookSectionsDTO">
+		select * from (
+		select rownum rnum, data.* from (
+		select * from bookSections
+		where categoryId between ${sort1st } and ${sort2nd }
+		) data)
+	<![CDATA[
+	where rnum >= #{start } and rnum <= #{end }
+	]]>
+	</select>
+
+	<!-- getListSort3 -->
+	<select id="getListsSort3" parameterType="hashMap"
+		resultType="com.spring.webproject.dto.BookSectionsDTO">
+		select * from (
+		select rownum rnum, data.* from (
+		select * from bookSections
+		where categoryId between ${sort1st } and ${sort2nd }
+		order by rate desc
+		) data)
+	<![CDATA[
+	where rnum >= #{start } and rnum <= #{end }
+	]]>
+	</select>
+
+	<!-- getListSort4 -->
+	<select id="getListsSort4" parameterType="hashMap"
+		resultType="com.spring.webproject.dto.BookSectionsDTO">
+		select * from (
+		select rownum rnum, data.* from (
+		select * from bookSections
+		where categoryId between ${sort1st } and ${sort2nd }
+		order by reviewCnt desc
+		) data)
+	<![CDATA[
+	where rnum >= #{start } and rnum <= #{end }
+	]]>
+	</select>
+
 </mapper>

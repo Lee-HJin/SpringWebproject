@@ -1,5 +1,12 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
+<%
+	request.setCharacterEncoding("UTF-8");
+	String cp = request.getContextPath();
+%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -19,6 +26,8 @@
 <link rel="stylesheet" href="/webproject/resources/book_css/pStyle.css"
 	type="text/css">
 
+<link rel="stylesheet" href="/webproject/resources/common/css/bnlBSList2.css" type="text/css">
+
 <script type="text/javascript"
 	src="/springwebview/resources/js/Main_01.js"></script>
 <script type="text/javascript"
@@ -27,6 +36,38 @@
 	src="/springwebview/resources/js/jquery/jquery.min.js"></script>
 <script type="text/javascript"
 	src="/springwebview/resources/js/swfobject.js"></script>
+	
+	
+<script type="text/javascript" src="/webproject/resources/common/js/common.js"></script>
+<script type="text/javascript" src="/webproject/resources/common/js/jquery-3.3.1.js"></script>
+<script type="text/javascript" src="/webproject/resources/common/js/swfobject.js"></script>
+<script type="text/javascript" src="/webproject/resources/common/js/flashcommon.js"></script>
+<script type="text/javascript" src="/webproject/resources/common/js/AC_RunActiveContent.js"></script>
+
+<script type="text/javascript" src="/webproject/resources/js/common.js" charset="euc-kr"></script>
+<script type="text/javascript" src="/webproject/resources/js/JUTIL/JUTIL.js" charset="utf-8"></script>
+<script type="text/javascript" src="/webproject/resources/js/navi.js" charset="euc-kr"></script>
+<script type="text/javascript" src="/webproject/resources/js/partnerHeaderInfo.js"></script>
+
+<script type="text/javascript" src="/webproject/resources/js/jquery/jquery.min.js"></script>
+<script type="text/javascript" src="/webproject/resources/js/jquery/jquery-ui.js"></script>
+<script type="text/javascript" src="/webproject/resources/js/jquery/jquery.blockUI.js"></script>
+<script type="text/javascript" src="/webproject/resources/js/jquery/idangerous.swiper.js"></script>
+
+<script type="text/javascript" src="https://wcs.naver.net/wcslog.js"></script>
+
+<!-- ADSSOM 신규 버전 17-11-20 -->
+<!-- ADSSOM 공통 SCRIPT -->
+<script type="text/javascript" src="https://sc.11h11m.net/s/E799.js"></script>
+<script type="text/javascript" charset="UTF-8" async="" src="http://s.n2s.co.kr/_n2s_ck_log.php"></script>
+
+<!-- 스크립트2 시작 -->
+<link rel="stylesheet" href="http://image.bandinlunis.com/common/css/pStyle.css" type="text/css">
+
+<script type="text/javascript" src="/webproject/resources/js/dwr.js" charset="euc-kr"></script>
+<script type="text/javascript" src="/webproject/resources/js/jquery/jquery.min.js"></script><!-- IE8 에서 오류로 인해 일부러 넣음(jQuery 보다 dwr.util.js 가 밑에 있음 오류 발생) -->
+<script type="text/javascript" src="/webproject/resources/js/multiCart.js"></script>
+
 
 <!-- Carousel BS -->
 <!-- Tabs with Dropdown Menu-->
@@ -799,15 +840,12 @@
 		<div class="con_t2">
 
 			<div class="container" style="width: 850px;">
-				<!-- 		<div class="tap_menu_d2 mb15"> -->
 				<ul class="nav nav-tabs">
 					<li class="active"><a href="#home">전체목록</a></li>
-
+					
 					<li><a href="#menu_best">베스트셀러</a></li>
 
 					<li><a href="#menu_new">새로나온 책</a></li>
-
-					<li><a href="#menu_recommend">반디추천</a></li>
 
 					<li><a href="#menu_discount">정가인하</a></li>
 				</ul>
@@ -1995,47 +2033,397 @@
 					<!-- 베스트셀러 시작 -->
 
 					<div id="menu_best" class="tab-pane fade">
-						<h3>베스트 셀러</h3>
+						<div class="prod_sort sort_ver02">
+							<div class="sorting">
+								<ul class="con01">
+									<li><a style="cursor: pointer;"
+										href="<%=cp%>/book_self_improvement.action?pageNum=1&sort=&sort1st=${sort1st}&sort2nd=${sort2nd}#menu_best">순위
+											높은 순</a></li>
+									<li><a style="cursor: pointer;"
+										href="<%=cp%>/book_self_improvement.action?pageNum=1&sort=sort1&sort1st=${sort1st}&sort2nd=${sort2nd}#menu_best">발행일순</a></li>
+									<li><a style="cursor: pointer;"
+										href="<%=cp%>/book_self_improvement.action?pageNum=1&sort=sort2&sort1st=${sort1st}&sort2nd=${sort2nd}#menu_best">상품명순</a></li>
+									<li><a style="cursor: pointer;"
+										href="<%=cp%>/book_self_improvement.action?pageNum=1&sort=sort3&sort1st=${sort1st}&sort2nd=${sort2nd}#menu_best">평점순</a></li>
+									<li class="alt"><a style="cursor: pointer;"
+										href="<%=cp%>/book_self_improvement.action?pageNum=1&sort=sort4&sort1st=${sort1st}&sort2nd=${sort2nd}#menu_best">리뷰순</a></li>
+								</ul>
+								<div class="con02">
+									<p class="t_11gr">
+										<input type="checkbox" name="prodStat" id="prodStat" value="Y"
+											class="chk"> 품절/절판제외
+									</p>
+								</div>
+							</div>
+						</div>
+
+							<!-- EL / JSTL / Foreach  -->
+							<c:forEach var="dto" items="${lists }">
+								<div class="prod_list_type prod_best_type">
+									<ul>
+										<li>
+											<div class="prod_thumb">
+												<span class="ranking"> <span class="rank_num">${dto.rnum }</span>
+													<span class="rank_change"> <img
+														src="http://image.bandinlunis.com/images/common/2014/ico_best_same.gif"
+														alt="-"> 0
+												</span>
+												</span>
+												<div class="prod_thumb_img">
+													<a href="/front/product/detailProduct.do?isbn=4181047"
+														onfocus="this.blur();"> <img
+														src="<%=cp %>/resources/image/book/${dto.bookImage }">
+
+													</a> <a class="btn_popup" target="_blank"
+														href="/webproject/book_info.action?isbn=${dto.isbn }"><span
+														class="ico_new">새창열기</span></a>
+												</div>
+												<a class="btn_preview"
+													href="javascript:popPreview('${dto.isbn }');">미리 보기</a>
+											</div>
+
+											<dl class="prod_info">
+												<dt>
+													<a href="/front/product/detailProduct.do?isbn=4181047"
+														onfocus="this.blur();"> ${dto.bookTitle } </a> <span
+														class="tag_area"> <span class="tag_best"><span>베스트</span></span>
+														<span class="tag_recom"><span>반디추천</span></span> <span
+														class="tag_free"><span>무료배송</span></span>
+													</span>
+												</dt>
+												<dd class="txt_block">
+													<span>${dto.authorName }</span> <span class="gap">|</span>
+													<span>${dto.publisher }</span> <span class="txt_date"><span
+														class="gap">|</span> <span>${dto.publishDate }</span></span>
+												</dd>
+												<dd class="mt5">
+													<p>
+														<span class="txt_reprice">${dto.bookPrice }</span> <span
+															class="txt_arrow">→</span> <span class="txt_price"><strong><em>${dto.discountedPrice }</em>원</strong>
+															(${dto.discountRate }%↓+5%P)</span>
+													</p>
+												</dd>
+												<dd class="txt_desc">
+													<div class="review_point">
+														<span style="width: ${dto.rate*10 }%;"></span>
+													</div>
+													<strong>${dto.rate }</strong> <a
+														href="/front/product/detailProduct.do?isbn=4181047#sub10"
+														target="_blank">리뷰<em>(${dto.reviewCnt })</em></a>
+												</dd>
+												<dd class="txt_bex">${dto.introduction }</dd>
+												<dd class="txt_ebook">
+													<span>지금 주문하면 <strong class="t_red">내일</strong>받을 수
+														있습니다.
+													</span>
+												</dd>
+											</dl>
+
+											<dl class="prod_btn">
+												<dt>
+													<span class="num_txt">수량</span> <input type="text"
+														id="cntVal_${dto.isbn }" value="1" class="num" size="3"
+														maxlength="2" onkeydown="onlyNumber();" onkeyup="">
+													<span class="btn_updn_wrap"><a
+														href="javascript:cntUp('${dto.isbn }');"
+														class="btn_num_up">▲</a><a
+														href="javascript:cntDown('${dto.isbn }');"
+														class="btn_num_dn">▼</a></span>
+												</dt>
+
+												<dd>
+													<a href="javascript:addCart('${dto.isbn }');"><span
+														class="btn_b_comm btype_f1">쇼핑카트</span></a>
+												</dd>
+												<dd class="mt3">
+													<a href="javascript:goOrder('${dto.isbn }');"><span
+														class="btn_w_comm btype_f1">바로구매</span></a>
+												</dd>
+												<dd class="mt3">
+													<a
+														href="javascript:add_wish_array_common('${dto.isbn }', true);"><span
+														class="btn_w_comm btype_f1">위시리스트</span></a>
+												</dd>
+											</dl>
+										</li>
+									</ul>
+								</div>
+							</c:forEach>
+
+
+						</div>
+						<!-- 베스트셀러 끝 -->
+
+
+						<!-- 새로나온 책 시작  -->
+						<div id="menu_new" class="tab-pane fade">
+							<h3>새로나온 책</h3>
+
+<div class="prod_sort sort_ver02">
+							<div class="sorting">
+								<ul class="con01">
+									<li><a style="cursor: pointer;"
+										href="<%=cp%>/book_self_improvement.action?pageNum=1&sort=&sort1st=${sort1st}&sort2nd=${sort2nd}#menu_best">순위
+											높은 순</a></li>
+									<li><a style="cursor: pointer;"
+										href="<%=cp%>/book_self_improvement.action?pageNum=1&sort=sort1&sort1st=${sort1st}&sort2nd=${sort2nd}#menu_best">발행일순</a></li>
+									<li><a style="cursor: pointer;"
+										href="<%=cp%>/book_self_improvement.action?pageNum=1&sort=sort2&sort1st=${sort1st}&sort2nd=${sort2nd}#menu_best">상품명순</a></li>
+									<li><a style="cursor: pointer;"
+										href="<%=cp%>/book_self_improvement.action?pageNum=1&sort=sort3&sort1st=${sort1st}&sort2nd=${sort2nd}#menu_best">평점순</a></li>
+									<li class="alt"><a style="cursor: pointer;"
+										href="<%=cp%>/book_self_improvement.action?pageNum=1&sort=sort4&sort1st=${sort1st}&sort2nd=${sort2nd}#menu_best">리뷰순</a></li>
+								</ul>
+								<div class="con02">
+									<p class="t_11gr">
+										<input type="checkbox" name="prodStat" id="prodStat" value="Y"
+											class="chk"> 품절/절판제외
+									</p>
+								</div>
+							</div>
+						</div>
+
+							<!-- EL / JSTL / Foreach  -->
+							<c:forEach var="dto" items="${lists }">
+								<div class="prod_list_type prod_best_type">
+									<ul>
+										<li>
+											<div class="prod_thumb">
+												<span class="ranking"> <span class="rank_num">${dto.rnum }</span>
+													<span class="rank_change"> <img
+														src="http://image.bandinlunis.com/images/common/2014/ico_best_same.gif"
+														alt="-"> 0
+												</span>
+												</span>
+												<div class="prod_thumb_img">
+													<a href="/front/product/detailProduct.do?isbn=4181047"
+														onfocus="this.blur();"> <img
+														src="<%=cp %>/resources/image/book/${dto.bookImage }">
+
+													</a> <a class="btn_popup" target="_blank"
+														href="/webproject/book_info.action?isbn=${dto.isbn }"><span
+														class="ico_new">새창열기</span></a>
+												</div>
+												<a class="btn_preview"
+													href="javascript:popPreview('${dto.isbn }');">미리 보기</a>
+											</div>
+
+											<dl class="prod_info">
+												<dt>
+													<a href="/front/product/detailProduct.do?isbn=4181047"
+														onfocus="this.blur();"> ${dto.bookTitle } </a> <span
+														class="tag_area"> <span class="tag_best"><span>베스트</span></span>
+														<span class="tag_recom"><span>반디추천</span></span> <span
+														class="tag_free"><span>무료배송</span></span>
+													</span>
+												</dt>
+												<dd class="txt_block">
+													<span>${dto.authorName }</span> <span class="gap">|</span>
+													<span>${dto.publisher }</span> <span class="txt_date"><span
+														class="gap">|</span> <span>${dto.publishDate }</span></span>
+												</dd>
+												<dd class="mt5">
+													<p>
+														<span class="txt_reprice">${dto.bookPrice }</span> <span
+															class="txt_arrow">→</span> <span class="txt_price"><strong><em>${dto.discountedPrice }</em>원</strong>
+															(${dto.discountRate }%↓+5%P)</span>
+													</p>
+												</dd>
+												<dd class="txt_desc">
+													<div class="review_point">
+														<span style="width: ${dto.rate*10 }%;"></span>
+													</div>
+													<strong>${dto.rate }</strong> <a
+														href="/front/product/detailProduct.do?isbn=4181047#sub10"
+														target="_blank">리뷰<em>(${dto.reviewCnt })</em></a>
+												</dd>
+												<dd class="txt_bex">${dto.introduction }</dd>
+												<dd class="txt_ebook">
+													<span>지금 주문하면 <strong class="t_red">내일</strong>받을 수
+														있습니다.
+													</span>
+												</dd>
+											</dl>
+
+											<dl class="prod_btn">
+												<dt>
+													<span class="num_txt">수량</span> <input type="text"
+														id="cntVal_${dto.isbn }" value="1" class="num" size="3"
+														maxlength="2" onkeydown="onlyNumber();" onkeyup="">
+													<span class="btn_updn_wrap"><a
+														href="javascript:cntUp('${dto.isbn }');"
+														class="btn_num_up">▲</a><a
+														href="javascript:cntDown('${dto.isbn }');"
+														class="btn_num_dn">▼</a></span>
+												</dt>
+
+												<dd>
+													<a href="javascript:addCart('${dto.isbn }');"><span
+														class="btn_b_comm btype_f1">쇼핑카트</span></a>
+												</dd>
+												<dd class="mt3">
+													<a href="javascript:goOrder('${dto.isbn }');"><span
+														class="btn_w_comm btype_f1">바로구매</span></a>
+												</dd>
+												<dd class="mt3">
+													<a
+														href="javascript:add_wish_array_common('${dto.isbn }', true);"><span
+														class="btn_w_comm btype_f1">위시리스트</span></a>
+												</dd>
+											</dl>
+										</li>
+									</ul>
+								</div>
+							</c:forEach>
+
+
+
+
+						</div>
+						<!-- 새로나온 책 끝  -->
+
+					
+
+						<!-- 정가인하 시작 -->
+						<div id="menu_discount" class="tab-pane fade">
+							<h3>정가인하</h3>
+
+<div class="prod_sort sort_ver02">
+							<div class="sorting">
+								<ul class="con01">
+									<li><a style="cursor: pointer;"
+										href="<%=cp%>/book_self_improvement.action?pageNum=1&sort=&sort1st=${sort1st}&sort2nd=${sort2nd}#menu_best">순위
+											높은 순</a></li>
+									<li><a style="cursor: pointer;"
+										href="<%=cp%>/book_self_improvement.action?pageNum=1&sort=sort1&sort1st=${sort1st}&sort2nd=${sort2nd}#menu_best">발행일순</a></li>
+									<li><a style="cursor: pointer;"
+										href="<%=cp%>/book_self_improvement.action?pageNum=1&sort=sort2&sort1st=${sort1st}&sort2nd=${sort2nd}#menu_best">상품명순</a></li>
+									<li><a style="cursor: pointer;"
+										href="<%=cp%>/book_self_improvement.action?pageNum=1&sort=sort3&sort1st=${sort1st}&sort2nd=${sort2nd}#menu_best">평점순</a></li>
+									<li class="alt"><a style="cursor: pointer;"
+										href="<%=cp%>/book_self_improvement.action?pageNum=1&sort=sort4&sort1st=${sort1st}&sort2nd=${sort2nd}#menu_best">리뷰순</a></li>
+								</ul>
+								<div class="con02">
+									<p class="t_11gr">
+										<input type="checkbox" name="prodStat" id="prodStat" value="Y"
+											class="chk"> 품절/절판제외
+									</p>
+								</div>
+							</div>
+						</div>
+
+							<!-- EL / JSTL / Foreach  -->
+							<c:forEach var="dto" items="${lists }">
+								<div class="prod_list_type prod_best_type">
+									<ul>
+										<li>
+											<div class="prod_thumb">
+												<span class="ranking"> <span class="rank_num">${dto.rnum }</span>
+													<span class="rank_change"> <img
+														src="http://image.bandinlunis.com/images/common/2014/ico_best_same.gif"
+														alt="-"> 0
+												</span>
+												</span>
+												<div class="prod_thumb_img">
+													<a href="/front/product/detailProduct.do?isbn=4181047"
+														onfocus="this.blur();"> <img
+														src="<%=cp %>/resources/image/book/${dto.bookImage }">
+
+													</a> <a class="btn_popup" target="_blank"
+														href="/webproject/book_info.action?isbn=${dto.isbn }"><span
+														class="ico_new">새창열기</span></a>
+												</div>
+												<a class="btn_preview"
+													href="javascript:popPreview('${dto.isbn }');">미리 보기</a>
+											</div>
+
+											<dl class="prod_info">
+												<dt>
+													<a href="/front/product/detailProduct.do?isbn=4181047"
+														onfocus="this.blur();"> ${dto.bookTitle } </a> <span
+														class="tag_area"> <span class="tag_best"><span>베스트</span></span>
+														<span class="tag_recom"><span>반디추천</span></span> <span
+														class="tag_free"><span>무료배송</span></span>
+													</span>
+												</dt>
+												<dd class="txt_block">
+													<span>${dto.authorName }</span> <span class="gap">|</span>
+													<span>${dto.publisher }</span> <span class="txt_date"><span
+														class="gap">|</span> <span>${dto.publishDate }</span></span>
+												</dd>
+												<dd class="mt5">
+													<p>
+														<span class="txt_reprice">${dto.bookPrice }</span> <span
+															class="txt_arrow">→</span> <span class="txt_price"><strong><em>${dto.discountedPrice }</em>원</strong>
+															(${dto.discountRate }%↓+5%P)</span>
+													</p>
+												</dd>
+												<dd class="txt_desc">
+													<div class="review_point">
+														<span style="width: ${dto.rate*10 }%;"></span>
+													</div>
+													<strong>${dto.rate }</strong> <a
+														href="/front/product/detailProduct.do?isbn=4181047#sub10"
+														target="_blank">리뷰<em>(${dto.reviewCnt })</em></a>
+												</dd>
+												<dd class="txt_bex">${dto.introduction }</dd>
+												<dd class="txt_ebook">
+													<span>지금 주문하면 <strong class="t_red">내일</strong>받을 수
+														있습니다.
+													</span>
+												</dd>
+											</dl>
+
+											<dl class="prod_btn">
+												<dt>
+													<span class="num_txt">수량</span> <input type="text"
+														id="cntVal_${dto.isbn }" value="1" class="num" size="3"
+														maxlength="2" onkeydown="onlyNumber();" onkeyup="">
+													<span class="btn_updn_wrap"><a
+														href="javascript:cntUp('${dto.isbn }');"
+														class="btn_num_up">▲</a><a
+														href="javascript:cntDown('${dto.isbn }');"
+														class="btn_num_dn">▼</a></span>
+												</dt>
+
+												<dd>
+													<a href="javascript:addCart('${dto.isbn }');"><span
+														class="btn_b_comm btype_f1">쇼핑카트</span></a>
+												</dd>
+												<dd class="mt3">
+													<a href="javascript:goOrder('${dto.isbn }');"><span
+														class="btn_w_comm btype_f1">바로구매</span></a>
+												</dd>
+												<dd class="mt3">
+													<a
+														href="javascript:add_wish_array_common('${dto.isbn }', true);"><span
+														class="btn_w_comm btype_f1">위시리스트</span></a>
+												</dd>
+											</dl>
+										</li>
+									</ul>
+								</div>
+							</c:forEach>
+
+
+
+						</div>
+						<!-- 정가인하 끝 -->
+
+
+
 					</div>
-					<!-- 베스트셀러 끝 -->
-
-
-					<!-- 새로나온 책 시작  -->
-					<div id="menu_new" class="tab-pane fade">
-						<h3>새로나온 책</h3>
-
-					</div>
-					<!-- 새로나온 책 끝  -->
-
-					<!-- 반디 추천 시작 -->
-					<div id="menu_recommend" class="tab-pane fade">
-						<h3>반디 추천</h3>
-
-					</div>
-					<!-- 반디 추천 끝 -->
-
-					<!-- 정가인하 시작 -->
-					<div id="menu_discount" class="tab-pane fade">
-						<h3>정가인하</h3>
-
-					</div>
-					<!-- 정가인하 끝 -->
-
-
+					<!-- tabContent -->
 
 				</div>
-				<!-- tabContent -->
+				<!-- Dynamic Tabs Div -->
 
 			</div>
-			<!-- Dynamic Tabs Div -->
+
+			<!-- 가운데 레이아웃 -->
 
 		</div>
-
-		<!-- 가운데 레이아웃 -->
-
-	</div>
-	<!-- footer -->
-	<jsp:include page="../../../common/footer.jsp" flush="false" />
-
+		<!-- footer -->
+		<jsp:include page="../../../common/footer.jsp" flush="false" />
 </body>
 </html>
