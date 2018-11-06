@@ -28,14 +28,14 @@
 					<a href="<%=cp%>/main.action">홈</a>
 				</li>
 				<li>
-					<a href="javascript://">회사소개</a>
+					<a href="<%=cp%>/company.action">회사소개</a>
 				</li>
 				<li>
 					반디앤루니스 소개
 				</li>
 			</ul>
 		</div>
-		<div class="menu_wrap">
+		<div class="smenu_wrap">
 			<div class="menuL">
 				<div class="menuImg">
 					<div class="menuImg_b">
@@ -81,17 +81,99 @@
 			</div>
 			<div class="body_content">
 				<div class="b_title">
-					<h2 class="noLine">
+					<h2 class="line">
 						<img src="<%=cp %>/resources/image/main/h2_overview.gif">
 					</h2>
 				</div>
+			</div>
+			<div class="bc_intro">
+				<p class="margin">
+					<img src="<%=cp%>/resources/image/main/txt_overview01.gif" style="border: 0; vertical-align: top;">
+				</p>
+				<p class="margin">
+					<img src="<%=cp%>/resources/image/main/txt_overview02.gif">
+				</p>
+				<table class="bc_table">
+					<tr>
+						<th>
+							<img src="<%=cp%>/resources/image/main/th02_nameCorp.gif">
+						</th>
+						<td>
+							주식회사
+							<strong>서울문고</strong>
+						</td>
+					</tr>
+					<tr>
+						<td colspan="2" class="line">
+					</tr>
+					<tr>
+						<th>
+							<img src="<%=cp%>/resources/image/main/th02_nameBrand.gif">
+						</th>
+						<td>
+							반디앤루니스
+						</td>
+					</tr>
+					<tr>
+						<td colspan="2" class="line">
+					</tr>
+					<tr>
+						<th>
+							<img src="<%=cp%>/resources/image/main/th02_representative.gif">
+						</th>
+						<td>
+							김천식
+						</td>
+					</tr>
+					<tr>
+						<td colspan="2" class="line">
+					</tr>
+					<tr>
+						<th>
+							<img src="<%=cp%>/resources/image/main/th02_dateFoundation.gif">
+						</th>
+						<td>
+							1988년 04월 29일
+						</td>
+					</tr>
+					<tr>
+						<td colspan="2" class="line">
+					</tr>
+					<tr>
+						<th>
+							<img src="<%=cp%>/resources/image/main/th02_address.gif">
+						</th>
+						<td>
+							(06627) 서울특별시 서초구 강남대로 331 광일플라자빌딩 14층
+						</td>
+					</tr>
+					<tr>
+						<td colspan="2" class="line">
+					</tr>
+					<tr>
+						<th>
+							<img src="<%=cp%>/resources/image/main/th02_homepage.gif">
+						</th>
+						<td>
+							www.bandinlunis.com
+						</td>
+					</tr>
+				</table>	
+			</div>
+			<div class="bc_img">
+				<p>
+					<img src="<%=cp%>/resources/image/main/img_overview01.jpg">
+				</p>
+				<p>
+					<img src="<%=cp%>/resources/image/main/img_overview02.jpg">
+				</p>
 			</div>
 		</div>
 	</div>
 </div>
 
 
-
+<jsp:include page="../common/footer.jsp" flush="false"/>
 
 </body>
 </html>

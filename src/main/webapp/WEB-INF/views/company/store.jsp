@@ -68,14 +68,14 @@
 					<a href="<%=cp%>/main.action">홈</a>
 				</li>
 				<li>
-					<a href="javascript://">회사소개</a>
+					<a href="<%=cp%>/company.action">회사소개</a>
 				</li>
 				<li>
 					매장소개
 				</li>
 			</ul>
 		</div>
-		<div class="menu_wrap">
+		<div class="smenu_wrap">
 			<div class="menuL">
 				<div class="menuImg">
 					<div class="menuImg_b">
@@ -195,30 +195,6 @@
 				<div class="storeContent">
 					<div class="storeInfo">
 						<div id="storeInfo"></div>
-	<!-- 					<div class="map_wrap" id="map_wrap1" style="display: block;">
-	
-						</div>
-						<div class="map_wrap" id="map_wrap2" style="display: block;">
-							<div class="map" id="map2" style="display: block;">
-								
-									* Daum 지도 - 약도서비스
-									* 한 페이지 내에 약도를 2개 이상 넣을 경우에는
-									* 약도의 수 만큼 소스를 새로 생성, 삽입해야 합니다.
-								
-								1. 약도 노드
-								<div id="daumRoughmapContainer1540878887129" class="root_daum_roughmap root_daum_roughmap_landing"></div>
-							
-								3. 실행 스크립트
-								<script charset="UTF-8">
-									new daum.roughmap.Lander({
-										"timestamp" : "1540878887129",
-										"key" : "qnct",
-										"mapWidth" : "685",
-										"mapHeight" : "340"
-									}).render();
-								</script>
-							</div>
-						</div> -->
 					</div>
 				</div>
 			</div>
