@@ -1396,28 +1396,7 @@ i {
 
 								</ul>
 							</div>
-							<div class="txt_profile_right mt10">
-								<span class="author_name">최근저서</span>
-								<ul>
-
-									<li>ㆍ<a
-										href="/front/product/detailProduct.do?prodId=4189934">[저서]숨은
-											골짜기의 단풍나무 한 그루 </a></li>
-
-									<li>ㆍ<a
-										href="/front/product/detailProduct.do?prodId=3826432">[저서]바이링궐
-											에디션 한국 대표 소설 110-13 ...</a></li>
-
-									<li>ㆍ<a
-										href="/front/product/detailProduct.do?prodId=3740738">[저서]사랑하라
-											희망 없이</a></li>
-
-									<li>ㆍ<a
-										href="/front/product/detailProduct.do?prodId=3613710">[저서]뱀장어
-											스튜-제26회 이상문학상 작품집(200...</a></li>
-
-								</ul>
-							</div>
+							
 							<div class="txt_profile_marge">
 								<p></p>
 								<p>${dto2.introduction }</p>

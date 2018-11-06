@@ -12,9 +12,9 @@
 		List<String> list2 = cookieUtil.getValueList("bookCookie", request); // 쿠키 가져와서 리스트로 반환			
 		request.setAttribute("list2", list2);
 	}
-
-	List<String> cList = cookieUtil.getValueList("bookCookie", request);
 	
+	List<String> cList = cookieUtil.getValueList("bookCookie", request);
+	System.out.print(cList);
 %>
 
 <script type="text/javascript">

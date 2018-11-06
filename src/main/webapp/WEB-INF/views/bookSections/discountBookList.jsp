@@ -373,26 +373,7 @@ function goSearch(sort) {
 						</div>
 						</c:forEach>
 
-						<!-- 
-						페이징 시작 - 이걸보고 page util에서 ab.append("");로 수정
-						<div class="pageTypeA">
-							<span class="prev-btn">	
-							<img src="/webproject/resources/images/searchN/btn_pagePrev.gif" align="absmiddle" hspace="2" border="0">
-							</span>
-							
-							<span class="pageNum">
-									<a class="on">1</a>
-							        <a href="/front/display/discountBookList.do?page=2#tabMenu">2</a>
-							    
-							</span>
-							<span class="next-btn">
-									<a href="/front/display/discountBookList.do?page=11#tabMenu"><img src="/webproject/resources/images/searchN/btn_pageNext.gif" align="absmiddle" hspace="2" border="0"></a>
-							
-							</span>
 
-						</div>
-						페이징 끝 
-						 -->
 						 <c:if test="${dataCount!=0 }">
 							${pageIndexListforJ }
 						</c:if>
