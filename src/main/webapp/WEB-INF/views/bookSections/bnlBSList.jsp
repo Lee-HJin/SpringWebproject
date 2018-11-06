@@ -18,9 +18,9 @@
 <link rel="shortcut icon" href="http://image.bandinlunis.com/favicon.ico" type="image/x-icon">
 <title>2조 반디앤루니스</title>
 
-
+<!-- <script type="text/javascript" src="/webproject/resources/common/js/jquery-3.3.1.js"></script> -->
 <script type="text/javascript" src="/webproject/resources/common/js/common.js"></script>
-<script type="text/javascript" src="/webproject/resources/common/js/jquery-3.3.1.js"></script>
+
 <script type="text/javascript" src="/webproject/resources/common/js/swfobject.js"></script>
 <script type="text/javascript" src="/webproject/resources/common/js/flashcommon.js"></script>
 <script type="text/javascript" src="/webproject/resources/common/js/AC_RunActiveContent.js"></script>
@@ -35,6 +35,7 @@
 <script type="text/javascript" src="/webproject/resources/js/jquery/jquery.blockUI.js"></script>
 <script type="text/javascript" src="/webproject/resources/js/jquery/idangerous.swiper.js"></script>
 
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <script type="text/javascript" src="https://wcs.naver.net/wcslog.js"></script>
 
 <!-- ADSSOM 신규 버전 17-11-20 -->
@@ -48,6 +49,148 @@
 <script type="text/javascript" src="/webproject/resources/js/dwr.js" charset="euc-kr"></script>
 <script type="text/javascript" src="/webproject/resources/js/jquery/jquery.min.js"></script><!-- IE8 에서 오류로 인해 일부러 넣음(jQuery 보다 dwr.util.js 가 밑에 있음 오류 발생) -->
 <script type="text/javascript" src="/webproject/resources/js/multiCart.js"></script>
+<script type="text/javascript">
+
+	navi.type = "path";
+	
+		navi.path = 401;
+
+	jutil.eventAdd(window, "onload", navi.make);
+
+	$(document).ready(function(){
+
+		$(".changeListSize").change(function(){
+			document.location.href = location.pathname+"?cateId=&listMode=&listType=&sort=sort8&prodStat=&prodRelSeq=&listSize="+this.value;
+		});
+		
+		$(".changeListType").change(function(){
+			document.location.href = location.pathname+"?cateId=&&listType=&listSize=20&sort=sort8&prodStat=&prodRelSeq=&listMode="+this.value;
+		});
+		
+		$(".sorting>ul>li>a").click(function(){
+			document.location.href = location.pathname+"?cateId=&listMode=&listType=&listSize=20&prodStat=&prodRelSeq=&sort="+this.id;
+		});
+		
+		$("#prodStat").click(function(){
+			var checkYn="Y";
+			if(!this.checked) checkYn="";
+			document.location.href = location.pathname+"?cateId=&listMode=&listType=&listSize=20&sort=sort8&prodRelSeq=&prodStat="+checkYn;
+		});
+		
+	});
+
+	// 쇼핑카트
+	function addCarts() {
+	
+		var obj 	= document.getElementsByName("prodId");
+		var p_arr = "";
+		var cnt = 0;
+		
+		for(var i=0;i<obj.length;i++){
+			if(obj[i].checked){
+				if(cnt>0){
+					p_arr += ",";
+				}
+				p_arr += obj[i].value;
+				cnt++;
+			}
+		}
+		
+		if(p_arr==""){
+			alert('선택된 항목이 없습니다.');
+			return;
+		}
+		
+		
+		var tmpArr	= p_arr.split(",");
+		var resultArr	= Array();
+		var cntArr		= Array();
+		
+		for(var i=0 ; i < tmpArr.length ; i++){
+			resultArr.push(" ");
+			cntArr.push(1);
+		}
+		
+		add_basket_array_common(p_arr,resultArr.join(","), cntArr.join(","),resultArr.join(","), true, callBack_);
+	}
+	
+	function callBack_()
+	{
+		jutil.bandi.reloadWiseCart("cart");
+	}
+	
+	// 위시리스트
+	function addWishes() 
+	{
+		var prodIds = jutil.form.getCheckboxValue("prodId");
+		
+		if(prodIds.length > 0){
+			add_wish_array_common(prodIds.join(","), true);
+		}else{
+			alert("상품을 선택해 주십시오");
+		}
+	}
+	
+	// 정렬
+	function changeSort(index) {
+	
+		var sort = document.getElementsByName("sorts");
+		
+		sort[0].selectedIndex = index;
+		sort[1].selectedIndex = index;
+		
+		document.bestForm.page.value = "1";
+		
+		goSearch();
+	}
+
+	function goTopHistory(recommendYear, recommendMonth, recommendWeek, rank) {
+		
+		frmObj = document.bestForm;
+		
+		frmObj.recommendYear.value = recommendYear;
+		frmObj.recommendMonth.value = recommendMonth;
+		frmObj.recommendWeek.value = recommendWeek;
+		
+		frmObj.pageNum.value = "1";
+		/* frmObj.sort.value = ""; */
+
+		frmObj.submit();
+	}	
+
+function goSearch(sort) {
+		
+		// 폼 검증
+		if (!jutil.form.validate("bestForm")) {
+			return;
+		}
+		
+		var totalPage = Number("5");
+		if (totalPage == 0) {
+			totalPage = 1;
+		}
+		
+		var frmObj = document.bestForm;
+
+		if (frmObj.sort.value == "") {
+			frmObj.sort.value = "sort8";
+		}
+		
+		var cageId = document.getElementsByName("cageId");
+		
+		var prodId = document.getElementsByName("isbn");
+		var orderCnt = document.getElementsByName("orderCnt");
+		
+		for (var i = 0; i < prodId.length; i++) {
+		
+			prodId[i].disabled = true;
+			orderCnt[i].disabled = true;
+		}
+
+		frmObj.submit();
+	}
+	
+</script>
 
 <script type="text/javascript">
 
@@ -94,7 +237,6 @@
 	$(function() {
 		
 		var ck = getCookie('cartlist');
-		alert(ck);
 		var ckOne = cookieInfo(ck);
 	});
 	
@@ -154,33 +296,33 @@
 						</h2>
 						
 						<ul class="cate_d1">
-							<li class="cate_d1_li on"><a href="<%=cp%>/bnlBSList.action?pageNum=1" class="cate_d1_link">종합</a></li>
-							<li class="cate_d1_li "><a href="<%=cp%>/bnlBSList.action?pageNum=1&sort1st=4&sort2nd=13" class="cate_d1_link">소설</a></li>
-							<li class="cate_d1_li "><a href="" class="cate_d1_link" class="cate_d1_link">장르소설</a></li>
-							<li class="cate_d1_li "><a href="<%=cp%>/bnlBSList.action?pageNum=1&sort1st=1&sort2nd=3" class="cate_d1_link">시/에세이/기행</a></li>
-							<li class="cate_d1_li "><a href="" class="cate_d1_link" class="cate_d1_link">인문/교양/철학</a></li>
-							<li class="cate_d1_li "><a href="" class="cate_d1_link" class="cate_d1_link">역사/신화/문화</a></li>
-							<li class="cate_d1_li "><a href="" class="cate_d1_link" class="cate_d1_link">종교</a></li>
-							<li class="cate_d1_li "><a href="" class="cate_d1_link" class="cate_d1_link">사회/정치/법률</a></li>
-							<li class="cate_d1_li "><a href="" class="cate_d1_link" class="cate_d1_link">경제/경영</a></li>
-							<li class="cate_d1_li "><a href="<%=cp%>/bnlBSList.action?pageNum=1&sort1st=14&sort2nd=17" class="cate_d1_link">자기계발</a></li>
-							<li class="cate_d1_li "><a href="" class="cate_d1_link" class="cate_d1_link">외국어/사전</a></li>
-							<li class="cate_d1_li "><a href="" class="cate_d1_link" class="cate_d1_link">가정/생활/요리</a></li>
-							<li class="cate_d1_li "><a href="" class="cate_d1_link" class="cate_d1_link">건강/의학/미용</a></li>
-							<li class="cate_d1_li "><a href="" class="cate_d1_link" class="cate_d1_link">유아</a></li>
-							<li class="cate_d1_li "><a href="" class="cate_d1_link" class="cate_d1_link">어린이</a></li>
-							<li class="cate_d1_li "><a href="" class="cate_d1_link" class="cate_d1_link">청소년교양</a></li>
-							<li class="cate_d1_li "><a href="" class="cate_d1_link" class="cate_d1_link">예술/대중문화</a></li>
-							<li class="cate_d1_li "><a href="" class="cate_d1_link" class="cate_d1_link">여행/취미/레저</a></li>
-							<li class="cate_d1_li "><a href="" class="cate_d1_link" class="cate_d1_link">잡지</a></li>
-							<li class="cate_d1_li "><a href="" class="cate_d1_link" class="cate_d1_link">만화</a></li>
-							<li class="cate_d1_li "><a href="" class="cate_d1_link" class="cate_d1_link">컴퓨터/IT</a></li>
-							<li class="cate_d1_li "><a href="" class="cate_d1_link" class="cate_d1_link">자연과학/공학</a></li>
-							<li class="cate_d1_li "><a href="" class="cate_d1_link" class="cate_d1_link">대학교재</a></li>
-							<li class="cate_d1_li "><a href="" class="cate_d1_link" class="cate_d1_link">아동전집</a></li>
-							<li class="cate_d1_li "><a href="" class="cate_d1_link" class="cate_d1_link">서양서</a></li>
-							<li class="cate_d1_li "><a href="" class="cate_d1_link" class="cate_d1_link">초등참고서</a></li>
-							<li class="cate_d1_li "><a href="" class="cate_d1_link" class="cate_d1_link">중/고등참고서</a></li>
+							<li class="cate_d1_li "><a href="<%=cp%>/bnlBSList.action?pageNum=1" class="cate_d1_link">종합</a></li>
+							<li class="cate_d1_li "><a href="<%=cp%>/bnlBSList.action?pageNum=1&sort1st=1&sort2nd=90" class="cate_d1_link">소설</a></li>
+							<li class="cate_d1_li "><a href="<%=cp%>/bnlBSList.action?pageNum=1&sort1st=91&sort2nd=114" class="cate_d1_link" class="cate_d1_link">장르소설</a></li>
+							<li class="cate_d1_li "><a href="<%=cp%>/bnlBSList.action?pageNum=1&sort1st=115&sort2nd=174" class="cate_d1_link">시/에세이/기행</a></li>
+							<li class="cate_d1_li "><a href="<%=cp%>/bnlBSList.action?pageNum=1&sort1st=292&sort2nd=380" class="cate_d1_link" class="cate_d1_link">인문/교양/철학</a></li>
+							<li class="cate_d1_li "><a href="<%=cp%>/bnlBSList.action?pageNum=1&sort1st=381&sort2nd=430" class="cate_d1_link" class="cate_d1_link">역사/신화/문화</a></li>
+							<li class="cate_d1_li "><a href="<%=cp%>/bnlBSList.action?pageNum=1&sort1st=431&sort2nd=473" class="cate_d1_link" class="cate_d1_link">종교</a></li>
+							<li class="cate_d1_li "><a href="<%=cp%>/bnlBSList.action?pageNum=1&sort1st=474&sort2nd=527" class="cate_d1_link" class="cate_d1_link">사회/정치/법률</a></li>
+							<li class="cate_d1_li "><a href="<%=cp%>/bnlBSList.action?pageNum=1&sort1st=197&sort2nd=254" class="cate_d1_link" class="cate_d1_link">경제/경영</a></li>
+							<li class="cate_d1_li "><a href="<%=cp%>/bnlBSList.action?pageNum=1&sort1st=255&sort2nd=291" class="cate_d1_link">자기계발</a></li>
+							<li class="cate_d1_li "><a href="<%=cp%>/bnlBSList.action?pageNum=1&sort1st=943&sort2nd=1012" class="cate_d1_link" class="cate_d1_link">외국어/사전</a></li>
+							<li class="cate_d1_li "><a href="<%=cp%>/bnlBSList.action?pageNum=1&sort1st=1275&sort2nd=1316" class="cate_d1_link" class="cate_d1_link">가정/생활/요리</a></li>
+							<li class="cate_d1_li "><a href="<%=cp%>/bnlBSList.action?pageNum=1&sort1st=1317&sort2nd=1362" class="cate_d1_link" class="cate_d1_link">건강/의학/미용</a></li>
+							<li class="cate_d1_li "><a href="<%=cp%>/bnlBSList.action?pageNum=1&sort1st=667&sort2nd=703" class="cate_d1_link" class="cate_d1_link">유아</a></li>
+							<li class="cate_d1_li "><a href="<%=cp%>/bnlBSList.action?pageNum=1&sort1st=704&sort2nd=773" class="cate_d1_link" class="cate_d1_link">어린이</a></li>
+							<li class="cate_d1_li "><a href="<%=cp%>/bnlBSList.action?pageNum=1&sort1st=175&sort2nd=196" class="cate_d1_link" class="cate_d1_link">청소년교양</a></li>
+							<li class="cate_d1_li "><a href="<%=cp%>/bnlBSList.action?pageNum=1&sort1st=528&sort2nd=666" class="cate_d1_link" class="cate_d1_link">예술/대중문화</a></li>
+							<li class="cate_d1_li "><a href="<%=cp%>/bnlBSList.action?pageNum=1&sort1st=1363&sort2nd=1419" class="cate_d1_link" class="cate_d1_link">여행/취미/레저</a></li>
+							<li class="cate_d1_li "><a href="<%=cp%>/bnlBSList.action?pageNum=1&sort1st=1420&sort2nd=1439" class="cate_d1_link" class="cate_d1_link">잡지</a></li>
+							<li class="cate_d1_li "><a href="<%=cp%>/bnlBSList.action?pageNum=1&sort1st=1440&sort2nd=1468" class="cate_d1_link" class="cate_d1_link">만화</a></li>
+							<li class="cate_d1_li "><a href="<%=cp%>/bnlBSList.action?pageNum=1&sort1st=1153&sort2nd=1274" class="cate_d1_link" class="cate_d1_link">컴퓨터/IT</a></li>
+							<li class="cate_d1_li "><a href="<%=cp%>/bnlBSList.action?pageNum=1&sort1st=607&sort2nd=609" class="cate_d1_link" class="cate_d1_link">자연과학/공학</a></li>
+							<li class="cate_d1_li "><a href="<%=cp%>/bnlBSList.action?pageNum=1&sort1st=1013&sort2nd=1152" class="cate_d1_link" class="cate_d1_link">대학교재</a></li>
+							<li class="cate_d1_li "><a href="<%=cp%>/bnlBSList.action?pageNum=1&sort1st=774&sort2nd=796" class="cate_d1_link" class="cate_d1_link">아동전집</a></li>
+							<li class="cate_d1_li "><a href="<%=cp%>/bnlBSList.action?pageNum=1&sort1st=1469&sort2nd=1518" class="cate_d1_link" class="cate_d1_link">서양서</a></li>
+							<li class="cate_d1_li "><a href="<%=cp%>/bnlBSList.action?pageNum=1&sort1st=798&sort2nd=839" class="cate_d1_link" class="cate_d1_link">초등참고서</a></li>
+							<li class="cate_d1_li "><a href="<%=cp%>/bnlBSList.action?pageNum=1&sort1st=840&sort2nd=942" class="cate_d1_link" class="cate_d1_link">중/고등참고서</a></li>
 						</ul>
 					</div>
 				</div>
@@ -188,7 +330,11 @@
 				<!-- left contents -->
 				<div class="con_t2">
 				<form name="bestForm" action="/webspring/bnlBSList.action" method="get" onsubmit="javascript:return false;">
-
+					<input type="hidden" name="searchType" value="top">
+					<input type="hidden" name="prodStat">
+					<input type="hidden" name="sort">
+					<input type="hidden" name="pageNum" value="1">
+				
 				<h3 class="cateTit p10"><span>종합 
 				<span class="t_11gr t_normal ml5">총 판매량과 주문수를 기준으로 매일 1회 업데이트 됩니다.</span></span></h3>
 
@@ -292,7 +438,7 @@
 									<span class="rank_num">${dto.rnum }</span>
 									<span class="rank_change">
 											<img src="http://image.bandinlunis.com/images/common/2014/ico_best_same.gif" alt="-">
-											0
+										<!-- 0 -->		
 									</span>
 								</span>
 								<div class="prod_thumb_img">
@@ -328,7 +474,7 @@
 									<a href="/front/product/detailProduct.do?isbn=4181047#sub10" target="_blank">리뷰<em>(${dto.reviewCnt })</em></a>
 								</dd>
 								<dd class="txt_bex">
-									${dto.introduction }
+									${dto.introduction }...
 								</dd>
 									<dd class="txt_ebook">
 									<span>지금 주문하면 <strong class="t_red">내일</strong>받을 수 있습니다.</span>

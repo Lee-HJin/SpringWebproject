@@ -57,7 +57,7 @@ public class bookSectionsController {
 		
 		if(sort1st == null && sort2nd == null){
 			sort1st = "1";
-			sort2nd = "99";
+			sort2nd = "9999";
 		}
 
 		/* 
@@ -463,10 +463,7 @@ public class bookSectionsController {
 
 		String ck = request.getParameter("isbn");
 		String ckC = request.getParameter("orderCount");
-		
-		System.out.println(ck);
-		System.out.println(ckC);
-		
+
 		List<BookSectionsDTO> lst = new ArrayList<BookSectionsDTO>();
 		
 		lst = raDao.cartList(ck,ckC);

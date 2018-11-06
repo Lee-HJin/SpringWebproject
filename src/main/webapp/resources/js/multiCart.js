@@ -46,29 +46,18 @@
 				var cookieValue = JSON.stringify({"isbn":isbn,"orderCount":ordCnt});
 				var ck = $("#cart_isbn"+isbn).val();
 				
-				if(document.cookie.indexOf('cartlist')==-1){
-					setCookie('cartlist',cookieValue,1);
-				}else if(document.cookie.indexOf('cartlist')!=-1){
+				if(document.cookie.indexOf('shop')==-1){
+					setCookie('shop',cookieValue,1);
+				}else if(document.cookie.indexOf('shop')!=-1){
 					addCookie(cookieValue,ck);
 				}
 			});
-			
-			//쿠키 생성
-			function setCookie(cName, cValue, cDay){
-				var expire = new Date();
-			    expire.setDate(expire.getDate() + cDay);
-			    cookies = cName + '=' + escape(cValue) + '; path=/ ';
-			    if(typeof cDay != 'undefined') cookies += ';expires=' + expire.toGMTString() + ';';
-			    document.cookie = cookies;
-			}
-			
+
 			//기존 쿠키에 추가
 			function addCookie(cValue,cVal){
-				var items = getCookie('cartlist');
+				var items = getCookie('shop');
 				//var maxItemNum = 10;
 				var flag = true;
-				
-				alert(cVal);
 				
 				if(items){
 					var itemArray=items.split('/');
@@ -89,14 +78,22 @@
 						}	
 					}
 					if(flag==false){
-						alert("왔다");
 						itemArray.unshift(cValue);
 /*						if(itemArray.length>maxItemNum){
 							itemArray.length=10;}*/
 						items = itemArray.join('/');
-						setCookie('cartlist',items,1);
+						setCookie('shop',items,1);
 					}
 				}
+			}
+			
+			//쿠키 생성
+			function setCookie(cName, cValue, cDay){
+				var expire = new Date();
+			    expire.setDate(expire.getDate() + cDay);
+			    cookies = cName + '=' + escape(cValue) + '; path=/ ';
+			    if(typeof cDay != 'undefined') cookies += ';expires=' + expire.toGMTString() + ';';
+			    document.cookie = cookies;
 			}
 					
 			function getCookie(cookiename){

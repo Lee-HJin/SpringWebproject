@@ -1,9 +1,10 @@
-<%@ page contentType="text/html; charset=UTF-8"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri ="http://java.sun.com/jsp/jstl/fmt" %>
 <%
 	request.setCharacterEncoding("UTF-8");
 	String cp = request.getContextPath();
-%>
+%> 
 <!DOCTYPE html>
 <html>
 <head>
@@ -42,7 +43,7 @@
 	
 	$(function() {
 	
-		var ck = cookieInfo(getCookie('cartlist'));
+		var ck = cookieInfo(getCookie('shop'));
 		
 		var cIsbn = new Array();
 		var ordCount = new Array();
@@ -65,7 +66,7 @@
 		params+= "&orderCount=" + ordCount; 
 	
 		var url = "<%=cp%>/cartList.action";
-		alert(params);
+		/* alert(params); */
 		
 		 $.post(url,params,function(args){
 			$("#nuriwork").html(args);
@@ -197,7 +198,9 @@
 						<a id="bandiDeduction" class="btn_del" style="cursor:pointer;"><img src="/webproject/resources/images/searchN/btn_cart_del02.gif" alt="선택상품 삭제"></a>
 					</div>
             	
-	            	<div id="nuriwork"></div>
+	            	<div id="nuriwork">
+	            	
+	            	</div>
 	            	
 	            	<div class="cart_pay_total">
 	            		<span class="fl_left mt3 ml10" id="bandiDeduction_totOrdCnt">수량: 1종(1개)</span>
