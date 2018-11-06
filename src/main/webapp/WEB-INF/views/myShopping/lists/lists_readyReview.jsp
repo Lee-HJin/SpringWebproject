@@ -22,8 +22,16 @@
 		<div>
 			<dl>
 				<dt><a href="<%=cp%>/book_info.action?isbn=${dto.isbn}"><b>${dto.bookTitle }</b></a></dt>
-				<dd><input type="button" value="리뷰쓰기" class="review_btn" onclick="javascript:location.href='<%=cp%>/book_review_created.action?isbn=${dto.isbn }';"></dd>
-				<dd style="margin-left: 5px;"><input type="button" value="간단평 쓰기" class="review_btn" onclick="javascript.href='<%=cp%>/book_review_created.action?isbn=${dto.isbn }';"></dd>
+				<dd>
+					<c:if test="${empty dto.reviewTitle }">
+						<input type="button" value="리뷰쓰기" class="review_btn" onclick="javascript:location.href='<%=cp%>/book_review_created.action?isbn=${dto.isbn }';">
+					</c:if>	
+				</dd>
+				<dd style="margin-left: 5px;">
+					<c:if test="${empty dto.sentence }">
+					<input type="button" value="간단평 쓰기" class="review_btn" onclick="javascript:location.href='<%=cp%>/myShopping/createSentence.action?isbn=${dto.isbn }';">
+					</c:if>
+				</dd>
 			</dl>
 		</div>
 	</li>

@@ -56,7 +56,7 @@
 			$('html, body').animate({scrollTop:0}, 350);
 		});
 		
-		var sck = cookieInfo(getCookie('book'));
+		var sck = cookieInfo(getCookie('rcbook'));
 		var sData = document.getElementById("side_today_view");
 		var sNoData = document.getElementById("side_today_nodata");
 		
@@ -86,7 +86,7 @@
 					shtml+= '<li class="swiper-slide">';
 				}
 				shtml+= '	<div class="tv_item">';
-				shtml+= '		<a href="<%=cp%>/tempbook.action?isbn='+ ck[i].isbn +'">';
+				shtml+= '		<a href="<%=cp%>/book_info.action?isbn='+ ck[i].isbn +'">';
 				shtml+= '			<img src="<%=cp%>/resources/image/book/'+ck[i].bookImage+'">';
 				shtml+= '		</a>';
 				shtml+= '	</div>';
@@ -163,7 +163,6 @@
 	<div class="ss_myshop">
     
 		<a href="<%=cp%>/myShopping/myReviewList.action">
-
 			나의 리뷰
 		</a>
 	</div>
@@ -178,22 +177,22 @@
 			<div class="top_menu" style="width: 1100px;">
 				<ul class="t_menu_list">
 					<c:if test="${empty sessionScope.userInfo.userId }">
-					<li class="t_menu login">
-						<a href="<%=cp %>/login.action" class="t_menu_link btn_login">로그인</a>
-					</li>
-					<li class="t_menu join">
-						<a href="<%=cp%>/login/mem_agree.action" class="t_menu_link">회원가입</a>
-					</li>
-					<li class="t_menu">
-						<a href="javascript://" class="t_menu_link">쇼핑카트</a>
-					</li>
+						<li class="t_menu login">
+							<a href="<%=cp %>/login.action" class="t_menu_link btn_login">로그인</a>
+						</li>
+						<li class="t_menu join">
+							<a href="<%=cp%>/login/mem_agree.action" class="t_menu_link">회원가입</a>
+						</li>
+						<li class="t_menu">
+							<a href="<%=cp %>/shopCartList.action" class="t_menu_link">쇼핑카트</a>
+						</li>
  					</c:if>
 					<c:if test="${!empty sessionScope.userInfo.userId }"> 
 						<li class="t_menu logout">
 							<a href="<%=cp %>/logout.action" class="t_menu_link btn_logout">로그아웃</a>
 						</li>
 						<li class="t_menu join">
-						<a href="javascript://" class="t_menu_link">쇼핑카트</a>
+							<a href="<%=cp%>/shopCartList.action" class="t_menu_link">쇼핑카트</a>
 						</li>
  					</c:if>
 					

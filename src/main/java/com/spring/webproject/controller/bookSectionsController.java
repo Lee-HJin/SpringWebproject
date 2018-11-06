@@ -1,6 +1,8 @@
 package com.spring.webproject.controller;
 
+import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -8,11 +10,15 @@ import javax.servlet.http.HttpServletResponse;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.spring.webproject.dao.BookSectionsDAO;
+import com.spring.webproject.dao.LoginDAO;
 import com.spring.webproject.dto.BookSectionsDTO;
+import com.spring.webproject.dto.MainDTO;
 import com.spring.webproject.util.MyUtil;
 
 @Controller
@@ -21,6 +27,10 @@ public class bookSectionsController {
 	@Autowired
 	@Qualifier("bookSectionsDAO")
 	BookSectionsDAO raDao;
+	
+	@Autowired
+	@Qualifier("loginDAO")
+	LoginDAO leeDao; /* UserDTO*/
 	
 	@Autowired
 	MyUtil raMyUtil;
@@ -437,7 +447,7 @@ public class bookSectionsController {
 	
 	@RequestMapping(value="shopCartList.action", method= {RequestMethod.GET, RequestMethod.POST})
 	public String shopCartList(HttpServletRequest request, HttpServletResponse response) throws Exception {
-		
+
 		return "shopAndOrder/shopCartList";
 	}
 	
@@ -445,6 +455,25 @@ public class bookSectionsController {
 	public String order(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		
 		return "shopAndOrder/order";
+	}
+	
+	@RequestMapping(value="cartList.action", method= {RequestMethod.GET, RequestMethod.POST})
+	public String cartList(HttpServletRequest request, HttpServletResponse response) throws Exception {
+		
+
+		String ck = request.getParameter("isbn");
+		String ckC = request.getParameter("orderCount");
+		
+		System.out.println(ck);
+		System.out.println(ckC);
+		
+		List<BookSectionsDTO> lst = new ArrayList<BookSectionsDTO>();
+		
+		lst = raDao.cartList(ck,ckC);
+		
+		request.setAttribute("lst", lst);
+		
+		return "shopAndOrder/cartList";
 	}
 
 

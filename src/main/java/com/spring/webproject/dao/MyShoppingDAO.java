@@ -280,9 +280,9 @@ public class MyShoppingDAO {
 
 	}
 
-	public List<MainDTO> readyReviewList (Map<String, Object> map) {
+	public List<MyReviewDTO> readyReviewList (Map<String, Object> map) {
 
-		List<MainDTO> lists = sessionTemplate.selectList("myShopping.readyReviewList",map);
+		List<MyReviewDTO> lists = sessionTemplate.selectList("myShopping.readyReviewList",map);
 
 		return lists;
 
@@ -461,6 +461,35 @@ public class MyShoppingDAO {
 	public void reviewUpdate(Map<String, Object> map) {
 	
 		sessionTemplate.update("myShopping.reviewUpdate",map);
+		
+	}
+	
+	public MyReviewDTO readBook(String isbn) {
+		
+		MyReviewDTO dto = sessionTemplate.selectOne("myShopping.readBook",isbn);
+		
+		return dto;
+		
+	}
+	
+	public int getReviewId() {
+		
+		return sessionTemplate.selectOne("myShopping.getReviewId");
+		
+	}
+	
+	public void createSentence(Map<String, Object> map) {
+		
+		sessionTemplate.insert("myShopping.createSentence",map);
+	}
+	
+	public void updateSentence(int reviewId, String sentence) {
+		
+		Map<String, Object> map = new HashMap<String, Object>();
+		map.put("reviewId", reviewId);
+		map.put("sentence", sentence);
+		
+		sessionTemplate.update("myShopping.updateSentence",map);
 		
 	}
 

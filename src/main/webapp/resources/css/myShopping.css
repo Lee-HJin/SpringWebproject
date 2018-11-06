@@ -205,5 +205,12 @@ a:hover {text-decoration: underline; color: #886e45;}
 .review_article_btn {color: #555555; background-color: #fafafa; border: 1px solid #d5d5d5; height: 30px; width: 100px; font-weight: bold; cursor: pointer; font-size: 11pt;}
 .review_article_btn:hover {color: #555555; background-color: #fafafa; border: 1px solid #555555; height: 30px; width: 100px; font-weight: bold; cursor: pointer; font-size: 11pt;}
 
+.sentence_contents {padding: 10px; border: 1px solid #d5d5d5;}
+.sentence_contents table {font-family: 맑은고딕; border-collapse: collapse;}
+.sentence_contents tr {border-bottom: 1px solid #d5d5d5; border-top: 1px solid #d5d5d5; text-align: left; height: 45px;}
+.sentence_contents th {background-color: #fafafa; width: 150px; padding-left: 20px; font-size: 10pt;}
+.sentence_contents td {padding-left: 10px; width: 700px;}
+.sentence_contents textarea {font-family: 맑은고딕;}
+
 
 

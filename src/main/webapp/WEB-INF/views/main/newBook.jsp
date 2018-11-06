@@ -17,7 +17,7 @@
 		<c:forEach var="nb" items="${lst }">
 			<div class="swiper-slide">
 				<div class="wrap_b_img">
-					<a href="<%=cp%>/tempbook.action?isbn=${nb.isbn}">
+					<a href="<%=cp%>/book_info.action?isbn=${nb.isbn}">
 						<img src="<%=cp%>/resources/image/book/${nb.bookImage}">
 					</a>
 					<dl class="rb_title">

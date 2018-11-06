@@ -6,6 +6,7 @@ import java.util.Iterator;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.xml.ws.Response;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -43,12 +44,6 @@ public class LoginController {
 			bookCookie.add(recentCookie.get(i));
 		}
 		
-		///////////////////////////////
-		Iterator<String> it = bookCookie.iterator();
-		while(it.hasNext()) {
-			System.out.println(it.next());
-		}
-		
 		return "login_ok.action";
 	}
 	
@@ -70,14 +65,41 @@ public class LoginController {
 			
 			//회원 등급 정보 불러오기
 			
-			//최근 본 상품 불러오기(쿠키에 있는 상품을 DB에 합침)
-			//쿠키 가져오기
+			//최근 본 상품(쿠키에 있는 상품을 DB에 합침)
+			//쿠키 가져오기(bookCookie)
+			if(bookCookie!=null) {
+			
+				Iterator<String> it = bookCookie.iterator();
+				
+				while(it.hasNext()) {
+					
+					//리스트로 받은 쿠키에 저장된 isbn 풀어내기
+					String isbn = it.next();
+					
+					//이미 recentList에 있는 책인지 확인
+					int check = dao.checkRecentBook(userId, isbn);
+					
+					//check가 0이면 DB에 없는책
+					//insert실행
+					if(check==0) {
+						dao.recentBookAdd(userId, isbn);
+					}
+					//check가 0이 아니면 DB안에 이미 있는책
+					//최근 본 날짜만 update실행
+					else {
+						dao.updateRecentBookTime(userId, isbn);
+					}
+					
+				}	
+			}
 
 			//세션 - dto, pointValue 올리기
+			request.getSession().setAttribute("userId", userId);
 			request.getSession().setAttribute("userInfo", dto);
 			request.getSession().setAttribute("pointValue", pointValue);
 			request.getSession().removeAttribute("message");
 			returnUrl = "redirect:/main.action";
+			
 
 		}
 		else {	//로그인 실패
