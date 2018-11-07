@@ -29,12 +29,12 @@
 
 <!-- 로그인 시 최근 본 상품 쿠키+DB -->
 <insert id="recentBookAdd" parameterType="map">
-	insert into recentlist values(#{userId},#{isbn},sysdate)
+	insert into recentlist values(#{userId},#{isbn},systimestamp)
 </insert>
 
 <!-- 최근 본 상품 본 시간 update -->
 <update id="updateRecentBookTime" parameterType="map">
-	update recentlist set viewDate=sysdate where userId=#{userId} and isbn=#{isbn}
+	update recentlist set viewDate=systimestamp where userId=#{userId} and isbn=#{isbn}
 </update>
 
 <!-- 적립금 pointId 찾기 -->

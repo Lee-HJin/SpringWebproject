@@ -217,7 +217,7 @@ minus select isbn from (select isbn, nvl(count(isbn),0) reviewcount from review 
 
 <!-- 최근 본 상품 리스트  -->
 <select id="LatesBooksList" parameterType="map" resultType="com.spring.webproject.dto.MainDTO">
-select * from (select rownum rnum, a.isbn,booktitle, authorName, publisher, bookimage, discountedPrice, discountRate from (select isbn from recentList where userId=#{userId} order by viewDate desc) a, booksections where a.isbn=booksections.isbn) 
+select * from (select rownum rnum, a.isbn,booktitle, authorName, publisher, bookimage, discountedPrice, discountRate from (select isbn from recentList where userId=#{userId} order by viewDate) a, booksections where a.isbn=booksections.isbn) 
 <![CDATA[where rnum>=#{start} and rnum<=#{end}]]>
 </select>
 
