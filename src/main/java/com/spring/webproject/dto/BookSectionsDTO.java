@@ -151,7 +151,7 @@ public class BookSectionsDTO {
 	public int getSeqNum() {
 		return seqNum;
 	}
-	public void setSeq(int seqNum) {
+	public void setSeqNum(int seqNum) {
 		this.seqNum = seqNum;
 	}
 	

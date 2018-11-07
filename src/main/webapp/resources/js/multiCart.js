@@ -16,9 +16,9 @@
 			ordCnt = 99;
 		}
 		$("#cntVal_"+isbn).val(ordCnt);
-		
+	
 	}
-
+	
 	//카운트 감소
 	function cntDown(isbn) {
 		
@@ -35,6 +35,77 @@
 		$("#cntVal_"+isbn).val(ordCnt);
 		
 	}
+	
+	function calculation() {
+		
+		var bookItems = $(".storeId_1").length;
+		
+		
+		$("#bandiDeduction_totOrdCnt").text("수량: "+bookItems+"종(" + 1 +"개)");
+		
+	}
+	
+	//카운트 증가(cartList)
+	function cntUp2(isbn, seqNum) {
+		//카운트 ㅅㅈ
+		var ordCnt = parseInt($("#cntVal_"+isbn).val());
+		var discountedPrice = parseInt($("#pricePerBook_"+seqNum).val());
+		if(isNaN(ordCnt)) {
+			ordCnt = 1;
+		}else {
+			ordCnt++;
+		}
+		if(ordCnt > 99) {
+			alert("최대 수량입니다.");
+			ordCnt = 99;
+		}
+
+		$("#cntVal_"+isbn).val(ordCnt);
+		$("#costVal_"+isbn).text(ordCnt*discountedPrice+"원");
+		//카운트 ㄲ
+		
+		/*
+		//수량: 2종(5개)
+		var bookItems = $(".storeId_1").length; //2종
+		var bookCounts = ""; // 5개
+		
+		for (var i=1; i<=bookItems; i++){
+			$("#costVal_"+isbn).value()
+		}
+		
+		$("bandiDeduction_totOrdCnt").text("수량: "+bookItems+"종(" + 1 +"개)");
+		*/
+	}
+
+	//카운트 감소(cartList)
+	function cntDown2(isbn, seqNum) {
+		
+		var ordCnt = parseInt($("#cntVal_"+isbn).val());
+		var discountedPrice = parseInt($("#pricePerBook_"+seqNum).val());
+		if(isNaN(ordCnt)) {
+			ordCnt = 1;
+		}else {
+			ordCnt--;
+		}
+		if(ordCnt < 1) {
+			alert("최소 수량입니다.");
+			ordCnt = 1;
+		}
+		$("#cntVal_"+isbn).val(ordCnt);
+		$("#costVal_"+isbn).text(ordCnt*discountedPrice+"원");
+		
+	}
+	
+	function updateShopCart(isbn, seqNum) {
+		var ordCnt = parseInt($("#cntVal_"+isbn).val());
+		var discountedPrice = parseInt($("#pricePerBook_"+seqNum).val());
+		
+		$("#costVal_"+seqNum).text(ordCnt*discountedPrice+"원");
+		alert("수정하였습니다.")
+		
+	}
+
+	
 	//북카트
 	function addCart(isbn) {
 		var ordCnt = $("#cntVal_"+isbn).val();

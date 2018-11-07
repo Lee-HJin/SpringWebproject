@@ -465,7 +465,7 @@ public class BookSectionsDAO {
 			BookSectionsDTO dto = sessionTemplate.selectOne("shopAndOrderMapper.cartLists",isbn[i]);
 			dto.setOrderCount(orderCount[i]);
 			int seqNum = 1000+i;
-			dto.setSeq(seqNum);
+			dto.setSeqNum(seqNum);
 			
 			
 			lst.add(dto);
