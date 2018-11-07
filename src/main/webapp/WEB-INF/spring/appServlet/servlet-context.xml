@@ -63,19 +63,25 @@
 		<beans:property name="sessionTemplate"
 			ref="sessionTemplate"></beans:property>
 	</beans:bean>
-  
-	<beans:bean id="questionDAO" class="com.spring.webproject.dao.QuestionDAO">
-		<beans:property name="sqlSessionTemplate" ref="sessionTemplate"></beans:property>
+
+	<beans:bean id="questionDAO"
+		class="com.spring.webproject.dao.QuestionDAO">
+		<beans:property name="sqlSessionTemplate"
+			ref="sessionTemplate"></beans:property>
 	</beans:bean>
-	
-	<beans:bean id="searchDAO" class="com.spring.webproject.dao.SearchDAO">
-		<beans:property name="sqlSessionTemplate" ref="sessionTemplate"/>
+
+	<beans:bean id="searchDAO"
+		class="com.spring.webproject.dao.SearchDAO">
+		<beans:property name="sqlSessionTemplate"
+			ref="sessionTemplate" />
 	</beans:bean>
-	
-	<beans:bean id="bookSectionsDAO" class="com.spring.webproject.dao.BookSectionsDAO">
-		<beans:property name="sessionTemplate" ref="sessionTemplate"/>
+
+	<beans:bean id="bookSectionsDAO"
+		class="com.spring.webproject.dao.BookSectionsDAO">
+		<beans:property name="sessionTemplate"
+			ref="sessionTemplate" />
 	</beans:bean>
-	
+
 	<!-- MyBatis -->
 	<beans:bean id="sessionTemplate"
 		class="org.mybatis.spring.SqlSessionTemplate">
@@ -123,4 +129,11 @@
 				class="com.spring.webproject.interceptor.Interceptor" />
 		</mvc:interceptor>
 	</mvc:interceptors>
+
+	<!-- 파일 업로드로 들어오는 데이터를 처리하는 객체 -->
+	<beans:bean id="multipartResolver"
+		class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
+		<beans:property name="maxUploadSize" value="10485760" /> 
+		<!-- 10mb 제한 -->
+	</beans:bean>
 </beans:beans>

@@ -45,21 +45,13 @@
 			if (searchValue != "null") {
 				url += "&searchValue=" + searchValue;
 			} else {
-				url = "admin_users.action?page=${pageMaker.cri.page}";
+				url = "admin_quantity.action?page=${pageMaker.cri.page}";
 			}
 
 		}
 		
 		return url;
 		
-	}
-	
-	function deleteUser(userId) {
-
-		var url = "admin_users_delete.action?userId="+userId+"&page=${pageMaker.cri.page}";
-
-		location.href=makeURL(url);
-
 	}
 	
 
@@ -69,20 +61,16 @@
 			$("#search_concept").text($(this).text());
 
 			if ($(this).val() == 1) {
-				searchKey = "id";
+				searchKey = "isbn";
 			} else if ($(this).val() == 2) {
-				searchKey = "name";
-			} else if ($(this).val() == 3) {
-				searchKey = "email";
-			} else if ($(this).val() == 4) {
-				searchKey = "nickname";
-			}
+				searchKey = "booktitle";
+			} 
 		});
 
 		$(".form-control").change(function() {
 			searchValue = $(this).val();
 
-			var url = "admin_users.action?page=${pageMaker.cri.page}";
+			var url = "admin_quantity.action?page=${pageMaker.cri.page}";
 
 			$(location).attr('href', makeURL(url));
 		});
@@ -104,7 +92,7 @@
 <body>
 
 
-	<div class="search_container" style="width: 1200px; margin: 20px auto;">
+	<div class="search_container" style="width:700px; margin: 20px auto;">
 		<div class="row">
 			<div class="col-xs-8 col-xs-offset-2">
 				<div class="input-group">
@@ -114,10 +102,8 @@
 							<span id="search_concept">---</span> <span class="caret"></span>
 						</button>
 						<ul class="dropdown-menu" role="menu">
-							<li style="cursor: pointer;" class="searchKey" value=1><a>아이디</a></li>
-							<li style="cursor: pointer;" class="searchKey" value=2><a>이름</a></li>
-							<li style="cursor: pointer;" class="searchKey" value=3><a>이메일</a></li>
-							<li style="cursor: pointer;" class="searchKey" value=4><a>닉네임</a></li>
+							<li style="cursor: pointer;" class="searchKey" value=1><a>isbn</a></li>
+							<li style="cursor: pointer;" class="searchKey" value=2><a>책이름</a></li>
 						</ul>
 					</div>
 					<input type="text" class="form-control" name="x"
@@ -132,65 +118,70 @@
 	</div>
 
 
-	<div class="table">
-		<form name="userList" method="post" action="">
+	<div class="quantity_table" style="width: 1200px; margin: 20px auto;">
 			<table class="table table-bordered">
 				<thead>
 					<tr>
 						<th scope="col">no</th>
-						<th scope="col">아이디</th>
-						<th scope="col">이름</th>
-						<th scope="col">닉네임</th>
-						<th scope="col">등급</th>
-						<th scope="col">포인트</th>
-						<th scope="col">이메일</th>
-						<th scope="col">전화번호</th>
-						<th scope="col">주소</th>
-						<th>삭제</th>
+						<th scope="col">책이름</th>
+						<th scope="col">ISBN</th>
+						<th scope="col">총수량</th>
+						<th scope="col">신세계강남점</th>
+						<th scope="col">신세계센텀시티점</th>
+						<th scope="col">롯데월드몰점</th>
+						<th scope="col">여의도신영증권점</th>
+						<th scope="col">대구신세계점</th>
+						<th scope="col">롯데몰수원점</th>
+						<th scope="col">신세계김해점</th>
+						<th scope="col">롯데스타시티점</th>
+						<th scope="col">신림역점</th>
+						<th scope="col">사당역점</th>
+						<th scope="col">목동점</th>
+						<th scope="col">롯데피트인산본점</th>
+						<th scope="col">롯데울산점</th>
 					</tr>
 				</thead>
 				<tbody>
 
-					<c:forEach var="user" items="${userList}" varStatus="status">
+					<c:forEach var="quantity" items="${quantityList}" varStatus="status">
 						<tr>
 							<td>${(status.index + pageMaker.cri.numPerPage * (pageMaker.cri.page-1))+1 }</td>
-							<td>${user.userId }</td>
-							<td>${user.userName }</td>
-							<td>${user.nickName }</td>
-							<td>${user.memberGrade }</td>
-							<td>${user.point }</td>
-							<td>${user.email}</td>
-							<td>${user.phone }</td>
-							<td>${user.zipCode}${user.address1 }${user.address2 }</td>
-							<td>
-							<button type="button" class="btn" id="del_btn" onclick="deleteUser('${user.userId}')">삭제</button>
-							
-							<%--  	<button type="button" class="btn"
-									onclick="location.href='<%=cp %>/admin_users_delete.action?userId=${user.userId }&page=${pageMaker.cri.page}&searchKey=${pageMaker.cri.searchKey}&searchValue=${pageMaker.cri.searchValue}'">삭제</button>
-							 --%>
-							</td>
+							<td>${quantity.booktitle }</td>
+							<td>${quantity.isbn }</td>
+							<td>${quantity.total }</td>
+							<td>${quantity.a }</td>
+							<td>${quantity.b }</td>
+							<td>${quantity.c }</td>
+							<td>${quantity.d }</td>
+							<td>${quantity.e }</td>
+							<td>${quantity.f }</td>
+							<td>${quantity.g }</td>
+							<td>${quantity.h }</td>
+							<td>${quantity.i }</td>
+							<td>${quantity.j }</td>
+							<td>${quantity.k }</td>
+							<td>${quantity.l }</td>
+							<td>${quantity.m }</td>
 						</tr>
 					</c:forEach>
 				</tbody>
 			</table>
-		</form>
-
 	</div>
 
 
 	<div style="display: table; margin: 0 auto;">
 		<ul class="pagination">
 			<c:if test="${pageMaker.pre }">
-				<li><a onclick="paging('<%=cp %>/admin_users.action?page=${pageMaker.startPage-1}')">&lt;</a></li>
+				<li><a onclick="paging('<%=cp %>/admin_quantity.action?page=${pageMaker.startPage-1}')">&lt;</a></li>
 			</c:if>
 			<c:forEach begin="${pageMaker.startPage }"
 				end="${pageMaker.endPage }" var="idx">
 				<li><a
-					href="<%=cp %>/admin_users.action?page=${idx}&searchKey=${pageMaker.cri.searchKey}&searchValue=${pageMaker.cri.searchValue}">${idx }</a></li>
+					href="<%=cp %>/admin_quantity.action?page=${idx}&searchKey=${pageMaker.cri.searchKey}&searchValue=${pageMaker.cri.searchValue}">${idx }</a></li>
 			</c:forEach>
 			<c:if test="${pageMaker.nex }">
 				<li><a
-					href="<%=cp %>/admin_users.action?page=${pageMaker.endPage+1}&searchKey=${pageMaker.cri.searchKey}&searchValue=${pageMaker.cri.searchValue}">&gt;</a></li>
+					href="<%=cp %>/admin_quantity.action?page=${pageMaker.endPage+1}&searchKey=${pageMaker.cri.searchKey}&searchValue=${pageMaker.cri.searchValue}">&gt;</a></li>
 			</c:if>
 		</ul>
 	</div>
