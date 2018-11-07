@@ -36,17 +36,23 @@ public class BooksDAO {
 		return dto;
 	}
 
-	// 카테고리 리스트 가져오기
+	// 카테고리 리스트1 가져오기
 	public List<CateDTO2> getReadCateList(int categoryId) {
 		List<CateDTO2> lists = sessionTemplate.selectList("bookMapper.getReadCateList", categoryId);
 		return lists;
 	}
 
-	// 카테고리 리스트 가져오기
+	// 카테고리 리스트2 가져오기
 	public List<CateDTO2> getReadCateList2(int categoryId) {
 		List<CateDTO2> lists = sessionTemplate.selectList("bookMapper.getReadCateList2", categoryId);
 		return lists;
 	}
+	
+	// 카테고리 리스트2 가져오기
+		public List<CateDTO> getReadCateList3(int categoryId) {
+			List<CateDTO> lists = sessionTemplate.selectList("bookMapper.getReadCateList3", categoryId);
+			return lists;
+		}
 
 	// 책 정보 가져오기
 	public BooksDTO getReadBookData(String isbn) {
