@@ -181,6 +181,11 @@ update orders set orderStatusCode=2 where orderId=#{orderId}
 update orders set orderStatusCode=6 where orderId=#{orderId}
 </update>
 
+<!-- 구매 완료시 적립금 적립 -->
+<insert id="savePoint" parameterType="map">
+insert into point values(#{userId}, sysdate, to_date(to_char(sysdate+365,'YYYY-MM-DD ') || '23:59:59','YYYY-MM-DD HH24:MI:SS'),#{orderId},#{value},'도서구입',#{pointId},#{leftValue})
+</insert>
+
 <!-- 교환 신청 -->
 <update id="exchangeOrder" parameterType="java.lang.String">
 update orders set orderStatusCode=4 where orderId=#{orderId}

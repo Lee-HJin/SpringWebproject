@@ -587,8 +587,16 @@ public class MyShoppingDAO {
 		List<CounselDTO> lists = sessionTemplate.selectList("myShopping.getCounselListNo",map);
 
 		return lists;
-
+		
 	}
+	
+	public void savePoint(Map<String, Object> map) {
+		
+		sessionTemplate.insert("myShopping.savePoint",map);
+		
+	}
+	
+	
 	
 	
 	
