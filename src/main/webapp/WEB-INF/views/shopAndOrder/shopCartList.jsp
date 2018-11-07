@@ -57,6 +57,7 @@
 			return;
 		}
 		cartList(cIsbn,ordCount);		
+		
 	});
 	
 	
@@ -83,7 +84,7 @@
 		    if(cookiearray[i].indexOf(cookiename)!=-1){
 		        var nameVal = cookiearray[i].split("=");
 		        nameVal = nameVal[1].trim();
-		        
+		        alert(nameVal);
 		        return unescape(nameVal);
 		    }else{
 		    	var cookie = null;
@@ -103,10 +104,63 @@
  	 		for(i=0;i<cookie.length;i++){
  	 			ck[i] = JSON.parse(cookie[i]);
  	 		} 		
+ 	 		alert(ck);
  	 		return ck;
  		}else{
  			return null;
  		}
+	}
+	
+	//체크박스 값 배열에 정리하기
+	function chkToArray(){
+		
+		//체크박스 선택된 값을 담을 array
+		var checkArray = new Array();
+		//체크박스 객체
+		var chkbox = $('.check_bandiDeduction');
+		
+		for(var i=0;i<chkbox.length;i++){
+			if(chkbox[i].checked == true){
+				checkArray.push(chkbox[i].value);
+			}
+		}
+		
+		return checkArray; 
+		alert(checkArray);
+	}
+	
+	
+/* 	
+	//쿠키 삭제
+	function deleteCookie(cookieName){
+		
+		var items = getCookie('shop');
+		
+		var flag = true;
+		
+		if(items){
+			var itemArray=items.split('/');
+			var ck = new Array();
+			
+			for(i=0;i<itemArray.length;i++){
+ 	 			ck[i] = JSON.parse(itemArray[i]);
+ 	 		}
+		
+		var chk =  chkToArray();
+		
+		for(i=0;i<chk.length;i++){
+			
+			var idx = chk.findIndex(function(item) {
+				return item === chk[i];
+			});		
+			itemArray.splice(idx,1);
+			
+		}
+	var expireDate = new Date();
+	expireDate.setDate(expireDate.getDate() - 1);
+
+	document.cookie = cookieName + "= " + "; expires=" + expireDate.toGMTString();
+	 */
 	}
 
 </script>
@@ -180,7 +234,7 @@
 						<a id="bandiDeduction" class="btn_bookSelf" style="cursor:pointer;"><img src="/webproject/resources/images/searchN/btn_cart_move_bookself.gif" alt="선택상품 북셀프로 주문하기"></a>
  						
 						<a href="javascript:array_interest(1);"><img src="/webproject/resources/images/searchN/btn_cart_wishlist02.gif" alt="선택상품 위시리스트 담기"></a>
-						<a id="bandiDeduction" class="btn_del" style="cursor:pointer;"><img src="/webproject/resources/images/searchN/btn_cart_del02.gif" alt="선택상품 삭제"></a>
+						<a href="javascript:chkToArray();" id="bandiDeduction" class="btn_del" style="cursor:pointer;"><img src="/webproject/resources/images/searchN/btn_cart_del02.gif" alt="선택상품 삭제"></a>
 					</div>
             	
 	            	<div id="nuriwork">
