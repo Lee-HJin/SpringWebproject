@@ -13,6 +13,8 @@ import com.spring.webproject.dto.AuthorDTO;
 import com.spring.webproject.dto.BookSectionsDTO;
 import com.spring.webproject.dto.BooksDTO;
 import com.spring.webproject.dto.BooksImageDTO;
+import com.spring.webproject.dto.CateDTO;
+import com.spring.webproject.dto.CateDTO2;
 import com.spring.webproject.dto.ReviewDTO;
 import com.spring.webproject.dto.SimpleReviewDTO;
 import com.spring.webproject.dto.WareHouseDTO;
@@ -28,15 +30,33 @@ public class BooksDAO {
 
 	}
 
+	// 카테고리 정보 가져오기
+	public CateDTO getReadCate(int categoryId) {
+		CateDTO dto = sessionTemplate.selectOne("bookMapper.getReadCate", categoryId);
+		return dto;
+	}
+
+	// 카테고리 리스트 가져오기
+	public List<CateDTO2> getReadCateList(int categoryId) {
+		List<CateDTO2> lists = sessionTemplate.selectList("bookMapper.getReadCateList", categoryId);
+		return lists;
+	}
+
+	// 카테고리 리스트 가져오기
+	public List<CateDTO2> getReadCateList2(int categoryId) {
+		List<CateDTO2> lists = sessionTemplate.selectList("bookMapper.getReadCateList2", categoryId);
+		return lists;
+	}
+
 	// 책 정보 가져오기
-	public BooksDTO getReadBookData(int isbn) {
+	public BooksDTO getReadBookData(String isbn) {
 
 		BooksDTO dto = sessionTemplate.selectOne("bookMapper.getReadBookData", isbn);
 		return dto;
 	}
 
 	// 저자 정보 가져오기
-	public AuthorDTO getReadAuthorData(int isbn) {
+	public AuthorDTO getReadAuthorData(String isbn) {
 
 		AuthorDTO dto2 = sessionTemplate.selectOne("bookMapper.getReadAuthorData", isbn);
 		return dto2;
@@ -44,7 +64,7 @@ public class BooksDAO {
 	}
 
 	// 북 미리보기 이미지 가져오기
-	public List<BooksImageDTO> getReadBookImageData(int isbn) {
+	public List<BooksImageDTO> getReadBookImageData(String isbn) {
 
 		List<BooksImageDTO> lists = sessionTemplate.selectList("bookMapper.getReadBookList", isbn);
 
@@ -53,7 +73,7 @@ public class BooksDAO {
 	}
 
 	// 북 커버 이미지 가져오기
-	public String getReadBookImage(int isbn) {
+	public String getReadBookImage(String isbn) {
 
 		String str = sessionTemplate.selectOne("bookMapper.getReadBookImage", isbn);
 		return str;
@@ -61,7 +81,7 @@ public class BooksDAO {
 
 	// 리뷰 테이블 가져오기
 
-	public List<ReviewDTO> getReadReviewList(int start, int end, int isbn) {
+	public List<ReviewDTO> getReadReviewList(int start, int end, String isbn) {
 
 		HashMap<String, Object> params = new HashMap<String, Object>();
 
@@ -75,7 +95,7 @@ public class BooksDAO {
 	}
 
 	// 심플리뷰 가져오기
-	public List<SimpleReviewDTO> getReadSimpleReviewList(int isbn) {
+	public List<SimpleReviewDTO> getReadSimpleReviewList(String isbn) {
 		List<SimpleReviewDTO> lists = sessionTemplate.selectList("bookMapper.getReadSimpleReviewList", isbn);
 		return lists;
 	}
@@ -102,13 +122,36 @@ public class BooksDAO {
 		return dto;
 	}
 
+	// 이전 리뷰 정보 가져오기
+	public ReviewDTO preReadReviewData(String isbn, int reviewId) {
+		HashMap<String, Object> params = new HashMap<String, Object>();
+
+		params.put("isbn", isbn);
+		params.put("reviewId", reviewId);
+
+		ReviewDTO dto = sessionTemplate.selectOne("bookMapper.preReadReviewData", params);
+		return dto;
+	}
+
+	// 이후 리뷰 정보 가져오기
+	public ReviewDTO nextReadReviewData(String isbn, int reviewId) {
+		HashMap<String, Object> params = new HashMap<String, Object>();
+
+		params.put("isbn", isbn);
+		params.put("reviewId", reviewId);
+
+		ReviewDTO dto = sessionTemplate.selectOne("bookMapper.nextReadReviewData", params);
+		return dto;
+	}
+
 	// 리뷰 테이블 개수 가져오기
-	public int getReviewDataCount(int isbn) {
+	public int getReviewDataCount(String isbn) {
 		int result = sessionTemplate.selectOne("bookMapper.getReviewDataCount", isbn);
 		return result;
 	}
 
-	public int getSimpleReivewDataCount(int isbn) {
+	// 심플 리뷰 개수 가져오기
+	public int getSimpleReivewDataCount(String isbn) {
 		int result = sessionTemplate.selectOne("bookMapper.getSimpleReivewDataCount", isbn);
 		return result;
 
@@ -162,97 +205,96 @@ public class BooksDAO {
 	}
 
 	// 재고 데이터 가져오기
-	public WareHouseDTO getWareHouseData(int isbn) {
+	public WareHouseDTO getWareHouseData(String isbn) {
 		WareHouseDTO dto = sessionTemplate.selectOne("bookMapper.getWareHouseList", isbn);
 		return dto;
 	}
-	
+
 	// 리뷰 체크
-	public int getReviewCheck(int isbn , String userId) {
-		
+	public int getReviewCheck(String isbn, String userId) {
+
 		HashMap<String, Object> params = new HashMap<String, Object>();
-		
+
 		params.put("isbn", isbn);
 		params.put("userId", userId);
-		
+
 		int result = sessionTemplate.selectOne("bookMapper.getReviewCheck", params);
 		return result;
 	}
-	
-	//전체 데이터 from bnlBSList
-		public List<BookSectionsDTO> getListMain_2(int sort1st, int sort2nd, int start, int end){
-			
-			HashMap<String, Object> params = new HashMap<String, Object>();
-			
-			params.put("sort1st", sort1st);
-			params.put("sort2nd", sort2nd);
-			params.put("start", start);
-			params.put("end", end);
 
-			List<BookSectionsDTO> lists = sessionTemplate.selectList("bookMapper.getLists", params);
+	// 전체 데이터 from bnlBSList
+	public List<BookSectionsDTO> getListMain_2(int sort1st, int sort2nd, int start, int end) {
 
-			return lists;
-		}
-		
-		//sort1 //전체 데이터 from bnlBSList
-		public List<BookSectionsDTO> getListSort1_2(int sort1st, int sort2nd, int start, int end){
-			
-			HashMap<String, Object> params = new HashMap<String, Object>();
-			
-			params.put("sort1st", sort1st);
-			params.put("sort2nd", sort2nd);
-			params.put("start", start);
-			params.put("end", end);
+		HashMap<String, Object> params = new HashMap<String, Object>();
 
-			List<BookSectionsDTO> lists = sessionTemplate.selectList("bookMapper.getListsSort1", params);
+		params.put("sort1st", sort1st);
+		params.put("sort2nd", sort2nd);
+		params.put("start", start);
+		params.put("end", end);
 
-			return lists;
-		}
-		
-		//sort2 //전체 데이터 from bnlBSList
-		public List<BookSectionsDTO> getListSort2_2(int sort1st, int sort2nd, int start, int end){
-			
-			HashMap<String, Object> params = new HashMap<String, Object>();
-			
-			params.put("sort1st", sort1st);
-			params.put("sort2nd", sort2nd);
-			params.put("start", start);
-			params.put("end", end);
+		List<BookSectionsDTO> lists = sessionTemplate.selectList("bookMapper.getLists", params);
 
-			List<BookSectionsDTO> lists = sessionTemplate.selectList("bookMapper.getListsSort2", params);
+		return lists;
+	}
 
-			return lists;
-		}
-		
-		//sort3 //전체 데이터 from bnlBSList
-		public List<BookSectionsDTO> getListSort3_2(int sort1st, int sort2nd, int start, int end){
-			
-			HashMap<String, Object> params = new HashMap<String, Object>();
-			
-			params.put("sort1st", sort1st);
-			params.put("sort2nd", sort2nd);
-			params.put("start", start);
-			params.put("end", end);
+	// sort1 //전체 데이터 from bnlBSList
+	public List<BookSectionsDTO> getListSort1_2(int sort1st, int sort2nd, int start, int end) {
 
-			List<BookSectionsDTO> lists = sessionTemplate.selectList("bookMapper.getListsSort3", params);
+		HashMap<String, Object> params = new HashMap<String, Object>();
 
-			return lists;
-		}
-		
-		//sort4 //전체 데이터 from bnlBSList
-		public List<BookSectionsDTO> getListSort4_2(int sort1st, int sort2nd, int start, int end){
-			
-			HashMap<String, Object> params = new HashMap<String, Object>();
-			
-			params.put("sort1st", sort1st);
-			params.put("sort2nd", sort2nd);
-			params.put("start", start);
-			params.put("end", end);
+		params.put("sort1st", sort1st);
+		params.put("sort2nd", sort2nd);
+		params.put("start", start);
+		params.put("end", end);
 
-			List<BookSectionsDTO> lists = sessionTemplate.selectList("bookMapper.getListsSort4", params);
+		List<BookSectionsDTO> lists = sessionTemplate.selectList("bookMapper.getListsSort1", params);
 
-			return lists;
-		}
-	
+		return lists;
+	}
+
+	// sort2 //전체 데이터 from bnlBSList
+	public List<BookSectionsDTO> getListSort2_2(int sort1st, int sort2nd, int start, int end) {
+
+		HashMap<String, Object> params = new HashMap<String, Object>();
+
+		params.put("sort1st", sort1st);
+		params.put("sort2nd", sort2nd);
+		params.put("start", start);
+		params.put("end", end);
+
+		List<BookSectionsDTO> lists = sessionTemplate.selectList("bookMapper.getListsSort2", params);
+
+		return lists;
+	}
+
+	// sort3 //전체 데이터 from bnlBSList
+	public List<BookSectionsDTO> getListSort3_2(int sort1st, int sort2nd, int start, int end) {
+
+		HashMap<String, Object> params = new HashMap<String, Object>();
+
+		params.put("sort1st", sort1st);
+		params.put("sort2nd", sort2nd);
+		params.put("start", start);
+		params.put("end", end);
+
+		List<BookSectionsDTO> lists = sessionTemplate.selectList("bookMapper.getListsSort3", params);
+
+		return lists;
+	}
+
+	// sort4 //전체 데이터 from bnlBSList
+	public List<BookSectionsDTO> getListSort4_2(int sort1st, int sort2nd, int start, int end) {
+
+		HashMap<String, Object> params = new HashMap<String, Object>();
+
+		params.put("sort1st", sort1st);
+		params.put("sort2nd", sort2nd);
+		params.put("start", start);
+		params.put("end", end);
+
+		List<BookSectionsDTO> lists = sessionTemplate.selectList("bookMapper.getListsSort4", params);
+
+		return lists;
+	}
 
 }
