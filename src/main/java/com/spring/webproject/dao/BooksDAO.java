@@ -47,12 +47,12 @@ public class BooksDAO {
 		List<CateDTO2> lists = sessionTemplate.selectList("bookMapper.getReadCateList2", categoryId);
 		return lists;
 	}
-	
+
 	// 카테고리 리스트2 가져오기
-		public List<CateDTO> getReadCateList3(int categoryId) {
-			List<CateDTO> lists = sessionTemplate.selectList("bookMapper.getReadCateList3", categoryId);
-			return lists;
-		}
+	public List<CateDTO> getReadCateList3(int categoryId) {
+		List<CateDTO> lists = sessionTemplate.selectList("bookMapper.getReadCateList3", categoryId);
+		return lists;
+	}
 
 	// 책 정보 가져오기
 	public BooksDTO getReadBookData(String isbn) {
@@ -301,6 +301,59 @@ public class BooksDAO {
 		List<BookSectionsDTO> lists = sessionTemplate.selectList("bookMapper.getListsSort4", params);
 
 		return lists;
+	}
+
+	// 카테고리별 베스트 셀러 가져오기
+	public List<BookSectionsDTO> getLists_Best(int cateStart, int cateEnd, int start, int end) {
+
+		HashMap<String, Object> params = new HashMap<String, Object>();
+
+		params.put("cateStart", cateStart);
+		params.put("cateEnd", cateEnd);
+		params.put("start", start);
+		params.put("end", end);
+
+		List<BookSectionsDTO> lists = sessionTemplate.selectList("bookMapper.getLists_Best", params);
+
+		return lists;
+	}
+
+	// 카테고리별 새로나온책 가져오기
+	public List<BookSectionsDTO> getLists_New(int cateStart, int cateEnd, int start, int end) {
+
+		HashMap<String, Object> params = new HashMap<String, Object>();
+
+		params.put("cateStart", cateStart);
+		params.put("cateEnd", cateEnd);
+		params.put("start", start);
+		params.put("end", end);
+
+		List<BookSectionsDTO> lists = sessionTemplate.selectList("bookMapper.getLists_New", params);
+
+		return lists;
+	}
+
+	// 카테고리별 할인 도서 가져오기
+	public List<BookSectionsDTO> getLists_Discount(int cateStart, int cateEnd, int fromDiscount, int toDiscount, int start,
+			int end) {
+
+		HashMap<String, Object> params = new HashMap<String, Object>();
+
+		params.put("cateStart", cateStart);
+		params.put("cateEnd", cateEnd);
+		params.put("fromDiscount", fromDiscount);
+		params.put("toDiscount", toDiscount);
+		params.put("start", start);
+		params.put("end", end);
+
+		List<BookSectionsDTO> lists = sessionTemplate.selectList("bookMapper.getLists_Discount", params);
+
+		return lists;
+	}
+
+	public int getCateEnd(int categoryId) {
+		int result = sessionTemplate.selectOne("bookMapper.getCateEnd", categoryId);
+		return result;
 	}
 
 }

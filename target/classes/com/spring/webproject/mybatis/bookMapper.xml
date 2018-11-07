@@ -313,24 +313,83 @@
 		select b.CATEGORYID as CATEGORYID_2, b.CATEGORYNAME as
 		CATEGORYNAME_2,a.categoryId as CATEGORYID_3, a.categoryname as
 		CATEGORYNAME_3 from BOOKSCATEGORYLIST b
-		full outer join BOOKSCATEGORYLIST a on a.parentsid = #{categoryId} where
-		b.CATEGORYID = #{categoryId}
+		full outer join
+		BOOKSCATEGORYLIST a on a.parentsid = #{categoryId} where
+		b.CATEGORYID =
+		#{categoryId}
 	</select>
-	
+
 	<!-- 카테고리 정보2 가져오기 -->
 	<select id="getReadCateList2" parameterType="int"
 		resultType="com.spring.webproject.dto.CateDTO2">
 		select * from BOOKSCATEGORYLIST where parentsId =
 		#{categoryId}
 	</select>
-	
+
 	<!-- 카테고리 정보3 가져오기 -->
 	<select id="getReadCateList3" parameterType="int"
 		resultType="com.spring.webproject.dto.CateDTO">
 		select * from BOOKSCATEGORYLIST where parentsId =
 		#{categoryId}
 	</select>
+
+	<!-- 카테고리별 베스트 셀러 데이터 -->
+	<select id="getLists_Best" parameterType="hashMap"
+		resultType="com.spring.webproject.dto.BookSectionsDTO">
+		select * from (
+		select rownum rnum, data.* from (
+		select * from
+		bookSections
+		where categoryId between #{cateStart} and #{cateEnd }
+		order by soldBookCnt desc
+		) data)
+	<![CDATA[
+	where rnum >= #{start } and rnum <= #{end }
+	]]>
+	</select>
+
+	<!-- 카테고리별 새로 나온책 데이터 -->
+
+	<select id="getLists_New" parameterType="hashMap"
+		resultType="com.spring.webproject.dto.BookSectionsDTO">
+		select * from (
+		select rownum rnum, data.* from (
+		select * from
+		bookSections
+		where categoryId between #{cateStart} and #{cateEnd }  and publishDate
+		between
+		(trunc(sysdate,'MM')-3) and (LAST_DAY (TRUNC (SYSDATE)) + 1 /
+		24)
+		order by
+		soldBookCnt desc
+		) data)
+	<![CDATA[
+	where rnum >= #{start } and rnum <= #{end }
+	]]>
+	</select>
 	
+	<!-- 카테고리별 신규 등록된 할인 도서 -->
+	<select id="getLists_Discount" parameterType="hashMap"
+		resultType="com.spring.webproject.dto.BookSectionsDTO">
+		select * from (
+		select rownum rnum, data.* from (
+		select * from bookSections
+		where categoryId between #{cateStart} and #{cateEnd }
+		and inputDCDate between (trunc(sysdate,'MM') - 3) and (LAST_DAY (TRUNC
+		(SYSDATE)) + 1 / 24)
+		and discountRate between ${fromDiscount } and ${toDiscount }
+		order by soldBookCnt desc
+		) data)
+	<![CDATA[
+	where rnum >= #{start } and rnum <= #{end }
+	]]>
+	</select>
 	
+	<!-- 카테고리 마지막 값 가져오기 -->
+	<select id="getCateEnd" parameterType="int" resultType="int">
+		select MAX(CATEGORYID) from BOOKSCATEGORYLIST where parentsid = #{categoryId }
+	</select>
+	
+
 
 </mapper>

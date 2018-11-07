@@ -173,7 +173,6 @@ public class bookSectionsController {
 		
 		int start = (currentPage-1)*numPerPage+1;
 		int end = currentPage*numPerPage;
-		
 		/* 
 		sort 분류 
 		sort0 = order by soldBookCnt desc, rate desc, reviewCnt desc
