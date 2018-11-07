@@ -551,20 +551,36 @@ public class BookController {
 
 		// 대분류
 		CateDTO dto_Main = dao.getReadCate(categoryId);
-
+		System.out.println("대분류 : " + dto_Main.getCategoryName());
 		request.setAttribute("dto_Main", dto_Main); // 메인 분류 이름
 
 		// 중분류
-		
 		List<CateDTO2> lists = dao.getReadCateList2(dto_Main.getCategoryId());
 		
 		Iterator<CateDTO2> iterator = lists.iterator();
 		
 		while(iterator.hasNext()) {
+			CateDTO2 dto2 = iterator.next();
+			System.out.println("카테고리 아이디 : " + dto2.getCategoryId());
 			
-			iterator.next().setLastNode(dao.getReadCate(iterator.next().getCategoryId())); 
-			
+			List<CateDTO> lists3 = dao.getReadCateList3(dto2.getCategoryId());
+			Iterator<CateDTO> it = lists3.iterator();
+			while(it.hasNext()) {
+				CateDTO dto = it.next();
+				
+				dto2.setLastNode(dto);
+				System.out.println(dto.getCategoryName());
+			}
 		}
+		
+		
+//		while(iterator.hasNext()) {
+//			// 소분류
+//			iterator.next().setLastNode(dao.getReadCate(iterator.next().getCategoryId())); 
+//			System.out.println("중분류 카테고리 아이디 = " + iterator.next().getCategoryId());
+//		}
+		
+		request.setAttribute("lists", lists);
 		
 		
 		return "books/cate/book_cate";

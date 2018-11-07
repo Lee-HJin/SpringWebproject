@@ -307,21 +307,30 @@
 	</select>
 
 
-	<!-- 카테고리 정보 가져오기 -->
+	<!-- 카테고리 정보1 가져오기 -->
 	<select id="getReadCateList" parameterType="int"
 		resultType="com.spring.webproject.dto.CateDTO2">
 		select b.CATEGORYID as CATEGORYID_2, b.CATEGORYNAME as
 		CATEGORYNAME_2,a.categoryId as CATEGORYID_3, a.categoryname as
 		CATEGORYNAME_3 from BOOKSCATEGORYLIST b
 		full outer join BOOKSCATEGORYLIST a on a.parentsid = #{categoryId} where
-		b.CATEGORYID = #{categoryId};
+		b.CATEGORYID = #{categoryId}
 	</select>
 	
-	<!-- 카테고리 정보 가져오기 -->
+	<!-- 카테고리 정보2 가져오기 -->
 	<select id="getReadCateList2" parameterType="int"
 		resultType="com.spring.webproject.dto.CateDTO2">
 		select * from BOOKSCATEGORYLIST where parentsId =
-		#{categoryId};
+		#{categoryId}
 	</select>
+	
+	<!-- 카테고리 정보3 가져오기 -->
+	<select id="getReadCateList3" parameterType="int"
+		resultType="com.spring.webproject.dto.CateDTO">
+		select * from BOOKSCATEGORYLIST where parentsId =
+		#{categoryId}
+	</select>
+	
+	
 
 </mapper>

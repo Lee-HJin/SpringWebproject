@@ -11,12 +11,16 @@ public class CateDTO2 {
 
 	private List<CateDTO> lastNode;
 
+	public CateDTO2() {
+		this.lastNode = new ArrayList<CateDTO>();
+	}
+
 	public List<CateDTO> getLastNode() {
 		return lastNode;
 	}
 
 	public void setLastNode(CateDTO dto) {
-		this.lastNode = new ArrayList<CateDTO>();
+
 		this.lastNode.add(dto);
 	}
 
