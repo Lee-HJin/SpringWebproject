@@ -17,18 +17,18 @@
 	bookImage where a.isbn=bookImage.isbn and bookImage like '%cover%'
 </select>
 
-<!-- 기대 신간도서 -->
+<!-- 기대 신간도서(최근 3개월내) -->
 <select id="newBook" parameterType="int" resultType="com.spring.webproject.dto.MainDTO">
 	select a.isbn,bookTitle,authorName,bookImage from bookImage a,
 	(select isbn,bookTitle,authorName from author a,
 	(select a.isbn,bookTitle,authorId from books a,
 	(select distinct a.categoryId,isbn,categoryName from bookCategory a,
-	(select distinct categoryId, a.categoryName from booksCategoryList a,
+	(select distinct a.categoryId, a.categoryName from booksCategoryList a,
 	(select * from (
-	select level, LPAD('',2*(level-1)) || categoryName as categoryName,connect_by_isleaf as leaf from 
+	select level, LPAD('',2*(level-1)) || categoryName as categoryName,categoryId as categoryId,connect_by_isleaf as leaf from 
 	booksCategoryList start with parentsId is null and categoryId=#{categoryId} connect by prior categoryId = parentsId) 
-	where leaf=1) b where a.categoryName=b.categoryName) b where a.categoryId=b.categoryId) b 
-	where a.isbn=b.isbn and publishDate>sysdate-180) b where a.authorId=b.authorId) b where a.isbn=b.isbn and bookImage like '%cover%'
+	where leaf=1) b where a.categoryId=b.categoryId) b where a.categoryId=b.categoryId) b 
+	where a.isbn=b.isbn and publishDate>sysdate-360) b where a.authorId=b.authorId) b where a.isbn=b.isbn and bookImage like '%cover%'
 </select>
 
 <!-- 기대 신간도서 전체(최근 3개월내) -->
@@ -42,7 +42,7 @@
 	select level, LPAD('',2*(level-1)) || categoryName as categoryName,connect_by_isleaf as leaf from 
 	booksCategoryList start with parentsId is null connect by prior categoryId = parentsId) 
 	where leaf=1) b where a.categoryName=b.categoryName) b where a.categoryId=b.categoryId) b 
-	where a.isbn=b.isbn and publishDate>sysdate-180) b where a.authorId=b.authorId) b where a.isbn=b.isbn and bookImage like '%cover%'
+	where a.isbn=b.isbn and publishDate>sysdate-360) b where a.authorId=b.authorId) b where a.isbn=b.isbn and bookImage like '%cover%'
 </select>
 
 <!-- 이슈북 -->
@@ -57,11 +57,6 @@
 
 <!-- 베스트셀러 -->
 <select id="bestSeller" resultType="com.spring.webproject.dto.MainDTO">
-<!-- 	select rownum listNum,bookImage,bookTitle,isbn from (
-	select * from bookSections
-<![CDATA[
-	order by soldBookCnt desc) where rownum<=10
-]]> -->
 	select * from(
 	select rownum listNum,a.isbn,bookTitle,bookImage from bookImage a,(
 	select a.isbn,bookTitle,selCnt from books a,(

@@ -57,7 +57,7 @@ public class bookSectionsController {
 		
 		if(sort1st == null && sort2nd == null){
 			sort1st = "1";
-			sort2nd = "9999";
+			sort2nd = "1600";
 		}
 
 		/* 
