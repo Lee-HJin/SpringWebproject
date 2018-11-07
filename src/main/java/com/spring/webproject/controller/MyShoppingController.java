@@ -1423,11 +1423,11 @@ public class MyShoppingController {
 	//구매 완료
 	@RequestMapping(value = "myShopping/confirmOrder.action", method = RequestMethod.GET)
 	public String confirmOrder(HttpServletRequest request) {
-
+		
 		String orderId = request.getParameter("orderId");
-
+		
+		//구매완료로 상태 변환
 		dao.confirmOrder(orderId);
-
 
 		return "redirect:/myShopping/myOrderDetail.action?orderId=" + orderId;
 	}
@@ -1439,7 +1439,6 @@ public class MyShoppingController {
 		String orderId = request.getParameter("orderId");
 
 		dao.exchangeOrder(orderId);
-
 
 		return "redirect:/myShopping/myOrderDetail.action?orderId=" + orderId;
 	}
