@@ -5,6 +5,7 @@
 %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
+<link rel="stylesheet" href="<%=cp%>/resources/css/swiper_min.css">
 <link rel="stylesheet" href="<%=cp%>/resources/css/main.css" type="text/css"/>
 
 <script type="text/javascript">
@@ -30,7 +31,7 @@
 	if (newURL == '/webproject/main.action') {
 		scrollHeight = 924;
 	} else {
-		scrollHeight = 500;
+		scrollHeight = 540;
 	}
 
 	$(function() {

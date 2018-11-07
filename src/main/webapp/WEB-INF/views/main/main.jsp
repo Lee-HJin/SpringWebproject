@@ -577,28 +577,28 @@
 					<a href="#" onclick="newBookAll();return false;">전체</a>
 				</li>
 				<li>
-					<a href="#" onclick="newBook(4);return false;">소설</a>
+					<a href="#" onclick="newBook(1);return false;">소설</a>
 				</li>
 				<li>
-					<a href="javascript://">인문/교양/철학</a>
+					<a href="#" onclick="newBook(292);return false;">인문/교양/철학</a>
 				</li>
 				<li>
-					<a href="#" onclick="newBook(1);return false;">시/에세이/기행</a>
+					<a href="#" onclick="newBook(115);return false;">시/에세이/기행</a>
 				</li>
 				<li>
-					<a href="javascript://">사회/정치/법률</a>
+					<a href="#" onclick="newBook(474);return false;">사회/정치/법률</a>
 				</li>
 				<li>
-					<a href="javascript://">경제/경영</a>
+					<a href="#" onclick="newBook(197);return false;">경제/경영</a>
 				</li>
 				<li>
-					<a href="#" onclick="newBook(14);return false;">자기계발</a>
+					<a href="#" onclick="newBook(255);return false;">자기계발</a>
 				</li>
 				<li>
-					<a href="#" onclick="newBook(22);return false;">가정/생활/요리</a>
+					<a href="#" onclick="newBook(1275);return false;">가정/생활/요리</a>
 				</li>
 				<li>
-					<a href="#" onclick="newBook(18);return false;">여행/취미/레저</a>
+					<a href="#" onclick="newBook(1363);return false;">여행/취미/레저</a>
 				</li>
 			</ul>
 			<div class="nb_list1" id="new_book">
