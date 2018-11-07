@@ -52,7 +52,7 @@
 				</li>
 				<li class="menu">
 					<a href="<%=cp %>/admin_goods.action" >
-						<font>도서등록</font>
+						<font>도서관리</font>
 					</a>
 				</li>
 				

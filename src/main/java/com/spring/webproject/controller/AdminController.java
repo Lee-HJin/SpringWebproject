@@ -10,6 +10,7 @@ import javax.servlet.http.HttpServletRequest;
 
 import org.apache.commons.fileupload.UploadContext;
 import org.apache.log4j.Logger;
+import org.apache.log4j.xml.SAXErrorHandler;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -114,6 +115,32 @@ public class AdminController {
 
 		return "redirect:/admin_goods.action";
 	}
+	
+	@RequestMapping(value = "/admin_books_ok.action", method = { RequestMethod.GET,RequestMethod.POST })
+	public String booksOK(Model model, SearchCriteria cri) {
+		
+		if (cri.getSearchValue() == null || cri.getSearchValue().equals("")) {
+			cri.setSearchValue(null);
+		}
+		if (cri.getSearchKey() == null || cri.getSearchKey().equals("")) {
+			cri.setSearchKey(null);
+		}
+		
+		
+		
+		List<AdminBooksDTO> bookList = dao.getBooklist(cri);
+		
+		PageMaker pageMaker = new PageMaker(cri);
+		pageMaker.setTotalDataCount(dao.getbooksTotalCount(cri));
+
+		model.addAttribute("pageMaker", pageMaker);
+		model.addAttribute("bookList", bookList);
+		
+		
+		return "admin/admin_books_ok";
+	}
+	
+	
 
 	// author
 	@RequestMapping(value = "/admin_search_author.action", method = { RequestMethod.GET })
@@ -233,6 +260,30 @@ public class AdminController {
 
 		return "redirect:/admin_category.action";
 	}
+	
+	
+	@RequestMapping(value = "/admin_categorylist_ok.action", method = { RequestMethod.POST, RequestMethod.GET })
+	public String categoryListOK(Model model, SearchCriteria cri) {
+
+		if (cri.getSearchValue() == null || cri.getSearchValue().equals("")) {
+			cri.setSearchValue(null);
+		}
+		if (cri.getSearchKey() == null || cri.getSearchKey().equals("")) {
+			cri.setSearchKey(null);
+		}
+		
+		List<AdminCategoryDTO> categoryList = dao.CategoryList(cri);
+		
+		PageMaker pageMaker = new PageMaker(cri);
+		pageMaker.setTotalDataCount(dao.getCategoryTotalCount(cri));
+
+		model.addAttribute("pageMaker", pageMaker);
+		model.addAttribute("categoryList", categoryList);
+		
+		
+		return "admin/admin_categorylist_ok";
+	}
+	
 
 	// consultation
 	@RequestMapping(value = "/admin_consultation.action", method = { RequestMethod.POST, RequestMethod.GET })

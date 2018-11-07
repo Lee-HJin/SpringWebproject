@@ -284,6 +284,46 @@ into
 values(#{authorId},#{translatorId},#{publisher},#{bookTitle},#{bookPrice},#{isbn},to_date(#{publishDate},'YYYY-MM-DD'),#{introduction},#{page},#{subTitle},#{bookSize},#{tableOfContents})
 </insert>
 
+<select id="getTotalBooksCount" parameterType="map" resultType="int">
+
+	select 
+		count(isbn) 
+	from 
+		books
+	<where>
+		<if test="searchValue!=null">
+			${searchKey} like '%${searchValue}%'
+		</if>
+	</where>
+</select>
+
+<select id="getbookList" parameterType="map" resultType="com.spring.webproject.dto.AdminBooksDTO">
+	
+	select
+		rnum, a.booktitle, a.authorName, a.publisher, a.isbn
+	from(select 
+		rownum as rnum, a.booktitle, a.authorName, a.publisher, a.isbn
+	from(select
+		a.booktitle, a.authorName, a.publisher, a.isbn
+	from(select 
+		a.booktitle, b.authorName, a.publisher, a.isbn
+	from
+		books a,
+		author b
+	where
+		a.authorId = b.authorId) a
+	<where>
+		<if test="searchValue!=null">
+			${searchKey} like '%${searchValue}%'
+		</if>
+	</where>
+	order by a.booktitle) a
+	<![CDATA[		
+		where rownum <= #{end}) a
+	where a.rnum>= #{start}
+	]]>
+</select>
+
 <!-- books end -->
 
 
@@ -312,6 +352,46 @@ into
 	booksCategoryList(categoryId, categoryName, parentsId)
 values(#{categoryId}, #{categoryName}, #{parentsId})
 </insert>
+
+<select id="getCategoryTotalCount" parameterType="map" resultType="int">
+
+select 
+	count(categoryId)
+from
+	bookscategorylist
+<where>
+	<if test="searchValue!=null">
+		${searchKey} like '%${searchValue}%'
+	</if>
+</where>
+	
+</select>
+
+<select id="getCategoryList" parameterType="map" resultType="com.spring.webproject.dto.AdminCategoryDTO">
+	
+	select
+		a.rnum, a.categoryid, a.categoryname, a.parentsid
+	from(select
+		rownum as rnum, a.categoryid, a.categoryname, a.parentsid
+	from(select
+		categoryid, categoryname, parentsid
+	from
+		bookscategorylist
+	<where>
+		<if test="searchValue!=null">
+			${searchKey} like '%${searchValue}%'
+		</if>
+	</where>
+	order by categoryid)a
+	
+	<![CDATA[		
+		where rownum <= #{end}) a
+	where a.rnum>= #{start}
+	]]>
+	
+
+</select>
+
 
 <!-- bookCategory end -->
 

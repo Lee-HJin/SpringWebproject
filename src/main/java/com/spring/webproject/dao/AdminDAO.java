@@ -111,10 +111,28 @@ public class AdminDAO {
 		return list;
 	}
 	
+	public int getCategoryTotalCount(SearchCriteria cri) {
+		return sessionTemplate.selectOne("adminMapper.getCategoryTotalCount", cri);
+	}
+	
+	public List<AdminCategoryDTO> CategoryList(SearchCriteria cri){
+		List<AdminCategoryDTO> list = sessionTemplate.selectList("adminMapper.getCategoryList", cri);
+		return list;
+	}
+	
 	//books
 	
 	public void insertBook(AdminBooksDTO dto) {
 		sessionTemplate.insert("adminMapper.insertBook", dto);
+	}
+	
+	public List<AdminBooksDTO> getBooklist(SearchCriteria cri){
+		List<AdminBooksDTO> list = sessionTemplate.selectList("adminMapper.getbookList", cri);
+		return list;
+	}
+	
+	public int getbooksTotalCount(SearchCriteria cri) {
+		return sessionTemplate.selectOne("adminMapper.getTotalBooksCount", cri);
 	}
 	
 	//bookSpecial

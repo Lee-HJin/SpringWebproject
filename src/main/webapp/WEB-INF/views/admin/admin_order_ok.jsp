@@ -31,7 +31,7 @@
 </form>
 
 <div class="table">
-	<form name="userList" method="post" action="">
+	
 		<table class="table table-bordered">
 			<thead>
 				<tr>
@@ -63,7 +63,7 @@
 				</c:forEach>
 			</tbody>
 		</table>
-	</form>
+	
 
 </div>
 

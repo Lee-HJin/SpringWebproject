@@ -24,6 +24,35 @@
 
 <script type="text/javascript">
 	
+	
+	function formSubmit() {
+	
+	var urltemp = "<%=cp%>/admin_";
+		urltemp += "books";
+		urltemp += "_ok.action";
+	
+		var params = jQuery("#booksForm").serialize(); // serialize() : 입력된 모든Element(을)를 문자열의 데이터에 serialize 한다.	
+		
+
+		jQuery.ajax({
+			url : urltemp,
+			type : 'POST',
+			data : params,
+			contentType : 'application/x-www-form-urlencoded; charset=UTF-8',
+			dataType : 'html',
+			success : function(data, status) {
+				$(".booklist").html(data);
+			}
+		});
+	}
+
+	function bookPaging(url) {
+
+		$(".booklist").load(url);
+
+	}
+	
+	
 	function popUp(obj) {
 		url = "<%=cp%>/admin_search_";
 		url += obj.value;
@@ -37,7 +66,7 @@
 			function(){
 				
 			if($(this).attr('name') == '1'){
-				var url = "<%=cp %>/admin_categoryList.action"
+				var url = "<%=cp%>/admin_categoryList.action"
 					
 				$("select[name='1']").load(url);
 				
@@ -45,7 +74,7 @@
 								
 				var id = $("select[name='1']").val();
 				
-				var url = "<%=cp %>/admin_categoryList.action"
+				var url = "<%=cp%>/admin_categoryList.action"
 				
 				$.post(url,
 					    {
@@ -59,35 +88,30 @@
 				
 				var id = $("select[name='2']").val();
 				
-				var url = "<%=cp %>/admin_categoryList.action"
-				
-				$.post(url,
-					    {
-					        parentsId : id
-					    },
-					    function(data, status){
-					        $("select[name='3']").html(data);
-					    });
-				
+				var url = "<%=cp%>/admin_categoryList.action";
+
+				$.post(url, {
+					parentsId : id
+				}, function(data, status) {
+					$("select[name='3']").html(data);
+				});
+
 			}
-			
+
 		});
 	});
-	
-	$(function(){
-		$("select[name='3']").change(
-				function(){
-					$("#categoryId").val($(this).val());
-					
-				});
-	});
-	
 
 	$(function() {
-		$('.preview-add-button').click(
-				function() {
-					
-				});
+		$("select[name='3']").change(function() {
+			$("#categoryId").val($(this).val());
+
+		});
+	});
+
+	$(function() {
+		$('.preview-add-button').click(function() {
+
+		});
 	});
 </script>
 
@@ -103,7 +127,8 @@
 			<div class="col-lg-12">
 				<div class="panel panel-default">
 					<div class="panel-body form-horizontal goods-form">
-						<form action="<%=cp%>/admin_goods_ok.action" method="post"  enctype="multipart/form-data" >
+						<form action="<%=cp%>/admin_goods_ok.action" method="post"
+							enctype="multipart/form-data">
 							<div class="col-lg-6 form-group">
 								<label for="bookTitle" class="col-lg-3 control-label">책제목
 									:</label>
@@ -127,8 +152,8 @@
 									아이디 :</label>
 								<div class="col-lg-7">
 									<input type="text" class="form-control" id="authorId"
-										disabled="disabled" >
-									<input type="hidden" name="authorId" value="">
+										disabled="disabled"> <input type="hidden"
+										name="authorId" value="">
 								</div>
 								<div class="col-lg-2">
 									<button type="button" class="btn btn-default authorId-search"
@@ -136,21 +161,21 @@
 								</div>
 							</div>
 
-							<div class="col-lg-6 form-group">
+							<!-- <div class="col-lg-6 form-group">
 								<label for="translatorId" class="col-lg-4 control-label">번역가
 									아이디 :</label>
 								<div class="col-lg-6">
 									<input type="text" class="form-control" id="translatorId"
-										disabled="disabled" >
-									<input type="hidden" name="translatorId" value="">
+										disabled="disabled"> <input type="hidden"
+										name="translatorId" value="">
 								</div>
 								<div class="col-lg-2">
 									<button type="button"
 										class="btn btn-default translatorId-search" value="translator"
 										onclick="popUp(this)">검색</button>
 								</div>
-							</div>
-
+							</div> -->
+							<div class="col-lg-6 form-group" style="height: 40px"></div>
 
 							<div class="col-lg-6 form-group">
 								<label for="publisher" class="col-lg-3 control-label">출판사
@@ -183,12 +208,12 @@
 								<div class="col-lg-3">
 									<select class="form-control category" name="3">
 										<option>3분류</option>
-									</select>
-									<input type="hidden" id="categoryId" name="categoryId" value="">
+									</select> <input type="hidden" id="categoryId" name="categoryId"
+										value="">
 								</div>
 
 							</div>
-							
+
 
 							<div class="col-lg-6 form-group">
 								<label for="publishdate" class="col-lg-4 control-label">출판일
@@ -256,8 +281,8 @@
 									아이디 :</label>
 								<div class="col-lg-6">
 									<input type="text" class="form-control" id="warehouseId"
-										disabled="disabled">
-									<input type="hidden" name="warehouseId" value="">
+										disabled="disabled"> <input type="hidden"
+										name="warehouseId" value="">
 								</div>
 								<div class="col-lg-2">
 									<button type="button" class="btn btn-default" value="warehouse"
@@ -278,7 +303,7 @@
 								<label for="bookImage" class="col-lg-4 control-label">도서커버이미지
 									:</label>
 								<div class="col-lg-8">
-									<input type="file" class="form-control"  name="file">									
+									<input type="file" class="form-control" name="file">
 								</div>
 							</div>
 
@@ -294,19 +319,25 @@
 					</div>
 				</div>
 			</div>
-			
 			<div class="col-lg-12">
+				<h2 style="border-bottom-style: solid;">도서 미리보기 이미지 등록</h2>
+			</div>
+			<div class="col-lg-12">
+
 				<div class="panel panel-default">
 					<div class="panel-body form-horizontal goods-form">
-						<form action="admin_image.action" method="post" enctype="multipart/form-data">
+						<form action="admin_image.action" method="post"
+							enctype="multipart/form-data">
 							<div class="col-lg-12 form-group">
-								<label for="bookImage" class="col-lg-4 control-label">도서 미리보기 이미지 등록
-									:</label>
+								<label for="bookImage" class="col-lg-4 control-label">도서
+									미리보기 이미지 등록 :</label>
 								<div class="col-lg-4">
-									<input  multiple="multiple"  type="file" class="form-control"  name="file">									
+									<input multiple="multiple" type="file" class="form-control"
+										name="file">
 								</div>
 								<div class="col-lg-2">
-									<input type="text" name="isbn" placeholder="isbn" class="form-control">
+									<input type="text" name="isbn" placeholder="isbn"
+										class="form-control">
 								</div>
 								<div class="col-lg-2 text-right">
 									<button type="submit"
@@ -319,7 +350,60 @@
 					</div>
 				</div>
 			</div>
-			
+			<div class="col-lg-12">
+				<h2 style="border-bottom-style: solid;">도서 목록</h2>
+			</div>
+
+			<div class="panel panel-default">
+				<div class="panel-body booklist">
+					<form id="booksForm">
+						<div class="col-lg-12 form-group">
+							<div class="col-lg-2 form-group">
+								<select class="form-control" name="searchKey">
+									<option value=null>선택</option>
+									<option value="isbn">isbn</option>
+									<option value="bookTitle">책제목</option>
+									<!-- <option value="author">작가</option> -->
+								</select>
+							</div>
+							<div class="col-lg-6">
+								<input type="text" class="form-control" placeholder="검색어를 입력하세요"
+									name="searchValue">
+							</div>
+							<div class="col-lg-4">
+								<button type="button" class="btn btn-default"
+									onclick="formSubmit();">검색</button>
+							</div>
+						</div>
+					</form>
+					<div class="table">
+						<form name="userList" method="post" action="">
+							<table class="table table-bordered">
+								<thead>
+									<tr>
+										<th scope="col">no</th>
+										<th scope="col">책제목</th>
+										<th scope="col">작가</th>
+										<th scope="col">출판사</th>
+										<th scope="col">isbn</th>
+									</tr>
+								</thead>
+								<tbody>
+								</tbody>
+							</table>
+						</form>
+
+					</div>
+					<div style="display: table; margin: 0 auto;">
+						<ul class="pagination">
+							<li><a style="cursor: pointer">0</a></li>
+						</ul>
+					</div>
+
+				</div>
+			</div>
+
+
 		</div>
 	</div>
 

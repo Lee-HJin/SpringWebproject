@@ -20,6 +20,35 @@
 	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 <script type="text/javascript">
 
+
+function formSubmit() {
+	
+	var urltemp = "<%=cp%>/admin_";
+		urltemp += "categorylist";
+		urltemp += "_ok.action";
+	
+		var params = jQuery("#categoryForm").serialize(); // serialize() : 입력된 모든Element(을)를 문자열의 데이터에 serialize 한다.	
+		
+
+		jQuery.ajax({
+			url : urltemp,
+			type : 'POST',
+			data : params,
+			contentType : 'application/x-www-form-urlencoded; charset=UTF-8',
+			dataType : 'html',
+			success : function(data, status) {
+				$(".categorylist").html(data);
+			}
+		});
+	}
+
+	function categoryPaging(url) {
+
+		$(".categorylist").load(url);
+
+	}
+
+
 $(function(){
 	$('.category').mouseover(
 		function(){
@@ -214,6 +243,52 @@ $(function(){
 					</div>
 				</div>
 			</div>
+			
+			<div class="col-lg-12">
+				<h2 style="border-bottom-style: solid;">카테고리 목록</h2>
+			</div>
+
+			<div class="panel panel-default">
+				<div class="panel-body categorylist">
+					<form id="categoryForm">
+						<div class="col-lg-12 form-group">
+							<div class="col-lg-8">
+								<input type="hidden" name="searchKey" value="categoryName">
+								<input type="text" class="form-control" placeholder="카테고리를 입력하세요"
+									name="searchValue">
+							</div>
+							<div class="col-lg-4">
+								<button type="button" class="btn btn-default"
+									onclick="formSubmit();">검색</button>
+							</div>
+						</div>
+					</form>
+					<div class="table">
+						<form name="userList" method="post" action="">
+							<table class="table table-bordered">
+								<thead>
+									<tr>
+										<th scope="col">no</th>
+										<th scope="col">카테고리 아이디</th>
+										<th scope="col">카테고리 이름</th>
+										<th scope="col">상위 카테고리 아이디</th>
+									</tr>
+								</thead>
+								<tbody>
+								</tbody>
+							</table>
+						</form>
+					</div>
+					<div style="display: table; margin: 0 auto;">
+						<ul class="pagination">
+							<li><a style="cursor: pointer">0</a></li>
+						</ul>
+					</div>
+
+				</div>
+			</div>
+			
+			
 		</div>
 	</div>
 </body>
