@@ -1,11 +1,13 @@
 package com.spring.webproject.dao;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
 import org.mybatis.spring.SqlSessionTemplate;
 
 import com.spring.webproject.dto.BookSectionsDTO;
+import com.spring.webproject.dto.MainDTO;
 
 public class BookSectionsDAO {
 
@@ -448,9 +450,28 @@ public class BookSectionsDAO {
 	return allDataCount;
 }
 	
-	
-	
-	
+    /*=================*/	
+	/* 샵 앤 오더 */
+	//오늘 본 상품
+	public List<BookSectionsDTO> cartList(String ck,String ckC){
+		
+		List<BookSectionsDTO> lst = new ArrayList<BookSectionsDTO>();
+		
+		String[] isbn = ck.split(",");
+		String[] orderCount = ckC.split(",");
+
+		for(int i=0;i<isbn.length;i++) {
+			
+			System.out.println("DAO: " + isbn[i]);
+			System.out.println("DAO oc: " + orderCount[i]);
+			
+			BookSectionsDTO dto = sessionTemplate.selectOne("shopAndOrderMapper.cartLists",isbn[i]);
+			dto.setOrderCount(orderCount[i]);
+			
+			lst.add(dto);
+		}
+		return lst;
+	}
 	
 	
 }
