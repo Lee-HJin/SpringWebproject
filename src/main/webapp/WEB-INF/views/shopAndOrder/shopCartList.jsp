@@ -1,9 +1,10 @@
-<%@ page contentType="text/html; charset=UTF-8"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri ="http://java.sun.com/jsp/jstl/fmt" %>
 <%
 	request.setCharacterEncoding("UTF-8");
 	String cp = request.getContextPath();
-%>
+%> 
 <!DOCTYPE html>
 <html>
 <head>
@@ -42,7 +43,7 @@
 	
 	$(function() {
 	
-		var ck = cookieInfo(getCookie('cartlist'));
+		var ck = cookieInfo(getCookie('shop'));
 		
 		var cIsbn = new Array();
 		var ordCount = new Array();
@@ -65,7 +66,7 @@
 		params+= "&orderCount=" + ordCount; 
 	
 		var url = "<%=cp%>/cartList.action";
-		alert(params);
+		/* alert(params); */
 		
 		 $.post(url,params,function(args){
 			$("#nuriwork").html(args);
@@ -151,27 +152,12 @@
                 
                 
                 <ul class="tab_cart_menu">
-                	<li class="on"><a href="/webproject/shopCartList.do" class="cart_link tab_bandi">일반 상품</a></li>
-                	<li><a href="/webproject//shopCartList.do?cartType=03" class="cart_link tab_bookself">북셀프 상품</a></li>
-                	<li class="alt"><a href="/webproject//shopCartList.do?cartType=04" class="cart_link tab_ebook">eBook 상품</a></li>
+                	<li class="on"><a href="/webproject/shopCartList.action" class="cart_link tab_bandi">일반 상품</a></li>
+                	<li style="background-color: white"></li>
+                	<li style="background-color: white"></li>
                 </ul>
-                <div class="cart_bookself_info"><a href="javascript:popLayer('bookSelfInfo')"><img src="/webproject/resources/images/searchN/btn_bookself_info.png" alt="주문 후 매장에서 수령 | 북셀프 안내"></a></div>
-                <!-- 북셀프 안내  LAYER -->
-	            <div class="bookViewPop" id="bookSelfInfo" style="visibility:hidden; margin:-5px 0 0 327px; width:300px">
-	            	 <h3 class="mLine">북셀프 서비스 안내 </h3>				        
-	               	 <div class="laypopCon mt10">
-	                    <p>1시간도 길다! 5분이면 OK!<br>인터넷으로 구매하고 매장에서 바로 찾아가세요.</p>
-	                    <p class="t_11br3 mt10">
-	                    	반디앤루니스 인터넷에서 북셀프 가능 도서를 선택 후 찾기 편하신 매장을 지정 하세요.결제 후 바로 매장을 방문, 서가에서 '직접' 책을 찾으시면 됩니다.
-	                    </p>
-	                    <p class="al_right mt10"><a href="http://www.bandinlunis.com/pages/front/service/serviceBookSelf.jsp" target="_blank"><img src="http://image.bandinlunis.com/images/order/btn_detail_view.gif"></a></p>
-	               	 </div>
-	                 <p class="btnClose"><img src="http://image.bandinlunis.com/images/common/btn_close02.gif" alt="close" style="cursor:pointer;" onclick="javascript:popHidden('bookSelfInfo')"></p>
-	            </div>
-	            <!--// 북셀프 안내  LAYER -->
-	            
-     		    
-	            
+                <div class="cart_bookself_info"></div>
+
 	            <!-- 소득공제상품(도서) -->
                 <div id="bandi_deduction_list" class="pos_rel fl_clear mt40" style="">
 					<h3 class="orderTit mt20"> 
@@ -197,87 +183,12 @@
 						<a id="bandiDeduction" class="btn_del" style="cursor:pointer;"><img src="/webproject/resources/images/searchN/btn_cart_del02.gif" alt="선택상품 삭제"></a>
 					</div>
             	
-	            	<div id="nuriwork"></div>
+	            	<div id="nuriwork">
 	            	
-	            	<div class="cart_pay_total">
-	            		<span class="fl_left mt3 ml10" id="bandiDeduction_totOrdCnt">수량: 1종(1개)</span>
-	            		<span class="fl_right al_right">
-	            			<span class="di_in mt3 mr5">총 상품 금액: <span id="bandiDeduction_totSaleCost">13,500</span>원</span>
-	            			<span class="di_in al_top mr5"><img src="/webproject/resources/images/searchN/ico_cart_plus.gif" alt=""></span>
-	            			<span class="di_in mt3 mr5">배송비: <span id="bandiDeduction_totDeliCost">0</span>원</span>
-	            			<span class="di_in al_top mr5"><img src="/webproject/resources/images/searchN/ico_cart_same.gif" alt=""></span>
-	            			<span class="di_in mt3 mr10">주문금액 합계: <span class="t_red"><span id="bandiDeduction_totOrdCost">13,500</span>원</span></span>
-	            		</span>
 	            	</div>
-	            	<div class="cart_point_total al_right"> 
-	            		<span id="span_prevInfo"></span>
-	            		<strong class="mr10">적립가능액 : <span class="point_b">상품적립금 <span id="bandiDeduction_totPoint">750</span>원</span></strong>
-	            	</div>
-            	</div>
-	            <!-- //소득공제상품(도서) -->
-	            
-	            <!-- 비공제상품(반디배송 상품) -->
-                <div id="bandi_list" class="pos_rel fl_clear mt20" style="display:none;">
-					<h3 class="orderTit mt20">
-						반디배송 상품
-						
-						
-					</h3>
-					
-					<div class="bookViewPop al_left" id="undeductionInfo" style="visibility: hidden; left 20px; top: 25px; width: 320px;">
-						 <h3 class="mLine">문화비(도서) 소득공제 제외 상품 안내</h3>
-						 <div class="laypopCon "> 
-							 <p class="mt5">
-									eBook 대여상품 및 ISBN, ENC 미발급 eBook 상품은 도서 소득공제에서 제외 됩니다. 
-							 </p> 
-						 </div> 						
-					</div>
-					
-					<div class="pos_abs at0 ar0 mt3" style="_top:0;_margin-top:0">
-						
- 							<a id="bandi" class="btn_bookSelf" style="cursor:pointer;"><img src="/webproject/resources/images/searchN/btn_cart_move_bookself.gif" alt="선택상품 북셀프로 주문하기"></a>
- 						
-						<a href="javascript:array_interest(1);"><img src="/webproject/resources/images/searchN/btn_cart_wishlist02.gif" alt="선택상품 위시리스트 담기"></a>
-						<a id="bandi" class="btn_del" style="cursor:pointer;"><img src="/webproject/resources/images/searchN/btn_cart_del02.gif" alt="선택상품 삭제"></a>
-					</div>
-					
-	            	<table cellpadding="0" cellspacing="0" class="orderTable">
-	            		<colgroup><col width="55"><col>
-	            			<col width="92">
-	            			
-	            			<col width="92"><col width="72"><col width="92"><col width="90"><col width="40"></colgroup>
-	            		<tbody><tr>
-	            			<th colspan="2">상품명</th>
-	            			
-		            			<th>수령예상일</th>
-	            			
-	            			<th>판매가</th>
-	            			<th>수량</th>
-	            			<th>합계</th>
-	            			<th>담기/삭제</th>   
-	            			<th><input type="checkbox" id="bandi" class="checkAll"></th>                			
-	            		</tr>
 
-	            	</tbody></table>
-	            	<div class="cart_pay_total">
-	            		<span class="fl_left mt3 ml10" id="bandi_totOrdCnt">수량: 0종(0개)</span>
-	            		<span class="fl_right al_right">
-	            			<span class="di_in mt3 mr5">총 상품 금액: <span id="bandi_totSaleCost">0</span>원</span>
-	            			<span class="di_in al_top mr5"><img src="/webproject/resources/images/searchN/ico_cart_plus.gif" alt=""></span>
-	            			<span class="di_in mt3 mr5">배송비: <span id="bandi_totDeliCost">0</span>원</span>
-	            			<span class="di_in al_top mr5"><img src="/webproject/resources/images/searchN/ico_cart_same.gif" alt=""></span>
-	            			<span class="di_in mt3 mr10">주문금액 합계: <span class="t_red"><span id="bandi_totOrdCost">0</span>원</span></span>
-	            		</span>
-	            	</div>
-	            	<div class="cart_point_total al_right"> 
-	            		<span id="span_prevInfo"></span>
-	            		<strong class="mr10">적립가능액 : <span class="point_b">상품적립금 <span id="bandi_totPoint">0</span>원</span></strong>
-	            	</div>
             	</div>
-            	<!-- 비공제상품(반디배송 상품) -->
-            	
-            	
-            	
+
             	<div id="store_list" class="pos_rel overflow mt50" style="display:none;">
 					<h3 class="orderTit mt20">업체배송 상품</h3>
 					<div class="pos_abs at15 ar0 mt3" style="_top:0;_margin-top:0">
@@ -287,22 +198,20 @@
             	
 	            	<table cellpadding="0" cellspacing="0" class="orderTable">
 	            		<colgroup><col width="55"><col><col width="92"><col width="72"><col width="92"><col width="92"><col width="90"><col width="40"></colgroup>
-	            		<tbody><tr>
-	            			<th colspan="2">상품명</th>
-	            			<th>판매가</th>
-	            			<th>수량</th>
-	            			<th>합계</th>
-	            			<th>배송비</th>
-	            			<th>담기/삭제</th>   
-	            			<th><input type="checkbox" id="store" class="checkAll"></th>
-	            		</tr>
 	            		
-	            		
-	            		
-	            		
-	            		
-	            		
-	            	</tbody></table>
+	            		<tbody>
+	            			<tr>
+		            			<th colspan="2">상품명</th>
+		            			<th>판매가</th>
+		            			<th>수량</th>
+		            			<th>합계</th>
+		            			<th>배송비</th>
+		            			<th>담기/삭제</th>   
+		            			<th><input type="checkbox" id="store" class="checkAll"></th>
+	            			</tr>
+	            		</tbody>
+	            	</table>
+	            	
 	            	<div class="cart_pay_total">
 	            		<span class="fl_left mt3 ml10" id="store_totOrdCnt">수량: 0종(0개)</span>
 	            		<span class="fl_right al_right">
@@ -314,7 +223,7 @@
 	            		</span>
 	            	</div>
 	            	<div class="cart_point_total al_right">
-	            		<span class="btn_gift_view"><img src="/webproject/resources/images/searchN/bn_cart_gift.jpg"></span>
+	            		<span class="btn_gift_view"><img src=""></span>
 	            		<strong class="mr10">적립가능액 : <span class="point_b">상품적립금 <span id="store_totPoint">0</span>원</span></strong>
 	            	</div>
             	</div>
@@ -345,7 +254,7 @@
 	            		<strong class="ml15 fl_left mt15 mb10">적립가능액 : 
 	            		<span class="point_b" id="totPoint">상품적립금 0원</span> 
 	            		<span class="t_normal" id="extTotPoint"></span>
-	            		</strong>	            	
+	            		</strong>	            		
 	            	
 	            		<ul class="cart_deli_notice fl_clear">
 	            			<li>5만원 이상 추가적립/멤버십/바로온2% 적립금은 비도서, 뷰티포함 구매 시 적용 됩니다. (도서 제외)</li>
@@ -372,18 +281,18 @@
 			        </div>
 
 	            	
-		            	<div class="cart_deli_info">
-		            		<dl class="cart_deli_date">
-		            			<dt>수령예상일 : </dt>
-		            			
-		            			
-		            		</dl>
-		            		<ul class="cart_deli_notice">
-		            			<li>출고일이 다른 상품을 함께 주문하시면, 출고일이 가장 늦은 상품을 기준으로 일괄 배송합니다.</li>
-		            			<li>같은 상품을 여러 개 주문하실 경우 추가 재고 확보에 시간이 더 걸릴 수 있으므로 예상 수령일보다  배송일이 2-3일 더 지연되기도 합니다.</li>
-		            			<li>국내 수령지 기준이며, 해외배송은 배송방법에 따라 수령일이 최대 14일까지 늘어날 수 있습니다. </li>
-		            		</ul>
-		            	</div>
+	            	<div class="cart_deli_info">
+	            		<dl class="cart_deli_date">
+	            			<dt>수령예상일 : </dt>
+	            			
+	            			
+	            		</dl>
+	            		<ul class="cart_deli_notice">
+	            			<li>출고일이 다른 상품을 함께 주문하시면, 출고일이 가장 늦은 상품을 기준으로 일괄 배송합니다.</li>
+	            			<li>같은 상품을 여러 개 주문하실 경우 추가 재고 확보에 시간이 더 걸릴 수 있으므로 예상 수령일보다  배송일이 2-3일 더 지연되기도 합니다.</li>
+	            			<li>국내 수령지 기준이며, 해외배송은 배송방법에 따라 수령일이 최대 14일까지 늘어날 수 있습니다. </li>
+	            		</ul>
+	            	</div>
 	            	
 	            	
 	            	<span class="cart_plus"></span><span class="cart_minus"></span><span class="cart_same"></span>

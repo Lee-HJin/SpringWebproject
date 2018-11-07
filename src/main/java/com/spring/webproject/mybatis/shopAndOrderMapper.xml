@@ -10,8 +10,4 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		select * from bookSections where isbn = #{isbn}
 	</select>
 
-
-
-
-
 </mapper>

@@ -38,6 +38,7 @@ public class BookSectionsDTO {
 	private int reviewCnt;
 	private int soldBookCnt;
 	private String orderCount;
+	private int seqNum;
 	
 	public int getCategoryId() {
 		return categoryId;
@@ -146,6 +147,12 @@ public class BookSectionsDTO {
 	}
 	public void setOrderCount(String orderCount) {
 		this.orderCount = orderCount;
+	}
+	public int getSeqNum() {
+		return seqNum;
+	}
+	public void setSeqNum(int seqNum) {
+		this.seqNum = seqNum;
 	}
 	
 	
