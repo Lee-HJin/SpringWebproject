@@ -138,6 +138,40 @@
 			},
 		});
 	}
+	
+	//쿠키 가져오기
+	function getCookie(cookiename){
+		var cookiestring  = document.cookie;
+		var cookiearray = cookiestring.split(';');
+		for(var i=0; i<cookiearray.length; ++i){ 
+		    if(cookiearray[i].indexOf(cookiename)!=-1){
+		        var nameVal = cookiearray[i].split("=");
+		        nameVal = nameVal[1].trim();
+		        
+		        return unescape(nameVal);
+		    }else{
+		    	var cookie = null;
+		    } 
+		}
+		return cookie;
+	}
+ 	
+	//쿠키 뿌리기
+	function cookieInfo(cValue) {		
+ 		var cookie = cValue;
+ 		
+ 		if(cookie!=null){
+ 			cookie = cookie.split("/");
+ 	 		var ck = new Array();
+ 	 		
+ 	 		for(i=0;i<cookie.length;i++){
+ 	 			ck[i] = JSON.parse(cookie[i]);
+ 	 		} 		
+ 	 		return ck;
+ 		}else{
+ 			return null;
+ 		}
+	}
 
 </script>
 </head>

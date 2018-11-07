@@ -50,9 +50,7 @@
 		});
 		//탑버튼 클릭시 위로 이동
 		$("#onTop").click(function() {
-			$('html, body').animate({
-				scrollTop : 0
-			}, 350);
+			$('html, body').animate({scrollTop : 0}, 350);
 		});
 		
 		if(${empty sessionScope.userInfo.userId}){
