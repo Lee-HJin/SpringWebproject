@@ -388,7 +388,7 @@
 						}
 						
 						function goReviewMain(Val){
-							location.href = '<%=cp%>/book_review_main.action?reviewId='+ Val;
+							location.href = '<%=cp%>/book_review_main.action?reviewId='+ Val+ '&isbn=' + ${isbn };
 							}
 						
 						</script>

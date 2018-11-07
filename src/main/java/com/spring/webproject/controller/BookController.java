@@ -1,6 +1,9 @@
 package com.spring.webproject.controller;
 
 import java.io.UnsupportedEncodingException;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Iterator;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
@@ -19,6 +22,8 @@ import com.spring.webproject.dto.AuthorDTO;
 import com.spring.webproject.dto.BookSectionsDTO;
 import com.spring.webproject.dto.BooksDTO;
 import com.spring.webproject.dto.BooksImageDTO;
+import com.spring.webproject.dto.CateDTO;
+import com.spring.webproject.dto.CateDTO2;
 import com.spring.webproject.dto.ReviewDTO;
 import com.spring.webproject.dto.SimpleReviewDTO;
 import com.spring.webproject.dto.UserDTO;
@@ -178,12 +183,45 @@ public class BookController {
 		return "/books/cate/self_improvement/book_self_improvement";
 	}
 
+	// 장르소설
+	@RequestMapping(value = "/genre_fiction.action", method = { RequestMethod.GET, RequestMethod.POST })
+	public String genre_fiction(HttpServletRequest request, HttpServletResponse response) {
+
+		String pageNum = request.getParameter("pageNum");
+
+		int currentPage = 1;
+
+		if (pageNum != null) {
+			currentPage = Integer.parseInt(pageNum);
+		}
+
+		// 전체데이터 갯수
+		int dataCount = raDao.getDataCountForEachRnum();
+
+		// 페이징 처리
+		int numPerPage = 10;
+		int totalPage = raMyUtil.getPageCount(numPerPage, dataCount);
+
+		if (currentPage > totalPage)
+			currentPage = totalPage;
+
+		int start = (currentPage - 1) * numPerPage + 1;
+		int end = currentPage * numPerPage;
+
+		request.setAttribute("start", start);
+		request.setAttribute("end", end);
+
+		List<BookSectionsDTO> bestSellerTop10 = raDao.getBestSellerTop10();
+		request.setAttribute("bestSellerTop10", bestSellerTop10);
+
+		return "/books/cate/novel/genre_fiction";
+	}
+
 	// 도서 상세 페이지
 	@RequestMapping(value = "/book_info.action", method = { RequestMethod.GET, RequestMethod.POST })
 	public String book_info(HttpServletRequest request, HttpServletResponse response)
 			throws UnsupportedEncodingException {
-
-		int isbn = Integer.parseInt(request.getParameter("isbn")); // 책 고유번호 가져오기
+		String isbn = request.getParameter("isbn"); // 책 고유번호 가져오기
 
 		BooksDTO dto = dao.getReadBookData(isbn);
 		AuthorDTO dto2 = dao.getReadAuthorData(isbn);
@@ -230,7 +268,7 @@ public class BookController {
 	// 도서 리뷰 페이지
 	@RequestMapping(value = "/book_review.action", method = { RequestMethod.GET, RequestMethod.POST })
 	public String book_review(HttpServletRequest request, HttpServletResponse response) {
-		int isbn = Integer.parseInt(request.getParameter("isbn")); // 책 고유번호 가져오기
+		String isbn = request.getParameter("isbn"); // 책 고유번호 가져오기
 		request.setAttribute("isbn", isbn); // 도서 번호 넘겨주기
 
 		String pageNum = request.getParameter("pageNum"); // 페이지 번호
@@ -276,6 +314,7 @@ public class BookController {
 	@RequestMapping(value = "/book_review_main.action", method = { RequestMethod.GET, RequestMethod.POST })
 	public String book_review_main(HttpServletRequest request, HttpServletResponse response) {
 
+		String isbn = request.getParameter("isbn"); // 책 고유번호 가져오기
 		int reviewId = Integer.parseInt(request.getParameter("reviewId")); // 리뷰 게시물 번호
 
 		ReviewDTO dto = dao.getReadReviewData(reviewId);
@@ -284,6 +323,12 @@ public class BookController {
 
 		request.setAttribute("dto", dto);
 
+		ReviewDTO preDto = dao.preReadReviewData(isbn, reviewId);
+		ReviewDTO nextDto = dao.nextReadReviewData(isbn, reviewId);
+
+		request.setAttribute("preDto", preDto);
+		request.setAttribute("nextDto", nextDto);
+		request.setAttribute("isbn", isbn);
 		return "/books/review/book_review_main";
 
 	}
@@ -291,7 +336,7 @@ public class BookController {
 	// 도서 리뷰 작성 페이지
 	@RequestMapping(value = "/book_review_created.action", method = { RequestMethod.GET, RequestMethod.POST })
 	public String book_review_created(HttpServletRequest request, HttpServletResponse response) {
-		int isbn = Integer.parseInt(request.getParameter("isbn")); // 책 고유번호 가져오기
+		String isbn = request.getParameter("isbn"); // 책 고유번호 가져오기
 
 		BooksDTO dto = dao.getReadBookData(isbn);
 
@@ -351,7 +396,7 @@ public class BookController {
 	@RequestMapping(value = "/book_simpleReview.action", method = { RequestMethod.GET, RequestMethod.POST })
 	public String book_simpleReview(HttpServletRequest request, HttpServletResponse response) {
 
-		int isbn = Integer.parseInt(request.getParameter("isbn")); // 책 고유번호 가져오기
+		String isbn = request.getParameter("isbn"); // 책 고유번호 가져오기
 
 		UserDTO dto3 = (UserDTO) request.getSession().getAttribute("userInfo");
 
@@ -371,7 +416,7 @@ public class BookController {
 	@RequestMapping(value = "/book_simpleReview_ok.action", method = { RequestMethod.GET, RequestMethod.POST })
 	public String book_simpleReview_ok(HttpServletRequest request, HttpServletResponse response) {
 
-		int isbn = Integer.parseInt(request.getParameter("isbn")); // 책 고유번호 가져오기
+		String isbn = request.getParameter("isbn"); // 책 고유번호 가져오기
 
 		List<SimpleReviewDTO> lists = dao.getReadSimpleReviewList(isbn);
 
@@ -385,7 +430,7 @@ public class BookController {
 	public String book_preview(HttpServletRequest request, HttpServletResponse response) {
 
 		String cp = request.getContextPath();
-		int isbn = Integer.parseInt(request.getParameter("isbn")); // 책 고유번호 가져오기
+		String isbn = request.getParameter("isbn"); // 책 고유번호 가져오기
 
 		List<BooksImageDTO> lists = dao.getReadBookImageData(isbn); // 책 미리보기 이미지
 		BooksDTO dto2 = dao.getReadBookData(isbn); // 책정보
@@ -497,4 +542,32 @@ public class BookController {
 
 		return "redirect:/book_simpleReview.action?isbn=" + isbn;
 	}
+
+	// 도서 카테고리 메인
+	@RequestMapping(value = "/book_cate.action", method = { RequestMethod.GET, RequestMethod.POST })
+	public String book_cate(HttpServletRequest request, HttpServletResponse response) {
+
+		int categoryId = Integer.parseInt(request.getParameter("categoryId"));
+
+		// 대분류
+		CateDTO dto_Main = dao.getReadCate(categoryId);
+
+		request.setAttribute("dto_Main", dto_Main); // 메인 분류 이름
+
+		// 중분류
+		
+		List<CateDTO2> lists = dao.getReadCateList2(dto_Main.getCategoryId());
+		
+		Iterator<CateDTO2> iterator = lists.iterator();
+		
+		while(iterator.hasNext()) {
+			
+			iterator.next().setLastNode(dao.getReadCate(iterator.next().getCategoryId())); 
+			
+		}
+		
+		
+		return "books/cate/book_cate";
+	}
+
 }
