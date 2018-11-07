@@ -1,5 +1,6 @@
 package com.spring.webproject.controller;
 
+import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -18,6 +19,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.spring.webproject.dao.LoginDAO;
 import com.spring.webproject.dao.MyShoppingDAO;
+import com.spring.webproject.dto.CounselDTO;
 import com.spring.webproject.dto.MainDTO;
 import com.spring.webproject.dto.MyReviewDTO;
 import com.spring.webproject.dto.OrderDetailDTO;
@@ -1199,7 +1201,7 @@ public class MyShoppingController {
 
 		int reviewId = Integer.parseInt(request.getParameter("reviewId"));
 		String sentence = request.getParameter("sentence");
-		
+
 		dao.updateSentence(reviewId, sentence);
 
 		return "redirect:/myShopping/mySentenceList.action";
@@ -1212,6 +1214,135 @@ public class MyShoppingController {
 	public String myCounselHistory(HttpServletRequest request) {
 
 		return "myShopping/myCounselHistory";
+	}
+
+	//1:1상담내역 불러오기
+	@RequestMapping(value = "myShopping/getCounselList.action", method = RequestMethod.POST)
+	public String getCounselList(HttpServletRequest request) {
+
+		UserDTO dto = (UserDTO) request.getSession().getAttribute("userInfo");
+		String userId = dto.getUserId();
+
+		String pageNum = request.getParameter("pageNum");	
+		String fromDate = request.getParameter("fromDate");
+		String toDate = request.getParameter("toDate");	
+		String mode = request.getParameter("mode");
+
+		if(mode==null || mode.equals("")) {
+			mode = "counselAll";
+		}
+
+		//한 페이지당 출력 건수
+		int numPerPage = 10;
+		//전체 페이징 페이지
+		int totalPage = 0;
+		//전체 출력 건수
+		int totalDataCount = 0;
+
+		//현재 페이지
+		int currentPage = 1;
+		if(pageNum!=null && pageNum!="") {
+			currentPage = Integer.parseInt(pageNum);
+		}
+		else {
+			pageNum = "1";
+		}
+
+		int start = (currentPage-1) * numPerPage + 1;
+		int end = currentPage * numPerPage;
+
+		//전체 출력 건수 가져오기
+		//1.기본 검색(조건 없음)
+		if(fromDate==null || fromDate.equals("undefined") || toDate==null || toDate.equals("undefined")) {
+
+			totalDataCount = dao.getAllCounselCount(userId);
+
+			//출력 건수에 맞춰 내용 가져오기
+			Map<String, Object> hMap = new HashMap<String, Object>();
+			hMap.put("start", start);
+			hMap.put("end", end);
+			hMap.put("userId", userId);
+
+			List<CounselDTO> lists = dao.getAllCounselList(hMap);
+
+			request.setAttribute("lists", lists);
+		}
+
+		//mode로(내역별조회) 리스트 불러오기
+		//기본 조회, 전체 조회
+		if(fromDate!=null && !fromDate.equals("undefined")) {
+
+			if(mode.equals("undefined") || mode.equals("counselAll")) {
+
+				totalDataCount = dao.getCounselCountByDate(userId, fromDate, toDate);
+
+				//출력 건수에 맞춰 내용 가져오기
+				Map<String, Object> hMap = new HashMap<String, Object>();
+				hMap.put("start", start);
+				hMap.put("end", end);
+				hMap.put("userId", userId);
+				hMap.put("fromDate", fromDate);
+				hMap.put("toDate", toDate);
+
+				List<CounselDTO> pointList  = dao.getCounselListByDate(hMap);
+
+				request.setAttribute("lists", pointList);
+
+			}
+			else if(mode.equals("yes")) {	//답변내역
+				
+				totalDataCount = dao.getCounselCountYes(userId, fromDate, toDate);
+
+				Map<String, Object> hMap = new HashMap<String, Object>();
+				hMap.put("start", start);
+				hMap.put("end", end);
+				hMap.put("userId", userId);
+				hMap.put("fromDate", fromDate);
+				hMap.put("toDate", toDate);
+
+				List<CounselDTO> pointList = dao.getCounselListYes(hMap);
+
+				request.setAttribute("lists", pointList);
+
+			}
+			else if(mode.equals("no")) {	//미답변내역
+
+				totalDataCount = dao.getCountUsePoint(userId, fromDate, toDate);
+
+				Map<String, Object> hMap = new HashMap<String, Object>();
+				hMap.put("start", start);
+				hMap.put("end", end);
+				hMap.put("userId", userId);
+				hMap.put("fromDate", fromDate);
+				hMap.put("toDate", toDate);
+
+				List<CounselDTO> pointList = dao.getCounselListNo(hMap);
+
+				request.setAttribute("lists", pointList);
+
+			}
+
+		}
+
+		//출력 건수가 0이 아니면 페이징 작업
+		if(totalDataCount!=0) {
+			totalPage = ajaxPaging.getPageCount(numPerPage, totalDataCount);
+		}
+
+		//페이징 인덱스
+		//1.기본 검색(조건 없음)
+		if(fromDate==null || fromDate=="" || fromDate.equals("undefined")) {	//
+			String pageIndexList = ajaxPaging.pageIndexList(currentPage, totalPage, "", mode);
+			request.setAttribute("pageIndexList", pageIndexList);
+		}
+		//2.기간별 조회
+		if(fromDate!=null && fromDate!="" && !fromDate.equals("undefined")) {
+			String params = "'" + fromDate + "','" + toDate + "','" + mode + "'";
+			String pageIndexList = ajaxPaging.pageIndexList(currentPage, totalPage, params, mode);
+			request.setAttribute("pageIndexList", pageIndexList);
+		}
+
+		return "myShopping/lists/lists_counsel";
 	}
 
 	//회원 탈퇴 페이지
@@ -1240,7 +1371,6 @@ public class MyShoppingController {
 		}
 
 	}
-
 
 	//회원 탈퇴 진행
 	@RequestMapping(value = "myShopping/memberOut_ok.action", method = RequestMethod.GET)
@@ -1293,11 +1423,11 @@ public class MyShoppingController {
 	//구매 완료
 	@RequestMapping(value = "myShopping/confirmOrder.action", method = RequestMethod.GET)
 	public String confirmOrder(HttpServletRequest request) {
-
+		
 		String orderId = request.getParameter("orderId");
-
+		
+		//구매완료로 상태 변환
 		dao.confirmOrder(orderId);
-
 
 		return "redirect:/myShopping/myOrderDetail.action?orderId=" + orderId;
 	}
@@ -1310,8 +1440,66 @@ public class MyShoppingController {
 
 		dao.exchangeOrder(orderId);
 
-
 		return "redirect:/myShopping/myOrderDetail.action?orderId=" + orderId;
+	}
+
+	//포인트 사용 테스트
+	@RequestMapping(value = "testpoint.action", method = RequestMethod.GET)
+	public String testpoint(HttpServletRequest request) {
+
+		return "/myShopping/testpoint";
+	}
+
+	//포인트 사용 테스트
+	@RequestMapping(value = "testpoint_ok.action", method = RequestMethod.POST)
+	public String testpoint_ok(HttpServletRequest request) {
+
+		UserDTO dto = (UserDTO) request.getSession().getAttribute("userInfo");
+		String userId = dto.getUserId();
+
+		//usedPoint : 주문시에 사용한 포인트
+		int usedPoint =  Integer.parseInt(request.getParameter("usedPoint"));
+		int inputPoint = usedPoint-(usedPoint*2);	//DB에 입력할 때 사용할 포인트 변수
+
+		while(usedPoint!=0) {	//usedPoint가 0이 될때까지 동작
+
+			//rownum으로 leftPoint를 만료일자가 가까운 순으로 불러옴
+			//pointMap안에는 pointid, leftValue가 들어있음
+			HashMap<String, Object> pointMap = dao.getLeftPoint(userId);
+
+			//pointMap 풀어내기
+			int leftValue = ((BigDecimal)pointMap.get("LEFTVALUE")).intValue();
+			int pointId = ((BigDecimal)pointMap.get("POINTID")).intValue();
+
+			//사용한 포인트>적립된 포인트
+			//적립된 포인트(point테이블 안의 leftValue)를 0으로 만든다음 사용한포인트-적립된 포인트한 금액을
+			//다시 usedPoint에 넣음 그리고 while문 반복
+			if(usedPoint>=leftValue) { 
+				//leftValue를 0으로 만들고, usedPoint를 그만큼 줄여서 다시 저장
+				dao.pointUseUpdate(pointId, 0);
+				usedPoint = usedPoint-leftValue;		
+			}
+			//사용한 포인트<적립된 포인트
+			//적립된 포인트-사용한 포인트 금액을 불러온 pointId를 통해 leftValue를 업데이트한 후 while문 종료됨
+			else {
+
+				leftValue = leftValue-usedPoint;
+				dao.pointUseUpdate(pointId, leftValue);
+				usedPoint = 0;
+
+			}
+		}
+
+		//DB에 포인트 사용한 내역 추가함
+		Map<String, Object> map = new HashMap<String, Object>();
+		map.put("userId", userId);
+		map.put("orderId", 12);	//orderId 생성후 입력
+		map.put("value", inputPoint);
+		map.put("pointId", loginDao.getPointId()+1);//pointId 생성후 입력
+
+		dao.usedPointInsert(map);
+
+		return "/myShopping/testpoint";
 	}
 
 }

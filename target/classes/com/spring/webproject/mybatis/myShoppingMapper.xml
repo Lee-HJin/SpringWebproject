@@ -110,9 +110,7 @@ and handlingdate between to_date(#{fromDate} || '000000', 'YYYY-MM-DD-HH24MISS')
 
 <!-- 소멸예정 적립금 조회 -->
 <select id="getExPoint" parameterType="java.lang.String" resultType="int">
-select nvl(sum(value),0) from (select userid, savingdate, expirationdate,orderid,value,pointitem from point where userId=#{userId} and <![CDATA[ expirationdate<=sysdate+60 ]]>
-minus(select a.userid,a.savingdate,a.expirationdate,a.orderid,a.value,a.pointitem from point a, point b where a.orderid=b.orderid and a.value+b.value=0 and a.userId=#{userId}
-union select a.userid,a.savingdate,a.expirationdate,a.orderid,a.value,a.pointitem from point a, point b where a.savingdate=b.savingdate and a.expirationdate=b.expirationdate and a.value+b.value=0 and a.userId=#{userId}))
+select nvl(sum(leftvalue),0) from point where userid=#{userId} and expirationdate between sysdate and sysdate+60
 </select>
 
 <!-- 적립금 리스트 count -->
@@ -122,7 +120,7 @@ select nvl(count(*),0) from point where userId=#{userId}
 
 <!-- 적립금 리스트 -->
 <select id="getTotalPointList" parameterType="map" resultType="com.spring.webproject.dto.PointDTO">
-select * from (select rownum rnum, data.* from (select to_char(savingdate,'YYYY-MM-DD') savingdate,to_char(expirationdate,'YYYY-MM-DD') expirationdate,orderid,value,pointitem,pointid from point where userid=#{userId} order by savingdate desc, orderid desc, pointid desc) data) <![CDATA[where rnum>=#{start} and rnum<=#{end}]]>
+select * from (select rownum rnum, data.* from (select to_char(savingdate,'YYYY-MM-DD') savingdate,to_char(expirationdate,'YYYY-MM-DD') expirationdate,orderid,value,leftvalue,pointitem,pointid from point where userid=#{userId} order by savingdate desc, pointid desc) data) <![CDATA[where rnum>=#{start} and rnum<=#{end}]]>
 </select>
 
 <!-- 적립금 리스트 count (날짜 조건) -->
@@ -132,7 +130,7 @@ select nvl(count(*),0) from point where userId=#{userId} and savingdate between 
 
 <!-- 적립금 리스트 (날짜 조건) -->
 <select id="getPointListByDate" parameterType="map" resultType="com.spring.webproject.dto.PointDTO">
-select * from(select rownum rnum, data.* from (select to_char(savingdate,'YYYY-MM-DD') savingdate,to_char(expirationdate,'YYYY-MM-DD') expirationdate,orderid,value,pointitem,pointid from point where userId=#{userId} and savingdate between to_date(#{fromDate} || '000000', 'YYYY-MM-DD-HH24MISS') and to_date(#{toDate} || '235959' ,'YYYY-MM-DD-HH24MISS') order by savingdate desc, orderid desc, pointid desc) data) 
+select * from(select rownum rnum, data.* from (select to_char(savingdate,'YYYY-MM-DD') savingdate,to_char(expirationdate,'YYYY-MM-DD') expirationdate,orderid,value,leftValue,pointitem,pointid from point where userId=#{userId} and savingdate between to_date(#{fromDate} || '000000', 'YYYY-MM-DD-HH24MISS') and to_date(#{toDate} || '235959' ,'YYYY-MM-DD-HH24MISS') order by savingdate desc, pointid desc) data) 
 <![CDATA[where rnum>=#{start} and rnum<=#{end}]]>
 </select>
 
@@ -154,7 +152,7 @@ select nvl(count(*),0) from point where userId=#{userId} and <![CDATA[value<0]]>
 
 <!-- 적립금 리스트 (날짜+사용내역) -->
 <select id="getUsePointList" parameterType="map" resultType="com.spring.webproject.dto.PointDTO">
-select * from(select rownum rnum, data.* from (select to_char(savingdate,'YYYY-MM-DD') savingdate,to_char(expirationdate,'YYYY-MM-DD') expirationdate,orderid,value,pointitem,pointid from point where userId=#{userId} and <![CDATA[value<0]]> and savingdate between to_date(#{fromDate} || '000000', 'YYYY-MM-DD-HH24MISS') and to_date(#{toDate} || '235959' ,'YYYY-MM-DD-HH24MISS') order by savingdate desc, orderid desc, pointid desc) data)
+select * from(select rownum rnum, data.* from (select to_char(savingdate,'YYYY-MM-DD') savingdate,to_char(expirationdate,'YYYY-MM-DD') expirationdate,orderid,value,pointitem,pointid from point where userId=#{userId} and <![CDATA[value<0]]> and savingdate between to_date(#{fromDate} || '000000', 'YYYY-MM-DD-HH24MISS') and to_date(#{toDate} || '235959' ,'YYYY-MM-DD-HH24MISS') order by savingdate desc, pointid desc) data)
  <![CDATA[where rnum>=#{start} and rnum<=#{end}]]>
 </select>
 
@@ -183,6 +181,11 @@ update orders set orderStatusCode=2 where orderId=#{orderId}
 update orders set orderStatusCode=6 where orderId=#{orderId}
 </update>
 
+<!-- 구매 완료시 적립금 적립 -->
+<insert id="savePoint" parameterType="map">
+insert into point values(#{userId}, sysdate, to_date(to_char(sysdate+365,'YYYY-MM-DD ') || '23:59:59','YYYY-MM-DD HH24:MI:SS'),#{orderId},#{value},'도서구입',#{pointId},#{leftValue})
+</insert>
+
 <!-- 교환 신청 -->
 <update id="exchangeOrder" parameterType="java.lang.String">
 update orders set orderStatusCode=4 where orderId=#{orderId}
@@ -190,16 +193,12 @@ update orders set orderStatusCode=4 where orderId=#{orderId}
 
 <!-- 소멸 예정 포인트 리스트 count -->
 <select id="expPointCount" parameterType="java.lang.String" resultType="int">
-select nvl(count(*),0) from (select rownum rnum, data.userid, to_char(data.savingdate,'YYYY-MM-DD')savingdate,to_char(data.expirationdate,'YYYY-MM-DD')expirationdate,orderid,value,pointitem  from (select userid, savingdate, expirationdate,orderid,value,pointitem from point where userId=#{userId} <![CDATA[and expirationdate<=sysdate+60]]>
-minus(select a.userid,a.savingdate,a.expirationdate,a.orderid,a.value,a.pointitem from point a, point b where a.orderid=b.orderid and a.value+b.value=0 and a.userId=#{userId}
-union select a.userid,a.savingdate,a.expirationdate,a.orderid,a.value,a.pointitem from point a, point b where a.savingdate=b.savingdate and a.expirationdate=b.expirationdate and a.value+b.value=0 and a.userId=#{userId}))data order by expirationdate) 
+select nvl(count(*),0) from point where userid=#{userId} and expirationdate between sysdate and sysdate+60
 </select>
 
 <!-- 소멸 예정 포인트 리스트 -->
 <select id="expPointList" parameterType="map" resultType="com.spring.webproject.dto.PointDTO">
-select * from (select rownum rnum, data.userid, to_char(data.savingdate,'YYYY-MM-DD')savingdate,to_char(data.expirationdate,'YYYY-MM-DD')expirationdate,orderid,value,pointitem  from (select userid, savingdate, expirationdate,orderid,value,pointitem from point where userId=#{userId} <![CDATA[and expirationdate<=sysdate+60]]>
-minus(select a.userid,a.savingdate,a.expirationdate,a.orderid,a.value,a.pointitem from point a, point b where a.orderid=b.orderid and a.value+b.value=0 and a.userId=#{userId}
-union select a.userid,a.savingdate,a.expirationdate,a.orderid,a.value,a.pointitem from point a, point b where a.savingdate=b.savingdate and a.expirationdate=b.expirationdate and a.value+b.value=0 and a.userId=#{userId}))data order by expirationdate) <![CDATA[where rnum>=#{start} and rnum<=#{end}]]>
+select * from (select rownum rnum, point.* from (select userid,to_char(savingdate,'YYYY-MM-DD') savingdate, to_char(expirationdate,'YYYY-MM-DD') expirationdate	,orderid,value,pointitem,pointid,leftvalue from point where userid=#{userId} and leftvalue!=0 and expirationdate between sysdate and sysdate+60 order by expirationdate, pointid)point) <![CDATA[where rnum>=#{start} and rnum<=#{end}]]>
 </select>
 
 <!-- 리뷰를 기다리는 책 count -->
@@ -218,7 +217,7 @@ minus select isbn from (select isbn, nvl(count(isbn),0) reviewcount from review 
 
 <!-- 최근 본 상품 리스트  -->
 <select id="LatesBooksList" parameterType="map" resultType="com.spring.webproject.dto.MainDTO">
-select * from (select rownum rnum, a.isbn,booktitle, authorName, publisher, bookimage, discountedPrice, discountRate from (select isbn from recentList where userId=#{userId} order by viewDate desc) a, booksections where a.isbn=booksections.isbn) 
+select * from (select rownum rnum, a.isbn,booktitle, authorName, publisher, bookimage, discountedPrice, discountRate from (select isbn from recentList where userId=#{userId} order by viewDate) a, booksections where a.isbn=booksections.isbn) 
 <![CDATA[where rnum>=#{start} and rnum<=#{end}]]>
 </select>
 
@@ -350,5 +349,73 @@ insert into review(isbn,reviewId,userId,created,sentence,hitcount) values(#{isbn
 <update id="updateSentence" parameterType="map">
 update review set sentence=#{sentence} where reviewId=#{reviewId}
 </update>
+
+<!-- 사용할 포인트 리스트 불러오기 -->
+<select id="getLeftPoint" parameterType="java.lang.String" resultType="hashmap">
+select pointId,leftValue from (select rownum rnum, point.* from (select * from point where userId=#{userId} and leftValue!=0 order by expirationdate, pointid) point) where rnum=1
+</select>
+
+<!-- 포인트 사용 update -->
+<update id="pointUseUpdate" parameterType="map">
+update point set leftvalue=#{leftValue} where pointId=#{pointId}
+</update>
+
+<!-- 포인트 사용내역 insert -->
+<insert id="usedPointInsert" parameterType="map">
+insert into point(userId,savingdate,expirationdate,orderid,value,pointitem,pointid,leftvalue) 
+values(#{userId},sysdate,sysdate,#{orderId},#{value},'상품구입',#{pointId},0)
+</insert>
+
+<!-- 1:1 상담내역 리스트 count (all) -->
+<select id="getAllCounselCount" parameterType="java.lang.String" resultType="int">
+select nvl(count(*),0) from consultation where userId=#{userId}
+</select>
+
+<!-- 1:1 상담내역 리스트 (all) -->
+<select id="getAllCounselList" parameterType="map" resultType="com.spring.webproject.dto.CounselDTO">
+select * from (select rownum rnum, consultid,userid,email,subject,contents,to_char(consultationdate,'YYYY-MM-DD') consultationDate,answercheck,typeName as typeid from(
+select * from (select consultId,userId,email,subject,contents,consultationdate, answercheck,typeid 
+from consultation where userId=#{userId} order by consultationdate, consultid desc)a inner join consultationtype on a.typeid=consultationtype.typeid order by consultationdate desc, consultid desc))
+<![CDATA[where rnum>=#{start} and rnum<=#{end}]]>
+</select>
+
+<!-- 1:1상담내역 count (날짜+all) -->
+<select id="getCounselCountByDate" parameterType="map" resultType="int">
+select nvl(count(*),0) from consultation where userId=#{userId} and consultationdate between #{fromDate} and #{toDate}
+</select>
+
+<!-- 1:1상담내역 리스트 (날짜+all) -->
+<select id="getCounselListByDate" parameterType="map" resultType="com.spring.webproject.dto.CounselDTO">
+select * from (select rownum rnum, consultid,userid,email,subject,contents,to_char(consultationdate,'YYYY-MM-DD') consultationDate,answercheck,typeName as typeid from(
+select * from (select consultId,userId,email,subject,contents,consultationdate, answercheck,typeid 
+from consultation where userId=#{userId} and consultationdate between #{fromDate} and #{toDate} order by consultationdate, consultid desc)a inner join consultationtype on a.typeid=consultationtype.typeid order by consultationdate desc, consultid desc))
+<![CDATA[where rnum>=#{start} and rnum<=#{end}]]>
+</select>
+
+<!-- 1:1상담내역 count (답변내역) -->
+<select id="getCounselCountYes" parameterType="map" resultType="int">
+select nvl(count(*),0) from consultation where userId=#{userId} and answercheck is not null and consultationdate between #{fromDate} and #{toDate}
+</select>
+
+<!-- 1:1상담내역 리스트 (답변내역) -->
+<select id="getCounselListYes" parameterType="map" resultType="com.spring.webproject.dto.CounselDTO">
+select * from (select rownum rnum, consultid,userid,email,subject,contents,to_char(consultationdate,'YYYY-MM-DD') consultationDate,answercheck,typeName as typeid from(
+select * from (select consultId,userId,email,subject,contents,consultationdate, answercheck,typeid 
+from consultation where userId=#{userId} and answercheck is not null and consultationdate between #{fromDate} and #{toDate} order by consultationdate, consultid desc)a inner join consultationtype on a.typeid=consultationtype.typeid order by consultationdate desc, consultid desc))
+<![CDATA[where rnum>=#{start} and rnum<=#{end}]]>
+</select>
+<!-- 1:1상담내역 count (미답변내역) -->
+<select id="getCounselCountNo" parameterType="map" resultType="int">
+select nvl(count(*),0) from consultation where userId=#{userId} and answercheck is null and consultationdate between #{fromDate} to #{toDate}
+</select>
+
+<!-- 1:1상담내역 리스트 (미답변내역) -->
+<select id="getCounselListNo" parameterType="map" resultType="com.spring.webproject.dto.CounselDTO">
+select * from (select rownum rnum, consultid,userid,email,subject,contents,to_char(consultationdate,'YYYY-MM-DD') consultationDate,answercheck,typeName as typeid from(
+select * from (select consultId,userId,email,subject,contents,consultationdate, answercheck,typeid 
+from consultation where userId=#{userId} and answercheck is null and consultationdate between #{fromDate} and #{toDate} order by consultationdate, consultid desc)a inner join consultationtype on a.typeid=consultationtype.typeid order by consultationdate desc, consultid desc))
+<![CDATA[where rnum>=#{start} and rnum<=#{end}]]>
+</select>
+
 
 </mapper>

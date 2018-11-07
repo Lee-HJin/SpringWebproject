@@ -116,5 +116,10 @@ public class LoginDAO {
 		sessionTemplate.update("loginMapper.updateRecentBookTime",params);
 	}
 	
+	public int getCounselCount(String userId) {
+		
+		return sessionTemplate.selectOne("loginMapper.getCounselCount",userId);
+	}
+	
 	
 }

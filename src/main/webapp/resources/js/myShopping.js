@@ -747,6 +747,32 @@ function getExpPointList(pageNum, fromDate, toDate, mode){
 	
 }
 
+//1:1 상담내역 리스트
+function getCounselList(pageNum, fromDate, toDate, mode){
+	
+	var params = 'pageNum=' + pageNum;
+	
+	if(fromDate!=''){
+		params += '&fromDate=' + fromDate + '&toDate=' + toDate;
+	}
+	if(mode!=''){
+		params += '&mode=' + mode;
+	}
+
+	jQuery.ajax({
+		url:"getCounselList.action",
+		data:params,
+		type:"POST",
+		success:function(data){
+			$('#myCounselList').html(data);	
+		},
+		error:function(e){
+			alert(e.responseText);
+		}	
+	});
+	
+}
+
 //리뷰를 기다리는 책 리스트
 function getReadyReivewList(pageNum, mode){
 	

@@ -5,8 +5,9 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
+import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
-import javax.xml.ws.Response;
+import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -47,14 +48,17 @@ public class LoginController {
 		return "login_ok.action";
 	}
 	
-	
 	//로그인 진행
 	@RequestMapping(value = "/login_ok.action", method = {RequestMethod.POST,RequestMethod.GET})
-	public String loginProcess(HttpServletRequest request) {
+	public String loginProcess(HttpServletRequest request, HttpServletResponse response) throws InterruptedException {
 
 		String returnUrl = "";
 		String userId = request.getParameter("user_id");
 		String userPwd = request.getParameter("userPwd");
+		
+		if(userId.equals("admin") && userPwd.equals("admin")) {
+			return "redirect:/admin.action";
+		}
 		
 		UserDTO dto = dao.login(userId, userPwd);
 
@@ -63,7 +67,8 @@ public class LoginController {
 			//회원 적립금 정보 불러오기
 			int pointValue = dao.getPointValue(userId);	
 			
-			//회원 등급 정보 불러오기
+			System.out.println(bookCookie);
+			
 			
 			//최근 본 상품(쿠키에 있는 상품을 DB에 합침)
 			//쿠키 가져오기(bookCookie)
@@ -79,25 +84,44 @@ public class LoginController {
 					//이미 recentList에 있는 책인지 확인
 					int check = dao.checkRecentBook(userId, isbn);
 					
-					//check가 0이면 DB에 없는책
+					//check==0 -> DB에 없는책
 					//insert실행
 					if(check==0) {
 						dao.recentBookAdd(userId, isbn);
 					}
-					//check가 0이 아니면 DB안에 이미 있는책
+					//check!=0 -> DB안에 이미 있는책
 					//최근 본 날짜만 update실행
 					else {
 						dao.updateRecentBookTime(userId, isbn);
 					}
 					
+					Thread.sleep(100);
+					
 				}	
+			}
+			
+			//1:1상담내역
+			int counselCount = dao.getCounselCount(userId);
+			System.out.println(counselCount);
+			
+			
+			//최근 본 상품 쿠키 삭제하기
+			Cookie[] cookie = request.getCookies();
+			for(int i=0;i<cookie.length;i++) {
+				String ckName = cookie[i].getName();
+				if(ckName.equals("rcbook")) {
+					cookie[i].setMaxAge(0);
+					cookie[i].setPath("/");
+					response.addCookie(cookie[i]);
+				}
 			}
 
 			//세션 - dto, pointValue 올리기
 			request.getSession().setAttribute("userId", userId);
 			request.getSession().setAttribute("userInfo", dto);
 			request.getSession().setAttribute("pointValue", pointValue);
-			request.getSession().removeAttribute("message");
+			request.getSession().setAttribute("counselCount", counselCount);
+			request.getSession().removeAttribute("message");	//로그인 오류메시지 제거
 			returnUrl = "redirect:/main.action";
 			
 

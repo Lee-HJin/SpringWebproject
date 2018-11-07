@@ -6,6 +6,7 @@
 	String cp = request.getContextPath();
 	
 %>
+<c:if test="${!empty lists }">
 <table>
 	<tr>
 		<th>적립일</th>
@@ -17,7 +18,7 @@
 	<tr>	
 		<td>${dto.savingDate }</td>
 		<td>${dto.pointItem }</td>
-		<td><fmt:formatNumber value="${dto.value }" pattern="#,###"/>원</td>
+		<td><fmt:formatNumber value="${dto.leftValue }" pattern="#,###"/>원</td>
 		<td>${dto.expirationDate }</td>		
 	</tr>
 	</c:forEach>
@@ -32,3 +33,18 @@
 		</c:if>
 	</p>
 </div>
+</c:if>
+
+<c:if test="${empty lists }">
+<table>
+	<tr>
+		<th>적립일</th>
+		<th style="width: 500px;">내역</th>
+		<th>소멸예정금액</th>
+		<th>소멸일자</th>
+	</tr>
+	<tr>
+		<td colspan="4" style="height: 100px; line-height: 10;"> 소멸 예정 적립금 내역이 없습니다. </td>
+	</tr>
+</table>
+</c:if>

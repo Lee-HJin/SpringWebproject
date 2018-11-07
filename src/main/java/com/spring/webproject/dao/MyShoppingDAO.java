@@ -7,6 +7,7 @@ import java.util.Map;
 
 import org.mybatis.spring.SqlSessionTemplate;
 
+import com.spring.webproject.dto.CounselDTO;
 import com.spring.webproject.dto.MainDTO;
 import com.spring.webproject.dto.MyReviewDTO;
 import com.spring.webproject.dto.OrderDetailDTO;
@@ -50,12 +51,12 @@ public class MyShoppingDAO {
 
 		sessionTemplate.update("myShopping.updatePwd",hMap);
 	}
-	
+
 	public int checkOrderStatus(String userId) {
-		
+
 		return sessionTemplate.selectOne("myShopping.checkOrderStatus",userId);
 	}
-	
+
 
 	public void deleteUser(String userId) {
 
@@ -395,7 +396,7 @@ public class MyShoppingDAO {
 
 		return sessionTemplate.selectOne("myShopping.getWishNoBuyCount",userId);
 	}
-	
+
 	public String wishOverlapCheck(Map<String, Object> map) {
 
 		return sessionTemplate.selectOne("myShopping.wishOverlapCheck",map);
@@ -415,7 +416,7 @@ public class MyShoppingDAO {
 		}
 
 	}
-	
+
 	public void deleteWish(List<String> delList, String userId) {
 
 		String isbn = "";
@@ -432,67 +433,172 @@ public class MyShoppingDAO {
 		}
 
 	}
-	
+
 	public void deleteReview(int reviewId) {
-		
+
 		sessionTemplate.delete("myShopping.deleteReview",reviewId);
-		
+
 	}
-	
+
 	public int sentenceCount(String userId) {
-		
+
 		return sessionTemplate.selectOne("myShopping.sentenceCount",userId);
 	}
-	
+
 	public List<MyReviewDTO> getSentenceList(Map<String, Object> map){
 
 		List<MyReviewDTO> lists = sessionTemplate.selectList("myShopping.getSentenceList",map);
 
 		return lists;
 	}
-	
+
 	public MyReviewDTO getReviewArticle(int reviewId) {
-		
+
 		MyReviewDTO dto = sessionTemplate.selectOne("myShopping.getReviewArticle",reviewId);
-		
+
 		return dto;
 	}
-	
+
 	public void reviewUpdate(Map<String, Object> map) {
-	
+
 		sessionTemplate.update("myShopping.reviewUpdate",map);
-		
+
 	}
-	
+
 	public MyReviewDTO readBook(String isbn) {
-		
+
 		MyReviewDTO dto = sessionTemplate.selectOne("myShopping.readBook",isbn);
-		
+
 		return dto;
-		
+
 	}
-	
+
 	public int getReviewId() {
-		
+
 		return sessionTemplate.selectOne("myShopping.getReviewId");
-		
+
 	}
-	
+
 	public void createSentence(Map<String, Object> map) {
-		
+
 		sessionTemplate.insert("myShopping.createSentence",map);
 	}
-	
+
 	public void updateSentence(int reviewId, String sentence) {
-		
+
 		Map<String, Object> map = new HashMap<String, Object>();
 		map.put("reviewId", reviewId);
 		map.put("sentence", sentence);
-		
+
 		sessionTemplate.update("myShopping.updateSentence",map);
-		
+
 	}
 
+	////////////////////////포인트
+	public HashMap<String,Object> getLeftPoint(String userId){
 
+		HashMap<String,Object> resultMap = sessionTemplate.selectOne("myShopping.getLeftPoint",userId);
+
+		return resultMap;
+	}
+
+	public void pointUseUpdate(int pointId, int leftValue) {
+
+		Map<String, Object> map = new HashMap<String, Object>();
+		map.put("pointId", pointId);
+		map.put("leftValue", leftValue);
+
+		sessionTemplate.update("myShopping.pointUseUpdate",map);
+
+
+	}
+
+	public void usedPointInsert(Map<String, Object> map) {
+
+		sessionTemplate.insert("myShopping.usedPointInsert",map);
+
+	}
+	/////////////////////////
+
+	public int getAllCounselCount(String userId) {
+
+		return sessionTemplate.selectOne("myShopping.getAllCounselCount",userId);
+
+	}
+
+	public List<CounselDTO> getAllCounselList(Map<String, Object> map){
+
+		List<CounselDTO> lists = sessionTemplate.selectList("myShopping.getAllCounselList",map);
+
+		return lists;
+	}
+
+	public int getCounselCountByDate(String userId, String fromDate, String toDate) {
+
+		Map<String, Object> map = new HashMap<String, Object>();
+		map.put("userId",userId);
+		map.put("fromDate", fromDate);
+		map.put("toDate", toDate);
+
+		return sessionTemplate.selectOne("myShopping.getCounselCountByDate",map);
+
+	}
+
+	public List<CounselDTO> getCounselListByDate(Map<String, Object> map){
+
+		List<CounselDTO> lists = sessionTemplate.selectList("myShopping.getCounselListByDate",map);
+
+		return lists;
+
+	}
+
+	public int getCounselCountYes(String userId, String fromDate, String toDate) {
+		
+		Map<String, Object> map = new HashMap<String, Object>();
+		map.put("userId",userId);
+		map.put("fromDate", fromDate);
+		map.put("toDate", toDate);
+
+		return sessionTemplate.selectOne("myShopping.getCounselCountYes",map);
+
+	}
+	
+	public List<CounselDTO> getCounselListYes(Map<String, Object> map){
+
+		List<CounselDTO> lists = sessionTemplate.selectList("myShopping.getCounselListYes",map);
+
+		return lists;
+
+	}
+
+	public int getCounselCountNo(String userId, String fromDate, String toDate) {
+		
+		Map<String, Object> map = new HashMap<String, Object>();
+		map.put("userId",userId);
+		map.put("fromDate", fromDate);
+		map.put("toDate", toDate);
+
+		return sessionTemplate.selectOne("myShopping.getCounselCountNo",map);
+
+	}
+	
+	public List<CounselDTO> getCounselListNo(Map<String, Object> map){
+
+		List<CounselDTO> lists = sessionTemplate.selectList("myShopping.getCounselListNo",map);
+
+		return lists;
+		
+	}
+	
+	public void savePoint(Map<String, Object> map) {
+		
+		sessionTemplate.insert("myShopping.savePoint",map);
+		
+	}
+	
+	
+	
+	
+	
 
 }

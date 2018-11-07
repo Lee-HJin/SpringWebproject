@@ -50,7 +50,7 @@
 			<div class="side_navi_line">
 				<ul>
 					<li><a href="<%=cp%>/myShopping/myCounselHistory.action">1:1 상담 내역</a></li>
-					<li style="padding-bottom: 10px;">1:1 상담하기</li>
+					<li style="padding-bottom: 10px;"><a href="">1:1 상담하기</a></li>
 				</ul>
 			</div>
 		</li>

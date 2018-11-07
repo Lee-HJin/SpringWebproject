@@ -197,11 +197,37 @@
     color: #888888;
     margin: 15px 0 15px 15px;
 }
-
-
-
-
-
+.h_box{
+    width: 745px;
+    margin: 25px 0 20px 0;
+    background: url(/webproject/resources/image/main/bg_historyBox.gif) repeat-y 0 0;
+}
+.h_text{
+	width: 745px;
+    background: url(/webproject/resources/image/main/bg_historyBox_top.gif) no-repeat 0 0;
+}
+.h_textB{
+	width: 705px;
+    padding: 21px 0 0 40px;
+    background: url(/webproject/resources/image/main/bg_historyBox_btm.gif) no-repeat 0 bottom;
+    overflow: hidden;
+}
+.h_textB h3{
+    margin-left: 10px;
+    margin-bottom: 10px;
+    padding-left: 6px;
+    font-size: 0;
+    background: url(/webproject/resources/image/main/ico_dot03.gif) no-repeat 0 center;
+}
+.h_img{
+    width: 650px;
+    margin-bottom: 20px;
+}
+.contr_text{
+	width: 750px;
+    padding: 10px 0 0 10px;
+    overflow: hidden;
+}
 
 
 

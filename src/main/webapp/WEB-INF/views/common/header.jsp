@@ -1,23 +1,12 @@
-<%@page import="java.util.List"%>
-<%@page import="com.spring.webproject.util.CookieUtil"%>
-<%@ page contentType="text/html; charset=UTF-8"%>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%
 	request.setCharacterEncoding("UTF-8");
 	String cp = request.getContextPath();
-
-
-	CookieUtil cookieUtil = new CookieUtil();
-
-	if (cookieUtil.isExist("bookCookie", request)) {
-		List<String> list2 = cookieUtil.getValueList("bookCookie", request); // 쿠키 가져와서 리스트로 반환			
-		request.setAttribute("list2", list2);
-	}
-
-	
-	List<String> cList = cookieUtil.getValueList("bookCookie", request);
-	System.out.print(cList);
 %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+
+<link rel="stylesheet" href="<%=cp%>/resources/css/swiper_min.css">
+<link rel="stylesheet" href="<%=cp%>/resources/css/main.css" type="text/css"/>
 
 <script type="text/javascript">
 	function toggleDisplay(num) {
@@ -42,45 +31,61 @@
 	if (newURL == '/webproject/main.action') {
 		scrollHeight = 924;
 	} else {
-		scrollHeight = 500;
+		scrollHeight = 540;
 	}
 
 	$(function() {
+		//탑버튼 표시
 		$(window).scroll(function() {
 			if ($(this).scrollTop() > 450) {
 				$('.top_btn').show();
 			} else {
 				$('.top_btn').hide();
 			}
-
+			//스크롤시 사이드 배너 고정
 			if ($(this).scrollTop() > scrollHeight) {
 				$('#side_service').addClass('ss_fixed');
 			} else {
 				$('#side_service').removeClass('ss_fixed');
 			}
 		});
-
+		//탑버튼 클릭시 위로 이동
 		$("#onTop").click(function() {
-			$('html, body').animate({
-				scrollTop : 0
-			}, 350);
+			$('html, body').animate({scrollTop : 0}, 350);
 		});
 		
-		var sck = cookieInfo(getCookie('rcbook'));
-		var sData = document.getElementById("side_today_view");
-		var sNoData = document.getElementById("side_today_nodata");
-		
-		todaySView(sck);
-		
-   		if(sck!=null){
-   			sNoData.style.display = 'none';
-   			sData.style.display = 'block';
-		}else if(sck==null){
-			sNoData.style.display = 'block';
-			sData.style.display = 'none';
-		}
+		if(${empty sessionScope.userInfo.userId}){
+	   			
+   			//최근본 상품 사이드배너에 표시(비로그인)
+   			var sck = cookieInfo(getCookie('rcbook'));
+   			var sData = document.getElementById("side_today_view");
+   			var sNoData = document.getElementById("side_today_nodata");
+   			
+   			todaySView(sck);
+
+   	   		if(sck!=null){
+   	   			sNoData.style.display = 'none';
+   	   			sData.style.display = 'block';
+   			}else if(sck==null){
+   				sNoData.style.display = 'block';
+   				sData.style.display = 'none';
+   			}
+   					
+   		}else if(${!empty sessionScope.userInfo.userId}){
+   			//로그인시
+   			todaySViewL();
+   		}
 	});
 	
+	//로그인시 오늘 본 상품
+	function todaySViewL() {
+		
+		var url = "<%=cp%>/sidebanner.action";
+		
+		$.post(url,function(args){
+			$("#side_today_view").html(args);
+		});	
+	}
 	
 	//오늘 본 상품
 	function todaySView(ck) {
@@ -165,13 +170,7 @@
 	}
 
 </script>
-
-<link rel="stylesheet" href="<%=cp%>/resources/css/swiper_min.css">
-<link rel="stylesheet" href="<%=cp%>/resources/css/main.css"
-	type="text/css">
-
-<script src="<%=cp%>/resources/js/swiper_min.js"></script>
-
+</head>
 <body>
 	<div id="onTop" class="top_btn">
 		<a href="javascript://"> <img
@@ -192,22 +191,28 @@
 	</div>
 	<div id="side_service" style="top: 554px;">
 		<div class="today_view" id="side_today_nodata" style="display: none;">
-		<h4>최근 본 상품</h4>
-		<div style="width: 92px;margin: 0 auto;overflow: hidden;">
-			<div class="nodata">
-				최근 본 상품이<br>없습니다.
+			<h4>최근 본 상품</h4>
+			<div style="width: 92px;margin: 0 auto;overflow: hidden;">
+				<div class="nodata">
+					최근 본 상품이<br>없습니다.
+				</div>
 			</div>
 		</div>
-	</div>
-	<div class="today_view" id="side_today_view" style="display: block;"></div>
+		<div class="today_view" id="side_today_view" style="display: block;"></div>
 		<div class="ss_myshop">
-			<a href="javascript://"> 나의 쇼핑 </a>
+			<a href="<%=cp%>/myShoppingMain.action">
+				나의 쇼핑
+			</a>
 		</div>
 		<div class="ss_myshop">
-			<a href="javascript://"> 위시리스트 </a>
+			<a href="<%=cp%>/myShopping/myWishList.action">
+				위시리스트
+			</a>
 		</div>
 		<div class="ss_myshop">
-			<a href="javascript://"> 구매히스토리 </a>
+			<a href="<%=cp%>/myShopping/myReviewList.action">
+				나의 리뷰
+			</a>
 		</div>
 	</div>
 	<div id="head">
@@ -228,7 +233,7 @@
 							<a href="<%=cp%>/login/mem_agree.action" class="t_menu_link">회원가입</a>
 						</li>
 						<li class="t_menu">
-							<a href="javascript://" class="t_menu_link">쇼핑카트</a>
+							<a href="<%=cp %>/shopCartList.action" class="t_menu_link">쇼핑카트</a>
 						</li>
 					</c:if>
 					<c:if test="${!empty sessionScope.userInfo.userId }">
@@ -236,7 +241,7 @@
 							<a href="<%=cp%>/logout.action" class="t_menu_link btn_logout">로그아웃</a>
 						</li>
 						<li class="t_menu join">
-							<a href="javascript://" class="t_menu_link">쇼핑카트</a>
+							<a href="<%=cp %>/shopCartList.action" class="t_menu_link">쇼핑카트</a>
 						</li>
 					</c:if>
 					<li class="t_menu myShopping">
@@ -340,12 +345,16 @@
 									<a href="<%=cp%>/main.action">도서</a>
 								</h3>
 								<ul class="cate_list">
-									<li><em>소설</em></li>
+									<li><a href="<%=cp%>/book_novel.action">
+									<em>소설</em>
+									</a></li>
 									<li><em>장르소설</em></li>
 									<li>시/에세이/기행</li>
 									<li>청소년교양</li>
 									<li>경제/경영</li>
-									<li><em>자기계발</em></li>
+									<li><a href="<%=cp%>/book_self_improvement.action">
+									<em>자기계발</em>
+									</a></li>
 								</ul>
 
 								<ul class="cate_list">
@@ -469,12 +478,16 @@
 								</div>
 								<div class="cate_list_wrap">
 									<ul class="cate_list">
-										<li><em>소설</em></li>
+										<li><a href="<%=cp%>/book_novel.action">
+										<em>소설</em>
+										</a></li>
 										<li><em>장르소설</em></li>
 										<li><em>시/에세이/기행</em></li>
 										<li>청소년교양</li>
 										<li>경제/경영</li>
-										<li><em>자기계발</em></li>
+										<li><a href="<%=cp%>/book_self_improvement.action">
+										<em>자기계발</em>
+										</a></li>
 									</ul>
 									<ul class="cate_list">
 										<li>유아</li>
@@ -538,23 +551,30 @@
 								</div>
 							</div>
 							<span></span>
-						</div></li>
-					<li class="menu"><a href="javascript://"
-						class="menu_link menu_best"> <span></span>
-					</a></li>
-					<li class="menu"><a href="javascript://"
-						class="menu_link menu_new"> <span></span>
-					</a></li>
-					<li class="menu"><a href="javascript://"
-						class="menu_link menu_sale"> <span></span>
-					</a></li>
+						</div>
+					</li>
+					<li class="menu">
+					<a href="<%=cp%>/bnlBSList.action" class="menu_link menu_best">
+						<span></span>
+					</a>
+					</li>
+					<li class="menu">
+						<a href="<%=cp %>/bnlNewBookList.action" class="menu_link menu_new">
+							<span></span>
+						</a>
+					</li>
+					<li class="menu">
+						<a href="<%=cp %>/discountBookMain.action" class="menu_link menu_sale">
+							<span></span>
+						</a>
+					</li>
 				</ul>
 			</div>
 		</div>
 	</div>
 
 	<script src="<%=cp%>/resources/js/swiper_min.js"></script>
-	<script src="<%=cp%>/resources/js/main.js"></script>
+	<script src="<%=cp%>/resources/js/swiper.js"></script>
 
 </body>
 

@@ -11,11 +11,11 @@ import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.spring.webproject.dao.MainDAO;
 import com.spring.webproject.dto.MainDTO;
 import com.spring.webproject.dto.StoreDTO;
+import com.spring.webproject.dto.UserDTO;
 import com.spring.webproject.util.MyUtil;
 
 @Controller
@@ -31,11 +31,21 @@ public class MainController {
 	@RequestMapping(value="/main.action",method= {RequestMethod.GET,RequestMethod.POST})
 	public String main(HttpServletRequest req, HttpServletResponse resp) {
 		
+		UserDTO dto = (UserDTO) req.getSession().getAttribute("userInfo");
+		
+		if(dto!=null) {
+			String userId = dto.getUserId();
+			List<MainDTO> rcList = dao.recentLogin(userId);
+			
+			req.setAttribute("rcList", rcList);
+		}
+		
 		List<MainDTO> lst = new ArrayList<MainDTO>();
 		
 		lst = dao.bestSeller();
 		
 		req.setAttribute("lst", lst);
+		
 		
 		return "main/main";
 	}
@@ -186,6 +196,28 @@ public class MainController {
 	}
 	
 	
+	@RequestMapping(value="/contrb.action",method= {RequestMethod.GET,RequestMethod.POST})
+	public String contrb(HttpServletRequest req) {
+		
+		return "company/contrb";
+	}
+	
+	
+	@RequestMapping(value="/sidebanner.action",method= {RequestMethod.GET,RequestMethod.POST})
+	public String sideBanner(HttpServletRequest req) {
+		
+		UserDTO dto = (UserDTO) req.getSession().getAttribute("userInfo");
+		
+		if(dto!=null) {
+			String userId = dto.getUserId();
+			List<MainDTO> rcSideList = dao.recentLogin(userId);
+			
+			req.setAttribute("rcSideList", rcSideList);
+		}
+		
+		
+		return "main/sidebanner";
+	}
 	
 	
 	

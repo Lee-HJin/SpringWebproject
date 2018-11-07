@@ -18,6 +18,11 @@ public class SearchCriteria extends Criteria{
 		this.searchValue = searchValue;
 	}
 	
+	@Override
+	public String toString() {
+		return "SearchCriteria [searchKey=" + searchKey + ", searchValue=" + searchValue + "]";
+	}
+	
 	
 	
 }

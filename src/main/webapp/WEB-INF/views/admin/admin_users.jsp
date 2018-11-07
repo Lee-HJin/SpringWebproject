@@ -132,7 +132,7 @@
 	</div>
 
 
-	<div class="users_table">
+	<div class="table">
 		<form name="userList" method="post" action="">
 			<table class="table table-bordered">
 				<thead>

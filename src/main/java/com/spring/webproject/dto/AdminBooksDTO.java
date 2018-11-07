@@ -19,8 +19,16 @@ public class AdminBooksDTO {
 	private String bookImage;
 	private String warehouseId;
 	private String quantity;
+	private String authorName;
 	
 	
+	
+	public String getAuthorName() {
+		return authorName;
+	}
+	public void setAuthorName(String authorName) {
+		this.authorName = authorName;
+	}
 	public String getBookTitle() {
 		return bookTitle;
 	}
