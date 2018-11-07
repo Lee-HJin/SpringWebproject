@@ -53,16 +53,16 @@
 
 			<td>
 				<span class="num_c">
-					<input type="text" name="cntVal" id="cntVal_${dto.isbn }" value="${dto.orderCount }" class="o_input_num fl_left" size="3" onkeydown="onlyNumber();" onkeyup="cntChange('${dto.isbn}');" style="text-align:right;ime-mode:disabled;">
-					<span class="num_c_up"><img src="/webproject/resources/images/searchN/btn_num_up.gif" alt="" onclick="cntUp2('${dto.isbn}','${dto.seqNum }');" style="cursor:pointer;"></span>
-					<span class="num_c_dn"><img src="/webproject/resources/images/searchN/btn_num_down.gif" alt="" onclick="cntDown2('${dto.isbn}','${dto.seqNum }');" style="cursor:pointer;"></span>
+					<input type="text" name="cntVal" id="cntVal_${dto.seqNum}" value="${dto.orderCount }" class="o_input_num fl_left" size="3" onkeydown="onlyNumber();" onkeyup="cntChange('${dto.isbn}');" style="text-align:right;ime-mode:disabled;">
+					<span class="num_c_up"><img src="/webproject/resources/images/searchN/btn_num_up.gif" alt="" onclick="cntUp2('${dto.seqNum }');" style="cursor:pointer;"></span>
+					<span class="num_c_dn"><img src="/webproject/resources/images/searchN/btn_num_down.gif" alt="" onclick="cntDown2('${dto.seqNum }');" style="cursor:pointer;"></span>
 				</span>
 				<img src="/webproject/resources/images/searchN/btn_cart_modify.gif" alt="수정" class="mt5" onclick="updateShopCart('${dto.isbn}','${dto.seqNum }')" style="cursor:pointer;">
 			</td>
 
 			<td>
 				
-				<strong id="costVal_${dto.isbn }">${dto.discountedPrice * dto.orderCount }원</strong>
+				<strong id="costVal_${dto.seqNum }">${dto.discountedPrice * dto.orderCount }원</strong>
 
 			</td>  
 			         			
@@ -73,32 +73,26 @@
 			
 			<td>
 		        <input type="checkbox" id="checkBox_${dto.seqNum }" name="seqArr3" class="check_bandiDeduction" value="${dto.seqNum }" checked="checked">
-   				<input type="hidden"  id="pricePerBook_${dto.seqNum}" value="${dto.discountedPrice}">
+   				<input type="hidden"  id="pricePerBook_${dto.seqNum}" value="${dto.discountedPrice}"/>
 
-				<input type="hidden" class="storeId_1" value="${dto.seqNum }">
-				<input type="hidden" id="storeIdVal_${dto.seqNum }" value="1">
-   				
-   				
-<%--    		
-				
-				<input type="hidden" class="storeId_1" value="${dto.seqNum }">
-   				<input type="hidden" id="storeIdVal_${dto.seqNum }" value="1">
-   				<input type="hidden" id="deliCostCondiVal_${dto.seqNum }" value="10000">
-   				<input type="hidden" id="deliCostVal_${dto.seqNum }" value="2000">
-   				<input type="hidden" id="saleCostVal_${dto.seqNum }" value="${dto.discountedPrice }">
-   				<input type="hidden" id="marketSaleVal_${dto.seqNum }" value="${dto.bookPrice }">
-   				<input type="hidden" id="prodPointVal_${dto.seqNum }" value="${dto.point }">
-   				<input type="hidden" id="deliCostCondiVal_${dto.seqNum }" value="10000">
-   				<input type="hidden" id="deliCostVal_${dto.seqNum }" value="2000">
-   				<input type="hidden" id="bundleDeliYnVal_${dto.seqNum }" value="Y">
-   				<input type="hidden" id="prodIdArr_${dto.seqNum }" name="prodIdArr" value="${dto.isbn }">
-   				<input type="hidden" id="prod_name_${dto.seqNum }" name="prod_name" value="${dto.bookTitle }">
-   				<input type="hidden" id="optSeqVal_${dto.seqNum }" name="optSeqVal_${dto.seqNum }" value="">
-   				<input type="hidden" name="is_sale_yn" value="Y">
-   				<input type="hidden" id="prodTypeArr_${dto.seqNum }" name="prodType" value="01">
-   				<input type="hidden" id="flag_${dto.seqNum }" value="0">
-   				<input type="hidden" id="preSaleYnVal_${dto.seqNum }" value="N">
-   				<input type="hidden" id="maxVal_${dto.seqNum }" value="999">  --%>
+				<input type="hidden" class="storeId_1" value="${dto.seqNum }"/>
+				<input type="hidden" id="storeIdVal_${dto.seqNum }" value="1"/>
+
+				<input type="hidden" id="maxVal_${dto.seqNum }" value="999">
+				<input type="hidden" id="saleCostVal_${dto.seqNum }" value="${dto.discountedPrice }"/>
+				<input type="hidden" id="deliCostCondiVal_${dto.seqNum }" value="10000"/>
+   				<input type="hidden" id="deliCostVal_${dto.seqNum }" value="2000"/>
+   				<input type="hidden" id="marketSaleVal_${dto.seqNum }" value="${dto.bookPrice }"/>
+   				<input type="hidden" id="prodPointVal_${dto.seqNum }" value="${dto.point }"/>
+   				<input type="hidden" id="bundleDeliYnVal_${dto.seqNum }" value="Y"/>
+   				<input type="hidden" id="discountRate_${dto.seqNum }" value="${dto.discountRate }"/>
+   				<input type="hidden" id="prodIdArr_${dto.seqNum }" name="prodIdArr" value="${dto.isbn }"/>
+   				<input type="hidden" id="prod_name_${dto.seqNum }" name="prod_name" value="${dto.bookTitle }"/>
+   				<input type="hidden" id="optSeqVal_${dto.seqNum }" name="optSeqVal_${dto.seqNum }" value=""/>
+   				<input type="hidden" name="is_sale_yn" value="Y"/>
+   				<input type="hidden" id="prodTypeArr_${dto.seqNum }" name="prodType" value="01"/>
+   				<input type="hidden" id="flag_${dto.seqNum }" value="0"/>
+   				<input type="hidden" id="preSaleYnVal_${dto.seqNum }" value="N"/>
    				
 		    </td>
 		</tr>
@@ -124,7 +118,8 @@
 <script type="text/javascript">
 $(document).ready(function(){
 	
-	calculation();
+	
+	orderCalc();
 	
 	$(".checkAll").each(function(){
 		this.checked = true;
