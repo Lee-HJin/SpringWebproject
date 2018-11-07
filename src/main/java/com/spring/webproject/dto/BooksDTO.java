@@ -1,25 +1,31 @@
 package com.spring.webproject.dto;
 
 public class BooksDTO {
-	
+
 	private int authorId;
 	private int translatorId;
 	private String publisher;
 	private String bookTitle;
 	private int bookPrice;
+	private int discountedPrice;
 	private String isbn; // 책 표준 번호
-	private String publishDate; 
+	private String publishDate;
 	private String introduction;
 	private String page; // 페이지 쪽수
 	private String subTitle; // 부제목
 	private String bookSize; // 책 크기
 	private String tableOfContents; // 책 목차
-	
+
 	private String authorName; // 저자 이름
 
-	
-	
-	
+	public int getDiscountedPrice() {
+		return discountedPrice;
+	}
+
+	public void setDiscountedPrice(int discountedPrice) {
+		this.discountedPrice = discountedPrice;
+	}
+
 	public String getAuthorName() {
 		return authorName;
 	}

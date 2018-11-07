@@ -28,10 +28,10 @@
 	select level, LPAD('',2*(level-1)) || categoryName as categoryName,connect_by_isleaf as leaf from 
 	booksCategoryList start with parentsId is null and categoryId=#{categoryId} connect by prior categoryId = parentsId) 
 	where leaf=1) b where a.categoryName=b.categoryName) b where a.categoryId=b.categoryId) b 
-	where a.isbn=b.isbn and publishDate>'2018-09-01') b where a.authorId=b.authorId) b where a.isbn=b.isbn and bookImage like '%cover%'
+	where a.isbn=b.isbn and publishDate>sysdate-180) b where a.authorId=b.authorId) b where a.isbn=b.isbn and bookImage like '%cover%'
 </select>
 
-<!-- 기대 신간도서 전체 -->
+<!-- 기대 신간도서 전체(최근 3개월내) -->
 <select id="newBookAll" resultType="com.spring.webproject.dto.MainDTO">
 	select a.isbn,bookTitle,authorName,bookImage from bookImage a,
 	(select isbn,bookTitle,authorName from author a,
@@ -42,7 +42,7 @@
 	select level, LPAD('',2*(level-1)) || categoryName as categoryName,connect_by_isleaf as leaf from 
 	booksCategoryList start with parentsId is null connect by prior categoryId = parentsId) 
 	where leaf=1) b where a.categoryName=b.categoryName) b where a.categoryId=b.categoryId) b 
-	where a.isbn=b.isbn and publishDate>'2018-09-01') b where a.authorId=b.authorId) b where a.isbn=b.isbn and bookImage like '%cover%'
+	where a.isbn=b.isbn and publishDate>sysdate-180) b where a.authorId=b.authorId) b where a.isbn=b.isbn and bookImage like '%cover%'
 </select>
 
 <!-- 이슈북 -->
@@ -57,11 +57,18 @@
 
 <!-- 베스트셀러 -->
 <select id="bestSeller" resultType="com.spring.webproject.dto.MainDTO">
-	select rownum listNum,bookTitle,bookImage,a.isbn from bookImage a,
-	(select sellC,a.* from books a,
-	(select count(*) sellC,isbn from orderBooks group by isbn order by sellC desc) b 
-<![CDATA[	
-	where a.isbn=b.isbn) b where a.isbn=b.isbn and rownum<=10 and bookImage like '%cover%'
+<!-- 	select rownum listNum,bookImage,bookTitle,isbn from (
+	select * from bookSections
+<![CDATA[
+	order by soldBookCnt desc) where rownum<=10
+]]> -->
+	select * from(
+	select rownum listNum,a.isbn,bookTitle,bookImage from bookImage a,(
+	select a.isbn,bookTitle,selCnt from books a,(
+	select sum(quantity) selCnt,isbn from orderBooks group by isbn) b 
+	where a.isbn=b.isbn order by selCnt desc, bookTitle) b where a.isbn=b.isbn and bookImage like '%cover%')
+<![CDATA[ 
+	where listNum<=10
 ]]>
 </select>
 
@@ -79,6 +86,25 @@
 	(select * from books where isbn=#{isbn}) b where a.authorId=b.authorId) b where a.isbn=b.isbn and bookImage like '%cover%'
 </select>
 
+<!-- 매장정보 가져오기 -->
+<select id="storeInfo" parameterType="java.lang.Integer" resultType="com.spring.webproject.dto.StoreDTO">
+	select * from warehouse where warehouseId=#{warehouseId}
+</select>
+
+<!-- 매장 이미지 가져오기 -->
+<select id="storeImage" parameterType="java.lang.Integer" resultType="com.spring.webproject.dto.StoreDTO">
+	select image from warehouseImage where warehouseId=#{warehouseId}
+</select>
+
+<!-- 로그인시 최근본 상품 -->
+<select id="recentLogin" parameterType="java.lang.String" resultType="com.spring.webproject.dto.MainDTO">
+	select b.*, bookImage from bookImage a,
+	(select isbn,bookTitle,authorName from author a,
+	(select a.isbn,bookTitle,authorId from books a,
+	(select isbn from recentList where userId=#{userId} and viewDate>to_char(sysdate,'YYYY-MM-DD') order by viewDate desc) b 
+	where a.isbn=b.isbn) b where a.authorId=b.authorId) b 
+	where a.isbn=b.isbn and bookImage like '%cover%'
+</select>
 
 
 </mapper>

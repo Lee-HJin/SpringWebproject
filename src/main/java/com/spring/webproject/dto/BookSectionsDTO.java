@@ -11,6 +11,15 @@ public class BookSectionsDTO {
 		this.rnum = rnum;
 	}
 	
+	private int rankNum;
+	
+	public int getRankNum() {
+		return rankNum;
+	}
+	public void setRankNum(int rankNum) {
+		this.rankNum = rankNum;
+	}
+
 	private int categoryId;
 	private String genre;
 	private String publisher;
@@ -22,11 +31,13 @@ public class BookSectionsDTO {
 	private String authorName;
 	private String bookImage;
 	private int discountRate;
+	private String inputDCDate;
 	private int discountedPrice;
 	private float rate;
 	private int point;
 	private int reviewCnt;
 	private int soldBookCnt;
+	private String orderCount;
 	
 	public int getCategoryId() {
 		return categoryId;
@@ -124,8 +135,20 @@ public class BookSectionsDTO {
 	public void setSoldBookCnt(int soldBookCnt) {
 		this.soldBookCnt = soldBookCnt;
 	}
-
-
+	public String getInputDCDate() {
+		return inputDCDate;
+	}
+	public void setInputDCDate(String inputDCDate) {
+		this.inputDCDate = inputDCDate;
+	}
+	public String getOrderCount() {
+		return orderCount;
+	}
+	public void setOrderCount(String orderCount) {
+		this.orderCount = orderCount;
+	}
+	
+	
 
 	
 	

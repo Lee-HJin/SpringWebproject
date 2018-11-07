@@ -8284,18 +8284,18 @@ jutil.bandi.setRecentProd = function(prodId,prodName){
 	*/
 	if(jutil.bandi.isLogin()){
 		// 로그인한 회원인 경우
-		ajaxRequest("setMemProdView", {"prodId" : prodId}, function(){	jutil.bandi.reloadWiseCart();	});
+		ajaxRequest("setMemProdView", {"isbn" : isbn}, function(){	jutil.bandi.reloadWiseCart();	});
 	}else{
 		// 로그인 하지 않은 회원인 경우
  		var recentProds = jutil.bandi.getRecentProd();
 
-		if(!jutil.array.in_array(recentProds, prodId)){
+		if(!jutil.array.in_array(recentProds, isbn)){
 			if(recentProds.length > 7){		// 최근본 상품이 7개를 초과한 경우에는 마지막에 있는 정보를 삭제한다.
 				recentProds = jutil.array.removeLast(recentProds, 1);
 			}
 
 			// 최근순으로 노출 시키기 위해서 첫번째 자리에 추가한다.
-			recentProds = jutil.array.insertAt(recentProds, 0, prodId);
+			recentProds = jutil.array.insertAt(recentProds, 0, isbn);
 		}
 		jutil.bandi.setCookieInfo("recentProd", recentProds.join(","));
 		jutil.bandi.reloadWiseCart();
@@ -8695,10 +8695,10 @@ jutil.bandi.dynamicRoll = function(action, objName, dispCnt) {
 
 
 //var siteUrl	= SiteConf["url"]["site"] + "/";
-siteUrl			= "http://localhost/site/samples/";
-blogUrl			= "http://blog.bandinlunis.com";			// 블로그 서비스 경로
-bandiUrl		= "http://www.bandinlunis.com";
-bandiSslUrl		= "https://www.bandinlunis.com";
+siteUrl			= "127.0.0.1:8080/webproject/";
+blogUrl			= "127.0.0.1:8080/webproject/";			// 블로그 서비스 경로
+bandiUrl		= "127.0.0.1:8080/webproject/";
+bandiSslUrl		= "127.0.0.1:8080/webproject/";
 
 // 클라이언트측에서 직접 사용하는 XML 파일들을 모아 놓은 정보 => jutil.xml.getXmlInfoBase 에서 사용하는 기본 경로값
 jutil.xml.getXmlInfoBasePath	= siteUrl + "manager/info/";

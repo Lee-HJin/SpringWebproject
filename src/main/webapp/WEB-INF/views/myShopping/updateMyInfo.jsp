@@ -31,18 +31,32 @@
 		//이메일 수신 동의 라디오버튼 checked 옵션 설정
 		if('<%=emailReception%>'=='Y'){
 			$('input:radio[name="emailCheck"][value="Y"]').attr("checked", "checked");
+			$('#emailReception').val('Y');
 		}
 		else{
 			$('input:radio[name="emailCheck"][value="N"]').attr("checked", "checked");
+			$('#emailReception').val('N');
 		}
 		
 		//sms 수신 동의 라디오버튼 checked 옵션 설정
 		if('<%=smsReception%>'=='Y'){
 			$('input:radio[name="smsCheck"][value="Y"]').attr("checked", "checked");
+			$('#smsReception').val('Y');
 		}
 		else{
 			$('input:radio[name="smsCheck"][value="N"]').attr("checked", "checked");
-		}	
+			$('#smsReception').val('N');
+		}
+		
+		$('.emailCheck').on('change',function(){
+			var emailRadio = $('input:radio[name="emailCheck"]:checked').val();
+			$('#emailReception').val(emailRadio);
+		});
+		
+		$('.smsCheck').on('change',function(){
+			var smsRadio = $('input:radio[name="smsCheck"]:checked').val();
+			$('#smsReception').val(smsRadio);
+		});	
 		
 		//우편번호 검색 및 주소 가져오기
 		$('#findZipcode').on('click',function(){
@@ -185,8 +199,8 @@
 							</select>
 						<br/>
 						이메일 수신에 동의하시겠습니까?
-						<input type="radio" name="emailCheck" value="Y">예
-						<input type="radio" name="emailCheck" value="N">아니오
+						<input type="radio" name="emailCheck" value="Y" class="emailCheck">예
+						<input type="radio" name="emailCheck" value="N" class="emailCheck">아니오
 						</div>
 					</td>
 				</tr>
@@ -204,8 +218,8 @@
 							<input type="text" style="width: 50px;" size="4" maxlength="4" name="tel2" id="tel2" class="onlyNum_4" value="${tel2 }">&nbsp;-
 							<input type="text" style="width: 50px" size="4" maxlength="4" name="tel3" id="tel3" class="onlyNum_3" value="${tel3 }"><br/>
 							SMS수신에 동의하시겠습니까? 
-							<input type="radio" name="smsCheck" id="smsCheckYes" value="Y">예
-							<input type="radio" name="smsCheck" id="smsCheckNo" value="N">아니오
+							<input type="radio" name="smsCheck" class="smsCheck" value="Y">예
+							<input type="radio" name="smsCheck" class="smsCheck" value="N">아니오
 						</div>
 					</td>
 				</tr>

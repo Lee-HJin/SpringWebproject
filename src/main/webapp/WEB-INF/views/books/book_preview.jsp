@@ -672,9 +672,27 @@ bbbody {
 
 <script type="text/javascript">
 	$(document).ready(function() {
-		$('#ex1').zoom();
-		$('#ex2').zoom();
-		$('#ex3').zoom();
+		
+		$('#ex1').zoom({ on:'click' });
+		$('#ex2').zoom({ on:'click' });
+		$('#ex3').zoom({ on:'click' });
+		$('#ex4').zoom({ on:'click' });
+		$('#ex5').zoom({ on:'click' });
+		$('#ex6').zoom({ on:'click' });
+		$('#ex7').zoom({ on:'click' });
+		$('#ex8').zoom({ on:'click' });
+		$('#ex9').zoom({ on:'click' });
+		$('#ex10').zoom({ on:'click' });
+		$('#ex11').zoom({ on:'click' });
+		$('#ex12').zoom({ on:'click' });
+		$('#ex13').zoom({ on:'click' });
+		$('#ex15').zoom({ on:'click' });
+		$('#ex16').zoom({ on:'click' });
+		$('#ex17').zoom({ on:'click' });
+		$('#ex18').zoom({ on:'click' });
+		$('#ex19').zoom({ on:'click' });
+		$('#ex20').zoom({ on:'click' });
+
 
 	});
 </script>
@@ -766,7 +784,7 @@ bbbody {
 				<div class="titBox">
 					<div class="conTit">
 						<div class="title">${dto2.bookTitle }</div>
-						<div class="titleS2 t_11">${dto2.authorname }저<br /> <br />
+						<div class="titleS2 t_11">${dto2.authorName }저<br /> <br />
 							${dto2.publisher } <br /> <br /> ${dto2.publishDate }
 						</div>
 					</div>
@@ -785,7 +803,7 @@ bbbody {
 						href="javascript:opener.jutil.bandi.blogAddMyLibrary('${dto2.isbn }');">
 						<span>서재에 담기</span>
 					</a> <a class="bookInfo" target="_blank"
-						href="<%=cp %>/?isbn=${dto2.isbn }"> <span>상세정보</span>
+						href="<%=cp %>/book_info.action?isbn=${dto2.isbn }"> <span>상세정보</span>
 					</a>
 				</div>
 

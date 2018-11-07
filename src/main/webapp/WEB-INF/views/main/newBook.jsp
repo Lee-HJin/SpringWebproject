@@ -14,11 +14,10 @@
 </div>
 <div class="swiper-container swiper4">
 	<div class="swiper-wrapper">
-		<c:set var="i" value="0"/>
 		<c:forEach var="nb" items="${lst }">
 			<div class="swiper-slide">
 				<div class="wrap_b_img">
-					<a href="<%=cp%>/tempbook.action?isbn=${nb.isbn}">
+					<a href="<%=cp%>/book_info.action?isbn=${nb.isbn}">
 						<img src="<%=cp%>/resources/image/book/${nb.bookImage}">
 					</a>
 					<dl class="rb_title">

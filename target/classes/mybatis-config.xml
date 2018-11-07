@@ -45,6 +45,7 @@
 	
     <mapper resource="com/spring/webproject/mybatis/searchMapper.xml"/>	
     
+    <mapper resource="com/spring/webproject/mybatis/shopAndOrderMapper.xml"/>
 </mappers>
 
 

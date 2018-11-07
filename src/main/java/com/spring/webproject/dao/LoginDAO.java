@@ -87,4 +87,39 @@ public class LoginDAO {
 	
 		return sessionTemplate.selectOne("loginMapper.getPointValue",userId);
 	}
+	
+	public int checkRecentBook(String userId, String isbn) {
+		
+		HashMap<String, Object> params = new HashMap<String, Object>();
+		params.put("userId", userId);
+		params.put("isbn", isbn);
+		
+		return sessionTemplate.selectOne("loginMapper.checkRecentBook",params);
+	}
+	
+	public void recentBookAdd(String userId, String isbn) {
+		
+		HashMap<String, Object> params = new HashMap<String, Object>();
+		params.put("userId", userId);
+		params.put("isbn", isbn);
+		
+		sessionTemplate.update("loginMapper.recentBookAdd",params);
+		
+	}
+	
+	public void updateRecentBookTime(String userId, String isbn) {
+		
+		HashMap<String, Object> params = new HashMap<String, Object>();
+		params.put("userId", userId);
+		params.put("isbn", isbn);
+		
+		sessionTemplate.update("loginMapper.updateRecentBookTime",params);
+	}
+	
+	public int getCounselCount(String userId) {
+		
+		return sessionTemplate.selectOne("loginMapper.getCounselCount",userId);
+	}
+	
+	
 }

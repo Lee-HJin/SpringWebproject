@@ -2,14 +2,17 @@ package com.spring.webproject.dto;
 
 public class MainDTO {
 	
-	int authorId;
-	int categoryId;
-	int listNum;
+	private int authorId;
+	private int categoryId;
+	private int listNum;
 	
-	String bookTitle;
-	String isbn;
-	String bookImage;
-	String authorName;
+	private	String bookTitle;
+	private String isbn;
+	private String bookImage;
+	private String authorName;
+	private String publisher;
+	private int discountedPrice;
+	private int discountRate;
 	
 	public int getAuthorId() {
 		return authorId;
@@ -53,7 +56,23 @@ public class MainDTO {
 	public void setListNum(int listNum) {
 		this.listNum = listNum;
 	}
-	
-	
+	public String getPublisher() {
+		return publisher;
+	}
+	public void setPublisher(String publisher) {
+		this.publisher = publisher;
+	}
+	public int getDiscountRate() {
+		return discountRate;
+	}
+	public void setDiscountRate(int discountRate) {
+		this.discountRate = discountRate;
+	}
+	public int getDiscountedPrice() {
+		return discountedPrice;
+	}
+	public void setDiscountedPrice(int discountedPrice) {
+		this.discountedPrice = discountedPrice;
+	}
 
 }

@@ -1,7 +1,7 @@
-document.domain = "bandinlunis.com";
-var hostDomain = "http://www.bandinlunis.com";
-var hostDomains = "https://www.bandinlunis.com";
-var blogDomain = "http://blog.bandinlunis.com";
+/*document.domain = "127.0.0.1:8080/webproject";*/
+var hostDomain = "127.0.0.1:8080/webproject";
+var hostDomains = "127.0.0.1:8080/webproject";
+var blogDomain = "127.0.0.1:8080/webproject";
 
 
 /*************************************
@@ -476,7 +476,7 @@ function checkNumberKey() {
 /***************************************************************** 
  주민등록번호를 check   
  @param juminNo : "-"(하이픈)이 없는 연속된 주민등록번호 13자리
- @return boolean : 정상이면 true, 잘못된 주민등록번호이면 false
+ @return boolean : 정상이면 true, ,된 주민등록번호이면 false
  *****************************************************************/
 
 // 주민등록번호 13자리에 대한 정상 여부를 check한다.
@@ -1603,8 +1603,8 @@ function add_basket_array_common(prod_id, opt_seq, cnt, book_mem_id, isArlert_, 
 *********************************************************/
 function add_basket(isbn, cnt_, opt_, book_mem_id_, callBack_){
     //OrderDwr.createShopCarts({
-    ajaxRequest("createShopCarts", {
-            "prod_id"       : isbn, 
+    ajaxRequest("shopCartList", {
+            "isbn"       : isbn, 
             "opt_seq"       : opt_ ? opt_ : "", 
             "cnt"           : cnt_ ? cnt_ : 1, 
             "book_mem_id"   : "" 
@@ -1690,7 +1690,7 @@ function add_basket_ebook(prodId, cnt_, opt_, book_mem_id_, callBack_){
                 	jutil.bandi.reloadWiseCart("cart");
                 }else{
                     if(confirm("쇼핑카트에 등록되었습니다. 지금 바로 확인 하시겠습니까?")) {
-                    	document.location.href = '/front/order/shopCartList.do?cartType=04';
+                    	document.location.href = '/webproject/shopCartList.action';
                     }
                 }
             }
@@ -2269,20 +2269,20 @@ function goBuy(prodId, prodCnt, naverYn) {
 }
 
 // 바로구매 (옵션상품)
-function goBuyOpt(prodId, prodCnt, optSeq, naverYn) {
+function goBuyOpt(isbn, prodCnt) {
     
     ajaxRequest("existsProdOption", {
-		"prodId" : prodId
+		"isbn" : isbn
 	}, function(data) {
 		if (data == -10 && optSeq == 0) {
 			alert("옵션이 있는 상품은 상품상세에서 옵션 선택 후 주문이 가능합니다.");
 			return;
 		} else{
 			if (isLogin() == false) {
-		        goBuyLoginPopUp('goOrderPageOpt(' + prodId + ', ' + prodCnt + ', ' + optSeq + ', \'' + naverYn + '\')');
+		        goBuyLoginPopUp('goOrderPageOpt(' + isbn + ', ' + prodCnt + '\')');
 		    } 
 		    else {
-		        document.location.href = hostDomains + '/front/order/order.do?prod_id=' + prodId + '&ord_cnt=' + prodCnt + '&opt_seq=' + optSeq+'&naverYn=' + naverYn;
+		        document.location.href = hostDomains + '/order.action?isbn=' + isbn + '&ord_cnt=' + prodCnt;
 		    }
 		}
 	});
@@ -2311,7 +2311,7 @@ function goOrderPageBookSelf(prodId, prodCnt, gu) {
 /*  서버측에 데이터를 요청한다.
 */
 function ajaxRequest(service, info, callBack_){
-    jutil.xmlhttp.post("/ajax/" + service + ".do", info, true, function(str){
+    jutil.xmlhttp.post("/webprojet/" + service + ".action", info, true, function(str){
         if(typeof(callBack_) == "function"){
             try{
                 eval(str);

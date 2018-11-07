@@ -307,6 +307,36 @@ function updateUserInfo(){
 	
 }
 
+//회원 탈퇴
+function memOutCheck(){
+	
+	if(confirm("탈퇴하시겠습니까?\n모든 회원 정보는 즉시 삭제됩니다.")){
+		
+		$.ajax ({
+			url:"memberOut_pre.action",
+			type:"POST",
+			success:function(result){
+				if(result==true){
+					location.href = 'memberOut_ok.action';
+				}
+				else {
+					alert("진행중인 주문내역이 있습니다. \n진행중인 주문이 완료되어야 회원 탈퇴가 가능합니다.");
+				}
+			},
+			error:function(e){
+				alert(e.responseText);
+			}
+			
+		});
+		
+		
+	}
+	else{
+		return;
+	}
+	
+}
+
 //비밀번호 변경 팝업
 function showWindow(addr,width) {
 	
@@ -613,7 +643,7 @@ function setDate(month, day){
 	
 }
 
-//주문 조회(주문/배송+취소/반품/교환 내역)
+//주문 조회(주문/배송) 리스트 
 function getList(pageNum, fromDate, toDate, searchValue){
 	
 	var params = 'pageNum=' + pageNum;
@@ -638,6 +668,8 @@ function getList(pageNum, fromDate, toDate, searchValue){
 	});
 	
 }
+
+//취소/반품/교환 내역 조회 리스트 
 function getRetList(pageNum, fromDate, toDate, mode){
 	
 	var params = 'pageNum=' + pageNum;
@@ -663,6 +695,7 @@ function getRetList(pageNum, fromDate, toDate, mode){
 	
 }
 
+//적립금 리스트
 function getPointList(pageNum, fromDate, toDate, mode){
 	
 	var params = 'pageNum=' + pageNum;
@@ -671,7 +704,7 @@ function getPointList(pageNum, fromDate, toDate, mode){
 		params += '&fromDate=' + fromDate + '&toDate=' + toDate;
 	}
 	if(mode!=''){
-		params += '&pageNum=' + pageNum + '&mode=' + mode;
+		params += '&mode=' + mode;
 	}
 
 	jQuery.ajax({
@@ -686,6 +719,172 @@ function getPointList(pageNum, fromDate, toDate, mode){
 		}	
 	});
 	
+}
+
+//소멸예정 적립금 리스트
+function getExpPointList(pageNum, fromDate, toDate, mode){
+	
+	var params = 'pageNum=' + pageNum;
+	
+	if(fromDate!=''){
+		params += '&fromDate=' + fromDate + '&toDate=' + toDate;
+	}
+	if(mode!=''){
+		params += '&mode=' + mode;
+	}
+
+	jQuery.ajax({
+		url:"expPointList.action",
+		data:params,
+		type:"POST",
+		success:function(data){
+			$('#expPointList').html(data);	
+		},
+		error:function(e){
+			alert(e.responseText);
+		}	
+	});
+	
+}
+
+//1:1 상담내역 리스트
+function getCounselList(pageNum, fromDate, toDate, mode){
+	
+	var params = 'pageNum=' + pageNum;
+	
+	if(fromDate!=''){
+		params += '&fromDate=' + fromDate + '&toDate=' + toDate;
+	}
+	if(mode!=''){
+		params += '&mode=' + mode;
+	}
+
+	jQuery.ajax({
+		url:"getCounselList.action",
+		data:params,
+		type:"POST",
+		success:function(data){
+			$('#myCounselList').html(data);	
+		},
+		error:function(e){
+			alert(e.responseText);
+		}	
+	});
+	
+}
+
+//리뷰를 기다리는 책 리스트
+function getReadyReivewList(pageNum, mode){
+	
+	var params = 'pageNum=' + pageNum;
+	
+	if(mode!=''){
+		params += '&mode=' + mode;
+	}
+
+	jQuery.ajax({
+		url:"getReadyReviewList.action",
+		data:params,
+		type:"POST",
+		success:function(data){
+			$('#readyReviewList').html(data);	
+		},
+		error:function(e){
+			alert(e.responseText);
+		}	
+	});
+	
+}
+
+//리뷰를 기다리는 책 리스트
+function getLatesBooksList(pageNum, mode){
+	
+	var params = 'pageNum=' + pageNum;
+	
+	if(mode!=''){
+		params += '&mode=' + mode;
+	}
+
+	jQuery.ajax({
+		url:"getLatesBooksList.action",
+		data:params,
+		type:"POST",
+		success:function(data){
+			$('#LatesBooksList').html(data);	
+		},
+		error:function(e){
+			alert(e.responseText);
+		}	
+	});
+	
+}
+
+//리뷰가 있는 책 리스트
+function getMyReviewList(pageNum, mode){
+	
+	var params = 'pageNum=' + pageNum;
+	
+	if(mode!=''){
+		params += '&mode=' + mode;
+	}
+
+	jQuery.ajax({
+		url:"getReviewList.action",
+		data:params,
+		type:"POST",
+		success:function(data){
+			$('#myReviewList').html(data);	
+		},
+		error:function(e){
+			alert(e.responseText);
+		}	
+	});
+	
+}
+
+//위시리스트
+function getWishList(pageNum, mode){
+	
+	var params = 'pageNum=' + pageNum;
+	
+	if(mode!=''){
+		params += '&mode=' + mode;
+	}
+
+	jQuery.ajax({
+		url:"getWishList.action",
+		data:params,
+		type:"POST",
+		success:function(data){
+			$('#myWishList').html(data);	
+		},
+		error:function(e){
+			alert(e.responseText);
+		}	
+	});
+	
+}
+
+//한줄평 리스트 가져오기
+function getSentenceList(pageNum, mode){
+	
+	var params = 'pageNum=' + pageNum;
+	
+	if(mode!=''){
+		params += '&mode=' + mode;
+	}
+	
+	jQuery.ajax({
+		url:"getSentenceList.action",
+		data:params,
+		type:"POST",
+		success:function(data){
+			$('#mySentenceList').html(data);	
+		},
+		error:function(e){
+			alert(e.responseText);
+		}	
+	});
 }
 
 //주문 조회 isbn or 책이름 입력 유효성 검사
@@ -753,7 +952,225 @@ function exchangeOrder(orderId){
 	}
 }
 
+//도서 미리보기 팝업
+function popPreview(isbn) {
+
+    if (typeof(isbn) == "undefined" || isbn == "") {
+        return;
+    }
+    
+    window.open("/webproject/book_preview.action?isbn=" + isbn, "preview", "width="+screen.availWidth+",height="+screen.availHeight+",resizable=yes,scrollbars=yes");
+}
+
+//쇼핑카트에 담기
+function goShoppingCart(){
+	
+}
+
+//체크박스 값 배열에 정리하기
+function chkToArray(){
+	
+	//체크박스 선택된 값을 담을 array
+	var checkArray = new Array();
+	//체크박스 객체
+	var chkbox = $('.checkbox');
+	
+	for(var i=0;i<chkbox.length;i++){
+		if(chkbox[i].checked == true){
+			checkArray.push(chkbox[i].value);
+		}
+	}
+	
+	return checkArray;
+}
 
 
 
+function addWishList(){
+	
+	var checkArray = chkToArray();
+	
+	if(checkArray.length == 0){
+		alert("위시리스트에 담을 상품을 선택하세요.");
+	}
+	else{
+		$.ajax ({
+			url:"addWishList.action",
+			data:{checkArray:checkArray},
+			type:"POST",
+			success:function(result){
+				if(result==true){
+					alert("위시리스트에 등록되었습니다.")
+				}
+				else{
+					alert("이미 위시리스트에 등록된 도서입니다.")
+				}
+			},
+			error:function(e){
+				alert(e.responseText);
+			}
+			
+		});
+	}
+	
+}
+
+//최근 본 상품 삭제하기
+function recentDelete(){
+	
+	var checkArray = chkToArray();
+	
+	if(checkArray.length == 0){
+		alert("삭제할 상품을 선택하세요.");
+	}
+	else{
+		if(confirm("선택하신 상품을 삭제하시겠습니까?") == true){
+			$.ajax ({
+				url:"deleteLatesBooks.action",
+				data:{checkArray:checkArray},
+				type:"POST",
+				success:function(){
+					location.href="myLatesBooksList.action";
+				},
+				error:function(e){
+					alert(e.responseText);
+				}
+				
+			});
+		}
+		else{
+			return;
+		}
+	}
+}
+
+//위시리스트 삭제하기
+function deleteWish(){
+	
+	var checkArray = chkToArray();
+	
+	if(checkArray.length == 0){
+		alert("삭제할 상품을 선택하세요.");
+	}
+	else{
+		if(confirm("선택하신 상품을 삭제하시겠습니까?") == true){
+			$.ajax ({
+				url:"deleteWish.action",
+				data:{checkArray:checkArray},
+				type:"POST",
+				success:function(){
+					location.href="myWishList.action";
+				},
+				error:function(e){
+					alert(e.responseText);
+				}
+				
+			});
+		}
+		else{
+			return;
+		}
+	}
+	
+}
+
+//리뷰 삭제하기
+function deleteReview(reviewId){
+	
+	if(confirm("리뷰를 삭제하시겠습니까?") == true){
+		$.ajax ({
+			url:"deleteReview.action",
+			data:'reviewId='+reviewId,
+			type:"POST",
+			success:function(){
+				location.href="myReviewList.action";
+			},
+			error:function(e){
+				alert(e.responseText);
+			}
+			
+		});
+	}
+	else{
+		return;
+	}
+	
+}
+
+//간단평 삭제하기
+function deleteSentence(reviewId){
+	
+	if(confirm("간단평을 삭제하시겠습니까?") == true){
+		$.ajax ({
+			url:"deleteSentence.action",
+			data:'reviewId='+reviewId,
+			type:"POST",
+			success:function(){
+				location.href="mySentenceList.action";
+			},
+			error:function(e){
+				alert(e.responseText);
+			}
+			
+		});
+	}
+	else{
+		return;
+	}
+	
+}
+
+//리뷰 수정하기
+function updateReview(){
+	
+	var f = document.reviewUpdateForm;
+	
+	if(!f.reviewTitle.value.trim()){
+		alert("리뷰 제목을 입력해주세요.")
+		return;
+	}
+	if(!f.contents.value.trim()){
+		alert("내용을 입력해주세요.")
+		return;
+	}
+	
+	f.action = "reviewUpdate_ok.action";	
+	f.submit();
+	
+}
+
+//한줄평 등록하기
+function createSentence(){
+	
+	var f = document.sentenceCreateForm;
+	
+	if(!f.sentence.value.trim()){
+		alert("간단평 내용을 입력해주세요.")
+		return;
+	}
+	
+	f.action = "sentenceCreate_ok.action";
+	f.submit();
+}
+
+//한줄평 수정하기
+function updateSentence(reviewId){
+	
+	var f = document.sentenceUpdateForm;
+	
+	if(!f.sentence.value.trim()){
+		alert("간단평 내용을 입력해주세요")
+		return;
+	}
+	else{
+		if(confirm("간단평을 수정하시겠습니까?") == true){
+			f.action = "updateSentence_ok.action?reviewId=" + reviewId;
+			f.submit();
+		}
+		else{
+			return;
+		}
+	}
+
+}
 

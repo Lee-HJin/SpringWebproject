@@ -45,8 +45,12 @@
 		
 // 		var rate = $("#usr_point option:selected").val();
 		var rate = document.getElementById('usr_point').options[document.getElementById('usr_point').selectedIndex].value;
+		if(!rate){
+			alert("\n평점을 입력해주세요.");
+			return;
+		}
 		
-		f.action = "<%=cp%>/book_review_created_ok.action?rate=" +rate;
+		f.action = "<%=cp%>/book_review_created_ok.action?rate="+rate;
 		f.submit();
 
 	}
@@ -181,8 +185,9 @@ img:hover {
 				<div class="fl_clear searchBook">
 					<div class="thumbNail_type01">
 						<div class="photo">
+					
 							<a href="#"><img id="book_title_img" name="book_title_img"
-								src="http://www.bandinlunis.com/upload/product/4189/4189934_s.jpg"
+								src="/webproject/resources/image/book/${book_image}" 
 								width="70" alt="" class="d_imgLine"
 								style="border: 1px solid #ddd; border-radius: 4px; padding: 5px; width: 150px;"></a>
 						</div>
@@ -254,13 +259,13 @@ img:hover {
 			</div>
 
 			<div id="bbsCreated_footer">
+				<input type="hidden" value = ${isbn } name ="isbn" >
 				<button class="button2" onclick="sendIt();">등록하기</button>
 
 				<button class="button3" onclick="document.myForm.reviewTitle.focus();"
 					type="reset">
 					<span>다시입력 </span>
 				</button>
-				<input type="hidden" value = ${isbn } name ="isbn" >
 				<button class="button1"
 					onclick="javascript:goBack();">
 					<span>작성취소</span>

@@ -15,6 +15,28 @@
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 	<script src="<%=cp%>/resources/js/myShopping.js"></script>
 	
+		
+	<script type="text/javascript">
+	
+	$(document).ready(function(){
+		
+		//초기 리스트 자동 불러오기
+		$.ajax({
+			
+			url:"getLatesBooksList.action",
+			type:"POST",
+			success:function(data){
+				$('#LatesBooksList').html(data);	
+			},
+			error:function(e){
+				alert(e.responseText);
+			}
+		});
+
+	});
+	
+	</script>
+	
 </head>
 <body style="padding: 0; margin: 0;">
 
@@ -35,93 +57,20 @@
 	<div style="font-size: 13pt; font-weight: bold; padding-bottom: 10px;">최근 본 상품 </div>
 	<div class="wish_sort_box">
 		<div class="lates_sort_left">
-			총 1권의 상품이 등록되어 있습니다.
+			총 ${recentCount }권의 상품이 등록되어 있습니다.
 		</div>
 		<div class="wish_sort_right">
 			<span style="line-height: 20px;"><input type="checkbox" class="check_all" height="150px;">전체선택</span>
-			<input type="button" value="쇼핑카트" class="wish_sort_btn">
-			<input type="button" value="위시리스트" class="wish_sort_btn">
-			<input type="button" value="삭제" class="wish_sort_btn">
+			<input type="button" value="쇼핑카트" class="wish_sort_btn" onclick="javascript:goShoppingCart();">
+			<input type="button" value="위시리스트" class="wish_sort_btn" onclick="javascript:addWishList();">
+			<input type="button" value="삭제" class="wish_sort_btn" onclick="javascript:recentDelete();">
 		</div>
 	</div>
 	
-	<div class="wish_list_content">
-		<ul>
-			<li>
-				<!-- 상단 -->
-				<div>
-					<!-- 체크박스 -->
-					<div style="float: left;">
-						<input type="checkbox" class="checkbox" name="seq" value="">
-					</div>
-					<!-- 이미지 -->
-					<div class="wish_book_up">
-						<div class="wish_book_img">
-							<a href=""><img alt="" src="<%=cp%>/resources/image/book/3054578.jpg"></a>
-							<a href="" target="_blank" class="wish_book_popup">
-								<span>새창열기</span>
-							</a>
-						</div>
-						<div style="margin-top: 5px; text-align: center;">
-							<a href=""><img alt="미리보기" src="<%=cp%>/resources/img/myShopping/btn_comm_2.png"> </a>
-						</div>
-					</div>
-				</div>
-				<!-- 하단 -->
-				<div style="margin-left: 15px;">
-					<dl>
-						<dt><a href="">서명</a></dt>
-						<dd>저자 | 출판사</dd>
-						<dd>
-							<p>
-								<span class="point_red"><b>정가</b> (10%↓+5%P)</span>
-							</p>
-						</dd>
-					</dl>
-				</div>
-			</li>
-		</ul>	
-		<ul>
-			<li>
-				<!-- 상단 -->
-				<div>
-					<!-- 체크박스 -->
-					<div style="float: left;">
-						<input type="checkbox" class="checkbox" name="seq" value="">
-					</div>
-					<!-- 이미지 -->
-					<div class="wish_book_up">
-						<div class="wish_book_img">
-							<a href=""><img alt="" src="<%=cp%>/resources/image/book/3054578.jpg"></a>
-							<a href="" target="_blank" class="wish_book_popup">
-								<span>새창열기</span>
-							</a>
-						</div>
-						<div style="margin-top: 5px; text-align: center;">
-							<a href=""><img alt="미리보기" src="<%=cp%>/resources/img/myShopping/btn_comm_2.png"> </a>
-						</div>
-					</div>
-				</div>
-				<!-- 하단 -->
-				<div style="margin-left: 15px;">
-					<dl>
-						<dt><a href="">서명</a></dt>
-						<dd>저자 | 출판사</dd>
-						<dd>
-							<p>
-								<span class="point_red"><b>정가</b> (10%↓+5%P)</span>
-							</p>
-						</dd>
-					</dl>
-				</div>
-			</li>
-		</ul>	
-	</div>
-	<div class="wish_list_page">
-		페이징
+	<div id="LatesBooksList">
+	
 	</div>
 	
-	<div style="text-align: center; padding-top: 100px;">최근 본 상품이 없습니다.</div>
 
 </div>
 

@@ -17,11 +17,5 @@
 </head>
 <body>
 
-	common/alert
-	${alertMsg}
-	${nextUrl}
-	
-	
-
 </body>
 </html>

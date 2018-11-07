@@ -19,17 +19,19 @@
 	<script type="text/javascript">
 	
 	//초기 리스트 자동 불러오기
-	$.ajax({
+	$(document).ready(function(){
+		$.ajax({
 		
-		url:"expPointList.action",
-		type:"POST",
-		success:function(data){
-			$('#expPointList').html(data);	
-		},
-		error:function(e){
-			alert(e.responseText);
-		}
+			url:"expPointList.action",
+			type:"POST",
+			success:function(data){
+				$('#expPointList').html(data);	
+			},
+			error:function(e){
+				alert(e.responseText);
+			}
 
+		});
 	});
 	
 	</script>

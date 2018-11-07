@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+<mapper namespace="shopAndOrderMapper">
+
+	<!-- 전체데이터  -->
+	<select id="cartLists" parameterType="java.lang.String" resultType="com.spring.webproject.dto.BookSectionsDTO">
+		select * from bookSections where isbn = #{isbn}
+	</select>
+
+
+
+
+
+</mapper>
