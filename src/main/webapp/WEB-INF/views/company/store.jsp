@@ -104,11 +104,6 @@
 										</a>										
 									</li>
 									<li>
-										<a href="<%=cp%>/prcenter.action">
-										PR센터
-										</a>										
-									</li>
-									<li>
 										<a href="<%=cp%>/store.action">
 										매장소개
 										</a>										
