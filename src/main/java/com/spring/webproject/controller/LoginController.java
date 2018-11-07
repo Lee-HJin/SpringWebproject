@@ -8,7 +8,6 @@ import java.util.List;
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.xml.ws.Response;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -19,7 +18,6 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.spring.webproject.dao.LoginDAO;
-import com.spring.webproject.dao.MyShoppingDAO;
 import com.spring.webproject.dto.UserDTO;
 
 @Controller
@@ -52,7 +50,7 @@ public class LoginController {
 	
 	//로그인 진행
 	@RequestMapping(value = "/login_ok.action", method = {RequestMethod.POST,RequestMethod.GET})
-	public String loginProcess(HttpServletRequest request, HttpServletResponse response) {
+	public String loginProcess(HttpServletRequest request, HttpServletResponse response) throws InterruptedException {
 
 		String returnUrl = "";
 		String userId = request.getParameter("user_id");
@@ -96,6 +94,8 @@ public class LoginController {
 					else {
 						dao.updateRecentBookTime(userId, isbn);
 					}
+					
+					Thread.sleep(100);
 					
 				}	
 			}
