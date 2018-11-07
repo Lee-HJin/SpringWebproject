@@ -19,7 +19,7 @@
 		<div class="f_menu" style="width: 1100px;">
 			<ul>
 				<li>
-					<a href="javascript://">회사소개</a>
+					<a href="<%=cp%>/company.action">회사소개</a>
 				</li>
 				<li>
 					<a href="<%=cp%>/main.action">채용정보</a>

@@ -64,11 +64,6 @@
 										</a>										
 									</li>
 									<li>
-										<a href="<%=cp%>/prcenter.action">
-										PR센터
-										</a>										
-									</li>
-									<li>
 										<a href="<%=cp%>/store.action">
 										매장소개
 										</a>										
@@ -94,6 +89,18 @@
 					200만 권에 이르는 서적량과 방대한 DB, 고객과 함께 숨쉬는 독서공간, 어린이를 위한 전용공간 키즈월드, 편안한<br>
 					휴식을 제공하는 북카페 등 외적 시설 확충은 물론 지속적인 온라인 서점 리뉴얼 및 모바일 서점 강화 등을 통해<br>
 					온/오프라인을 아우르는 최고의 서점으로 도약하기 위해 임직원 모두 최선을 다하고 있습니다.<br>
+				</div>
+				<div class="h_box">
+					<div class="h_text">
+						<div class="h_textB">
+							<h3>
+								<img src="<%=cp %>/resources/image/main/h3_history_01.gif">
+							</h3>
+							<div class="h_img">
+								<img src="<%=cp %>/resources/image/main/history01.PNG">
+							</div>
+						</div>
+					</div>
 				</div>
 				
 			</div>

@@ -149,7 +149,14 @@ public class MainDAO {
 			return lst;	
 		}
 	
-		
+	//로그인시 최근본 상품
+		public List<MainDTO> recentLogin(String userId){
+			
+			List<MainDTO> lst = new ArrayList<MainDTO>();
+			lst = sessionTemplate.selectList("mainMapper.recentLogin",userId);
+			
+			return lst;			
+		}
 }
 
 

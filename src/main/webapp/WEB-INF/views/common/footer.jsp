@@ -18,10 +18,10 @@
 
 <div class="footer">
 	<div class="copyright">
-		<div class="f_menu" style="height: 50px;">
+		<div class="f_menu">
 			<ul>
 				<li>
-					<a href="javascript://">회사소개</a>
+					<a href="<%=cp%>/company.action">회사소개</a>
 				</li>
 				<li>
 					<a href="<%=cp%>/main.action">채용정보</a>

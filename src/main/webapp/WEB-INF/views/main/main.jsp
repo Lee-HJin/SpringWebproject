@@ -38,19 +38,19 @@
 		var noData = document.getElementById("no_data");
 		
 		var ck = cookieInfo(getCookie('rcbook'));
-		todayView(ck); 
+		todayView(ck);		
  
    		if($('.swiper-slide-active #isbn').val()!=null){
 			noData.style.display = 'none';
 			data.style.display = 'block';
-			listRecomm(ck[0].isbn);
+			listRecomm($('.swiper-slide-active #isbn').val());
 		}else if($('.swiper-slide-active #isbn').val()==null){
 			noData.style.display = 'block';
 			data.style.display = 'none';
 		}
-		
+ 		
 		document.getElementById("bs_link").href = document.getElementById("img_link1").href;
-		document.getElementById("bs_img").src = document.getElementById("link_img1").src;
+		document.getElementById("bs_img").src = document.getElementById("link_img1").src; 
 		
 		newBookAll();
 		issueBook();	
@@ -181,6 +181,12 @@
 		});
 	}	
 	
+	//로그인 오늘본 상품
+	function todayViewL() {
+		
+		
+	}
+	
 	//쿠키 가져오기
 	function getCookie(cookiename){
 		var cookiestring  = document.cookie;
@@ -302,6 +308,9 @@
 						</div>
 						<div class="swiper-slide">
 							<a href="javascript://"><img src="<%=cp%>/resources/image/main/banner2_03.jpg"></a>
+						</div>
+						<div class="swiper-slide">
+							<a href="javascript://"><img src="<%=cp%>/resources/image/main/banner20181102142927.jpg"></a>
 						</div>
 					</div>
 					
@@ -499,14 +508,66 @@
 				</div>
 			</div>
 			<div class="rc_body" id="data" style="display: block;">
-				<div>
-					<div class="recent_book" id="today_view"></div>
+
+					<c:if test="${empty sessionScope.userInfo.userId }">
+						<div class="recent_book" id="today_view"></div>
+					</c:if>
+					<c:if test="${!empty sessionScope.userInfo.userId }">
+						<div class="recent_book">
+							<div class="rb_awbox">
+								<button class="slide_aw left" id="rb_awL">
+									<span class="aw_count_rb"></span>
+								</button>
+								<button class="slide_aw right" id="rb_awR">
+									<span class="aw_count_rb"></span>
+								</button>
+							</div>
+							<h4>오늘본 상품</h4>
+							<div class="swiper-container swiper3">
+								<div class="swiper-wrapper list">
+								<c:forEach var="rc" items="${rcList }">
+									<div class="swiper-slide">
+										<input id="isbn" value="${rc.isbn }" type="hidden"/>
+										<div class="rb_image">
+											<a href="<%=cp%>/book_info.action?isbn=${rc.isbn }">
+												<img src="<%=cp%>/resources/image/book/${rc.bookImage }">
+											</a>
+											<dl class="rb_title">
+												<dt>${rc.bookTitle }</dt>
+												<dd>${rc.authorName }</dd>
+											</dl>
+										</div>
+									</div>
+								</c:forEach>
+								</div>
+							</div>
+						</div>
+
+						<script type="text/javascript">
+						
+						var swiper = new Swiper('.swiper3', {
+							spaceBetween: 0,
+							centeredSlides: true,
+							loop: true,
+							simulateTouch : false,
+							pagination: {
+								el: '.aw_count_rb',
+								type: 'fraction',
+							},
+							navigation: {
+								nextEl: '#rb_awR',
+								prevEl: '#rb_awL',
+							},
+						});
+						
+						</script>
+					</c:if>
 					<button class="rc_btn" id="recommend_btn"></button>
 					<div class="rc_books">
 						<h4>최근 본 도서와 유사한 분야 또는 주제를 다룬 도서</h4>
 						<div id="recommend_books"></div>
 					</div>
-				</div>
+
 			</div>
 		</div>
 		<div class="new_book">
@@ -681,7 +742,7 @@
 
 	<div class="sale_book">
 		<h3 class="sb_title"></h3>
-		<a class="more_link" href="javascript://"></a>
+		<a class="more_link" href="<%=cp %>/discountBookMain.action"></a>
 		<ul class="sb_list">
 			<li>
 				<div class="sb_img">
@@ -899,7 +960,7 @@
 		</div>
 		<div class="bnl_custom">
 			<h4 class="bnlc_title">자주묻는 질문</h4>
-			<a href="javascript://" class="more_link"></a>
+			<a href="<%=cp%>/helpmain.action" class="more_link"></a>
 			<ul class="q_list">
 				<li>
 					<a href="javascript://">자주묻는 질문 넣기</a>
