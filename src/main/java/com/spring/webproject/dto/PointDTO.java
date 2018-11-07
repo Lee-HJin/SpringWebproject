@@ -6,6 +6,7 @@ public class PointDTO {
 	private String expirationDate;
 	private int orderId;
 	private int value;
+	private int leftValue;
 	private String pointItem;
 	
 	public String getSavingDate() {
@@ -31,6 +32,12 @@ public class PointDTO {
 	}
 	public void setValue(int value) {
 		this.value = value;
+	}
+	public int getLeftValue() {
+		return leftValue;
+	}
+	public void setLeftValue(int leftValue) {
+		this.leftValue = leftValue;
 	}
 	public String getPointItem() {
 		return pointItem;

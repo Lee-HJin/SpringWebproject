@@ -107,6 +107,18 @@
 			<mvc:mapping path="/myShopping/pre_updateMyInfo.action" />
 			<mvc:mapping path="/myShopping/updateMyInfo.action" />
 			<mvc:mapping path="/myShopping/updatePwd.action" />
+			<mvc:mapping path="/myShopping/myOrderList.action" />
+			<mvc:mapping path="/myShopping/getOrderList.action" />
+			<mvc:mapping path="/myShopping/myOrderDetail.action" />
+			<mvc:mapping path="/myShopping/myPointHistory.action" />
+			<mvc:mapping path="/myShopping/expPointDetail.action" />
+			<mvc:mapping path="/myShopping/myLatesBooksList.action" />
+			<mvc:mapping path="/myShopping/myReviewList.action" />
+			<mvc:mapping path="/myShopping/myWishList.action" />
+			<mvc:mapping path="/myShopping/readyReviewList.action" />
+			<mvc:mapping path="/myShopping/mySentenceList.action" />
+			<mvc:mapping path="/myShopping/myCounselHistory.action" />
+			<mvc:mapping path="/myShopping/memberOut.action" />
 			<beans:bean
 				class="com.spring.webproject.interceptor.Interceptor" />
 		</mvc:interceptor>
