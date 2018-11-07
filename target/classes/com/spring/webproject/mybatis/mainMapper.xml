@@ -28,10 +28,10 @@
 	select level, LPAD('',2*(level-1)) || categoryName as categoryName,connect_by_isleaf as leaf from 
 	booksCategoryList start with parentsId is null and categoryId=#{categoryId} connect by prior categoryId = parentsId) 
 	where leaf=1) b where a.categoryName=b.categoryName) b where a.categoryId=b.categoryId) b 
-	where a.isbn=b.isbn and publishDate>'2018-05-01') b where a.authorId=b.authorId) b where a.isbn=b.isbn and bookImage like '%cover%'
+	where a.isbn=b.isbn and publishDate>sysdate-180) b where a.authorId=b.authorId) b where a.isbn=b.isbn and bookImage like '%cover%'
 </select>
 
-<!-- 기대 신간도서 전체 -->
+<!-- 기대 신간도서 전체(최근 3개월내) -->
 <select id="newBookAll" resultType="com.spring.webproject.dto.MainDTO">
 	select a.isbn,bookTitle,authorName,bookImage from bookImage a,
 	(select isbn,bookTitle,authorName from author a,
@@ -42,7 +42,7 @@
 	select level, LPAD('',2*(level-1)) || categoryName as categoryName,connect_by_isleaf as leaf from 
 	booksCategoryList start with parentsId is null connect by prior categoryId = parentsId) 
 	where leaf=1) b where a.categoryName=b.categoryName) b where a.categoryId=b.categoryId) b 
-	where a.isbn=b.isbn and publishDate>'2018-05-01') b where a.authorId=b.authorId) b where a.isbn=b.isbn and bookImage like '%cover%'
+	where a.isbn=b.isbn and publishDate>sysdate-180) b where a.authorId=b.authorId) b where a.isbn=b.isbn and bookImage like '%cover%'
 </select>
 
 <!-- 이슈북 -->
