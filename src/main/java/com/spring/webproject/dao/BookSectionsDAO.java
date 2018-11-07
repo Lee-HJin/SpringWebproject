@@ -462,11 +462,11 @@ public class BookSectionsDAO {
 
 		for(int i=0;i<isbn.length;i++) {
 			
-			System.out.println("DAO: " + isbn[i]);
-			System.out.println("DAO oc: " + orderCount[i]);
-			
 			BookSectionsDTO dto = sessionTemplate.selectOne("shopAndOrderMapper.cartLists",isbn[i]);
 			dto.setOrderCount(orderCount[i]);
+			int seqNum = 1000+i;
+			dto.setSeqNum(seqNum);
+			
 			
 			lst.add(dto);
 		}
