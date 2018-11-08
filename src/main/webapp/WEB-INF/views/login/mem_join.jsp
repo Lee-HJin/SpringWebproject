@@ -67,6 +67,43 @@
 		    }).open();
 							
 		});
+		
+		
+		$('#tel3').on('keyup',function(){
+			
+			if($('#tel3').val().length>3){
+				
+				var tel = $('#tel1').val() + "-" + $('#tel2').val() + "-" + $('#tel3').val();
+				
+				$(function(){
+					
+					var params = "phone=" + tel;
+					
+					$.ajax({
+						url:"phoneOverlapCheck.action",
+						type:"POST",
+						data:params,
+						dataType:"json",
+						success:function(data){
+							if(data==true){
+								$('#phone_text').html("");
+							}
+							else{
+								$('#phone_text').html("<span id='text_id' style='color: red;'>이미 등록된 휴대폰 번호입니다.</span>");
+							}
+						},
+						error:function(){
+							
+						}
+					});
+					
+				});
+			}
+			
+			
+		});
+		
+		
 	});
 	
 	function selectEmail(){
@@ -159,10 +196,10 @@
 		<tr>
 			<th>휴대폰 번호</th>
 			<td>
-				<input type="text" style="width: 50px;" size="4" maxlength="4" name="tel1" id="tel1" class="onlyNum_4">&nbsp;-
+				<input type="text" style="width: 50px;" size="4" maxlength="4" name="tel1" id="tel1" class="onlyNum_3">&nbsp;-
 				<input type="text" style="width: 50px;" size="4" maxlength="4" name="tel2" id="tel2" class="onlyNum_4">&nbsp;-
-				<input type="text" style="width: 50px" size="4" maxlength="4" name="tel3" id="tel3" class="onlyNum_3">
-				
+				<input type="text" style="width: 50px" size="4" maxlength="4" name="tel3" id="tel3" class="onlyNum_4">
+				<span id="phone_text"></span>
 			</td>
 		</tr>
 		<tr>

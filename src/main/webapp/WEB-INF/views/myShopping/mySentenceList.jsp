@@ -51,7 +51,7 @@
 <jsp:include page="./sideNavi.jsp" flush="false"/>
 
 <div class="contents">
-	<div style="font-size: 13pt; font-weight: bold; padding-bottom: 10px;">간단평 | <span style="font-size: 10pt; font-weight: normal;">(총 1권의 책이 담겨 있습니다.)</span></div>
+	<div style="font-size: 13pt; font-weight: bold; padding-bottom: 10px;">간단평 | <span style="font-size: 10pt; font-weight: normal;">(총 ${sentenceCount }권의 책이 담겨 있습니다.)</span></div>
 	
 	<div id="mySentenceList">
 

@@ -5,6 +5,7 @@
 	String cp = request.getContextPath();
 	
 %>
+
 <c:if test="${!empty lists }">
 	<div class="sentence_list_box">
 		<c:forEach var="dto" items="${lists }">

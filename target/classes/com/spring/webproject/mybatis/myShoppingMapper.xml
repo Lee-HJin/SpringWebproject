@@ -236,7 +236,7 @@ select nvl(count(*),0) from review where userId=#{userId} and reviewTitle is not
 <!-- 리뷰가 있는 책 리스트 가져오기 -->
 <select id="myReviewList" parameterType="map" resultType="com.spring.webproject.dto.MyReviewDTO">
 select * from (select rownum rnum,a.*, bookTitle,authorName,publisher,publishDate,bookImage from (select a.isbn,a.reviewId,reviewTitle,created,contents,hitCount, thumbup from 
-(select isbn,reviewId,userId,reviewTitle,created,contents,hitCount from review where userId=#{userId} and sentence is null order by created desc) a left join (select reviewid, nvl(count(thumbup),0) as thumbup  from thumbup group by reviewId)b on a.reviewId=b.reviewId) a,
+(select isbn,reviewId,userId,reviewTitle,created,contents,hitCount from review where userId=#{userId} and sentence is null order by created desc) a left join (select reviewid, nvl(sum(thumbup),0) as thumbup  from thumbup group by reviewId)b on a.reviewId=b.reviewId) a,
 booksections where a.isbn=booksections.isbn) <![CDATA[where rnum>=#{start} and rnum<=#{end}]]>
 </select>
 

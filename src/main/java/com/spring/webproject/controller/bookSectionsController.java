@@ -477,12 +477,14 @@ public class bookSectionsController {
 		
 		String ck = request.getParameter("isbn");
 		String ckC = request.getParameter("orderCount");
-
-		List<BookSectionsDTO> lst = new ArrayList<BookSectionsDTO>();
 		
-		lst = raDao.cartList(ck,ckC);
-		
-		request.setAttribute("lst", lst);
+		if(!ck.equals("") && ck!=null) {
+			List<BookSectionsDTO> lst = new ArrayList<BookSectionsDTO>();
+			
+			lst = raDao.cartList(ck,ckC);
+			
+			request.setAttribute("lst", lst);
+		}
 		
 		return "shopAndOrder/cartList";
 	}
