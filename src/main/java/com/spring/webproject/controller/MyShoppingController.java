@@ -1069,6 +1069,14 @@ public class MyShoppingController {
 	//간단평 페이지
 	@RequestMapping(value = "myShopping/mySentenceList.action", method = RequestMethod.GET)
 	public String mySentenceList(HttpServletRequest request) {
+		
+		UserDTO dto = (UserDTO) request.getSession().getAttribute("userInfo");
+		String userId = dto.getUserId();
+		
+		int sentenceCount = dao.sentenceCount(userId);
+		
+		request.setAttribute("sentenceCount", sentenceCount);
+		
 
 		return "myShopping/mySentenceList";
 	}

@@ -99,6 +99,7 @@
 
 		frmObj.submit();
 	}
+});
 	
 </script>
 

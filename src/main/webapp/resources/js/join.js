@@ -677,6 +677,17 @@ function joinConfirmation(){
 
 	tel = f.tel1.value + '-' + f.tel2.value + '-' + f.tel3.value;
 	f.phone.value = tel;
+	
+	var phone = $('#phone_text').text();
+	error = '이미 등록된 휴대폰 번호입니다.';
+	if(phone==error){
+		alert("\n휴대폰 번호를 다시 입력하세요.");
+		f.tel1.value = "";
+		f.tel2.value = "";
+		f.tel3.value = "";
+		f.tel1.focus();
+		return;
+	}
 
 	email = f.email1.value + '@' + f.email2.value;
 	f.email.value = email;
