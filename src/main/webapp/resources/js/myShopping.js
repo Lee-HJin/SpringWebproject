@@ -962,10 +962,73 @@ function popPreview(isbn) {
     window.open("/webproject/book_preview.action?isbn=" + isbn, "preview", "width="+screen.availWidth+",height="+screen.availHeight+",resizable=yes,scrollbars=yes");
 }
 
-//쇼핑카트에 담기
+//쇼핑카트에 담기 - 쿠키에 저장
 function goShoppingCart(){
 	
+	var checkArray = chkToArray();
+	var items = getCookie('shop');
+	var flag = true;
+	var ordCnt = 1;
+	
+	
+	if(items){
+		var itemArray=items.split('/');
+		var cookie = new Array();	
+		
+		alert(itemArray.length);
+		
+		for(i=0;i<itemArray.length;i++){
+			cookie[i] = JSON.parse(itemArray[i]);
+	 	}
+		
+		for(i=0;i<checkArray.length;i++){
+			
+			for(j=0;j<cookie.length;j++){
+				
+				if(cookie[j].isbn==checkArray[i]){
+					
+					alert("이미 쇼핑카트에 있는 상품입니다.");
+					return;
+					
+				}	
+			}
+			
+			flag = false;
+		}
+		if(flag==false){
+			
+			alert("쿠키추가하장");
+			
+			for(i=0;i<checkArray.length;i++){
+				var cookieValue = JSON.stringify({"isbn":checkArray[i],"orderCount":ordCnt});
+				alert(cookieValue);
+				itemArray.push(cookieValue);
+			}
+			setCookie('shop',itemArray.join('/'),1);
+			alert("쇼핑카트에 추가되었습니다.")
+		}
+	}
+	else{
+		for(i=0;i<checkArray.length;i++){
+			var cookieValue = JSON.stringify({"isbn":checkArray[i],"orderCount":ordCnt});
+			var newArray = new Array();
+			newArray.push(cookieValue);
+		}
+		setCookie('shop',newArray.join('/'),1);
+		alert("쇼핑카트에 추가되었습니다.")
+	}
+	
 }
+
+//쿠키 생성
+function setCookie(cName, cValue, cDay){
+	var expire = new Date();
+    expire.setDate(expire.getDate() + cDay);
+    cookies = cName + '=' + escape(cValue) + '; path=/ ';
+    if(typeof cDay != 'undefined') cookies += ';expires=' + expire.toGMTString() + ';';
+    document.cookie = cookies;
+}
+
 
 //체크박스 값 배열에 정리하기
 function chkToArray(){
