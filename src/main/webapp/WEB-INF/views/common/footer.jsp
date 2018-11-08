@@ -18,7 +18,7 @@
 
 <div class="footer">
 	<div class="copyright">
-		<div class="f_menu" style="height: 40pt;">
+		<div class="f_menu">
 			<ul>
 				<li>
 					<a href="<%=cp%>/company.action">회사소개</a>

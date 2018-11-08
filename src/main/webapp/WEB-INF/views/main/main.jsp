@@ -228,7 +228,7 @@
 
 <div id="body">
 	
-	<div class="swiper-container swiper1">
+	<div class="swiper-container swiper1"><!-- 첫번째 슬라이드 -->
    		<div class="swiper-wrapper">
      		<div class="swiper-slide">
      			<a href="<%=cp%>/book_info.action?isbn=9788965962823"><img src="<%=cp%>/resources/image/main/box1_2.jpg"></a>
@@ -258,12 +258,15 @@
 
 <div class="body_section">
 	<div id="body" style="width: 1100px;height: 145px;margin: 0 auto;position: relative;clear: both; background-color: #fff">
-		<ul class="mini_banner">
+		<ul class="mini_banner"><!-- 미니배너1 -->
 			<li id="mini_bn01">
 				<div class="swiper-container bn_swiper1">
 					<div class="swiper-wrapper">
 						<div class="swiper-slide">
-							<a href="javascript://"><img src="<%=cp%>/resources/image/main/banner02.jpg"></a>
+							<a href="<%=cp%>/book_info.action?isbn=9791162207550"><img src="<%=cp%>/resources/image/main/banner02.jpg"></a>
+						</div>
+						<div class="swiper-slide">
+							<a href="<%=cp%>/book_info.action?isbn=9791195389889"><img src="<%=cp%>/resources/image/main/banner20181102141927.jpg"></a>
 						</div>
 					</div>
 					
@@ -275,17 +278,17 @@
 					
 				</div>
 			</li>
-			<li id="mini_bn01">
+			<li id="mini_bn01"><!-- 미니배너2 -->
 				<div class="swiper-container bn_swiper2">
 					<div class="swiper-wrapper">
 						<div class="swiper-slide">
-							<a href="javascript://"><img src="<%=cp%>/resources/image/main/banner2_02.jpg"></a>
+							<a href="<%=cp%>/book_info.action?isbn=9791189015299"><img src="<%=cp%>/resources/image/main/banner2_02.jpg"></a>
 						</div>
 						<div class="swiper-slide">
-							<a href="javascript://"><img src="<%=cp%>/resources/image/main/banner2_03.jpg"></a>
+							<a href="<%=cp%>/book_info.action?isbn=9788965483755"><img src="<%=cp%>/resources/image/main/banner2_03.jpg"></a>
 						</div>
 						<div class="swiper-slide">
-							<a href="javascript://"><img src="<%=cp%>/resources/image/main/banner20181102142927.jpg"></a>
+							<a href="<%=cp%>/book_info.action?isbn=9788984373594"><img src="<%=cp%>/resources/image/main/banner20181102142927.jpg"></a>
 						</div>
 					</div>
 					
@@ -296,26 +299,11 @@
 					</div>
 				</div>
 			</li>
-			<li id="mini_bn01">
+			<li id="mini_bn01"><!-- 미니배너3 -->
 				<div class="swiper-container bn_swiper3">
 					<div class="swiper-wrapper">
 						<div class="swiper-slide">
-							<a href="javascript://"><img src="<%=cp%>/resources/image/main/banner3_01.jpg"></a>
-						</div>
-						<div class="swiper-slide">
-							<a href="javascript://"><img src="<%=cp%>/resources/image/main/banner3_02.jpg"></a>
-						</div>
-						<div class="swiper-slide">
-							<a href="javascript://"><img src="<%=cp%>/resources/image/main/banner3_03.jpg"></a>
-						</div>
-						<div class="swiper-slide">
-							<a href="javascript://"><img src="<%=cp%>/resources/image/main/banner3_04.jpg"></a>
-						</div>
-						<div class="swiper-slide">
-							<a href="javascript://"><img src="<%=cp%>/resources/image/main/banner3_05.jpg"></a>
-						</div>
-						<div class="swiper-slide">
-							<a href="javascript://"><img src="<%=cp%>/resources/image/main/banner3_06.jpg"></a>
+							<a href="<%=cp%>/book_info.action?isbn=9788993635027"><img src="<%=cp%>/resources/image/main/banner3_03.jpg"></a>
 						</div>
 					</div>
 					
@@ -330,7 +318,7 @@
 	</div>
 		
 	<div class="b_content_wrap1" style="overflow: hidden;">
-		<div class="today_book">
+		<div class="today_book"><!-- 오늘의 책 -->
 			<div class="b_tit tit_book"></div>
 			<div class="b_arrow_box">
 				<button class="slide_aw left" id="slide_awL">
@@ -433,7 +421,7 @@
 				</div>
 			</div>
 		</div>
-		<div class="best_seller">
+		<div class="best_seller"><!-- 베스트 셀러 -->
 			<div class="b_tit">
 				<span>베스트셀러</span>
 			</div>
@@ -469,7 +457,7 @@
 				</div>
 			</div>	
 		</div>
-		<div class="recommend_book">
+		<div class="recommend_book"><!-- 추천도서 -->
 			<div class="rc_title">
 				<h4>
 					<span>추천도서</span>
@@ -581,7 +569,7 @@
 		</div>
 		<div class="issue_book">
 			<h3 class="ib_title"></h3>
-			<h4 class="ib_subtitle">나를 빛나게 만드는 습관</h4>
+			<h4 class="ib_subtitle">우리가 사는 신비한 우주</h4>
 			<div class="ib_list" id="issue_book">
 			</div>
 		</div>

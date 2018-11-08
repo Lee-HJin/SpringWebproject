@@ -183,12 +183,12 @@
 	</div>
 	<div class="side_banner" style="margin-left: 575px;">
 		<div>
-			<a href="javascript://">
+			<a href="<%=cp%>/book_info.action?isbn=9788965706830">
 				<img src="<%=cp%>/resources/image/main/side_banner01.jpg">
 			</a>
 		</div>
 		<div>
-			<a href="javascript://">
+			<a href="<%=cp%>/book_info.action?isbn=9788965706830">
 				<img src="<%=cp%>/resources/image/main/side_banner02.jpg">
 			</a>
 		</div>

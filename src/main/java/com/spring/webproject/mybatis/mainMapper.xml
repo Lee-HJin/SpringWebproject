@@ -66,7 +66,7 @@
 	select bookTitle,authorName,bookImage,a.isbn from bookImage a,
 	(select bookTitle,isbn,authorName from author a,
 	(select a.* from books a,
-	(select * from bookCategory where categoryId=17) b where a.isbn=b.isbn) b 
+	(select * from bookCategory where categoryId=619) b where a.isbn=b.isbn) b 
 	where a.authorId=b.authorId) b 
 	where a.isbn=b.isbn and bookImage like '%cover%'
 </select>
