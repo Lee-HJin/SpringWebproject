@@ -149,7 +149,7 @@
 							<ul class="pagination">
 								<c:if test="${pageMaker.pre }">
 									<li><a
-										onclick="paging('<%=cp %>/admin_search_author.action?page=${pageMaker.startPage-1}')">&lt;</a></li>
+										href="<%=cp %>/admin_author.action?page=${pageMaker.startPage-1}">&lt;</a></li>
 								</c:if>
 								<c:forEach begin="${pageMaker.startPage }"
 									end="${pageMaker.endPage }" var="idx">

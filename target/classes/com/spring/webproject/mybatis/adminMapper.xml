@@ -175,7 +175,7 @@ select warehouseId, warehouseName, timestamp, key, addr, time, intro, waybus, wa
 	from(
 		select warehouseId, warehouseName, timestamp, key, addr, time, intro, waybus, waysub, tel
 		from warehouse
-		where warehouseName like '%${searchValue}%' order by warehouseName) A
+		where warehouseName like '%${searchValue}%' order by warehouseId) A
 <![CDATA[
 	where rownum <=#{end})B
 where b.rnum>=#{start}

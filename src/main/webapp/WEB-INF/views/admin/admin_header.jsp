@@ -46,11 +46,6 @@
 		<div class="header_menu" style="width: 1100px;">
 			<ul class="menu_wrap">
 				<li class="menu">
-					<a href="<%=cp %>/admin_users.action" >
-						<font>회원관리</font>
-					</a>
-				</li>
-				<li class="menu">
 					<a href="<%=cp %>/admin_goods.action" >
 						<font>도서관리</font>
 					</a>
@@ -63,12 +58,12 @@
 				</li>
 				<li class="menu">
 					<a href="<%=cp %>/admin_author.action" >
-						<font>작가/번역가 등록</font>
+						<font>작가관리</font>
 					</a>
 				</li>
 				<li class="menu">
 					<a href="<%=cp %>/admin_warehouse.action" >
-						<font>지점 관리</font>
+						<font>지점관리</font>
 					</a>
 				</li>
 				
@@ -86,6 +81,11 @@
 				<li class="menu">
 					<a href="<%=cp %>/admin_order.action" >
 						<font>주문현황</font>
+					</a>
+				</li>
+				<li class="menu">
+					<a href="<%=cp %>/admin_users.action" >
+						<font>회원관리</font>
 					</a>
 				</li>
 			</ul>	

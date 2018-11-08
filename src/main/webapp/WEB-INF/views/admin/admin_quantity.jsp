@@ -172,7 +172,7 @@
 	<div style="display: table; margin: 0 auto;">
 		<ul class="pagination">
 			<c:if test="${pageMaker.pre }">
-				<li><a onclick="paging('<%=cp %>/admin_quantity.action?page=${pageMaker.startPage-1}')">&lt;</a></li>
+				<li><a href="<%=cp %>/admin_quantity.action?page=${pageMaker.startPage-1}">&lt;</a></li>
 			</c:if>
 			<c:forEach begin="${pageMaker.startPage }"
 				end="${pageMaker.endPage }" var="idx">

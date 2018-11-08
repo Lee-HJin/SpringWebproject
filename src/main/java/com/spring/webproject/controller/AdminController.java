@@ -51,7 +51,7 @@ public class AdminController {
 	@RequestMapping(value = "/admin.action", method = { RequestMethod.GET, RequestMethod.POST })
 	public String home() {
 
-		return "admin/admin_users";
+		return "admin/admin_goods";
 	}
 
 	// users
@@ -206,6 +206,28 @@ public class AdminController {
 
 		return "redirect:/admin_warehouse.action";
 	}
+	
+	@RequestMapping(value = "/admin_warehouseList_ok.action", method = { RequestMethod.GET, RequestMethod.POST })
+	public String warehouseListOK(SearchCriteria cri, Model model) {
+		
+		if (cri.getSearchValue() == null || cri.getSearchValue().equals("")) {
+			cri.setSearchValue(null);
+		}
+		if (cri.getSearchKey() == null || cri.getSearchKey().equals("")) {
+			cri.setSearchKey(null);
+		}
+		
+		List<AdminWarehouseDTO> warehouseList = dao.getWarehouseList(cri);
+		
+		PageMaker pageMaker = new PageMaker(cri);
+		pageMaker.setTotalDataCount(dao.getWarehouseTotalCount(cri));
+
+		model.addAttribute("pageMaker", pageMaker);
+		model.addAttribute("warehouseList", warehouseList);
+		
+		return "admin/admin_warehouseList_ok";
+	}
+	
 
 	// quantity
 	@RequestMapping(value = "/admin_quantity.action", method = { RequestMethod.POST, RequestMethod.GET })
