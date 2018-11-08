@@ -7,10 +7,10 @@ $(document).ready(function(){
 	$("#btn_switchView").click(function(){
 		$(".prodViewRepr").toggle();
 		$(".prodViewAll").toggle();
-		if($("#btn_switchView").attr("src") === "/ra/resources/images/order/btn_order_prodview.gif") {
-			$("#btn_switchView").attr("src","/ra/resources/images/order/btn_order_prodview_s.gif");
+		if($("#btn_switchView").attr("src") === "/webproject/resources/images/order/btn_order_prodview.gif") {
+			$("#btn_switchView").attr("src","/webproject/resources/images/order/btn_order_prodview_s.gif");
 		}else {
-			$("#btn_switchView").attr("src","/ra/resources/images/order/btn_order_prodview.gif");
+			$("#btn_switchView").attr("src","/webproject/resources/images/order/btn_order_prodview.gif");
 		}
 	});
 

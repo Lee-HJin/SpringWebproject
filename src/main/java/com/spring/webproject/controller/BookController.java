@@ -551,36 +551,97 @@ public class BookController {
 
 		// 대분류
 		CateDTO dto_Main = dao.getReadCate(categoryId);
-		System.out.println("대분류 : " + dto_Main.getCategoryName());
+		
 		request.setAttribute("dto_Main", dto_Main); // 메인 분류 이름
 
 		// 중분류
 		List<CateDTO2> lists = dao.getReadCateList2(dto_Main.getCategoryId());
-		
+
 		Iterator<CateDTO2> iterator = lists.iterator();
-		
-		while(iterator.hasNext()) {
+
+		while (iterator.hasNext()) {
 			CateDTO2 dto2 = iterator.next();
-			System.out.println("카테고리 아이디 : " + dto2.getCategoryId());
-			
+
 			List<CateDTO> lists3 = dao.getReadCateList3(dto2.getCategoryId());
 			Iterator<CateDTO> it = lists3.iterator();
-			while(it.hasNext()) {
+			while (it.hasNext()) {
 				CateDTO dto = it.next();
-				
+
 				dto2.setLastNode(dto);
-				System.out.println(dto.getCategoryName());
+				
 			}
+		}
+
+		request.setAttribute("lists", lists);
+
+		// ---------------------------------------------------------------------------
+
+		String cp = request.getContextPath();
+
+		String pageNum = request.getParameter("pageNum");
+
+		int currentPage = 1;
+
+		if (pageNum != null) {
+			currentPage = Integer.parseInt(pageNum);
+		}
+	
+	
+		// 전체데이터 갯수
+		int dataCount = raDao.getDataCount();
+
+		// 페이징 처리
+		int numPerPage = 10;
+		int totalPage = raMyUtil.getPageCount(numPerPage, dataCount);
+
+		if (currentPage > totalPage)
+			currentPage = totalPage;
+
+		int start = (currentPage - 1) * numPerPage + 1;
+		int end = currentPage * numPerPage;
+
+	
+		// 베스트 셀러
+		int cateStart = categoryId;
+		int cateEnd = dao.getCateEnd(categoryId);
+		List<BookSectionsDTO> lists_Best = dao.getLists_Best(cateStart, cateEnd, start, end);
+		request.setAttribute("lists_Best", lists_Best);
+		
+		// 새로나온 책 
+		List<BookSectionsDTO> lists_New = dao.getLists_New(cateStart, cateEnd, start, end);
+		request.setAttribute("lists_New", lists_New);
+
+		// 할인도서 
+		
+		/*discountRate*/
+		int fromDiscount = 0;
+		int toDiscount = 0;
+		if(request.getParameter("fromDiscount") == null || request.getParameter("fromDiscount").equals("")) {
+			fromDiscount = 30;
+		}else {
+			fromDiscount = Integer.parseInt(request.getParameter("fromDiscount"));
+		}
+		if(request.getParameter("toDiscount") == null || request.getParameter("toDiscount").equals("")) {
+			toDiscount = 100;
+		}else {
+			toDiscount = Integer.parseInt(request.getParameter("toDiscount"));
 		}
 		
 		
-//		while(iterator.hasNext()) {
-//			// 소분류
-//			iterator.next().setLastNode(dao.getReadCate(iterator.next().getCategoryId())); 
-//			System.out.println("중분류 카테고리 아이디 = " + iterator.next().getCategoryId());
-//		}
 		
-		request.setAttribute("lists", lists);
+		
+		List<BookSectionsDTO> lists_Discount = dao.getLists_Discount(cateStart, cateEnd, fromDiscount , toDiscount ,start, end);
+		request.setAttribute("lists_Discount", lists_Discount);
+		
+		
+		String bnlBSListUrl = cp + "/boos/cate/book_cate";
+
+		String pageIndexList = raMyUtil.pageIndexList(currentPage, totalPage, bnlBSListUrl);
+
+		request.setAttribute("pageNum", currentPage);
+		request.setAttribute("pageIndexList", pageIndexList);
+
+		
 		
 		
 		return "books/cate/book_cate";

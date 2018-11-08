@@ -57,6 +57,7 @@
 			return;
 		}
 		cartList(cIsbn,ordCount);		
+		
 	});
 	
 	
@@ -103,12 +104,100 @@
  	 		for(i=0;i<cookie.length;i++){
  	 			ck[i] = JSON.parse(cookie[i]);
  	 		} 		
+ 	 		
  	 		return ck;
  		}else{
  			return null;
  		}
 	}
+	
+	//체크박스 값 배열에 정리하기
+	fun	//체크박스 값 배열에 정리하기
+	//선택된 체크박스 배열 반환
+	function chkToArray(){
+		
+		//체크박스 선택된 값을 담을 array
+		var checkArray = new Array();
+		//체크박스 객체
+		var chkbox = $('.check_bandiDeduction');
+		
+		for(var i=0;i<chkbox.length;i++){
+			if(chkbox[i].checked == true){
+				checkArray.push(chkbox[i].value);
+			}
+		}
 
+		return checkArray; 
+	}
+	
+	function findCookieIndex(isbn){
+		
+		var ck = cookieInfo(getCookie('shop'));
+		
+		var cIsbn = new Array();
+		
+		if(ck!=null){
+			for(i=0;i<ck.length;i++){
+				cIsbn.push(ck[i].isbn);
+			}
+			var index = cIsbn.indexOf(isbn);
+			
+		}
+		
+		
+		
+		return index;
+		
+	}
+	
+	//삭제하기
+	function deleteCart(){
+		
+		var checkArray = chkToArray();
+		
+		if(checkArray.length == 0){
+			alert("삭제할 상품을 선택하세요.");
+		}
+		else{
+			if(confirm("선택하신 상품을 쇼핑카드에서 삭제하시겠습니까?") == true){
+				var items = getCookie('shop');
+				
+				if(items){
+					var itemArray=items.split('/');
+					for(var i=0;i<checkArray.length;i++){
+						var index = findCookieIndex(checkArray[i]);
+							itemArray.splice(index,1);
+							setCookie('shop',itemArray.join("/"),1);	
+					}
+				}
+			}
+		}
+		
+		var ck = cookieInfo(getCookie('shop'));
+		
+		var cIsbn = new Array();
+		var ordCount = new Array();
+		
+		if(ck!=null){
+			for(i=0;i<ck.length;i++){
+				cIsbn.push(ck[i].isbn);
+				ordCount.push(ck[i].orderCount);
+			}
+		}else{
+			return;
+		}
+		cartList(cIsbn,ordCount);	
+	}
+
+	//쿠키 생성
+	function setCookie(cName, cValue, cDay){
+		var expire = new Date();
+	    expire.setDate(expire.getDate() + cDay);
+	    cookies = cName + '=' + escape(cValue) + '; path=/ ';
+	    if(typeof cDay != 'undefined') cookies += ';expires=' + expire.toGMTString() + ';';
+	    document.cookie = cookies;
+	}
+	
 </script>
 
 
@@ -180,57 +269,18 @@
 						<a id="bandiDeduction" class="btn_bookSelf" style="cursor:pointer;"><img src="/webproject/resources/images/searchN/btn_cart_move_bookself.gif" alt="선택상품 북셀프로 주문하기"></a>
  						
 						<a href="javascript:array_interest(1);"><img src="/webproject/resources/images/searchN/btn_cart_wishlist02.gif" alt="선택상품 위시리스트 담기"></a>
-						<a id="bandiDeduction" class="btn_del" style="cursor:pointer;"><img src="/webproject/resources/images/searchN/btn_cart_del02.gif" alt="선택상품 삭제"></a>
+						<a href="javascript:deleteCart();" id="bandiDeduction" class="btn_del" style="cursor:pointer;"><img src="/webproject/resources/images/searchN/btn_cart_del02.gif" alt="선택상품 삭제"></a>
 					</div>
-            	
+					
+            		<form  id="goOrder" action="<%=cp%>/order.action" method="post">
+            		
 	            	<div id="nuriwork">
 	            	
 	            	</div>
 
             	</div>
 
-            	<div id="store_list" class="pos_rel overflow mt50" style="display:none;">
-					<h3 class="orderTit mt20">업체배송 상품</h3>
-					<div class="pos_abs at15 ar0 mt3" style="_top:0;_margin-top:0">
-						<a href="javascript:array_interest(2);"><img src="/webproject/resources/images/searchN/btn_cart_wishlist02.gif" alt="선택상품 위시리스트 담기"></a>
-						<a id="store" class="btn_del" style="cursor:pointer;"><img src="/webproject/resources/images/searchN/btn_cart_del02.gif" alt="선택상품 삭제"></a>
-					</div>
-            	
-	            	<table cellpadding="0" cellspacing="0" class="orderTable">
-	            		<colgroup><col width="55"><col><col width="92"><col width="72"><col width="92"><col width="92"><col width="90"><col width="40"></colgroup>
-	            		
-	            		<tbody>
-	            			<tr>
-		            			<th colspan="2">상품명</th>
-		            			<th>판매가</th>
-		            			<th>수량</th>
-		            			<th>합계</th>
-		            			<th>배송비</th>
-		            			<th>담기/삭제</th>   
-		            			<th><input type="checkbox" id="store" class="checkAll"></th>
-	            			</tr>
-	            		</tbody>
-	            	</table>
-	            	
-	            	<div class="cart_pay_total">
-	            		<span class="fl_left mt3 ml10" id="store_totOrdCnt">수량: 0종(0개)</span>
-	            		<span class="fl_right al_right">
-	            			<span class="di_in mt3 mr5">총 상품 금액: <span id="store_totSaleCost">0</span>원</span>
-	            			<span class="di_in al_top mr5"><img src="/webproject/resources/images/searchN/ico_cart_plus.gif" alt=""></span>
-	            			<span class="di_in mt3 mr5">배송비: <span id="store_totDeliCost">0</span>원</span>
-	            			<span class="di_in al_top mr5"><img src="/webproject/resources/images/searchN/ico_cart_same.gif" alt=""></span>
-	            			<span class="di_in mt3 mr10">주문금액 합계: <span class="t_red"><span id="store_totOrdCost">0</span>원</span></span>
-	            		</span>
-	            	</div>
-	            	<div class="cart_point_total al_right">
-	            		<span class="btn_gift_view"><img src=""></span>
-	            		<strong class="mr10">적립가능액 : <span class="point_b">상품적립금 <span id="store_totPoint">0</span>원</span></strong>
-	            	</div>
-            	</div>
-            	
-            	
-            	
-            	
+
             	<div class="pos_rel overflow mt40">
 					<h3 class="orderTit02 mt20"><img src="/webproject/resources/images/searchN/h3_cart_total.gif" alt="쇼핑카트 총 주문금액"></h3> 
 	            	<table cellpadding="0" cellspacing="0" class="orderTable_tatol" width="960">
@@ -302,7 +352,7 @@
 					<a href="/"><img src="/webproject/resources/images/searchN/btn_cart_shopping.gif" alt="쇼핑계속하기"></a>
 					<a id="btn_order" style="cursor:pointer;"><img src="/webproject/resources/images/searchN/btn_cart_order.gif" alt="주문하기"></a>
 				</div>
-				
+				</form>
 				<!-- 크레마 무이자 팝업 -->
 				
 				<div class="laypop" id="laypop_crema" style="left:230px; bottom:1400px;width:500px; display:none;text-align:left;_left:-80px;">
