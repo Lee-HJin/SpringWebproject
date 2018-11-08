@@ -17,44 +17,38 @@
 	bookImage where a.isbn=bookImage.isbn and bookImage like '%cover%'
 </select>
 
-<!-- 기대 신간도서(최근 3개월내) -->
+<!-- 기대 신간도서(최근 6개월내) -->
 <select id="newBook" parameterType="int" resultType="com.spring.webproject.dto.MainDTO">
-	select a.isbn,bookTitle,authorName,bookImage from bookImage a,
-	(select isbn,bookTitle,authorName from author a,
-	(select a.isbn,bookTitle,authorId from books a,
+	select * from
+	(select rownum listNum, a.* from
+	(select a.isbn,bookTitle,authorName,bookImage,publishDate from bookImage a,
+	(select isbn,bookTitle,authorName,publishDate from author a,
+	(select a.isbn,bookTitle,authorId,publishDate from books a,
 	(select distinct a.categoryId,isbn,categoryName from bookCategory a,
 	(select distinct a.categoryId, a.categoryName from booksCategoryList a,
 	(select * from (
 	select level, LPAD('',2*(level-1)) || categoryName as categoryName,categoryId as categoryId,connect_by_isleaf as leaf from 
 	booksCategoryList start with parentsId is null and categoryId=#{categoryId} connect by prior categoryId = parentsId) 
 	where leaf=1) b where a.categoryId=b.categoryId) b where a.categoryId=b.categoryId) b 
-	where a.isbn=b.isbn and publishDate>sysdate-180) b where a.authorId=b.authorId) b where a.isbn=b.isbn and bookImage like '%cover%'
+	where a.isbn=b.isbn and publishDate>sysdate-180) b where a.authorId=b.authorId) b 
+<![CDATA[ 
+	where a.isbn=b.isbn and bookImage like '%cover%' order by publishDate desc) a) where listNum<=25
+]]>
 </select>
 
 <!-- 기대 신간도서 전체(최근 3개월내) -->
 <select id="newBookAll" resultType="com.spring.webproject.dto.MainDTO">
-<!-- 	select a.isbn,bookTitle,authorName,bookImage from bookImage a,
-	(select isbn,bookTitle,authorName from author a,
-	(select a.isbn,bookTitle,authorId from books a,
-	(select distinct a.categoryId,isbn,categoryName from bookCategory a,
-	(select distinct categoryId, a.categoryName from booksCategoryList a,
-	(select * from (
-	select level, LPAD('',2*(level-1)) || categoryName as categoryName,connect_by_isleaf as leaf from 
-	booksCategoryList start with parentsId is null connect by prior categoryId = parentsId) 
-	where leaf=1) b where a.categoryName=b.categoryName) b where a.categoryId=b.categoryId) b 
-	where a.isbn=b.isbn and publishDate>sysdate-30) b where a.authorId=b.authorId) b where a.isbn=b.isbn and bookImage like '%cover%' -->
-	
 	select * from
 	(select rownum listNum, a.* from
-	(select a.isbn,bookTitle,authorName,bookImage,publishdate from bookImage a,
-	(select isbn,bookTitle,authorName,publishdate from author a,
-	(select a.isbn,bookTitle,authorId,publishdate from books a,
+	(select a.isbn,bookTitle,authorName,bookImage,publishDate from bookImage a,
+	(select isbn,bookTitle,authorName,publishDate from author a,
+	(select a.isbn,bookTitle,authorId,publishDate from books a,
 	(select distinct a.categoryId,isbn,categoryName from bookCategory a,
-	(select distinct categoryId, a.categoryName from booksCategoryList a,
+	(select distinct a.categoryId, a.categoryName from booksCategoryList a,
 	(select * from (
-	select level, LPAD('',2*(level-1)) || categoryName as categoryName,connect_by_isleaf as leaf from 
+	select level, LPAD('',2*(level-1)) || categoryName as categoryName,categoryId as categoryId,connect_by_isleaf as leaf from 
 	booksCategoryList start with parentsId is null connect by prior categoryId = parentsId) 
-	where leaf=1) b where a.categoryName=b.categoryName) b where a.categoryId=b.categoryId) b 
+	where leaf=1) b where a.categoryId=b.categoryId) b where a.categoryId=b.categoryId) b 
 	where a.isbn=b.isbn and publishDate>sysdate-30) b where a.authorId=b.authorId) b 
 <![CDATA[ 
 	where a.isbn=b.isbn and bookImage like '%cover%' order by publishDate desc) a) where listNum<=25

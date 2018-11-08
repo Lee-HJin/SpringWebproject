@@ -1372,7 +1372,7 @@ body{font-size: 12px;
     font-family: 굴림; 
     line-height: 13px;
 }
-.f_menu li a{
+.f_menu li a,.f_menu li font{
 	display: block;
     padding: 0 15px;
     zoom: 1;
