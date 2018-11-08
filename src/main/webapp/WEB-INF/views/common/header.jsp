@@ -179,13 +179,13 @@
 	</div>
 	<div class="side_banner" style="top: 200px;">
 		<div>
-			<a href="javascript://"> <img
-				src="<%=cp%>/resources/image/main/side_banner01.jpg">
+			<a href="<%=cp%>/book_info.action?isbn=9788965706830"> 
+				<img src="<%=cp%>/resources/image/main/side_banner01.jpg">
 			</a>
 		</div>
 		<div>
-			<a href="javascript://"> <img
-				src="<%=cp%>/resources/image/main/side_banner02.jpg">
+			<a href="<%=cp%>/book_info.action?isbn=9788965706830"> 
+				<img src="<%=cp%>/resources/image/main/side_banner02.jpg">
 			</a>
 		</div>
 	</div>

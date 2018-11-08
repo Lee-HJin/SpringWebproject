@@ -897,14 +897,8 @@ body{font-size: 12px;
 .wrap_b_li img{
     width: 180px;
     height: 255px;
+    border: 1px solid #e9e9e9;
 }
-
-/* .wrap_b_img img{
-   	width: 180px;
-    height: 255px;
-   	border: 1px solid #e9e9e9;
-} */
-
 .wrap_b_img dl{
     float: left;
     width: 168px;
@@ -937,7 +931,7 @@ body{font-size: 12px;
     clear: both;
     border: 1px solid #e9e9e9;
 }
-.ib_list .slide-wrapper{
+/* .ib_list .slide-wrapper{
 	width: 5490px;
     height: 350px;
     transform: translate3d(-1098px, 0px, 0px);
@@ -947,7 +941,7 @@ body{font-size: 12px;
 	height: 330px;
 	width: 218px !important;
     margin: 20px 0 0 3px !important;
-}
+} */
 
 .wrap_ib_img{
     width: 182px;
