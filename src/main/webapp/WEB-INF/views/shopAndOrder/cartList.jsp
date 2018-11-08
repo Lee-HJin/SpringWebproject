@@ -31,6 +31,7 @@
 			<th>담기/삭제</th>   
 			<th><input type="checkbox" id="bandiDeduction" class="checkAll"></th>                			
 		</tr>
+	
 	<c:forEach var="dto" items="${lst }">	
 		<tr>
 			<td>
@@ -73,30 +74,31 @@
 			
 			<td>
 		        <input type="checkbox" id="checkBox_${dto.seqNum }" name="seqArr3" class="check_bandiDeduction" value="${dto.seqNum }" checked="checked">
-   				<input type="hidden"  id="pricePerBook_${dto.seqNum}" value="${dto.discountedPrice}"/>
+   				<input type="hidden"  id="pricePerBook_${dto.seqNum}" name="pricePerBook" value="${dto.discountedPrice}"/>
 
 				<input type="hidden" class="storeId_1" value="${dto.seqNum }"/>
 				<input type="hidden" id="storeIdVal_${dto.seqNum }" value="1"/>
 
-				<input type="hidden" id="maxVal_${dto.seqNum }" value="999">
-				<input type="hidden" id="saleCostVal_${dto.seqNum }" value="${dto.discountedPrice }"/>
-				<input type="hidden" id="deliCostCondiVal_${dto.seqNum }" value="10000"/>
-   				<input type="hidden" id="deliCostVal_${dto.seqNum }" value="2000"/>
-   				<input type="hidden" id="marketSaleVal_${dto.seqNum }" value="${dto.bookPrice }"/>
-   				<input type="hidden" id="prodPointVal_${dto.seqNum }" value="${dto.point }"/>
-   				<input type="hidden" id="bundleDeliYnVal_${dto.seqNum }" value="Y"/>
-   				<input type="hidden" id="discountRate_${dto.seqNum }" value="${dto.discountRate }"/>
+				<input type="hidden" id="maxVal_${dto.seqNum }"  name="maxVal" value="999">
+				<input type="hidden" id="saleCostVal_${dto.seqNum }" name="saleCosVal" value="${dto.discountedPrice }"/>
+				<input type="hidden" id="deliCostCondiVal_${dto.seqNum }" name="deliCostCondiVal" value="10000"/>
+   				<input type="hidden" id="deliCostVal_${dto.seqNum }" name="deliCostVal" value="2000"/>
+   				<input type="hidden" id="marketSaleVal_${dto.seqNum }" name="marketSaleVal" value="${dto.bookPrice }"/>
+   				<input type="hidden" id="prodPointVal_${dto.seqNum }" name="rodPointVal" value="${dto.point }"/>
+   				<input type="hidden" id="bundleDeliYnVal_${dto.seqNum }" name="bundleDeliYnVal" value="Y"/>
+   				<input type="hidden" id="discountRate_${dto.seqNum }" name="discountRate" value="${dto.discountRate }"/>
    				<input type="hidden" id="prodIdArr_${dto.seqNum }" name="prodIdArr" value="${dto.isbn }"/>
    				<input type="hidden" id="prod_name_${dto.seqNum }" name="prod_name" value="${dto.bookTitle }"/>
-   				<input type="hidden" id="optSeqVal_${dto.seqNum }" name="optSeqVal_${dto.seqNum }" value=""/>
-   				<input type="hidden" name="is_sale_yn" value="Y"/>
+   				<input type="hidden" id="optSeqVal_${dto.seqNum }" name="optSeqVal" value=""/>
+   				<input type="hidden" name="is_sale_yn"  value="Y"/>
    				<input type="hidden" id="prodTypeArr_${dto.seqNum }" name="prodType" value="01"/>
-   				<input type="hidden" id="flag_${dto.seqNum }" value="0"/>
-   				<input type="hidden" id="preSaleYnVal_${dto.seqNum }" value="N"/>
-   				
+   				<input type="hidden" id="flag_${dto.seqNum }" name="flag" value="0"/>
+   				<input type="hidden" id="preSaleYnVal_${dto.seqNum }" name="preSaleYnVal" value="N"/>
+   				<input type="hidden" id="orderCnt_${dto.seqNum }" name="orderCount" value="${dto.orderCount }"/> 	
 		    </td>
 		</tr>
-	</c:forEach>	
+	</c:forEach>
+		
 	</tbody>
 </table>
 

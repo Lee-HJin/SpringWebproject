@@ -1,6 +1,9 @@
 package com.spring.webproject.controller;
 
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collections;
+import java.util.Iterator;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
@@ -452,13 +455,26 @@ public class bookSectionsController {
 	@RequestMapping(value="order.action", method= {RequestMethod.GET, RequestMethod.POST})
 	public String order(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		
+		String[] arrayIsbn = request.getParameterValues("prodIdArr");
+		String[] arrayOrderCnt = request.getParameterValues("orderCount");
+		
+		List<BookSectionsDTO> lists = new ArrayList<BookSectionsDTO>();
+		
+		for(int i=0;i<arrayIsbn.length;i++) {
+			String Isbn = arrayIsbn[i];
+			String OrderCount = arrayOrderCnt[i];
+			int seqNum = 1000+i;
+			lists = raDao.getOrderList(Isbn, OrderCount, seqNum);
+		}
+		
+		request.setAttribute("lists", lists);
+
 		return "shopAndOrder/order";
 	}
 	
 	@RequestMapping(value="cartList.action", method= {RequestMethod.GET, RequestMethod.POST})
 	public String cartList(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		
-
 		String ck = request.getParameter("isbn");
 		String ckC = request.getParameter("orderCount");
 

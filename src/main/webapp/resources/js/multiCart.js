@@ -265,9 +265,58 @@
 		
 	}
 	
+	$("#btn_order").click(function() {
+		
+		 $("#goOrder").submit();
+		 
+	});
 	
 	
 	
+	//cart 수정
+	function updateShopCart(isbn, seqNum) {
+		var ordCnt = parseInt($("#cntVal_"+seqNum).val());
+		var discountedPrice = parseInt($("#pricePerBook_"+seqNum).val());
+		
+		$("#costVal_"+seqNum).text(ordCnt*discountedPrice+"원");
+		alert("수정하였습니다.");
+		//orderCalc();	//에러나요오오오....꺼버려쪄요...
+		updateCartCookie(isbn, ordCnt);
+		
+		//아작스로 수량 변경을 원하신다면 location.href를 지우고
+		//밑의 주석처리를 풀어주세요오~
+		/*var ck = cookieInfo(getCookie('shop'));
+		
+		var cIsbn = new Array();
+		var ordCount = new Array();
+		
+		if(ck!=null){
+			for(i=0;i<ck.length;i++){
+				cIsbn.push(ck[i].isbn);
+				ordCount.push(ck[i].orderCount);
+			}
+		}else{
+			return;
+		}
+		cartList(cIsbn,ordCount);*/
+		
+		location.href = 'shopCartList.action';
+		
+	}
+	
+	//수량 변경 후 쿠키 변경함
+	function updateCartCookie(isbn, ordCnt){
+		var cookieValue = JSON.stringify({"isbn":isbn,"orderCount":ordCnt});
+		var items = getCookie('shop');
+		if(items){
+			var itemArray=items.split('/');
+			var index = findCookieIndex(isbn);
+			itemArray.splice(index,1,cookieValue);
+			setCookie('shop',itemArray.join("/"),1);	
+		}
+	}
+	
+		
 
 	
 
