@@ -35,11 +35,11 @@
 	$(function() {
 		
 		var data = document.getElementById("data");
-		var noData = document.getElementById("no_data");
+		var noData = document.getElementById("no_data");	
 		
 		var ck = cookieInfo(getCookie('rcbook'));
 		todayView(ck);		
- 
+
    		if($('.swiper-slide-active #isbn').val()!=null){
 			noData.style.display = 'none';
 			data.style.display = 'block';
@@ -195,7 +195,6 @@
 		    if(cookiearray[i].indexOf(cookiename)!=-1){
 		        var nameVal = cookiearray[i].split("=");
 		        nameVal = nameVal[1].trim();
-		        
 		        return unescape(nameVal);
 		    }else{
 		    	var cookie = null;
@@ -232,23 +231,20 @@
 	<div class="swiper-container swiper1">
    		<div class="swiper-wrapper">
      		<div class="swiper-slide">
-     			<a href="<%=cp%>/book_info.action?isbn=18"><img src="<%=cp%>/resources/image/main/box1_1.jpg"></a>
+     			<a href="<%=cp%>/book_info.action?isbn=9788965962823"><img src="<%=cp%>/resources/image/main/box1_2.jpg"></a>
      		</div>
      		<div class="swiper-slide">
      			<ul>
      				<li class="s_box03">
-     					<a href="<%=cp%>/book_info.action?isbn=16"><img src="<%=cp%>/resources/image/main/box3_1.jpg"></a>
+     					<a href="<%=cp%>/book_info.action?isbn=9788932919287"><img src="<%=cp%>/resources/image/main/box3_1.jpg"></a>
      				</li>
      				<li class="s_box03">
-     					<a href="javascript://"><img src="<%=cp%>/resources/image/main/box3_2.jpg"></a>
+     					<a href="<%=cp%>/book_info.action?isbn=9788984373594"><img src="<%=cp%>/resources/image/main/1541135742840.jpg"></a>
      				</li>
      				<li class="s_box03 alt">
-     					<a href="javascript://"><img src="<%=cp%>/resources/image/main/box3_3.jpg"></a>
+     					<a href="<%=cp%>/book_info.action?isbn=9788959895526"><img src="<%=cp%>/resources/image/main/1541135801853.jpg"></a>
      				</li>
      			</ul>
-     		</div>
-     		<div class="swiper-slide">
-     			<a href="<%=cp%>/book_info.action?isbn=42"><img src="<%=cp%>/resources/image/main/box1_2.jpg"></a>
      		</div>
      	</div>
      	
@@ -267,22 +263,7 @@
 				<div class="swiper-container bn_swiper1">
 					<div class="swiper-wrapper">
 						<div class="swiper-slide">
-							<a href="javascript://"><img src="<%=cp%>/resources/image/main/banner01.jpg"></a>
-						</div>
-						<div class="swiper-slide">
 							<a href="javascript://"><img src="<%=cp%>/resources/image/main/banner02.jpg"></a>
-						</div>
-						<div class="swiper-slide">
-							<a href="javascript://"><img src="<%=cp%>/resources/image/main/banner03.jpg"></a>
-						</div>
-						<div class="swiper-slide">
-							<a href="javascript://"><img src="<%=cp%>/resources/image/main/banner04.jpg"></a>
-						</div>
-						<div class="swiper-slide">
-							<a href="javascript://"><img src="<%=cp%>/resources/image/main/banner05.jpg"></a>
-						</div>
-						<div class="swiper-slide">
-							<a href="javascript://"><img src="<%=cp%>/resources/image/main/banner06.jpg"></a>
 						</div>
 					</div>
 					
@@ -297,9 +278,6 @@
 			<li id="mini_bn01">
 				<div class="swiper-container bn_swiper2">
 					<div class="swiper-wrapper">
-						<div class="swiper-slide">
-							<a href="javascript://"><img src="<%=cp%>/resources/image/main/banner2_01.jpg"></a>
-						</div>
 						<div class="swiper-slide">
 							<a href="javascript://"><img src="<%=cp%>/resources/image/main/banner2_02.jpg"></a>
 						</div>
@@ -980,7 +958,7 @@
 			</ul>
 			<div class="bnl_banner">
 			<a href="javascript://">
-				<img src="<%=cp%>/resources/image/main/bnl_banner.jpg">
+				<img src="<%=cp%>/resources/image/main/banner20181102143615.jpg">
 			</a>
 		</div>
 		</div>

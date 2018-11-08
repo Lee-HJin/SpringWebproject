@@ -14,28 +14,34 @@
 </div>
 <div class="swiper-container swiper4">
 	<div class="swiper-wrapper">
+		<c:set var="i" value="0"/>
 		<c:forEach var="nb" items="${lst }">
-			<div class="swiper-slide">
-				<div class="wrap_b_img">
-					<a href="<%=cp%>/book_info.action?isbn=${nb.isbn}">
-						<img src="<%=cp%>/resources/image/book/${nb.bookImage}">
-					</a>
-					<dl class="rb_title">
-						<dt>${nb.bookTitle }</dt>
-						<dd>${nb.authorName }</dd>
-					</dl>
+			<c:if test="${i==0||i%5==0 }">
+				<div class="swiper-slide">
+					<ul class="wrap_b_img">
+			</c:if>
+					<li class="wrap_b_li">
+						<a href="<%=cp%>/book_info.action?isbn=${nb.isbn}">
+							<img src="<%=cp%>/resources/image/book/${nb.bookImage}">
+						</a>
+						<dl class="rb_title">
+							<dt>${nb.bookTitle }</dt>
+							<dd>${nb.authorName }</dd>
+						</dl>
+					</li>
+			<c:if test="${i==4||i%5==4}">
+					</ul>
 				</div>
-			</div>
-		</c:forEach>
+			</c:if>
+		<c:set var="i" value="${i+1 }"/>
+		</c:forEach>		
 	</div>	
 </div>
 
 <script>
 var swiper = new Swiper('.swiper4', {
-	slidesPerView: 5,
-	spaceBetween: 10,
-	slidesPerGroup: 5,
-	loopFillGroupWithBlank: true,
+	spaceBetween: 0,
+	centeredSlides: true,
 	loop: true,
 	pagination: {
 		el: '.aw_count_nb',
