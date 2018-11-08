@@ -1,6 +1,10 @@
-<%@ page contentType="text/html; charset=UTF-8"%>
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri ="http://java.sun.com/jsp/jstl/fmt" %>
+<%
+	request.setCharacterEncoding("UTF-8");
+	String cp = request.getContextPath();
+%> 
 <!DOCTYPE html>
 <html>
 <head>
@@ -285,45 +289,22 @@
 		            			<th>주문 금액 합계</th>
 		            		</tr>
 		            		
-		            		
-		            		
-		            		<tr class="prodViewRepr">
+						<c:forEach var="dto" items="${lists }">
+		            		<tr class="prodViewAll" style="display: table-row">
 		            			<td>
-		            				<span class="book_img"><img src="/webproject/resources/upload/product/4034/4034224_s.jpg" onerror="this.src='http://image.bandinlunis.com/images/common/noimg_type04.gif'"></span>
-		            			</td> 
-		            			<td class="prod_name">[도서] 돌이킬 수 없는 약속 외 1종 </td>
-		            			<td>총2종(2개)</td>
-		            			<td><strong>25,920원</strong></td>
-		            			<td>0원</td>            			
-		            			<td>1,440원</td>
-		            			<td><strong class="t_red">25,920원</strong></td>
-		            		</tr>
-
-		            		<tr class="prodViewAll" style="display:none;">
-		            			<td>
-		            				<span class="book_img"><img src="/webproject/resources/upload/product/4034/4034224_s.jpg"></span>
+		            				<span class="book_img"><img src="<%=cp %>/resources/image/book/${dto.bookImage }"></span>
 		            			</td>
-		            			<td class="prod_name"> [도서] 돌이킬 수 없는 약속</td>
-		            			<td>1개</td>
-		            			<td><strong>13,500원</strong></td>
+		            			<td class="prod_name"> [도서] ${dto.bookTitle }</td>
+		            			<td>${dto.orderCount }개</td>
+		            			<td><strong>${dto.discountedPrice }원</strong></td>
 		            			<td rowspan="2">
 			            		10,000원 이상<br>무료배송<br>
 			            		/미만시 2,000원
 			            		</td>
-		            			<td>750원</td>
-		            			<td><strong class="t_red">13,500원</strong></td>
+		            			<td>${dto.point }원</td>
+		            			<td><strong class="t_red">${dto.discountedPrice }원</strong></td>
 		            		</tr>
-	            			
-		            		<tr class="prodViewAll" style="display:none;">
-		            			<td>
-		            				<span class="book_img"><img src="/webproject/resources/upload/product/4181/4181047_s.jpg"></span>
-		            			</td>
-		            			<td class="prod_name"> [도서] 죽고 싶지만 떡볶이는 먹고 싶어</td>
-		            			<td>1개</td>
-		            			<td><strong>12,420원</strong></td>
-		            			<td>690원</td>
-		            			<td><strong class="t_red">12,420원</strong></td>
-		            		</tr>
+	            		</c:forEach>	
 
 		            	</tbody></table>
 		            	
@@ -335,7 +316,6 @@
 			            	<div class="fl_right mt10">
 			            		<span class="t_11gr mr5">주문상품 변경을 원하시면 </span>
 		            			<a href="javascript:goCart();"><img src="/webproject/resources/images/order/btn_order_cartmodify.gif" alt="쇼핑카트 수정하기"></a>
-		            			<a href="javascript://"><img src="/webproject/resources/images/order/btn_order_prodview.gif" id="btn_switchView" alt="전체상품 보기"></a>
 			            	</div>
 		            	</div>
 		            	
