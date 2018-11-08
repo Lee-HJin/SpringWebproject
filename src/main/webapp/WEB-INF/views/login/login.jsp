@@ -52,7 +52,7 @@
 		</div>
 	</div>
 	<div class="login_right_div">
-		<img alt="" src="<%=cp%>/resources/img/login/banner20181012111630.jpg">
+		<img alt="" src="<%=cp%>/resources/img/login/banner20181012111630.jpg" onclick="javascript:location.href='<%=cp%>/book_info.action?isbn=9788901226736';" style="cursor: pointer;">
 	</div>
 </div>
 </form>

@@ -65,10 +65,7 @@ public class LoginController {
 		if(dto!=null) {	//로그인 성공
 			
 			//회원 적립금 정보 불러오기
-			int pointValue = dao.getPointValue(userId);	
-			
-			System.out.println(bookCookie);
-			
+			int pointValue = dao.getPointValue(userId);			
 			
 			//최근 본 상품(쿠키에 있는 상품을 DB에 합침)
 			//쿠키 가져오기(bookCookie)
