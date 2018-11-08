@@ -334,14 +334,14 @@
 					<div class="swiper-slide one_b">
 						<div class="b_wrap">
 							<div class="b_img">
-								<a href="javascript://">
+								<a href="<%=cp%>/book_info.action?isbn=9788950976514">
 								<!-- db구축 후에 db에서 데이터 꺼내와야함 -->
 									<img src="/webproject/resources/image/main/today_book1.jpg">
 								</a>
 							</div>
 							<dl>
 								<dt>
-									<a href="javascript://">
+									<a href="<%=cp%>/book_info.action?isbn=9788950976514">
 										오늘처럼 내가 싫었던 날은 없다
 									</a>
 								</dt>
@@ -362,28 +362,28 @@
 						<ul class="b_wrap2">
 							<li>
 								<div class="b_img">
-									<a href="javascript://">
-										<img src="/webproject/resources/image/main/today_book2.jpg">
+									<a href="<%=cp%>/book_info.action?isbn=9788965707080">
+										<img src="/webproject/resources/image/book/4206375_cover.jpg">
 									</a>
 								</div>
 								<dl>
 									<dt>
-										<a href="javascript://">나는 회사 다니면서 공부하기…</a>
+										<a href="<%=cp%>/book_info.action?isbn=9788965707080">아임 낫 파인</a>
 									</dt>
-									<dd>『나는 회사 다니면서 공부하기로 했다』에서는 회사를 다니면서 공부를 병행해 합격률이 한 자릿수인 자격증들을 혼자, 단기간에 쟁취한 공부법의 정수를 담고 있다…</dd>
+									<dd>이 책은 괜찮다고 말하지만, 괜찮지 않은 사람들의 이야기 국내 최고 정신의학 전문가들과 화제의 채널 ‘#해시온’이 함께한 우울증 프로젝트, ‘아임 낫 파인’을 책으로 만난다! “나는…</dd>
 								</dl>
 							</li>
 							<li>
 								<div class="b_img">
-									<a href="javascript://">
-										<img src="/webproject/resources/image/main/today_book3.jpg">
+									<a href="<%=cp%>/book_info.action?isbn=9791189015299">
+										<img src="/webproject/resources/image/book/4201326_cover.jpg">
 									</a>
 								</div>
 								<dl>
 									<dt>
-										<a href="javascript://">명견만리- 정치,생애,직업,탐구편</a>
+										<a href="<%=cp%>/book_info.action?isbn=9791189015299">구미베어 살인사건</a>
 									</dt>
-									<dd>향후 인류에게 가장 중요한 문제들에 관해 새로운 담론을 제기하며 충격을 던졌던 〈명견만리〉. 인구쇼크, 교육, 기술 등 소수 엘리트 집단이 독점해오던 이슈들을 대중의 장으로…</dd>
+									<dd>한국 SF의 한 미래를 엿볼 수 있는 달콤하고 쓸쓸한 8편의 곰인형 이야기! “무엇이 가장 그리운가요?” “포옹이요.” 제2회 SF 어워드 장편 소설 부문 대상 수상 작가 dcdc의 장르를 넘나드는…</dd>
 								</dl>
 							</li>
 						</ul>	
@@ -392,28 +392,28 @@
 						<ul class="b_wrap2">
 							<li>
 								<div class="b_img">
-									<a href="javascript://">
-										<img src="/webproject/resources/image/main/today_book4.jpg">
+									<a href="<%=cp%>/book_info.action?isbn=9791162207550">
+										<img src="/webproject/resources/image/book/4195328_cover.jpg">
 									</a>
 								</div>
 								<dl>
 									<dt>
-										<a href="javascript://">곁에 남아 있는 사람</a>
+										<a href="<%=cp%>/book_info.action?isbn=9791162207550">곁에 남아 있는 사람</a>
 									</dt>
 									<dd>복잡한 마음을 품고 살아가는 이들을 기록하고 싶었다는 그는 일곱 편의 단편소설에 등장하는 인물들을 통해 “자신의 인생에서 진정으로 소중한 것이 무엇인가를 성찰하고…</dd>
 								</dl>
 							</li>
 							<li>
 								<div class="b_img">
-									<a href="javascript://">
-										<img src="/webproject/resources/image/main/today_book5.jpg">
+									<a href="<%=cp%>/book_info.action?isbn=9791186877838">
+										<img src="/webproject/resources/image/book/4185860_cover.jpg">
 									</a>
 								</div>
 								<dl>
 									<dt>
-										<a href="javascript://">하마터면 열심히 살 뻔했다</a>
+										<a href="<%=cp%>/book_info.action?isbn=9791186877838">게을러도 괜찮아</a>
 									</dt>
-									<dd>“한 번쯤은 이렇게 살아보고 싶었다. 애쓰지 않고 흘러가는 대로. 어디로 흘러가는지 모르지만, 즐거운 마음으로 둥둥!”이라고 했던 그의 다짐처럼 우리도 인생의 파도에…</dd>
+									<dd>세 여자는 치열하고 성실하게 살아본 결과, 역시 게으른 것이 최고라는 결론에 도달하게 되었다. 그래서 이제부터라도 가장 편한 속도로, 자신만의 방식으로 살기로 했다. 같은…</dd>
 								</dl>
 							</li>
 						</ul>	
@@ -590,7 +590,7 @@
 					<ul class="tb_list">
 						<li>
 							<div class="tb_img">
-								<a href="<%=cp%>/book_info.action?isbn=41">
+								<a href="<%=cp%>/book_info.action?isbn=9791196219321">
 									<img src="<%=cp%>/resources/image/book/4174166_cover.jpg">
 								</a>
 							</div>
@@ -601,18 +601,18 @@
 						</li>
 						<li>
 							<div class="tb_img">
-								<a href="<%=cp%>/book_info.action?isbn=42">
-									<img src="<%=cp%>/resources/image/book/4170946_cover.jpg">
+								<a href="<%=cp%>/book_info.action?isbn=9791155427484">
+									<img src="<%=cp%>/resources/image/book/4109092_cover.jpg">
 								</a>
 							</div>
 							<dl class="rb_title">
-								<dt>강아지 집사 업무일지 Hello My Dog</dt>
-								<dd>오윤도</dd>
+								<dt>닥터독의 강아지 수제간식 레시피</dt>
+								<dd>닥터독</dd>
 							</dl>
 						</li>
 						<li>
 							<div class="tb_img">
-								<a href="<%=cp%>/book_info.action?isbn=43">
+								<a href="<%=cp%>/book_info.action?isbn=9788996952701">
 									<img src="<%=cp%>/resources/image/book/3539093_cover.jpg">
 								</a>
 							</div>
@@ -628,18 +628,18 @@
 					<ul class="tb_list">
 						<li>
 							<div class="tb_img">
-								<a href="<%=cp%>/book_info.action?isbn=44">
-									<img src="<%=cp%>/resources/image/book/4188956_cover.jpg">
+								<a href="<%=cp%>/book_info.action?isbn=9791196440336">
+									<img src="<%=cp%>/resources/image/book/4205948_cover.jpg">
 								</a>
 							</div>
 							<dl class="rb_title">
-								<dt>을의 연애</dt>
-								<dd>을냥이</dd>
+								<dt>언제부터 사랑이었는지</dt>
+								<dd>김종선</dd>
 							</dl>
 						</li>
 						<li>
 							<div class="tb_img">
-								<a href="<%=cp%>/book_info.action?isbn=45">
+								<a href="<%=cp%>/book_info.action?isbn=9791187400219">
 									<img src="<%=cp%>/resources/image/book/4143978_cover.jpg">
 								</a>
 							</div>
@@ -650,13 +650,13 @@
 						</li>
 						<li>
 							<div class="tb_img">
-								<a href="<%=cp%>/book_info.action?isbn=46">
-									<img src="<%=cp%>/resources/image/book/4116300_cover.jpg">
+								<a href="<%=cp%>/book_info.action?isbn=9791188331482">
+									<img src="<%=cp%>/resources/image/book/4206391_cover.jpg">
 								</a>
 							</div>
 							<dl class="rb_title">
-								<dt>너니까 좋아 너라서 좋아</dt>
-								<dd>신소현,조중우</dd>
+								<dt>사랑; 짓</dt>
+								<dd>이정</dd>
 							</dl>
 						</li>
 					</ul>
@@ -666,7 +666,7 @@
 					<ul class="tb_list">
 						<li>
 							<div class="tb_img">
-								<a href="<%=cp%>/book_info.action?isbn=47">
+								<a href="<%=cp%>/book_info.action?isbn=9788968331930">
 									<img src="<%=cp%>/resources/image/book/4204247_cover.jpg">
 								</a>
 							</div>
@@ -677,18 +677,18 @@
 						</li>
 						<li>
 							<div class="tb_img">
-								<a href="<%=cp%>/book_info.action?isbn=48">
-									<img src="<%=cp%>/resources/image/book/4200948_cover.jpg">
+								<a href="<%=cp%>/book_info.action?isbn=9788965181408">
+									<img src="<%=cp%>/resources/image/book/3864342_cover.jpg">
 								</a>
 							</div>
 							<dl class="rb_title">
-								<dt>겨울딸기의 리얼 집밥</dt>
-								<dd>강지현</dd>
+								<dt>행복한 집밥 삼시세끼</dt>
+								<dd>요안나 (이혜영)</dd>
 							</dl>
 						</li>
 						<li>
 							<div class="tb_img">
-								<a href="<%=cp%>/book_info.action?isbn=49">
+								<a href="<%=cp%>/book_info.action?isbn=9788926396858">
 									<img src="<%=cp%>/resources/image/book/3915600_cover.jpg">
 								</a>
 							</div>
@@ -945,7 +945,7 @@
 				</li>
 			</ul>
 			<div class="bnl_banner">
-			<a href="javascript://">
+			<a href="<%=cp%>/book_info.action?isbn=9791188810666">
 				<img src="<%=cp%>/resources/image/main/banner20181102143615.jpg">
 			</a>
 		</div>

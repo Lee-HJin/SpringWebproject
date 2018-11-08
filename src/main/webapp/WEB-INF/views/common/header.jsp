@@ -275,7 +275,7 @@
 						</div></li>
 					<li class="t_menu"><a href="javascript://" class="t_menu_link">고객센터</a>
 					</li>
-					<li class="t_menu store"><a href="javascript://"
+					<li class="t_menu store"><a href="<%=cp %>/store.action"
 						class="t_menu_link" onmouseover="javascript:toggleDisplay2('02')"
 						onmouseout="javascript:toggleDisplay2('02')"> 영업점안내</a>
 						<div id="top_layer02" class="display_top"

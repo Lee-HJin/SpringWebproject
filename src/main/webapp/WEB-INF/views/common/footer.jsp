@@ -5,15 +5,24 @@
 	
 %>
 
+<script type="text/javascript">
 
-<!DOCTYPE html>
-<html>
-<head>
-<meta charset="UTF-8">
-<title>Insert title here</title>
+	function showWindow(addr,width) {
+		
+		var url = "/webproject/" + addr + ".action";
+		var wH = 750;
+		var wW = width;
+		var wL = (window.screen.width/2)-(wW/2);
+		var wT = (window.screen.height/2)-(wH/2);
+		
+		var setting = 'toolbar=no,menubar=no,status=no,resizable=no,location=no,top='+wT+',left='+wL+',height='+wH+',width=' +wW;
+		
+		window.open(url,"반디앤루니스 인터넷서점",setting);
+	
+	} 
 
-</head>
-<body>
+</script>
+
 <div class="f_margin"></div>
 
 <div class="footer">
@@ -24,26 +33,27 @@
 					<a href="<%=cp%>/company.action">회사소개</a>
 				</li>
 				<li>
-					<a href="<%=cp%>/main.action">채용정보</a>
+					<font>채용정보</font>
 				</li>
 				<li>
-					<a href="<%=cp%>/main.action">이용약관</a>
+					<a onclick="javascript:showWindow('rules/rulesInfo',1100)"
+					style="cursor: pointer;">이용약관</a>
 				</li>
 				<li>
-					<a href="<%=cp%>/main.action" 
-					style="color: #7B5A2B; font-weight: bold;">개인정보 처리방침</a>
+					 <a onclick="javascript:showWindow('rules/rules_privacy',700)"
+					style="color: #7B5A2B; cursor:pointer; font-weight: bold;">개인정보 처리방침</a>
 				</li>
 				<li>
-					<a href="<%=cp%>/main.action">출판사를위한안내</a>
+					<font>출판사를위한안내</font>
 				</li>
 				<li>
-					<a href="<%=cp%>/main.action">광고안내</a>
+					<font>광고안내</font>
 				</li>
 				<li>
-					<a href="<%=cp%>/main.action">SCM</a>
+					<font>SCM</font>
 				</li>
 				<li>
-					<a href="<%=cp%>/main.action">제휴/입점문의</a>
+					<font>제휴/입점문의</font>
 				</li>
 			</ul>
 			<div class="sns_btn">
@@ -93,9 +103,4 @@
 	</div>
 
 </div>
-
-
-
-</body>
-</html>
 
