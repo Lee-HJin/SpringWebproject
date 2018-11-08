@@ -51,98 +51,8 @@
 <script type="text/javascript" src="/webproject/resources/js/multiCart.js"></script>
 <script type="text/javascript">
 
-	navi.type = "path";
-	
-		navi.path = 401;
-
-	jutil.eventAdd(window, "onload", navi.make);
-
 	$(document).ready(function(){
 
-		$(".changeListSize").change(function(){
-			document.location.href = location.pathname+"?cateId=&listMode=&listType=&sort=sort8&prodStat=&prodRelSeq=&listSize="+this.value;
-		});
-		
-		$(".changeListType").change(function(){
-			document.location.href = location.pathname+"?cateId=&&listType=&listSize=20&sort=sort8&prodStat=&prodRelSeq=&listMode="+this.value;
-		});
-		
-		$(".sorting>ul>li>a").click(function(){
-			document.location.href = location.pathname+"?cateId=&listMode=&listType=&listSize=20&prodStat=&prodRelSeq=&sort="+this.id;
-		});
-		
-		$("#prodStat").click(function(){
-			var checkYn="Y";
-			if(!this.checked) checkYn="";
-			document.location.href = location.pathname+"?cateId=&listMode=&listType=&listSize=20&sort=sort8&prodRelSeq=&prodStat="+checkYn;
-		});
-		
-	});
-
-	// 쇼핑카트
-	function addCarts() {
-	
-		var obj 	= document.getElementsByName("prodId");
-		var p_arr = "";
-		var cnt = 0;
-		
-		for(var i=0;i<obj.length;i++){
-			if(obj[i].checked){
-				if(cnt>0){
-					p_arr += ",";
-				}
-				p_arr += obj[i].value;
-				cnt++;
-			}
-		}
-		
-		if(p_arr==""){
-			alert('선택된 항목이 없습니다.');
-			return;
-		}
-		
-		
-		var tmpArr	= p_arr.split(",");
-		var resultArr	= Array();
-		var cntArr		= Array();
-		
-		for(var i=0 ; i < tmpArr.length ; i++){
-			resultArr.push(" ");
-			cntArr.push(1);
-		}
-		
-		add_basket_array_common(p_arr,resultArr.join(","), cntArr.join(","),resultArr.join(","), true, callBack_);
-	}
-	
-	function callBack_()
-	{
-		jutil.bandi.reloadWiseCart("cart");
-	}
-	
-	// 위시리스트
-	function addWishes() 
-	{
-		var prodIds = jutil.form.getCheckboxValue("prodId");
-		
-		if(prodIds.length > 0){
-			add_wish_array_common(prodIds.join(","), true);
-		}else{
-			alert("상품을 선택해 주십시오");
-		}
-	}
-	
-	// 정렬
-	function changeSort(index) {
-	
-		var sort = document.getElementsByName("sorts");
-		
-		sort[0].selectedIndex = index;
-		sort[1].selectedIndex = index;
-		
-		document.bestForm.page.value = "1";
-		
-		goSearch();
-	}
 
 	function goTopHistory(recommendYear, recommendMonth, recommendWeek, rank) {
 		
@@ -158,7 +68,7 @@
 		frmObj.submit();
 	}	
 
-function goSearch(sort) {
+	function goSearch(sort) {
 		
 		// 폼 검증
 		if (!jutil.form.validate("bestForm")) {
@@ -194,7 +104,7 @@ function goSearch(sort) {
 
 <script type="text/javascript">
 
-	// 쇼핑카트
+/* 	// 쇼핑카트
 	function addCarts() {
 	
 		var obj 	= document.getElementsByName("isbn");
@@ -232,47 +142,10 @@ function goSearch(sort) {
 	function callBack_()
 	{
 		jutil.bandi.reloadWiseCart("cart");
-	}
-	
-	$(function() {
-		
-		var ck = getCookie('cartlist');
-		var ckOne = cookieInfo(ck);
-	});
+	} */
 	
 	
-	//쿠키 가져오기
-	function getCookie(cookiename){
-		var cookiestring  = document.cookie;
-		var cookiearray = cookiestring.split(';');
-		for(var i=0; i<cookiearray.length; ++i){ 
-		    if(cookiearray[i].indexOf(cookiename)!=-1){
-		        var nameVal = cookiearray[i].split("=");
-		        nameVal = nameVal[1].trim();
-		        return unescape(nameVal);
-		    }else{
-		    	var cookie = null;
-		    } 
-		}
-		return cookie;
-	}
- 	
-	//쿠키 뿌리기
-	function cookieInfo(cValue) {		
- 		var cookie = cValue;
- 		
- 		if(cookie!=null){
- 			cookie = cookie.split("/");
- 	 		var ck = new Array();
- 	 		
- 	 		for(i=0;i<cookie.length;i++){
- 	 			ck[i] = JSON.parse(cookie[i]);
- 	 		} 		
- 	 		return ck;
- 		}else{
- 			return null;
- 		}
-	}
+	
 
 </script>
 <!-- 스트립트2 끝  -->

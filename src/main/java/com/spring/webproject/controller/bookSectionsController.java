@@ -1,8 +1,10 @@
 package com.spring.webproject.controller;
 
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collections;
+import java.util.Iterator;
 import java.util.List;
-import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -10,15 +12,15 @@ import javax.servlet.http.HttpServletResponse;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.RequestBody;
+
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.ResponseBody;
+
 
 import com.spring.webproject.dao.BookSectionsDAO;
 import com.spring.webproject.dao.LoginDAO;
 import com.spring.webproject.dto.BookSectionsDTO;
-import com.spring.webproject.dto.MainDTO;
+
 import com.spring.webproject.util.MyUtil;
 
 @Controller
@@ -57,7 +59,7 @@ public class bookSectionsController {
 		
 		if(sort1st == null && sort2nd == null){
 			sort1st = "1";
-			sort2nd = "1600";
+			sort2nd = "2000";
 		}
 
 		/* 
@@ -173,7 +175,6 @@ public class bookSectionsController {
 		
 		int start = (currentPage-1)*numPerPage+1;
 		int end = currentPage*numPerPage;
-		
 		/* 
 		sort 분류 
 		sort0 = order by soldBookCnt desc, rate desc, reviewCnt desc
@@ -454,13 +455,26 @@ public class bookSectionsController {
 	@RequestMapping(value="order.action", method= {RequestMethod.GET, RequestMethod.POST})
 	public String order(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		
+		String[] arrayIsbn = request.getParameterValues("prodIdArr");
+		String[] arrayOrderCnt = request.getParameterValues("orderCount");
+		
+		List<BookSectionsDTO> lists = new ArrayList<BookSectionsDTO>();
+		
+		for(int i=0;i<arrayIsbn.length;i++) {
+			String Isbn = arrayIsbn[i];
+			String OrderCount = arrayOrderCnt[i];
+			int seqNum = 1000+i;
+			lists = raDao.getOrderList(Isbn, OrderCount, seqNum);
+		}
+		
+		request.setAttribute("lists", lists);
+
 		return "shopAndOrder/order";
 	}
 	
 	@RequestMapping(value="cartList.action", method= {RequestMethod.GET, RequestMethod.POST})
 	public String cartList(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		
-
 		String ck = request.getParameter("isbn");
 		String ckC = request.getParameter("orderCount");
 
