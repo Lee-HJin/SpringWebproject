@@ -6,10 +6,9 @@
 <%
 	request.setCharacterEncoding("UTF-8");
 	String cp = request.getContextPath();
-	
+
 	String searchKey = request.getParameter("searchKey");
 	String searchValue = request.getParameter("searchValue");
-	
 %>
 
 <jsp:include page="./admin_header.jsp" />
@@ -53,15 +52,6 @@
 		return url;
 		
 	}
-	
-	function deleteUser(userId) {
-
-		var url = "admin_users_delete.action?userId="+userId+"&page=${pageMaker.cri.page}";
-
-		location.href=makeURL(url);
-
-	}
-	
 
 	$(document).ready(function(e) {
 
@@ -104,7 +94,7 @@
 <body>
 
 
-	<div class="search_container" style="width: 1200px; margin: 20px auto;">
+	<div class="search_container" style="width: 700px; margin: 20px auto;">
 		<div class="row">
 			<div class="col-xs-8 col-xs-offset-2">
 				<div class="input-group">
@@ -132,7 +122,7 @@
 	</div>
 
 
-	<div class="table">
+	<div class="user_table" style="width: 1200px; margin: 20px auto;">
 		<form name="userList" method="post" action="">
 			<table class="table table-bordered">
 				<thead>
@@ -163,11 +153,8 @@
 							<td>${user.phone }</td>
 							<td>${user.zipCode}${user.address1 }${user.address2 }</td>
 							<td>
-							<button type="button" class="btn" id="del_btn" onclick="deleteUser('${user.userId}')">삭제</button>
-							
-							<%--  	<button type="button" class="btn"
-									onclick="location.href='<%=cp %>/admin_users_delete.action?userId=${user.userId }&page=${pageMaker.cri.page}&searchKey=${pageMaker.cri.searchKey}&searchValue=${pageMaker.cri.searchValue}'">삭제</button>
-							 --%>
+								<button type="button" class="btn" id="del_btn"
+									onclick="location.href='<%=cp %>/admin_users_delete.action?page=${pageMaker.cri.page}&searchKey=${pageMaker.cri.searchKey}&searchValue=${pageMaker.cri.searchValue}&userId=${user.userId }'">삭제</button>
 							</td>
 						</tr>
 					</c:forEach>
@@ -181,7 +168,8 @@
 	<div style="display: table; margin: 0 auto;">
 		<ul class="pagination">
 			<c:if test="${pageMaker.pre }">
-				<li><a onclick="paging('<%=cp %>/admin_users.action?page=${pageMaker.startPage-1}')">&lt;</a></li>
+				<li><a
+					href="<%=cp %>/admin_users.action?page=${pageMaker.startPage-1}">&lt;</a></li>
 			</c:if>
 			<c:forEach begin="${pageMaker.startPage }"
 				end="${pageMaker.endPage }" var="idx">

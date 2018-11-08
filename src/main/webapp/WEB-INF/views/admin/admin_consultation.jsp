@@ -152,17 +152,19 @@ $(function(){
 						<ul class="pagination">
 							<c:if test="${pageMaker.pre }">
 								<li><a
-									onclick="paging('<%=cp %>/admin_consultation.action?page=${pageMaker.startPage-1}')">&lt;</a></li>
+									href="<%=cp %>/admin_consultation.action?page=${pageMaker.startPage-1}&searchKey=${pageMaker.cri.searchKey}&searchValue=${pageMaker.cri.searchValue}&fromDate=${pageMaker.cri.fromDate}&toDate=${pageMaker.cri.toDate}&answerCheck=${pageMaker.cri.answerCheck}')">&lt;</a></li>
 							</c:if>
 							<c:forEach begin="${pageMaker.startPage }"
 								end="${pageMaker.endPage }" var="idx">
 								<li><a
-									href="<%=cp %>/admin_consultation.action?page=${idx}&searchKey=${pageMaker.cri.searchKey}&searchValue=${pageMaker.cri.searchValue}">${idx }</a></li>
+									href="<%=cp %>/admin_consultation.action?page=${idx}&searchKey=${pageMaker.cri.searchKey}&searchValue=${pageMaker.cri.searchValue}&fromDate=${pageMaker.cri.fromDate}&toDate=${pageMaker.cri.toDate}&answerCheck=${pageMaker.cri.answerCheck}">${idx }</a></li>
 							</c:forEach>
 							<c:if test="${pageMaker.nex }">
 								<li><a
-									href="<%=cp %>/admin_consultation.action?page=${pageMaker.endPage+1}&searchKey=${pageMaker.cri.searchKey}&searchValue=${pageMaker.cri.searchValue}">&gt;</a></li>
+									href="<%=cp %>/admin_consultation.action?page=${pageMaker.endPage+1}&searchKey=${pageMaker.cri.searchKey}&searchValue=${pageMaker.cri.searchValue}&fromDate=${pageMaker.cri.fromDate}&toDate=${pageMaker.cri.toDate}&answerCheck=${pageMaker.cri.answerCheck}">&gt;</a></li>
 							</c:if>
+							
+							<!-- searchKey=null&searchValue=&fromDate=&toDate=&answerCheck=y -->
 						</ul>
 					</div>
 				</div>

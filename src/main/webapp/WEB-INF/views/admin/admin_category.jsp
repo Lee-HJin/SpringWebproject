@@ -264,7 +264,7 @@ $(function(){
 						</div>
 					</form>
 					<div class="table">
-						<form name="userList" method="post" action="">
+						
 							<table class="table table-bordered">
 								<thead>
 									<tr>
@@ -277,7 +277,7 @@ $(function(){
 								<tbody>
 								</tbody>
 							</table>
-						</form>
+						
 					</div>
 					<div style="display: table; margin: 0 auto;">
 						<ul class="pagination">
