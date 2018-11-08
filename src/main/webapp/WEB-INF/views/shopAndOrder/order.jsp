@@ -1,6 +1,10 @@
-<%@ page contentType="text/html; charset=UTF-8"%>
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri ="http://java.sun.com/jsp/jstl/fmt" %>
+<%
+	request.setCharacterEncoding("UTF-8");
+	String cp = request.getContextPath();
+%> 
 <!DOCTYPE html>
 <html>
 <head>
@@ -26,6 +30,7 @@
 <script type="text/javascript" src="/webproject/resources/js/jquery/jquery-ui.js"></script>
 <script type="text/javascript" src="/webproject/resources/js/jquery/jquery.blockUI.js"></script>
 <script type="text/javascript" src="/webproject/resources/js/jquery/idangerous.swiper.js"></script>
+<script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.3.1.min.js"></script>
 
 <script type="text/javascript" src="https://wcs.naver.net/wcslog.js"></script>
 
@@ -39,6 +44,7 @@
 
 </head>
 <body>
+<jsp:include page="../common/header.jsp" flush="false"/>
 
 <div id="contentBody">
         <div id="contentWrap">          
@@ -58,204 +64,7 @@
                 </div>
                 
 				<form name="frmMain" id="KCP_PAYINFO" method="post">
-
-					<!-- 북셀프 카트에서 넘어왔거나 북셀프 복합결제 일때 rCartType 세팅 -->
-					
-					<!-- 복합결제 일때 gu 세팅 -->
-
-					<!-- [2018.06 문화비소득공제] 소득공제상품과 일반상품 SQL에서 강제 분리되어 jsp에서 다시 변환 -->
-					<input type="hidden" name="prod_id" class="prod_id" value="4034224">
-					<input type="hidden" name="prod_name" value="돌이킬 수 없는 약속">
-					<input type="hidden" name="main_cate_name" value="소설">
-					<input type="hidden" name="opt_seq" value="0">
-					<input type="hidden" name="ord_cnt" class="ord_cnt" value="1">
-					<input type="hidden" name="last_prof" value="0">
-					<input type="hidden" name="sale_cost" value="13500">
-					<input type="hidden" name="comp_id" value="1">
-					<input type="hidden" name="store_id" value="1">
-					<input type="hidden" name="book_mem_seq" value="0">
-					<input type="hidden" name="save_point" class="save_point" value="750">
-
-					<input type="hidden" name="row_cnt" value="2">
-					<input type="hidden" name="row_comp_id" value="1">
-					<input type="hidden" name="row_store_id" value="1">
-					<input type="hidden" name="row_bundle" value="Y">
-					<input type="hidden" name="deli_cost" value="0">
-
-					<!-- [2018.06 문화비소득공제] 소득공제상품과 일반상품 SQL에서 강제 분리되어 jsp에서 다시 변환 -->
-					
-					<input type="hidden" name="prod_id" class="prod_id" value="4181047">
-					<input type="hidden" name="prod_name" value="죽고 싶지만 떡볶이는 먹고 싶어">
-					<input type="hidden" name="main_cate_name" value="시/에세이/기행">
-					<input type="hidden" name="opt_seq" value="0">
-					<input type="hidden" name="ord_cnt" class="ord_cnt" value="1">
-					<input type="hidden" name="last_prof" value="0">
-					<input type="hidden" name="sale_cost" value="12420">
-					<input type="hidden" name="comp_id" value="1">
-					<input type="hidden" name="store_id" value="1">
-					<input type="hidden" name="book_mem_seq" value="0">
-					<input type="hidden" name="save_point" class="save_point" value="690">
-					
-					
-					<input type="hidden" name="ord_prod_name" value="[도서] 돌이킬 수 없는 약속">
-
-					<input type="hidden" name="reprProdName" value="[도서] 돌이킬 수 없는 약속 외 1종 ">
-					
-					
-					<input type="hidden" id="orderCheck" value="0">
-					<input type="hidden" name="paramString" value="cnt_ally=1,1&amp;seq_ally=48118596,48116888&amp;cartType=01&amp;origin=1&amp;directDiscountUseYn=N&amp;src_mem_ally=&amp;src_prod_id_ally=&amp;partner=&amp;prod_id_ally=4181047,4034224&amp;gu=&amp;memSeq=21058516&amp;prod_opt_ally=0,0">
-					<input type="hidden" name="memSeq" value="21058516">
-					
-					<input type="hidden" name="tot_price" value="25920">
-					<input type="hidden" name="cash_price" value="25920">
-					<input type="hidden" name="deli_price" value="0">
-					<input type="hidden" name="ord_type" value="01">
-					<input type="hidden" name="origin" value="1">
-					<input type="hidden" name="cartSeqs" value="">
-					<input type="hidden" name="seqArrComma" value="48116888,48118596,">
-					<input type="hidden" name="cpn_price_chk" value="0">
-					<input type="hidden" name="cpnArray" value="">
-					<input type="hidden" name="cpnPriceArray" value="">
-					<input type="hidden" name="bookCpnArray" value="">
-					<input type="hidden" name="bookCpnPriceArray" value="">
-					<input type="hidden" name="gift_price" value="0">
-					<input type="hidden" name="lotte_dc_price" value="0">
-					
-					<input type="hidden" name="deductionProcess" value="">
-					<input type="hidden" name="deductionProdCntTot" value="2">
-					<input type="hidden" name="nonDeductionProdCntTot" value="0">
-					<input type="hidden" name="ndpc" value="0">
-					
-					
-					<input type="hidden" name="req_tx" value="pay">                           <!-- 요청구분 -->
-					<input type="hidden" name="site_name" value="BANDINLUNIS">       <!-- 사이트 이름 --> 
-					<input type="hidden" name="site_cd" value="">       					   <!-- 사이트 코드-->
-					<input type="hidden" name="ordr_idxx" value="">                             <!-- 주문번호 -->
-					<input type="hidden" name="pay_method" value="">							   <!-- 결제수단 -->
-					<input type="hidden" name="good_name" value="">                             <!-- 상품명   -->
-					<input type="hidden" name="buyr_name" value="">                             <!-- 주문자명 -->
-					<input type="hidden" name="buyr_mail" value="">                             <!-- E-mail   -->
-					<input type="hidden" name="buyr_tel1" value="">                             <!-- 전화번호 -->
-					<input type="hidden" name="buyr_tel2" value="">                             <!-- 휴대전화 -->
-					<input type="hidden" name="currency" value="WON">                          <!-- 통화 코드-->
-					<input type="hidden" name="shop_user_id" value="fkfmeod">
-					<input type="hidden" name="eng_flag" value="N">                            <!-- 한 / 영  -->
-					<input type="hidden" name="time_stamp" value="">                             <!-- 주문시간 -->
-					
-					<!-- 신용카드 설정 -->
-					<input type="hidden" name="used_card_YN" value="Y">						   <!-- 특정 카드사 설정 여부 -->
-					<input type="hidden" name="quotaopt" value="12">						   <!-- 선택가능 최대 할부 개월수 -->
-					
-					<!-- //KCP의 경우 별도의 무이자 설정 필요하지 않음(PG사 행사외에 무이자 없음)
-					<input type="hidden" name="kcp_noint"        value=""/>						   		무이자 옵션 설정 여부
-					<input type="hidden" name="kcp_noint_quota"  value=""/>							    무이자 설정
-					 -->
-					
-					<!-- 가상계좌 설정 -->
-					<input type="hidden" name="vcnt_expire_term" value="5">						   <!-- 가상계좌 유효기간 설정(+5일) -->
-					<!-- 현금영수증 설정 -->
-					<input type="hidden" name="disp_tax_yn" value="Y">						   <!-- 현금영수증 등록 창 출력 여부 -->
-					<!-- 업체 로고 설정 -->
-					<input type="hidden" name="site_logo" value="http://www.bandinlunis.com/images/bandi/bandilogo_kcp.jpg">
-					<!-- PG 스킨 설정 -->
-					<input type="hidden" name="skin_indx" value="3">
-					
-					<input type="hidden" name="tax_flag" value="TG03">						   	<!-- 변경불가 -->
-					<input type="hidden" name="good_mny" value="25920">  					   	<!-- 결제금액 -->
-					<input type="hidden" name="comm_tax_mny" value="0">  						<!-- 과세금액 --> 
-					<input type="hidden" name="comm_vat_mny" value="0">  						<!-- 부가세   -->
-					<input type="hidden" name="comm_free_mny" value="25920"> 				  	<!-- 비과세 금액 -->
-					
-					<!-- 에스크로 설정 -->
-					<input type="hidden" name="escw_used" value="N">							<!-- 에스크로 사용 여부 (eBook 제외) -->
-				    <input type="hidden" name="pay_mod" value="N">								<!-- 모드(O:신청한 조건대로 에스크로 결제 처리, Y: 무조건 에스크로, N: 무조건 일반 결제 -->
-				    <input type="hidden" name="bask_cntx" value="1">								<!-- 장바구니 상품 개수 -->
-				    <input type="hidden" name="deli_term" value="03">							<!-- 배송 소요일 -->
-				    <input type="hidden" name="good_info" value="">								<!-- 상품 정보 항목명 -->
-				    
-				    <!-- PLUGIN 설정 정보입니다(변경 불가) -->
-				    <input type="hidden" name="module_type" value="01">
-
-				    <input type="hidden" name="res_cd" value="">
-				    <input type="hidden" name="res_msg" value="">
-				    <input type="hidden" name="tno" value="">
-				    <input type="hidden" name="trace_no" value="">
-				    <input type="hidden" name="enc_info" value="">
-				    <input type="hidden" name="enc_data" value="">
-				    <input type="hidden" name="ret_pay_method" value="">
-				    <input type="hidden" name="tran_cd" value="">
-				    <input type="hidden" name="bank_name" value="">
-				    <input type="hidden" name="bank_issu" value="">
-				    <input type="hidden" name="use_pay_method" value="">
-			    	
-			    	
-					
-					<input type="hidden" name="tot_sale_cost" value="25920">
-					<input type="hidden" name="prod_point" value="1440">
-					<input type="hidden" name="bandi_deli_cost" value="0">
-					<input type="hidden" name="extra_deli_cost" value="0">
-					<input type="hidden" name="store_deli_cost" value="0">
-					<input type="hidden" name="fore_deli_cost" value="0">
-					<input type="hidden" name="ord_tot_cnt" value="2">
-					
-					
-					<input type="hidden" name="pt_idno" value="">
-					<input type="hidden" name="pt_pwd" value="">
-					
-					
-					<input type="hidden" name="store_code" value="">
-					<input type="hidden" name="ho_code" value="">
-					<input type="hidden" name="dc_code" value="">
-					<input type="hidden" name="codePany" value="">
-					<input type="hidden" name="codeName" value="">
-					<input type="hidden" name="codeTel" value="">
-					<input type="hidden" name="dc_name" value="">
-					<input type="hidden" name="dcr_dock" value="">
-					<input type="hidden" name="code_f" value="">
-					<input type="hidden" name="dd_zone" value="">
-					<input type="hidden" name="dd_bag" value="">
-					<input type="hidden" name="eupmyeon" value="">
-					<input type="hidden" name="post_no" value="">
-					<input type="hidden" name="store_address1" value="">
-					<input type="hidden" name="store_address2" value="">
-					
-					<!-- kakaoPay에서 TXN_ID 를 가져 올 때 함께 받아오는 변수 목록 -->
-				    <input id="resultCode" name="resultCode" type="hidden" value="">
-				    <input id="resultMsg" name="resultMsg" type="hidden" value="">
-				    <input id="txnId" name="txnId" type="hidden" value="">
-				    <input name="GoodsName" type="hidden" value="[도서] 돌이킬 수 없는 약속 외 1종 ">
-				    
-				    <!-- kakaoPay DLP창으로부터 받은 결과값을 SETTING 할 INPUT LIST -->
-				    <input type="hidden" name="SPU" value="">
-				    <input type="hidden" name="SPU_SIGN_TOKEN" value="">
-				    <input type="hidden" name="MPAY_PUB" value="">
-				    <!-- 부인방지 토큰 / RESULT_CODE == 00일 때는 항상 들어오는 값. -->
-				    <!-- 해당값은 가군인증을 위해 돌려주는 값으로서, 가맹점과 카카오페이 양측에서 저장하고 있어야 한다. -->
-				    <input type="hidden" name="NON_REP_TOKEN" value="">
-				    <!-- OCB check -->
-				    <input type="hidden" name="ocb_save_yn" id="ocb_save_yn" value="N">
-				    <!-- payco -->
-				    <input type="hidden" name="paycoReserveOrderNo" id="paycoReserveOrderNo" value="">
-				    <input type="hidden" name="paycoToken" id="paycoToken" value="">
-				    <input type="hidden" name="sellerKey" id="sellerKey" value="">
-				    <!--  NaverPay -->
-				    <input type="hidden" name="naverPaymentId" id="naverPaymentId" value="">
-					<!--  BandiPay -->
-				    <input type="hidden" name="payGb" id="payGb" value="RP">
-				    <input type="hidden" name="PMid" id="PMid" value="bandi1r">
-				    <input type="hidden" name="PCustId" id="PCustId" value="21058516">
-				    <input type="hidden" name="POid" id="POid" value="">
-				    <input type="hidden" name="PGoods" id="PGoods" value="">
-				    <input type="hidden" name="PAmt" id="PAmt" value="">
-				    <input type="hidden" name="PBname" id="PBname" value="">
-				    
-				    <input type="hidden" name="PDeduction" id="PDeduction" value="C">
-				    
-				    <input type="hidden" name="PNextUrl" id="PNextUrl" value="https://www.bandinlunis.com/pages/front/order/bandiPay_return.jsp">
-				    <input type="hidden" name="PCancUrl" id="PCancUrl" value="https://www.bandinlunis.com/pages/front/order/bandiPay_return.jsp">
-				    <input type="hidden" name="PHash" id="PHash" value="">
-				    <input type="hidden" name="bandiPaymentId" id="bandiPaymentId" value="">
-	            	<fieldset>
+				<fieldset>
 					
 		            	<h3 class="orderTit mt20 pos_rel">
 		            		<img src="/webproject/resources/images/order/h3_order_step01.gif" alt="1. 주문상품 확인">
@@ -284,46 +93,92 @@
 		            			<th>예상적립금</th>
 		            			<th>주문 금액 합계</th>
 		            		</tr>
-		            		
-		            		
-		            		
-		            		<tr class="prodViewRepr">
-		            			<td>
-		            				<span class="book_img"><img src="/webproject/resources/upload/product/4034/4034224_s.jpg" onerror="this.src='http://image.bandinlunis.com/images/common/noimg_type04.gif'"></span>
-		            			</td> 
-		            			<td class="prod_name">[도서] 돌이킬 수 없는 약속 외 1종 </td>
-		            			<td>총2종(2개)</td>
-		            			<td><strong>25,920원</strong></td>
-		            			<td>0원</td>            			
-		            			<td>1,440원</td>
-		            			<td><strong class="t_red">25,920원</strong></td>
-		            		</tr>
-
-		            		<tr class="prodViewAll" style="display:none;">
-		            			<td>
-		            				<span class="book_img"><img src="/webproject/resources/upload/product/4034/4034224_s.jpg"></span>
-		            			</td>
-		            			<td class="prod_name"> [도서] 돌이킬 수 없는 약속</td>
-		            			<td>1개</td>
-		            			<td><strong>13,500원</strong></td>
-		            			<td rowspan="2">
-			            		10,000원 이상<br>무료배송<br>
-			            		/미만시 2,000원
-			            		</td>
-		            			<td>750원</td>
-		            			<td><strong class="t_red">13,500원</strong></td>
-		            		</tr>
+		            	<c:set var="i" value="0"/>
+						<c:forEach var="dto" items="${lists }">
+						<c:set var="i" value="${i+1 }"/>
+						<c:choose>
+							<c:when test="${i eq 1 }">
+								<tr class="prodViewAll" style="display: table-row">
+			            			<td>
+			            				<span class="book_img"><img src="<%=cp %>/resources/image/book/${dto.bookImage }"></span>
+			            			</td>
+			            			<td class="prod_name"> [도서] ${dto.bookTitle }</td>
+			            			<td>${dto.orderCount }개</td>
+			            			<td><strong>${dto.discountedPrice }원</strong></td>
+			            			<td rowspan="${num }">
+				            		10,000원 이상<br>무료배송<br>
+				            		/미만시 2,000원
+				            		</td>
+			            			<td>${dto.point }원</td>
+			            			<td><strong class="t_red">${dto.discountedPrice*dto.orderCount }원</strong></td>
+			            			<td style="display: none">
+           						        <input type="checkbox" id="checkBox_${dto.seqNum }" name="seqArr3" class="check_bandiDeduction" value="${dto.seqNum }" checked="checked">
+						   				<input type="hidden"  id="pricePerBook_${dto.seqNum}" name="pricePerBook" value="${dto.discountedPrice}"/>
+						
+										<input type="hidden" class="storeId_1" value="${dto.seqNum }"/>
+										<input type="hidden" id="storeIdVal_${dto.seqNum }" value="1"/>
+						
+										<input type="hidden" id="maxVal_${dto.seqNum }"  name="maxVal" value="999">
+										<input type="hidden" id="saleCostVal_${dto.seqNum }" name="saleCosVal" value="${dto.discountedPrice }"/>
+										<input type="hidden" id="deliCostCondiVal_${dto.seqNum }" name="deliCostCondiVal" value="10000"/>
+						   				<input type="hidden" id="deliCostVal_${dto.seqNum }" name="deliCostVal" value="2000"/>
+						   				<input type="hidden" id="marketSaleVal_${dto.seqNum }" name="marketSaleVal" value="${dto.bookPrice }"/>
+						   				<input type="hidden" id="prodPointVal_${dto.seqNum }" name="rodPointVal" value="${dto.point }"/>
+						   				<input type="hidden" id="bundleDeliYnVal_${dto.seqNum }" name="bundleDeliYnVal" value="Y"/>
+						   				<input type="hidden" id="discountRate_${dto.seqNum }" name="discountRate" value="${dto.discountRate }"/>
+						   				<input type="hidden" id="prodIdArr_${dto.seqNum }" name="prodIdArr" value="${dto.isbn }"/>
+						   				<input type="hidden" id="prod_name_${dto.seqNum }" name="prod_name" value="${dto.bookTitle }"/>
+						   				<input type="hidden" id="optSeqVal_${dto.seqNum }" name="optSeqVal" value=""/>
+						   				<input type="hidden" name="is_sale_yn"  value="Y"/>
+						   				<input type="hidden" id="prodTypeArr_${dto.seqNum }" name="prodType" value="01"/>
+						   				<input type="hidden" id="flag_${dto.seqNum }" name="flag" value="0"/>
+						   				<input type="hidden" id="preSaleYnVal_${dto.seqNum }" name="preSaleYnVal" value="N"/>
+						   				<input type="hidden" id="orderCnt_${dto.seqNum }" name="orderCount" value="${dto.orderCount }"/> 	
+			            			</td>
+		            			</tr>
+							</c:when>
+							<c:otherwise>
+							
+								<tr class="prodViewAll" style="display: table-row">
+			            			<td>
+			            				<span class="book_img"><img src="<%=cp %>/resources/image/book/${dto.bookImage }"></span>
+			            			</td>
+			            			<td class="prod_name"> [도서] ${dto.bookTitle }</td>
+			            			<td>${dto.orderCount }개</td>
+			            			<td><strong>${dto.discountedPrice }원</strong></td>
+			            			
+			            			<td>${dto.point }원</td>
+			            			<td><strong class="t_red">${dto.discountedPrice*dto.orderCount }원</strong></td>
+			            			<td style="display: none;">
+           						        <input type="checkbox" id="checkBox_${dto.seqNum }" name="seqArr3" class="check_bandiDeduction" value="${dto.seqNum }" checked="checked">
+						   				<input type="hidden"  id="pricePerBook_${dto.seqNum}" name="pricePerBook" value="${dto.discountedPrice}"/>
+						
+										<input type="hidden" class="storeId_1" value="${dto.seqNum }"/>
+										<input type="hidden" id="storeIdVal_${dto.seqNum }" value="1"/>
+						
+										<input type="hidden" id="maxVal_${dto.seqNum }"  name="maxVal" value="999">
+										<input type="hidden" id="saleCostVal_${dto.seqNum }" name="saleCosVal" value="${dto.discountedPrice }"/>
+										<input type="hidden" id="deliCostCondiVal_${dto.seqNum }" name="deliCostCondiVal" value="10000"/>
+						   				<input type="hidden" id="deliCostVal_${dto.seqNum }" name="deliCostVal" value="2000"/>
+						   				<input type="hidden" id="marketSaleVal_${dto.seqNum }" name="marketSaleVal" value="${dto.bookPrice }"/>
+						   				<input type="hidden" id="prodPointVal_${dto.seqNum }" name="rodPointVal" value="${dto.point }"/>
+						   				<input type="hidden" id="bundleDeliYnVal_${dto.seqNum }" name="bundleDeliYnVal" value="Y"/>
+						   				<input type="hidden" id="discountRate_${dto.seqNum }" name="discountRate" value="${dto.discountRate }"/>
+						   				<input type="hidden" id="prodIdArr_${dto.seqNum }" name="prodIdArr" value="${dto.isbn }"/>
+						   				<input type="hidden" id="prod_name_${dto.seqNum }" name="prod_name" value="${dto.bookTitle }"/>
+						   				<input type="hidden" id="optSeqVal_${dto.seqNum }" name="optSeqVal" value=""/>
+						   				<input type="hidden" name="is_sale_yn"  value="Y"/>
+						   				<input type="hidden" id="prodTypeArr_${dto.seqNum }" name="prodType" value="01"/>
+						   				<input type="hidden" id="flag_${dto.seqNum }" name="flag" value="0"/>
+						   				<input type="hidden" id="preSaleYnVal_${dto.seqNum }" name="preSaleYnVal" value="N"/>
+						   				<input type="hidden" id="orderCnt_${dto.seqNum }" name="orderCount" value="${dto.orderCount }"/> 	
+			            			</td>
+			            			
+		            			</tr>
+							</c:otherwise>
+						</c:choose>        	
+	            		</c:forEach>
 	            			
-		            		<tr class="prodViewAll" style="display:none;">
-		            			<td>
-		            				<span class="book_img"><img src="/webproject/resources/upload/product/4181/4181047_s.jpg"></span>
-		            			</td>
-		            			<td class="prod_name"> [도서] 죽고 싶지만 떡볶이는 먹고 싶어</td>
-		            			<td>1개</td>
-		            			<td><strong>12,420원</strong></td>
-		            			<td>690원</td>
-		            			<td><strong class="t_red">12,420원</strong></td>
-		            		</tr>
 
 		            	</tbody></table>
 		            	
@@ -335,7 +190,6 @@
 			            	<div class="fl_right mt10">
 			            		<span class="t_11gr mr5">주문상품 변경을 원하시면 </span>
 		            			<a href="javascript:goCart();"><img src="/webproject/resources/images/order/btn_order_cartmodify.gif" alt="쇼핑카트 수정하기"></a>
-		            			<a href="javascript://"><img src="/webproject/resources/images/order/btn_order_prodview.gif" id="btn_switchView" alt="전체상품 보기"></a>
 			            	</div>
 		            	</div>
 		            	
@@ -351,9 +205,7 @@
 			            				<span><input type="radio" name="deli_code" id="deli_01" value="01" class="mt3m mr3 btn_deliCode" checked=""><label for="deli_01">일반택배</label></span>
 			            				<span class="ml15" id="deliMethod_07" style=""><input type="radio" name="deli_code" id="deli_07" value="07" class="mt3m mr3 btn_deliCode"><label for="deli_07">편의점택배</label></span>
 			            				<span class="ml15" id="deliMethod_13" style="display:none;"><input type="radio" name="deli_code" id="deli_13" value="13" class="mt3m mr3 btn_deliCode"><label for="deli_13">편의점택배</label></span>
-			            				<!-- 
-			            				<span class="ml15" id="deliMethod_03" style="display:none;"><input type="radio" name="deli_code" id="deli_03" value="03" class="mt3m mr3 btn_deliCode"><label for="deli_03">해외배송</label></span>
-			            				 -->
+			            				
 			            				<span class="ml15" id="deliMethod_02" style="display:none;"><input type="radio" name="deli_code" id="deli_02" value="02" class="mt3m mr3 btn_deliCode"><label for="deli_02">직원주문(매장수령)</label></span>
 			            				<span class="ml10" id="deliMethod_02_1" style="display:none;">
 			            					<select name="deli_store_code" disabled=""><option value="01">본사</option><option value="02">신세계강남점</option><option value="04">롯데월드몰점</option><option value="05">사당역점</option><option value="06">롯데스타시티점</option><option value="07">신림역점</option><option value="08">목동점</option><option value="09">롯데몰수원점</option><option value="10">현대일산점</option><option value="13">서강점</option><option value="14">파주물류센터</option><option value="15">롯데피트인산본점</option></select>
@@ -946,32 +798,26 @@
 			            		<h4 class="order_deli_tit">주문자 정보</h4>
 			            		<dl class="order_buy_info">
 			            			<dt>이름</dt>
-			            			<dd>
+		            				<dd>
+		            					<input type="text" name="sndr_name" size="15" value="${userInfo.userId }" class="o_input">
+		            				</dd>
 			            				
-			            					<input type="text" name="sndr_name" size="15" value="라영준" class="o_input">
-			            				
-			            				
-			            			</dd>
 			            			<dt>휴대폰</dt>
 			            			<dd>
-										<select name="sndr_tel2_part1" style="width:49px;height:20px;"><option value="">선택</option><option value="010" selected="selected">010</option><option value="011">011</option><option value="016">016</option><option value="017">017</option><option value="018">018</option><option value="019">019</option><option value="0502">0502</option><option value="0503">0503</option><option value="0504">0504</option><option value="0505">0505</option><option value="0506">0506</option><option value="0507">0507</option><option value="0508">0508</option><option value="0509">0509</option></select>-<input type="text" name="sndr_tel2_part2" value="5461" maxlength="4" size="4" class="o_input" style="ime-mode:disabled;width:25%;" onkeypress="goNumCheck();">-<input type="text" name="sndr_tel2_part3" value="0811" maxlength="4" size="4" class="o_input" style="ime-mode:disabled;width:25%;" onkeypress="goNumCheck();">
+										<select name="sndr_tel2_part1" style="width:49px;height:20px;"><option value="">선택</option><option value="010" selected="selected">010</option><option value="011">011</option><option value="016">016</option><option value="017">017</option><option value="018">018</option><option value="019">019</option><option value="0502">0502</option><option value="0503">0503</option><option value="0504">0504</option><option value="0505">0505</option><option value="0506">0506</option><option value="0507">0507</option><option value="0508">0508</option><option value="0509">0509</option></select>-<input type="text" name="sndr_tel2_part2" value="${addTel2 }" maxlength="4" size="4" class="o_input" style="ime-mode:disabled;width:25%;" onkeypress="goNumCheck();">-<input type="text" name="sndr_tel2_part3" value="${addTel3 }" maxlength="4" size="4" class="o_input" style="ime-mode:disabled;width:25%;" onkeypress="goNumCheck();">
 										<input type="hidden" name="sndr_tel2">
 										<input type="hidden" name="sndr_tel1" value="">
 			           				</dd>
+			           				
 			            			<dt>이메일</dt>
 			            			<dd>
-			            				<input type="text" name="sndr_mail" size="18.5" maxlength="40" class="o_input" value="rmvely@gmail.com">
+			            				<input type="text" name="sndr_mail" size="18.5" maxlength="40" class="o_input" value="${userInfo.email }">
 			            				<input type="hidden" name="sndr_post" value="">
 			            				<input type="hidden" name="sndr_addr1" value="">
 			            				<input type="hidden" name="sndr_addr2" value="">
-			            				
-			            					<input type="hidden" name="sndr_num" value="8807121">
-			            				
-			            				
+			            				<input type="hidden" name="sndr_num" value="8807121">
 			            			</dd>
-			            			
 			            		</dl>
-			            		
 			            	</div>
 			            	
 			            	<div class="order_deli_box cvsnetInfo" style="display: none;">
@@ -1272,6 +1118,26 @@
 							</tr>
 							<!--// 금액대별 반디상품권 팝업 레이어 -->
 		            	</tbody></table>
+		            	<%-- <div class="pos_rel overflow mt40">
+							<h3 class="orderTit02 mt20"><img src="/webproject/resources/images/searchN/h3_cart_total.gif" alt="쇼핑카트 총 주문금액"></h3> 
+			            	<table cellpadding="0" cellspacing="0" class="orderTable_tatol" width="960">
+			            		<colgroup><col width="104"><col width="212"><col width="212"><col width="212"><col></colgroup>
+			            		<tbody><tr>
+			            			<th>수량</th>
+			            			<th>상품정가</th>
+			            			<th>상품할인</th>
+			            			<th>배송비</th>
+			            			<th>주문금액 합계</th>
+			            		</tr>
+			            		<tr>
+			            			<td><span class="t_14" id="totOrdCnt">1종(1개)</span></td>
+			            			<td><span id="totMarketSale">15,000</span><span class="t_14">원</span></td>
+			            			<td><span id="totDiscountCost">1,500</span><span class="t_14">원</span></td>
+			            			<td><span id="totDeliCost">0</span><span class="t_14">원</span></td>
+			            			<td class="total"><span id="totOrdCost">13,500</span><span class="t_14">원</span></td>
+			            		</tr>
+			            	</tbody></table>
+			            </div> --%>
 		            	<div class="pos_rel">
 			            	<table cellpadding="0" cellspacing="0" class="orderTable_tatol" width="960">
 			            		<colgroup><col width="250"><col width="230"><col><col width="232"></colgroup>
@@ -1282,10 +1148,10 @@
 			            			<th>결제금액</th>
 			            		</tr>
 			            		<tr>
-			            			<td><span>25,920</span><span class="t_14">원</span></td>
-			            			<td><span id="finalDeliCost">0</span><span class="t_14">원</span><br><span class="t_11gr" id="finalDeliCostInfo"></span></td>
-			            			<td><span id="finalDiscountCost">0</span><span class="t_14">원</span><br><span class="t_11gr" id="finalDiscountCostInfo"></span></td>
-			            			<td class="total"><span class="finalCashCost">25,920</span><span class="t_14">원</span></td>
+			            			<td><span id="totMarketSale">15,000</span><span class="t_14">원</span></td>
+			            			<td><span id="totDeliCost">0</span><span class="t_14">원</span><br><span class="t_11gr" id="finalDeliCostInfo"></span></td>
+			            			<td><span id="totDiscountCost">0</span><span class="t_14">원</span><br><span class="t_11gr" id="finalDiscountCostInfo"></span></td>
+			            			<td class="total"><span id="totOrdCost">25,920</span><span class="t_14">원</span></td>
 			            		</tr>
 			            	</tbody></table>
 			            	<span class="order_plus"></span><span class="order_minus"></span><span class="order_same"></span>
@@ -1584,6 +1450,6 @@
      
      
      
-     
+<jsp:include page="../common/footer.jsp" flush="false" /> 
 </body>
 </html>

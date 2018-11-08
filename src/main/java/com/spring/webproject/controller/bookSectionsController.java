@@ -1,6 +1,9 @@
 package com.spring.webproject.controller;
 
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collections;
+import java.util.Iterator;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
@@ -17,7 +20,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import com.spring.webproject.dao.BookSectionsDAO;
 import com.spring.webproject.dao.LoginDAO;
 import com.spring.webproject.dto.BookSectionsDTO;
-
+import com.spring.webproject.dto.UserDTO;
 import com.spring.webproject.util.MyUtil;
 
 @Controller
@@ -452,13 +455,48 @@ public class bookSectionsController {
 	@RequestMapping(value="order.action", method= {RequestMethod.GET, RequestMethod.POST})
 	public String order(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		
+		UserDTO dto2 = (UserDTO)request.getSession().getAttribute("userInfo");
+		
+		System.out.println(dto2.getAddTel());
+		String addTel = dto2.getAddTel();
+		
+		String[] arrayAddTel = addTel.split("-");
+		String AddTel2 = arrayAddTel[1];
+		String AddTel3 = arrayAddTel[2];
+		
+		String[] arrayIsbn = request.getParameterValues("prodIdArr");
+		String[] arrayOrderCnt = request.getParameterValues("orderCount");
+		int num = 0;
+		List<BookSectionsDTO> lists = new ArrayList<BookSectionsDTO>();
+		
+		for(int i=0;i<arrayIsbn.length;i++) {
+			
+			String isbn = arrayIsbn[i];
+			String OrderCount = arrayOrderCnt[i];
+			int seqNum = 1000+i;
+			num += 1;
+			
+			BookSectionsDTO dto = raDao.getBookSection(isbn);
+			dto.setOrderCount(OrderCount);
+			dto.setSeqNum(seqNum);
+			
+			lists.add(dto);
+			
+		}
+		
+		
+		
+		request.setAttribute("addTel2", AddTel2);
+		request.setAttribute("addTel3", AddTel3);
+		request.setAttribute("num", num);
+		request.setAttribute("lists", lists);
+
 		return "shopAndOrder/order";
 	}
 	
 	@RequestMapping(value="cartList.action", method= {RequestMethod.GET, RequestMethod.POST})
 	public String cartList(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		
-
 		String ck = request.getParameter("isbn");
 		String ckC = request.getParameter("orderCount");
 

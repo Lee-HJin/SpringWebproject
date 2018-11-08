@@ -16,7 +16,7 @@ public class BookSectionsDAO {
 	public void setSessionTemplate(SqlSessionTemplate sessionTemplate) {
 		this.sessionTemplate = sessionTemplate;
 	}
-	
+
 	//전체 데이터 from bnlBSList
 	public List<BookSectionsDTO> getListMain(int sort1st, int sort2nd, int start, int end){
 		
@@ -472,6 +472,13 @@ public class BookSectionsDAO {
 		}
 		return lst;
 	}
+	
+	public BookSectionsDTO getBookSection(String isbn) {
+		
+		return sessionTemplate.selectOne("shopAndOrderMapper.cartLists", isbn);
+	}
+	
+
 	
 	
 }
