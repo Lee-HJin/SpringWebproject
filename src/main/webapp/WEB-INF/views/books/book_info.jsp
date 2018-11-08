@@ -250,7 +250,8 @@ i {
 			if(itemArray.indexOf(cValue)!=-1){//중복시 기존 제거 후 맨앞으로 가져옴
 				var idx = itemArray.findIndex(function(item) {
 					return item === cValue;
-				});		
+				});
+				alert(idx);
 				itemArray.splice(idx,1);
 		
 				itemArray.unshift(cValue);

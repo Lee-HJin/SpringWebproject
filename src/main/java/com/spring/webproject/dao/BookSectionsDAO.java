@@ -474,4 +474,19 @@ public class BookSectionsDAO {
 	}
 	
 	
+	
+	public List<BookSectionsDTO> getOrderList(String isbn, String orderCount, int seqNum){
+		
+		List<BookSectionsDTO> lists = new ArrayList<BookSectionsDTO>();
+		
+		BookSectionsDTO dto = sessionTemplate.selectOne("shopAndOrderMapper.cartLists",isbn);
+		
+		dto.setOrderCount(orderCount);
+		dto.setSeqNum(seqNum);
+		lists.add(dto);
+		
+		return lists;
+	}
+	
+	
 }
