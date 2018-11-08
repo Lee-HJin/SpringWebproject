@@ -35,11 +35,11 @@
 	$(function() {
 		
 		var data = document.getElementById("data");
-		var noData = document.getElementById("no_data");
+		var noData = document.getElementById("no_data");	
 		
 		var ck = cookieInfo(getCookie('rcbook'));
 		todayView(ck);		
- 
+
    		if($('.swiper-slide-active #isbn').val()!=null){
 			noData.style.display = 'none';
 			data.style.display = 'block';
@@ -195,7 +195,6 @@
 		    if(cookiearray[i].indexOf(cookiename)!=-1){
 		        var nameVal = cookiearray[i].split("=");
 		        nameVal = nameVal[1].trim();
-		        
 		        return unescape(nameVal);
 		    }else{
 		    	var cookie = null;
@@ -232,23 +231,20 @@
 	<div class="swiper-container swiper1">
    		<div class="swiper-wrapper">
      		<div class="swiper-slide">
-     			<a href="<%=cp%>/book_info.action?isbn=18"><img src="<%=cp%>/resources/image/main/box1_1.jpg"></a>
+     			<a href="<%=cp%>/book_info.action?isbn=9788965962823"><img src="<%=cp%>/resources/image/main/box1_2.jpg"></a>
      		</div>
      		<div class="swiper-slide">
      			<ul>
      				<li class="s_box03">
-     					<a href="<%=cp%>/book_info.action?isbn=16"><img src="<%=cp%>/resources/image/main/box3_1.jpg"></a>
+     					<a href="<%=cp%>/book_info.action?isbn=9788932919287"><img src="<%=cp%>/resources/image/main/box3_1.jpg"></a>
      				</li>
      				<li class="s_box03">
-     					<a href="javascript://"><img src="<%=cp%>/resources/image/main/box3_2.jpg"></a>
+     					<a href="<%=cp%>/book_info.action?isbn=9788984373594"><img src="<%=cp%>/resources/image/main/1541135742840.jpg"></a>
      				</li>
      				<li class="s_box03 alt">
-     					<a href="javascript://"><img src="<%=cp%>/resources/image/main/box3_3.jpg"></a>
+     					<a href="<%=cp%>/book_info.action?isbn=9788959895526"><img src="<%=cp%>/resources/image/main/1541135801853.jpg"></a>
      				</li>
      			</ul>
-     		</div>
-     		<div class="swiper-slide">
-     			<a href="<%=cp%>/book_info.action?isbn=42"><img src="<%=cp%>/resources/image/main/box1_2.jpg"></a>
      		</div>
      	</div>
      	
@@ -267,25 +263,7 @@
 				<div class="swiper-container bn_swiper1">
 					<div class="swiper-wrapper">
 						<div class="swiper-slide">
-							<a href="javascript://"><img src="<%=cp%>/resources/image/main/banner01.jpg"></a>
-						</div>
-						<div class="swiper-slide">
 							<a href="javascript://"><img src="<%=cp%>/resources/image/main/banner02.jpg"></a>
-						</div>
-						<div class="swiper-slide">
-							<a href="javascript://"><img src="<%=cp%>/resources/image/main/banner03.jpg"></a>
-						</div>
-						<div class="swiper-slide">
-							<a href="javascript://"><img src="<%=cp%>/resources/image/main/banner04.jpg"></a>
-						</div>
-						<div class="swiper-slide">
-							<a href="javascript://"><img src="<%=cp%>/resources/image/main/banner05.jpg"></a>
-						</div>
-						<div class="swiper-slide">
-							<a href="javascript://"><img src="<%=cp%>/resources/image/main/banner06.jpg"></a>
-						</div>
-						<div class="swiper-slide">
-							<a href="javascript://"><img src="<%=cp%>/resources/image/main/banner07.jpg"></a>
 						</div>
 					</div>
 					
@@ -300,9 +278,6 @@
 			<li id="mini_bn01">
 				<div class="swiper-container bn_swiper2">
 					<div class="swiper-wrapper">
-						<div class="swiper-slide">
-							<a href="javascript://"><img src="<%=cp%>/resources/image/main/banner2_01.jpg"></a>
-						</div>
 						<div class="swiper-slide">
 							<a href="javascript://"><img src="<%=cp%>/resources/image/main/banner2_02.jpg"></a>
 						</div>
@@ -791,8 +766,8 @@
 										<img src="<%=cp%>/resources/image/main/bnl_info01.jpg">
 									</a>
 								</dt>
-								<dd class="ifb_title">반디앤루니스를 읽다</dd>
-								<dd class="ifb_txt">한 손으로 쉽고 빠르게 모든 혜택을 누려보세요!</dd>
+								<dd class="ifb_title"><a href="<%=cp%>/readbnl.action">반디앤루니스를 읽다</a></dd>
+								<dd class="ifb_txt"><a href="<%=cp%>/readbnl.action">한 손으로 쉽고 빠르게 모든 혜택을 누려보세요!</a></dd>
 							</dl>
 						</div>
 						<div class="swiper-slide">
@@ -802,8 +777,8 @@
 										<img src="<%=cp%>/resources/image/main/bnl_info02.jpg">
 									</a>
 								</dt>
-								<dd class="ifb_title">나는 책 입니다</dd>
-								<dd class="ifb_txt">일상에 묻혀 잠시 잊고 있었던 책을 떠올려 보세요.</dd>
+								<dd class="ifb_title"><a href="<%=cp%>/imbook.action">나는 책 입니다</a></dd>
+								<dd class="ifb_txt"><a href="<%=cp%>/imbook.action">일상에 묻혀 잠시 잊고 있었던 책을 떠올려 보세요.</a></dd>
 							</dl>
 						</div>
 					</div>
@@ -820,133 +795,133 @@
 						<div class="swiper-slide">
 							<dl>
 								<dt>
-									<a href="javascript://">
+									<a href="<%=cp%>/store.action?params=12">
 										<img src="<%=cp%>/resources/image/main/banner_lottepit.jpg">
 									</a>
 								</dt>
-								<dd class="ifb_title">반디앤루니스 롯데피트인산본점</dd>
-								<dd class="ifb_txt">책나라 군포의 문화 힐링 스팟</dd>
+									<dd class="ifb_title"><a href="<%=cp%>/store.action?params=12">반디앤루니스 롯데피트인산본점</a></dd>
+									<dd class="ifb_txt"><a href="<%=cp%>/store.action?params=12">책나라 군포의 문화 힐링 스팟</a></dd>
 							</dl>
 						</div>
 						<div class="swiper-slide">
 							<dl>
 								<dt>
-									<a href="javascript://">
+									<a href="<%=cp%>/store.action?params=5">
 										<img src="<%=cp%>/resources/image/main/banner_daegu.jpg">
 									</a>
 								</dt>
-								<dd class="ifb_title">반디앤루니스 대구신세계점</dd>
-								<dd class="ifb_txt">대구 서점의 새로운 랜드마크</dd>
+								<dd class="ifb_title"><a href="<%=cp%>/store.action?params=5">반디앤루니스 대구신세계점</a></dd>
+								<dd class="ifb_txt"><a href="<%=cp%>/store.action?params=5">대구 서점의 새로운 랜드마크</a></dd>
 							</dl>
 						</div>
 						<div class="swiper-slide">
 							<dl>
 								<dt>
-									<a href="javascript://">
+									<a href="<%=cp%>/store.action?params=2">
 										<img src="<%=cp%>/resources/image/main/banner_ccity.jpg">
 									</a>
 								</dt>
-								<dd class="ifb_title">반디앤루니스 신세계센텀시티점</dd>
-								<dd class="ifb_txt">배움과 체험이 가득한 멀티컬쳐스토어</dd>
+								<dd class="ifb_title"><a href="<%=cp%>/store.action?params=2">반디앤루니스 신세계센텀시티점</a></dd>
+								<dd class="ifb_txt"><a href="<%=cp%>/store.action?params=2">배움과 체험이 가득한 멀티컬쳐스토어</a></dd>
 							</dl>
 						</div>
 						<div class="swiper-slide">
 							<dl>
 								<dt>
-									<a href="javascript://">
+									<a href="<%=cp%>/store.action?params=3">
 										<img src="<%=cp%>/resources/image/main/banner_lotteworld.jpg">
 									</a>
 								</dt>
-								<dd class="ifb_title">반디앤루니스 롯데월드몰점</dd>
-								<dd class="ifb_txt">오감의 풍요로움을 느낄 수 있는 서점</dd>
+								<dd class="ifb_title"><a href="<%=cp%>/store.action?params=3">반디앤루니스 롯데월드몰점</a></dd>
+								<dd class="ifb_txt"><a href="<%=cp%>/store.action?params=3">오감의 풍요로움을 느낄 수 있는 서점</a></dd>
 							</dl>
 						</div>
 						<div class="swiper-slide">
 							<dl>
 								<dt>
-									<a href="javascript://">
+									<a href="<%=cp%>/store.action?params=7">
 										<img src="<%=cp%>/resources/image/main/banner_kimhae.jpg">
 									</a>
 								</dt>
-								<dd class="ifb_title">반디앤루니스 신세계김해점</dd>
-								<dd class="ifb_txt">문화의 도시, 김해가 선택한 문화생활공간</dd>
+								<dd class="ifb_title"><a href="<%=cp%>/store.action?params=7">반디앤루니스 신세계김해점</a></dd>
+								<dd class="ifb_txt"><a href="<%=cp%>/store.action?params=7">문화의 도시, 김해가 선택한 문화생활공간</a></dd>
 							</dl>
 						</div>
 						<div class="swiper-slide">
 							<dl>
 								<dt>
-									<a href="javascript://">
+									<a href="<%=cp%>/store.action?params=6">
 										<img src="<%=cp%>/resources/image/main/banner_suwon.jpg">
 									</a>
 								</dt>
-								<dd class="ifb_title">반디앤루니스 롯데몰수원점</dd>
-								<dd class="ifb_txt">역사와 전통의 수원, 새로운 문화소통공간</dd>
+								<dd class="ifb_title"><a href="<%=cp%>/store.action?params=6">반디앤루니스 롯데몰수원점</a></dd>
+								<dd class="ifb_txt"><a href="<%=cp%>/store.action?params=6">역사와 전통의 수원, 새로운 문화소통공간</a></dd>
 							</dl>
 						</div>
 						<div class="swiper-slide">
 							<dl>
 								<dt>
-									<a href="javascript://">
+									<a href="<%=cp%>/store.action?params=1">
 										<img src="<%=cp%>/resources/image/main/banner_gangnam.jpg">
 									</a>
 								</dt>
-								<dd class="ifb_title">반디앤루니스 신세계강남점</dd>
-								<dd class="ifb_txt">강남지역 대표 문화의 관문</dd>
+								<dd class="ifb_title"><a href="<%=cp%>/store.action?params=1">반디앤루니스 신세계강남점</a></dd>
+								<dd class="ifb_txt"><a href="<%=cp%>/store.action?params=1">강남지역 대표 문화의 관문</a></dd>
 							</dl>
 						</div>
 						<div class="swiper-slide">
 							<dl>
 								<dt>
-									<a href="javascript://">
+									<a href="<%=cp%>/store.action?params=10">
 										<img src="<%=cp%>/resources/image/main/banner_sadang.jpg">
 									</a>
 								</dt>
-								<dd class="ifb_title">반디앤루니스 사당역점</dd>
-								<dd class="ifb_txt">쾌적하고 깔끔한, 사당 지역 최대 서점</dd>
+								<dd class="ifb_title"><a href="<%=cp%>/store.action?params=10">반디앤루니스 사당역점</a></dd>
+								<dd class="ifb_txt"><a href="<%=cp%>/store.action?params=10">쾌적하고 깔끔한, 사당 지역 최대 서점</a></dd>
 							</dl>
 						</div>
 						<div class="swiper-slide">
 							<dl>
 								<dt>
-									<a href="javascript://">
+									<a href="<%=cp%>/store.action?params=9">
 										<img src="<%=cp%>/resources/image/main/banner_sinrim.jpg">
 									</a>
 								</dt>
-								<dd class="ifb_title">반디앤루니스 신림역점</dd>
-								<dd class="ifb_txt">포도몰 7층, 신림의 대표 만남의 장소</dd>
+								<dd class="ifb_title"><a href="<%=cp%>/store.action?params=9">반디앤루니스 신림역점</a></dd>
+								<dd class="ifb_txt"><a href="<%=cp%>/store.action?params=9">포도몰 7층, 신림의 대표 만남의 장소</a></dd>
 							</dl>
 						</div>
 						<div class="swiper-slide">
 							<dl>
 								<dt>
-									<a href="javascript://">
+									<a href="<%=cp%>/store.action?params=13">
 										<img src="<%=cp%>/resources/image/main/banner_lottewool.jpg">
 									</a>
 								</dt>
-								<dd class="ifb_title">반디앤루니스 롯데울산점</dd>
-								<dd class="ifb_txt">울산의 북마크, 지역 최대 규모 서점</dd>
+								<dd class="ifb_title"><a href="<%=cp%>/store.action?params=13">반디앤루니스 롯데울산점</a></dd>
+								<dd class="ifb_txt"><a href="<%=cp%>/store.action?params=13">울산의 북마크, 지역 최대 규모 서점</a></dd>
 							</dl>
 						</div>
 						<div class="swiper-slide">
 							<dl>
 								<dt>
-									<a href="javascript://">
+									<a href="<%=cp%>/store.action?params=8">
 										<img src="<%=cp%>/resources/image/main/banner_lottestar.jpg">
 									</a>
 								</dt>
-								<dd class="ifb_title">반디앤루니스 롯데스타시티점</dd>
-								<dd class="ifb_txt">핫플레이스 건대입구의 랜드마크</dd>
+								<dd class="ifb_title"><a href="<%=cp%>/store.action?params=8">반디앤루니스 롯데스타시티점</a></dd>
+								<dd class="ifb_txt"><a href="<%=cp%>/store.action?params=8">핫플레이스 건대입구의 랜드마크</a></dd>
 							</dl>
 						</div>
 						<div class="swiper-slide">
 							<dl>
 								<dt>
-									<a href="javascript://">
+									<a href="<%=cp%>/store.action?params=11">
 										<img src="<%=cp%>/resources/image/main/banner_mokdong.jpg">
 									</a>
 								</dt>
-								<dd class="ifb_title">반디앤루니스 목동점</dd>
-								<dd class="ifb_txt">Again & Renew</dd>
+								<dd class="ifb_title"><a href="<%=cp%>/store.action?params=11">반디앤루니스 목동점</a></dd>
+								<dd class="ifb_txt"><a href="<%=cp%>/store.action?params=11">Again & Renew</a></dd>
 							</dl>
 						</div>
 					</div>
@@ -983,7 +958,7 @@
 			</ul>
 			<div class="bnl_banner">
 			<a href="javascript://">
-				<img src="<%=cp%>/resources/image/main/bnl_banner.jpg">
+				<img src="<%=cp%>/resources/image/main/banner20181102143615.jpg">
 			</a>
 		</div>
 		</div>
