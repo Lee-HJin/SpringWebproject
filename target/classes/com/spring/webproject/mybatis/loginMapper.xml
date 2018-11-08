@@ -44,8 +44,8 @@
 
 <!-- 신규가입 적립금 적립 -->
 <insert id="joinPointSaving" parameterType="map">
-	insert into point(userId, savingDate, expirationDate,value,pointItem,pointId)
-	values(#{userId}, sysdate, to_date(to_char(sysdate+30,'YYYY-MM-DD ') || '23:59:59','YYYY-MM-DD HH24:MI:SS'),1000,#{pointItem},#{pointId})
+	insert into point(userId, savingDate, expirationDate,value,pointItem,pointId,leftValue)
+	values(#{userId}, sysdate, to_date(to_char(sysdate+30,'YYYY-MM-DD ') || '23:59:59','YYYY-MM-DD HH24:MI:SS'),1000,#{pointItem},#{pointId},1000)
 </insert>
 
 <!-- 아이디 찾기 -->
@@ -71,6 +71,11 @@
 <!-- 상담내역 가져오기 -->
 <select id="getCounselCount" parameterType="java.lang.String" resultType="int">
 	select nvl(count(*),0) from consultation where userId=#{userId} and consultationdate between sysdate-14 and sysdate
+</select>
+
+<!-- 핸드폰 중복 검사 -->
+<select id="phoneOverlapCheck" parameterType="java.lang.String" resultType="int">
+	select count(*) from users where phone=#{phone}
 </select>
 
 </mapper>

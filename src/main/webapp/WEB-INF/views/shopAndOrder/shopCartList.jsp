@@ -112,7 +112,7 @@
 	}
 	
 	//체크박스 값 배열에 정리하기
-	fun	//체크박스 값 배열에 정리하기
+	//체크박스 값 배열에 정리하기
 	//선택된 체크박스 배열 반환
 	function chkToArray(){
 		
@@ -164,12 +164,26 @@
 				
 				if(items){
 					var itemArray=items.split('/');
-					for(var i=0;i<checkArray.length;i++){
-						var index = findCookieIndex(checkArray[i]);
-							itemArray.splice(index,1);
-							setCookie('shop',itemArray.join("/"),1);	
+					
+					alert(itemArray.length+"쿠키길이")
+					alert(checkArray.length+"체크박스길이")
+					
+					if(itemArray.length==checkArray.length){
+						alert("하잇");
+						var expireDate = new Date();
+						expireDate.setDate(expireDate.getDate() - 1);
+
+						document.cookie = "shop= " + "; path=/ ; expires=" + expireDate.toGMTString();
+					}
+					else{
+						for(var i=0;i<checkArray.length;i++){
+							var index = findCookieIndex(checkArray[i]);
+								itemArray.splice(index,1);
+								setCookie('shop',itemArray.join("/"),1);	
+						}
 					}
 				}
+			
 			}
 		}
 		
@@ -183,10 +197,11 @@
 				cIsbn.push(ck[i].isbn);
 				ordCount.push(ck[i].orderCount);
 			}
-		}else{
-			return;
 		}
-		cartList(cIsbn,ordCount);	
+		
+		cartList(cIsbn,ordCount);
+	
+		
 	}
 
 	//쿠키 생성

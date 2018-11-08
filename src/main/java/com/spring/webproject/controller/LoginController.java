@@ -98,9 +98,7 @@ public class LoginController {
 			}
 			
 			//1:1상담내역
-			int counselCount = dao.getCounselCount(userId);
-			System.out.println(counselCount);
-			
+			int counselCount = dao.getCounselCount(userId);			
 			
 			//최근 본 상품 쿠키 삭제하기
 			Cookie[] cookie = request.getCookies();
@@ -307,5 +305,24 @@ public class LoginController {
 		}
 
 	}
+	@ResponseBody
+	@RequestMapping(value = "login/phoneOverlapCheck.action", method = RequestMethod.POST)
+	public boolean phoneOverlapCheck(HttpServletRequest request) {
+
+		boolean flag = false;
+		String phone = request.getParameter("phone");	
+			
+		int check = dao.phoneOverlapCheck(phone);
+		
+		if(check==0) {
+			flag = true;
+		}
+		else {
+			flag = false;
+		}
+
+		return flag;	
+	}
+	
 
 }

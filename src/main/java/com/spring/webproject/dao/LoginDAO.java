@@ -121,5 +121,10 @@ public class LoginDAO {
 		return sessionTemplate.selectOne("loginMapper.getCounselCount",userId);
 	}
 	
+	public int phoneOverlapCheck(String phone) {
+		
+		return sessionTemplate.selectOne("loginMapper.phoneOverlapCheck",phone);
+		
+	}
 	
 }
