@@ -187,7 +187,7 @@
 		
 	}
 	
-	//쿠키 가져오기
+/* 	//쿠키 가져오기
 	function getCookie(cookiename){
 		var cookiestring  = document.cookie;
 		var cookiearray = cookiestring.split(';');
@@ -218,7 +218,7 @@
  		}else{
  			return null;
  		}
-	}
+	} */
 	
 
 </script>
