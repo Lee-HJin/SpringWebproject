@@ -708,36 +708,32 @@
 		<h3 class="sb_title"></h3>
 		<a class="more_link" href="<%=cp %>/discountBookMain.action"></a>
 		<ul class="sb_list">
+			<c:forEach var="dc" items="${dcB }">
 			<li>
 				<div class="sb_img">
-					<a href="javascript://">
-						<img src="<%=cp%>/resources/image/main/3827032.jpg">
+					<a href="<%=cp %>/book_info.action?isbn=${dc.isbn}">
+						<img src="<%=cp%>/resources/image/book/${dc.bookImage}">
 					</a>						
 				</div>
 				<dl>
 					<dt>
-						<a href="javascript://">[정가인하] 1000 스티커 백과</a>
+						<a href="<%=cp %>/book_info.action?isbn=${dc.isbn}">
+						<c:choose>
+							<c:when test="${fn:length(dc.bookTitle)>20 }">
+								<c:out value="${fn:substring(dc.bookTitle,0,18) }"/>…
+							</c:when>
+							<c:otherwise>
+								<c:out value="${dc.bookTitle }"></c:out>
+							</c:otherwise>
+						</c:choose>
+						</a>
 					</dt>
-					<dd class="sb_author">편집부</dd>
-					<dd class="sb_price">재정가 : 5,000원</dd>
-					<dd class="sb_reprice">판매가 : 4,500원</dd>
+					<dd class="sb_author">${dc.authorName }</dd>
+					<dd class="sb_price">재정가 :${dc.bookPrice }원</dd>
+					<dd class="sb_reprice">판매가 : ${dc.discountedPrice }원</dd>
 				</dl>
 			</li>
-			<li>
-				<div class="sb_img">
-					<a href="javascript://">
-						<img src="<%=cp%>/resources/image/main/3803030.jpg">
-					</a>						
-				</div>
-				<dl>
-					<dt>
-						<a href="javascript://">[정가인하] 안나 카레니나 전3권 세트</a>
-					</dt>
-					<dd class="sb_author">레프 니콜라예비치 톨스토이</dd>
-					<dd class="sb_price">재정가 : 30,800원</dd>
-					<dd class="sb_reprice">판매가 : 30,800원</dd>
-				</dl>
-			</li>
+			</c:forEach>
 		</ul>
 	</div>
 </div>

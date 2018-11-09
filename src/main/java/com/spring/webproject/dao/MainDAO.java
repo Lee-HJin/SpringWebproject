@@ -6,6 +6,7 @@ import java.util.Random;
 
 import org.mybatis.spring.SqlSessionTemplate;
 
+import com.spring.webproject.dto.BookSectionsDTO;
 import com.spring.webproject.dto.MainDTO;
 import com.spring.webproject.dto.QuestionDTO;
 import com.spring.webproject.dto.StoreDTO;
@@ -164,6 +165,15 @@ public class MainDAO {
 		
 		List<QuestionDTO> lst = new ArrayList<QuestionDTO>();
 		lst = sessionTemplate.selectList("mainMapper.topView");
+		
+		return lst;
+	}
+	
+	//정가인하도서
+	public List<BookSectionsDTO> dcBook(){
+		
+		List<BookSectionsDTO> lst = new ArrayList<BookSectionsDTO>();
+		lst = sessionTemplate.selectList("mainMapper.dcBook");
 		
 		return lst;
 	}
