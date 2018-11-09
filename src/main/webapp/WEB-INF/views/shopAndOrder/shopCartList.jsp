@@ -165,11 +165,7 @@
 				if(items){
 					var itemArray=items.split('/');
 					
-					alert(itemArray.length+"쿠키길이")
-					alert(checkArray.length+"체크박스길이")
-					
 					if(itemArray.length==checkArray.length){
-						alert("하잇");
 						var expireDate = new Date();
 						expireDate.setDate(expireDate.getDate() - 1);
 

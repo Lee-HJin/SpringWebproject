@@ -133,7 +133,7 @@
 				var ck = $("#cart_isbn"+isbn).val();
 				
 				if(document.cookie.indexOf('shop')==-1){
-					setCookie('shop',cookieValue,1);
+					setCookie('shop',cookieValue,1);					
 				}else if(document.cookie.indexOf('shop')!=-1){
 					addCookie(cookieValue,ck);
 				}
@@ -169,6 +169,13 @@
 							itemArray.length=10;}*/
 						items = itemArray.join('/');
 						setCookie('shop',items,1);
+						
+						if(confirm("쇼핑카트에 등록되었습니다. 지금 바로 확인 하시겠습니까?")){
+							location.href= 'shopCartList.action';
+						}
+						else{
+							return;
+						}
 					}
 				}
 			}
@@ -195,7 +202,9 @@
 				} 
 				return unescape(ck);
 			}
-		}		
+		}
+		
+
 	}
 	
 	//바로구매
