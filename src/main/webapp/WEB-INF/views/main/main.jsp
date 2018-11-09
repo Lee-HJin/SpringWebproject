@@ -3,6 +3,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 <%
 	request.setCharacterEncoding("UTF-8");
 	String cp = request.getContextPath();
@@ -729,8 +730,8 @@
 						</a>
 					</dt>
 					<dd class="sb_author">${dc.authorName }</dd>
-					<dd class="sb_price">재정가 :${dc.bookPrice }원</dd>
-					<dd class="sb_reprice">판매가 : ${dc.discountedPrice }원</dd>
+					<dd class="sb_price">재정가 : <fmt:formatNumber value="${dc.bookPrice }" pattern="#,###"/>원</dd>
+					<dd class="sb_reprice">판매가 : <fmt:formatNumber value="${dc.discountedPrice }" pattern="#,###"/>원</dd>
 				</dl>
 			</li>
 			</c:forEach>
