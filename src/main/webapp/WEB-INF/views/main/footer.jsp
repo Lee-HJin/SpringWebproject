@@ -72,7 +72,7 @@
 					<strong>고객문의</strong>: <strong class="tel">1577-4030</strong>
 					<span class="tel_time">(발신자 부담) 평일 9시~18시(토요일,일요일,공휴일 휴무)</span>
 					<span> | Fax: 02-3703-2499</span>
-					<a href="javascript://">
+					<a href="<%=cp%>/help/helpCounsel.action">
 						<img src="<%=cp%>/resources/image/main/btn_footer_customer.gif" style="vertical-align: middle;">
 					</a>
 				</div>

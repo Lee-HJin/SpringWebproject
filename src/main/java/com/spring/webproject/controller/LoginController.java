@@ -55,6 +55,11 @@ public class LoginController {
 		String returnUrl = "";
 		String userId = request.getParameter("user_id");
 		String userPwd = request.getParameter("userPwd");
+		String pre_url = (String) request.getSession().getAttribute("pre_url");
+		
+		if(pre_url==null || pre_url.equals("")) {
+			pre_url = "/main.action";
+		}
 		
 		if(userId.equals("admin") && userPwd.equals("admin")) {
 			return "redirect:/admin.action";
@@ -117,7 +122,7 @@ public class LoginController {
 			request.getSession().setAttribute("pointValue", pointValue);
 			request.getSession().setAttribute("counselCount", counselCount);
 			request.getSession().removeAttribute("message");	//로그인 오류메시지 제거
-			returnUrl = "redirect:/main.action";
+			returnUrl = "redirect:" + pre_url;
 			
 
 		}
