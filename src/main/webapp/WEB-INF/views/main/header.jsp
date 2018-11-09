@@ -8,7 +8,7 @@
 
 <script type="text/javascript">
 	
- 	function toggleDisplay(num){
+   	function toggleDisplay(num){
 	    var con = document.getElementById("layer"+num);
  	     if(con.style.display=='none'){
 	        con.style.display = 'block';
