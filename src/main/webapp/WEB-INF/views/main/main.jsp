@@ -15,6 +15,7 @@
 
 <link rel="stylesheet" href="<%=cp%>/resources/css/main.css" type="text/css"/>
 <link rel="stylesheet" href="<%=cp%>/resources/css/swiper_min.css">
+<link rel="stylesheet" href="http://bandinlunis.com/common/css/center.css" type="text/css">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 
 <title>반디앤루니스 인터넷서점</title>
@@ -187,7 +188,7 @@
 		
 	}
 	
-	//쿠키 가져오기
+/* 	//쿠키 가져오기
 	function getCookie(cookiename){
 		var cookiestring  = document.cookie;
 		var cookiearray = cookiestring.split(';');
@@ -218,7 +219,7 @@
  		}else{
  			return null;
  		}
-	}
+	} */
 	
 
 </script>
@@ -923,26 +924,22 @@
 		</div>
 		<div class="bnl_custom">
 			<h4 class="bnlc_title">자주묻는 질문</h4>
-			<a href="<%=cp%>/helpmain.action" class="more_link"></a>
+			<a href="<%=cp%>/help/helpMain.action" class="more_link"></a>
 			<ul class="q_list">
+			<c:set var="i" value="1" />
+			<c:forEach var="qlst" items="${qLst }">
 				<li>
-					<a href="javascript://">자주묻는 질문 넣기</a>
+					<div class="no">
+						<img src="http://image.bandinlunis.com/images/common/ico_no${i }.gif" alt="${i }">
+					</div>
+					<div>
+						<a href="/webproject/help/helpIndex.action?parentsTypeId=${qlst.parentsTypeId }&questionId=${qlst.questionId }&typeId=${qlst.typeId}">
+							${qlst.subject }
+						</a>
+					</div>
 				</li>
-				<li>
-					<a href="javascript://">자주묻는 질문 넣기</a>
-				</li>
-				<li>
-					<a href="javascript://">자주묻는 질문 넣기</a>
-				</li>
-				<li>
-					<a href="javascript://">자주묻는 질문 넣기</a>
-				</li>
-				<li>
-					<a href="javascript://">자주묻는 질문 넣기</a>
-				</li>
-				<li>
-					<a href="javascript://">자주묻는 질문 넣기</a>
-				</li>
+				<c:set var="i" value="${i+1 }" />
+			</c:forEach>
 			</ul>
 			<div class="bnl_banner">
 			<a href="<%=cp%>/book_info.action?isbn=9791188810666">

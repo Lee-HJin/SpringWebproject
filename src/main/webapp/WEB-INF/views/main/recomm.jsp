@@ -22,7 +22,7 @@
 </ul>
 </c:if>
 <c:if test="${empty lst }">
-	<div class="rc_books_list">
+	<div class="rc_books_list recommend_no_data">
 		유사 분야 서적이 없습니다
 	</div>
 </c:if>

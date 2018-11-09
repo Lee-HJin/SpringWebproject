@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.spring.webproject.dao.MainDAO;
 import com.spring.webproject.dto.MainDTO;
+import com.spring.webproject.dto.QuestionDTO;
 import com.spring.webproject.dto.StoreDTO;
 import com.spring.webproject.dto.UserDTO;
 import com.spring.webproject.util.MyUtil;
@@ -41,10 +42,13 @@ public class MainController {
 		}
 		
 		List<MainDTO> lst = new ArrayList<MainDTO>();
+		List<QuestionDTO> qLst = new ArrayList<QuestionDTO>();
 		
 		lst = dao.bestSeller();
+		qLst = dao.topView();
 		
 		req.setAttribute("lst", lst);
+		req.setAttribute("qLst", qLst);
 		
 		
 		return "main/main";
