@@ -157,7 +157,7 @@
 		<dl>
 			<dt>상품명 조회</dt>
 			<dd>
-				<span><input type="text" style="height: 16px;" name="orderListSearchValue" id="orderListSearchValue"></span>
+				<span><input type="text" style="height: 19px;" name="orderListSearchValue" id="orderListSearchValue"></span>
 				<span style="margin-right: 5px;"><a href="#"><img alt="조회" src="<%=cp%>/resources/img/myShopping/btn_sort_search.gif" style="vertical-align: top;" name="searchOrdersByName" id="searchOrdersByName"></a></span>
 				상품명 또는 ISBN 검색
 			</dd>

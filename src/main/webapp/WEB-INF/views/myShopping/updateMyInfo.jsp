@@ -166,14 +166,14 @@
 				</tr>
 				<tr>
 					<th>비밀번호</th>
-					<td colspan="3"><input type="button" value="비밀번호변경" class="changePwdBtn" onclick="showWindow('myShopping/updatePwd',400)"></td>
+					<td colspan="3"><input type="button" value="비밀번호변경" class="changePwdBtn" onclick="showWindow('myShopping/updatePwd',400)" style="height: 25px; font-size: 9pt;"></td>
 				</tr>
 				<tr>
 					<th>주소</th>
 					<td colspan="3">
 						<div style="padding-top: 10px; padding-bottom: 10px;">
 							<input type="text" name="zipCode" id="zipCode" value="${userInfo.zipCode }">&nbsp;&nbsp;
-							<input type="button" value="우편번호찾기" id="findZipcode" class="findZipcode" style="color: white; background-color: #937354; border: none; height: 23px; font-size: 12px;"><br/>
+							<input type="button" value="우편번호찾기" id="findZipcode" class="findZipcode" style="color: white; background-color: #937354; border: none; height: 25px; font-size: 12px; width: 100px; cursor: pointer;"><br/>
 							<div>
 								<input type="text" name="address1" id="address1" style="width: 350px; margin-top: 3px;" value="${userInfo.address1 }">&nbsp;&nbsp;
 								<input type="text" name="address2" id="address2" style="width: 250px;" value="${userInfo.address2 }">

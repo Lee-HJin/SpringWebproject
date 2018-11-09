@@ -169,8 +169,8 @@
 				<th style="width: 500px;">제목</th>
 				<th>답변여부</th>
 			</tr>
-			<tr>
-				<td colspan="4" height="100px;">최근 주문내역이 없습니다.</td>
+			<tr height="100px;">
+				<td colspan="4">최근 주문내역이 없습니다.</td>
 			</tr>
 		</table>
 	</div>

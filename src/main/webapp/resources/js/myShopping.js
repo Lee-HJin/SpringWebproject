@@ -970,12 +970,14 @@ function goShoppingCart(){
 	var flag = true;
 	var ordCnt = 1;
 	
+	if(checkArray.length==0){
+		alert("쇼핑카트에 담을 상품을 선택해주세요.");
+	}
+	
 	
 	if(items){
 		var itemArray=items.split('/');
 		var cookie = new Array();	
-		
-		alert(itemArray.length);
 		
 		for(i=0;i<itemArray.length;i++){
 			cookie[i] = JSON.parse(itemArray[i]);
@@ -997,11 +999,8 @@ function goShoppingCart(){
 		}
 		if(flag==false){
 			
-			alert("쿠키추가하장");
-			
 			for(i=0;i<checkArray.length;i++){
 				var cookieValue = JSON.stringify({"isbn":checkArray[i],"orderCount":ordCnt});
-				alert(cookieValue);
 				itemArray.push(cookieValue);
 			}
 			setCookie('shop',itemArray.join('/'),1);

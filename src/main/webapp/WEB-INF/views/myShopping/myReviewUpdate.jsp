@@ -53,11 +53,11 @@
 		<table>
 			<tr>
 				<th>리뷰 제목</th>
-				<td><input type="text" name="reviewTitle" value="${dto.reviewTitle }" style="height: 20px; width: 300px;"></td>
+				<td><input type="text" name="reviewTitle" value="${dto.reviewTitle }" style="height: 20px; width: 300px; border: 1px solid #d5d5d5; font-size: 10pt;"></td>
 			</tr>
 			<tr>
 				<th>내용</th>
-				<td height="240px;"><textarea rows="12" cols="100" name="contents">${dto.contents }</textarea></td>
+				<td height="240px;"><textarea rows="12" cols="100" name="contents" style="border: 1px solid #d5d5d5; font-size: 10pt;">${dto.contents }</textarea></td>
 			</tr>
 		</table>
 		

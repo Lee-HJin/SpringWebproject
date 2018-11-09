@@ -25,7 +25,7 @@
 		</ul>
 		</c:forEach>	
 	</div>
-	<div style="text-align: center; clear: both;">
+	<div style="text-align: center; clear: both; margin-top: 10px;">
 	<p>
 		<c:if test="${totalDataCount!=0 }">
 			${pageIndexList }
