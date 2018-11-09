@@ -9,6 +9,16 @@
 <link rel="stylesheet" href="<%=cp%>/resources/css/main.css" type="text/css"/>
 
 <script type="text/javascript">
+
+	$(document).ready(function(){
+	    $("#hide").click(function(){
+	        $("p").hide();
+	    });
+	    $("#show").click(function(){
+	        $("p").show();
+	    });
+	});
+
 	function toggleDisplay(num) {
 		var con = document.getElementById("layer" + num);
 		if (con.style.display == 'none') {
@@ -276,7 +286,7 @@
 								<a href="<%=cp %>/myShopping/pre_updateMyInfo.action?mode=update">회원정보</a>
 							</div>
 						</div></li>
-					<li class="t_menu"><a href="javascript://" class="t_menu_link">고객센터</a>
+					<li class="t_menu"><a href="<%=cp %>/help/helpMain.action" class="t_menu_link">고객센터</a>
 					</li>
 					<li class="t_menu store"><a href="<%=cp %>/store.action"
 						class="t_menu_link" onmouseover="javascript:toggleDisplay2('02')"
