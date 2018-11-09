@@ -267,14 +267,30 @@
 			<ul class="listRN mt20">
 				<li><img
 					src="http://blog.bandinlunis.com/bandi_blog/images/common/list_prev.gif"
-					alt="이전글" class="al_middle"> <a
-					href="javascript:goReview2(${preDto.reviewId })">${preDto.reviewTitle }</a>
-					<p class="t_gr">${preDto.username }</p></li>
+					alt="이전글" class="al_middle"> <c:choose>
+						<c:when test="${empty preDto }">
+							게시물이 없습니다.
+						</c:when>
+
+						<c:otherwise>
+							<a href="javascript:goReview2(${preDto.reviewId })">${preDto.reviewTitle }</a>
+							<p class="t_gr">${preDto.username }</p>
+						</c:otherwise>
+					</c:choose></li>
 				<li class="alt"><img
 					src="http://blog.bandinlunis.com/bandi_blog/images/common/list_next.gif"
-					alt="다음글" class="al_middle"> <a
-					href="javascript:goReview2(${nextDto.reviewId })">${nextDto.reviewTitle }</a>
-					<p class="t_gr">${nextDto.username }</p></li>
+					alt="다음글" class="al_middle"> <c:choose>
+						<c:when test="${empty nextDto }">
+							게시물이 없습니다.
+						</c:when>
+
+						<c:otherwise>
+							<a href="javascript:goReview2(${nextDto.reviewId })">${nextDto.reviewTitle }</a>
+							<p class="t_gr">${nextDto.username }</p>
+
+						</c:otherwise>
+
+					</c:choose></li>
 			</ul>
 		</div>
 

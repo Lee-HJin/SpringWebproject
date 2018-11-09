@@ -10,18 +10,34 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>메인_소설 도서부분</title>
+<title>도서 목록</title>
 
+<style type="text/css">
+.prod_info .txt_desc .review_point {
+	display: block;
+	overflow: hidden;
+	float: left;
+	width: 79px;
+	height: 14px;
+	margin-right: 7px;
+	background:
+		url(/webproject/resources/images/searchN/sp_review_point.gif) 0 0
+		no-repeat
+}
+
+.prod_info .txt_desc .review_point span {
+	float: left;
+	height: 14px;
+	background:
+		url(/webproject/resources/images/searchN/sp_review_point.gif) 0 -18px
+		no-repeat
+}
+</style>
 <!-- 베스트셀러 css -->
-<link rel="stylesheet"
-	href="/webproject/resources/common/css/bnlBSList2.css" type="text/css">
 <link rel="stylesheet"
 	href="/webproject/resources/common/css/bnlBSList2.css" type="text/css">
 
 <link rel="stylesheet" href="/webproject/resources/book_css/class.css"
-	type="text/css">
-
-<link rel="stylesheet" href="/webproject/resources/book_css/common.css"
 	type="text/css">
 
 <link rel="stylesheet"
@@ -432,7 +448,30 @@
 					<!-- 베스트셀러 시작 -->
 
 					<div id="menu_best" class="tab-pane in active">
+						<div class="prod_sort">
+							<div class="sorting">
+								<ul class="con01">
+									<li><a id="sort1" style="cursor: pointer;">판매량순</a></li>
+									<li><a id="sort2" style="cursor: pointer;">발행일순</a></li>
+									<li><a id="sort6" style="cursor: pointer;">상품명순</a></li>
+									<li class="alt"><a id="sort10" style="cursor: pointer;">가격순</a></li>
+								</ul>
+								<div class="con02">
+									<p>
+										<select class="changeListSize">
+											<option value="20" selected="">10개씩</option>
+											<option value="40">20개씩</option>
+											<option value="60">30개씩</option>
+										</select>
+									</p>
+								</div>
+							</div>
 
+							<h4>
+								<strong>${dto_Main.categoryName }</strong> 베스트셀러 목록입니다.
+							</h4>
+
+						</div>
 						<div class="con_t2">
 
 							<!-- EL / JSTL / Foreach  -->
@@ -449,12 +488,12 @@
 												</span>
 												</span>
 												<div class="prod_thumb_img">
-													<a href="/front/product/detailProduct.do?isbn=4181047"
+													<a href="/webproject/book_info.action?isbn=${dto.isbn }"
 														onfocus="this.blur();"> <img
 														src="<%=cp %>/resources/image/book/${dto.bookImage }">
-														<!-- onerror="this.src='/images/common/noimg_type01.gif';"  -->
+
 													</a> <a class="btn_popup" target="_blank"
-														href="/front/product/detailProduct.do?isbn=4181047"><span
+														href="/webproject/book_info.action?isbn=${dto.isbn }"><span
 														class="ico_new">새창열기</span></a>
 												</div>
 												<a class="btn_preview"
@@ -463,7 +502,7 @@
 
 											<dl class="prod_info">
 												<dt>
-													<a href="/front/product/detailProduct.do?isbn=4181047"
+													<a href="/webproject/book_info.action?isbn=${dto.isbn }"
 														onfocus="this.blur();"> ${dto.bookTitle } </a> <span
 														class="tag_area"> <span class="tag_best"><span>베스트</span></span>
 														<span class="tag_recom"><span>반디추천</span></span> <span
@@ -540,6 +579,33 @@
 
 					<!-- 새로나온 책 시작  -->
 					<div id="menu_new" class="tab-pane fade">
+						<div class="prod_sort">
+							<div class="sorting">
+								<ul class="con01">
+									<li><a id="sort1" style="cursor: pointer;">판매량순</a></li>
+									<li><a id="sort2" style="cursor: pointer;">발행일순</a></li>
+									<li><a id="sort6" style="cursor: pointer;">상품명순</a></li>
+									<li class="alt"><a id="sort10" style="cursor: pointer;">가격순</a></li>
+								</ul>
+								<div class="con02">
+									<p>
+										<select class="changeListSize">
+											<option value="20" selected="">10개씩</option>
+											<option value="40">20개씩</option>
+											<option value="60">30개씩</option>
+										</select>
+									</p>
+								</div>
+							</div>
+
+							<h4>
+								<strong>${dto_Main.categoryName }</strong> 새로나온 책에 <strong>${lists_New_Num }</strong>개
+								의 상품이 등록되어 있습니다.
+							</h4>
+						</div>
+
+
+
 						<div class="con_t2">
 
 							<!-- EL / JSTL / Foreach  -->
@@ -556,12 +622,12 @@
 												</span>
 												</span>
 												<div class="prod_thumb_img">
-													<a href="/front/product/detailProduct.do?isbn=4181047"
+													<a href="/webproject/book_info.action?isbn=${dto.isbn }"
 														onfocus="this.blur();"> <img
 														src="<%=cp %>/resources/image/book/${dto.bookImage }">
 														<!-- onerror="this.src='/images/common/noimg_type01.gif';"  -->
 													</a> <a class="btn_popup" target="_blank"
-														href="/front/product/detailProduct.do?isbn=4181047"><span
+														href="/webproject/book_info.action?isbn=${dto.isbn }"><span
 														class="ico_new">새창열기</span></a>
 												</div>
 												<a class="btn_preview"
@@ -570,12 +636,10 @@
 
 											<dl class="prod_info">
 												<dt>
-													<a href="/front/product/detailProduct.do?isbn=4181047"
-														onfocus="this.blur();"> ${dto.bookTitle } </a> <span
-														class="tag_area"> <span class="tag_best"><span>베스트</span></span>
-														<span class="tag_recom"><span>반디추천</span></span> <span
-														class="tag_free"><span>무료배송</span></span>
-													</span>
+													<a href="/webproject/book_info.action?isbn=${dto.isbn }"
+														onfocus="this.blur();"> ${dto.bookTitle } </a> </span> <span
+														class="tag_recom"><span>반디추천</span></span> <span
+														class="tag_free"><span>무료배송</span></span> </span>
 												</dt>
 												<dd class="txt_block">
 													<span>${dto.authorName }</span> <span class="gap">|</span>
@@ -593,9 +657,8 @@
 													<div class="review_point">
 														<span style="width: ${dto.rate*10 }%;"></span>
 													</div>
-													<strong>${dto.rate }</strong> <a
-														href="/front/product/detailProduct.do?isbn=4181047#sub10"
-														target="_blank">리뷰<em>(${dto.reviewCnt })</em></a>
+													<strong>${dto.rate }</strong> 
+														리뷰<em>(${dto.reviewCnt })</em>
 												</dd>
 												<dd class="txt_bex">${dto.introduction }...</dd>
 												<dd class="txt_ebook">
@@ -644,129 +707,152 @@
 
 
 
-
-
-
 					<!-- 정가인하 시작 -->
 					<div id="menu_discount" class="tab-pane fade">
-						<div class="con_t2">
-
-							<!-- EL / JSTL / Foreach  -->
-							<c:forEach var="dto" items="${lists_Discount }">
-								<div class="prod_list_type prod_best_type">
-									<ul>
-										<li><input class="checkbox" type="checkbox"
-											value="${dto.isbn }" name="isbn" id="cart_isbn${dto.isbn }">
-											<div class="prod_thumb">
-												<span class="ranking"> <span class="rank_num">${dto.rnum }</span>
-													<span class="rank_change"> <img
-														src="http://image.bandinlunis.com/images/common/2014/ico_best_same.gif"
-														alt="-"> <!-- 0 -->
-												</span>
-												</span>
-												<div class="prod_thumb_img">
-													<a href="/front/product/detailProduct.do?isbn=4181047"
-														onfocus="this.blur();"> <img
-														src="<%=cp %>/resources/image/book/${dto.bookImage }">
-														<!-- onerror="this.src='/images/common/noimg_type01.gif';"  -->
-													</a> <a class="btn_popup" target="_blank"
-														href="/front/product/detailProduct.do?isbn=4181047"><span
-														class="ico_new">새창열기</span></a>
-												</div>
-												<a class="btn_preview"
-													href="javascript:popPreview('${dto.isbn }');">미리 보기</a>
-											</div>
-
-											<dl class="prod_info">
-												<dt>
-													<a href="/front/product/detailProduct.do?isbn=4181047"
-														onfocus="this.blur();"> ${dto.bookTitle } </a> <span
-														class="tag_area"> <span class="tag_best"><span>베스트</span></span>
-														<span class="tag_recom"><span>반디추천</span></span> <span
-														class="tag_free"><span>무료배송</span></span>
-													</span>
-												</dt>
-												<dd class="txt_block">
-													<span>${dto.authorName }</span> <span class="gap">|</span>
-													<span>${dto.publisher }</span> <span class="txt_date"><span
-														class="gap">|</span> <span>${dto.publishDate }</span></span>
-												</dd>
-												<dd class="mt5">
-													<p>
-														<span class="txt_reprice">${dto.bookPrice }</span> <span
-															class="txt_arrow">→</span> <span class="txt_price"><strong><em>${dto.discountedPrice }</em>원</strong>
-															(${dto.discountRate }%↓+5%P)</span>
-													</p>
-												</dd>
-												<dd class="txt_desc">
-													<div class="review_point">
-														<span style="width: ${dto.rate*10 }%;"></span>
-													</div>
-													<strong>${dto.rate }</strong> <a
-														href="/front/product/detailProduct.do?isbn=4181047#sub10"
-														target="_blank">리뷰<em>(${dto.reviewCnt })</em></a>
-												</dd>
-												<dd class="txt_bex">${dto.introduction }...</dd>
-												<dd class="txt_ebook">
-													<span>지금 주문하면 <strong class="t_red">내일</strong>받을 수
-														있습니다.
-													</span>
-												</dd>
-											</dl>
-
-											<dl class="prod_btn">
-												<dt>
-													<span class="num_txt">수량</span> <input type="text"
-														id="cntVal_${dto.isbn }" value="1" class="num" size="3"
-														maxlength="2" onkeydown="onlyNumber();" onkeyup="">
-													<span class="btn_updn_wrap"> <a
-														href="javascript:cntUp('${dto.isbn }');"
-														class="btn_num_up">▲</a> <a
-														href="javascript:cntDown('${dto.isbn }');"
-														class="btn_num_dn">▼</a>
-													</span>
-												</dt>
-
-												<dd>
-													<a href="javascript:addCart('${dto.isbn }');"><span
-														class="btn_b_comm btype_f1">쇼핑카트</span></a>
-												</dd>
-												<dd class="mt3">
-													<a href="javascript:goOrder('${dto.isbn }');"><span
-														class="btn_w_comm btype_f1">바로구매</span></a>
-												</dd>
-												<dd class="mt3">
-													<a
-														href="javascript:add_wish_array_common('${dto.isbn }', true);"><span
-														class="btn_w_comm btype_f1">위시리스트</span></a>
-												</dd>
-											</dl></li>
+						
+							<div class="prod_sort">
+								<div class="sorting">
+									<ul class="con01">
+										<li><a id="sort1" style="cursor: pointer;">판매량순</a></li>
+										<li><a id="sort2" style="cursor: pointer;">발행일순</a></li>
+										<li><a id="sort6" style="cursor: pointer;">상품명순</a></li>
+										<li class="alt"><a id="sort10" style="cursor: pointer;">가격순</a></li>
 									</ul>
+									<div class="con02">
+										<p>
+											<select class="changeListSize">
+												<option value="10" selected="">10개씩</option>
+												<option value="20">20개씩</option>
+												<option value="30">30개씩</option>
+											</select>
+										</p>
+									</div>
 								</div>
-							</c:forEach>
 
+								<h4>
+									<strong>${dto_Main.categoryName }</strong> 정가인하 도서에 <strong>${lists_Discount_Num }</strong>개
+									의 상품이 등록되어 있습니다.
+								</h4>
+
+							</div>
+
+							<div class="con_t2">
+								<!-- EL / JSTL / Foreach  -->
+								<c:forEach var="dto" items="${lists_Discount }">
+									<div class="prod_list_type prod_best_type">
+										<ul>
+											<li><input class="checkbox" type="checkbox"
+												value="${dto.isbn }" name="isbn" id="cart_isbn${dto.isbn }">
+												<div class="prod_thumb">
+													<span class="ranking"> <span class="rank_num">${dto.rnum }</span>
+														<span class="rank_change"> <img
+															src="http://image.bandinlunis.com/images/common/2014/ico_best_same.gif"
+															alt="-"> <!-- 0 -->
+													</span>
+													</span>
+													<div class="prod_thumb_img">
+														<a href="/webproject/book_info.action?isbn=${dto.isbn }"
+															onfocus="this.blur();"> <img
+															src="<%=cp %>/resources/image/book/${dto.bookImage }">
+
+														</a> <a class="btn_popup" target="_blank"
+															href="/webproject/book_info.action?isbn=${dto.isbn }"><span
+															class="ico_new">새창열기</span></a>
+													</div>
+													<a class="btn_preview"
+														href="javascript:popPreview('${dto.isbn }');">미리 보기</a>
+												</div>
+
+												<dl class="prod_info">
+													<dt>
+														<a href="/webproject/book_info.action?isbn=${dto.isbn }"
+															onfocus="this.blur();"> ${dto.bookTitle } </a> <span
+															class="tag_area"> <span class="tag_best"><span>베스트</span></span>
+															<span class="tag_recom"><span>반디추천</span></span> <span
+															class="tag_free"><span>무료배송</span></span>
+														</span>
+													</dt>
+													<dd class="txt_block">
+														<span>${dto.authorName }</span> <span class="gap">|</span>
+														<span>${dto.publisher }</span> <span class="txt_date"><span
+															class="gap">|</span> <span>${dto.publishDate }</span></span>
+													</dd>
+													<dd class="mt5">
+														<p>
+															<span class="txt_reprice">${dto.bookPrice }</span> <span
+																class="txt_arrow">→</span> <span class="txt_price"><strong><em>${dto.discountedPrice }</em>원</strong>
+																(${dto.discountRate }%↓+5%P)</span>
+														</p>
+													</dd>
+													<dd class="txt_desc">
+														<div class="review_point">
+															<span style="width: ${dto.rate*10 }%;"></span>
+														</div>
+														<strong>${dto.rate }</strong> 
+															
+														리뷰<em>(${dto.reviewCnt })</em>
+													</dd>
+													<dd class="txt_bex">${dto.introduction }...</dd>
+													<dd class="txt_ebook">
+														<span>지금 주문하면 <strong class="t_red">내일</strong>받을 수
+															있습니다.
+														</span>
+													</dd>
+												</dl>
+
+												<dl class="prod_btn">
+													<dt>
+														<span class="num_txt">수량</span> <input type="text"
+															id="cntVal_${dto.isbn }" value="1" class="num" size="3"
+															maxlength="2" onkeydown="onlyNumber();" onkeyup="">
+														<span class="btn_updn_wrap"> <a
+															href="javascript:cntUp('${dto.isbn }');"
+															class="btn_num_up">▲</a> <a
+															href="javascript:cntDown('${dto.isbn }');"
+															class="btn_num_dn">▼</a>
+														</span>
+													</dt>
+
+													<dd>
+														<a href="javascript:addCart('${dto.isbn }');"><span
+															class="btn_b_comm btype_f1">쇼핑카트</span></a>
+													</dd>
+													<dd class="mt3">
+														<a href="javascript:goOrder('${dto.isbn }');"><span
+															class="btn_w_comm btype_f1">바로구매</span></a>
+													</dd>
+													<dd class="mt3">
+														<a
+															href="javascript:add_wish_array_common('${dto.isbn }', true);"><span
+															class="btn_w_comm btype_f1">위시리스트</span></a>
+													</dd>
+												</dl></li>
+										</ul>
+									</div>
+								</c:forEach>
+
+
+							</div>
+							<!-- con_t2 -->
 
 						</div>
-						<!-- con_t2 -->
+						<!-- 정가인하 끝 -->
+
+
 
 					</div>
-					<!-- 정가인하 끝 -->
-
-
+					<!-- tabContent -->
 
 				</div>
-				<!-- tabContent -->
+				<!-- Dynamic Tabs Div -->
 
 			</div>
-			<!-- Dynamic Tabs Div -->
 
+			<!-- 가운데 레이아웃 -->
 		</div>
 
-		<!-- 가운데 레이아웃 -->
-	</div>
-
-	<!-- footer -->
-	<jsp:include page="../../common/footer.jsp" flush="false" />
+		<!-- footer -->
+		<jsp:include page="../../common/footer.jsp" flush="false" />
 </body>
 
 <script type="text/javascript">
