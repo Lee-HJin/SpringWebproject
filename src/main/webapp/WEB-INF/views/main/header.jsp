@@ -173,6 +173,12 @@
 	}
 
 </script>
+<link rel="stylesheet" href="/bandi/resources/help_css/common.css?v=20180705" type="text/css">
+<link rel="shortcut icon" href="http://bandinlunis.com/favicon.ico"	type="image/x-icon">
+<link rel="stylesheet" href="/bandi/resources/help_css/class.css" type="text/css">
+<link rel="stylesheet" href="http://bandinlunis.com/common/css/center.css" type="text/css">
+<link rel="stylesheet" href="http://bandinlunis.com/common/css/common.css?v=20180705" type="text/css">
+<link rel="stylesheet" href="<%=cp%>/resources/css/main.css" type="text/css"/>
 </head>
 <body>
 	<div id="onTop" class="top_btn">
@@ -316,9 +322,51 @@
 							<div>
 								<a href="<%=cp%>/store.action?params=13">롯데울산점</a>
 							</div>
-						</div></li>
+						</div>
+					</li>
 				</ul>
 			</div>
+			
+			<!-- 검색 -->
+			<div class="wrap_search" style="margin-right: 120px;">
+				<form id="searchForm" action="/webproject/search/search.do"
+					method="post">
+					<fieldset>
+						<legend>검색</legend>
+						<div class="bbox">
+							<div class="window_wrap">
+								<input type="hidden" id="ad_url" value="http://www.bandinlunis.com/front/product/detailProduct.do?prodId=4202976">
+								<input type="text" title="검색" id="sch_keyword" name="searchValue" maxlength="255" class="box_window"
+									accesskey="s" autocomplete="off" value="" style="ime-mode: active;"> 
+									<span class="auto_word">										
+									<a href="javascript://;"><span>▼</span></a>
+									</span>
+							</div>
+						</div>
+
+						<button id="header_search_btn" type="submit" class="btn_search">
+							<span class="ir_wa">검색</span>
+						</button>
+
+						<input type="hidden" name="v" id="frm_v" value=""> <input
+							type="hidden" name="s" id="frm_s" value=""> <input
+							type="hidden" name="l" id="frm_l" value="20"> <input
+							type="hidden" name="o" id="frm_o" value="0"> <input
+							type="hidden" name="ps" id="frm_ps" value=""> <input
+							type="hidden" name="pt" id="frm_pt" value=""> <input
+							type="hidden" name="ct" id="frm_ct" value=""> <input
+							type="hidden" name="dt" id="frm_dt" value=""> <input
+							type="hidden" name="pq" id="frm_pq" value=""> <input
+							type="hidden" name="sp1" id="frm_sp1" value="0"> <input
+							type="hidden" name="sp2" id="frm_sp2" value="12"> <input
+							type="hidden" name="sp3" id="frm_sp3" value="-1"> <input
+							type="hidden" name="sp4" id="frm_sp4" value="7">
+					</fieldset>
+
+				</form>				
+			</div>
+			<!-- 검색 -->
+			
 		</div>
 
 		<div class="wrap_header">

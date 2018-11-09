@@ -111,5 +111,13 @@
 	where a.isbn=b.isbn and bookImage like '%cover%'
 </select>
 
+<!-- 자주묻는 질문 -->  
+ <select id="topView" parameterType="hashMap" resultType="com.spring.webproject.dto.QuestionDTO">	
+	select b.typeId, a.questionId, b.parentsTypeId,a.subject from
+	( select *  from questions order by hitcount desc) a, consultationType b
+<![CDATA[
+	where a.typeid = b.typeid and rownum <= 6
+]]>
+</select>
 
 </mapper>
