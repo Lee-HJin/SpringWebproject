@@ -1,17 +1,31 @@
 package com.spring.webproject.dto;
 
 public class CounselDTO {
-	//consultId, userName, email, subject, content, consultationDate, typeId
+	//consultId, userName, email, subject, contents, consultationDate, typeId
 	private int consultId;
 	private String userId;
 	private String userName;
 	private String email;
 	private String subject;
-	private String content;
+	private String contents;
 	private String consultationDate;
 	private String answerCheck;	
 	private String typeId;
+	private String parentsTypeId;
 	
+
+	public String getContents() {
+		return contents;
+	}
+	public void setContents(String contents) {
+		this.contents = contents;
+	}
+	public String getParentsTypeId() {
+		return parentsTypeId;
+	}
+	public void setParentsTypeId(String parentsTypeId) {
+		this.parentsTypeId = parentsTypeId;
+	}
 	public int getConsultId() {
 		return consultId;
 	}
@@ -42,12 +56,7 @@ public class CounselDTO {
 	public void setSubject(String subject) {
 		this.subject = subject;
 	}	
-	public String getContent() {
-		return content;
-	}
-	public void setContent(String content) {
-		this.content = content;
-	}
+	
 	public String getConsultationDate() {
 		return consultationDate;
 	}

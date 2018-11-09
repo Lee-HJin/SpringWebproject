@@ -22,19 +22,17 @@
 
 $(document).ready(function() {
 
-	$("#testText").autocomplete({
+	$("#sch_keyword1").autocomplete({
 		
 		source : function(request, response) {
 
 			$.ajax({
 
-				url : "/search/autocomplete.do",
-				type : "post",
-				dataType : "json",
-				data: { term : request.term, param1 : "param1 Value", param2 : "param2 Value"},
-				contentType: "application/x-www-form-urlencoded; charset=UTF-8",  
-				data : request,
-
+				url : "<c:url value='/search/autocomplete.do' />",
+				type : 'post',
+				dataType : 'json',				
+				data: "searchValue="+$("#sch_keyword1").val(),
+				contentType: "application/x-www-form-urlencoded; charset=UTF-8",
 				success : function(data) {
 
 					var result = data;
@@ -59,7 +57,7 @@ $(document).ready(function() {
 <body>
 	
 	<form id="testform" name="testform" align="center">
-		<input type="text" id="testText" placeholder="직원 이름을 입력하세요">
+		<input type="text" id="sch_keyword1" name=searchValue placeholder="직원 이름을 입력하세요">
 		<input type="button" value="Click" class="button" />
 	</form>
 	

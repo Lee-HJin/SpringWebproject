@@ -268,50 +268,7 @@ $(document).ready(function(){
 
 					</form>
 						
-					<div class="layer_search" id="AREA_AKC">
-						<div class="inner_words">
-							<ul id="AREA_AKC_WORDS">
-								<li value="4131060" onmouseover="onMouseAkcWord('4131060');" onmouseout="outMouseAkcWord('4131060');">
-								<a href="javascript:akcChangeKwd(0)"><span class="txt_keywords">[도서] 강성태 영단어 어원편 - 강성태</span></a>
-								<input type="hidden" class="akc_hidden_words" value="강성태 영단어 어원편 - 강성태">
-								</li>																
-							</ul>
-						</div>
 					
-						<div class="inner_product" id="AREA_AKC_EXACT">
-							<span class="txt_category">[중/고등참고서]</span>
-							<a href="http://www.bandinlunis.com/front/product/detailProduct.do?prodId=4131060" target="_blank">
-							<span class="txt_title">강성태 영단어 어원편</span></a>
-						
-							<div class="thumb_left_big">
-								<a href="http://www.bandinlunis.com/front/product/detailProduct.do?prodId=4131060" target="_blank">
-								<img src="http://image.bandinlunis.com/upload/product/4131/4131060.jpg" onerror="this.src='/images/common/noimg_type01.gif'">
-								</a>
-							</div>
-						
-							<dl class="select_product">
-								<dd>
-									<span class="info">
-									<span class="first_child">강성태</span>
-									<span>키출판사</span>
-									</span>
-								</dd>
-							
-								<dd>2017년 12월</dd>
-								<dd><div class="review_point"><span style="width:95%"></span></div></dd>
-								<dd><span class="txt_price"><span class="txt_sale">16,000원</span> → <strong>14,400</strong>원</span></dd>
-								<dd><span class="txt_price">(<em>10%</em>↓ + <em>5%</em>P)</span></dd>
-							</dl>
-						
-							<div class="btn_select_area">
-								<span class="btn_type brown"><a href="javascript:addCart(4131060);">쇼핑카트</a></span>
-							</div>
-						</div>
-					
-						<p class="inner_func">
-						<span><a href="javascript://">기능 끄기</a></span>
-						</p>
-					</div>
 					
 					
 					<hr>
