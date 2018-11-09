@@ -120,4 +120,16 @@
 ]]>
 </select>
 
+<!-- 정가인하 도서 2개뽑기 -->
+<select id="dcBook" resultType="com.spring.webproject.dto.BookSectionsDTO">
+	select * from (
+	select rownum rnum, data.* from (
+	select bookTitle,bookImage,authorName,isbn,bookPrice,discountedPrice from bookSections
+	order by dbms_random.value
+	) data)
+<![CDATA[
+	where rnum <= 2
+]]>
+</select>
+
 </mapper>
