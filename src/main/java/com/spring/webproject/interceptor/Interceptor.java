@@ -18,8 +18,6 @@ public class Interceptor extends HandlerInterceptorAdapter{
 			String path = request.getServletPath();		//로그인페이지로 넘어오기 직전 url
 			String query = request.getQueryString();	//파라미터 값 저장
 			
-			
-			System.out.println(path);
 			HttpSession session = request.getSession();
 			
 			if(path.equals("/login.action")) {
@@ -46,17 +44,4 @@ public class Interceptor extends HandlerInterceptorAdapter{
 		
 		return true;
 	}
-	
-	@Override
-	public void postHandle(HttpServletRequest request, HttpServletResponse response, Object handler,
-			ModelAndView modelAndView) throws Exception {
-		
-		if(request.getSession().getAttribute("userInfo")==null) {
-			
-		}
-		
-		
-		super.postHandle(request, response, handler, modelAndView);
-	}
-
 }
