@@ -235,7 +235,7 @@ body{font-size: 12px;
     float: left;
     border-right: 1px solid #f2f2f2;
     width: 374px;
-    height: 454px;
+    height: 384px;
     padding: 16px 0 0 20px;
 }
 
@@ -249,7 +249,7 @@ body{font-size: 12px;
     float: left;
     border-left: 1px solid #f2f2f2;
     width: 120px;
-    height: 454px;
+    height: 384px;
     padding: 16px 0 0 20px;
 }
 
@@ -276,8 +276,8 @@ body{font-size: 12px;
     border-right: 1px solid #f2f2f2;
     padding-bottom: 20px;
     width: 98px;
-    height: 400px;}
-.cate_menu a:visited{text-decoration:none; color: #937354;}
+    height: 324px;}
+.cate_menu a:visited{text-decorationn:none; color: #937354;}
 .cate_menu li{ color: #937354;    
 	height: 15px;
     overflow: hidden;
