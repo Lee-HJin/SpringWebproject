@@ -195,73 +195,78 @@ i {
 
 <!-- 쿠키 생성 -->
 <script type="text/javascript">
-	
 	$(function() {
-		
-		var cookieValue = JSON.stringify({"isbn":"${isbn}","bookImage":"${book_image}",
-			"bookTitle":"${dto.bookTitle}","authorName":"${dto2.authorname}"});
-		
-		if(document.cookie.indexOf('rcbook')==-1){
-			setCookie('rcbook',cookieValue,1);
-		}else if(document.cookie.indexOf('rcbook')!=-1){
+
+		var cookieValue = JSON.stringify({
+			"isbn" : "${isbn}",
+			"bookImage" : "${book_image}",
+			"bookTitle" : "${dto.bookTitle}",
+			"authorName" : "${dto2.authorname}"
+		});
+
+		if (document.cookie.indexOf('rcbook') == -1) {
+			setCookie('rcbook', cookieValue, 1);
+		} else if (document.cookie.indexOf('rcbook') != -1) {
 			addCookie(cookieValue);
 		}
 	});
-	
+
 	//쿠키 생성
-	function setCookie(cName, cValue, cDay){
+	function setCookie(cName, cValue, cDay) {
 		var expire = new Date();
-	    expire.setDate(expire.getDate() + cDay);
-	    cookies = cName + '=' + escape(cValue) + '; path=/ ';
-	    if(typeof cDay != 'undefined') cookies += ';expires=' + expire.toGMTString() + ';';
-	    document.cookie = cookies;
+		expire.setDate(expire.getDate() + cDay);
+		cookies = cName + '=' + escape(cValue) + '; path=/ ';
+		if (typeof cDay != 'undefined')
+			cookies += ';expires=' + expire.toGMTString() + ';';
+		document.cookie = cookies;
 	}
-	
+
 	//기존 쿠키에 추가
-	function addCookie(cValue){
+	function addCookie(cValue) {
 		var items = getCookie('rcbook');
 		var maxItemNum = 10;
-		
-		if(items){
-			var itemArray=items.split('/');
-			
-			if(itemArray.indexOf(cValue)!=-1){//중복시 기존 제거 후 맨앞으로 가져옴
+
+		if (items) {
+			var itemArray = items.split('/');
+
+			if (itemArray.indexOf(cValue) != -1) {//중복시 기존 제거 후 맨앞으로 가져옴
 				var idx = itemArray.findIndex(function(item) {
 					return item === cValue;
 				});
 				alert(idx);
-				itemArray.splice(idx,1);
-		
+				itemArray.splice(idx, 1);
+
 				itemArray.unshift(cValue);
-				if(itemArray.length>maxItemNum){
-					itemArray.length=10;}	
+				if (itemArray.length > maxItemNum) {
+					itemArray.length = 10;
+				}
 				items = itemArray.join('/');
-				setCookie('rcbook',items,1);
-				
-			}else{
+				setCookie('rcbook', items, 1);
+
+			} else {
 				itemArray.unshift(cValue);
-				if(itemArray.length>maxItemNum){
-					itemArray.length=10;}	
+				if (itemArray.length > maxItemNum) {
+					itemArray.length = 10;
+				}
 				items = itemArray.join('/');
-				setCookie('rcbook',items,1);
+				setCookie('rcbook', items, 1);
 			}
 		}
 	}
-			
-	function getCookie(cookiename){
-		var cookiestring  = document.cookie;
+
+	function getCookie(cookiename) {
+		var cookiestring = document.cookie;
 		var cookiearray = cookiestring.split(';');
-		for(var i =0 ; i < cookiearray.length ; ++i){ 
-		    if(cookiearray[i].indexOf(cookiename)!=-1){ 
-		        var ck = [];
-		        var nameVal = cookiearray[i].split( "=" );
-	            var value = nameVal[1].trim();
-		        ck+= value;
-		    }
-		} 
+		for (var i = 0; i < cookiearray.length; ++i) {
+			if (cookiearray[i].indexOf(cookiename) != -1) {
+				var ck = [];
+				var nameVal = cookiearray[i].split("=");
+				var value = nameVal[1].trim();
+				ck += value;
+			}
+		}
 		return unescape(ck);
 	}
-
 </script>
 
 
@@ -321,19 +326,19 @@ i {
 									<th>신림역점</th>
 								</tr>
 								<tr>
-									
 
-										
-											<td>${dto4.g }</td>
-										
-										
-											<td>${dto4.c }</td>
-									
-										
-											<td>${dto4.h }</td>
-										
 
-									
+
+									<td>${dto4.g }</td>
+
+
+									<td>${dto4.c }</td>
+
+
+									<td>${dto4.h }</td>
+
+
+
 								</tr>
 								<tr>
 									<th>사당역점</th>
@@ -342,16 +347,16 @@ i {
 									</th>
 								</tr>
 								<tr>
-									
 
-										
-											<td>${dto4.i }</td>
-										
-											<td>${dto4.j }</td>
 
-											<td>${dto4.f }</td>
 
-									
+									<td>${dto4.i }</td>
+
+									<td>${dto4.j }</td>
+
+									<td>${dto4.f }</td>
+
+
 								</tr>
 								<tr>
 									<th>대구<br>신세계점
@@ -362,15 +367,15 @@ i {
 									</th>
 								</tr>
 								<tr>
-									
 
-											<td>${dto4.e }</td>
 
-											<td>${dto4.l }</td>
+									<td>${dto4.e }</td>
 
-											<td>${dto4.m }</td>
+									<td>${dto4.l }</td>
 
-									
+									<td>${dto4.m }</td>
+
+
 								</tr>
 								<tr>
 									<th>롯데피트인<br>산본점
@@ -380,14 +385,14 @@ i {
 									<th></th>
 								</tr>
 								<tr>
-									
-
-											<td>${dto4.k }</td>
 
 
-											<td>${dto4.d }</td>
+									<td>${dto4.k }</td>
 
-									
+
+									<td>${dto4.d }</td>
+
+
 									<td></td>
 								</tr>
 								<tr>
@@ -401,18 +406,16 @@ i {
 								<tr>
 
 
-											<td>${dto4.a }</td>
+									<td>${dto4.a }</td>
 
-											<td>${dto4.b }</td>
+									<td>${dto4.b }</td>
 
-									
+
 									<td></td>
 								</tr>
 							</tbody>
 						</table>
-						<div class="t_11gr mt5">
-							
-						</div>
+						<div class="t_11gr mt5"></div>
 
 
 					</div>
@@ -1040,9 +1043,7 @@ i {
 								</span></span>
 							</a> <a href="javascript:add_wish_array_common('4189934', true);"
 								class="btn_big"><span class="box_wishlist">위시리스트</span></a>
-							<div class="widget_btn">
-								
-							</div>
+							<div class="widget_btn"></div>
 							<!-- 모든 매장 재고수 LAYER -->
 
 							<div class="bookViewPop" id="bookselfInfo"
@@ -1087,17 +1088,13 @@ i {
 
 
 				<div class="etc_info">
-				
+
 
 					<div class="vote">
 						<strong>회원리뷰</strong>
-						<div class="medium_ratings" style="width: 20pt;">
-							
-						</div>
-						<span
-							class="ml10">리뷰[${reviewNum}] 간단평[${simplereviewNum }]
-						</span>
-						</span> <a href="#sub02" class="btn_w_comm btype_a4">참여하기</a>
+						<div class="medium_ratings" style="width: 20pt;"></div>
+						<span class="ml10">리뷰[${reviewNum}] 간단평[${simplereviewNum }]
+						</span> </span> <a href="#sub02" class="btn_w_comm btype_a4">참여하기</a>
 					</div>
 
 
@@ -1196,7 +1193,7 @@ i {
 				<!--// 공지사항 -->
 
 
-				
+
 
 
 
@@ -1225,7 +1222,7 @@ i {
 				</div>
 				<!-- //이 책이 속한 분야 -->
 
-		
+
 
 
 
@@ -1272,7 +1269,7 @@ i {
 
 								</ul>
 							</div>
-							
+
 							<div class="txt_profile_marge">
 								<p></p>
 								<p>${dto2.introduction }</p>
@@ -1300,7 +1297,12 @@ i {
 						<h3 class="txt_title">책 속에서</h3>
 					</div>
 					<div class="box_contents">
-						<div class="group_txt">${dto.introduction }</div>
+						<div class="group_txt">${intro1 }
+						<span id="dots">...</span> <span id="more" class = "group_txt"> ${intro2 } </span>
+					</div>
+						<div id="bookDescBtn" class="pr20">
+							<button onclick="myFunction()" id="myBtn1">펼쳐 보기</button>
+						</div>
 					</div>
 				</div>
 				<!-- //책 속에서 -->
@@ -1313,11 +1315,8 @@ i {
 						<h3 class="txt_title">목차</h3>
 					</div>
 					<div class="box_contents">
-						<div class="group_txt">
-
-							${dto.tableOfContents } <span id="dots2">...</span> <span
-								id="more2"> 이하 생략 </span>
-
+						<div class="group_txt">${cont1 }
+						<span id="dots2">...</span> <span id="more2" class = "group_txt"> ${cont2 } </span>
 						</div>
 						<div id="bookDescBtn" class="pr20">
 							<button onclick="myFunction2()" id="myBtn2">펼쳐 보기</button>

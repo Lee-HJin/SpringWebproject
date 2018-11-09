@@ -11,7 +11,27 @@
 <head>
 <meta charset="UTF-8">
 <title>메인_소설 도서부분</title>
+<style type="text/css">
+.prod_info .txt_desc .review_point {
+	display: block;
+	overflow: hidden;
+	float: left;
+	width: 79px;
+	height: 14px;
+	margin-right: 7px;
+	background:
+		url(/webproject/resources/images/searchN/sp_review_point.gif) 0 0
+		no-repeat
+}
 
+.prod_info .txt_desc .review_point span {
+	float: left;
+	height: 14px;
+	background:
+		url(/webproject/resources/images/searchN/sp_review_point.gif) 0 -18px
+		no-repeat
+}
+</style>
 <!-- 베스트셀러 css -->
 
 <link rel="stylesheet"
@@ -30,6 +50,70 @@
 <link rel="stylesheet" href="/webproject/resources/book_css/pStyle.css"
 	type="text/css">
 
+<link rel="stylesheet"
+	href="/webproject/resources/book_css/review_class.css" type="text/css">
+
+<script type="text/javascript"
+	src="/springwebview/resources/js/Main_01.js"></script>
+
+<link rel="stylesheet"
+	href="/webproject/resources/common/css/bnlBSList2.css" type="text/css">
+
+<link rel="stylesheet" href="/webproject/resources/book_css/class.css"
+	type="text/css">
+
+<link rel="stylesheet"
+	href="/webproject/resources/book_css/detail_default.css"
+	type="text/css">
+
+<link rel="stylesheet" href="/webproject/resources/book_css/pStyle.css"
+	type="text/css">
+
+<script type="text/javascript"
+	src="/webproject/resources/common/js/common.js"></script>
+
+<script type="text/javascript"
+	src="/webproject/resources/common/js/swfobject.js"></script>
+<script type="text/javascript"
+	src="/webproject/resources/common/js/flashcommon.js"></script>
+<script type="text/javascript"
+	src="/webproject/resources/common/js/AC_RunActiveContent.js"></script>
+
+<script type="text/javascript" src="/webproject/resources/js/common.js"
+	charset="euc-kr"></script>
+<script type="text/javascript"
+	src="/webproject/resources/js/JUTIL/JUTIL.js" charset="utf-8"></script>
+<script type="text/javascript" src="/webproject/resources/js/navi.js"
+	charset="euc-kr"></script>
+<script type="text/javascript"
+	src="/webproject/resources/js/partnerHeaderInfo.js"></script>
+
+<script type="text/javascript"
+	src="/webproject/resources/js/jquery/jquery.min.js"></script>
+<script type="text/javascript"
+	src="/webproject/resources/js/jquery/jquery-ui.js"></script>
+<script type="text/javascript"
+	src="/webproject/resources/js/jquery/jquery.blockUI.js"></script>
+<script type="text/javascript"
+	src="/webproject/resources/js/jquery/idangerous.swiper.js"></script>
+
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script type="text/javascript" src="https://wcs.naver.net/wcslog.js"></script>
+
+<!-- ADSSOM 신규 버전 17-11-20 -->
+<!-- ADSSOM 공통 SCRIPT -->
+<script type="text/javascript" src="https://sc.11h11m.net/s/E799.js"></script>
+<script type="text/javascript" charset="UTF-8" async=""
+	src="http://s.n2s.co.kr/_n2s_ck_log.php"></script>
+
+<script type="text/javascript" src="/webproject/resources/js/dwr.js"
+	charset="euc-kr"></script>
+<script type="text/javascript"
+	src="/webproject/resources/js/jquery/jquery.min.js"></script>
+<!-- IE8 에서 오류로 인해 일부러 넣음(jQuery 보다 dwr.util.js 가 밑에 있음 오류 발생) -->
+<script type="text/javascript"
+	src="/webproject/resources/js/multiCart.js"></script>
 
 <script type="text/javascript"
 	src="/springwebview/resources/js/Main_01.js"></script>
@@ -201,11 +285,7 @@
 
 	<jsp:include page="../../../common/header.jsp" flush="false" />
 
-	<br />
-	<br />
-	<br />
-
-	<div id="contentBody" style="width: 1100px;">
+	<div id="contentBody" style="width: 1100px; margin-bottom: 50px;">
 
 		<!-- 좌측 템플릿 시작 -->
 		<div class="side_t2 ml5">
@@ -214,7 +294,7 @@
 				<ul class="cate_d1">
 					<!-- 중분류 -->
 					<li id="kidsCate_821" class="cate_d1_li "><a
-						href="/front/product/bookCategoryMain.do?cateId=821"
+						href="/webproject/book_cate.action?categoryId="
 						class="cate_d1_link" onmouseover="javascript:toggleDisplay3('01')"
 						onmouseout="javascript:toggleDisplay3('01')">한국소설</a> <!-- 소분류 -->
 						<div class="cate_d2" id="left2_layer01"
@@ -227,59 +307,50 @@
 								<ul>
 
 									<li class="cate_d2_link "><a
-										href="/front/product/bookCategoryMain.do?cateId=822">현대소설</a></li>
+										href="/webproject/book_cate.action?categoryId=">현대소설</a></li>
 
 									<li class="cate_d2_link "><a
-										href="/front/product/bookCategoryMain.do?cateId=826">고전/명작소설</a>
+										href="/webproject/book_cate.action?categoryId=">고전/명작소설</a></li>
+
+									<li class="cate_d2_link "><a
+										href="/webproject/book_cate.action?categoryId=">공포/무협소설</a></li>
+
+									<li class="cate_d2_link "><a
+										href="/webproject/book_cate.action?categoryId=">추리/범죄/스릴러소설</a>
 									</li>
 
 									<li class="cate_d2_link "><a
-										href="/front/product/bookCategoryMain.do?cateId=827">공포/무협소설</a>
+										href="/webproject/book_cate.action?categoryId=">로맨스/인터넷소설</a>
 									</li>
 
 									<li class="cate_d2_link "><a
-										href="/front/product/bookCategoryMain.do?cateId=831">추리/범죄/스릴러소설</a>
+										href="/webproject/book_cate.action?categoryId=">SF/판타지소설</a></li>
+
+									<li class="cate_d2_link "><a
+										href="/webproject/book_cate.action?categoryId=">동화/우화소설</a></li>
+
+									<li class="cate_d2_link "><a
+										href="/webproject/book_cate.action?categoryId=">가족/성장소설</a></li>
+
+									<li class="cate_d2_link "><a
+										href="/webproject/book_cate.action?categoryId=">드라마/영화소설</a></li>
+
+									<li class="cate_d2_link "><a
+										href="/webproject/book_cate.action?categoryId=">청소년소설</a></li>
+
+									<li class="cate_d2_link "><a
+										href="/webproject/book_cate.action?categoryId=">대하/역사/전쟁소설</a>
 									</li>
 
 									<li class="cate_d2_link "><a
-										href="/front/product/bookCategoryMain.do?cateId=835">로맨스/인터넷소설</a>
+										href="/webproject/book_cate.action?categoryId=">문학상수상작품</a></li>
+
+									<li class="cate_d2_link "><a
+										href="/webproject/book_cate.action?categoryId=">라이트(NT)소설</a>
 									</li>
 
 									<li class="cate_d2_link "><a
-										href="/front/product/bookCategoryMain.do?cateId=835">SF/판타지소설</a>
-									</li>
-
-									<li class="cate_d2_link "><a
-										href="/front/product/bookCategoryMain.do?cateId=835">동화/우화소설</a>
-									</li>
-
-									<li class="cate_d2_link "><a
-										href="/front/product/bookCategoryMain.do?cateId=835">가족/성장소설</a>
-									</li>
-
-									<li class="cate_d2_link "><a
-										href="/front/product/bookCategoryMain.do?cateId=835">드라마/영화소설</a>
-									</li>
-
-									<li class="cate_d2_link "><a
-										href="/front/product/bookCategoryMain.do?cateId=835">청소년소설</a>
-									</li>
-
-									<li class="cate_d2_link "><a
-										href="/front/product/bookCategoryMain.do?cateId=835">대하/역사/전쟁소설</a>
-									</li>
-
-									<li class="cate_d2_link "><a
-										href="/front/product/bookCategoryMain.do?cateId=835">문학상수상작품</a>
-									</li>
-
-									<li class="cate_d2_link "><a
-										href="/front/product/bookCategoryMain.do?cateId=835">라이트(NT)소설</a>
-									</li>
-
-									<li class="cate_d2_link "><a
-										href="/front/product/bookCategoryMain.do?cateId=835">문지사
-											한국소설전</a></li>
+										href="/webproject/book_cate.action?categoryId=">문지사 한국소설전</a></li>
 
 								</ul>
 							</div>
@@ -287,7 +358,7 @@
 
 
 					<li id="kidsCate_841" class="cate_d1_li "><a
-						href="/front/product/bookCategoryMain.do?cateId=841"
+						href="/webproject/book_cate.action?categoryId="
 						class="cate_d1_link" onmouseover="javascript:toggleDisplay3('02')"
 						onmouseout="javascript:toggleDisplay3('02')">일본소설</a> <!-- 소분류 -->
 
@@ -303,51 +374,43 @@
 								<ul>
 
 									<li class="cate_d2_link "><a
-										href="/front/product/bookCategoryMain.do?cateId=822">현대소설</a></li>
+										href="/webproject/book_cate.action?categoryId=">현대소설</a></li>
 
 									<li class="cate_d2_link "><a
-										href="/front/product/bookCategoryMain.do?cateId=826">고전/명작소설</a>
+										href="/webproject/book_cate.action?categoryId=">고전/명작소설</a></li>
+
+									<li class="cate_d2_link "><a
+										href="/webproject/book_cate.action?categoryId=">공포/무협소설</a></li>
+
+									<li class="cate_d2_link "><a
+										href="/webproject/book_cate.action?categoryId=">추리/범죄/스릴러소설</a>
 									</li>
 
 									<li class="cate_d2_link "><a
-										href="/front/product/bookCategoryMain.do?cateId=827">공포/무협소설</a>
+										href="/webproject/book_cate.action?categoryId=">로맨스/인터넷소설</a>
 									</li>
 
 									<li class="cate_d2_link "><a
-										href="/front/product/bookCategoryMain.do?cateId=831">추리/범죄/스릴러소설</a>
+										href="/webproject/book_cate.action?categoryId=">SF/판타지소설</a></li>
+
+									<li class="cate_d2_link "><a
+										href="/webproject/book_cate.action?categoryId=">동화/우화소설</a></li>
+
+									<li class="cate_d2_link "><a
+										href="/webproject/book_cate.action?categoryId=">가족/성장소설</a></li>
+
+									<li class="cate_d2_link "><a
+										href="/webproject/book_cate.action?categoryId=">드라마/영화소설</a></li>
+
+									<li class="cate_d2_link "><a
+										href="/webproject/book_cate.action?categoryId=">청소년소설</a></li>
+
+									<li class="cate_d2_link "><a
+										href="/webproject/book_cate.action?categoryId=">대하/역사/전쟁소설</a>
 									</li>
 
 									<li class="cate_d2_link "><a
-										href="/front/product/bookCategoryMain.do?cateId=835">로맨스/인터넷소설</a>
-									</li>
-
-									<li class="cate_d2_link "><a
-										href="/front/product/bookCategoryMain.do?cateId=835">SF/판타지소설</a>
-									</li>
-
-									<li class="cate_d2_link "><a
-										href="/front/product/bookCategoryMain.do?cateId=835">동화/우화소설</a>
-									</li>
-
-									<li class="cate_d2_link "><a
-										href="/front/product/bookCategoryMain.do?cateId=835">가족/성장소설</a>
-									</li>
-
-									<li class="cate_d2_link "><a
-										href="/front/product/bookCategoryMain.do?cateId=835">드라마/영화소설</a>
-									</li>
-
-									<li class="cate_d2_link "><a
-										href="/front/product/bookCategoryMain.do?cateId=835">청소년소설</a>
-									</li>
-
-									<li class="cate_d2_link "><a
-										href="/front/product/bookCategoryMain.do?cateId=835">대하/역사/전쟁소설</a>
-									</li>
-
-									<li class="cate_d2_link "><a
-										href="/front/product/bookCategoryMain.do?cateId=835">문학상수상작품</a>
-									</li>
+										href="/webproject/book_cate.action?categoryId=">문학상수상작품</a></li>
 
 
 								</ul>
@@ -359,7 +422,7 @@
 
 
 					<li id="kidsCate_853" class="cate_d1_li "><a
-						href="/front/product/bookCategoryMain.do?cateId=853"
+						href="/webproject/book_cate.action?categoryId="
 						class="cate_d1_link" onmouseover="javascript:toggleDisplay3('03')"
 						onmouseout="javascript:toggleDisplay3('03')">영미소설</a> <!-- 소분류 -->
 
@@ -373,51 +436,43 @@
 								<ul>
 
 									<li class="cate_d2_link "><a
-										href="/front/product/bookCategoryMain.do?cateId=822">현대소설</a></li>
+										href="/webproject/book_cate.action?categoryId=">현대소설</a></li>
 
 									<li class="cate_d2_link "><a
-										href="/front/product/bookCategoryMain.do?cateId=826">고전/명작소설</a>
+										href="/webproject/book_cate.action?categoryId=">고전/명작소설</a></li>
+
+									<li class="cate_d2_link "><a
+										href="/webproject/book_cate.action?categoryId=">공포/무협소설</a></li>
+
+									<li class="cate_d2_link "><a
+										href="/webproject/book_cate.action?categoryId=">추리/범죄/스릴러소설</a>
 									</li>
 
 									<li class="cate_d2_link "><a
-										href="/front/product/bookCategoryMain.do?cateId=827">공포/무협소설</a>
+										href="/webproject/book_cate.action?categoryId=">로맨스/인터넷소설</a>
 									</li>
 
 									<li class="cate_d2_link "><a
-										href="/front/product/bookCategoryMain.do?cateId=831">추리/범죄/스릴러소설</a>
+										href="/webproject/book_cate.action?categoryId=">SF/판타지소설</a></li>
+
+									<li class="cate_d2_link "><a
+										href="/webproject/book_cate.action?categoryId=">동화/우화소설</a></li>
+
+									<li class="cate_d2_link "><a
+										href="/webproject/book_cate.action?categoryId=">가족/성장소설</a></li>
+
+									<li class="cate_d2_link "><a
+										href="/webproject/book_cate.action?categoryId=">드라마/영화소설</a></li>
+
+									<li class="cate_d2_link "><a
+										href="/webproject/book_cate.action?categoryId=">청소년소설</a></li>
+
+									<li class="cate_d2_link "><a
+										href="/webproject/book_cate.action?categoryId=">대하/역사/전쟁소설</a>
 									</li>
 
 									<li class="cate_d2_link "><a
-										href="/front/product/bookCategoryMain.do?cateId=835">로맨스/인터넷소설</a>
-									</li>
-
-									<li class="cate_d2_link "><a
-										href="/front/product/bookCategoryMain.do?cateId=835">SF/판타지소설</a>
-									</li>
-
-									<li class="cate_d2_link "><a
-										href="/front/product/bookCategoryMain.do?cateId=835">동화/우화소설</a>
-									</li>
-
-									<li class="cate_d2_link "><a
-										href="/front/product/bookCategoryMain.do?cateId=835">가족/성장소설</a>
-									</li>
-
-									<li class="cate_d2_link "><a
-										href="/front/product/bookCategoryMain.do?cateId=835">드라마/영화소설</a>
-									</li>
-
-									<li class="cate_d2_link "><a
-										href="/front/product/bookCategoryMain.do?cateId=835">청소년소설</a>
-									</li>
-
-									<li class="cate_d2_link "><a
-										href="/front/product/bookCategoryMain.do?cateId=835">대하/역사/전쟁소설</a>
-									</li>
-
-									<li class="cate_d2_link "><a
-										href="/front/product/bookCategoryMain.do?cateId=835">문학상수상작품</a>
-									</li>
+										href="/webproject/book_cate.action?categoryId=">문학상수상작품</a></li>
 
 								</ul>
 							</div>
@@ -427,7 +482,7 @@
 					<!-- 중분류 -->
 
 					<li id="kidsCate_864" class="cate_d1_li "><a
-						href="/front/product/bookCategoryMain.do?cateId=864"
+						href="/webproject/book_cate.action?categoryId="
 						class="cate_d1_link" onmouseover="javascript:toggleDisplay3('04')"
 						onmouseout="javascript:toggleDisplay3('04')">기타외국소설</a> <!-- 소분류 -->
 
@@ -444,33 +499,32 @@
 
 
 									<li class="cate_d2_link "><a
-										href="/front/product/bookCategoryMain.do?cateId=865">프랑스소설</a>
-									</li>
+										href="/webproject/book_cate.action?categoryId=">프랑스소설</a></li>
 
 
 									<li class="cate_d2_link "><a
-										href="/front/product/bookCategoryMain.do?cateId=866">독일소설</a></li>
+										href="/webproject/book_cate.action?categoryId=">독일소설</a></li>
 
 
 									<li class="cate_d2_link "><a
-										href="/front/product/bookCategoryMain.do?cateId=867">중국소설</a></li>
-
-
-
-									<li class="cate_d2_link "><a
-										href="/front/product/bookCategoryMain.do?cateId=868">인도소설</a></li>
+										href="/webproject/book_cate.action?categoryId=">중국소설</a></li>
 
 
 
 									<li class="cate_d2_link "><a
-										href="/front/product/bookCategoryMain.do?cateId=869">동유럽소설</a></li>
+										href="/webproject/book_cate.action?categoryId=">인도소설</a></li>
+
+
+
+									<li class="cate_d2_link "><a
+										href="/webproject/book_cate.action?categoryId=">동유럽소설</a></li>
 
 
 									<li class="cate_d2_link "><a
-										href="/front/product/bookCategoryMain.do?cateId=869">스페인/중남미소설</a></li>
+										href="/webproject/book_cate.action?categoryId=">스페인/중남미소설</a></li>
 
 									<li class="cate_d2_link "><a
-										href="/front/product/bookCategoryMain.do?cateId=869">기타국가소설</a></li>
+										href="/webproject/book_cate.action?categoryId=">기타국가소설</a></li>
 								</ul>
 							</div>
 						</div></li>
@@ -480,7 +534,7 @@
 
 
 					<li id="kidsCate_873" class="cate_d1_li "><a
-						href="/front/product/bookCategoryMain.do?cateId=873"
+						href="/webproject/book_cate.action?categoryId="
 						class="cate_d1_link" onmouseover="javascript:toggleDisplay3('05')"
 						onmouseout="javascript:toggleDisplay3('05')">고전/명작소설</a> <!-- 소분류 -->
 
@@ -497,25 +551,25 @@
 
 
 									<li class="cate_d2_link "><a
-										href="/front/product/bookCategoryMain.do?cateId=874">한국</a></li>
+										href="/webproject/book_cate.action?categoryId=">한국</a></li>
 
 
 
 									<li class="cate_d2_link "><a
-										href="/front/product/bookCategoryMain.do?cateId=875">일본</a></li>
+										href="/webproject/book_cate.action?categoryId=">일본</a></li>
 
 
 
 									<li class="cate_d2_link "><a
-										href="/front/product/bookCategoryMain.do?cateId=876">영미</a></li>
+										href="/webproject/book_cate.action?categoryId=">영미</a></li>
 
 
 
 									<li class="cate_d2_link "><a
-										href="/front/product/bookCategoryMain.do?cateId=877">중국</a></li>
+										href="/webproject/book_cate.action?categoryId=">중국</a></li>
 
 									<li class="cate_d2_link "><a
-										href="/front/product/bookCategoryMain.do?cateId=877">기타외국</a></li>
+										href="/webproject/book_cate.action?categoryId=">기타외국</a></li>
 
 
 								</ul>
@@ -526,7 +580,7 @@
 					<!-- 중분류 -->
 
 					<li id="kidsCate_878" class="cate_d1_li "><a
-						href="/front/product/bookCategoryMain.do?cateId=878"
+						href="/webproject/book_cate.action?categoryId="
 						class="cate_d1_link" onmouseover="javascript:toggleDisplay3('06')"
 						onmouseout="javascript:toggleDisplay3('06')">장르소설</a> <!-- 소분류 -->
 
@@ -541,22 +595,21 @@
 								<ul>
 
 									<li class="cate_d2_link "><a
-										href="/front/product/bookCategoryMain.do?cateId=879">공포/무협소설</a></li>
+										href="/webproject/book_cate.action?categoryId=">공포/무협소설</a></li>
 
 									<li class="cate_d2_link "><a
-										href="/front/product/bookCategoryMain.do?cateId=880">추리/범죄/스릴러소설</a>
+										href="/webproject/book_cate.action?categoryId=">추리/범죄/스릴러소설</a>
 									</li>
 
 									<li class="cate_d2_link "><a
-										href="/front/product/bookCategoryMain.do?cateId=881">라이트(NT)소설</a></li>
+										href="/webproject/book_cate.action?categoryId=">라이트(NT)소설</a></li>
 
 									<li class="cate_d2_link "><a
-										href="/front/product/bookCategoryMain.do?cateId=882">로맨스/인터넷소설</a>
+										href="/webproject/book_cate.action?categoryId=">로맨스/인터넷소설</a>
 									</li>
 
 									<li class="cate_d2_link "><a
-										href="/front/product/bookCategoryMain.do?cateId=882">SF/판타지소설</a>
-									</li>
+										href="/webproject/book_cate.action?categoryId=">SF/판타지소설</a></li>
 
 
 								</ul>
@@ -568,7 +621,7 @@
 
 
 					<li id="kidsCate_883" class="cate_d1_li "><a
-						href="/front/product/bookCategoryMain.do?cateId=883"
+						href="/webproject/book_cate.action?categoryId="
 						class="cate_d1_link" onmouseover="javascript:toggleDisplay3('07')"
 						onmouseout="javascript:toggleDisplay3('07')">테마소설</a> <!-- 소분류 -->
 
@@ -584,37 +637,33 @@
 								<ul>
 
 									<li class="cate_d2_link "><a
-										href="/front/product/bookCategoryMain.do?cateId=884">동화/우화소설</a>
+										href="/webproject/book_cate.action?categoryId=">동화/우화소설</a></li>
+
+
+
+									<li class="cate_d2_link "><a
+										href="/webproject/book_cate.action?categoryId=">가족/성장소설</a></li>
+
+
+
+									<li class="cate_d2_link "><a
+										href="/webproject/book_cate.action?categoryId=">드라마/영화소설</a></li>
+
+
+
+									<li class="cate_d2_link "><a
+										href="/webproject/book_cate.action?categoryId=">청소년소설</a></li>
+
+
+
+									<li class="cate_d2_link "><a
+										href="/webproject/book_cate.action?categoryId=">대하/역사/전쟁소설</a>
 									</li>
 
 
 
 									<li class="cate_d2_link "><a
-										href="/front/product/bookCategoryMain.do?cateId=885">가족/성장소설</a>
-									</li>
-
-
-
-									<li class="cate_d2_link "><a
-										href="/front/product/bookCategoryMain.do?cateId=886">드라마/영화소설</a>
-									</li>
-
-
-
-									<li class="cate_d2_link "><a
-										href="/front/product/bookCategoryMain.do?cateId=887">청소년소설</a>
-									</li>
-
-
-
-									<li class="cate_d2_link "><a
-										href="/front/product/bookCategoryMain.do?cateId=888">대하/역사/전쟁소설</a>
-									</li>
-
-
-
-									<li class="cate_d2_link "><a
-										href="/front/product/bookCategoryMain.do?cateId=889">성인소설</a></li>
+										href="/webproject/book_cate.action?categoryId=">성인소설</a></li>
 
 
 
@@ -644,13 +693,13 @@
 					<li>
 						<dl>
 							<dt class="pImg60">
-								<a href="/front/product/detailProduct.do?prodId=4026928"><img
+								<a href="/webproject/book_cate.action?categoryId="><img
 									src="http://image.bandinlunis.com/upload/product/4026/4026928.jpg"
 									onerror="this.src='/images/common/noimg_type04.gif';"></a>
 							</dt>
 							<dd class="booktit">
-								<a href="/front/product/detailProduct.do?prodId=4026928">영어책
-									한 권 외워봤니?</a>
+								<a href="/webproject/book_cate.action?categoryId=">영어책 한 권
+									외워봤니?</a>
 							</dd>
 							<dd class="writer">김민식</dd>
 							<dd class="price">12,600원</dd>
@@ -661,14 +710,11 @@
 					<li>
 						<dl>
 							<dt class="pImg60">
-								<a href="/front/product/detailProduct.do?prodId=4003399"><img
+								<img
 									src="http://image.bandinlunis.com/upload/product/4003/4003399.jpg"
-									onerror="this.src='/images/common/noimg_type04.gif';"></a>
+									onerror="this.src='/images/common/noimg_type04.gif';">
 							</dt>
-							<dd class="booktit">
-								<a href="/front/product/detailProduct.do?prodId=4003399">휘게
-									라이프, 편안하게 함께...</a>
-							</dd>
+							<dd class="booktit">휘게 라이프, 편안하게 함께...</dd>
 							<dd class="writer">마이크 비킹</dd>
 							<dd class="price">12,600원</dd>
 							<dd class="sPoint t_11">(10%↓+5%P)</dd>
@@ -678,14 +724,11 @@
 					<li>
 						<dl>
 							<dt class="pImg60">
-								<a href="/front/product/detailProduct.do?prodId=3998575"><img
+								<img
 									src="http://image.bandinlunis.com/upload/product/3998/3998575.jpg"
-									onerror="this.src='/images/common/noimg_type04.gif';"></a>
+									onerror="this.src='/images/common/noimg_type04.gif';">
 							</dt>
-							<dd class="booktit">
-								<a href="/front/product/detailProduct.do?prodId=3998575">그릿
-									GRIT</a>
-							</dd>
+							<dd class="booktit">그릿 GRIT</dd>
 							<dd class="writer">앤절라 더크워스</dd>
 							<dd class="price">14,400원</dd>
 							<dd class="sPoint t_11">(10%↓+5%P)</dd>
@@ -830,7 +873,7 @@
 			<div class="container" style="width: 850px;">
 				<!-- 		<div class="tap_menu_d2 mb15"> -->
 				<ul class="nav nav-tabs">
-					<li class="active"><a href="#home">전체목록</a></li>
+					<li ><a href="#home">전체목록</a></li>
 
 					<li><a href="#menu_best">베스트셀러</a></li>
 
@@ -846,6 +889,7 @@
 
 				<div class="tab-content" style="width: 800px;">
 
+<!-- 					<div id="home" class="tab-pane fade in active"> -->
 					<div id="home" class="tab-pane fade in active">
 						<div class="cateM pos_rel">
 							<div class="cate_main_bn">
@@ -1038,13 +1082,12 @@
 
 						<div class="cateS" style="margin-left: 20px;">
 
-							<br />
-							<br /> <br /> <br /> <br /> <br /> <br /> <br />
+							<br /> <br /> <br /> <br /> <br /> <br /> <br /> <br />
 							<!-- 분야 주간 베스트 -->
 							<div class="cateBest">
 								<h4>분야 주간 베스트</h4>
 								<a
-									href="/front/product/bookCategoryMain.do?cateId=2&amp;fullCateId=0002&amp;listType=best"
+									href="/webproject/book_novel.action?categoryId=1#menu_best"
 									class="btn_more_2014"><span>더 보기</span></a>
 								<ul>
 
@@ -1591,7 +1634,7 @@
 							<div class="cateInside" id="dp_029"></div>
 
 							<script>
-								$(document).ready(function() {
+								$(function() {
 									$(".nav-tabs a").click(function() {
 										$(this).tab('show');
 									});
@@ -1611,113 +1654,126 @@
 					<!-- 베스트셀러 시작 -->
 
 					<div id="menu_best" class="tab-pane fade">
+						<div class="prod_sort">
+							<div class="sorting">
+								<ul class="con01">
+									<li><a id="sort1" style="cursor: pointer;">판매량순</a></li>
+									<li><a id="sort2" style="cursor: pointer;">발행일순</a></li>
+									<li><a id="sort6" style="cursor: pointer;">상품명순</a></li>
+									<li class="alt"><a id="sort10" style="cursor: pointer;">가격순</a></li>
+								</ul>
+								<div class="con02">
+									<p>
+										<select class="changeListSize">
+											<option value="10" selected="">10개씩</option>
+											<option value="20">20개씩</option>
+											<option value="30">30개씩</option>
+										</select>
+									</p>
+								</div>
+							</div>
 
+							<h4>
+								<strong>${dto_Main.categoryName }</strong> 베스트셀러 목록입니다.
+							</h4>
+
+						</div>
 						<div class="con_t2">
 
-
-							<div class="fl_clear ml5">
+							<!-- EL / JSTL / Foreach  -->
+							<c:forEach var="dto" items="${lists_Best }">
 								<div class="prod_list_type prod_best_type">
-
 									<ul>
-										<c:forEach var="dto" items=${lists_best }>
+										<li><input class="checkbox" type="checkbox"
+											value="${dto.isbn }" name="isbn" id="cart_isbn${dto.isbn }">
+											<div class="prod_thumb">
+												<span class="ranking"> <span class="rank_num">${dto.rnum }</span>
+													<span class="rank_change"> <img
+														src="http://image.bandinlunis.com/images/common/2014/ico_best_same.gif"
+														alt="-"> <!-- 0 -->
+												</span>
+												</span>
+												<div class="prod_thumb_img">
+													<a href="/webproject/book_info.action?isbn=${dto.isbn }"
+														onfocus="this.blur();"> <img
+														src="<%=cp %>/resources/image/book/${dto.bookImage }">
 
-											<li><input class="checkbox" type="checkbox" value=""
-												name="isbn">
-												<div class="prod_thumb">
-													<span class="ranking"> <span class="rank_num">
-															1 </span>
-													</span>
-													<div class="prod_thumb_img">
-														<a href="/webproject/book_info.action?isbn=${dto.isbn }"
-															onfocus="this.blur();"> <img
-															src="/webproject/resources/image/book/${dto.book_image}"
-															onerror="this.src='/images/common/noimg_type01.gif';">
-
-
-														</a> <a class="btn_popup" target="_blank"
-															href="/webproject/book_info.action?isbn=${dto.isbn }"><span
-															class="ico_new">새창열기</span></a>
-													</div>
-
-													<a class="btn_preview"
-														href="javascript:popPreview(${dto.isbn });">미리 보기</a>
+													</a> <a class="btn_popup" target="_blank"
+														href="/webproject/book_info.action?isbn=${dto.isbn }"><span
+														class="ico_new">새창열기</span></a>
 												</div>
-												<dl class="prod_info">
-													<dt>
-														<a href="/front/product/detailProduct.do?prodId=4034224"
-															onfocus="this.blur();"> ${dto.bookTitle } </a>
-														
-														<span class="tag_area"> <span class="tag_best"><span>베스트</span></span>
+												<a class="btn_preview"
+													href="javascript:popPreview('${dto.isbn }');">미리 보기</a>
+											</div>
 
-															<span class="tag_free"><span>무료배송</span></span>
+											<dl class="prod_info">
+												<dt>
+													<a href="/webproject/book_info.action?isbn=${dto.isbn }"
+														onfocus="this.blur();"> ${dto.bookTitle } </a> <span
+														class="tag_area"> <span class="tag_best"><span>베스트</span></span>
+														<span class="tag_recom"><span>반디추천</span></span> <span
+														class="tag_free"><span>무료배송</span></span>
+													</span>
+												</dt>
+												<dd class="txt_block">
+													<span>${dto.authorName }</span> <span class="gap">|</span>
+													<span>${dto.publisher }</span> <span class="txt_date"><span
+														class="gap">|</span> <span>${dto.publishDate }</span></span>
+												</dd>
+												<dd class="mt5">
+													<p>
+														<span class="txt_reprice">${dto.bookPrice }</span> <span
+															class="txt_arrow">→</span> <span class="txt_price"><strong><em>${dto.discountedPrice }</em>원</strong>
+															(${dto.discountRate }%↓+5%P)</span>
+													</p>
+												</dd>
+												<dd class="txt_desc">
+													<div class="review_point">
+														<span style="width: ${dto.rate*10 }%;"></span>
+													</div>
+													<strong>${dto.rate }</strong> <a
+														href="/front/product/detailProduct.do?isbn=4181047#sub10"
+														target="_blank">리뷰<em>(${dto.reviewCnt })</em></a>
+												</dd>
+												<dd class="txt_bex">${dto.introduction }...</dd>
+												<dd class="txt_ebook">
+													<span>지금 주문하면 <strong class="t_red">내일</strong>받을 수
+														있습니다.
+													</span>
+												</dd>
+											</dl>
 
-														</span>
-													</dt>
-													<dd class="txt_block">
-														<span>${dto.authorName }</span> <span class="gap">|</span>
-														<span>${dto.publisher }</span> <span class="txt_date"><span
-															class="gap">|</span> <span>${dto.publishDate }</span></span>
-													</dd>
-													<dd class="mt5">
-														<p>
-															<span class="txt_reprice">${dto.bookPrice }</span> <span
-																class="txt_arrow">→</span> <span class="txt_price"><strong><em>${dto.bookPrice * 0.85}</em>원</strong>
-																(10%↓+5%P)</span>
-														</p>
-													</dd>
-													<dd class="txt_desc">
-														<div class="review_point">
-															<span style="width: 89%;"></span>
-														</div>
-														<strong>${dto.rate }</strong> 리뷰<em>([${dto.reviewCnt }])</em>
-													</dd>
-													<dd class="txt_bex">[${dto.introduction }]</dd>
+											<dl class="prod_btn">
+												<dt>
+													<span class="num_txt">수량</span> <input type="text"
+														id="cntVal_${dto.isbn }" value="1" class="num" size="3"
+														maxlength="2" onkeydown="onlyNumber();" onkeyup="">
+													<span class="btn_updn_wrap"> <a
+														href="javascript:cntUp('${dto.isbn }');"
+														class="btn_num_up">▲</a> <a
+														href="javascript:cntDown('${dto.isbn }');"
+														class="btn_num_dn">▼</a>
+													</span>
+												</dt>
 
-													<dd class="txt_ebook">
-														<span>지금 주문하면<strong class="t_red"> 오늘 </strong>받을
-															수 있습니다.
-														</span>
-													</dd>
-
-												</dl>
-												<dl class="prod_btn">
-													<dt>
-														<span class="num_txt">수량</span> <input type="text"
-															id="cntVal_4034224" value="1" class="num" size="3"
-															maxlength="2" onkeydown="onlyNumber();" onkeyup="">
-														<span class="btn_updn_wrap"><a
-															href="javascript:cntUp('','01');" class="btn_num_up">▲</a><a
-															href="javascript:cntDown('','01');" class="btn_num_dn">▼</a></span>
-													</dt>
-
-
-
-													<dd>
-														<a href="javascript:addCart();"><span
-															class="btn_b_comm btype_f1">쇼핑카트</span></a>
-													</dd>
-													<dd class="mt3">
-														<a href="javascript:goOrder();"><span
-															class="btn_w_comm btype_f1">바로구매</span></a>
-													</dd>
-
-
-
-
-													<dd class="mt3">
-														<a href="javascript:add_wish_array_common();"><span
-															class="btn_w_comm btype_f1">위시리스트</span></a>
-													</dd>
-												</dl></li>
-
-										</c:forEach>
+												<dd>
+													<a href="javascript:addCart('${dto.isbn }');"><span
+														class="btn_b_comm btype_f1">쇼핑카트</span></a>
+												</dd>
+												<dd class="mt3">
+													<a href="javascript:goOrder('${dto.isbn }');"><span
+														class="btn_w_comm btype_f1">바로구매</span></a>
+												</dd>
+												<dd class="mt3">
+													<a
+														href="javascript:add_wish_array_common('${dto.isbn }', true);"><span
+														class="btn_w_comm btype_f1">위시리스트</span></a>
+												</dd>
+											</dl></li>
 									</ul>
-
 								</div>
+							</c:forEach>
 
-								<!-- 페이징 -->
-
-							</div>
 
 						</div>
 						<!-- con_t2 -->
@@ -1726,544 +1782,277 @@
 
 					<!-- 새로나온 책 시작  -->
 					<div id="menu_new" class="tab-pane fade">
+						<div class="prod_sort">
+							<div class="sorting">
+								<ul class="con01">
+									<li><a id="sort1" style="cursor: pointer;">판매량순</a></li>
+									<li><a id="sort2" style="cursor: pointer;">발행일순</a></li>
+									<li><a id="sort6" style="cursor: pointer;">상품명순</a></li>
+									<li class="alt"><a id="sort10" style="cursor: pointer;">가격순</a></li>
+								</ul>
+								<div class="con02">
+									<p>
+										<select class="changeListSize">
+											<option value="10" selected="">10개씩</option>
+											<option value="20">20개씩</option>
+											<option value="30">30개씩</option>
+										</select>
+									</p>
+								</div>
+							</div>
+
+							<h4>
+								<strong>${dto_Main.categoryName }</strong> 새로나온 책에 <strong>${lists_New_Num }</strong>개
+								의 도서가 등록되어 있습니다.
+							</h4>
+						</div>
+
+
+
 						<div class="con_t2">
 
-							<div class="prod_sort">
-								<div class="sorting">
-									<input type="hidden" name="sorts" value="">
-									<ul class="con01">
-										<li><a id="sort1" style="cursor: pointer;" class="on">판매량순</a></li>
-										<li><a id="sort2" style="cursor: pointer;">발행일순</a></li>
-										<li><a id="sort12" style="cursor: pointer;">등록일순</a></li>
-										<li><a id="sort6" style="cursor: pointer;">상품명순</a></li>
-										<li><a id="sort11" style="cursor: pointer;">정가인하순</a></li>
-										<li class="alt"><a id="sort10" style="cursor: pointer;">가격순</a></li>
-									</ul>
-
-								</div>
-
-								<h4>
-
-									<span><strong>새로나온 책</strong>에 총 <strong></strong>
-										권의 정가인하 도서가 등록되어 있습니다. </span>
-
-
-
-								</h4>
-								<p class="btn_cart">
-									<span><input type="checkbox" name="prodIds" class="chk"
-										onclick="javascript:check_all(document.getElementsByName('prodId'), this.checked);">
-										전체</span> <a href="javascript:addCarts();"><span
-										class="btn_w_comm btype_a2">쇼핑카트</span></a> <a
-										href="javascript:addWishes();"><span
-										class="btn_w_comm btype_a2">위시리스트</span></a>
-								</p>
-							</div>
-							<div class="fl_clear ml5">
-								<div class="prod_list_type  ">
-
+							<!-- EL / JSTL / Foreach  -->
+							<c:forEach var="dto" items="${lists_New }">
+								<div class="prod_list_type prod_best_type">
 									<ul>
-
-										<!-- 리스트 1개 시작  -->
 										<li><input class="checkbox" type="checkbox"
-											value="3795041" name="prodId">
+											value="${dto.isbn }" name="isbn" id="cart_isbn${dto.isbn }">
 											<div class="prod_thumb">
+												<span class="ranking"> <span class="rank_num">${dto.rnum }</span>
+													<span class="rank_change"> <img
+														src="http://image.bandinlunis.com/images/common/2014/ico_best_same.gif"
+														alt="-"> <!-- 0 -->
+												</span>
+												</span>
 												<div class="prod_thumb_img">
-													<a href="/front/product/detailProduct.do?prodId=3795041"
+													<a href="/webproject/book_info.action?isbn=${dto.isbn }"
 														onfocus="this.blur();"> <img
-														src="http://image.bandinlunis.com/upload/product/3795/3795041.jpg"
-														onerror="this.src='/images/common/noimg_type01.gif';">
+														src="<%=cp %>/resources/image/book/${dto.bookImage }">
 
 													</a> <a class="btn_popup" target="_blank"
-														href="/front/product/detailProduct.do?prodId=3795041"><span
+														href="/webproject/book_info.action?isbn=${dto.isbn }"><span
 														class="ico_new">새창열기</span></a>
 												</div>
-
+												<a class="btn_preview"
+													href="javascript:popPreview('${dto.isbn }');">미리 보기</a>
 											</div>
+
 											<dl class="prod_info">
 												<dt>
-													<a href="/front/product/detailProduct.do?prodId=3795041"
-														onfocus="this.blur();"> [정가인하] 한국사를 바꿀 14가지 거짓과 진실 </a>
-													<!-- <span class="tit_sub">- 덧셈구구</span> -->
-													<span class="tag_area"> <span class="tag_best"><span>베스트</span></span>
-
-
-													</span>
+													<a href="/webproject/book_info.action?isbn=${dto.isbn }"
+														onfocus="this.blur();"> ${dto.bookTitle } </a> </span> <span
+														class="tag_recom"><span>반디추천</span></span> <span
+														class="tag_free"><span>무료배송</span></span> </span>
 												</dt>
 												<dd class="txt_block">
-													<span>KBS역사추적팀, 윤영수</span> <span class="gap">|</span> <span>지식파수꾼</span>
-													<span class="txt_date"><span class="gap">|</span> <span>2011.05.11</span></span>
+													<span>${dto.authorName }</span> <span class="gap">|</span>
+													<span>${dto.publisher }</span> <span class="txt_date"><span
+														class="gap">|</span> <span>${dto.publishDate }</span></span>
 												</dd>
-
-
 												<dd class="mt5">
 													<p>
-														<span class="txt_junga">정가 <span class="txt_junga">13,000원</span></span><span
-															class="txt_arrow">→</span> <span class="txt_reprice2">4,000원
-															[<strong>69%</strong> 정가인하]
-														</span>
-													</p>
-													<p class="mt5">
-														<span class="txt_price"><strong><em>3,600</em>원</strong>
-															(10%↓+5%P)</span>
+														<span class="txt_reprice">${dto.bookPrice }</span> <span
+															class="txt_arrow">→</span> <span class="txt_price"><strong><em>${dto.discountedPrice }</em>원</strong>
+															(${dto.discountRate }%↓+5%P)</span>
 													</p>
 												</dd>
 												<dd class="txt_desc">
 													<div class="review_point">
-														<span style="width: 80.50%"></span>
+														<span style="width: ${dto.rate*10 }%;"></span>
 													</div>
-													<span class="ratings_num"> <strong>8.05</strong> <a
-														href="/front/product/detailProduct.do?prodId=3795041#sub10"
-														target="_blank">리뷰<em>(19)</em></a>
-													</span>
+													<strong>${dto.rate }</strong> 리뷰<em>(${dto.reviewCnt })</em>
 												</dd>
-												<dd class="txt_bex">추적과 추리의 역사 장금이는 요리사였을까? 정말 계백장군은
-													위대했고, 의자왕은 무기력했을까? KBS 역사추적은 ‘과연?’이라는 물음에서 시작된다. 전혀 관계없을 것
-													같던 흉노와 신...</dd>
+												<dd class="txt_bex">${dto.introduction }...</dd>
 												<dd class="txt_ebook">
-													<span>지금 주문하면<strong class="t_red">2018년
-															10월 20일(토) 이내</strong>받을 수 있습니다.
+													<span>지금 주문하면 <strong class="t_red">내일</strong>받을 수
+														있습니다.
 													</span>
 												</dd>
-
 											</dl>
+
 											<dl class="prod_btn">
 												<dt>
 													<span class="num_txt">수량</span> <input type="text"
-														id="cntVal_3795041" value="1" class="num" size="3"
+														id="cntVal_${dto.isbn }" value="1" class="num" size="3"
 														maxlength="2" onkeydown="onlyNumber();" onkeyup="">
-													<span class="btn_updn_wrap"><a
-														href="javascript:cntUp('3795041','01');"
-														class="btn_num_up">▲</a><a
-														href="javascript:cntDown('3795041','01');"
-														class="btn_num_dn">▼</a></span>
+													<span class="btn_updn_wrap"> <a
+														href="javascript:cntUp('${dto.isbn }');"
+														class="btn_num_up">▲</a> <a
+														href="javascript:cntDown('${dto.isbn }');"
+														class="btn_num_dn">▼</a>
+													</span>
 												</dt>
 
-
-
 												<dd>
-													<a href="javascript:addCart('3795041');"><span
+													<a href="javascript:addCart('${dto.isbn }');"><span
 														class="btn_b_comm btype_f1">쇼핑카트</span></a>
 												</dd>
 												<dd class="mt3">
-													<a href="javascript:goOrder('3795041');"><span
+													<a href="javascript:goOrder('${dto.isbn }');"><span
 														class="btn_w_comm btype_f1">바로구매</span></a>
 												</dd>
-
-
-
-
 												<dd class="mt3">
 													<a
-														href="javascript:add_wish_array_common('3795041', true);"><span
+														href="javascript:add_wish_array_common('${dto.isbn }', true);"><span
 														class="btn_w_comm btype_f1">위시리스트</span></a>
 												</dd>
 											</dl></li>
-										<!-- 리스트 1개 끝  -->
-
-
-										<!-- 리스트 2번째 시작  -->
-										<li><input class="checkbox" type="checkbox"
-											value="3795041" name="prodId">
-											<div class="prod_thumb">
-												<div class="prod_thumb_img">
-													<a href="/front/product/detailProduct.do?prodId=3795041"
-														onfocus="this.blur();"> <img
-														src="http://image.bandinlunis.com/upload/product/3795/3795041.jpg"
-														onerror="this.src='/images/common/noimg_type01.gif';">
-
-													</a> <a class="btn_popup" target="_blank"
-														href="/front/product/detailProduct.do?prodId=3795041"><span
-														class="ico_new">새창열기</span></a>
-												</div>
-
-											</div>
-											<dl class="prod_info">
-												<dt>
-													<a href="/front/product/detailProduct.do?prodId=3795041"
-														onfocus="this.blur();"> [정가인하] 한국사를 바꿀 14가지 거짓과 진실 </a>
-													<!-- <span class="tit_sub">- 덧셈구구</span> -->
-													<span class="tag_area"> <span class="tag_best"><span>베스트</span></span>
-
-
-													</span>
-												</dt>
-												<dd class="txt_block">
-													<span>KBS역사추적팀, 윤영수</span> <span class="gap">|</span> <span>지식파수꾼</span>
-													<span class="txt_date"><span class="gap">|</span> <span>2011.05.11</span></span>
-												</dd>
-
-
-												<dd class="mt5">
-													<p>
-														<span class="txt_junga">정가 <span class="txt_junga">13,000원</span></span><span
-															class="txt_arrow">→</span> <span class="txt_reprice2">4,000원
-															[<strong>69%</strong> 정가인하]
-														</span>
-													</p>
-													<p class="mt5">
-														<span class="txt_price"><strong><em>3,600</em>원</strong>
-															(10%↓+5%P)</span>
-													</p>
-												</dd>
-												<dd class="txt_desc">
-													<div class="review_point">
-														<span style="width: 80.50%"></span>
-													</div>
-													<span class="ratings_num"> <strong>8.05</strong> <a
-														href="/front/product/detailProduct.do?prodId=3795041#sub10"
-														target="_blank">리뷰<em>(19)</em></a>
-													</span>
-												</dd>
-												<dd class="txt_bex">추적과 추리의 역사 장금이는 요리사였을까? 정말 계백장군은
-													위대했고, 의자왕은 무기력했을까? KBS 역사추적은 ‘과연?’이라는 물음에서 시작된다. 전혀 관계없을 것
-													같던 흉노와 신...</dd>
-												<dd class="txt_ebook">
-													<span>지금 주문하면<strong class="t_red">2018년
-															10월 20일(토) 이내</strong>받을 수 있습니다.
-													</span>
-												</dd>
-
-											</dl>
-											<dl class="prod_btn">
-												<dt>
-													<span class="num_txt">수량</span> <input type="text"
-														id="cntVal_3795041" value="1" class="num" size="3"
-														maxlength="2" onkeydown="onlyNumber();" onkeyup="">
-													<span class="btn_updn_wrap"><a
-														href="javascript:cntUp('3795041','01');"
-														class="btn_num_up">▲</a><a
-														href="javascript:cntDown('3795041','01');"
-														class="btn_num_dn">▼</a></span>
-												</dt>
-
-
-
-												<dd>
-													<a href="javascript:addCart('3795041');"><span
-														class="btn_b_comm btype_f1">쇼핑카트</span></a>
-												</dd>
-												<dd class="mt3">
-													<a href="javascript:goOrder('3795041');"><span
-														class="btn_w_comm btype_f1">바로구매</span></a>
-												</dd>
-
-
-
-
-												<dd class="mt3">
-													<a
-														href="javascript:add_wish_array_common('3795041', true);"><span
-														class="btn_w_comm btype_f1">위시리스트</span></a>
-												</dd>
-											</dl></li>
-										<!-- 리스트 2번째 끝  -->
-
-
-										<!-- 리스트 3번째 시작  -->
-										<li><input class="checkbox" type="checkbox"
-											value="3795041" name="prodId">
-											<div class="prod_thumb">
-												<div class="prod_thumb_img">
-													<a href="/front/product/detailProduct.do?prodId=3795041"
-														onfocus="this.blur();"> <img
-														src="http://image.bandinlunis.com/upload/product/3795/3795041.jpg"
-														onerror="this.src='/images/common/noimg_type01.gif';">
-
-													</a> <a class="btn_popup" target="_blank"
-														href="/front/product/detailProduct.do?prodId=3795041"><span
-														class="ico_new">새창열기</span></a>
-												</div>
-
-											</div>
-											<dl class="prod_info">
-												<dt>
-													<a href="/front/product/detailProduct.do?prodId=3795041"
-														onfocus="this.blur();"> [정가인하] 한국사를 바꿀 14가지 거짓과 진실 </a>
-													<!-- <span class="tit_sub">- 덧셈구구</span> -->
-													<span class="tag_area"> <span class="tag_best"><span>베스트</span></span>
-
-
-													</span>
-												</dt>
-												<dd class="txt_block">
-													<span>KBS역사추적팀, 윤영수</span> <span class="gap">|</span> <span>지식파수꾼</span>
-													<span class="txt_date"><span class="gap">|</span> <span>2011.05.11</span></span>
-												</dd>
-
-
-												<dd class="mt5">
-													<p>
-														<span class="txt_junga">정가 <span class="txt_junga">13,000원</span></span><span
-															class="txt_arrow">→</span> <span class="txt_reprice2">4,000원
-															[<strong>69%</strong> 정가인하]
-														</span>
-													</p>
-													<p class="mt5">
-														<span class="txt_price"><strong><em>3,600</em>원</strong>
-															(10%↓+5%P)</span>
-													</p>
-												</dd>
-												<dd class="txt_desc">
-													<div class="review_point">
-														<span style="width: 80.50%"></span>
-													</div>
-													<span class="ratings_num"> <strong>8.05</strong> <a
-														href="/front/product/detailProduct.do?prodId=3795041#sub10"
-														target="_blank">리뷰<em>(19)</em></a>
-													</span>
-												</dd>
-												<dd class="txt_bex">추적과 추리의 역사 장금이는 요리사였을까? 정말 계백장군은
-													위대했고, 의자왕은 무기력했을까? KBS 역사추적은 ‘과연?’이라는 물음에서 시작된다. 전혀 관계없을 것
-													같던 흉노와 신...</dd>
-												<dd class="txt_ebook">
-													<span>지금 주문하면<strong class="t_red">2018년
-															10월 20일(토) 이내</strong>받을 수 있습니다.
-													</span>
-												</dd>
-
-											</dl>
-											<dl class="prod_btn">
-												<dt>
-													<span class="num_txt">수량</span> <input type="text"
-														id="cntVal_3795041" value="1" class="num" size="3"
-														maxlength="2" onkeydown="onlyNumber();" onkeyup="">
-													<span class="btn_updn_wrap"><a
-														href="javascript:cntUp('3795041','01');"
-														class="btn_num_up">▲</a><a
-														href="javascript:cntDown('3795041','01');"
-														class="btn_num_dn">▼</a></span>
-												</dt>
-
-
-
-												<dd>
-													<a href="javascript:addCart('3795041');"><span
-														class="btn_b_comm btype_f1">쇼핑카트</span></a>
-												</dd>
-												<dd class="mt3">
-													<a href="javascript:goOrder('3795041');"><span
-														class="btn_w_comm btype_f1">바로구매</span></a>
-												</dd>
-
-
-
-
-												<dd class="mt3">
-													<a
-														href="javascript:add_wish_array_common('3795041', true);"><span
-														class="btn_w_comm btype_f1">위시리스트</span></a>
-												</dd>
-											</dl></li>
-										<!-- 리스트 3번째 끝  -->
-
-
 									</ul>
-
 								</div>
-
-							</div>
-							<!-- 베스트셀러 끝 -->
-
-							<!-- 페이징 -->
-							<div class="pageTypeA">
-								<span class="prev-btn"> <!-- <img src="/images/common/btn_pagePrevG.gif" align="absmiddle" border="0"> -->
-
-									<!-- <img src="/images/common/btn_pagePrev.gif" align="absmiddle" hspace="2" border="0"> -->
-								</span> <span class="pageNum"> <a class="on">1</a> <a
-									href="/front/display/discountBookList.do?page=2#tabMenu">2</a>
-									<a href="/front/display/discountBookList.do?page=3#tabMenu">3</a>
-									<a href="/front/display/discountBookList.do?page=4#tabMenu">4</a>
-									<a href="/front/display/discountBookList.do?page=5#tabMenu">5</a>
-									<a href="/front/display/discountBookList.do?page=6#tabMenu">6</a>
-									<a href="/front/display/discountBookList.do?page=7#tabMenu">7</a>
-									<a href="/front/display/discountBookList.do?page=8#tabMenu">8</a>
-									<a href="/front/display/discountBookList.do?page=9#tabMenu">9</a>
-									<a href="/front/display/discountBookList.do?page=10#tabMenu">10</a>
-								</span> <span class="next-btn"> <a
-									href="/front/display/discountBookList.do?page=11#tabMenu"><img
-										src="/images/common/btn_pageNext.gif" align="absmiddle"
-										hspace="2" border="0"></a>
-
-								</span>
-
-							</div>
-
-							<div class="prod_sort_b">
-								<span><input type="checkbox" name="prodIds" class="chk"
-									onclick="javascript:check_all(document.getElementsByName('prodId'), this.checked);">
-									전체</span> <a href="javascript:addCarts();"><span
-									class="btn_w_comm btype_a2">쇼핑카트</span></a> <a
-									href="javascript:addWishes();"><span
-									class="btn_w_comm btype_a2">위시리스트</span></a>
-							</div>
-
+							</c:forEach>
 
 
 						</div>
+						<!-- con_t2 -->
+
 
 					</div>
+
+
 					<!-- 새로나온 책 끝  -->
 
 
 
 					<!-- 정가인하 시작 -->
 					<div id="menu_discount" class="tab-pane fade">
-						<div class="con_t2">
-							<div class="prod_sort">
-
-
-								<h4>
-
-									<span><strong>전체</strong>에 총 <strong>${dataCount }</strong>
-										권의 정가인하 도서가 등록되어 있습니다. </span>
-
-								</h4>
-								<p class="btn_cart">
-									<span><input type="checkbox" name="prodIds" class="chk"
-										onclick="javascript:check_all(document.getElementsByName('isbn'), this.checked);">
-										전체</span> <a href="javascript:addCarts();"><span
-										class="btn_w_comm btype_a2">쇼핑카트</span></a> <a
-										href="javascript:addWishes();"><span
-										class="btn_w_comm btype_a2">위시리스트</span></a>
-								</p>
-							</div>
-
-							<div class="fl_clear ml5">
-								<c:forEach var="dto" items="${lists }">
-									<div class="prod_list_type  ">
-
-										<ul>
-
-											<!-- 리스트 1개 시작  -->
-											<li><input class="checkbox" type="checkbox"
-												value="${dto.isbn }" name="isbn">
-												<div class="prod_thumb">
-													<div class="prod_thumb_img">
-														<a href="/front/product/detailProduct.do?isbn=3795041"
-															onfocus="this.blur();"> <img
-															src="<%=cp %>/resources/image/book/${dto.bookImage }">
-														</a> <a class="btn_popup" target="_blank"
-															href="/front/product/detailProduct.do?isbn=3795041"><span
-															class="ico_new">새창열기</span></a>
-													</div>
-
-												</div>
-												<dl class="prod_info">
-													<dt>
-														<a href="/front/product/detailProduct.do?isbn=3795041"
-															onfocus="this.blur();"> [정가인하] ${dto.bookTitle } </a>
-														<!-- <span class="tit_sub">- 덧셈구구</span> -->
-														<span class="tag_area"> <span class="tag_best"><span>베스트</span></span>
-
-
-														</span>
-													</dt>
-													<dd class="txt_block">
-														<span>${dto.authorName }</span> <span class="gap">|</span>
-														<span>${dto.publisher }</span> <span class="txt_date"><span
-															class="gap">|</span> <span>${dto.publishDate }</span></span>
-													</dd>
-
-
-													<dd class="mt5">
-														<p>
-															<span class="txt_junga">정가 <span class="txt_junga">${dto.bookPrice }원</span></span><span
-																class="txt_arrow">→</span> <span class="txt_reprice2">${dto.discountedPrice }원
-																[<strong>${dto.discountRate }%</strong> 정가인하]
-															</span>
-														</p>
-														<p class="mt5">
-															<span class="txt_price"><strong><em><fmt:formatNumber
-																			value="${dto.discountedPrice*0.9 }" type="number" /></em>원</strong>
-																(10%↓+5%P)</span>
-														</p>
-													</dd>
-													<dd class="txt_desc">
-														<div class="review_point">
-															<span style="width: ${dto.rate*10}%"></span>
-														</div>
-														<span class="ratings_num"> <strong>${dto.rate }</strong>
-															<a
-															href="/front/product/detailProduct.do?isbn=3795041#sub10"
-															target="_blank">리뷰<em>(${dto.reviewCnt })</em></a>
-														</span>
-													</dd>
-													<dd class="txt_bex">${dto.introduction }</dd>
-													<dd class="txt_ebook">
-														<span>지금 주문하면 <strong class="t_red">내일</strong> 받을
-															수 있습니다.
-														</span>
-													</dd>
-
-												</dl>
-												<dl class="prod_btn">
-													<dt>
-														<span class="num_txt">수량</span> <input type="text"
-															id="cntVal_${dto.isbn }" value="1" class="num" size="3"
-															maxlength="2" onkeydown="onlyNumber();" onkeyup="">
-														<span class="btn_updn_wrap"><a
-															href="javascript:cntUp('${dto.isbn }');"
-															class="btn_num_up">▲</a><a
-															href="javascript:cntDown('${dto.isbn }');"
-															class="btn_num_dn">▼</a></span>
-													</dt>
-
-													<dd>
-														<a href="javascript:addCart('${dto.isbn }');"><span
-															class="btn_b_comm btype_f1">쇼핑카트</span></a>
-													</dd>
-													<dd class="mt3">
-														<a href="javascript:goOrder('${dto.isbn }');"><span
-															class="btn_w_comm btype_f1">바로구매</span></a>
-													</dd>
-													<dd class="mt3">
-														<a
-															href="javascript:add_wish_array_common('${dto.isbn }', true);"><span
-															class="btn_w_comm btype_f1">위시리스트</span></a>
-													</dd>
-												</dl></li>
-											<!-- 리스트 1개 끝  -->
-
-										</ul>
-
-									</div>
-								</c:forEach>
-
-
-								<c:if test="${dataCount!=0 }">
-							${pageIndexListforJ }
-						</c:if>
-								<c:if test="${dataCount==0 }">
-									<div class="pageTypeA">
-										<span class="pageNum"> 등록된 책이 없습니다. </span>
-									</div>
-								</c:if>
-
-
-								<div class="prod_sort_b">
-									<span><input type="checkbox" name="prodIds" class="chk"
-										onclick="javascript:check_all(document.getElementsByName('isbn'), this.checked);">
-										전체</span> <a href="javascript:addCarts();"><span
-										class="btn_w_comm btype_a2">쇼핑카트</span></a> <a
-										href="javascript:addWishes();"><span
-										class="btn_w_comm btype_a2">위시리스트</span></a>
+						<div class="prod_sort">
+							<div class="sorting">
+								<ul class="con01">
+									<li><a id="sort1" style="cursor: pointer;">판매량순</a></li>
+									<li><a id="sort2" style="cursor: pointer;">발행일순</a></li>
+									<li><a id="sort6" style="cursor: pointer;">상품명순</a></li>
+									<li class="alt"><a id="sort10" style="cursor: pointer;">가격순</a></li>
+								</ul>
+								<div class="con02">
+									<p>
+										<select class="changeListSize">
+											<option value="10" selected="">10개씩</option>
+											<option value="20">20개씩</option>
+											<option value="30">30개씩</option>
+										</select>
+									</p>
 								</div>
-
-
-
 							</div>
 
+							<h4>
+
+								<span> <strong>${dto_Main.categoryName }</strong> 정가인하
+									도서에 총 <strong>${lists_Discount_Num }</strong> 권의 도서가 등록되어 있습니다.
+								</span>
+
+							</h4>
+						</div>
 
 
+						<div class="con_t2">
+
+							<!-- EL / JSTL / Foreach  -->
+							<c:forEach var="dto" items="${lists_Discount }">
+								<div class="prod_list_type prod_best_type">
+									<ul>
+										<li><input class="checkbox" type="checkbox"
+											value="${dto.isbn }" name="isbn" id="cart_isbn${dto.isbn }">
+											<div class="prod_thumb">
+												<span class="ranking"> <span class="rank_num">${dto.rnum }</span>
+													<span class="rank_change"> <img
+														src="http://image.bandinlunis.com/images/common/2014/ico_best_same.gif"
+														alt="-"> <!-- 0 -->
+												</span>
+												</span>
+												<div class="prod_thumb_img">
+													<a href="/webproject/book_info.action?isbn=${dto.isbn }"
+														onfocus="this.blur();"> <img
+														src="<%=cp %>/resources/image/book/${dto.bookImage }">
+
+													</a> <a class="btn_popup" target="_blank"
+														href="/webproject/book_info.action?isbn=${dto.isbn }"><span
+														class="ico_new">새창열기</span></a>
+												</div>
+												<a class="btn_preview"
+													href="javascript:popPreview('${dto.isbn }');">미리 보기</a>
+											</div>
+
+											<dl class="prod_info">
+												<dt>
+													<a href="/webproject/book_info.action?isbn=${dto.isbn }"
+														onfocus="this.blur();"> ${dto.bookTitle } </a> </span> <span
+														class="tag_recom"><span>반디추천</span></span> <span
+														class="tag_free"><span>무료배송</span></span> </span>
+												</dt>
+												<dd class="txt_block">
+													<span>${dto.authorName }</span> <span class="gap">|</span>
+													<span>${dto.publisher }</span> <span class="txt_date"><span
+														class="gap">|</span> <span>${dto.publishDate }</span></span>
+												</dd>
+												<dd class="mt5">
+													<p>
+														<span class="txt_reprice">${dto.bookPrice }</span> <span
+															class="txt_arrow">→</span> <span class="txt_price"><strong><em>${dto.discountedPrice }</em>원</strong>
+															(${dto.discountRate }%↓+5%P)</span>
+													</p>
+												</dd>
+												<dd class="txt_desc">
+													<div class="review_point">
+														<span style="width: ${dto.rate*10 }%;"></span>
+													</div>
+													<strong>${dto.rate }</strong> 리뷰<em>(${dto.reviewCnt })</em>
+												</dd>
+												<dd class="txt_bex">${dto.introduction }...</dd>
+												<dd class="txt_ebook">
+													<span>지금 주문하면 <strong class="t_red">내일</strong>받을 수
+														있습니다.
+													</span>
+												</dd>
+											</dl>
+
+											<dl class="prod_btn">
+												<dt>
+													<span class="num_txt">수량</span> <input type="text"
+														id="cntVal_${dto.isbn }" value="1" class="num" size="3"
+														maxlength="2" onkeydown="onlyNumber();" onkeyup="">
+													<span class="btn_updn_wrap"> <a
+														href="javascript:cntUp('${dto.isbn }');"
+														class="btn_num_up">▲</a> <a
+														href="javascript:cntDown('${dto.isbn }');"
+														class="btn_num_dn">▼</a>
+													</span>
+												</dt>
+
+												<dd>
+													<a href="javascript:addCart('${dto.isbn }');"><span
+														class="btn_b_comm btype_f1">쇼핑카트</span></a>
+												</dd>
+												<dd class="mt3">
+													<a href="javascript:goOrder('${dto.isbn }');"><span
+														class="btn_w_comm btype_f1">바로구매</span></a>
+												</dd>
+												<dd class="mt3">
+													<a
+														href="javascript:add_wish_array_common('${dto.isbn }', true);"><span
+														class="btn_w_comm btype_f1">위시리스트</span></a>
+												</dd>
+											</dl></li>
+									</ul>
+								</div>
+							</c:forEach>
 
 
 						</div>
+						<!-- con_t2 -->
+						<c:if test="${lists_Discount_Num!=0 }">
+							<div style="text-decoration: none; color: #947555;">${pageIndexList }</div>
+						</c:if>
+						<c:if test="${lists_Discount_Num==0 }">
+							<div class="pageTypeA">
+								<span class="pageNum"> <a style=""></a> 현재 등록된 도서가 없습니다.
+								</span>
+							</div>
+
+						</c:if>
+
 
 					</div>
 					<!-- 정가인하 끝 -->
-
-
 
 				</div>
 				<!-- tabContent -->
@@ -2278,5 +2067,7 @@
 
 	<!-- footer -->
 	<jsp:include page="../../../common/footer.jsp" flush="false" />
+
 </body>
+
 </html>
