@@ -14,7 +14,7 @@
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <script charset="UTF-8" class="daum_roughmap_loader_script" src="http://dmaps.daum.net/map_js_init/roughmapLoader.js"></script>
-
+<link rel="shortcut icon" href="http://image.bandinlunis.com/favicon.ico" type="image/x-icon">
 <title>반디앤루니스 인터넷서점</title>
 
 <script type="text/javascript">
