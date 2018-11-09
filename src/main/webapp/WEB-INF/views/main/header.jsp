@@ -6,12 +6,9 @@
 %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
-<link rel="stylesheet" href="<%=cp%>/resources/css/main.css"
-	type="text/css" />
-
 <script type="text/javascript">
 	
-	function toggleDisplay(num){
+ 	function toggleDisplay(num){
 	    var con = document.getElementById("layer"+num);
  	     if(con.style.display=='none'){
 	        con.style.display = 'block';
@@ -20,7 +17,7 @@
 	    }
 	}
 	
-	function toggleDisplay2(num){
+ 	function toggleDisplay2(num){
 	    var con = document.getElementById("top_layer"+num);
  	     if(con.style.display=='none'){
 	        con.style.display = 'block';
@@ -193,7 +190,7 @@
 			<a href="/webproject/book_info.action?isbn=9791160271454"> <img
 				src="<%=cp%>/resources/image/main/side_banner02.jpg">
 			</a>
-		</div>s
+		</div>
 	</div>
 	<div id="side_service" style="margin-left: 575px;">
 		<div class="today_view" id="side_today_nodata" style="display: none;">
@@ -481,18 +478,9 @@
 								</h3>
 								<div class="cate_menu">
 									<ul>
-										<li>베스트셀러</li>
-										<li>새로나온 책</li>
-										<li>주간 탑클릭</li>
-										<li>정가인하도서</li>
-										<li>오늘의 책</li>
-										<li>이달의 추천책</li>
-										<li>미디어 추천책</li>
-										<li class="gap">작가 프로필</li>
-										<li>이벤트</li>
-										<li class="gap">북셀프안내</li>
-										<li>대량주문 안내</li>
-										<li>반디e캐쉬안내</li>
+										<li><a href="<%=cp%>/bnlBSList.action">베스트셀러</a></li>
+										<li><a href="<%=cp%>/bnlNewBookList.action">새로나온 책</a></li>
+										<li><a href="<%=cp%>/discountBookMain.action">정가인하도서</a></li>
 									</ul>
 								</div>
 								<div class="cate_list_wrap">

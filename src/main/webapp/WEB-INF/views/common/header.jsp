@@ -569,18 +569,9 @@
 								</h3>
 								<div class="cate_menu">
 									<ul>
-										<li>베스트셀러</li>
-										<li>새로나온 책</li>
-										<li>주간 탑클릭</li>
-										<li>정가인하도서</li>
-										<li>오늘의 책</li>
-										<li>이달의 추천책</li>
-										<li>미디어 추천책</li>
-										<li class="gap">작가 프로필</li>
-										<li>이벤트</li>
-										<li class="gap">북셀프안내</li>
-										<li>대량주문 안내</li>
-										<li>반디e캐쉬안내</li>
+										<li><a href="<%=cp%>/bnlBSList.action">베스트셀러</a></li>
+										<li><a href="<%=cp%>/bnlNewBookList.action">새로나온 책</a></li>
+										<li><a href="<%=cp%>/discountBookMain.action">정가인하도서</a></li>
 									</ul>
 								</div>
 								<div class="cate_list_wrap">
