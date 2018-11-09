@@ -10,7 +10,31 @@ public class SearchDTO {
   private int bookPrice;		//책가격
   private String authorName;	//저자
   private String bookImage;		//책표지
+  private String categoryName;
+  private String categortCount;
+  private String categoryId;	//카테고리Id
   
+  
+  
+  
+public String getCategoryId() {
+	return categoryId;
+}
+public void setCategoryId(String categoryId) {
+	this.categoryId = categoryId;
+}
+public String getCategoryName() {
+	return categoryName;
+}
+public void setCategoryName(String categoryName) {
+	this.categoryName = categoryName;
+}
+public String getCategortCount() {
+	return categortCount;
+}
+public void setCategortCount(String categortCount) {
+	this.categortCount = categortCount;
+}
 public String getIsbn() {
 	return isbn;
 }
