@@ -10,6 +10,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
+<link rel="shortcut icon" href="http://image.bandinlunis.com/favicon.ico" type="image/x-icon">
 <title>반디앤루니스 인터넷서점</title>
 
 <link rel="stylesheet" href="<%=cp%>/resources/css/store.css" type="text/css"/>
