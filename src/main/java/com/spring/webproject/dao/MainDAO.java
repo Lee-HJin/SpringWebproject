@@ -6,7 +6,9 @@ import java.util.Random;
 
 import org.mybatis.spring.SqlSessionTemplate;
 
+import com.spring.webproject.dto.BookSectionsDTO;
 import com.spring.webproject.dto.MainDTO;
+import com.spring.webproject.dto.QuestionDTO;
 import com.spring.webproject.dto.StoreDTO;
 
 public class MainDAO {
@@ -141,22 +143,40 @@ public class MainDAO {
 	}
 	
 	//매장 이미지
-		public List<StoreDTO> storeImage(int warehouseId){
-			
-			List<StoreDTO> lst = new ArrayList<StoreDTO>();
-			lst = sessionTemplate.selectList("mainMapper.storeImage",warehouseId);
-			
-			return lst;	
-		}
+	public List<StoreDTO> storeImage(int warehouseId){
+		
+		List<StoreDTO> lst = new ArrayList<StoreDTO>();
+		lst = sessionTemplate.selectList("mainMapper.storeImage",warehouseId);
+		
+		return lst;	
+	}
 	
 	//로그인시 최근본 상품
-		public List<MainDTO> recentLogin(String userId){
-			
-			List<MainDTO> lst = new ArrayList<MainDTO>();
-			lst = sessionTemplate.selectList("mainMapper.recentLogin",userId);
-			
-			return lst;			
-		}
+	public List<MainDTO> recentLogin(String userId){
+		
+		List<MainDTO> lst = new ArrayList<MainDTO>();
+		lst = sessionTemplate.selectList("mainMapper.recentLogin",userId);
+		
+		return lst;			
+	}
+	
+	//자주묻는 질문
+	public List<QuestionDTO> topView(){
+		
+		List<QuestionDTO> lst = new ArrayList<QuestionDTO>();
+		lst = sessionTemplate.selectList("mainMapper.topView");
+		
+		return lst;
+	}
+	
+	//정가인하도서
+	public List<BookSectionsDTO> dcBook(){
+		
+		List<BookSectionsDTO> lst = new ArrayList<BookSectionsDTO>();
+		lst = sessionTemplate.selectList("mainMapper.dcBook");
+		
+		return lst;
+	}
 }
 
 

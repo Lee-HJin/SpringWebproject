@@ -170,7 +170,12 @@
 	}
 
 </script>
-</head>
+<link rel="stylesheet" href="/bandi/resources/help_css/common.css?v=20180705" type="text/css">
+<link rel="shortcut icon" href="http://bandinlunis.com/favicon.ico"	type="image/x-icon">
+<link rel="stylesheet" href="/bandi/resources/help_css/class.css" type="text/css">
+<link rel="stylesheet" href="http://bandinlunis.com/common/css/center.css" type="text/css">
+<link rel="stylesheet" href="http://bandinlunis.com/common/css/common.css?v=20180705" type="text/css">
+<link rel="stylesheet" href="<%=cp%>/resources/css/main.css" type="text/css"/>
 <body>
 	<div id="onTop" class="top_btn">
 		<a href="javascript://"> <img
@@ -321,9 +326,51 @@
 							<div>
 								<a href="<%=cp%>/store.action?params=13">롯데울산점</a>
 							</div>
-						</div></li>
+						</div>
+					</li>
 				</ul>
 			</div>
+			
+			<!-- 검색 -->
+			<div class="wrap_search">
+				<form id="searchForm" action="/webproject/search/search.do"
+					method="post">
+					<fieldset>
+						<legend>검색</legend>
+						<div class="bbox">
+							<div class="window_wrap">
+								<input type="hidden" id="ad_url" value="http://www.bandinlunis.com/front/product/detailProduct.do?prodId=4202976">
+								<input type="text" title="검색" id="sch_keyword" name="searchValue" maxlength="255" class="box_window"
+									accesskey="s" autocomplete="off" value="" style="ime-mode: active;"> 
+									<span class="auto_word">										
+									<a href="javascript://;"><span>▼</span></a>
+									</span>
+							</div>
+						</div>
+
+						<button id="header_search_btn" type="submit" class="btn_search">
+							<span class="ir_wa">검색</span>
+						</button>
+
+						<input type="hidden" name="v" id="frm_v" value=""> <input
+							type="hidden" name="s" id="frm_s" value=""> <input
+							type="hidden" name="l" id="frm_l" value="20"> <input
+							type="hidden" name="o" id="frm_o" value="0"> <input
+							type="hidden" name="ps" id="frm_ps" value=""> <input
+							type="hidden" name="pt" id="frm_pt" value=""> <input
+							type="hidden" name="ct" id="frm_ct" value=""> <input
+							type="hidden" name="dt" id="frm_dt" value=""> <input
+							type="hidden" name="pq" id="frm_pq" value=""> <input
+							type="hidden" name="sp1" id="frm_sp1" value="0"> <input
+							type="hidden" name="sp2" id="frm_sp2" value="12"> <input
+							type="hidden" name="sp3" id="frm_sp3" value="-1"> <input
+							type="hidden" name="sp4" id="frm_sp4" value="7">
+					</fieldset>
+
+				</form>				
+			</div>
+			<!-- 검색 -->
+
 		</div>
 
 		<div class="wrap_header">
@@ -569,18 +616,9 @@
 								</h3>
 								<div class="cate_menu">
 									<ul>
-										<li>베스트셀러</li>
-										<li>새로나온 책</li>
-										<li>주간 탑클릭</li>
-										<li>정가인하도서</li>
-										<li>오늘의 책</li>
-										<li>이달의 추천책</li>
-										<li>미디어 추천책</li>
-										<li class="gap">작가 프로필</li>
-										<li>이벤트</li>
-										<li class="gap">북셀프안내</li>
-										<li>대량주문 안내</li>
-										<li>반디e캐쉬안내</li>
+										<li><a href="<%=cp%>/bnlBSList.action">베스트셀러</a></li>
+										<li><a href="<%=cp%>/bnlNewBookList.action">새로나온 책</a></li>
+										<li><a href="<%=cp%>/discountBookMain.action">정가인하도서</a></li>
 									</ul>
 								</div>
 								<div class="cate_list_wrap">
