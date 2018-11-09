@@ -344,7 +344,7 @@
 		order by soldBookCnt desc
 		) data)
 	<![CDATA[
-	where rnum >= #{start } and rnum <= #{end }
+	where rnum >= 1 and rnum <= 10
 	]]>
 	</select>
 
@@ -364,7 +364,7 @@
 		soldBookCnt desc
 		) data)
 	<![CDATA[
-	where rnum >= #{start } and rnum <= #{end }
+	where rnum >= 1 and rnum <= 10
 	]]>
 	</select>
 	
