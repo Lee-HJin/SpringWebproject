@@ -167,29 +167,7 @@ i {
 	}
 </script>
 
-<!-- TOP 버튼 jQuery -->
 
-<script>
-	// When the user scrolls down 20px from the top of the document, show the button
-	window.onscroll = function() {
-		scrollFunction()
-	};
-
-	function scrollFunction() {
-		if (document.body.scrollTop > 20
-				|| document.documentElement.scrollTop > 20) {
-			document.getElementById("myBtn").style.display = "block";
-		} else {
-			document.getElementById("myBtn").style.display = "none";
-		}
-	}
-
-	// When the user clicks on the button, scroll to the top of the document
-	function topFunction() {
-		document.body.scrollTop = 0;
-		document.documentElement.scrollTop = 0;
-	}
-</script>
 
 
 <!-- 수량 jQuery -->
@@ -292,9 +270,6 @@ i {
 	<!-- header -->
 	<jsp:include page="../common/header.jsp" flush="false" />
 
-	<button onclick="topFunction()" id="myBtn" title="Go to top">
-		<i class="up"></i><br />Top
-	</button>
 
 
 
@@ -777,9 +752,6 @@ i {
 
 
 
-
-
-
 							<li style="overflow: visible;">
 								<div class="tbl_left">
 									<span>당일배송 </span> <a
@@ -854,8 +826,6 @@ i {
 									</div>
 								</div>
 							</li>
-
-
 
 
 
@@ -1070,10 +1040,7 @@ i {
 							</a> <a href="javascript:add_wish_array_common('4189934', true);"
 								class="btn_big"><span class="box_wishlist">위시리스트</span></a>
 							<div class="widget_btn">
-								<a href="javascript:jutil.bandi.blogAddMyLibrary('4189934');"><span
-									class="bookshelf">서재담기</span></a> <a
-									href="javascript:addThemaBook('4189934');"><span
-									class="theme">테마담기</span></a>
+								
 							</div>
 							<!-- 모든 매장 재고수 LAYER -->
 
@@ -1119,21 +1086,14 @@ i {
 
 
 				<div class="etc_info">
-					<!-- 에디터의 한마디 -->
-
-					<div class="editor" id="comment">
-						<span class="txt_title">에디터의 한마디</span>
-						<p class="txt_editor">인간과 인간의 삶에 대해 되돌아보고 반성할 소중한 기회를 우리에게
-							제공하지만, 이와 동시에 연토와 준호의 만남과 헤어짐의 이야기를 통해 결함투성이인 우리네 인간들과 인간들의 삶 자체에
-							대한 적극적이고 따뜻한 이해로 우리를 유도하는 것도 사실이다-MD추천</p>
-					</div>
+				
 
 					<div class="vote">
 						<strong>회원리뷰</strong>
-						<div class="medium_ratings">
-							<span style="width: 93%"></span>
+						<div class="medium_ratings" style="width: 20pt;">
+							
 						</div>
-						<span class="medium_ratings_num"> 리뷰평점 평균 <span
+						<span
 							class="ml10">리뷰[${reviewNum}] 간단평[${simplereviewNum }]
 						</span>
 						</span> <a href="#sub02" class="btn_w_comm btype_a4">참여하기</a>
@@ -1142,12 +1102,10 @@ i {
 
 					<div class="isbn_info">
 
-						<span class="alt"><strong>ISBN</strong>: ${book.isbn }</span> <span>${dto.page }</span>
+						<span class="alt"><strong>ISBN</strong>: ${dto.isbn }</span> <span>${dto.page }</span>
 
 
-
-
-						<span>${book.bookSize } (㎜) </span>
+						<span>${dto.bookSize } </span>
 
 
 					</div>
