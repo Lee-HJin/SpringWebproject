@@ -3,7 +3,7 @@
 <%
 	request.setCharacterEncoding("UTF-8");
 	String cp = request.getContextPath();
-	int isbn = Integer.parseInt(request.getParameter("isbn"));
+	String isbn = request.getParameter("isbn");
 %>
 <!DOCTYPE html>
 <html>

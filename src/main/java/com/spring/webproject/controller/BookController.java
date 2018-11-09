@@ -443,18 +443,18 @@ public class BookController {
 	}
 
 	// 로그인 안되어 있을경우 로그인
-	@RequestMapping(value = "/login2.action", method = RequestMethod.GET)
+	@RequestMapping(value = "/login2.action", method = { RequestMethod.GET, RequestMethod.POST })
 	public String login2(HttpServletRequest request, HttpServletResponse response) {
-		int isbn = Integer.parseInt(request.getParameter("isbn")); // 책 고유번호 가져오기
-
+		String isbn = request.getParameter("isbn"); // 책 고유번호 가져오기
+		
 		request.setAttribute("isbn", isbn);
 		return "books/book_login2";
 	}
 
-	@RequestMapping(value = "/login_ok2.action", method = RequestMethod.POST)
+	@RequestMapping(value = "/login_ok2.action", method = { RequestMethod.GET, RequestMethod.POST })
 	public String loginProcess2(HttpServletRequest request) {
 
-		int isbn = Integer.parseInt(request.getParameter("isbn")); // 책 고유번호 가져오기
+		String isbn = request.getParameter("isbn"); // 책 고유번호 가져오기
 
 		String returnUrl = "";
 		String userId = request.getParameter("user_id");
@@ -473,7 +473,7 @@ public class BookController {
 			request.getSession().setAttribute("userInfo", dto);
 			request.getSession().setAttribute("pointValue", pointValue);
 			request.getSession().removeAttribute("message");
-			returnUrl = "redirect:/book_info.action?isbn=" + isbn;
+			returnUrl = "redirect:/book_info.action?isbn=" + isbn + "#sub02";
 
 		} else { // 로그인 실패
 
@@ -486,7 +486,7 @@ public class BookController {
 
 	// 공감하기 1
 	@RequestMapping(value = "/book_review_vote.action", method = { RequestMethod.GET, RequestMethod.POST })
-	public String book_review_vote(HttpServletRequest request) {
+	public String book_review_vote(HttpServletRequest request, HttpServletResponse response) {
 
 		String isbn = request.getParameter("isbn"); // 책 고유번호 가져오기
 
@@ -501,9 +501,9 @@ public class BookController {
 	}
 
 	// 공감하기 2
-	@RequestMapping(value = "/book_review_vote2.action", method = { RequestMethod.GET, RequestMethod.POST })
-	public String book_review_vote2(HttpServletRequest request) {
-
+	@RequestMapping(value = "/book_simpleReviewVote.action", method = {RequestMethod.GET, RequestMethod.POST })
+	public String book_simpleReviewVote(HttpServletRequest request, HttpServletResponse response) {
+		System.out.println("공감공감");
 		String isbn = request.getParameter("isbn"); // 책 고유번호 가져오기
 		System.out.println("isbn: " + isbn + "입니다.");
 		int reviewId = Integer.parseInt(request.getParameter("reviewId"));
@@ -551,7 +551,7 @@ public class BookController {
 
 		// 대분류
 		CateDTO dto_Main = dao.getReadCate(categoryId);
-		
+
 		request.setAttribute("dto_Main", dto_Main); // 메인 분류 이름
 
 		// 중분류
@@ -568,7 +568,7 @@ public class BookController {
 				CateDTO dto = it.next();
 
 				dto2.setLastNode(dto);
-				
+
 			}
 		}
 
@@ -585,8 +585,7 @@ public class BookController {
 		if (pageNum != null) {
 			currentPage = Integer.parseInt(pageNum);
 		}
-	
-	
+
 		// 전체데이터 갯수
 		int dataCount = raDao.getDataCount();
 
@@ -600,40 +599,43 @@ public class BookController {
 		int start = (currentPage - 1) * numPerPage + 1;
 		int end = currentPage * numPerPage;
 
-	
 		// 베스트 셀러
 		int cateStart = categoryId;
+
 		int cateEnd = dao.getCateEnd(categoryId);
+
 		List<BookSectionsDTO> lists_Best = dao.getLists_Best(cateStart, cateEnd, start, end);
 		request.setAttribute("lists_Best", lists_Best);
-		
-		// 새로나온 책 
+
+		// 새로나온 책
 		List<BookSectionsDTO> lists_New = dao.getLists_New(cateStart, cateEnd, start, end);
 		request.setAttribute("lists_New", lists_New);
 
-		// 할인도서 
-		
-		/*discountRate*/
+		int lists_New_Num = dao.getLists_New_Count(cateStart, cateEnd);
+		request.setAttribute("lists_New_Num", lists_New_Num);
+
+		// 할인도서
+		/* discountRate */
 		int fromDiscount = 0;
 		int toDiscount = 0;
-		if(request.getParameter("fromDiscount") == null || request.getParameter("fromDiscount").equals("")) {
-			fromDiscount = 30;
-		}else {
+		if (request.getParameter("fromDiscount") == null || request.getParameter("fromDiscount").equals("")) {
+			fromDiscount = 0;
+		} else {
 			fromDiscount = Integer.parseInt(request.getParameter("fromDiscount"));
 		}
-		if(request.getParameter("toDiscount") == null || request.getParameter("toDiscount").equals("")) {
+		if (request.getParameter("toDiscount") == null || request.getParameter("toDiscount").equals("")) {
 			toDiscount = 100;
-		}else {
+		} else {
 			toDiscount = Integer.parseInt(request.getParameter("toDiscount"));
 		}
+
+		List<BookSectionsDTO> lists_Discount = dao.getLists_Discount(cateStart, cateEnd, fromDiscount, toDiscount,
+				start, end);
 		
-		
-		
-		
-		List<BookSectionsDTO> lists_Discount = dao.getLists_Discount(cateStart, cateEnd, fromDiscount , toDiscount ,start, end);
 		request.setAttribute("lists_Discount", lists_Discount);
-		
-		
+		int lists_Discount_Num = dao.getLists_Discount_Num(cateStart, cateEnd, fromDiscount, toDiscount);
+		request.setAttribute("lists_Discount_Num", lists_Discount_Num);
+
 		String bnlBSListUrl = cp + "/boos/cate/book_cate";
 
 		String pageIndexList = raMyUtil.pageIndexList(currentPage, totalPage, bnlBSListUrl);
@@ -641,9 +643,6 @@ public class BookController {
 		request.setAttribute("pageNum", currentPage);
 		request.setAttribute("pageIndexList", pageIndexList);
 
-		
-		
-		
 		return "books/cate/book_cate";
 	}
 

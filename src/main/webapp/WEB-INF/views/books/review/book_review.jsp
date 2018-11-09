@@ -22,14 +22,10 @@
 
 <script type="text/javascript">
 
-	function goNextPage(Val) {
-		location = "/?prod_id=4189934&usedYn=&page=" + Val;
-	}
-
 	function go_login() {
 
 		alert("로그인 하셔야 리뷰를 쓰실수 있습니다.");
-		parent.location.href = '<%=cp%>/login2.action?isbn='+${isbn};
+		parent.location.href = '<%=cp%>/login2.action?isbn='+${isbn };
 		return;
 
 	}

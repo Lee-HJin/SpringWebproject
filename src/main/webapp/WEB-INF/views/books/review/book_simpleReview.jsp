@@ -8,7 +8,7 @@
 	request.setCharacterEncoding("UTF-8");
 	String cp = request.getContextPath();
 
-	int isbn = Integer.parseInt(request.getParameter("isbn"));
+	String isbn = request.getParameter("isbn");
 %>
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
@@ -586,14 +586,42 @@ table	th.td_Left {
 
 
 <script type="text/javascript">
-
-function reviewVote2(Val){
-	alert("한줄평에 공감하셨습니다.");
+ function reviewVote2(Val){
+	alert("한줄평에 공감하셨습니다. + " + Val);
 	
-	location.href ='<%=cp%>/book_review_vote2.action?isbn='+ <%=isbn%> + '&reviewId='+Val;
+	var url = '/book_simpleReviewVote.action';
+	url +='?isbn='+${isbn};
+	url +='&reviewId='+Val;
 	
+	location.href = '<%=cp%>/book_simpleReviewVote.action?isbn=' + ${isbn} + '&reviewId=' + Val;
+	alert(url);
 }
 
+<%-- $(function(){
+	
+	
+	var url = '<%=cp%>/book_simpleReviewVote.action';
+	url +='?isbn='+${isbn};
+	url +='&reviewId='+Val;
+		
+	$('#btn1').click(function(){
+		location.href='<%=cp%>/book_simpleReviewVote.action?isbn=' + ${isbn} + '&reviewId=' + Val';
+		$(location).attr('href',url);
+		
+	});
+	
+}); --%>
+
+<%-- function reviewVote2(Val){
+	alert("한줄평에 공감하셨습니다. + " + Val);
+	
+	var url = '<%=cp%>/book_simpleReviewVote.action?isbn=' + ${isbn };
+	url += '&reviewId='+ Val;
+	location.href = "<%=cp%>/book_simpleReview_vote.action?isbn=<%=isbn%>" + "&reviewId="+Val;
+	location.href = url;
+	alert(url);
+}
+ --%>
 function go_login() {
 
 	alert("로그인 하셔야 간단평을 쓰실수 있습니다.");
@@ -802,7 +830,7 @@ function enroll_SimpleReview(Val){
 									onkeypress="onChangeText(this,'title_stat')"></textarea>
 								<p class="btn_show_register">
 									<c:choose>
-										<c:when test="${empty userId }">
+										<c:when test="${empty sessionScope.userInfo.userId }">
 											<a class="box_tag" href="javascript:go_login();">등록</a>
 										</c:when>
 										<c:otherwise>
@@ -867,7 +895,7 @@ function enroll_SimpleReview(Val){
 					htmlData += titleNL.item(i).firstChild.nodeValue;
 					htmlData += "</td>";
 					htmlData += "<td class='td_R10'style='width:15%'> ";
-					htmlData += "<span class='ilike'><button onclick='reviewVote2(";
+					htmlData += "<span class='ilike'><button id = 'btn1' onclick='reviewVote2(";
 					htmlData += reviewId.item(i).firstChild.nodeValue;
 					htmlData += ")'";
 					htmlData += "class='btn_ilike'><span>공감하기</span></button>";
@@ -875,7 +903,13 @@ function enroll_SimpleReview(Val){
 					htmlData += thumbup.item(i).firstChild.nodeValue;
 					htmlData += "</span></span></td>";
 					htmlData += "</tr>";
-					onclick = "reviewVote(${dto.reviewId})"
+					
+					
+// 					htmlData += "<span class ='ilike'><button id = 'btn1' value='";
+// 					htmlData += reviewId.item(i).firstChild.nodeValue;
+// 					htmlData += "' />";
+					
+		
 				}
 
 				htmlData += "</tbody>  </table>";
@@ -883,6 +917,7 @@ function enroll_SimpleReview(Val){
 				var simpleReviewDiv = document
 						.getElementById("simpleReviewTitle");
 				simpleReviewDiv.innerHTML = htmlData;
+		
 			} else {
 				alert(httpRequest.status + " : " + httpRequest.statusText);
 			}

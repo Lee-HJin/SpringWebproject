@@ -13,7 +13,7 @@
 	<![CDATA[
 		select * from review where isbn = #{isbn} and REVIEWID > #{reviewId} order
 		by reviewId asc) data LEFT JOIN users on data.userid = users.userid
-		where rownum =1
+		where rownum =1 and sentence is not null
 	]]>
 	</select>
 
@@ -24,7 +24,7 @@
 		<![CDATA[
 		select * from review where isbn = #{isbn} and REVIEWID < #{reviewId} order by reviewId
 		desc) data LEFT JOIN users on data.userid = users.userid
-		where rownum = 1
+		where rownum = 1 and sentence is not null
 		]]>
 	</select>
 
@@ -368,15 +368,13 @@
 	]]>
 	</select>
 	
-	<!-- 카테고리별 신규 등록된 할인 도서 -->
+	<!-- 카테고리별 할인 도서 -->
 	<select id="getLists_Discount" parameterType="hashMap"
 		resultType="com.spring.webproject.dto.BookSectionsDTO">
 		select * from (
 		select rownum rnum, data.* from (
 		select * from bookSections
 		where categoryId between #{cateStart} and #{cateEnd }
-		and inputDCDate between (trunc(sysdate,'MM') - 3) and (LAST_DAY (TRUNC
-		(SYSDATE)) + 1 / 24)
 		and discountRate between ${fromDiscount } and ${toDiscount }
 		order by soldBookCnt desc
 		) data)
@@ -385,9 +383,38 @@
 	]]>
 	</select>
 	
+	<!-- 2) 카테고리별 새로나온도서 개수  -->
+	<select id="getLists_New_Num" parameterType="hashMap"
+		resultType="int">
+		select count(*) from (
+		select rownum rnum, data.* from (
+		select * from
+		bookSections
+		where categoryId between #{cateStart} and #{cateEnd }  and publishDate
+		between
+		(trunc(sysdate,'MM')-5) and (LAST_DAY (TRUNC (SYSDATE)) + 1 /
+		24)
+		order by
+		soldBookCnt desc
+		) data)
+
+	</select>
+	
+	<!-- 3) 카테고리별 할인도서 개수 -->
+	<select id="getLists_Discount_Num" parameterType="hashMap"
+		resultType="int">
+		select count(*) from (
+		select rownum rnum, data.* from (
+		select * from bookSections
+		where categoryId between #{cateStart} and #{cateEnd }
+		and discountRate between ${fromDiscount } and ${toDiscount }
+		order by soldBookCnt desc
+		) data)
+	
+	</select>
 	<!-- 카테고리 마지막 값 가져오기 -->
 	<select id="getCateEnd" parameterType="int" resultType="int">
-		select MAX(CATEGORYID) from BOOKSCATEGORYLIST where parentsid = #{categoryId }
+		select nvl(MAX(CATEGORYID),#{categoryId}) from BOOKSCATEGORYLIST where parentsid = #{categoryId }
 	</select>
 	
 
