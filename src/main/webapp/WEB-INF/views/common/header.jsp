@@ -179,13 +179,13 @@
 	</div>
 	<div class="side_banner" style="top: 200px;">
 		<div>
-			<a href="<%=cp%>/book_info.action?isbn=9788965706830"> 
-				<img src="<%=cp%>/resources/image/main/side_banner01.jpg">
+			<a href="/webproject/book_info.action?isbn=9788965706830"> <img
+				src="<%=cp%>/resources/image/main/side_banner01.jpg">
 			</a>
 		</div>
 		<div>
-			<a href="<%=cp%>/book_info.action?isbn=9788965706830"> 
-				<img src="<%=cp%>/resources/image/main/side_banner02.jpg">
+			<a href="/webproject/book_info.action?isbn=9791160271454"> <img
+				src="<%=cp%>/resources/image/main/side_banner02.jpg">
 			</a>
 		</div>
 	</div>
@@ -345,57 +345,164 @@
 									<a href="<%=cp%>/main.action">도서</a>
 								</h3>
 								<ul class="cate_list">
-									<li><a href="<%=cp%>/book_novel.action">
-									<em>소설</em>
-									</a></li>
-									<li><em>장르소설</em></li>
-									<li>시/에세이/기행</li>
-									<li>청소년교양</li>
-									<li>경제/경영</li>
-									<li><a href="<%=cp%>/book_self_improvement.action">
-									<em>자기계발</em>
-									</a></li>
-								</ul>
-
-								<ul class="cate_list">
-									<li>유아</li>
-									<li>육아/자녀교육</li>
-									<li>어린이</li>
-									<li>어린이영어</li>
-									<li>아동전집</li>
-									<li>정가제 Free</li>
-								</ul>
-
-								<ul class="cate_list">
-									<li>가정/생활/요리</li>
-									<li>건강/의학/미용</li>
-									<li>여행/취미/레저</li>
-									<li>잡기</li>
-									<li>만화</li>
-								</ul>
-
-								<ul class="cate_list clear">
-									<li><em>인문/교양/철학</em></li>
-									<li>역사/신화/문화</li>
-									<li>종교</li>
-									<li>사회/정치/법률</li>
-									<li>예술/대중문화</li>
-									<li>자연과학/공학</li>
-								</ul>
-
-								<ul class="cate_list">
-									<li><em>초등참고서</em></li>
-									<li><em>중/고등참고서</em></li>
-									<li>&nbsp;</li>
-									<li><em>외국어/사전</em></li>
-									<li>대학교재</li>
-									<li>컴퓨터/IT</li>
-								</ul>
-
-								<ul class="cate_list">
-									<li>서양서</li>
-									<li>일본서</li>
-								</ul>
+										<li><a href="<%=cp%>/book_novel.action">
+										<em>소설</em>
+										</a></li>
+										<li>
+										<a href="<%=cp%>/genre_fiction.action">
+										<em>장르소설</em>
+										</a>
+										</li>
+										<li>
+										<a href="<%=cp%>/book_cate.action?categoryId=115">
+										시/에세이/기행
+										</a>
+										</li>
+										<li>
+										<a href="<%=cp%>/book_cate.action?categoryId=175">
+										청소년교양
+										</a>
+										</li>
+										<li>
+										<a href="<%=cp%>/book_cate.action?categoryId=197">
+										경제/경영
+										</a>
+										</li>
+										<li><a href="<%=cp%>/book_self_improvement.action">
+										<em>자기계발</em>
+										</a></li>
+									</ul>
+									<ul class="cate_list">
+										<li>
+										<a href="<%=cp%>/book_cate.action?categoryId=667">
+										유아
+										</a>
+										</li>
+										<li>
+										<a href="<%=cp%>/book_cate.action?categoryId=692">
+										육아/자녀교육
+										</a>
+										</li>
+										<li>
+										<a href="<%=cp%>/book_cate.action?categoryId=704">
+										어린이
+										</a>
+										</li>
+										<li>
+										<a href="<%=cp%>/book_cate.action?categoryId=767">
+										어린이 영어
+										</a>
+										</li>
+										<li>
+										<a href="<%=cp%>/book_cate.action?categoryId=774">
+										아동전집
+										</a>
+										</li>
+										<li>
+										<a href="<%=cp%>/book_cate.action?categoryId=794">
+										정가제 Free
+										</a>
+										</li>
+									</ul>
+									<ul class="cate_list">
+										<li>
+										<a href="<%=cp%>/book_cate.action?categoryId=1275">
+										가정/생활/요리
+										</a>
+										</li>
+										<li>
+										<a href="<%=cp%>/book_cate.action?categoryId=1317">
+										건강/의학/미용
+										</a>
+										</li>
+										<li>
+										<a href="<%=cp%>/book_cate.action?categoryId=1363">
+										여행/취미/레저
+										</a>
+										</li>
+										<li>
+										<a href="<%=cp%>/book_cate.action?categoryId=1420">
+										잡지
+										</a>
+										</li>
+										<li>
+										<a href="<%=cp%>/book_cate.action?categoryId=1440">
+										만화
+										</a>
+										</li>
+									</ul>
+									<ul class="cate_list clear">
+										<li>
+										<a href="<%=cp%>/book_cate.action?categoryId=292">
+										인문/교양/철학
+										</a>
+										</li>
+										<li>
+										<a href="<%=cp%>/book_cate.action?categoryId=381">
+										역사/신화/문화
+										</a>
+										</li>
+										<li>
+										<a href="<%=cp%>/book_cate.action?categoryId=431">
+										종교
+										</a>
+										</li>
+										<li>
+										<a href="<%=cp%>/book_cate.action?categoryId=474">
+										사회/정치/법률
+										</a>
+										</li>
+										<li>
+										<a href="<%=cp%>/book_cate.action?categoryId=528">
+										예술/대중문화
+										</a>
+										</li>
+										<li>
+										<a href="<%=cp%>/book_cate.action?categoryId=607">
+										자연과학/공학
+										</a>
+										</li>
+									</ul>
+									<ul class="cate_list">
+										<li>
+										<a href="<%=cp%>/book_cate.action?categoryId=798">
+										초등학습
+										</a>
+										</li>
+										<li>
+										<a href="<%=cp%>/book_cate.action?categoryId=840">
+										중/고등참고서
+										</a>
+										</li>
+										<li>&nbsp;</li>
+										<li>
+										<a href="<%=cp%>/book_cate.action?categoryId=943">
+										외국어/사전
+										</a>
+										</li>
+										<li>
+										<a href="<%=cp%>/book_cate.action?categoryId=1013">
+										대학교재
+										</a>
+										</li>
+										<li>
+										<a href="<%=cp%>/book_cate.action?categoryId=1153">
+										컴퓨터/IT
+										</a>
+										</li>
+									</ul>
+									<ul class="cate_list">
+										<li>
+										<a href="<%=cp%>/book_cate.action?categoryId=1469">
+										서양서
+										</a>
+										</li>
+										<li>
+										<a href="<%=cp%>/book_cate.action?categoryId=1487">
+										일본서
+										</a>
+										</li>
+									</ul>
 							</div>
 							<div class="cate02">
 								<h3>
@@ -481,48 +588,160 @@
 										<li><a href="<%=cp%>/book_novel.action">
 										<em>소설</em>
 										</a></li>
-										<li><em>장르소설</em></li>
-										<li><em>시/에세이/기행</em></li>
-										<li>청소년교양</li>
-										<li>경제/경영</li>
+										<li>
+										<a href="<%=cp%>/genre_fiction.action">
+										<em>장르소설</em>
+										</a>
+										</li>
+										<li>
+										<a href="<%=cp%>/book_cate.action?categoryId=115">
+										시/에세이/기행
+										</a>
+										</li>
+										<li>
+										<a href="<%=cp%>/book_cate.action?categoryId=175">
+										청소년교양
+										</a>
+										</li>
+										<li>
+										<a href="<%=cp%>/book_cate.action?categoryId=197">
+										경제/경영
+										</a>
+										</li>
 										<li><a href="<%=cp%>/book_self_improvement.action">
 										<em>자기계발</em>
 										</a></li>
 									</ul>
 									<ul class="cate_list">
-										<li>유아</li>
-										<li>육아/자녀교육</li>
-										<li><em>어린이</em></li>
-										<li>어린이영어</li>
-										<li>아동전집</li>
-										<li>정가제 Free</li>
+										<li>
+										<a href="<%=cp%>/book_cate.action?categoryId=667">
+										유아
+										</a>
+										</li>
+										<li>
+										<a href="<%=cp%>/book_cate.action?categoryId=692">
+										육아/자녀교육
+										</a>
+										</li>
+										<li>
+										<a href="<%=cp%>/book_cate.action?categoryId=704">
+										어린이
+										</a>
+										</li>
+										<li>
+										<a href="<%=cp%>/book_cate.action?categoryId=767">
+										어린이 영어
+										</a>
+										</li>
+										<li>
+										<a href="<%=cp%>/book_cate.action?categoryId=774">
+										아동전집
+										</a>
+										</li>
+										<li>
+										<a href="<%=cp%>/book_cate.action?categoryId=794">
+										정가제 Free
+										</a>
+										</li>
 									</ul>
 									<ul class="cate_list">
-										<li>가정/생활/요리</li>
-										<li>건강/의학/미용</li>
-										<li>여행/취미/레저</li>
-										<li>잡지</li>
-										<li>만화</li>
+										<li>
+										<a href="<%=cp%>/book_cate.action?categoryId=1275">
+										가정/생활/요리
+										</a>
+										</li>
+										<li>
+										<a href="<%=cp%>/book_cate.action?categoryId=1317">
+										건강/의학/미용
+										</a>
+										</li>
+										<li>
+										<a href="<%=cp%>/book_cate.action?categoryId=1363">
+										여행/취미/레저
+										</a>
+										</li>
+										<li>
+										<a href="<%=cp%>/book_cate.action?categoryId=1420">
+										잡지
+										</a>
+										</li>
+										<li>
+										<a href="<%=cp%>/book_cate.action?categoryId=1440">
+										만화
+										</a>
+										</li>
 									</ul>
 									<ul class="cate_list clear">
-										<li><em>인문/교양/철학</em></li>
-										<li>역사/신화/문화</li>
-										<li>종교</li>
-										<li>사회/정치/법률</li>
-										<li>예술/대중문화</li>
-										<li>자연과학/공학</li>
+										<li>
+										<a href="<%=cp%>/book_cate.action?categoryId=292">
+										인문/교양/철학
+										</a>
+										</li>
+										<li>
+										<a href="<%=cp%>/book_cate.action?categoryId=381">
+										역사/신화/문화
+										</a>
+										</li>
+										<li>
+										<a href="<%=cp%>/book_cate.action?categoryId=431">
+										종교
+										</a>
+										</li>
+										<li>
+										<a href="<%=cp%>/book_cate.action?categoryId=474">
+										사회/정치/법률
+										</a>
+										</li>
+										<li>
+										<a href="<%=cp%>/book_cate.action?categoryId=528">
+										예술/대중문화
+										</a>
+										</li>
+										<li>
+										<a href="<%=cp%>/book_cate.action?categoryId=607">
+										자연과학/공학
+										</a>
+										</li>
 									</ul>
 									<ul class="cate_list">
-										<li><em>초등참고서</em></li>
-										<li><em>중/고등참고서</em></li>
+										<li>
+										<a href="<%=cp%>/book_cate.action?categoryId=798">
+										초등학습
+										</a>
+										</li>
+										<li>
+										<a href="<%=cp%>/book_cate.action?categoryId=840">
+										중/고등참고서
+										</a>
+										</li>
 										<li>&nbsp;</li>
-										<li><em>외국어/사전</em></li>
-										<li>대학교재</li>
-										<li>컴퓨터/IT</li>
+										<li>
+										<a href="<%=cp%>/book_cate.action?categoryId=943">
+										외국어/사전
+										</a>
+										</li>
+										<li>
+										<a href="<%=cp%>/book_cate.action?categoryId=1013">
+										대학교재
+										</a>
+										</li>
+										<li>
+										<a href="<%=cp%>/book_cate.action?categoryId=1153">
+										컴퓨터/IT
+										</a>
+										</li>
 									</ul>
 									<ul class="cate_list">
-										<li>서양서</li>
-										<li>일본서</li>
+										<li>
+										<a href="<%=cp%>/book_cate.action?categoryId=1469">
+										서양서
+										</a>
+										</li>
+										<li>
+										<a href="<%=cp%>/book_cate.action?categoryId=1487">
+										일본서
+										</a>
+										</li>
 									</ul>
 								</div>
 							</div>
@@ -532,21 +751,65 @@
 								</h3>
 								<div class="cate_list_wrap cate_exam">
 									<ul class="cate_list exam">
-										<li><em>공무원</em></li>
-										<li>국가고시</li>
-										<li>임용시험</li>
-										<li><em>대기업/공기업/면접</em></li>
-										<li>대표저자수험서</li>
+										<li>
+										
+										공무원
+									
+										</li>
+										<li>
+										
+										국가고시
+									
+										</li>
+										<li>
+										
+										임용시험
+										
+										</li>
+										<li>
+										
+										대기업/공기업/면접
+										
+										</li>
+										<li>
+										
+										대표저자수험서
+										
+										</li>
 									</ul>
 									<ul class="cate_list">
-										<li>국가기술자격증</li>
-										<li>국가전문자격증</li>
-										<li>민간전문자격증</li>
-										<li>외국자격증</li>
+										<li>
+										
+										국가기술자격증
+										
+										</li>
+										<li>
+										
+										국가전문자격증
+										
+										</li>
+										<li>
+										
+										민간전문자격증
+										
+										</li>
+										<li>
+										
+										외국자격증
+										
+										</li>
 									</ul>
 									<ul class="cate_list exam clear">
-										<li>편입/진학/전문대학원</li>
-										<li>공부법/안내서</li>
+										<li>
+										
+										편입/진학/전문대학원
+										
+										</li>
+										<li>
+										
+										공부법/안내서
+									
+										</li>
 									</ul>
 								</div>
 							</div>

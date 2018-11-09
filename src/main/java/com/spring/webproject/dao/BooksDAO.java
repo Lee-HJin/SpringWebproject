@@ -333,9 +333,22 @@ public class BooksDAO {
 		return lists;
 	}
 
+	// 카테고리별 새로나온책 개수 가져오기
+	public int getLists_New_Count(int cateStart, int cateEnd) {
+
+		HashMap<String, Object> params = new HashMap<String, Object>();
+
+		params.put("cateStart", cateStart);
+		params.put("cateEnd", cateEnd);
+
+		int result = sessionTemplate.selectOne("bookMapper.getLists_New_Num", params);
+
+		return result;
+	}
+
 	// 카테고리별 할인 도서 가져오기
-	public List<BookSectionsDTO> getLists_Discount(int cateStart, int cateEnd, int fromDiscount, int toDiscount, int start,
-			int end) {
+	public List<BookSectionsDTO> getLists_Discount(int cateStart, int cateEnd, int fromDiscount, int toDiscount,
+			int start, int end) {
 
 		HashMap<String, Object> params = new HashMap<String, Object>();
 
@@ -349,6 +362,21 @@ public class BooksDAO {
 		List<BookSectionsDTO> lists = sessionTemplate.selectList("bookMapper.getLists_Discount", params);
 
 		return lists;
+	}
+
+	// 카테고리별 할인도서 개수 가져오기
+	public int getLists_Discount_Num(int cateStart, int cateEnd, int fromDiscount, int toDiscount) {
+
+		HashMap<String, Object> params = new HashMap<String, Object>();
+
+		params.put("cateStart", cateStart);
+		params.put("cateEnd", cateEnd);
+		params.put("fromDiscount", fromDiscount);
+		params.put("toDiscount", toDiscount);
+
+		int result = sessionTemplate.selectOne("bookMapper.getLists_Discount_Num", params);
+
+		return result;
 	}
 
 	public int getCateEnd(int categoryId) {
