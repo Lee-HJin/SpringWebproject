@@ -9,7 +9,8 @@
 .join_title_left {float: left; width: 150px; height: 90px; line-height: 170px; vertical-align: bottom;}
 .join_title_right {float: right; height: 90px;}
 
-.joinTable {padding-top: 20px;}
+.joinTable {padding-top: 20px; line-height: 25px;}
+.joinTable input {border: 1px solid #d5d5d5; height: 23px; font-size: 10pt;}
 .joinTable table {margin-top: 10px; font-family: 맑은고딕; border-collapse: collapse;}
 .joinTable tr {border-bottom: 1px solid #d5d5d5; border-top: 1px solid #d5d5d5; text-align: left; height: 45px;}
 .joinTable th {background-color: #fafafa; width: 150px; padding-left: 10px}
@@ -40,7 +41,7 @@
 .agree_last_box .agree_ok_btn:hover {color: #555555; background-color: #fafafa; border: 2px solid #d5d5d5; height: 40px; width: 120px; font-size: 13pt; font-weight: bold; cursor: pointer;}
 .agree_last_box .agree_cancel_btn {color: #555555; background-color: #fafafa; border: 1px solid #d5d5d5; height: 40px; width: 120px; font-size: 13pt; font-weight: bold; cursor: pointer;}
 .agree_last_box .agree_cancel_btn:hover {border: 2px solid #d5d5d5;}
-.agree_more_btn {background-color: #fafafa; border: 1px solid #d1d1d1; cursor: pointer; height: 23px;}
+.agree_more_btn {background-color: #fafafa; border: 1px solid #d1d1d1; cursor: pointer; height: 27px; width: 80px;}
 .agree_more_btn:hover {background-color: #fafafa; border: 1px solid #d5d5d5; cursor: pointer; height: 23px;}
 
 .agree_all_div {font-family: 맑은고딕;}

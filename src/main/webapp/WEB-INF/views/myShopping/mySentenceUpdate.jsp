@@ -80,7 +80,7 @@
 			<tr>
 				<th>간단평<br/>내용</th>
 				<td height="135px;" style="padding-left: 20px;">
-					<textarea rows="5" cols="100" name="sentence" id="sentence" >${dto.sentence }</textarea>
+					<textarea rows="5" cols="100" name="sentence" id="sentence" style="border: 1px solid #d5d5d5; font-size: 10pt;">${dto.sentence }</textarea>
 					<br/>
 					<div style="float: right; padding-right: 32px;"><span id="checkLength"></span>/200</div>
 				</td>
