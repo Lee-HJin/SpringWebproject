@@ -30,12 +30,12 @@ public class QuestionDAO {
 	}
 	
 	//typeId!=0, 전체 데이터 갯수
-	public int getDataCount2(String searchKey, String searchValue, String typeId) {
+	public int getDataCount2(String searchKey, String searchValue, String parentsTypeId) {
 		HashMap<String, Object> params = new HashMap<String, Object>();
 		
 		params.put("searchKey", searchKey);
 		params.put("searchValue", searchValue);
-		params.put("typeId", typeId);
+		params.put("parentsTypeId", parentsTypeId);
 		
 		int result =sessionTemplate.selectOne("questionMapper.getDataCount2",params);
 		
@@ -50,23 +50,23 @@ public class QuestionDAO {
 	}
 	
 	// typeId서치 - subTypeId
-	public List<QuestionDTO> getSubTypeId(String typeId){
+	public List<QuestionDTO> getSubTypeId(String parentsTypeId){
 		HashMap<String, Object> params = new HashMap<String, Object>();
 		
-		params.put("typeId", typeId);
+		params.put("parentsTypeId", parentsTypeId);
 		List<QuestionDTO> lists = sessionTemplate.selectList("questionMapper.getSubTypeId",params);
 		return lists;
 	}
 		
 	// FAO게시글 TypeId별로 번호,질문유형,제목,내용 불러오기
-	public List<QuestionDTO> getTypeList(int start, int end, String searchKey, String searchValue,String typeId) {
+	public List<QuestionDTO> getTypeList(int start, int end, String searchKey, String searchValue,String parentsTypeId) {
 		HashMap<String, Object> params = new HashMap<String, Object>();
 		
 		params.put("start", start);
 		params.put("end", end);
 		params.put("searchKey", searchKey);
 		params.put("searchValue", searchValue);
-		params.put("typeId", typeId);
+		params.put("parentsTypeId", parentsTypeId);		
 		
 		List<QuestionDTO> lists = sessionTemplate.selectList("questionMapper.getTypeList",params);
 		return lists;
@@ -86,10 +86,10 @@ public class QuestionDAO {
 	}
 	
 	// FAO리스트 출력 번호, 질문유형, 제목 (subTypeId서치) 
-	public List<QuestionDTO> getSubTypeList(String subTypeId) {
+	public List<QuestionDTO> getSubTypeList(String typeId) {
 		HashMap<String, Object> params = new HashMap<String, Object>();
 		
-		params.put("subTypeId", subTypeId);
+		params.put("typeId", typeId);
 		
 		List<QuestionDTO> lists = sessionTemplate.selectList("questionMapper.getSubTypeList",params);
 		return lists;
@@ -123,6 +123,7 @@ public class QuestionDAO {
 	}
 	
 	public void insertCounsel(CounselDTO dto) {
+		
 		
 		sessionTemplate.insert("questionMapper.insertCounsel",dto);
 		

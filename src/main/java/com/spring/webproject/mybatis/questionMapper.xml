@@ -15,20 +15,21 @@
   <!--typeId!=0,전체 데이터 갯수  -->
   <select id="getDataCount2" parameterType="hashMap"
   resultType="int">
-  	select nvl(count(*),0) from questions 
-  	where ${searchKey} like '%' || #{searchValue} || '%' and typeId=#{typeId}
+  	select nvl(count(*),0) from questions a, consultationtype b
+  	where a.${searchKey} like '%' || #{searchValue} || '%' 
+  	 and a.typeId = b.typeId and b.parentsTypeId =#{parentsTypeId}
   </select>  
   
   <!--좌측 자주 찾는 질문 FAO / typeId, type불러오기-->
   <select id="getList" parameterType="hashMap"
   resultType="com.spring.webproject.dto.QuestionDTO">
-  select distinct type,typeId from questions
+  select distinct parentsTypeName,parentsTypeId from consultationType where parentstypeId >0
   </select>  
   
   <!--typeId서치 - subTypeId -->
   <select id="getSubTypeId" parameterType="hashMap"
   resultType="com.spring.webproject.dto.QuestionDTO">
-  select distinct subType,subTypeId from questions where typeId=#{typeId}  
+  select distinct typeId,typeName from consultationtype where parentsTypeId = #{parentsTypeId} 
   </select>
   
   <!-- FAO게시글 TypeId별로 번호,질문유형,제목,내용 불러오기  -->
@@ -36,9 +37,11 @@
    resultType="com.spring.webproject.dto.QuestionDTO">
   select * from(
   select rownum rnum,data.* from(
-  select questionNum, type, typeId,subType,subTypeId,subject,content
-  from questions where ${searchKey} like '%' || #{searchValue} || '%' and typeId= #{typeId} 
-  order by questionNum desc) data) 
+   select a.questionId, b.parentsTypeName, b.parentsTypeId, b.typeName, b.typeId, a.subject, a.content 
+   from questions a, consultationtype b   
+  where a.${searchKey} like '%' || #{searchValue} || '%' 
+  and a.typeId = b.typeId and b.parentsTypeId = #{parentsTypeId} 
+  order by a.questionId desc) data) 
   <![CDATA[
   	where rnum>=#{start} and rnum<=#{end}  
   ]]>
@@ -49,43 +52,46 @@
    resultType="com.spring.webproject.dto.QuestionDTO">
   select * from(
   select rownum rnum,data.* from(
-  select questionNum, type, typeId,subType,subTypeId,subject,content 
-  from questions where ${searchKey} like '%' || #{searchValue} || '%' 
-  order by questionNum desc) data) 
+  select a.questionId, b.parentsTypeName, b.parentsTypeId, b.typeName, b.typeId, a.subject, a.content 
+  from questions a, consultationtype b 
+  where a.${searchKey} like '%' || #{searchValue} || '%' 
+  and a.typeId = b.typeId
+  order by a.questionId desc) data) 
   <![CDATA[
   	where rnum>=#{start} and rnum<=#{end}  
   ]]>
-  </select>  
+  </select>  	
   
   <!-- FAO리스트 출력 번호, 질문유형, 제목 (subTypeId서치)  -->
   <select id="getSubTypeList" parameterType="hashMap"
   resultType="com.spring.webproject.dto.QuestionDTO">
-  select questionNum,typeId, type,typeId,subType,subTypeId,subject,content 
-  from questions where subTypeId=#{subTypeId}
+  select a.questionId, b.parentsTypeName, b.parentsTypeId, b.typeName, b.typeId, a.subject, a.content 
+	from questions a, consultationtype b
+	where a.typeId = b.typeId and b.typeId = #{typeId}
   </select>  
   
   <!-- 조회수 증가 -->
   <update id="updateHitCount" parameterType="int">
-  update questions set hitCount=hitCount + 1 where questionNum=#{questionNum}
+  update questions set hitCount=hitCount + 1 where questionId=#{questionId}
   </update>   
   
   <!-- 조회수 TOP10 -->
   <select id="topView" parameterType="hashMap"
   resultType="com.spring.webproject.dto.QuestionDTO">	
-  select subTypeId, questionNum, typeId, subject from
-  (select *  from questions order by hitcount desc)
+  select b.typeId, a.questionId, b.parentsTypeId,a.subject from
+  ( select *  from questions order by hitcount desc) a, consultationType b
   <![CDATA[
-  where rownum <= 10
+   where a.typeid = b.typeid and rownum <= 10
   ]]>
   </select>
   
   <!-- 최근등록 top10 -->
   <select id="topDate" parameterType="hashMap"
   resultType="com.spring.webproject.dto.QuestionDTO">
-  select subTypeId, questionNum, typeId,subject from
-  ( select *  from questions order by created desc)
+  select b.typeId, a.questionId, b.parentsTypeId,a.subject from
+  ( select *  from questions order by createDate desc) a, consultationType b
   <![CDATA[
-  where rownum <= 10
+  where a.typeId = b.typeId and rownum <= 10
   ]]>
   </select>
   
@@ -97,8 +103,8 @@
   
   <!-- 상담신청 -->
   <insert id="insertCounsel" parameterType="com.spring.webproject.dto.CounselDTO">
-  	insert into consultation (consultId, userName, email, subject, content, consultationDate, typeId)
-  	values (#{consultId}, #{userName}, #{email}, #{subject}, #{content}, sysdate, #{typeId})
+  	insert into consultation (consultId, userId, userName, email, subject, contents, consultationDate, typeId)
+  	values (#{consultId}, #{userId}, #{userName}, #{email}, #{subject}, #{contents}, sysdate, #{parentsTypeId})
   </insert>
   
   </mapper>
