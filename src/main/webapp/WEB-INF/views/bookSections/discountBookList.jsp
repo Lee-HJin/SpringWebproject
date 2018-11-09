@@ -192,8 +192,10 @@ function goSearch(sort) {
 <!-- 스트립트2 끝  -->
 
 
+
+
 </head>
-<body>
+<body style="text-decoration: none;">
 
 <div id="contentBody">
 		<div id="contentWrap">
@@ -392,7 +394,7 @@ function goSearch(sort) {
 							<a href="javascript:addWishes();"><span class="btn_w_comm btype_a2">위시리스트</span></a>
 						</div>
 						
-						
+			
 					
 					</div>		
 				

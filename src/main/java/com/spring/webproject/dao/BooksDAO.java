@@ -304,14 +304,13 @@ public class BooksDAO {
 	}
 
 	// 카테고리별 베스트 셀러 가져오기
-	public List<BookSectionsDTO> getLists_Best(int cateStart, int cateEnd, int start, int end) {
+	public List<BookSectionsDTO> getLists_Best(int cateStart, int cateEnd) {
 
 		HashMap<String, Object> params = new HashMap<String, Object>();
 
 		params.put("cateStart", cateStart);
 		params.put("cateEnd", cateEnd);
-		params.put("start", start);
-		params.put("end", end);
+	
 
 		List<BookSectionsDTO> lists = sessionTemplate.selectList("bookMapper.getLists_Best", params);
 
@@ -319,14 +318,13 @@ public class BooksDAO {
 	}
 
 	// 카테고리별 새로나온책 가져오기
-	public List<BookSectionsDTO> getLists_New(int cateStart, int cateEnd, int start, int end) {
+	public List<BookSectionsDTO> getLists_New(int cateStart, int cateEnd) {
 
 		HashMap<String, Object> params = new HashMap<String, Object>();
 
 		params.put("cateStart", cateStart);
 		params.put("cateEnd", cateEnd);
-		params.put("start", start);
-		params.put("end", end);
+	
 
 		List<BookSectionsDTO> lists = sessionTemplate.selectList("bookMapper.getLists_New", params);
 

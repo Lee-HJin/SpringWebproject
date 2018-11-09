@@ -14,6 +14,7 @@ import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import com.spring.webproject.dao.BookSectionsDAO;
 import com.spring.webproject.dao.BooksDAO;
@@ -41,6 +42,9 @@ public class BookController {
 	LoginDAO dao2;
 
 	@Autowired
+	LoginDAO dao3;
+
+	@Autowired
 	@Qualifier("bookSectionsDAO")
 	BookSectionsDAO raDao;
 
@@ -50,10 +54,12 @@ public class BookController {
 	@Autowired
 	MyUtil raMyUtil;
 
+	List<String> bookCookie; // 최근 본 상품 쿠키 리스트
+
 	// 소설
 	@RequestMapping(value = "/book_novel.action", method = { RequestMethod.GET, RequestMethod.POST })
 	public String book_novel(HttpServletRequest request, HttpServletResponse response) {
-
+		String cp = request.getContextPath();
 		String pageNum = request.getParameter("pageNum");
 
 		int currentPage = 1;
@@ -62,12 +68,33 @@ public class BookController {
 			currentPage = Integer.parseInt(pageNum);
 		}
 
-		// 전체데이터 갯수
-		int dataCount = raDao.getDataCountForEachRnum();
+		// 베스트 셀러
+
+		int categoryId = 1;
+		int cateStart = categoryId;
+
+		int cateEnd = dao.getCateEnd(categoryId);
+		/* discountRate */
+		int fromDiscount = 0;
+		int toDiscount = 0;
+		if (request.getParameter("fromDiscount") == null || request.getParameter("fromDiscount").equals("")) {
+			fromDiscount = 0;
+		} else {
+			fromDiscount = Integer.parseInt(request.getParameter("fromDiscount"));
+		}
+		if (request.getParameter("toDiscount") == null || request.getParameter("toDiscount").equals("")) {
+			toDiscount = 100;
+		} else {
+			toDiscount = Integer.parseInt(request.getParameter("toDiscount"));
+		}
 
 		// 페이징 처리
+
 		int numPerPage = 10;
-		int totalPage = raMyUtil.getPageCount(numPerPage, dataCount);
+
+		int lists_Discount_Num = dao.getLists_Discount_Num(cateStart, cateEnd, fromDiscount, toDiscount);
+		request.setAttribute("lists_Discount_Num", lists_Discount_Num);
+		int totalPage = raMyUtil.getPageCount(numPerPage, lists_Discount_Num);
 
 		if (currentPage > totalPage)
 			currentPage = totalPage;
@@ -78,8 +105,34 @@ public class BookController {
 		request.setAttribute("start", start);
 		request.setAttribute("end", end);
 
-		List<BookSectionsDTO> bestSellerTop10 = raDao.getBestSellerTop10();
-		request.setAttribute("bestSellerTop10", bestSellerTop10);
+		// 대분류
+		CateDTO dto_Main = dao.getReadCate(categoryId);
+
+		request.setAttribute("dto_Main", dto_Main); // 메인 분류 이름
+
+		List<BookSectionsDTO> lists_Best = dao.getLists_Best(cateStart, cateEnd);
+		request.setAttribute("lists_Best", lists_Best);
+
+		// 새로나온 책
+		List<BookSectionsDTO> lists_New = dao.getLists_New(cateStart, cateEnd);
+		request.setAttribute("lists_New", lists_New);
+
+		int lists_New_Num = dao.getLists_New_Count(cateStart, cateEnd);
+		request.setAttribute("lists_New_Num", lists_New_Num);
+
+		// 할인도서
+
+		List<BookSectionsDTO> lists_Discount = dao.getLists_Discount(cateStart, cateEnd, fromDiscount, toDiscount,
+				start, end);
+
+		request.setAttribute("lists_Discount", lists_Discount);
+
+		String bnlBSListUrl = cp + "/book_novel.action";
+
+		String pageIndexList = raMyUtil.pageIndexListforDiscount2(currentPage, totalPage, bnlBSListUrl);
+
+		request.setAttribute("pageNum", currentPage);
+		request.setAttribute("pageIndexList", pageIndexList);
 
 		return "/books/cate/novel/book_novel";
 	}
@@ -220,7 +273,7 @@ public class BookController {
 	// 도서 상세 페이지
 	@RequestMapping(value = "/book_info.action", method = { RequestMethod.GET, RequestMethod.POST })
 	public String book_info(HttpServletRequest request, HttpServletResponse response)
-			throws UnsupportedEncodingException {
+			throws UnsupportedEncodingException, InterruptedException {
 		String isbn = request.getParameter("isbn"); // 책 고유번호 가져오기
 
 		BooksDTO dto = dao.getReadBookData(isbn);
@@ -234,6 +287,17 @@ public class BookController {
 		if (dto3 != null) {
 			String userId = dto3.getUserId();
 			request.setAttribute("userId", userId);
+
+			// 이미 recentList에 있는 책인지 확인
+			int check = dao3.checkRecentBook(userId, isbn);
+			// check==0 -> DB에 없는책
+			// insert실행
+			if (check == 0) {
+				dao3.recentBookAdd(userId, isbn);
+			} else {
+				dao3.updateRecentBookTime(userId, isbn);
+			}
+			Thread.sleep(100);
 		}
 		int reviewNum = dao.getReviewDataCount(isbn);
 		int simplereviewNum = dao.getSimpleReivewDataCount(isbn);
@@ -244,6 +308,18 @@ public class BookController {
 		request.setAttribute("dto4", dto4); // 웨어하우스 재고 넘겨주기
 
 		request.setAttribute("dto", dto); // 책 정보 넘겨주기
+		String introduction = dto.getIntroduction();
+		String intro1 = introduction.substring(0, 200);
+		String intro2 = introduction.substring(200);
+		request.setAttribute("intro1", intro1);
+		request.setAttribute("intro2", intro2);
+
+		String contents = dto.getTableOfContents();
+		String cont1 = contents.substring(0, 200);
+		String cont2 = contents.substring(200);
+		request.setAttribute("cont1", cont1);
+		request.setAttribute("cont2", cont2);
+
 		request.setAttribute("dto2", dto2); // 작가 정보 넘겨주기
 
 		request.setAttribute("isbn", isbn); // 책 번호 넘겨주기
@@ -446,7 +522,7 @@ public class BookController {
 	@RequestMapping(value = "/login2.action", method = { RequestMethod.GET, RequestMethod.POST })
 	public String login2(HttpServletRequest request, HttpServletResponse response) {
 		String isbn = request.getParameter("isbn"); // 책 고유번호 가져오기
-		
+
 		request.setAttribute("isbn", isbn);
 		return "books/book_login2";
 	}
@@ -501,7 +577,7 @@ public class BookController {
 	}
 
 	// 공감하기 2
-	@RequestMapping(value = "/book_simpleReviewVote.action", method = {RequestMethod.GET, RequestMethod.POST })
+	@RequestMapping(value = "/book_simpleReviewVote.action", method = { RequestMethod.GET, RequestMethod.POST })
 	public String book_simpleReviewVote(HttpServletRequest request, HttpServletResponse response) {
 		System.out.println("공감공감");
 		String isbn = request.getParameter("isbn"); // 책 고유번호 가져오기
@@ -586,29 +662,17 @@ public class BookController {
 			currentPage = Integer.parseInt(pageNum);
 		}
 
-		// 전체데이터 갯수
-		int dataCount = raDao.getDataCount();
-
-		// 페이징 처리
-		int numPerPage = 10;
-		int totalPage = raMyUtil.getPageCount(numPerPage, dataCount);
-
-		if (currentPage > totalPage)
-			currentPage = totalPage;
-
-		int start = (currentPage - 1) * numPerPage + 1;
-		int end = currentPage * numPerPage;
 
 		// 베스트 셀러
 		int cateStart = categoryId;
 
 		int cateEnd = dao.getCateEnd(categoryId);
 
-		List<BookSectionsDTO> lists_Best = dao.getLists_Best(cateStart, cateEnd, start, end);
+		List<BookSectionsDTO> lists_Best = dao.getLists_Best(cateStart, cateEnd);
 		request.setAttribute("lists_Best", lists_Best);
 
 		// 새로나온 책
-		List<BookSectionsDTO> lists_New = dao.getLists_New(cateStart, cateEnd, start, end);
+		List<BookSectionsDTO> lists_New = dao.getLists_New(cateStart, cateEnd);
 		request.setAttribute("lists_New", lists_New);
 
 		int lists_New_Num = dao.getLists_New_Count(cateStart, cateEnd);
@@ -628,17 +692,36 @@ public class BookController {
 		} else {
 			toDiscount = Integer.parseInt(request.getParameter("toDiscount"));
 		}
+		// 페이징 처리
 
-		List<BookSectionsDTO> lists_Discount = dao.getLists_Discount(cateStart, cateEnd, fromDiscount, toDiscount,
-				start, end);
 		
-		request.setAttribute("lists_Discount", lists_Discount);
 		int lists_Discount_Num = dao.getLists_Discount_Num(cateStart, cateEnd, fromDiscount, toDiscount);
 		request.setAttribute("lists_Discount_Num", lists_Discount_Num);
 
-		String bnlBSListUrl = cp + "/boos/cate/book_cate";
+	
+		String bnlBSListUrl = cp + "/book_cate.action";
+		// 페이징 처리
+		int numPerPage = 10;
 
-		String pageIndexList = raMyUtil.pageIndexList(currentPage, totalPage, bnlBSListUrl);
+		int totalPage = raMyUtil.getPageCount(numPerPage, lists_Discount_Num);
+
+		if (currentPage > totalPage)
+			currentPage = totalPage;
+
+		int start = (currentPage - 1) * numPerPage + 1;
+		int end = currentPage * numPerPage;
+
+		// ****************************************
+		List<BookSectionsDTO> lists_Discount = dao.getLists_Discount(cateStart, cateEnd, fromDiscount, toDiscount,
+				start, end);
+		request.setAttribute("lists_Discount", lists_Discount);
+	
+
+		request.setAttribute("start", start);
+		request.setAttribute("end", end);
+
+		// ****************************************
+		String pageIndexList = raMyUtil.pageIndexListforDiscount(currentPage, totalPage, bnlBSListUrl, categoryId);
 
 		request.setAttribute("pageNum", currentPage);
 		request.setAttribute("pageIndexList", pageIndexList);
