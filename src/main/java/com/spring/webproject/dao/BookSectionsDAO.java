@@ -7,7 +7,9 @@ import java.util.List;
 import org.mybatis.spring.SqlSessionTemplate;
 
 import com.spring.webproject.dto.BookSectionsDTO;
-import com.spring.webproject.dto.MainDTO;
+import com.spring.webproject.dto.OrderBooksDTO;
+import com.spring.webproject.dto.OrdersDTO;
+
 
 public class BookSectionsDAO {
 
@@ -450,7 +452,11 @@ public class BookSectionsDAO {
 	return allDataCount;
 }
 	
-    /*=================*/	
+    /*=================*//*=================*/	/*=================*/	/*=================*/	/*=================*/	/*=================*/	/*=================*/
+	/*=================*//*=================*/	/*=================*/	/*=================*/	/*=================*/	/*=================*/	/*=================*/
+	/*=================*//*=================*/	/*=================*/	/*=================*/	/*=================*/	/*=================*/	/*=================*/
+	
+	
 	/* 샵 앤 오더 */
 	//오늘 본 상품
 	public List<BookSectionsDTO> cartList(String ck,String ckC){
@@ -473,12 +479,38 @@ public class BookSectionsDAO {
 		return lst;
 	}
 	
+	//order 쿠키리스트 출력
 	public BookSectionsDTO getBookSection(String isbn) {
 		
 		return sessionTemplate.selectOne("shopAndOrderMapper.cartLists", isbn);
 	}
 	
-
+	public int  getLeftPoint(String userId) {
+		return sessionTemplate.selectOne("shopAndOrderMapper.leftPoint", userId);
+	}
 	
+	//maxOrderId(for orders 테이블
+	public int getMaxOrderId(){
+		
+		int maxOrderId = 0;
+		
+		maxOrderId = sessionTemplate.selectOne("shopAndOrderMapper.maxOrderId");
+		
+		return maxOrderId;
+		
+	}
+	
+	//order table insert
+	public void getOrdersInsertData(OrdersDTO dto){
+		
+		sessionTemplate.insert("shopAndOrderMapper.ordersInsertData", dto);
+
+	}
+	
+	//orderbooks table insert
+	public void getOrderBooksInsertData(OrderBooksDTO dto) {
+		sessionTemplate.insert("shopAndOrderMapper.orderBooksInsertData", dto);
+	}
+
 	
 }
