@@ -80,14 +80,14 @@
 				<input type="hidden" id="storeIdVal_${dto.seqNum }" value="1"/>
 
 				<input type="hidden" id="maxVal_${dto.seqNum }"  name="maxVal" value="999">
-				<input type="hidden" id="saleCostVal_${dto.seqNum }" name="saleCosVal" value="${dto.discountedPrice }"/>
+				<input type="hidden" id="saleCostVal_${dto.seqNum }" name="price" value="${dto.discountedPrice }"/>
 				<input type="hidden" id="deliCostCondiVal_${dto.seqNum }" name="deliCostCondiVal" value="10000"/>
    				<input type="hidden" id="deliCostVal_${dto.seqNum }" name="deliCostVal" value="2000"/>
    				<input type="hidden" id="marketSaleVal_${dto.seqNum }" name="marketSaleVal" value="${dto.bookPrice }"/>
    				<input type="hidden" id="prodPointVal_${dto.seqNum }" name="rodPointVal" value="${dto.point }"/>
    				<input type="hidden" id="bundleDeliYnVal_${dto.seqNum }" name="bundleDeliYnVal" value="Y"/>
    				<input type="hidden" id="discountRate_${dto.seqNum }" name="discountRate" value="${dto.discountRate }"/>
-   				<input type="hidden" id="prodIdArr_${dto.seqNum }" name="prodIdArr" value="${dto.isbn }"/>
+   				<input type="hidden" id="prodIdArr_${dto.seqNum }" name="isbn" value="${dto.isbn }"/>
    				<input type="hidden" id="prod_name_${dto.seqNum }" name="prod_name" value="${dto.bookTitle }"/>
    				<input type="hidden" id="optSeqVal_${dto.seqNum }" name="optSeqVal" value=""/>
    				<input type="hidden" name="is_sale_yn"  value="Y"/>

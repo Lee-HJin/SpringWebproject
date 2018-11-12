@@ -909,8 +909,11 @@ $(document).ready(function(){
 
 </head>
 <body>
+<jsp:include page="../common/header.jsp" flush="false"/>
 
 <div id="contentBody">
+
+
 		<div id="contentWrap">
 			<h2 class="ml10 mt30  mb10 lh0"><img src="http://image.bandinlunis.com/images/specialBook/tit_h3_discount.gif" alt="정가인하도서" class="lh0"></h2>
 
@@ -1098,6 +1101,8 @@ $(document).ready(function(){
 			</div>
 		</div>
 	</div>
+	
+
 
 <!-- 동적으로 만들어주는 스크립트  -->
 <script type="text/javascript">
@@ -1310,5 +1315,7 @@ $(document).ready(function(){
 </script>
 <!-- 동적으로 만들어주는 스크립트 끝  --> 
 
+
+<jsp:include page="../common/footer.jsp" flush="false" />
 </body>
 </html>

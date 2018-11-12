@@ -123,6 +123,7 @@
 	
 	//북카트
 	function addCart(isbn) {
+		
 		var ordCnt = $("#cntVal_"+isbn).val();
 		if(isNaN(ordCnt)) {
 			ordCnt = 1;
@@ -133,10 +134,27 @@
 				var ck = $("#cart_isbn"+isbn).val();
 				
 				if(document.cookie.indexOf('shop')==-1){
-					setCookie('shop',cookieValue,1);					
+					setCookie('shop',cookieValue,1);
+					
+					var result = confirm('쇼핑카트로 바로 가시겠습니까?'); 
+					if(result) { 
+
+						//yes 
+						location.replace('shopCartList.action'); 
+				
+					} else { 
+						//no
+						
+					}
+					
+					
+					
 				}else if(document.cookie.indexOf('shop')!=-1){
 					addCookie(cookieValue,ck);
+					
+				
 				}
+				
 			});
 
 			//기존 쿠키에 추가
@@ -170,11 +188,15 @@
 						items = itemArray.join('/');
 						setCookie('shop',items,1);
 						
-						if(confirm("쇼핑카트에 등록되었습니다. 지금 바로 확인 하시겠습니까?")){
-							location.href= 'shopCartList.action';
-						}
-						else{
-							return;
+						var result = confirm('쇼핑카트로 바로 가시겠습니까?'); 
+						if(result) { 
+
+							//yes 
+							location.replace('shopCartList.action'); 
+					
+						} else { 
+							//no
+							
 						}
 					}
 				}
@@ -189,6 +211,8 @@
 			    document.cookie = cookies;
 			}
 					
+			
+			
 			function getCookie(cookiename){
 				var cookiestring  = document.cookie;
 				var cookiearray = cookiestring.split(';');
@@ -275,9 +299,27 @@
 	}
 	
 	$("#btn_order").click(function() {
-		
-		 $("#goOrder").submit();
-		 
+	
+		var session = $("#userInfo").val();
+
+		   if(session == null || session == ""){
+			   
+			   var result = confirm('로그인을 해야 주문 가능합니다. 로그인 하시겠습니까?'); 
+				if(result) { 
+
+					//yes 
+					location.href = 'login.action' 
+			
+				} else { 
+					//no
+					
+				}
+			   
+		   }
+		   else{
+			   $("#goOrder").submit();
+		   }
+
 	});
 	
 	

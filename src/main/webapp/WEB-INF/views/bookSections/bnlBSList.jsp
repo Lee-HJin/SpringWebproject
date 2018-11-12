@@ -49,60 +49,8 @@
 <script type="text/javascript" src="/webproject/resources/js/dwr.js" charset="euc-kr"></script>
 <script type="text/javascript" src="/webproject/resources/js/jquery/jquery.min.js"></script><!-- IE8 에서 오류로 인해 일부러 넣음(jQuery 보다 dwr.util.js 가 밑에 있음 오류 발생) -->
 <script type="text/javascript" src="/webproject/resources/js/multiCart.js"></script>
-<script type="text/javascript">
 
-	$(document).ready(function(){
-
-
-	function goTopHistory(recommendYear, recommendMonth, recommendWeek, rank) {
-		
-		frmObj = document.bestForm;
-		
-		frmObj.recommendYear.value = recommendYear;
-		frmObj.recommendMonth.value = recommendMonth;
-		frmObj.recommendWeek.value = recommendWeek;
-		
-		frmObj.pageNum.value = "1";
-		/* frmObj.sort.value = ""; */
-
-		frmObj.submit();
-	}	
-
-	function goSearch(sort) {
-		
-		// 폼 검증
-		if (!jutil.form.validate("bestForm")) {
-			return;
-		}
-		
-		var totalPage = Number("5");
-		if (totalPage == 0) {
-			totalPage = 1;
-		}
-		
-		var frmObj = document.bestForm;
-
-		if (frmObj.sort.value == "") {
-			frmObj.sort.value = "sort8";
-		}
-		
-		var cageId = document.getElementsByName("cageId");
-		
-		var prodId = document.getElementsByName("isbn");
-		var orderCnt = document.getElementsByName("orderCnt");
-		
-		for (var i = 0; i < prodId.length; i++) {
-		
-			prodId[i].disabled = true;
-			orderCnt[i].disabled = true;
-		}
-
-		frmObj.submit();
-	}
-});
-	
-</script>
-
+<!-- 
 <script type="text/javascript">
 
 /* 	// 쇼핑카트
@@ -149,7 +97,9 @@
 	
 
 </script>
-<!-- 스트립트2 끝  -->
+스트립트2 끝 
+ -->
+
 
 </head>
 
