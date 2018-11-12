@@ -596,6 +596,14 @@ public class MyShoppingDAO {
 		
 	}
 	
+	public CounselDTO getCounselContents(int consultId) {
+		
+		CounselDTO dto = sessionTemplate.selectOne("myShopping.getCounselContents",consultId);
+		
+		return dto;
+		
+	}
+	
 	
 	
 	

@@ -163,7 +163,7 @@ select orderid, orderbooks.isbn, booktitle, quantity, bookprice, (bookprice*0.05
 
 <!-- 주문 상세내역 -->
 <select id="getOrderDetailInfo" parameterType="java.lang.String" resultType="com.spring.webproject.dto.OrderListDTO">
-select orderId, orderPrice, point, shipmentsStatusCode, handlingDate, to_char(expectedDate,'YYYY-MM-DD') expectedDate, status, zipCode, address1, address2  from orderList where orderId=#{orderId}
+select orderId, orderPrice, point, shipmentsStatusCode, handlingDate, to_char(expectedDate,'YYYY-MM-DD') expectedDate, status, zipCode, address1, address2, recipientName from orderList where orderId=#{orderId}
 </select>
 
 <!-- 주문 취소 -->
@@ -401,7 +401,7 @@ select nvl(count(*),0) from consultation where userId=#{userId} and answercheck 
 
 <!-- 1:1상담내역 리스트 (답변내역) -->
 <select id="getCounselListYes" parameterType="map" resultType="com.spring.webproject.dto.CounselDTO">
-select * from (select rownum rnum, consultid,userid,email,subject,contents,to_char(consultationdate,'YYYY-MM-DD') consultationDate,answercheck,typeName as typeid from(
+select * from (select rownum rnum, consultId,userid,email,subject,contents,to_char(consultationdate,'YYYY-MM-DD') consultationDate,answercheck,typeName as typeid from(
 select * from (select consultId,userId,email,subject,contents,consultationdate, answercheck,typeid 
 from consultation where userId=#{userId} and answercheck is not null and consultationdate between #{fromDate} and #{toDate} order by consultationdate, consultid desc)a inner join consultationtype on a.typeid=consultationtype.typeid order by consultationdate desc, consultid desc))
 <![CDATA[where rnum>=#{start} and rnum<=#{end}]]>
@@ -413,10 +413,15 @@ select nvl(count(*),0) from consultation where userId=#{userId} and answercheck 
 
 <!-- 1:1상담내역 리스트 (미답변내역) -->
 <select id="getCounselListNo" parameterType="map" resultType="com.spring.webproject.dto.CounselDTO">
-select * from (select rownum rnum, consultid,userid,email,subject,contents,to_char(consultationdate,'YYYY-MM-DD') consultationDate,answercheck,typeName as typeid from(
+select * from (select rownum rnum, consultId,userid,email,subject,contents,to_char(consultationdate,'YYYY-MM-DD') consultationDate,answercheck,typeName as typeid from(
 select * from (select consultId,userId,email,subject,contents,consultationdate, answercheck,typeid 
 from consultation where userId=#{userId} and answercheck is null and consultationdate between #{fromDate} and #{toDate} order by consultationdate, consultid desc)a inner join consultationtype on a.typeid=consultationtype.typeid order by consultationdate desc, consultid desc))
 <![CDATA[where rnum>=#{start} and rnum<=#{end}]]>
+</select>
+
+<!-- 1:1상담내역 내용 가져오기 -->
+<select id="getCounselContents"	parameterType="int" resultType="com.spring.webproject.dto.CounselDTO">
+select * from consultation where consultId=#{consultId}
 </select>
 
 

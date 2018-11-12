@@ -25,7 +25,7 @@ a:hover {text-decoration: underline; color: #886e45;}
 .side_navi_line {border-bottom: 1px solid #e1e1e1;}
 .side_navi_line li {padding-left: 20px;}
 
-.contents {float: left; margin-top: 15px; margin-left: 20px; width: 775px; font-family: 맑은고딕;}
+.contents {float: left; margin-top: 10px; margin-left: 20px; width: 775px; font-family: 맑은고딕;}
 .contents_title {font-size: 13pt; font-weight: bold;}
 
 .main_RecentOrderList {height: 180px;}
