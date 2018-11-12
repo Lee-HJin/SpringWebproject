@@ -748,10 +748,6 @@ table	th.td_Left {
 					htmlData += "</tr>";
 					
 					
-// 					htmlData += "<span class ='ilike'><button id = 'btn1' value='";
-// 					htmlData += reviewId.item(i).firstChild.nodeValue;
-// 					htmlData += "' />";
-					
 		
 				}
 
