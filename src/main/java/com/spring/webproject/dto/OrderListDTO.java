@@ -14,6 +14,7 @@ public class OrderListDTO {
 	private String zipCode;
 	private String address1;
 	private String address2;
+	private String recipientName;
 	
 	public int getOrderId() {
 		return orderId;
@@ -86,6 +87,12 @@ public class OrderListDTO {
 	}
 	public void setAddress2(String address2) {
 		this.address2 = address2;
+	}
+	public String getRecipientName() {
+		return recipientName;
+	}
+	public void setRecipientName(String recipientName) {
+		this.recipientName = recipientName;
 	}
 	
 }

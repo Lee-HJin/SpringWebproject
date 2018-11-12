@@ -38,7 +38,7 @@
 				<span class="under">${recentCount }건</span>
 			</li>
 			<li>
-				<span>최근 1:1 상담 내역</span>
+				<span>1:1 상담 내역</span>
 				<span class="under">${counselCount }건</span>
 			</li>
 		</ul>

@@ -11,13 +11,26 @@
 <head>
 <title>반디앤루니스 인터넷서점</title>
 
-	<link rel="stylesheet" href="<%=cp%>/resources/css/custom_bootstrap.css" type="text/css">
 	<link rel="stylesheet" href="<%=cp%>/resources/css/join.css" type="text/css">
 	
 	<!-- bootstrap -->
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
- 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+	<script type="text/javascript" src="../js/iframeResizer.contentWindow.min.js"></script>
+ 	<link rel="stylesheet" href="<%=cp%>/resources/css/custom_bootstrap.css" type="text/css">
 	<script src="<%=cp%>/resources/js/join.js"></script>
+	
+	<script type="text/javascript">
+	
+	$(function(){
+		
+		var message = '${loginAlert}';
+		
+		if(message!=null && message!='' && message!='null'){
+			alert(message);
+		}
+	});
+	
+	</script>
 	
 </head>
 
@@ -35,7 +48,7 @@
 		<img alt="로그인" src="<%=cp%>/resources/img/login/login_tit.gif">
 		<br/><br/>
 		<div class="login_message"><b>${message}</b></div>
-		<div class="bts"  style="float: left;">			
+		<div class="bts"  style="float: left;">		
 			<input type="text" name="user_id" placeholder="아이디" style="border-color: bcbcbc; border: 1px solid; margin-bottom: 0px; height: 40px; width: 300px;" class="form-control"> <br/>
 			<input type="password" name="userPwd" placeholder="비밀번호" style="border-color: bcbcbc; border: 1px solid; margin-bottom: 10px; height: 40px; width: 300px;" class="form-control" id="login_pwd">		
 		</div>

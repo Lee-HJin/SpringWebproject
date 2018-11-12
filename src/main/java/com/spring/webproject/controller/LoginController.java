@@ -41,7 +41,7 @@ public class LoginController {
 		
 		bookCookie = new ArrayList<String>();
 		
-		for(int i=0;i<recentCookie.size();i++) {
+		for(int i=recentCookie.size()-1;i>=0;i--) {
 			bookCookie.add(recentCookie.get(i));
 		}
 		
@@ -122,8 +122,9 @@ public class LoginController {
 			request.getSession().setAttribute("pointValue", pointValue);
 			request.getSession().setAttribute("counselCount", counselCount);
 			request.getSession().removeAttribute("message");	//로그인 오류메시지 제거
+			request.getSession().removeAttribute("loginAlert");	//alert메시지 제거
 			returnUrl = "redirect:" + pre_url;
-			
+			request.getSession().removeAttribute("pre_url");	//이전 요청 경로 제거
 
 		}
 		else {	//로그인 실패

@@ -14,7 +14,6 @@
 	<link rel="stylesheet" href="<%=cp%>/resources/css/myShopping.css" type="text/css">
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 	<script src="<%=cp%>/resources/js/myShopping.js"></script>
-	<script type="text/javascript"></script>
 	
 </head>
 <body style="padding: 0; margin: 0;">
@@ -161,7 +160,7 @@
 		</div>
 	</div>
 	<div class="main_CounselList">
-		<span class="contents_title">나의 상담 내역</span> | 최근 14일 내 1:1 상담 내역입니다.  <span class="sapn_right"><a href="">더보기></a></span>
+		<span class="contents_title">나의 상담 내역</span> | 1:1 상담 내역입니다.  <span class="sapn_right"><a href="<%=cp%>/myShopping/myCounselHistory.action">더보기></a></span>
 		<table>
 			<tr>
 				<th>상담날짜</th>
@@ -169,9 +168,25 @@
 				<th style="width: 500px;">제목</th>
 				<th>답변여부</th>
 			</tr>
-			<tr height="100px;">
-				<td colspan="4">최근 주문내역이 없습니다.</td>
-			</tr>
+			<c:if test="${!empty counselList }">
+				<c:forEach var="dto" items="${counselList }">
+				<tr>
+					<td>${dto.consultationDate}</td>
+					<td>${dto.typeId}</td>
+					<td><a href="<%=cp%>/myShopping/counselArticle.action?consultId=${dto.consultId}">${dto.subject}</a></td>
+					<td>
+						<c:if test="${!empty dto.answerCheck }">답변완료</c:if>
+						<c:if test="${empty dto.answerCheck }">답변대기</c:if>	
+					</td>
+				</tr>
+				</c:forEach>	
+			</c:if>
+			<c:if test="${empty counselList }">
+				<tr height="100px;">
+				<td colspan="4">상담 내역이 없습니다.</td>
+				</tr>
+			</c:if>
+			
 		</table>
 	</div>
 </div>
