@@ -61,6 +61,32 @@ public class BookController {
 	public String book_novel(HttpServletRequest request, HttpServletResponse response) {
 		String cp = request.getContextPath();
 		String pageNum = request.getParameter("pageNum");
+		int categoryId = 1;
+		request.setAttribute("categoryId", 1);
+		// 대분류
+		CateDTO dto_Main = dao.getReadCate(categoryId);
+
+		request.setAttribute("dto_Main", dto_Main); // 메인 분류 이름
+
+		// 중분류
+		List<CateDTO2> lists = dao.getReadCateList2(dto_Main.getCategoryId());
+
+		Iterator<CateDTO2> iterator = lists.iterator();
+
+		while (iterator.hasNext()) {
+			CateDTO2 dto2 = iterator.next();
+
+			List<CateDTO> lists3 = dao.getReadCateList3(dto2.getCategoryId());
+			Iterator<CateDTO> it = lists3.iterator();
+			while (it.hasNext()) {
+				CateDTO dto = it.next();
+
+				dto2.setLastNode(dto);
+
+			}
+		}
+
+		request.setAttribute("lists", lists);
 
 		int currentPage = 1;
 
@@ -70,7 +96,6 @@ public class BookController {
 
 		// 베스트 셀러
 
-		int categoryId = 1;
 		int cateStart = categoryId;
 
 		int cateEnd = dao.getCateEnd(categoryId);
@@ -105,11 +130,6 @@ public class BookController {
 		request.setAttribute("start", start);
 		request.setAttribute("end", end);
 
-		// 대분류
-		CateDTO dto_Main = dao.getReadCate(categoryId);
-
-		request.setAttribute("dto_Main", dto_Main); // 메인 분류 이름
-
 		List<BookSectionsDTO> lists_Best = dao.getLists_Best(cateStart, cateEnd);
 		request.setAttribute("lists_Best", lists_Best);
 
@@ -135,12 +155,6 @@ public class BookController {
 		request.setAttribute("pageIndexList", pageIndexList);
 
 		return "/books/cate/novel/book_novel";
-	}
-
-	// 현대소설
-	@RequestMapping(value = "/modern_novel.action", method = { RequestMethod.GET, RequestMethod.POST })
-	public String modern_novel(HttpServletRequest request, HttpServletResponse response) {
-		return "/books/cate/novel/modern_novel";
 	}
 
 	// 자기계발 도서
@@ -241,6 +255,32 @@ public class BookController {
 	public String genre_fiction(HttpServletRequest request, HttpServletResponse response) {
 
 		String pageNum = request.getParameter("pageNum");
+		int categoryId = 1;
+		request.setAttribute("categoryId", 1);
+		// 대분류
+		CateDTO dto_Main = dao.getReadCate(categoryId);
+
+		request.setAttribute("dto_Main", dto_Main); // 메인 분류 이름
+
+		// 중분류
+		List<CateDTO2> lists = dao.getReadCateList2(dto_Main.getCategoryId());
+
+		Iterator<CateDTO2> iterator = lists.iterator();
+
+		while (iterator.hasNext()) {
+			CateDTO2 dto2 = iterator.next();
+
+			List<CateDTO> lists3 = dao.getReadCateList3(dto2.getCategoryId());
+			Iterator<CateDTO> it = lists3.iterator();
+			while (it.hasNext()) {
+				CateDTO dto = it.next();
+
+				dto2.setLastNode(dto);
+
+			}
+		}
+
+		request.setAttribute("lists", lists);
 
 		int currentPage = 1;
 
@@ -309,16 +349,31 @@ public class BookController {
 
 		request.setAttribute("dto", dto); // 책 정보 넘겨주기
 		String introduction = dto.getIntroduction();
-		String intro1 = introduction.substring(0, 200);
-		String intro2 = introduction.substring(200);
-		request.setAttribute("intro1", intro1);
-		request.setAttribute("intro2", intro2);
+		if (introduction == null) {
+			request.setAttribute("intro1", "추가 예정");
+		} else if (introduction.length() < 200) {
+			String intro1 = introduction;
+			request.setAttribute("intro1", intro1);
+		} else {
+			String intro1 = introduction.substring(0, 200);
+			String intro2 = introduction.substring(200);
+			request.setAttribute("intro1", intro1);
+			request.setAttribute("intro2", intro2);
+		}
 
 		String contents = dto.getTableOfContents();
-		String cont1 = contents.substring(0, 200);
-		String cont2 = contents.substring(200);
-		request.setAttribute("cont1", cont1);
-		request.setAttribute("cont2", cont2);
+
+		if (contents == null) {
+			request.setAttribute("cont1", "추가 예정");
+		} else if (contents.length() < 200) {
+			String cont1 = contents;
+			request.setAttribute("cont1", cont1);
+		} else {
+			String cont1 = contents.substring(0, 200);
+			String cont2 = contents.substring(200);
+			request.setAttribute("cont1", cont1);
+			request.setAttribute("cont2", cont2);
+		}
 
 		request.setAttribute("dto2", dto2); // 작가 정보 넘겨주기
 
@@ -624,7 +679,7 @@ public class BookController {
 	public String book_cate(HttpServletRequest request, HttpServletResponse response) {
 
 		int categoryId = Integer.parseInt(request.getParameter("categoryId"));
-
+		request.setAttribute("categoryId", categoryId);
 		// 대분류
 		CateDTO dto_Main = dao.getReadCate(categoryId);
 
@@ -662,7 +717,6 @@ public class BookController {
 			currentPage = Integer.parseInt(pageNum);
 		}
 
-
 		// 베스트 셀러
 		int cateStart = categoryId;
 
@@ -670,13 +724,6 @@ public class BookController {
 
 		List<BookSectionsDTO> lists_Best = dao.getLists_Best(cateStart, cateEnd);
 		request.setAttribute("lists_Best", lists_Best);
-
-		// 새로나온 책
-		List<BookSectionsDTO> lists_New = dao.getLists_New(cateStart, cateEnd);
-		request.setAttribute("lists_New", lists_New);
-
-		int lists_New_Num = dao.getLists_New_Count(cateStart, cateEnd);
-		request.setAttribute("lists_New_Num", lists_New_Num);
 
 		// 할인도서
 		/* discountRate */
@@ -694,11 +741,9 @@ public class BookController {
 		}
 		// 페이징 처리
 
-		
 		int lists_Discount_Num = dao.getLists_Discount_Num(cateStart, cateEnd, fromDiscount, toDiscount);
 		request.setAttribute("lists_Discount_Num", lists_Discount_Num);
 
-	
 		String bnlBSListUrl = cp + "/book_cate.action";
 		// 페이징 처리
 		int numPerPage = 10;
@@ -715,7 +760,6 @@ public class BookController {
 		List<BookSectionsDTO> lists_Discount = dao.getLists_Discount(cateStart, cateEnd, fromDiscount, toDiscount,
 				start, end);
 		request.setAttribute("lists_Discount", lists_Discount);
-	
 
 		request.setAttribute("start", start);
 		request.setAttribute("end", end);
@@ -727,6 +771,118 @@ public class BookController {
 		request.setAttribute("pageIndexList", pageIndexList);
 
 		return "books/cate/book_cate";
+	}
+
+	@RequestMapping(value = "/book_New.action", method = { RequestMethod.GET, RequestMethod.POST })
+	public String book_New(HttpServletRequest request, HttpServletResponse response) {
+
+		int categoryId = Integer.parseInt(request.getParameter("categoryId"));
+
+		int cateStart = categoryId;
+
+		int cateEnd = dao.getCateEnd(categoryId);
+
+		String cp = request.getContextPath();
+
+		String pageNum = request.getParameter("pageNum");
+
+		int currentPage = 1;
+
+		if (pageNum != null) {
+			currentPage = Integer.parseInt(pageNum);
+		}
+
+		// 새로나온 책
+		List<BookSectionsDTO> lists_New = dao.getLists_New(cateStart, cateEnd);
+		request.setAttribute("lists_New", lists_New);
+
+		int lists_New_Num = dao.getLists_New_Count(cateStart, cateEnd);
+		request.setAttribute("lists_New_Num", lists_New_Num);
+
+		String bnlBSListUrl = cp + "/book_New.action";
+		// 페이징 처리
+		int numPerPage = 10;
+
+		int totalPage = raMyUtil.getPageCount(numPerPage, lists_New_Num);
+
+		if (currentPage > totalPage)
+			currentPage = totalPage;
+
+		int start = (currentPage - 1) * numPerPage + 1;
+		int end = currentPage * numPerPage;
+
+		// ****************************************
+
+		String pageIndexList = raMyUtil.pageIndexListforDiscount(currentPage, totalPage, bnlBSListUrl, categoryId);
+
+		request.setAttribute("pageNum", currentPage);
+		request.setAttribute("pageIndexList", pageIndexList);
+
+		return "books/book_New";
+	}
+
+	@RequestMapping(value = "/book_Discount.action", method = { RequestMethod.GET, RequestMethod.POST })
+	public String book_Discount(HttpServletRequest request, HttpServletResponse response) {
+
+		int categoryId = Integer.parseInt(request.getParameter("categoryId"));
+
+		int cateStart = categoryId;
+
+		int cateEnd = dao.getCateEnd(categoryId);
+
+		String cp = request.getContextPath();
+
+		String pageNum = request.getParameter("pageNum");
+
+		int currentPage = 1;
+
+		if (pageNum != null) {
+			currentPage = Integer.parseInt(pageNum);
+		}
+
+		// 할인도서
+		/* discountRate */
+		int fromDiscount = 0;
+		int toDiscount = 0;
+		if (request.getParameter("fromDiscount") == null || request.getParameter("fromDiscount").equals("")) {
+			fromDiscount = 0;
+		} else {
+			fromDiscount = Integer.parseInt(request.getParameter("fromDiscount"));
+		}
+		if (request.getParameter("toDiscount") == null || request.getParameter("toDiscount").equals("")) {
+			toDiscount = 100;
+		} else {
+			toDiscount = Integer.parseInt(request.getParameter("toDiscount"));
+		}
+
+		int lists_Discount_Num = dao.getLists_Discount_Num(cateStart, cateEnd, fromDiscount, toDiscount);
+		request.setAttribute("lists_Discount_Num", lists_Discount_Num);
+
+		String bnlBSListUrl = cp + "/book_Discount.action";
+
+		// 페이징 처리
+		int numPerPage = 10;
+
+		int totalPage = raMyUtil.getPageCount(numPerPage, lists_Discount_Num);
+
+		if (currentPage > totalPage)
+			currentPage = totalPage;
+
+		int start = (currentPage - 1) * numPerPage + 1;
+		int end = currentPage * numPerPage;
+
+		List<BookSectionsDTO> lists_Discount = dao.getLists_Discount(cateStart, cateEnd, fromDiscount, toDiscount,
+				start, end);
+		request.setAttribute("lists_Discount", lists_Discount);
+
+		// ****************************************
+
+		String pageIndexList = raMyUtil.pageIndexListforDiscount(currentPage, totalPage, bnlBSListUrl, categoryId);
+
+		request.setAttribute("pageNum", currentPage);
+		request.setAttribute("pageIndexList", pageIndexList);
+
+		return "books/book_Discount";
 	}
 
 }
