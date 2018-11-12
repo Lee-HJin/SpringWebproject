@@ -168,7 +168,7 @@
 	padding: 10px 10px;
 	border: none;
 	width: 100%;
-	height: 350px;
+	height: 200px;
 	display: none;
 }
 
@@ -304,10 +304,9 @@
 									onerror="this.src='/images/common/noimg_type04.gif';"></a>
 							</dt>
 							<dd>
-								<a
-									href="/front/product/bookSeriesView.do?cateId=7216&prodRelSeq=34128">애거서
+								애거서
 									크리스티 에디터스 초이스 <span>(10)</span>
-								</a>
+								
 							</dd>
 						</dl>
 					</li>
@@ -321,10 +320,9 @@
 									onerror="this.src='/images/common/noimg_type04.gif';"></a>
 							</dt>
 							<dd>
-								<a
-									href="/front/product/bookSeriesView.do?cateId=7216&prodRelSeq=34072">인디아나
+								인디아나
 									텔러 <span>(2)</span>
-								</a>
+								
 							</dd>
 						</dl>
 					</li>
@@ -338,10 +336,9 @@
 									onerror="this.src='/images/common/noimg_type04.gif';"></a>
 							</dt>
 							<dd>
-								<a
-									href="/front/product/bookSeriesView.do?cateId=7216&prodRelSeq=34067">애거서
+								애거서
 									크리스티 푸아로 셀렉션 <span>(11)</span>
-								</a>
+							
 							</dd>
 						</dl>
 					</li>
@@ -355,10 +352,9 @@
 									onerror="this.src='/images/common/noimg_type04.gif';"></a>
 							</dt>
 							<dd>
-								<a
-									href="/front/product/bookSeriesView.do?cateId=7216&prodRelSeq=34014">13월의
+								13월의
 									첫사랑 <span>(2)</span>
-								</a>
+				
 							</dd>
 						</dl>
 					</li>
@@ -372,10 +368,9 @@
 									onerror="this.src='/images/common/noimg_type04.gif';"></a>
 							</dt>
 							<dd>
-								<a
-									href="/front/product/bookSeriesView.do?cateId=7216&prodRelSeq=30688">미야모토
+								미야모토
 									무사시 <span>(11)</span>
-								</a>
+								
 							</dd>
 						</dl>
 					</li>
@@ -473,14 +468,14 @@
 								추천책</h4>
 							<hr>
 
-							<div class="tab" style="border-bottom: 1px solid #e1e1e1;">
-								<div class="tablinks" onmouseover="openCity(event, 'book_1')">
+							<div class="tab" style="border-bottom: 1px solid #ffffff; ">
+								<div class="tablinks" onmouseover="openCity(event, 'book_1')" style="border: none;">
 									<a href=""> <img
 										src="http://image.bandinlunis.com/upload/product/4189/4189162.jpg"
 										style="cursor: pointer; width: 45%; height: 45%;">
 									</a>
 								</div>
-								<div class="tablinks" onmouseover="openCity(event, 'book_2')">
+								<div class="tablinks" onmouseover="openCity(event, 'book_2')" style="border: none;">
 									<a href=""> <img
 										src="http://image.bandinlunis.com/upload/product/4189/4189565.jpg"
 										style="cursor: pointer; width: 45%; height: 45%;">
@@ -488,28 +483,28 @@
 
 									</a>
 								</div>
-								<div class="tablinks" onmouseover="openCity(event, 'book_3')">
+								<div class="tablinks" onmouseover="openCity(event, 'book_3')" style="border: none;">
 									<a href=""> <img
 										src="http://image.bandinlunis.com/upload/product/4186/4186552.jpg"
 										style="cursor: pointer; width: 45%; height: 45%;">
 									</a>
 								</div>
 
-								<div class="tablinks" onmouseover="openCity(event, 'book_4')">
+								<div class="tablinks" onmouseover="openCity(event, 'book_4')"style="border: none;">
 									<a href=""> <img
 										src="http://image.bandinlunis.com/upload/product/4186/4186534.jpg"
 										style="cursor: pointer; width: 45%; height: 45%;">
 									</a>
 								</div>
 							</div>
-							<br />
-
+							<br /> <br />
+							<div style="height: 60px;"></div>
 
 
 
 							<div id="book_1" class="tabcontent">
 								<dl>
-									<dt class="pImg145">
+									<dt class="pImg145" style="float: left; margin-right: 20px;">
 										<a href="/front/product/detailProduct.do?prodId=4188573">
 											<img
 											src="http://image.bandinlunis.com/upload/product/4189/4189162.jpg"
@@ -533,7 +528,7 @@
 
 							<div id="book_2" class="tabcontent">
 								<dl>
-									<dt class="pImg145">
+									<dt class="pImg145" style="float: left; margin-right: 20px;">
 										<a href=""> <img
 											src="http://image.bandinlunis.com/upload/product/4189/4189565.jpg"
 											style="float: left;">
@@ -554,7 +549,7 @@
 							</div>
 							<div id="book_3" class="tabcontent">
 								<dl>
-									<dt class="pImg145">
+									<dt class="pImg145" style="float: left; margin-right: 20px;">
 										<a href=""> <img
 											src="http://image.bandinlunis.com/upload/product/4186/4186552.jpg"
 											style="float: left;">
@@ -574,8 +569,8 @@
 								</dl>
 							</div>
 							<div id="book_4" class="tabcontent">
-								<dl style="padding-top: 10px">
-									<dt class="pImg145">
+								<dl>
+									<dt class="pImg145" style="float: left; margin-right: 20px;">
 										<a href=""> <img
 											src="http://image.bandinlunis.com/upload/product/4186/4186534.jpg"
 											style="float: left;">
@@ -588,7 +583,10 @@
 									</dd>
 									<dd class="writer">류재현 | 마야마루</dd>
 									<br />
-									<dd class="bex">5년 전, 그녀는 왜 이별을 말했을까.함께했던 대학 시절이 인생에서 가장 행복한 때였다.마음을 송두리째 빼앗아 놓고 떠나간 첫사랑.갑작스러운 이별처럼 갑자기 재회한 그녀, 박지운.정리했다 여겼던 단하의 마음이 그때와 똑같이 두근거린다.우리가 무슨 사이도 아닌데 왜 이렇게 신경 쓰이게 만들지.5년을 잊으려고 애썼지만 결국 지우지 못한 첫사랑...</dd>
+									<dd class="bex">5년 전, 그녀는 왜 이별을 말했을까.함께했던 대학 시절이 인생에서 가장
+										행복한 때였다.마음을 송두리째 빼앗아 놓고 떠나간 첫사랑.갑작스러운 이별처럼 갑자기 재회한 그녀,
+										박지운.정리했다 여겼던 단하의 마음이 그때와 똑같이 두근거린다.우리가 무슨 사이도 아닌데 왜 이렇게 신경 쓰이게
+										만들지.5년을 잊으려고 애썼지만 결국 지우지 못한 첫사랑...</dd>
 								</dl>
 							</div>
 							<div class="clearfix"></div>
@@ -597,95 +595,114 @@
 
 						<div class="cateS" style="margin-left: 20px;">
 
-							<br /> <br /> <br /> <br /> <br /> <br /> <br /> <br/>
+							<br /> <br /> <br /> <br /> <br /> <br /> <br /> <br />
 							<!-- 분야 주간 베스트 -->
 							<div class="cateBest">
 								<h4>분야 주간 베스트</h4>
-								<a href="/front/product/bookCategoryMain.do?cateId=7216&fullCateId=7216&listType=best" class="btn_more_2014"><span>더 보기</span></a>
+								<!-- 								<a href="/front/product/bookCategoryMain.do?cateId=7216&fullCateId=7216&listType=best" class="btn_more_2014"><span>더 보기</span></a> -->
 								<ul>
-									
+
 									<li class="bestTop">
 										<dl>
 											<dt>
 												<span class="rank no1">1</span>
 											</dt>
-											
-												<dd class="pImg52 imgP"><a href="/front/product/detailProduct.do?prodId=3558781">
-													
-														
-														
-															<img src="http://image.bandinlunis.com/upload/product/3558/3558781_s.jpg" onerror="this.src='/images/common/noimg_type04.gif';">
-														
-													
-												</a></dd>
-												<dd class="booktit"><a href="/front/product/detailProduct.do?prodId=3558781">나미야 잡화점의 기적 </a></dd>
-												<dd class="writer">히가시노 게이고</dd>
-											
-											
-											
+
+											<dd class="pImg52 imgP">
+												<a href="/front/product/detailProduct.do?prodId=3558781">
+
+
+
+													<img
+													src="http://image.bandinlunis.com/upload/product/3558/3558781_s.jpg"
+													onerror="this.src='/images/common/noimg_type04.gif';">
+
+
+												</a>
+											</dd>
+											<dd class="booktit">
+												<a href="/front/product/detailProduct.do?prodId=3558781">나미야
+													잡화점의 기적 </a>
+											</dd>
+											<dd class="writer">히가시노 게이고</dd>
+
+
+
 										</dl>
 									</li>
-									
-									<li >
+
+									<li>
 										<dl>
 											<dt>
 												<span class="rank no2">2</span>
 											</dt>
-											
-											
-												<dd class="booktit"><a href="/front/product/detailProduct.do?prodId=4205563">나와 호랑이님 19 [한정판...</a></dd>
-												<dd class="writer">카넬</dd>
-											
-											
+
+
+											<dd class="booktit">
+												<a href="/front/product/detailProduct.do?prodId=4205563">나와
+													호랑이님 19 [한정판...</a>
+											</dd>
+											<dd class="writer">카넬</dd>
+
+
 										</dl>
 									</li>
-									
-									<li >
+
+									<li>
 										<dl>
 											<dt>
 												<span class="rank no3">3</span>
 											</dt>
-											
-											
-												<dd class="booktit"><a href="/front/product/detailProduct.do?prodId=4195259">살인의 문 2</a></dd>
-												<dd class="writer">히가시노 게이고</dd>
-											
-											
+
+
+											<dd class="booktit">
+												<a href="/front/product/detailProduct.do?prodId=4195259">살인의
+													문 2</a>
+											</dd>
+											<dd class="writer">히가시노 게이고</dd>
+
+
 										</dl>
 									</li>
-									
-									<li >
+
+									<li>
 										<dl>
 											<dt>
 												<span class="rank no4">4</span>
 											</dt>
-											
-											
-												<dd class="booktit"><a href="/front/product/detailProduct.do?prodId=4206159">Re:제로부터 시작하는 이세...</a></dd>
-												<dd class="writer">나가츠키 탓페이</dd>
-											
-											
+
+
+											<dd class="booktit">
+												<a href="/front/product/detailProduct.do?prodId=4206159">Re:제로부터
+													시작하는 이세...</a>
+											</dd>
+											<dd class="writer">나가츠키 탓페이</dd>
+
+
 										</dl>
 									</li>
-									
-									<li >
+
+									<li>
 										<dl>
 											<dt>
 												<span class="rank no5">5</span>
 											</dt>
-											
-											
-												<dd class="booktit"><a href="/front/product/detailProduct.do?prodId=4206175">사랑하는 기생충</a></dd>
-												<dd class="writer">미아키 스가루</dd>
-											
-											
+
+
+											<dd class="booktit">
+												<a href="/front/product/detailProduct.do?prodId=4206175">사랑하는
+													기생충</a>
+											</dd>
+											<dd class="writer">미아키 스가루</dd>
+
+
 										</dl>
 									</li>
-									
+
 								</ul>
-								
-								
-								
+
+
+
 							</div>
 						</div>
 
@@ -730,34 +747,54 @@
 									<ul>
 
 										<li class="po1">
-										<dl>
-											<dt class="pImg90"><a href="/webproject/book_info.action?isbn="><img src="http://image.bandinlunis.com/upload/product/3997/3997224.jpg" onerror="this.src='/images/common/noimg_type01.gif';"></a></dt>
-											
-											<dd class="booktit"><a href="">꽃길, 꿈길</a></dd>
-											<dd class="writer">진양<span class="public"> | 파란</span></dd>
-											<dd class="price">11,700원</dd>
-											<dd class="sPoint">(10%↓+5%P)</dd>
-											
-											
-											<dd class="bex">◎ 이 책은당신의 꿈속에서라도 함께 걸을 수만 있다면…….진양 작가의 장편소설 《꽃길, 꿈길》. 핏빛으로 물든 과거의 역모 사건과 맞물려 현재까지 이어지는 복수와 음모. 치밀한 사...</dd>
-										</dl>
-									</li>
-									
-									
-						        	
-									<li class="po1">
-										<dl>
-											<dt class="pImg90"><a href=""><img src="http://image.bandinlunis.com/upload/product/3993/3993371.jpg" onerror="this.src='/images/common/noimg_type01.gif';"></a></dt>
-											
-											<dd class="booktit"><a href="">탑스타의 탑 시크릿</a></dd>
-											<dd class="writer">김지혜<span class="public"> | 파란</span></dd>
-											<dd class="price">9,000원</dd>
-											<dd class="sPoint">(10%↓+5%P)</dd>
-											
-											
-											<dd class="bex">그로부터 평행선이 되려는 여자와 그녀와 하나의 선이 되고 싶은 남자.서로에게 유일한 선이 되기 위해 등을 맞대다 김지혜 작가의 장편소설 《탑스타의 탑 시크릿》.작가는 최고의 인기 ...</dd>
-										</dl>
-									</li>
+											<dl>
+												<dt class="pImg90">
+													<a href="/webproject/book_info.action?isbn="><img
+														src="http://image.bandinlunis.com/upload/product/3997/3997224.jpg"
+														onerror="this.src='/images/common/noimg_type01.gif';"></a>
+												</dt>
+
+												<dd class="booktit">
+													<a href="">꽃길, 꿈길</a>
+												</dd>
+												<dd class="writer">
+													진양<span class="public"> | 파란</span>
+												</dd>
+												<dd class="price">11,700원</dd>
+												<dd class="sPoint">(10%↓+5%P)</dd>
+
+
+												<dd class="bex">◎ 이 책은당신의 꿈속에서라도 함께 걸을 수만 있다면…….진양 작가의
+													장편소설 《꽃길, 꿈길》. 핏빛으로 물든 과거의 역모 사건과 맞물려 현재까지 이어지는 복수와 음모. 치밀한
+													사...</dd>
+											</dl>
+										</li>
+
+
+
+										<li class="po1">
+											<dl>
+												<dt class="pImg90">
+													<a href=""><img
+														src="http://image.bandinlunis.com/upload/product/3993/3993371.jpg"
+														onerror="this.src='/images/common/noimg_type01.gif';"></a>
+												</dt>
+
+												<dd class="booktit">
+													<a href="">탑스타의 탑 시크릿</a>
+												</dd>
+												<dd class="writer">
+													김지혜<span class="public"> | 파란</span>
+												</dd>
+												<dd class="price">9,000원</dd>
+												<dd class="sPoint">(10%↓+5%P)</dd>
+
+
+												<dd class="bex">그로부터 평행선이 되려는 여자와 그녀와 하나의 선이 되고 싶은
+													남자.서로에게 유일한 선이 되기 위해 등을 맞대다 김지혜 작가의 장편소설 《탑스타의 탑 시크릿》.작가는
+													최고의 인기 ...</dd>
+											</dl>
+										</li>
 									</ul>
 
 								</div>
@@ -765,506 +802,703 @@
 
 
 							<div class="temClassA temType2" id="dp_006">
-										
-										<h4>MD추천도서 : NICE BOOK!<span></span></h4>
-										
-											<ul>
-												<li class="po1">
-													<dl>
-														<dt class="pImg90 imgP"><a href="/front/product/detailProduct.do?prodId=4190319">
-														
-															
-															
-																<img src="http://image.bandinlunis.com/upload/product/4190/4190319.jpg" onerror="this.src='/images/common/noimg_type01.gif';">
-															
-														
-														</a></dt>
-														
-														<dd class="booktit"><a href="/front/product/detailProduct.do?prodId=4190319">혼효 昏曉 전 3권세트</a></dd>
-														<dd class="writer">문은숙<span class="public"> | 로망띠끄</span></dd>
-														<dd class="rPrice">30,000원 </dd>
-														<dd class="price">27,000원</dd>
-														<dd class="sPoint">(10%↓+5%P)</dd>
-														
-														
-														
-														<dd class="bex">1권.“소녀는 은파루의 황금조라 하지요.”때는 치평 4년의 겨울, 세밑이 다가올 무렵의 요주.기분전환삼아 저잣거리에 나갔던 기녀 황리는 우연찮게 소매치기 소동에 휘말린다. 어린 소...</dd>
-													</dl>
-												</li>
-											
-										
-											
-												<li class="po1">
-													<dl>
-														<dt class="pImg90 imgP"><a href="/front/product/detailProduct.do?prodId=4189678">
-														
-															
-															
-																<img src="http://image.bandinlunis.com/upload/product/4189/4189678.jpg" onerror="this.src='/images/common/noimg_type01.gif';">
-															
-														
-														</a></dt>
-														
-														<dd class="booktit"><a href="/front/product/detailProduct.do?prodId=4189678">월드 오브 워크래프트 : 폭풍전야</a></dd>
-														<dd class="writer">크리스티 골드<span class="public"> | 제우미디어</span></dd>
-														<dd class="rPrice">15,800원 </dd>
-														<dd class="price">14,220원</dd>
-														<dd class="sPoint">(10%↓+5%P)</dd>
-														
-														
-														
-														<dd class="bex">"와우 확장팩 사이, 무슨 일이 일어난 걸까?"질문에 답해줄 소설 『폭풍전야』 소설 『폭풍전야』는 블리자드 사의 대표 게임, 월드 오브 워크래프트의 신규 확장팩 '격전의 아제로스'...</dd>
-													</dl>
-												</li>
-											</ul>
-										
-											<ul>
-												<li class="po1">
-													<dl>
-														<dt class="pImg90 imgP"><a href="/front/product/detailProduct.do?prodId=4188614">
-														
-															
-															
-																<img src="http://image.bandinlunis.com/upload/product/4188/4188614.jpg" onerror="this.src='/images/common/noimg_type01.gif';">
-															
-														
-														</a></dt>
-														
-														<dd class="booktit"><a href="/front/product/detailProduct.do?prodId=4188614">뱅쇼를 당신에게</a></dd>
-														<dd class="writer">곤도 후미에<span class="public"> | 노블엔진팝</span></dd>
-														<dd class="rPrice">9,800원 </dd>
-														<dd class="price">8,820원</dd>
-														<dd class="sPoint">(10%↓+5%P)</dd>
-														
-														
-														
-														<dd class="bex">『얼어붙은 섬』으로 제4회 아유카와 데쓰야 상을 수상하고『새크리파이스』로 제10회 오야부 하루히코 상을 수상한 작가곤도 후미에의 미스터리 시리즈 그 두 번째 작품! 작품 소개일본 ...</dd>
-													</dl>
-												</li>
-											
-										
-											
-												<li class="po1">
-													<dl>
-														<dt class="pImg90 imgP"><a href="/front/product/detailProduct.do?prodId=4188602">
-														
-															
-															
-																<img src="http://image.bandinlunis.com/upload/product/4188/4188602.jpg" onerror="this.src='/images/common/noimg_type01.gif';">
-															
-														
-														</a></dt>
-														
-														<dd class="booktit"><a href="/front/product/detailProduct.do?prodId=4188602">더 뉴 게이트 04 푸른색의 옛 성지</a></dd>
-														<dd class="writer">카자나미 시노기<span class="public"> | 라의눈</span></dd>
-														<dd class="rPrice">9,500원 </dd>
-														<dd class="price">8,550원</dd>
-														<dd class="sPoint">(10%↓+5%P)</dd>
-														
-														
-														
-														<dd class="bex">일본 집계 10만 부 판매고를 기록한 경이적 인기의 웹소설!신과 공주가 강제 전송된 곳은 ‘성지’ㅡ한때 「THE NEW GATE」의 세계에서 번성했던 그 도시는 천재지변의 영향으로...</dd>
-													</dl>
-												</li>
-											</ul>
-										
-											<ul>
-												<li class="po1">
-													<dl>
-														<dt class="pImg90 imgP"><a href="/front/product/detailProduct.do?prodId=4187940">
-														
-															
-															
-																<img src="http://image.bandinlunis.com/upload/product/4187/4187940.jpg" onerror="this.src='/images/common/noimg_type01.gif';">
-															
-														
-														</a></dt>
-														
-														<dd class="booktit"><a href="/front/product/detailProduct.do?prodId=4187940">영원한 조연은 없다 1 </a></dd>
-														<dd class="writer">김로아<span class="public"> | 디앤씨미디어</span></dd>
-														<dd class="rPrice">13,000원 </dd>
-														<dd class="price">11,700원</dd>
-														<dd class="sPoint">(10%↓+5%P)</dd>
-														
-														
-														
-														<dd class="bex">“주인공이 됐으면 좀 좋아?! 왜 나는 신관 1이냐고!”현대의 강단아, 애독하던 소설의 엑스트라 신관이 되다.그것도 하필이면 한순간의 실수로 노역형을 받은 직후에.신관 엘레나가 이...</dd>
-													</dl>
-												</li>
-											
-										
-											
-												<li class="po1">
-													<dl>
-														<dt class="pImg90 imgP"><a href="/front/product/detailProduct.do?prodId=4186251">
-														
-															
-															
-																<img src="http://image.bandinlunis.com/upload/product/4186/4186251.jpg" onerror="this.src='/images/common/noimg_type01.gif';">
-															
-														
-														</a></dt>
-														
-														<dd class="booktit"><a href="/front/product/detailProduct.do?prodId=4186251">방패 용사 성공담 19</a></dd>
-														<dd class="writer">아네코 유사기<span class="public"> | 영상출판미디어</span></dd>
-														<dd class="rPrice">10,000원 </dd>
-														<dd class="price">9,000원</dd>
-														<dd class="sPoint">(10%↓+5%P)</dd>
-														
-														
-														
-														<dd class="bex">나오후미에게 호의를 보이는 마룡의 안내를 받아, 과거에 마룡이 지배했던 대륙의 성으로 향하는 방패 용사 일행. 그 성에서, 일행은 보물을 찾는 모험자로 위장한 파도의 첨병들을 격퇴...</dd>
-													</dl>
-												</li>
-											</ul>
-										
-									</div>
-								
-								
-								<!-- 템플릿 : 2-5단 복합형 -->
-								
-								
-								<!-- 템플릿 : 1-3단 수평형 -->
-								
-								
-								<!-- 템플릿 TypeA 묶음상품 템플릿 -->
-								
-								
-							
-							
-								<!-- 템플릿  : 5단 기본형 -->
-								
-								
-								<!-- 템플릿 : 5단 할인형 -->
-								
-								
-								<!-- 템플릿 : 5단 별점형 -->
-								
-								
-								<!-- 템플릿 : 2단 기본형 -->
-								
-									<div class="temClassA temType2" id="dp_008">
-										
-										<h4>과학 (SF) 소설<span></span></h4>
-										
-											<ul>
-												<li class="po1">
-													<dl>
-														<dt class="pImg90 imgP"><a href="/front/product/detailProduct.do?prodId=4056692">
-														
-															
-															
-																<img src="http://image.bandinlunis.com/upload/product/4056/4056692.jpg" onerror="this.src='/images/common/noimg_type01.gif';">
-															
-														
-														</a></dt>
-														
-														<dd class="booktit"><a href="/front/product/detailProduct.do?prodId=4056692">칼리반의 전쟁 1</a></dd>
-														<dd class="writer">제임스 S. A. 코리<span class="public"> | 아작</span></dd>
-														<dd class="rPrice">14,800원 </dd>
-														<dd class="price">13,320원</dd>
-														<dd class="sPoint">(10%↓+5%P)</dd>
-														
-														
-														
-														<dd class="bex">인기리 방영 중인 미드 익스팬스 시리즈 원작소설“SF판 얼음과 불의 노래” 더 빨라졌다, 더 강렬해졌다!뉴욕타임스 베스트셀러이자 로커스상을 수상하고, 휴고상에 최종 노미네이트되며 ...</dd>
-													</dl>
-												</li>
-											
-										
-											
-												<li class="po1">
-													<dl>
-														<dt class="pImg90 imgP"><a href="/front/product/detailProduct.do?prodId=4051913">
-														
-															
-															
-																<img src="http://image.bandinlunis.com/upload/product/4051/4051913.jpg" onerror="this.src='/images/common/noimg_type01.gif';">
-															
-														
-														</a></dt>
-														
-														<dd class="booktit"><a href="/front/product/detailProduct.do?prodId=4051913">대우주시대</a></dd>
-														<dd class="writer"> 네이선 로웰<span class="public"> | 구픽</span></dd>
-														<dd class="rPrice">14,000원 </dd>
-														<dd class="price">12,600원</dd>
-														<dd class="sPoint">(10%↓+5%P)</dd>
-														
-														
-														
-														<dd class="bex">■ 작품 소개 24세기 우주를 누비는 것은 전쟁을 위한 전투선이 아닌 온 우주와 거래할 무역선. 우주 무역의 황금기가 도래했다! 은하계를 누비는 가장 현실적이고 평범한 사람들의 비...</dd>
-													</dl>
-												</li>
-											</ul>
-										
-											<ul>
-												<li class="po1">
-													<dl>
-														<dt class="pImg90 imgP"><a href="/front/product/detailProduct.do?prodId=4050158">
-														
-															
-															
-																<img src="http://image.bandinlunis.com/upload/product/4050/4050158.jpg" onerror="this.src='/images/common/noimg_type01.gif';">
-															
-														
-														</a></dt>
-														
-														<dd class="booktit"><a href="/front/product/detailProduct.do?prodId=4050158">라마와의 랑데부</a></dd>
-														<dd class="writer">아서 C. 클라크 <span class="public"> | 아작</span></dd>
-														<dd class="rPrice">14,800원 </dd>
-														<dd class="price">13,320원</dd>
-														<dd class="sPoint">(10%↓+5%P)</dd>
-														
-														
-														
-															<dd class="rStar s9">9.0</dd>
-														
-														<dd class="bex">지금까지 쓰인 SF에서 단 한 권을 꼽으라면 바로 이 책!고전이란 바로 이런 것이다.서기 2130년, 길이 50킬로미터의 거대한 소행성이 지구를 향해 맹렬한 속도로 다가온다. ‘라...</dd>
-													</dl>
-												</li>
-											
-										
-											
-												<li class="po1">
-													<dl>
-														<dt class="pImg90 imgP"><a href="/front/product/detailProduct.do?prodId=4047391">
-														
-															
-															
-																<img src="http://image.bandinlunis.com/upload/product/4047/4047391.jpg" onerror="this.src='/images/common/noimg_type01.gif';">
-															
-														
-														</a></dt>
-														
-														<dd class="booktit"><a href="/front/product/detailProduct.do?prodId=4047391">저주토끼</a></dd>
-														<dd class="writer">정보라<span class="public"> | 아작</span></dd>
-														<dd class="rPrice">14,800원 </dd>
-														<dd class="price">13,320원</dd>
-														<dd class="sPoint">(10%↓+5%P)</dd>
-														
-														
-														
-														<dd class="bex">세상 몹쓸 것들을 제대로 응징하는, 어여쁜 저주 이야기한국 호러 SF/판타지 대표작가 정보라의 4년 만의 신작 소설집할아버지는 늘 말씀하셨다. “저주에 쓰이는 물건일수록 예쁘게 만...</dd>
-													</dl>
-												</li>
-											</ul>
-										
-											<ul>
-												<li class="po1">
-													<dl>
-														<dt class="pImg90 imgP"><a href="/front/product/detailProduct.do?prodId=4041440">
-														
-															
-															
-																<img src="http://image.bandinlunis.com/upload/product/4041/4041440.jpg" onerror="this.src='/images/common/noimg_type01.gif';">
-															
-														
-														</a></dt>
-														
-														<dd class="booktit"><a href="/front/product/detailProduct.do?prodId=4041440">안드로메다 성운</a></dd>
-														<dd class="writer">이반 예프레모프<span class="public"> | 아작</span></dd>
-														<dd class="rPrice">14,800원 </dd>
-														<dd class="price">13,320원</dd>
-														<dd class="sPoint">(10%↓+5%P)</dd>
-														
-														
-														
-														<dd class="bex">러시아 혁명 100주년, 최초의 인공위성 스푸트니크 발사 60주년을 맞이하여20세기 소련을 대표하는 전설적인 SF 드디어 한국판 출간!인본주의적 공산주의자 작가가 그리는 미래 인류...</dd>
-													</dl>
-												</li>
-											
-										
-											
-												<li class="po1">
-													<dl>
-														<dt class="pImg90 imgP"><a href="/front/product/detailProduct.do?prodId=4038208">
-														
-															
-															
-																<img src="http://image.bandinlunis.com/upload/product/4038/4038208.jpg" onerror="this.src='/images/common/noimg_type01.gif';">
-															
-														
-														</a></dt>
-														
-														<dd class="booktit"><a href="/front/product/detailProduct.do?prodId=4038208">다크 사이드</a></dd>
-														<dd class="writer">앤서니 오닐<span class="public"> | 한스미디어</span></dd>
-														<dd class="rPrice">15,000원 </dd>
-														<dd class="price">13,500원</dd>
-														<dd class="sPoint">(10%↓+5%P)</dd>
-														
-														
-														
-															<dd class="rStar s8">7.67</dd>
-														
-														<dd class="bex">인터스텔라, 마션, 이번엔 다크 사이드다!★★★ 20세기 폭스사 영화 제작 중 ★★★월스트리트저널, 퍼블리셔스 위클리, 북리스트, 커커스 리뷰 극찬!거칠고 어둡고 폭력적인 미래를 ...</dd>
-													</dl>
-												</li>
-											</ul>
-										
-											<ul>
-												<li class="po1">
-													<dl>
-														<dt class="pImg90 imgP"><a href="/front/product/detailProduct.do?prodId=4016903">
-														
-															
-															
-																<img src="http://image.bandinlunis.com/upload/product/4016/4016903.jpg" onerror="this.src='/images/common/noimg_type01.gif';">
-															
-														
-														</a></dt>
-														
-														<dd class="booktit"><a href="/front/product/detailProduct.do?prodId=4016903">제5도살장</a></dd>
-														<dd class="writer">커트 보니것<span class="public"> | 문학동네</span></dd>
-														<dd class="rPrice">12,500원 </dd>
-														<dd class="price">11,250원</dd>
-														<dd class="sPoint">(10%↓+5%P)</dd>
-														
-														
-														
-															<dd class="rStar s9">8.86</dd>
-														
-														<dd class="bex"></dd>
-													</dl>
-												</li>
-											
-										
-											
-												<li class="po1">
-													<dl>
-														<dt class="pImg90 imgP"><a href="/front/product/detailProduct.do?prodId=4013726">
-														
-															
-															
-																<img src="http://image.bandinlunis.com/upload/product/4013/4013726.jpg" onerror="this.src='/images/common/noimg_type01.gif';">
-															
-														
-														</a></dt>
-														
-														<dd class="booktit"><a href="/front/product/detailProduct.do?prodId=4013726">중력의 임무</a></dd>
-														<dd class="writer">할 클레민트<span class="public"> | 아작</span></dd>
-														<dd class="rPrice">14,800원 </dd>
-														<dd class="price">13,320원</dd>
-														<dd class="sPoint">(10%↓+5%P)</dd>
-														
-														
-														
-															<dd class="rStar s8">8.0</dd>
-														
-														<dd class="bex">최고 중력 700G의 행성에서 펼쳐지는 정통 하드 SF의 대명사 과학적 엄밀함에 못지않은 소설적 재미까지적도 지름 7만7천 킬로미터, 극 지름 3만 킬로미터의 극단적으로 찌그러진 ...</dd>
-													</dl>
-												</li>
-											</ul>
-										
-											<ul>
-												<li class="po1">
-													<dl>
-														<dt class="pImg90 imgP"><a href="/front/product/detailProduct.do?prodId=4000119">
-														
-															
-															
-																<img src="http://image.bandinlunis.com/upload/product/4000/4000119.jpg" onerror="this.src='/images/common/noimg_type01.gif';">
-															
-														
-														</a></dt>
-														
-														<dd class="booktit"><a href="/front/product/detailProduct.do?prodId=4000119">당신 인생의 이야기</a></dd>
-														<dd class="writer">테드 창<span class="public"> | 엘리</span></dd>
-														<dd class="rPrice">14,500원 </dd>
-														<dd class="price">13,050원</dd>
-														<dd class="sPoint">(10%↓+5%P)</dd>
-														
-														
-														
-															<dd class="rStar s9">8.78</dd>
-														
-														<dd class="bex">최고의 과학소설 작가, 테드 창 작품 영화화!시카리오 드니 빌뇌브 감독, 11월 개봉작 SF 컨택트 원작! “이 소설집은 진정 경이롭다… 나는 사람의 정신이 제대로 기능하려면 일 ...</dd>
-													</dl>
-												</li>
-											
-										
-											
-												<li class="po1">
-													<dl>
-														<dt class="pImg90 imgP"><a href="/front/product/detailProduct.do?prodId=3978912">
-														
-															
-															
-																<img src="http://image.bandinlunis.com/upload/product/3978/3978912.jpg" onerror="this.src='/images/common/noimg_type01.gif';">
-															
-														
-														</a></dt>
-														
-														<dd class="booktit"><a href="/front/product/detailProduct.do?prodId=3978912">별의 계승자</a></dd>
-														<dd class="writer">제임스 P. 호건<span class="public"> | 아작</span></dd>
-														<dd class="rPrice">14,800원 </dd>
-														<dd class="price">13,320원</dd>
-														<dd class="sPoint">(10%↓+5%P)</dd>
-														
-														
-														
-															<dd class="rStar s9">9.11</dd>
-														
-														<dd class="bex">SF 마니아들이 가장 사랑하며 복간을 기다려온 작품,세계적 SF 작가 제임스 P. 호건의 대표작 드디어 복간! 달에서 5만 년 전 우주비행사의 시체가 발견되었다우주복 안의 유골은 ...</dd>
-													</dl>
-												</li>
-											</ul>
-										
-											<ul>
-												<li class="po1">
-													<dl>
-														<dt class="pImg90 imgP"><a href="/front/product/detailProduct.do?prodId=3791159">
-														
-															
-															
-																<img src="http://image.bandinlunis.com/upload/product/3791/3791159.jpg" onerror="this.src='/images/common/noimg_type01.gif';">
-															
-														
-														</a></dt>
-														
-														<dd class="booktit"><a href="/front/product/detailProduct.do?prodId=3791159">바람의 열두 방향</a></dd>
-														<dd class="writer">어슐러 K. 르 귄<span class="public"> | 시공사</span></dd>
-														<dd class="rPrice">14,000원 </dd>
-														<dd class="price">12,600원</dd>
-														<dd class="sPoint">(10%↓+5%P)</dd>
-														
-														
-														
-															<dd class="rStar s8">8.0</dd>
-														
-														<dd class="bex">미국 문학의 거장 어슐러 K. 르 귄의 초기 걸작 단편집고독에 관한 낭만적인 데뷔작 파리의 4월부터 휴고상, 네뷸러상, 로커스상에 빛나는 오멜라스를 떠나는 사람들과 혁명 전날까지르...</dd>
-													</dl>
-												</li>
-											
-										
-											
-												<li class="po1">
-													<dl>
-														<dt class="pImg90 imgP"><a href="/front/product/detailProduct.do?prodId=3601121">
-														
-															
-															
-																<img src="http://image.bandinlunis.com/upload/product/3601/3601121.jpg" onerror="this.src='/images/common/noimg_type01.gif';">
-															
-														
-														</a></dt>
-														
-														<dd class="booktit"><a href="/front/product/detailProduct.do?prodId=3601121">멋진 신세계</a></dd>
-														<dd class="writer">올더스 헉슬리<span class="public"> | 문예출판사</span></dd>
-														<dd class="rPrice">10,000원 </dd>
-														<dd class="price">9,000원</dd>
-														<dd class="sPoint">(10%↓+5%P)</dd>
-														
-														
-														
-															<dd class="rStar s9">9.14</dd>
-														
-														<dd class="bex">영국 소설가 올더스 헉슬리의 1932년 작으로 과학문명의 과도한 발전 결과 인간성의 상실을 결과하고 만 미래사회의 모습을 그렸다. 미래의 인간은 출생시부터 인공수정에 의해 대량생산...</dd>
-													</dl>
-												</li>
-											</ul>
-										
-									</div>
-								
+
+								<h4>
+									MD추천도서 : NICE BOOK!<span></span>
+								</h4>
+
+								<ul>
+									<li class="po1">
+										<dl>
+											<dt class="pImg90 imgP">
+												<a href="/front/product/detailProduct.do?prodId=4190319">
+
+
+
+													<img
+													src="http://image.bandinlunis.com/upload/product/4190/4190319.jpg"
+													onerror="this.src='/images/common/noimg_type01.gif';">
+
+
+												</a>
+											</dt>
+
+											<dd class="booktit">
+												<a href="/front/product/detailProduct.do?prodId=4190319">혼효
+													昏曉 전 3권세트</a>
+											</dd>
+											<dd class="writer">
+												문은숙<span class="public"> | 로망띠끄</span>
+											</dd>
+											<dd class="rPrice">30,000원</dd>
+											<dd class="price">27,000원</dd>
+											<dd class="sPoint">(10%↓+5%P)</dd>
+
+
+
+											<dd class="bex">1권.“소녀는 은파루의 황금조라 하지요.”때는 치평 4년의 겨울, 세밑이
+												다가올 무렵의 요주.기분전환삼아 저잣거리에 나갔던 기녀 황리는 우연찮게 소매치기 소동에 휘말린다. 어린
+												소...</dd>
+										</dl>
+									</li>
+
+
+
+									<li class="po1">
+										<dl>
+											<dt class="pImg90 imgP">
+												<a href="/front/product/detailProduct.do?prodId=4189678">
+
+
+
+													<img
+													src="http://image.bandinlunis.com/upload/product/4189/4189678.jpg"
+													onerror="this.src='/images/common/noimg_type01.gif';">
+
+
+												</a>
+											</dt>
+
+											<dd class="booktit">
+												<a href="/front/product/detailProduct.do?prodId=4189678">월드
+													오브 워크래프트 : 폭풍전야</a>
+											</dd>
+											<dd class="writer">
+												크리스티 골드<span class="public"> | 제우미디어</span>
+											</dd>
+											<dd class="rPrice">15,800원</dd>
+											<dd class="price">14,220원</dd>
+											<dd class="sPoint">(10%↓+5%P)</dd>
+
+
+
+											<dd class="bex">"와우 확장팩 사이, 무슨 일이 일어난 걸까?"질문에 답해줄 소설
+												『폭풍전야』 소설 『폭풍전야』는 블리자드 사의 대표 게임, 월드 오브 워크래프트의 신규 확장팩 '격전의
+												아제로스'...</dd>
+										</dl>
+									</li>
+								</ul>
+
+								<ul>
+									<li class="po1">
+										<dl>
+											<dt class="pImg90 imgP">
+												<a href="/front/product/detailProduct.do?prodId=4188614">
+
+
+
+													<img
+													src="http://image.bandinlunis.com/upload/product/4188/4188614.jpg"
+													onerror="this.src='/images/common/noimg_type01.gif';">
+
+
+												</a>
+											</dt>
+
+											<dd class="booktit">
+												<a href="/front/product/detailProduct.do?prodId=4188614">뱅쇼를
+													당신에게</a>
+											</dd>
+											<dd class="writer">
+												곤도 후미에<span class="public"> | 노블엔진팝</span>
+											</dd>
+											<dd class="rPrice">9,800원</dd>
+											<dd class="price">8,820원</dd>
+											<dd class="sPoint">(10%↓+5%P)</dd>
+
+
+
+											<dd class="bex">『얼어붙은 섬』으로 제4회 아유카와 데쓰야 상을 수상하고『새크리파이스』로
+												제10회 오야부 하루히코 상을 수상한 작가곤도 후미에의 미스터리 시리즈 그 두 번째 작품! 작품 소개일본
+												...</dd>
+										</dl>
+									</li>
+
+
+
+									<li class="po1">
+										<dl>
+											<dt class="pImg90 imgP">
+												<a href="/front/product/detailProduct.do?prodId=4188602">
+
+
+
+													<img
+													src="http://image.bandinlunis.com/upload/product/4188/4188602.jpg"
+													onerror="this.src='/images/common/noimg_type01.gif';">
+
+
+												</a>
+											</dt>
+
+											<dd class="booktit">
+												<a href="/front/product/detailProduct.do?prodId=4188602">더
+													뉴 게이트 04 푸른색의 옛 성지</a>
+											</dd>
+											<dd class="writer">
+												카자나미 시노기<span class="public"> | 라의눈</span>
+											</dd>
+											<dd class="rPrice">9,500원</dd>
+											<dd class="price">8,550원</dd>
+											<dd class="sPoint">(10%↓+5%P)</dd>
+
+
+
+											<dd class="bex">일본 집계 10만 부 판매고를 기록한 경이적 인기의 웹소설!신과 공주가
+												강제 전송된 곳은 ‘성지’ㅡ한때 「THE NEW GATE」의 세계에서 번성했던 그 도시는 천재지변의
+												영향으로...</dd>
+										</dl>
+									</li>
+								</ul>
+
+								<ul>
+									<li class="po1">
+										<dl>
+											<dt class="pImg90 imgP">
+												<a href="/front/product/detailProduct.do?prodId=4187940">
+
+
+
+													<img
+													src="http://image.bandinlunis.com/upload/product/4187/4187940.jpg"
+													onerror="this.src='/images/common/noimg_type01.gif';">
+
+
+												</a>
+											</dt>
+
+											<dd class="booktit">
+												<a href="/front/product/detailProduct.do?prodId=4187940">영원한
+													조연은 없다 1 </a>
+											</dd>
+											<dd class="writer">
+												김로아<span class="public"> | 디앤씨미디어</span>
+											</dd>
+											<dd class="rPrice">13,000원</dd>
+											<dd class="price">11,700원</dd>
+											<dd class="sPoint">(10%↓+5%P)</dd>
+
+
+
+											<dd class="bex">“주인공이 됐으면 좀 좋아?! 왜 나는 신관 1이냐고!”현대의 강단아,
+												애독하던 소설의 엑스트라 신관이 되다.그것도 하필이면 한순간의 실수로 노역형을 받은 직후에.신관 엘레나가
+												이...</dd>
+										</dl>
+									</li>
+
+
+
+									<li class="po1">
+										<dl>
+											<dt class="pImg90 imgP">
+												<a href="/front/product/detailProduct.do?prodId=4186251">
+
+
+
+													<img
+													src="http://image.bandinlunis.com/upload/product/4186/4186251.jpg"
+													onerror="this.src='/images/common/noimg_type01.gif';">
+
+
+												</a>
+											</dt>
+
+											<dd class="booktit">
+												<a href="/front/product/detailProduct.do?prodId=4186251">방패
+													용사 성공담 19</a>
+											</dd>
+											<dd class="writer">
+												아네코 유사기<span class="public"> | 영상출판미디어</span>
+											</dd>
+											<dd class="rPrice">10,000원</dd>
+											<dd class="price">9,000원</dd>
+											<dd class="sPoint">(10%↓+5%P)</dd>
+
+
+
+											<dd class="bex">나오후미에게 호의를 보이는 마룡의 안내를 받아, 과거에 마룡이 지배했던
+												대륙의 성으로 향하는 방패 용사 일행. 그 성에서, 일행은 보물을 찾는 모험자로 위장한 파도의 첨병들을
+												격퇴...</dd>
+										</dl>
+									</li>
+								</ul>
+
+							</div>
+
+
+							<!-- 템플릿 : 2-5단 복합형 -->
+
+
+							<!-- 템플릿 : 1-3단 수평형 -->
+
+
+							<!-- 템플릿 TypeA 묶음상품 템플릿 -->
+
+
+
+
+							<!-- 템플릿  : 5단 기본형 -->
+
+
+							<!-- 템플릿 : 5단 할인형 -->
+
+
+							<!-- 템플릿 : 5단 별점형 -->
+
+
+							<!-- 템플릿 : 2단 기본형 -->
+
+							<div class="temClassA temType2" id="dp_008">
+
+								<h4>
+									과학 (SF) 소설<span></span>
+								</h4>
+
+								<ul>
+									<li class="po1">
+										<dl>
+											<dt class="pImg90 imgP">
+												<a href="/front/product/detailProduct.do?prodId=4056692">
+
+
+
+													<img
+													src="http://image.bandinlunis.com/upload/product/4056/4056692.jpg"
+													onerror="this.src='/images/common/noimg_type01.gif';">
+
+
+												</a>
+											</dt>
+
+											<dd class="booktit">
+												<a href="/front/product/detailProduct.do?prodId=4056692">칼리반의
+													전쟁 1</a>
+											</dd>
+											<dd class="writer">
+												제임스 S. A. 코리<span class="public"> | 아작</span>
+											</dd>
+											<dd class="rPrice">14,800원</dd>
+											<dd class="price">13,320원</dd>
+											<dd class="sPoint">(10%↓+5%P)</dd>
+
+
+
+											<dd class="bex">인기리 방영 중인 미드 익스팬스 시리즈 원작소설“SF판 얼음과 불의
+												노래” 더 빨라졌다, 더 강렬해졌다!뉴욕타임스 베스트셀러이자 로커스상을 수상하고, 휴고상에 최종
+												노미네이트되며 ...</dd>
+										</dl>
+									</li>
+
+
+
+									<li class="po1">
+										<dl>
+											<dt class="pImg90 imgP">
+												<a href="/front/product/detailProduct.do?prodId=4051913">
+
+
+
+													<img
+													src="http://image.bandinlunis.com/upload/product/4051/4051913.jpg"
+													onerror="this.src='/images/common/noimg_type01.gif';">
+
+
+												</a>
+											</dt>
+
+											<dd class="booktit">
+												<a href="/front/product/detailProduct.do?prodId=4051913">대우주시대</a>
+											</dd>
+											<dd class="writer">
+												네이선 로웰<span class="public"> | 구픽</span>
+											</dd>
+											<dd class="rPrice">14,000원</dd>
+											<dd class="price">12,600원</dd>
+											<dd class="sPoint">(10%↓+5%P)</dd>
+
+
+
+											<dd class="bex">■ 작품 소개 24세기 우주를 누비는 것은 전쟁을 위한 전투선이 아닌 온
+												우주와 거래할 무역선. 우주 무역의 황금기가 도래했다! 은하계를 누비는 가장 현실적이고 평범한 사람들의
+												비...</dd>
+										</dl>
+									</li>
+								</ul>
+
+								<ul>
+									<li class="po1">
+										<dl>
+											<dt class="pImg90 imgP">
+												<a href="/front/product/detailProduct.do?prodId=4050158">
+
+
+
+													<img
+													src="http://image.bandinlunis.com/upload/product/4050/4050158.jpg"
+													onerror="this.src='/images/common/noimg_type01.gif';">
+
+
+												</a>
+											</dt>
+
+											<dd class="booktit">
+												<a href="/front/product/detailProduct.do?prodId=4050158">라마와의
+													랑데부</a>
+											</dd>
+											<dd class="writer">
+												아서 C. 클라크 <span class="public"> | 아작</span>
+											</dd>
+											<dd class="rPrice">14,800원</dd>
+											<dd class="price">13,320원</dd>
+											<dd class="sPoint">(10%↓+5%P)</dd>
+
+
+
+											<dd class="rStar s9">9.0</dd>
+
+											<dd class="bex">지금까지 쓰인 SF에서 단 한 권을 꼽으라면 바로 이 책!고전이란 바로
+												이런 것이다.서기 2130년, 길이 50킬로미터의 거대한 소행성이 지구를 향해 맹렬한 속도로 다가온다.
+												‘라...</dd>
+										</dl>
+									</li>
+
+
+
+									<li class="po1">
+										<dl>
+											<dt class="pImg90 imgP">
+												<a href="/front/product/detailProduct.do?prodId=4047391">
+
+
+
+													<img
+													src="http://image.bandinlunis.com/upload/product/4047/4047391.jpg"
+													onerror="this.src='/images/common/noimg_type01.gif';">
+
+
+												</a>
+											</dt>
+
+											<dd class="booktit">
+												<a href="/front/product/detailProduct.do?prodId=4047391">저주토끼</a>
+											</dd>
+											<dd class="writer">
+												정보라<span class="public"> | 아작</span>
+											</dd>
+											<dd class="rPrice">14,800원</dd>
+											<dd class="price">13,320원</dd>
+											<dd class="sPoint">(10%↓+5%P)</dd>
+
+
+
+											<dd class="bex">세상 몹쓸 것들을 제대로 응징하는, 어여쁜 저주 이야기한국 호러
+												SF/판타지 대표작가 정보라의 4년 만의 신작 소설집할아버지는 늘 말씀하셨다. “저주에 쓰이는 물건일수록
+												예쁘게 만...</dd>
+										</dl>
+									</li>
+								</ul>
+
+								<ul>
+									<li class="po1">
+										<dl>
+											<dt class="pImg90 imgP">
+												<a href="/front/product/detailProduct.do?prodId=4041440">
+
+
+
+													<img
+													src="http://image.bandinlunis.com/upload/product/4041/4041440.jpg"
+													onerror="this.src='/images/common/noimg_type01.gif';">
+
+
+												</a>
+											</dt>
+
+											<dd class="booktit">
+												<a href="/front/product/detailProduct.do?prodId=4041440">안드로메다
+													성운</a>
+											</dd>
+											<dd class="writer">
+												이반 예프레모프<span class="public"> | 아작</span>
+											</dd>
+											<dd class="rPrice">14,800원</dd>
+											<dd class="price">13,320원</dd>
+											<dd class="sPoint">(10%↓+5%P)</dd>
+
+
+
+											<dd class="bex">러시아 혁명 100주년, 최초의 인공위성 스푸트니크 발사 60주년을
+												맞이하여20세기 소련을 대표하는 전설적인 SF 드디어 한국판 출간!인본주의적 공산주의자 작가가 그리는 미래
+												인류...</dd>
+										</dl>
+									</li>
+
+
+
+									<li class="po1">
+										<dl>
+											<dt class="pImg90 imgP">
+												<a href="/front/product/detailProduct.do?prodId=4038208">
+
+
+
+													<img
+													src="http://image.bandinlunis.com/upload/product/4038/4038208.jpg"
+													onerror="this.src='/images/common/noimg_type01.gif';">
+
+
+												</a>
+											</dt>
+
+											<dd class="booktit">
+												<a href="/front/product/detailProduct.do?prodId=4038208">다크
+													사이드</a>
+											</dd>
+											<dd class="writer">
+												앤서니 오닐<span class="public"> | 한스미디어</span>
+											</dd>
+											<dd class="rPrice">15,000원</dd>
+											<dd class="price">13,500원</dd>
+											<dd class="sPoint">(10%↓+5%P)</dd>
+
+
+
+											<dd class="rStar s8">7.67</dd>
+
+											<dd class="bex">인터스텔라, 마션, 이번엔 다크 사이드다!★★★ 20세기 폭스사 영화
+												제작 중 ★★★월스트리트저널, 퍼블리셔스 위클리, 북리스트, 커커스 리뷰 극찬!거칠고 어둡고 폭력적인 미래를
+												...</dd>
+										</dl>
+									</li>
+								</ul>
+
+								<ul>
+									<li class="po1">
+										<dl>
+											<dt class="pImg90 imgP">
+												<a href="/front/product/detailProduct.do?prodId=4016903">
+
+
+
+													<img
+													src="http://image.bandinlunis.com/upload/product/4016/4016903.jpg"
+													onerror="this.src='/images/common/noimg_type01.gif';">
+
+
+												</a>
+											</dt>
+
+											<dd class="booktit">
+												<a href="/front/product/detailProduct.do?prodId=4016903">제5도살장</a>
+											</dd>
+											<dd class="writer">
+												커트 보니것<span class="public"> | 문학동네</span>
+											</dd>
+											<dd class="rPrice">12,500원</dd>
+											<dd class="price">11,250원</dd>
+											<dd class="sPoint">(10%↓+5%P)</dd>
+
+
+
+											<dd class="rStar s9">8.86</dd>
+
+											<dd class="bex"></dd>
+										</dl>
+									</li>
+
+
+
+									<li class="po1">
+										<dl>
+											<dt class="pImg90 imgP">
+												<a href="/front/product/detailProduct.do?prodId=4013726">
+
+
+
+													<img
+													src="http://image.bandinlunis.com/upload/product/4013/4013726.jpg"
+													onerror="this.src='/images/common/noimg_type01.gif';">
+
+
+												</a>
+											</dt>
+
+											<dd class="booktit">
+												<a href="/front/product/detailProduct.do?prodId=4013726">중력의
+													임무</a>
+											</dd>
+											<dd class="writer">
+												할 클레민트<span class="public"> | 아작</span>
+											</dd>
+											<dd class="rPrice">14,800원</dd>
+											<dd class="price">13,320원</dd>
+											<dd class="sPoint">(10%↓+5%P)</dd>
+
+
+
+											<dd class="rStar s8">8.0</dd>
+
+											<dd class="bex">최고 중력 700G의 행성에서 펼쳐지는 정통 하드 SF의 대명사 과학적
+												엄밀함에 못지않은 소설적 재미까지적도 지름 7만7천 킬로미터, 극 지름 3만 킬로미터의 극단적으로 찌그러진
+												...</dd>
+										</dl>
+									</li>
+								</ul>
+
+								<ul>
+									<li class="po1">
+										<dl>
+											<dt class="pImg90 imgP">
+												<a href="/front/product/detailProduct.do?prodId=4000119">
+
+
+
+													<img
+													src="http://image.bandinlunis.com/upload/product/4000/4000119.jpg"
+													onerror="this.src='/images/common/noimg_type01.gif';">
+
+
+												</a>
+											</dt>
+
+											<dd class="booktit">
+												<a href="/front/product/detailProduct.do?prodId=4000119">당신
+													인생의 이야기</a>
+											</dd>
+											<dd class="writer">
+												테드 창<span class="public"> | 엘리</span>
+											</dd>
+											<dd class="rPrice">14,500원</dd>
+											<dd class="price">13,050원</dd>
+											<dd class="sPoint">(10%↓+5%P)</dd>
+
+
+
+											<dd class="rStar s9">8.78</dd>
+
+											<dd class="bex">최고의 과학소설 작가, 테드 창 작품 영화화!시카리오 드니 빌뇌브 감독,
+												11월 개봉작 SF 컨택트 원작! “이 소설집은 진정 경이롭다… 나는 사람의 정신이 제대로 기능하려면 일
+												...</dd>
+										</dl>
+									</li>
+
+
+
+									<li class="po1">
+										<dl>
+											<dt class="pImg90 imgP">
+												<a href="/front/product/detailProduct.do?prodId=3978912">
+
+
+
+													<img
+													src="http://image.bandinlunis.com/upload/product/3978/3978912.jpg"
+													onerror="this.src='/images/common/noimg_type01.gif';">
+
+
+												</a>
+											</dt>
+
+											<dd class="booktit">
+												<a href="/front/product/detailProduct.do?prodId=3978912">별의
+													계승자</a>
+											</dd>
+											<dd class="writer">
+												제임스 P. 호건<span class="public"> | 아작</span>
+											</dd>
+											<dd class="rPrice">14,800원</dd>
+											<dd class="price">13,320원</dd>
+											<dd class="sPoint">(10%↓+5%P)</dd>
+
+
+
+											<dd class="rStar s9">9.11</dd>
+
+											<dd class="bex">SF 마니아들이 가장 사랑하며 복간을 기다려온 작품,세계적 SF 작가
+												제임스 P. 호건의 대표작 드디어 복간! 달에서 5만 년 전 우주비행사의 시체가 발견되었다우주복 안의 유골은
+												...</dd>
+										</dl>
+									</li>
+								</ul>
+
+								<ul>
+									<li class="po1">
+										<dl>
+											<dt class="pImg90 imgP">
+												<a href="/front/product/detailProduct.do?prodId=3791159">
+
+
+
+													<img
+													src="http://image.bandinlunis.com/upload/product/3791/3791159.jpg"
+													onerror="this.src='/images/common/noimg_type01.gif';">
+
+
+												</a>
+											</dt>
+
+											<dd class="booktit">
+												<a href="/front/product/detailProduct.do?prodId=3791159">바람의
+													열두 방향</a>
+											</dd>
+											<dd class="writer">
+												어슐러 K. 르 귄<span class="public"> | 시공사</span>
+											</dd>
+											<dd class="rPrice">14,000원</dd>
+											<dd class="price">12,600원</dd>
+											<dd class="sPoint">(10%↓+5%P)</dd>
+
+
+
+											<dd class="rStar s8">8.0</dd>
+
+											<dd class="bex">미국 문학의 거장 어슐러 K. 르 귄의 초기 걸작 단편집고독에 관한
+												낭만적인 데뷔작 파리의 4월부터 휴고상, 네뷸러상, 로커스상에 빛나는 오멜라스를 떠나는 사람들과 혁명
+												전날까지르...</dd>
+										</dl>
+									</li>
+
+
+
+									<li class="po1">
+										<dl>
+											<dt class="pImg90 imgP">
+												<a href="/front/product/detailProduct.do?prodId=3601121">
+
+
+
+													<img
+													src="http://image.bandinlunis.com/upload/product/3601/3601121.jpg"
+													onerror="this.src='/images/common/noimg_type01.gif';">
+
+
+												</a>
+											</dt>
+
+											<dd class="booktit">
+												<a href="/front/product/detailProduct.do?prodId=3601121">멋진
+													신세계</a>
+											</dd>
+											<dd class="writer">
+												올더스 헉슬리<span class="public"> | 문예출판사</span>
+											</dd>
+											<dd class="rPrice">10,000원</dd>
+											<dd class="price">9,000원</dd>
+											<dd class="sPoint">(10%↓+5%P)</dd>
+
+
+
+											<dd class="rStar s9">9.14</dd>
+
+											<dd class="bex">영국 소설가 올더스 헉슬리의 1932년 작으로 과학문명의 과도한 발전
+												결과 인간성의 상실을 결과하고 만 미래사회의 모습을 그렸다. 미래의 인간은 출생시부터 인공수정에 의해
+												대량생산...</dd>
+										</dl>
+									</li>
+								</ul>
+
+							</div>
+
 
 							<div class="cateInside" id="dp_029"></div>
 
