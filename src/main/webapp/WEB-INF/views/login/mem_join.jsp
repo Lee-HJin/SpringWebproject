@@ -156,7 +156,7 @@
 			<th>아이디</th>
 			<td>
 				<div style="float: left;"><input type="text" style="width: 200px;" name="userId" id="userId" size="12" maxlength="12"></div>
-				<div style="float: left; padding-left: 10px;"><span id="text_id">6~12자의 영문,숫자,-,_만 사용 가능</span></div>
+				<div style="float: left; padding-left: 10px; line-height: 25px;"><span id="text_id">6~12자의 영문,숫자,-,_만 사용 가능</span></div>
 				
 			</td>
 		</tr>
@@ -250,7 +250,7 @@
 			<td>
 				<div style="padding-top: 10px; padding-bottom: 10px;">
 					<input type="text" name="zipCode" id="zipCode">&nbsp;&nbsp;
-					<input type="button" value="우편번호찾기" id="findZipcode" class="findZipcode" style="color: white; background-color: #886e45; border: none; height: 23px; font-size: 12px;"><br/>
+					<input type="button" value="우편번호찾기" id="findZipcode" class="findZipcode" style="color: white; background-color: #886e45; border: none; height: 25px; font-size: 12px; width: 100px;"><br/>
 					<div>
 						<input type="text" name="address1" id="address1" style="width: 350px; margin-top: 3px;">&nbsp;&nbsp;
 						<input type="text" name="address2" id="address2" style="width: 250px;">

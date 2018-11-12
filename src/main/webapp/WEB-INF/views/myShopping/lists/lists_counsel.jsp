@@ -25,7 +25,7 @@
 	</tr>
 	</c:forEach>
 </table>
-<div style="text-align: center;">
+<div style="text-align: center; margin-top: 10px;">
 	<p>
 		<c:if test="${totalDataCount!=0 }">
 			${pageIndexList }

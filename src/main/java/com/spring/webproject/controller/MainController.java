@@ -48,7 +48,7 @@ public class MainController {
 		
 		lst = dao.bestSeller();
 		qLst = dao.topView();
-		dcB = dao.dcBook();
+		dcB = dao.dcBook();		
 		
 		req.setAttribute("lst", lst);
 		req.setAttribute("qLst", qLst);
