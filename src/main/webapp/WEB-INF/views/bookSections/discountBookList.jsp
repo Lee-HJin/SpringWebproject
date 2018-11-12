@@ -194,6 +194,8 @@ function goSearch(sort) {
 
 </head>
 <body>
+<jsp:include page="../common/header.jsp" flush="false"/>
+
 
 <div id="contentBody">
 		<div id="contentWrap">
@@ -406,6 +408,6 @@ function goSearch(sort) {
 
 
 
-
+<jsp:include page="../common/footer.jsp" flush="false" />
 </body>
 </html>

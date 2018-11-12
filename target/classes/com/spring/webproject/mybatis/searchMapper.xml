@@ -18,8 +18,6 @@
  ]]>
 </select>
 
-
-
 <!-- 책 검색 데이터 갯수 -->
 <select id="getBookCount" parameterType="hashMap"  resultType="int">
  select nvl(count(*),0) from books 
@@ -31,6 +29,14 @@
  select booktitle from books
  where booktitle like '%' || #{searchValue} || '%' 
 </select>
+
+
+
+
+
+
+
+
 
 
 

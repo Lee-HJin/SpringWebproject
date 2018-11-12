@@ -596,6 +596,56 @@ public class MyShoppingDAO {
 		
 	}
 	
+	//maxPointId(for orders 테이블
+	public int getMaxPointId(){
+		
+		int maxPointId = 0;
+		
+		maxPointId = sessionTemplate.selectOne("myShopping.maxPointId");
+		
+		return maxPointId;
+		
+	}
+	
+	//도서 구입후 포인트 입력 in point
+	public void getPurchasingPoint(String userId, int pointId, String orderId, int value, int leftValue) {
+		
+		HashMap<String, Object> params = new HashMap<String, Object>();
+		
+		params.put("userId", userId);
+		params.put("pointId",pointId);
+		params.put("orderId", orderId);
+		params.put("value", value);
+		params.put("leftValue", leftValue);
+		
+		sessionTemplate.insert("myShopping.purchasingPoint",params);
+		
+	}
+	
+	public int getMaxShipmentsId(){
+		
+		int maxShipmentsId = 0;
+		
+		maxShipmentsId = sessionTemplate.selectOne("myShopping.maxShipmentsId");
+		
+		return maxShipmentsId;
+		
+	}
+	
+	//도서 구입후 포인트 입력 in point
+	public void getShipmentsStatus (int shipmentsId, int orderId) {
+		
+		HashMap<String, Object> params = new HashMap<String, Object>();
+		
+		params.put("shipmentsId", shipmentsId);
+		params.put("orderId",orderId);
+
+		sessionTemplate.insert("myShopping.shipmentsStatus",params);
+		
+	}
+	
+	
+	
 	
 	
 	

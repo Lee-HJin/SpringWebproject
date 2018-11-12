@@ -368,6 +368,28 @@ insert into point(userId,savingdate,expirationdate,orderid,value,pointitem,point
 values(#{userId},sysdate,sysdate,#{orderId},#{value},'상품구입',#{pointId},0)
 </insert>
 
+<!-- 포인트(point table) = pointId(maxNum)  -->
+<select id="maxPointId" resultType="Integer">
+	select nvl(max(pointId),0) from point
+</select>
+
+<!-- 책 결제완료 후 적립금 적립 -->
+<insert id="purchasingPoint" parameterType="map">
+	insert into point(userId, savingDate, expirationDate, orderId, value, pointItem, pointId, leftValue)
+	values(#{userId}, sysdate, to_date(to_char(sysdate+365,'YYYY-MM-DD ') || '23:59:59','YYYY-MM-DD HH24:MI:SS'), #{orderId}, #{value} ,'구입한 도서 포인트', #{pointId}, ${leftValue})
+</insert>
+
+<!-- 배송테이블,상품준비중(shipments table) -->
+<select id="maxShipmentsId" resultType="Integer">
+	select nvl(max(shipmentsId),0) from shiptments
+</select>
+
+<!-- 배송테이블 상품준비중 -->
+<insert id="shipmentsStatus" parameterType="map">
+	insert into point(shipmentsId, orderId, shipmentsStatusCode, expectedDate)
+	values(#{shipmentsId}, #{orderId}, ,'상품준비중', to_date(to_char(sysdate+3,'YYYY-MM-DD ') || '23:59:59','YYYY-MM-DD HH24:MI:SS'))
+</insert>
+
 <!-- 1:1 상담내역 리스트 count (all) -->
 <select id="getAllCounselCount" parameterType="java.lang.String" resultType="int">
 select nvl(count(*),0) from consultation where userId=#{userId}
