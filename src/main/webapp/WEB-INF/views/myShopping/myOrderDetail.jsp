@@ -142,7 +142,7 @@
 				<table>
 					<tr style="border-top: 1px solid #d5d5d5;">
 						<th>주문자</th>
-						<td>${userInfo.userName }</td>
+						<td>${orderInfo.recipientName }</td>
 						<th>휴대폰</th>
 						<td>${userInfo.phone }</td>
 					</tr>

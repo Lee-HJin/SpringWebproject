@@ -41,7 +41,7 @@ public class LoginController {
 		
 		bookCookie = new ArrayList<String>();
 		
-		for(int i=0;i<recentCookie.size();i++) {
+		for(int i=recentCookie.size()-1;i>=0;i--) {
 			bookCookie.add(recentCookie.get(i));
 		}
 		
