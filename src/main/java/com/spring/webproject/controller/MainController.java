@@ -54,6 +54,8 @@ public class MainController {
 		req.setAttribute("qLst", qLst);
 		req.setAttribute("dcB", dcB);
 		
+		
+		
 		return "main/main";
 	}
 	

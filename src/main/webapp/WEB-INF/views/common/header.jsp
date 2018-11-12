@@ -197,8 +197,8 @@
 			</a>
 		</div>
 		<div>
-			<a href="/webproject/book_info.action?isbn=9791160271454"> <img
-				src="<%=cp%>/resources/image/main/side_banner02.jpg">
+			<a href="<%=cp%>/book_info.action?isbn=9788984373594"> <img
+				src="<%=cp%>/resources/image/main/banner20181109141235.jpg">
 			</a>
 		</div>
 	</div>
