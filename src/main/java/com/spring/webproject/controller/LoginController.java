@@ -122,8 +122,9 @@ public class LoginController {
 			request.getSession().setAttribute("pointValue", pointValue);
 			request.getSession().setAttribute("counselCount", counselCount);
 			request.getSession().removeAttribute("message");	//로그인 오류메시지 제거
+			request.getSession().removeAttribute("loginAlert");	//alert메시지 제거
 			returnUrl = "redirect:" + pre_url;
-			
+			request.getSession().removeAttribute("pre_url");	//이전 요청 경로 제거
 
 		}
 		else {	//로그인 실패
