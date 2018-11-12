@@ -236,9 +236,9 @@
 	                    <dl class="benefitA overflow">
 	                   		<dt class="bftit">나의 사용가능 혜택:</dt>
 	                   		<dd>
-	                   		 예치금 <strong>0</strong>원 |
-	                   		적립금 <strong>1,000</strong>원 |
-	                   		쿠폰 <strong>0</strong>장  | 전환금 <strong>0</strong>원
+	                   		 
+	                   		적립금 <strong>${leftPoint }</strong>원
+	                   		
 	                   		</dd>
 	                    </dl>
 	                <p class="mt10 t_gr fl_clear">최대 90일까지 보관되며, 이후에는 위시리스트에 자동 보관됩니다.</p>
@@ -284,6 +284,7 @@
 					</div>
 					
             		<form  id="goOrder" action="<%=cp%>/order.action" method="post">
+            			<input type="hidden" id="userInfo" name="userInfo" value="${sessionScope.userInfo }"/>
             		
 	            	<div id="nuriwork">
 	            	
@@ -360,33 +361,11 @@
 				</div>
 				
 				<div class="mt20 al_center fl_clear">
-					<a href="/"><img src="/webproject/resources/images/searchN/btn_cart_shopping.gif" alt="쇼핑계속하기"></a>
+					<a href="<%=cp%>/main.action"><img src="/webproject/resources/images/searchN/btn_cart_shopping.gif" alt="쇼핑계속하기"></a>
 					<a id="btn_order" style="cursor:pointer;"><img src="/webproject/resources/images/searchN/btn_cart_order.gif" alt="주문하기"></a>
 				</div>
 				</form>
-				<!-- 크레마 무이자 팝업 -->
-				
-				<div class="laypop" id="laypop_crema" style="left:230px; bottom:1400px;width:500px; display:none;text-align:left;_left:-80px;">
-					<h3 class="BLine ml20">12개월 무이자 할부 상품이 있습니다</h3>
-					<div class="laypopCon">
-						<div id="laypop_crema_prod" style="border:1px solid #d1d1d1;background:#f9f9f9;width:420px;padding:10px 10px 5px 10px;margin:10px 0 0 10px;">
-						</div>
-						<ul class="dotList mt15">
-							<li>위 상품은 12개월 무이자 할부가 적용됩니다.</li>
-							<li>적용 카드 : 외환,신한,삼성,현대,롯데,하나SK,농협NH</li>
-							<li>단, <strong>타 상품과 함께 구매 시</strong>에는 <strong>12개월 무이자 혜택을 받으실 수   없습니다.</strong> <br>이 경우 <strong>타 상품은 별도로 주문 해 주십시오.</strong> </li>
-						</ul>
-						<div class="btnC mt10">
-							<img src="http://image.bandinlunis.com/images/order/btn_cart_crema_only.gif" alt="무이자 혜택 상품만 주문" onclick="orderCrema();" style="cursor:pointer;">
-							<img src="http://image.bandinlunis.com/images/order/btn_cart_crema_with.gif" alt="선택상품 모두 주문" onclick="orderProc();" style="cursor:pointer;">
-						</div>
-					</div>
-					<p class="btnClose"><a href="javascript:closeCon('laypop_crema')"><img src="http://image.bandinlunis.com/images/common/btn_close02.gif" alt="close"></a></p>
-				</div>
-				
-				<!-- //크레마 무이자 팝업 -->
-				
-				
+
 				<div class="pos_rel overflow mt10 mb20 cart_inside">
 					<div class="cartTit">
 						<h3><img src="/webproject/resources/images/searchN/h3_cart_inside.gif" alt="추천inside"></h3>
