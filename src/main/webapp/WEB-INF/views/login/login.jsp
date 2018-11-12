@@ -19,6 +19,19 @@
  	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 	<script src="<%=cp%>/resources/js/join.js"></script>
 	
+	<script type="text/javascript">
+	
+	$(function(){
+		
+		var message = '${loginAlert}';
+		
+		if(message!=null && message!='' && message!='null'){
+			alert(message);
+		}
+	});
+	
+	</script>
+	
 </head>
 
 <body style="margin: 0;padding: 0">
