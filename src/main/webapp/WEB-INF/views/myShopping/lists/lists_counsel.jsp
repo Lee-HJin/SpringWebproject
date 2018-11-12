@@ -17,7 +17,7 @@
 	<tr>
 		<td>${dto.consultationDate }</td>
 		<td>${dto.typeId }</td>
-		<td style="text-align: left; padding-left: 10px;">${dto.subject }</td>
+		<td style="text-align: left; padding-left: 10px;"><a href="<%=cp%>/myShopping/counselArticle.action?consultId=${dto.consultId}">${dto.subject }</a></td>
 		<td>
 			<c:if test="${!empty dto.answerCheck }">답변완료</c:if>
 			<c:if test="${empty dto.answerCheck }">답변대기</c:if>	

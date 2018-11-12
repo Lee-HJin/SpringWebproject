@@ -82,6 +82,14 @@ public class MyShoppingController {
 		//위시리스트
 		List<MainDTO> wishList = dao.getWishListDefault(hMap);
 		request.setAttribute("wishList", wishList);
+		
+		//1:1 상담내역
+		hMap.clear();
+		hMap.put("userId", userId);
+		hMap.put("start", 1);
+		hMap.put("end",3);
+		List<CounselDTO> counselList = dao.getAllCounselList(hMap);
+		request.setAttribute("counselList", counselList);
 
 		return "myShopping/myShoppingMain";
 	}
@@ -1352,6 +1360,21 @@ public class MyShoppingController {
 
 		return "myShopping/lists/lists_counsel";
 	}
+	
+	//1:1상담내역 내용보기
+	@RequestMapping(value = "myShopping/counselArticle.action", method = RequestMethod.GET)
+	public String counselArticle(HttpServletRequest request) {
+		
+		int consultId = Integer.parseInt(request.getParameter("consultId"));
+		
+		CounselDTO dto = dao.getCounselContents(consultId);
+		dto.setContents(dto.getContents().replaceAll("\n", "<br/>"));
+		
+		request.setAttribute("dto", dto);
+
+		return "myShopping/myCounselArticle";
+	}
+	
 
 	//회원 탈퇴 페이지
 	@RequestMapping(value = "myShopping/memberOut.action", method = RequestMethod.GET)
@@ -1449,13 +1472,6 @@ public class MyShoppingController {
 		dao.exchangeOrder(orderId);
 
 		return "redirect:/myShopping/myOrderDetail.action?orderId=" + orderId;
-	}
-
-	//포인트 사용 테스트
-	@RequestMapping(value = "testpoint.action", method = RequestMethod.GET)
-	public String testpoint(HttpServletRequest request) {
-
-		return "/myShopping/testpoint";
 	}
 
 	//포인트 사용 테스트
