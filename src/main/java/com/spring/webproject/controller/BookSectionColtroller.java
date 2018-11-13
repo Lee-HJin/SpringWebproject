@@ -655,12 +655,16 @@ public class BookSectionColtroller {
 		//책권수 빼기
 
 	    // 특정 쿠키만 삭제하기
-	    Cookie kc = new Cookie("shop", null) ;
-	    kc.setMaxAge(0) ;
+	    Cookie kc = new Cookie("shop", null);
+	    kc.setMaxAge(0);
 	    kc.setPath("/");
-	    response.addCookie(kc) ;
+	    response.addCookie(kc);
+	    
+	    //세션에 적립금 정보 다시 올리기(적립금 사용 및 적립 변동사항 적용)
+	    int pointValue = shoppingDao.getPointValue(dto3.getUserId());
+	    request.getSession().setAttribute("pointValue", pointValue);
 
-		return "myShopping/myShoppingMain";
+		return "redirect:/myShoppingMain.action";
 	}
 	
 	@RequestMapping(value="cartList.action", method= {RequestMethod.GET, RequestMethod.POST})
