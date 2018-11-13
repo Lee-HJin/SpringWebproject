@@ -112,7 +112,6 @@
 	}
 	
 	//체크박스 값 배열에 정리하기
-	//체크박스 값 배열에 정리하기
 	//선택된 체크박스 배열 반환
 	function chkToArray(){
 		
@@ -123,7 +122,10 @@
 		
 		for(var i=0;i<chkbox.length;i++){
 			if(chkbox[i].checked == true){
-				checkArray.push(chkbox[i].value);
+				var seqNum = chkbox[i].value;
+				var id = 'prodIdArr_' + seqNum; 
+				var isbn = document.getElementById(id).value;
+				checkArray.push(isbn);
 			}
 		}
 
@@ -144,8 +146,6 @@
 			
 		}
 		
-		
-		
 		return index;
 		
 	}
@@ -159,7 +159,7 @@
 			alert("삭제할 상품을 선택하세요.");
 		}
 		else{
-			if(confirm("선택하신 상품을 쇼핑카드에서 삭제하시겠습니까?") == true){
+			if(confirm("선택하신 상품을 쇼핑카트에서 삭제하시겠습니까?") == true){
 				var items = getCookie('shop');
 				
 				if(items){
@@ -189,15 +189,64 @@
 		var ordCount = new Array();
 		
 		if(ck!=null){
+			
 			for(i=0;i<ck.length;i++){
 				cIsbn.push(ck[i].isbn);
 				ordCount.push(ck[i].orderCount);
 			}
+			
 		}
 		
 		cartList(cIsbn,ordCount);
-	
 		
+	}
+	
+	//한개 도서 삭제하기
+	function deleteShopCart(seqNum){
+		
+		if(confirm("쇼핑카트에서 삭제하시겠습니까?")){
+			var id = 'prodIdArr_' + seqNum; 
+			var isbn = document.getElementById(id).value;
+			
+			var items = getCookie('shop');
+			
+			if(items){
+				var itemArray=items.split('/');
+				
+				if(itemArray.length==1){
+					var expireDate = new Date();
+					expireDate.setDate(expireDate.getDate() - 1);
+
+					document.cookie = "shop= " + "; path=/ ; expires=" + expireDate.toGMTString();
+				}
+				else{
+					var index = findCookieIndex(isbn);
+					itemArray.splice(index,1);
+					setCookie('shop',itemArray.join("/"),1);
+				}
+				
+			}
+			
+			var ck = cookieInfo(getCookie('shop'));
+			
+			var cIsbn = new Array();
+			var ordCount = new Array();
+			
+			if(ck!=null){
+				
+				for(i=0;i<ck.length;i++){
+					cIsbn.push(ck[i].isbn);
+					ordCount.push(ck[i].orderCount);
+				}
+				
+			}
+			
+			cartList(cIsbn,ordCount);
+		}
+		else{
+			return;
+		}
+			
 	}
 
 	//쿠키 생성
@@ -232,20 +281,24 @@
             	<div class="orderStepN">
                     <h2><img src="/webproject/resources/images/searchN/h2_bookcart.gif" alt="쇼핑카트"></h2>
                     
-                    <c:if test="${sessionScope.userInfo != null}">
+                    <c:if test="${!empty sessionScope.userInfo}">
 	                    <dl class="benefitA overflow">
 	                   		<dt class="bftit">나의 사용가능 혜택:</dt>
 	                   		<dd>
-	                   		 
 	                   		적립금 <strong>${leftPoint }</strong>원
 	                   		
 	                   		</dd>
 	                    </dl>
-	                <p class="mt10 t_gr fl_clear">최대 90일까지 보관되며, 이후에는 위시리스트에 자동 보관됩니다.</p>
                     </c:if>
-                    <c:if test="${sessionScope.userInfo eq null }">
-                    <p class="mt10 t_gr fl_clear">최대 90일까지 보관되며, 이후에는 위시리스트에 자동 보관됩니다.</p>
+                    <c:if test="${empty sessionScope.userInfo }">
+                    	<dl class="benefitA overflow">
+	                   		<dt class="bftit">나의 사용가능 혜택:</dt>
+	                   		<dd>
+	                   		로그인 하시면 확인할 수 있습니다.                 		
+	                   		</dd>
+	                    </dl>
                     </c:if>
+                   
                     
                    	<p class="step"><img src="/webproject/resources/images/searchN/navi_step01.gif" alt="쇼핑카트 > 주문/결제 > 주문완료"></p>
                 </div>
@@ -276,9 +329,6 @@
 					</div>
 
 					<div class="pos_abs at0 ar0 mt3" style="_top:0;_margin-top:0">
-						
-						<a id="bandiDeduction" class="btn_bookSelf" style="cursor:pointer;"><img src="/webproject/resources/images/searchN/btn_cart_move_bookself.gif" alt="선택상품 북셀프로 주문하기"></a>
- 						
 						<a href="javascript:array_interest(1);"><img src="/webproject/resources/images/searchN/btn_cart_wishlist02.gif" alt="선택상품 위시리스트 담기"></a>
 						<a href="javascript:deleteCart();" id="bandiDeduction" class="btn_del" style="cursor:pointer;"><img src="/webproject/resources/images/searchN/btn_cart_del02.gif" alt="선택상품 삭제"></a>
 					</div>
@@ -305,11 +355,11 @@
 	            			<th>주문금액 합계</th>
 	            		</tr>
 	            		<tr>
-	            			<td><span class="t_14" id="totOrdCnt">1종(1개)</span></td>
-	            			<td><span id="totMarketSale">15,000</span><span class="t_14">원</span></td>
-	            			<td><span id="totDiscountCost">1,500</span><span class="t_14">원</span></td>
+	            			<td><span class="t_14" id="totOrdCnt">0종(0개)</span></td>
+	            			<td><span id="totMarketSale">0</span><span class="t_14">원</span></td>
+	            			<td><span id="totDiscountCost">0</span><span class="t_14">원</span></td>
 	            			<td><span id="totDeliCost">0</span><span class="t_14">원</span></td>
-	            			<td class="total"><span id="totOrdCost">13,500</span><span class="t_14">원</span></td>
+	            			<td class="total"><span id="totOrdCost">0</span><span class="t_14">원</span></td>
 	            		</tr>
 	            	</tbody></table>
 	            	<div class="cart_point_total_b">
@@ -319,40 +369,29 @@
 	            		</strong>	            		
 	            	
 	            		<ul class="cart_deli_notice fl_clear">
-	            			<li>5만원 이상 추가적립/멤버십/바로온2% 적립금은 비도서, 뷰티포함 구매 시 적용 됩니다. (도서 제외)</li>
-	            			<li><strong>업체배송 상품</strong>은 추가적립 대상에서 <strong>제외</strong>됩니다. (상품페이지, 쇼핑카트에서 업체배송 확인가능)</li>
 	            			<li>적립가능액은 쿠폰, 적립금등 보조결제 수단 따라 약간의 금액 차이가 있을 수가 있습니다.</li>
-	            			<li>적립금 지급시기는 구매완료 시점에 자동 지급 됩니다.</li>
 	            		</ul>
 			            <div class="bookViewPop" id="addPointInfo" style="visibility:hidden; top:0px;left:200px; width:420px">
 			            	 <h3 class="mLine">추가적립금 안내 </h3>				        
 			               	 <div class="laypopCon">
-			                    <p class="mt10">
-			                    	총 주문금액 5만원 이상 구매 시 2,000원 추가 적립
-			                    </p>
+			                  
 			                    <ul class="mt10">
-			                    	<li class="dot_comm t_11">국내도서, eBook만 구매 시 적립 불가</li>
-			                    	<li class="dot_comm t_11 mt5">업체배송상품은 적립 대상에서 제외 <br>(상품상세 및 카트에서 업체배송 여부 확인 가능)</li>	
 			                    	<li class="dot_comm t_11 mt5">배송비, 선물포장비 제외</li>
-			                    	<li class="dot_comm t_11 mt5">취소,반품으로 인해 주문금액이 5만원에 미달시 지급된 추가적립금 차감</li>	 
 			                    </ul>
 			                    <p class="al_right mt5"><a href="/pages/front/service/serviceAddPoint.jsp" target="_blank"><img src="http://image.bandinlunis.com/images/order/btn_detail_view.gif"></a></p>
 			               	 </div>
 			                 <p class="btnClose"><img src="http://image.bandinlunis.com/images/common/btn_close02.gif" alt="close" style="cursor:pointer;" onclick="javascript:popHidden('addPointInfo')"></p>
 			            </div> 
 			        </div>
-
-	            	
+        	
 	            	<div class="cart_deli_info">
 	            		<dl class="cart_deli_date">
-	            			<dt>수령예상일 : </dt>
-	            			
+	            			<dt>수령예상일 : </dt>		
 	            			
 	            		</dl>
 	            		<ul class="cart_deli_notice">
 	            			<li>출고일이 다른 상품을 함께 주문하시면, 출고일이 가장 늦은 상품을 기준으로 일괄 배송합니다.</li>
 	            			<li>같은 상품을 여러 개 주문하실 경우 추가 재고 확보에 시간이 더 걸릴 수 있으므로 예상 수령일보다  배송일이 2-3일 더 지연되기도 합니다.</li>
-	            			<li>국내 수령지 기준이며, 해외배송은 배송방법에 따라 수령일이 최대 14일까지 늘어날 수 있습니다. </li>
 	            		</ul>
 	            	</div>
 	            	
@@ -365,26 +404,6 @@
 					<a id="btn_order" style="cursor:pointer;"><img src="/webproject/resources/images/searchN/btn_cart_order.gif" alt="주문하기"></a>
 				</div>
 				</form>
-
-				<div class="pos_rel overflow mt10 mb20 cart_inside">
-					<div class="cartTit">
-						<h3><img src="/webproject/resources/images/searchN/h3_cart_inside.gif" alt="추천inside"></h3>
-					</div>
-					<div class="cart_re_inside"><div class="inside_book">
-						
-						<dl id="BOOKCART_1_1" style="display: block;">
-							<dt><img src="http://image.bandinlunis.com/upload/product/4034/4034224_s.jpg" onerror="this.src='http://image.bandinlunis.com/images/common/noimg_type02.gif'"></dt>
-							<dd class="con01">돌이킬 수 없는 약속</dd>
-							<dd class="mt5 BOOKCART_1_TIT"></dd>
-						</dl>
-						
-						<p class="mPagingD pageNum" style="width:60px"><span class="num"><span id="insideIdx">1</span>/<span id="insideMax">1</span></span><a id="btn_insidePrev" class="prev" style="cursor:pointer;"><span>◀이전</span></a><a id="btn_insideNext" class="next" style="cursor:pointer;"><span>다음▶</span></a></p>
-					</div></div>
-					<div class="cart_recomProd">
-						<ul class="mdbookList" id="BOOKCART_1"><li>추천 상품이 없습니다.</li></ul>
-					</div>
-				</div>
-				
 			</div>
 			
 		</div>
