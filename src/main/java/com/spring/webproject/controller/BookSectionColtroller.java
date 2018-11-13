@@ -633,10 +633,22 @@ public class BookSectionColtroller {
 		shoppingDao.getShipmentsStatus(shoppingDao.getMaxShipmentsId()+1, dto4.getOrderId());
 		//shipment table insert
 		
-	
 		
-		
-		
+		//책권수 빼기
+		for(int i=0;i<arrayIsbn.length;i++) {
+			int finalOrderCount = 0;
+			String isbn = arrayIsbn[i];
+			int orderCount = Integer.parseInt(arrayOrderCnt[i]);
+			
+			int totOrderCount = raDao.getSelectBookQuantity(isbn);
+			System.out.println(totOrderCount);
+			
+			finalOrderCount = totOrderCount - orderCount;
+			System.out.println(finalOrderCount);
+
+			raDao.getUpdateBookQuantity(isbn, finalOrderCount);
+		}
+		//책권수 빼기
 
 		return "shopAndOrder/order";
 	}
@@ -646,14 +658,12 @@ public class BookSectionColtroller {
 		
 		String ck = request.getParameter("isbn");
 		String ckC = request.getParameter("orderCount");
+
+		List<BookSectionsDTO> lst = new ArrayList<BookSectionsDTO>();
 		
-		if(!ck.equals("") && ck!=null) {
-			List<BookSectionsDTO> lst = new ArrayList<BookSectionsDTO>();
-			
-			lst = raDao.cartList(ck,ckC);
-			
-			request.setAttribute("lst", lst);
-		}
+		lst = raDao.cartList(ck,ckC);
+		
+		request.setAttribute("lst", lst);
 		
 		return "shopAndOrder/cartList";
 	}
