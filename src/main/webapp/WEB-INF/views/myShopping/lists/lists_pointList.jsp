@@ -10,7 +10,7 @@
 	<tr>
 		<th>적립일/사용일</th>
 		<th>주문번호</th>
-		<th style="width: 365px;">내역</th>	
+		<th style="width: 380px;">내역</th>	
 		<th>구분</th>
 		<th>금액</th>
 	</tr>

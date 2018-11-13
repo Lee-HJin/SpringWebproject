@@ -13,6 +13,63 @@
 	<link rel="stylesheet" href="<%=cp%>/resources/css/myShopping.css" type="text/css">
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 	<script src="<%=cp%>/resources/js/myShopping.js"></script>
+	<script type="text/javascript">
+	
+	//새 비밀번호1 유효성 검사
+	$(document).ready(function(){
+		
+	$('#newPwd1').on('keyup',function(){
+
+		$(this).val( $(this).val().replace( /[^a-zA-Z0-9]/g, '' ) );
+
+		var temp_pwd = document.getElementById('newPwd1').value;
+
+		if(temp_pwd.length!=0){
+			if(temp_pwd.length<10){
+				$('#text_pwd1').html("<span id='text_pwd1'>공백없는 10~15자의 영문/숫자 조합</span>");
+			}
+			else if(temp_pwd.length>15){
+				$('#text_pwd1').html("<span id='text_pwd1'>공백없는 10~15자의 영문/숫자 조합</span>");
+			}
+			else {
+				$('#text_pwd1').html("<span id='text_pwd1' style='color: #886e45;'>이용 가능한 비밀번호입니다</span>");
+			}
+		}
+		else {
+			$('#text_pwd1').html("<span id='text_pwd1'>공백없는 10~15자의 영문/숫자 조합</span>");
+		}
+
+	});
+	
+	//새 비밀번호2 유효성 검사
+	$('#newPwd2').on('keyup',function(){
+
+		$(this).val( $(this).val().replace( /[^a-zA-Z0-9]/g, '' ) );
+
+		var temp_pwd = document.getElementById('newPwd2').value;
+		var pwd = document.getElementById('newPwd1').value;
+		
+		if(temp_pwd.length<1){
+			if(temp_pwd.length==0){
+				$('#text_pwd2').html("<span id='text_pwd2' style='color: black;'></span>");
+			}
+			else{
+				$('#text_pwd2').html("<span id='text_pwd2' style='color: black;'>비밀번호가 일치하지 않습니다.</span>");
+			}
+		}
+		else{
+			if(pwd==temp_pwd){
+				$('#text_pwd2').text('');
+				document.getElementById('userPwd').value = pwd;
+			}
+			else{
+				$('#text_pwd2').html("<span id='text_pwd2' style='color: #ea5759;'>비밀번호가 일치하지 않습니다.</span>");
+			}	
+		}
+		
+	});
+	});
+	</script>
 	
 </head>
 <body style="padding: 0;margin: 0;">
