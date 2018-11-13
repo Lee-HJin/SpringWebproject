@@ -50,56 +50,6 @@
 <script type="text/javascript" src="/webproject/resources/js/jquery/jquery.min.js"></script><!-- IE8 에서 오류로 인해 일부러 넣음(jQuery 보다 dwr.util.js 가 밑에 있음 오류 발생) -->
 <script type="text/javascript" src="/webproject/resources/js/multiCart.js"></script>
 
-<!-- 
-<script type="text/javascript">
-
-/* 	// 쇼핑카트
-	function addCarts() {
-	
-		var obj 	= document.getElementsByName("isbn");
-		var p_arr = "";
-		var cnt = 0;
-		
-		for(var i=0;i<obj.length;i++){
-			if(obj[i].checked){
-				if(cnt>0){
-					p_arr += ",";
-				}
-				p_arr += obj[i].value;
-				cnt++;
-			}
-		}
-		
-		if(p_arr==""){
-			alert('선택된 항목이 없습니다.');
-			return;
-		}
-		
-		
-		var tmpArr	= p_arr.split(",");
-		var resultArr	= Array();
-		var cntArr		= Array();
-		
-		for(var i=0 ; i < tmpArr.length ; i++){
-			resultArr.push(" ");
-			cntArr.push(1);
-		}
-		
-		add_basket_array_common(p_arr,resultArr.join(","), cntArr.join(","),resultArr.join(","), true, callBack_);
-	}
-	
-	function callBack_()
-	{
-		jutil.bandi.reloadWiseCart("cart");
-	} */
-	
-	
-	
-
-</script>
-스트립트2 끝 
- -->
-
 
 </head>
 
@@ -311,6 +261,7 @@
 								<c:when test="${dto.maxQuantity ne 0}">
 									<dl class="prod_btn">
 										<dt>
+											<input type="hidden" id="cart_isbn${dto.isbn }" value="${dto.isbn }">
 											구입 가능 권수 - <strong class="t_red">${dto.maxQuantity }</strong>권<span class="num_txt">수량</span>
 											<input type="text" id="cntVal_${dto.isbn }" value="1" class="num" size="3" maxlength="2" onkeydown="onlyNumber();" onkeyup="">
 											<span class="btn_updn_wrap">

@@ -6,6 +6,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
@@ -584,7 +585,7 @@ public class BookSectionColtroller {
 		//usedPoint : 주문시에 사용한 포인트
 		int inputPoint = usedPoint-(usedPoint*2);	//DB에 입력할 때 사용할 포인트 변수
 		
-		while(usedPoint<=0) {	//usedPoint가 0이 될때까지 동작
+		while(usedPoint!=0) {	//usedPoint가 0이 될때까지 동작
 
 			//rownum으로 leftPoint를 만료일자가 가까운 순으로 불러옴
 			//pointMap안에는 pointid, leftValue가 들어있음
@@ -650,7 +651,13 @@ public class BookSectionColtroller {
 		}
 		//책권수 빼기
 
-		return "shopAndOrder/order";
+	    // 특정 쿠키만 삭제하기
+	    Cookie kc = new Cookie("shop", null) ;
+	    kc.setMaxAge(0) ;
+	    kc.setPath("/");
+	    response.addCookie(kc) ;
+
+		return "myShopping/myShoppingMain";
 	}
 	
 	@RequestMapping(value="cartList.action", method= {RequestMethod.GET, RequestMethod.POST})
@@ -658,15 +665,16 @@ public class BookSectionColtroller {
 		
 		String ck = request.getParameter("isbn");
 		String ckC = request.getParameter("orderCount");
-
-		List<BookSectionsDTO> lst = new ArrayList<BookSectionsDTO>();
 		
-		lst = raDao.cartList(ck,ckC);
-		
-		request.setAttribute("lst", lst);
+		if(!ck.equals("") && ck!=null) {
+			List<BookSectionsDTO> lst = new ArrayList<BookSectionsDTO>();
+			
+			lst = raDao.cartList(ck,ckC);
+			
+			request.setAttribute("lst", lst);
+		}
 		
 		return "shopAndOrder/cartList";
 	}
-
 
 }
