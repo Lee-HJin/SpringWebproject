@@ -6,6 +6,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
@@ -653,7 +654,13 @@ public class BookSectionColtroller {
 		}
 		//책권수 빼기
 
-		return "shopAndOrder/order";
+	    // 특정 쿠키만 삭제하기
+	    Cookie kc = new Cookie("shop", null) ;
+	    kc.setMaxAge(0) ;
+	    kc.setPath("/");
+	    response.addCookie(kc) ;
+
+		return "myShopping/myShoppingMain";
 	}
 	
 	@RequestMapping(value="cartList.action", method= {RequestMethod.GET, RequestMethod.POST})
@@ -672,6 +679,5 @@ public class BookSectionColtroller {
 		
 		return "shopAndOrder/cartList";
 	}
-
 
 }
