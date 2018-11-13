@@ -10,7 +10,7 @@
 	<tr>
 		<th>주문번호</th>
 		<th>처리일자</th>
-		<th style="width: 365px;">상품명</th>	
+		<th style="width: 380px;">상품명</th>	
 		<th>취소/환불금액</th>
 		<th>현황</th>
 	</tr>
