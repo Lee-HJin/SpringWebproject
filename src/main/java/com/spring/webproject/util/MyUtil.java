@@ -231,7 +231,7 @@ public class MyUtil {
 
 	}
 
-	public String pageIndexListforDiscount2(int currentPage, int totalPage, String listUrl) {
+	public String pageIndexListforDiscount2(int currentPage, int totalPage, String listUrl, int categoryId) {
 
 		int numPerBlock = 3; // 1◀이전 6 7 8 9 10 다음▶11(6-10까지 표시되는 페이지 갯수)
 		int currentPageSetup; // 표시할 첫 페이지(6)의 – 1 해준 값(5,10,15,20...)
@@ -260,7 +260,7 @@ public class MyUtil {
 		if (totalPage > numPerBlock && currentPageSetup > 0) {
 
 			sb.append("<span class='prev-btn' >");
-			sb.append("<a href=\"" + listUrl + "pageNum=" + currentPageSetup + "\">"
+			sb.append("<a href=\"" + listUrl + "pageNum=" + currentPageSetup + "&categoryId=" + categoryId +"\">"
 					+ "<img src='/webproject/resources/images/searchN/btn_pagePrev.gif' align='absmiddle' hspace='2' border='0'>"
 					+ "</a></span>&nbsp;");
 
@@ -279,7 +279,7 @@ public class MyUtil {
 
 			} else {
 
-				sb.append("<a href=\"" + listUrl + "pageNum=" + page + "#menu_discount\" style = 'color : #947555'>"
+				sb.append("<a href=\"" + listUrl + "pageNum=" + page + "&categoryId=" + categoryId +"#menu_discount\" style = 'color : #947555'>"
 						+ page + "</a>&nbsp;");
 
 			}
@@ -294,7 +294,7 @@ public class MyUtil {
 		if (totalPage - currentPageSetup > numPerBlock) {
 
 			sb.append("<span class='next-btn'>");
-			sb.append("<a href=\"" + listUrl + "pageNum=" + page + "\">"
+			sb.append("<a href=\"" + listUrl + "pageNum=" + page + "&categoryId=" + categoryId +"\">"
 					+ "<img src='/webproject/resources/images/searchN/btn_pageNext.gif' align='absmiddle' hspace='2' border='0'>"
 					+ "</a></span>&nbsp;");
 
