@@ -154,13 +154,13 @@
 				<!-- left contents -->
 				<div class="con_t2">
 				<form name="bestForm" action="/webspring/bnlBSList.action" method="get" onsubmit="javascript:return false;">
-					<input type="hidden" name="searchType" value="top">
 					<input type="hidden" name="prodStat">
 					<input type="hidden" name="sort">
 					<input type="hidden" name="pageNum" value="1">
+					
 				
 				<h3 class="cateTit p10"><span>종합 
-				<span class="t_11gr t_normal ml5">총 판매량과 주문수를 기준으로 매일 1회 업데이트 됩니다.</span></span></h3>
+				<span class="t_11gr t_normal ml5">총 판매량과 주문수를 기준으로 업데이트 됩니다.</span></span></h3>
 
 					<!-- 정렬 -->
 					<div class="prod_sort sort_ver02">								
@@ -253,10 +253,12 @@
 					
 <!-- EL / JSTL / Foreach  -->
 					<c:forEach var="dto" items="${lists }">
+					
 					<div class="prod_list_type prod_best_type">
 						<ul>	        	
 			         	<li>
-			         		<input class="checkbox" type="checkbox" value="${dto.isbn }" name="isbn" id="cart_isbn${dto.isbn }">
+			         		
+			         		<input type="hidden" name="maxQuantity" id="maxQuantity" value="${dto.maxQuantity }"/>
 							<div class="prod_thumb">
 								<span class="ranking">
 									<span class="rank_num">${dto.rnum }</span>
@@ -305,20 +307,42 @@
 									</dd>
 							</dl>
 							
-							<dl class="prod_btn">
-								<dt>
-									<span class="num_txt">수량</span>
-									<input type="text" id="cntVal_${dto.isbn }" value="1" class="num" size="3" maxlength="2" onkeydown="onlyNumber();" onkeyup="">
-									<span class="btn_updn_wrap">
-										<a href="javascript:cntUp('${dto.isbn }');" class="btn_num_up">▲</a>
-										<a href="javascript:cntDown('${dto.isbn }');" class="btn_num_dn">▼</a>
-									</span>
-								</dt>
+							<c:choose>
+								<c:when test="${dto.maxQuantity ne 0}">
+									<dl class="prod_btn">
+										<dt>
+											구입 가능 권수 - <strong class="t_red">${dto.maxQuantity }</strong>권<span class="num_txt">수량</span>
+											<input type="text" id="cntVal_${dto.isbn }" value="1" class="num" size="3" maxlength="2" onkeydown="onlyNumber();" onkeyup="">
+											<span class="btn_updn_wrap">
+												<a href="javascript:cntUp('${dto.isbn }','${dto.maxQuantity }');" class="btn_num_up">▲</a>
+												<a href="javascript:cntDown('${dto.isbn }','${dto.maxQuantity }');" class="btn_num_dn">▼</a>
+											</span>
+										</dt>
+										
+										<dd><a href="javascript:addCart('${dto.isbn }');"><span class="btn_b_comm btype_f1">쇼핑카트</span></a></dd>
+										<dd class="mt3"><a href="javascript:goOrder('${dto.isbn }');"><span class="btn_w_comm btype_f1">바로구매</span></a></dd>
+										<dd class="mt3"><a href="javascript:add_wish_array_common('${dto.isbn }', true);"><span class="btn_w_comm btype_f1">위시리스트</span></a></dd>
+									</dl>
+								</c:when>
 								
-								<dd><a href="javascript:addCart('${dto.isbn }');"><span class="btn_b_comm btype_f1">쇼핑카트</span></a></dd>
-								<dd class="mt3"><a href="javascript:goOrder('${dto.isbn }');"><span class="btn_w_comm btype_f1">바로구매</span></a></dd>
-								<dd class="mt3"><a href="javascript:add_wish_array_common('${dto.isbn }', true);"><span class="btn_w_comm btype_f1">위시리스트</span></a></dd>
-							</dl>
+								<c:otherwise>
+									<dl class="prod_btn">
+										<dt>
+											구입 가능 권수 - <strong class="t_red">${dto.maxQuantity }</strong>권<span class="num_txt">수량</span>
+											<input type="text" id="cntVal_${dto.isbn }" value="0" class="num" size="3" maxlength="2" onkeydown="onlyNumber();" onkeyup="" readonly="readonly">
+											<span class="btn_updn_wrap">
+												<a href="javascript:cntUp('${dto.isbn }','${dto.maxQuantity }');" class="btn_num_up">▲</a>
+												<a href="javascript:cntDown('${dto.isbn }','${dto.maxQuantity }');" class="btn_num_dn">▼</a>
+											</span>
+										</dt>
+										
+										<dd><a href=""><span class="btn_gy_comm btype_f1">상품문의하기</span></a></dd>
+										<dd class="mt3"><a href="javascript:goOrder('${dto.isbn }');"><span class="btn_w_comm btype_f1">바로구매</span></a></dd>
+										<dd class="mt3"><a href="javascript:add_wish_array_common('${dto.isbn }', true);"><span class="btn_w_comm btype_f1">위시리스트</span></a></dd>
+									</dl>
+								</c:otherwise>
+							</c:choose>
+							
 						</li>						
 						</ul>							
 					</div>

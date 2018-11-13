@@ -381,13 +381,13 @@ values(#{userId},sysdate,sysdate,#{orderId},#{value},'상품구입',#{pointId},0
 
 <!-- 배송테이블,상품준비중(shipments table) -->
 <select id="maxShipmentsId" resultType="Integer">
-	select nvl(max(shipmentsId),0) from shiptments
+	select nvl(max(shipmentsId),0) from shipments
 </select>
 
 <!-- 배송테이블 상품준비중 -->
 <insert id="shipmentsStatus" parameterType="map">
-	insert into point(shipmentsId, orderId, shipmentsStatusCode, expectedDate)
-	values(#{shipmentsId}, #{orderId}, ,'상품준비중', to_date(to_char(sysdate+3,'YYYY-MM-DD ') || '23:59:59','YYYY-MM-DD HH24:MI:SS'))
+	insert into shipments(shipmentsId, orderId, shipmentsStatusCode, expectedDate)
+	values(#{shipmentsId}, #{orderId}, '상품준비중', to_date(to_char(sysdate+3,'YYYY-MM-DD ') || '23:59:59','YYYY-MM-DD HH24:MI:SS'))
 </insert>
 
 <!-- 1:1 상담내역 리스트 count (all) -->

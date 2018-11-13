@@ -35,6 +35,16 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		(${orderId}, ${quantity}, ${price}, ${isbn})
 	</insert>
 	
+	<!-- update 책값 warehouse=1에서 빠지게하기  -->
+	<update id="updateBookQuantity" parameterType="hashMap">
+		update booksAtWarehouse set quantity = #{OrderCount} where warehouseid = 1 and isbn = #{isbn}
+	</update>
+	
+	<!-- isbn으로 책값 받아오기  -->
+	<select id="selectBookQuantity" parameterType="java.lang.String" resultType="Integer">
+		select quantity from BOOKSATWAREHOUSE where warehouseid = 1 and isbn = #{isbn}
+	</select>
+	
 
 
 
