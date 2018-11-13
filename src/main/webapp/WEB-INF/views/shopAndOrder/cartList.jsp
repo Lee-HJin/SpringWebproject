@@ -94,7 +94,8 @@
    				<input type="hidden" id="prodTypeArr_${dto.seqNum }" name="prodType" value="01"/>
    				<input type="hidden" id="flag_${dto.seqNum }" name="flag" value="0"/>
    				<input type="hidden" id="preSaleYnVal_${dto.seqNum }" name="preSaleYnVal" value="N"/>
-   				<input type="hidden" id="orderCnt_${dto.seqNum }" name="orderCount" value="${dto.orderCount }"/> 	
+   				<input type="hidden" id="orderCnt_${dto.seqNum }" name="orderCount" value="${dto.orderCount }"/>
+   				
 		    </td>
 		</tr>
 	</c:forEach>
