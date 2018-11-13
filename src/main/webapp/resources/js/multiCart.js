@@ -160,13 +160,9 @@
 					
 					var result = confirm('쇼핑카트로 바로 가시겠습니까?'); 
 					if(result) { 
-
-						//yes 
 						location.replace('shopCartList.action'); 
-				
 					} else { 
-						//no
-						
+						return;
 					}
 					
 					
@@ -319,29 +315,9 @@
 		
 		
 	}
-	
-	$("#btn_order").click(function() {
-	
-		var session = $("#userInfo").val();
 
-		   if(session == null || session == ""){
-			   
-			   var result = confirm('로그인을 해야 주문 가능합니다. 로그인 하시겠습니까?'); 
-				if(result) { 
-
-					//yes 
-					location.href = 'login.action' 
-			
-				} else { 
-					//no
-					
-				}
-			   
-		   }
-		   else{
-			   $("#goOrder").submit();
-		   }
-
+	$("#btn_order").click(function() {	  
+		$("#goOrder").submit();
 	});
 	
 	

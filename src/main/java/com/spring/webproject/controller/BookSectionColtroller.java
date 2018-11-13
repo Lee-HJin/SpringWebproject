@@ -584,7 +584,7 @@ public class BookSectionColtroller {
 		//usedPoint : 주문시에 사용한 포인트
 		int inputPoint = usedPoint-(usedPoint*2);	//DB에 입력할 때 사용할 포인트 변수
 		
-		while(usedPoint<=0) {	//usedPoint가 0이 될때까지 동작
+		while(usedPoint!=0) {	//usedPoint가 0이 될때까지 동작
 
 			//rownum으로 leftPoint를 만료일자가 가까운 순으로 불러옴
 			//pointMap안에는 pointid, leftValue가 들어있음
@@ -593,14 +593,17 @@ public class BookSectionColtroller {
 			//pointMap 풀어내기
 			int leftValue = ((BigDecimal)pointMap.get("LEFTVALUE")).intValue();
 			int pointId = ((BigDecimal)pointMap.get("POINTID")).intValue();
+			
 
+			
 			//사용한 포인트>적립된 포인트
 			//적립된 포인트(point테이블 안의 leftValue)를 0으로 만든다음 사용한포인트-적립된 포인트한 금액을
 			//다시 usedPoint에 넣음 그리고 while문 반복
 			if(usedPoint>=leftValue) { 
 				//leftValue를 0으로 만들고, usedPoint를 그만큼 줄여서 다시 저장
 				shoppingDao.pointUseUpdate(pointId, 0);
-				usedPoint = usedPoint-leftValue;		
+				usedPoint = usedPoint-leftValue;
+
 			}
 			//사용한 포인트<적립된 포인트
 			//적립된 포인트-사용한 포인트 금액을 불러온 pointId를 통해 leftValue를 업데이트한 후 while문 종료됨
@@ -658,12 +661,14 @@ public class BookSectionColtroller {
 		
 		String ck = request.getParameter("isbn");
 		String ckC = request.getParameter("orderCount");
-
-		List<BookSectionsDTO> lst = new ArrayList<BookSectionsDTO>();
 		
-		lst = raDao.cartList(ck,ckC);
-		
-		request.setAttribute("lst", lst);
+		if(!ck.equals("") && ck!=null) {
+			List<BookSectionsDTO> lst = new ArrayList<BookSectionsDTO>();
+			
+			lst = raDao.cartList(ck,ckC);
+			
+			request.setAttribute("lst", lst);
+		}
 		
 		return "shopAndOrder/cartList";
 	}

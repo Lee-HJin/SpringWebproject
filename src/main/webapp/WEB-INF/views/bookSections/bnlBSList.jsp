@@ -311,6 +311,7 @@
 								<c:when test="${dto.maxQuantity ne 0}">
 									<dl class="prod_btn">
 										<dt>
+											<input type="hidden" id="cart_isbn${dto.isbn }" value="${dto.isbn }">
 											구입 가능 권수 - <strong class="t_red">${dto.maxQuantity }</strong>권<span class="num_txt">수량</span>
 											<input type="text" id="cntVal_${dto.isbn }" value="1" class="num" size="3" maxlength="2" onkeydown="onlyNumber();" onkeyup="">
 											<span class="btn_updn_wrap">

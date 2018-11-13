@@ -18,6 +18,10 @@ public class Interceptor extends HandlerInterceptorAdapter{
 			String query = request.getQueryString();	//파라미터 값 저장
 			HttpSession session = request.getSession();
 			
+			if(path.equals("/order.action")) {
+				path = "/shopCartList.action";
+			}
+			
 			//돌아갈 url을 생성해서 session에 올림
 			if(query!=null) {
 				session.setAttribute("pre_url", path+"?"+query);
