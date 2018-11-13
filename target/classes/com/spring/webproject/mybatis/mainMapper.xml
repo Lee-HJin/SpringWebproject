@@ -101,12 +101,22 @@
 	select image from warehouseImage where warehouseId=#{warehouseId}
 </select>
 
-<!-- 로그인시 최근본 상품 -->
-<select id="recentLogin" parameterType="java.lang.String" resultType="com.spring.webproject.dto.MainDTO">
+<!-- 로그인시 오늘 본 상품 -->
+<select id="todayLogin" parameterType="java.lang.String" resultType="com.spring.webproject.dto.MainDTO">
 	select b.*, bookImage from bookImage a,
 	(select isbn,bookTitle,authorName from author a,
 	(select a.isbn,bookTitle,authorId from books a,
 	(select isbn from recentList where userId=#{userId} and viewDate>to_char(sysdate,'YYYY-MM-DD') order by viewDate desc) b 
+	where a.isbn=b.isbn) b where a.authorId=b.authorId) b 
+	where a.isbn=b.isbn and bookImage like '%cover%'
+</select>
+
+<!-- 로그인시 최근 본 상품 -->
+<select id="recentLogin" parameterType="java.lang.String" resultType="com.spring.webproject.dto.MainDTO">
+	select b.*, bookImage from bookImage a,
+	(select isbn,bookTitle,authorName from author a,
+	(select a.isbn,bookTitle,authorId from books a,
+	(select isbn from recentList where userId=#{userId} order by viewDate desc) b 
 	where a.isbn=b.isbn) b where a.authorId=b.authorId) b 
 	where a.isbn=b.isbn and bookImage like '%cover%'
 </select>

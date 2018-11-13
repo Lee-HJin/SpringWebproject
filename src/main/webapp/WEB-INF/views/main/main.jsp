@@ -469,7 +469,7 @@
 			</div>
 			<div class="rc_body" id="no_data" style="display: none;">
 				<div class="rc_no_data">
-					최근 본 상품이 없습니다.
+					오늘 본 상품이 없습니다.
 				</div>
 			</div>
 			<div class="rc_body" id="data" style="display: block;">
@@ -931,7 +931,14 @@
 					</div>
 					<div>
 						<a href="/webproject/help/helpIndex.action?parentsTypeId=${qlst.parentsTypeId }&questionId=${qlst.questionId }&typeId=${qlst.typeId}">
-							${qlst.subject }
+						<c:choose>
+							<c:when test="${fn:length(qlst.subject)>30 }">
+								<c:out value="${fn:substring(qlst.subject,0,28) }"/>…
+							</c:when>
+							<c:otherwise>
+								<c:out value="${qlst.subject }"></c:out>
+							</c:otherwise>
+						</c:choose>
 						</a>
 					</div>
 				</li>

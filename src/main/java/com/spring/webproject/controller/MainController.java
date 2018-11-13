@@ -37,7 +37,7 @@ public class MainController {
 		
 		if(dto!=null) {
 			String userId = dto.getUserId();
-			List<MainDTO> rcList = dao.recentLogin(userId);
+			List<MainDTO> rcList = dao.todayLogin(userId);
 			
 			req.setAttribute("rcList", rcList);
 		}

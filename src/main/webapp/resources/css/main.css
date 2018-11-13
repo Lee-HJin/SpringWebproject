@@ -1331,7 +1331,7 @@ body{font-size: 12px;
     right: 5px;
     background: #FFF url(/webproject/resources/image/main/sp_common.gif) no-repeat -177px -57px;
 }
-.q_list{margin: 12px 0 0 3px; height: 165px;}
+.q_list{margin: 12px 0 4px 3px; height: 165px;}
 .q_list li{margin-bottom: 8px; overflow: hidden;}
 
 .bnl_banner{
