@@ -74,7 +74,10 @@
 		top.location.href = "/webproject/book_info.action?isbn="+ Val;
 	}
 </script>
-
+<script type="text/javascript"
+	src="/webproject/resources/js/multiCart.js">
+	
+</script>
 <script type="text/javascript"
 	src="/webproject/resources/common/js/common.js"></script>
 

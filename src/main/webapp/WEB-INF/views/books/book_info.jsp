@@ -11,13 +11,63 @@
 <head>
 <meta charset="UTF-8">
 <title>도서 상세페이지</title>
+<link rel="stylesheet"
+	href="/webproject/resources/common/css/bnlBSList2.css" type="text/css">
+<script type="text/javascript"
+	src="/webproject/resources/common/js/common.js"></script>
 
+<script type="text/javascript"
+	src="/webproject/resources/common/js/swfobject.js"></script>
+<script type="text/javascript"
+	src="/webproject/resources/common/js/flashcommon.js"></script>
+<script type="text/javascript"
+	src="/webproject/resources/common/js/AC_RunActiveContent.js"></script>
 
+<script type="text/javascript" src="/webproject/resources/js/common.js"
+	charset="euc-kr"></script>
+<script type="text/javascript"
+	src="/webproject/resources/js/JUTIL/JUTIL.js" charset="utf-8"></script>
+<script type="text/javascript" src="/webproject/resources/js/navi.js"
+	charset="euc-kr"></script>
+<script type="text/javascript"
+	src="/webproject/resources/js/partnerHeaderInfo.js"></script>
+
+<script type="text/javascript"
+	src="/webproject/resources/js/jquery/jquery.min.js"></script>
+<script type="text/javascript"
+	src="/webproject/resources/js/jquery/jquery-ui.js"></script>
+<script type="text/javascript"
+	src="/webproject/resources/js/jquery/jquery.blockUI.js"></script>
+<script type="text/javascript"
+	src="/webproject/resources/js/jquery/idangerous.swiper.js"></script>
+
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script type="text/javascript" src="https://wcs.naver.net/wcslog.js"></script>
+
+<!-- ADSSOM 신규 버전 17-11-20 -->
+<!-- ADSSOM 공통 SCRIPT -->
+<script type="text/javascript" src="https://sc.11h11m.net/s/E799.js"></script>
+<script type="text/javascript" charset="UTF-8"
+	src="http://s.n2s.co.kr/_n2s_ck_log.php"></script>
+
+<script type="text/javascript" src="/webproject/resources/js/dwr.js"
+	charset="euc-kr"></script>
+<script type="text/javascript"
+	src="/webproject/resources/js/jquery/jquery.min.js"></script>
+<!-- IE8 에서 오류로 인해 일부러 넣음(jQuery 보다 dwr.util.js 가 밑에 있음 오류 발생) -->
+<script type="text/javascript"
+	src="/webproject/resources/js/multiCart.js"></script>
+
+<script type="text/javascript"
+	src="/springwebview/resources/js/JUTIL/JUTIL.js"></script>
+<script type="text/javascript"
+	src="/springwebview/resources/js/jquery/jquery.min.js"></script>
+<script type="text/javascript"
+	src="/springwebview/resources/js/swfobject.js"></script>
 <link rel="stylesheet" href="/webproject/resources/book_css/class.css"
 	type="text/css">
 
-<link rel="stylesheet" href="/webproject/resources/book_css/common.css"
-	type="text/css">
 
 <link rel="stylesheet"
 	href="/webproject/resources/book_css/detail_default.css"
@@ -25,11 +75,27 @@
 
 <link rel="stylesheet" href="/webproject/resources/book_css/pStyle.css"
 	type="text/css">
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script
+	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 
-<script src="/webproject/resources/book_js/bookInfo.js"></script>
+
+
+
 
 
 <style>
+* {
+	box-sizing: inherit;
+}
+
+.container22 {
+	justify-content: space-between;
+}
+
 i {
 	border: solid black;
 	border-width: 0 3px 3px 0;
@@ -91,11 +157,33 @@ i {
 	visibility: visible;
 	opacity: 1;
 }
-</style>
 
-<script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
+.btn_num_up, .btn_num_dn {
+	display: block;
+	width: 12px;
+	height: 11px;
+	background:
+		url('/webproject/resources/images/searchN/btn_comm_140630.gif');
+		no-repeat;
+	text-indent: -99999em
+}
+
+.btn_num_up {
+	background-position: -81px -20px
+}
+
+.btn_num_dn {
+	background-position: -81px -33px
+}
+</style>
 <script type="text/javascript"
-	src="/webproject/resources/book_js/common.js"></script>
+	src="/webproject/resources/js/multiCart.js">
+	
+</script>
+
+<script src="/webproject/resources/book_js/bookInfo.js"></script>
+<script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
+
 <!-- TOP 버튼 CSS -->
 <style type="text/css">
 #myBtn {
@@ -233,7 +321,7 @@ i {
 				var idx = itemArray.findIndex(function(item) {
 					return item === cValue;
 				});
-				alert(idx);
+				// 				alert(idx);
 				itemArray.splice(idx, 1);
 
 				itemArray.unshift(cValue);
@@ -294,7 +382,7 @@ i {
 				<p class="btn_txt">
 
 					<a href="javascript:popPreview(${dto.isbn });"
-						class="btn_gy_comm btype_a4">미리보기</a>
+						class="btn_gy_comm btype_a4" style="height: 25px;">미리보기</a>
 
 				</p>
 
@@ -452,34 +540,29 @@ i {
 			<!-- 오른쪽 영역 -->
 			<div class="inner_right" style="width: 760px;">
 				<!--// 상품 구매영역 -->
-				<div class="row_item" style="width: 760px;">
+				<div class="row_item" style="width: 760px; height: 120px;">
 					<div class="group_tag">
 
-
-
 						<span class="sp_tag benefit">배송 품질 보상</span>
-
-
 
 
 					</div>
 					<div class="group_title">
 						<h1>
-
 							<span class="txt_main">${dto.bookTitle } </span>
-
 						</h1>
 					</div>
 
-					<div class="group_inside" style="padding: 0px;">
-						<ul style="height: 13px;">
-							<li>${dto2.authorname }&nbsp;저&nbsp;&nbsp;|</li>
+					<div class="group_inside"
+						style="height: 40px; padding: 0px; margin-bottom: 10px; padding-bottom: 10px;">
+						<ul style="height: 40px;">
+							<li style="height: 40px;">${dto2.authorname }&nbsp;저&nbsp;&nbsp;|</li>
 
 
-							<li>${dto.publisher }&nbsp;&nbsp;|</li>
+							<li style="height: 40px;">${dto.publisher }&nbsp;&nbsp;|</li>
 
 
-							<li>${dto.publishDate }</li>
+							<li style="height: 40px;">${dto.publishDate }</li>
 
 
 						</ul>
@@ -768,9 +851,11 @@ i {
 									<div class="mt5">
 										<strong>서울/수도권</strong> 오전 12시 주문까지 <span
 											class="btn_w_comm btype_a4 al_top mt3m hand"
+											style="height: 18pt;"
 											onmouseover="javascript:popLayer('oneDay1')"
 											onmouseout="javascript:popHidden('oneDay1')">가능지역</span> <span
 											class="btn_w_comm btype_a4 al_top mt3m hand"
+											style="height: 18pt;"
 											onmouseover="javascript:popLayer('todayDeliveryInfo')"
 											onmouseout="javascript:popHidden('todayDeliveryInfo')">당일배송
 											유의사항</span>
@@ -1005,46 +1090,33 @@ i {
 
 
 				<div class="row_item buy_group">
+
 					<div class="group_info">
 						<div class="tbl_qty">
-							<span class="txt_num">수량</span> <input name="quantity"
-								id="quantity" style="vertical-align: middle; text-align: right"
-								size="5" maxlength="4" value="1" /> <img
-								style="vertical-align: middle;" alt="수량 증가 감소"
-								src="/springwebview/resources/images/book/common/2014/btn_cnt.gif"
-								usemap="#map_name_quantity" />
-							<map id="map_name_quantity" name="map_name_quantity">
-								<area href="javascript:modifyProductQuantity('quantity',1);"
-									shape="rect" alt="수량 증가" coords="0,0,9,10" />
-								<area href="javascript:modifyProductQuantity('quantity',-1);"
-									shape="rect" alt="수량 감소" coords="0,10,9,20" />
-							</map>
-
+							<span class="txt_num">수량</span> <input type="text"
+								id="cntVal_${dto.isbn }" value="1" class="inp_num" size="2"
+								style="text-align: right; ime-mode: disabled;"
+								onkeydown="onlyNumber();"> <span class="btn_updn_wrap">
+								<a href="javascript:cntUp('${dto.isbn }');" class="btn_num_up"></a>
+								<a href="javascript:cntDown('${dto.isbn }');" class="btn_num_dn"></a>
+							</span>
 						</div>
 						<div class="tbl_ad">
-							<span class="txt_ad">더욱 새로워진 반디앤루니스 옴니채널 <a
-								href="/pages/front/service/serviceBookSelf.jsp#st01"
-								target="_blank"><strong class="point_red">북셀프3.0</strong></a>을
-								확인하세요.
+							<span class="txt_ad">더욱 새로워진 반디앤루니스 옴니채널 <strong
+								class="point_red">북셀프3.0</strong>을 확인하세요.
 							</span> <a href="/pages/front/service/serviceBookSelf.jsp#st01"
 								target="_blank"><span class="sp_btn move">자세히</span></a>
 						</div>
 					</div>
 					<div class="group_info fl_clear buy_btn">
-						<div class="btn_zone_left pos_rel">
-							<a href="javascript:add_basket_cnt('4189934');" class="btn_big"><span
-								class="box_bookcart">쇼핑카트 담기</span></a> <a
-								href="javascript:go_buy_cnt('4189934');" class="btn_big"><span
-								class="box_quickbuy">바로 구매</span></a> <a
-								href="javascript:popUpBookSelf();" class="btn_big pos_rel">
-								<span class="box_bookself"><span class="tooltip"
-									style="text-align: center;">북셀프 구매 <span
-										class="tooltiptext">매장직접수령</span>
-								</span></span>
-							</a> <a href="javascript:add_wish_array_common('4189934', true);"
-								class="btn_big"><span class="box_wishlist">위시리스트</span></a>
-							<div class="widget_btn"></div>
-							<!-- 모든 매장 재고수 LAYER -->
+						<div class="btn_zone_left pos_rel"
+							style="justify-content: space-between;">
+							<div id="container22">
+								<a href="javascript:addCart('${isbn}');" class="btn_big"><span
+									class="box_bookcart" style="margin-right: 50px;">쇼핑카트 담기</span></a>
+								<a href="javascript:go_buy_cnt('4189934');" class="btn_big"><span
+									class="box_quickbuy" style="margin-right: 50px;">바로 구매</span></a>
+							</div>
 
 							<div class="bookViewPop" id="bookselfInfo"
 								style="display: none; bottom: 45px; left: 210px; width: 350px">
@@ -1094,7 +1166,8 @@ i {
 						<strong>회원리뷰</strong>
 						<div class="medium_ratings" style="width: 20pt;"></div>
 						<span class="ml10">리뷰[${reviewNum}] 간단평[${simplereviewNum }]
-						</span> </span> <a href="#sub02" class="btn_w_comm btype_a4">참여하기</a>
+						</span> </span> <a href="#sub02" class="btn_w_comm btype_a4"
+							style="height: 18pt;">참여하기</a>
 					</div>
 
 
@@ -1121,49 +1194,25 @@ i {
 						<h4 class="txt_title">이 분야의 베스트셀러</h4>
 
 						<ul>
+							<c:forEach var="dto33" items="${lists_Best3 }">
 
-							<li><a href="javascript:goDetailBook('4002576');"> <img
-									src="http://image.bandinlunis.com/upload/product/4002/4002576.jpg"
-									alt="" class="d_imgLine"
-									onerror="this.src='http://image.bandinlunis.com/images/common/noimg_type04.gif';">
-
-
-							</a> <a href="javascript:goDetailBook('4002576');"
-								class="txt_subject"><strong>82년생 김지영</strong></a> <span
-								class="txt_writer">조남주</span> <strong class="point_red">11,700원
-							</strong></li>
-
-							<li><a href="javascript:goDetailBook('3960994');"> <img
-									src="http://image.bandinlunis.com/upload/product/3960/3960994.jpg"
-									alt="" class="d_imgLine"
-									onerror="this.src='http://image.bandinlunis.com/images/common/noimg_type04.gif';">
-
-
-							</a> <a href="javascript:goDetailBook('3960994');"
-								class="txt_subject"><strong>7년의 밤</strong></a> <span
-								class="txt_writer">정유정</span> <strong class="point_red">13,050원
-							</strong></li>
-
-							<li><a href="javascript:goDetailBook('3698481');"> <img
-									src="http://image.bandinlunis.com/upload/product/3698/3698481.jpg"
-									alt="" class="d_imgLine"
-									onerror="this.src='http://image.bandinlunis.com/images/common/noimg_type04.gif';">
-
-
-							</a> <a href="javascript:goDetailBook('3698481');"
-								class="txt_subject"><strong>두근두근 내 인생[오디오북 특별판]</strong></a> <span
-								class="txt_writer">김애란</span> <strong class="point_red">10,800원
-							</strong></li>
+								<li><a
+									href="/webproject/book_info.action?isbn=${dto33.isbn }"> <img
+										src="/webproject/resources/image/book/${dto33.bookImage }"
+										alt="" class="d_imgLine"
+										onerror="this.src='http://image.bandinlunis.com/images/common/noimg_type04.gif';">
+								</a> <a href="javascript:goDetailBook('4002576');"
+									class="txt_subject"><strong>${dto33.bookTitle }</strong></a> <span
+									class="txt_writer">${dto33.authorName }</span> <strong
+									class="point_red">${dto33.bookPrice } </strong></li>
+							</c:forEach>
 
 						</ul>
 
 					</div>
 					<div class="section_right">
-						<a
-							href="javascript:parent.goBannerUrl('http://www.bandinlunis.com/front/product/detailProduct.do?prodId=4203203', '_self', '112656');"><script>
-								showImgSwf("http://image.bandinlunis.com/upload/banner/20181012/banner20181012112050.jpg");
-							</script><img
-							src="http://image.bandinlunis.com/upload/banner/20181012/banner20181012112050.jpg"></a>
+						<img
+							src="http://image.bandinlunis.com/upload/banner/20181012/banner20181012112050.jpg">
 					</div>
 				</div>
 			</div>
@@ -1205,16 +1254,17 @@ i {
 					</div>
 					<div class="box_contents">
 						<ul>
-
 							<li class="mb10"><a
-								href="/front/product/bookCategoryMain.do?cateId=2">소설</a> &gt; <a
-								href="/front/product/bookCategoryMain.do?cateId=25&amp;fullCateId=00020025">한국소설</a>
+								href="/webproject/book_cate.action?categoryId=${cateDTO3.categoryId }">${cateDTO3.categoryName }</a>
+								&gt; <a
+								href="/webproject/book_cate.action?categoryId=${cateDTO2.categoryId }">${cateDTO2.categoryName }</a>
 
 								&gt; <a
-								href="/front/product/bookCategoryMain.do?cateId=26&amp;fullCateId=000200250026">현대소설</a>
+								href="/webproject/book_cate.action?categoryId=${cateDTO1.categoryId }">${cateDTO1.categoryName }</a>
 
-								<a
-								href="/front/product/bookCategoryMain.do?cateId=&amp;fullCateId=000200250026"></a>
+
+
+
 							</li>
 
 						</ul>
@@ -1298,8 +1348,9 @@ i {
 					</div>
 					<div class="box_contents">
 						<div class="group_txt">${intro1 }
-						<span id="dots">...</span> <span id="more" class = "group_txt"> ${intro2 } </span>
-					</div>
+							<span id="dots">...</span> <span id="more" class="group_txt">
+								${intro2 } </span>
+						</div>
 						<div id="bookDescBtn" class="pr20">
 							<button onclick="myFunction()" id="myBtn1">펼쳐 보기</button>
 						</div>
@@ -1316,7 +1367,8 @@ i {
 					</div>
 					<div class="box_contents">
 						<div class="group_txt">${cont1 }
-						<span id="dots2">...</span> <span id="more2" class = "group_txt"> ${cont2 } </span>
+							<span id="dots2">...</span> <span id="more2" class="group_txt">
+								${cont2 } </span>
 						</div>
 						<div id="bookDescBtn" class="pr20">
 							<button onclick="myFunction2()" id="myBtn2">펼쳐 보기</button>

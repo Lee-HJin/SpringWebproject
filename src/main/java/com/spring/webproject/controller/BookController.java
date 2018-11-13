@@ -149,7 +149,7 @@ public class BookController {
 
 		String bnlBSListUrl = cp + "/book_novel.action";
 
-		String pageIndexList = raMyUtil.pageIndexListforDiscount2(currentPage, totalPage, bnlBSListUrl);
+		String pageIndexList = raMyUtil.pageIndexListforDiscount2(currentPage, totalPage, bnlBSListUrl, categoryId);
 
 		request.setAttribute("pageNum", currentPage);
 		request.setAttribute("pageIndexList", pageIndexList);
@@ -163,100 +163,8 @@ public class BookController {
 
 		String cp = request.getContextPath();
 
-		String pageNum = request.getParameter("pageNum");
-
-		int currentPage = 1;
-
-		if (pageNum != null) {
-			currentPage = Integer.parseInt(pageNum);
-		}
-		/*
-		 * 장르별 검색을 위해서 between 을 넣어서 sortNum lke 1 and 99 or 1 and 4 필요
-		 */
-
-		String sort1st = request.getParameter("sort1st");
-		String sort2nd = request.getParameter("sort2nd");
-
-		if (sort1st == null && sort2nd == null) {
-			sort1st = "1";
-			sort2nd = "99";
-		}
-
-		/*
-		 * 장르별 검색을 위해서 between 을 넣어서 sortNum lke 1 and 99 or 1 and 4 필요
-		 */
-
-		// 전체데이터 갯수
-		int dataCount = raDao.getDataCount();
-
-		// 페이징 처리
-		int numPerPage = 10;
-		int totalPage = raMyUtil.getPageCount(numPerPage, dataCount);
-
-		if (currentPage > totalPage)
-			currentPage = totalPage;
-
-		int start = (currentPage - 1) * numPerPage + 1;
-		int end = currentPage * numPerPage;
-
-		/*
-		 * sort 분류 sort0 = order by soldBookCnt desc, rate desc, reviewCnt desc sort1 =
-		 * order by publish sort2 = order by goods sort3 = order by review
-		 */
-		String sort = request.getParameter("sort");
-		if (sort == null || sort == "") {
-
-			sort = "";
-			List<BookSectionsDTO> lists = dao.getListMain_2(Integer.parseInt(sort1st), Integer.parseInt(sort2nd), start,
-					end);
-			request.setAttribute("lists", lists);
-
-		} else if (sort.equals("sort1")) {
-
-			List<BookSectionsDTO> lists = dao.getListSort1_2(Integer.parseInt(sort1st), Integer.parseInt(sort2nd),
-					start, end);
-			request.setAttribute("lists", lists);
-
-		} else if (sort.equals("sort2")) {
-
-			List<BookSectionsDTO> lists = dao.getListSort2_2(Integer.parseInt(sort1st), Integer.parseInt(sort2nd),
-					start, end);
-			request.setAttribute("lists", lists);
-
-		} else if (sort.equals("sort3")) {
-
-			List<BookSectionsDTO> lists = dao.getListSort3_2(Integer.parseInt(sort1st), Integer.parseInt(sort2nd),
-					start, end);
-			request.setAttribute("lists", lists);
-
-		} else if (sort.equals("sort4")) {
-
-			List<BookSectionsDTO> lists = dao.getListSort4_2(Integer.parseInt(sort1st), Integer.parseInt(sort2nd),
-					start, end);
-			request.setAttribute("lists", lists);
-
-		}
-
-		String bnlBSListUrl = cp + "/book_self_improvement.action";
-
-		String pageIndexList = raMyUtil.pageIndexList(currentPage, totalPage, bnlBSListUrl);
-
-		request.setAttribute("sort", sort);
-		request.setAttribute("sort1st", sort1st);
-		request.setAttribute("sort2nd", sort2nd);
-		request.setAttribute("pageNum", currentPage);
-		request.setAttribute("pageIndexList", pageIndexList);
-
-		return "/books/cate/self_improvement/book_self_improvement";
-	}
-
-	// 장르소설
-	@RequestMapping(value = "/genre_fiction.action", method = { RequestMethod.GET, RequestMethod.POST })
-	public String genre_fiction(HttpServletRequest request, HttpServletResponse response) {
-
-		String pageNum = request.getParameter("pageNum");
-		int categoryId = 1;
-		request.setAttribute("categoryId", 1);
+		int categoryId = 255;
+		request.setAttribute("categoryId", 255);
 		// 대분류
 		CateDTO dto_Main = dao.getReadCate(categoryId);
 
@@ -282,30 +190,106 @@ public class BookController {
 
 		request.setAttribute("lists", lists);
 
-		int currentPage = 1;
+		// 베스트 셀러
+		int cateStart = categoryId;
 
-		if (pageNum != null) {
-			currentPage = Integer.parseInt(pageNum);
+		int cateEnd = dao.getCateEnd(categoryId);
+
+		List<BookSectionsDTO> lists_Best = dao.getLists_Best(cateStart, cateEnd);
+		request.setAttribute("lists_Best", lists_Best);
+
+		// 새로나온 책
+		List<BookSectionsDTO> lists_New = dao.getLists_New(cateStart, cateEnd);
+		request.setAttribute("lists_New", lists_New);
+
+		int lists_New_Num = dao.getLists_New_Count(cateStart, cateEnd);
+		request.setAttribute("lists_New_Num", lists_New_Num);
+
+		// 할인도서
+		/* discountRate */
+		int fromDiscount = 0;
+		int toDiscount = 0;
+		if (request.getParameter("fromDiscount") == null || request.getParameter("fromDiscount").equals("")) {
+			fromDiscount = 0;
+		} else {
+			fromDiscount = Integer.parseInt(request.getParameter("fromDiscount"));
+		}
+		if (request.getParameter("toDiscount") == null || request.getParameter("toDiscount").equals("")) {
+			toDiscount = 100;
+		} else {
+			toDiscount = Integer.parseInt(request.getParameter("toDiscount"));
 		}
 
-		// 전체데이터 갯수
-		int dataCount = raDao.getDataCountForEachRnum();
+		return "/books/cate/self_improvement/book_self_improvement";
+	}
 
+	// 장르소설
+	@RequestMapping(value = "/genre_fiction.action", method = { RequestMethod.GET, RequestMethod.POST })
+	public String genre_fiction(HttpServletRequest request, HttpServletResponse response) {
+
+		String pageNum = request.getParameter("pageNum");
+		int categoryId = 91;
+		request.setAttribute("categoryId", 91);
+		// 대분류
+		CateDTO dto_Main = dao.getReadCate(categoryId);
+
+		request.setAttribute("dto_Main", dto_Main); // 메인 분류 이름
+
+		// 중분류
+		List<CateDTO2> lists = dao.getReadCateList2(dto_Main.getCategoryId());
+
+		Iterator<CateDTO2> iterator = lists.iterator();
+
+		while (iterator.hasNext()) {
+			CateDTO2 dto2 = iterator.next();
+
+			List<CateDTO> lists3 = dao.getReadCateList3(dto2.getCategoryId());
+			Iterator<CateDTO> it = lists3.iterator();
+			while (it.hasNext()) {
+				CateDTO dto = it.next();
+
+				dto2.setLastNode(dto);
+
+			}
+		}
+
+		request.setAttribute("lists", lists);
+
+		String cp = request.getContextPath();
+
+		// 베스트 셀러
+		int cateStart = categoryId;
+
+		int cateEnd = dao.getCateEnd(categoryId);
+
+		List<BookSectionsDTO> lists_Best = dao.getLists_Best(cateStart, cateEnd);
+		request.setAttribute("lists_Best", lists_Best);
+
+		// 새로나온 책
+		List<BookSectionsDTO> lists_New = dao.getLists_New(cateStart, cateEnd);
+		request.setAttribute("lists_New", lists_New);
+
+		int lists_New_Num = dao.getLists_New_Count(cateStart, cateEnd);
+		request.setAttribute("lists_New_Num", lists_New_Num);
+
+		// 할인도서
+		/* discountRate */
+		int fromDiscount = 0;
+		int toDiscount = 0;
+		if (request.getParameter("fromDiscount") == null || request.getParameter("fromDiscount").equals("")) {
+			fromDiscount = 0;
+		} else {
+			fromDiscount = Integer.parseInt(request.getParameter("fromDiscount"));
+		}
+		if (request.getParameter("toDiscount") == null || request.getParameter("toDiscount").equals("")) {
+			toDiscount = 100;
+		} else {
+			toDiscount = Integer.parseInt(request.getParameter("toDiscount"));
+		}
 		// 페이징 처리
-		int numPerPage = 10;
-		int totalPage = raMyUtil.getPageCount(numPerPage, dataCount);
 
-		if (currentPage > totalPage)
-			currentPage = totalPage;
-
-		int start = (currentPage - 1) * numPerPage + 1;
-		int end = currentPage * numPerPage;
-
-		request.setAttribute("start", start);
-		request.setAttribute("end", end);
-
-		List<BookSectionsDTO> bestSellerTop10 = raDao.getBestSellerTop10();
-		request.setAttribute("bestSellerTop10", bestSellerTop10);
+		int lists_Discount_Num = dao.getLists_Discount_Num(cateStart, cateEnd, fromDiscount, toDiscount);
+		request.setAttribute("lists_Discount_Num", lists_Discount_Num);
 
 		return "/books/cate/novel/genre_fiction";
 	}
@@ -317,7 +301,31 @@ public class BookController {
 		String isbn = request.getParameter("isbn"); // 책 고유번호 가져오기
 
 		BooksDTO dto = dao.getReadBookData(isbn);
+
 		AuthorDTO dto2 = dao.getReadAuthorData(isbn);
+		// 카테고리 아이디 가져오기
+
+		int categoryId = dao.getCategoryId(isbn);
+		int cateStart = categoryId;
+		int cateEnd = dao.getCateEnd(categoryId);
+
+		// 카테고리 이름 가져오기
+
+		CateDTO cateDTO1 = dao.getReadCate(categoryId);
+		System.out.println("카테고리 아이디 : " + cateDTO1.getCategoryId());
+		System.out.println("부모 카테고리 아이디 : " + cateDTO1.getParentsId());
+		if (cateDTO1 != null) {
+			CateDTO cateDTO2 = dao.getReadCate(cateDTO1.getParentsId());
+			if (cateDTO2 != null) {
+				CateDTO cateDTO3 = dao.getReadCate(cateDTO2.getParentsId());
+
+				request.setAttribute("cateDTO3", cateDTO3);
+			}
+			request.setAttribute("cateDTO2", cateDTO2);
+		}
+		request.setAttribute("cateDTO1", cateDTO1);
+		List<BookSectionsDTO> lists_Best3 = dao.getLists_Best3(cateStart, cateEnd);
+		request.setAttribute("lists_Best3", lists_Best3);
 
 		String book_image = dao.getReadBookImage(isbn); // 북 커버 이미지
 
@@ -530,12 +538,18 @@ public class BookController {
 		String isbn = request.getParameter("isbn"); // 책 고유번호 가져오기
 
 		UserDTO dto3 = (UserDTO) request.getSession().getAttribute("userInfo");
+		int check_simpleReview = 0;
 
 		if (dto3 != null) {
 			String userId = dto3.getUserId();
 			request.setAttribute("userId", userId);
+			check_simpleReview = dao.getSimpleReviewCheck(isbn, userId);
+
 		}
+		request.setAttribute("check_simpleReview", check_simpleReview);
+		System.out.println("간단평 체크 : " + check_simpleReview);
 		int simplereviewNum = dao.getSimpleReivewDataCount(isbn);
+
 		request.setAttribute("simplereviewNum", simplereviewNum);
 		request.setAttribute("isbn", isbn);
 
@@ -877,7 +891,7 @@ public class BookController {
 
 		// ****************************************
 
-		String pageIndexList = raMyUtil.pageIndexListforDiscount(currentPage, totalPage, bnlBSListUrl, categoryId);
+		String pageIndexList = raMyUtil.pageIndexListforDiscount2(currentPage, totalPage, bnlBSListUrl, categoryId);
 
 		request.setAttribute("pageNum", currentPage);
 		request.setAttribute("pageIndexList", pageIndexList);

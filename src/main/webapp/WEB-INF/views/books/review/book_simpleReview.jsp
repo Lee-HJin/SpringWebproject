@@ -9,6 +9,8 @@
 	String cp = request.getContextPath();
 
 	String isbn = request.getParameter("isbn");
+	String check_simpleReview = request.getParameter("check_simpleReview");
+// 	int check = Integer.parseInt(check_simpleReview);
 %>
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
@@ -586,7 +588,48 @@ table	th.td_Left {
 
 
 <script type="text/javascript">
+function go_login2() {
 
+	alert("로그인 하셔야 간단평을 쓰실수 있습니다.");
+	parent.location.href = '<%=cp%>/login2.action?isbn='+<%=isbn%>;
+
+}
+
+function enroll_SimpleReview(Val){
+	
+	if(${check_simpleReview } == 1){
+		alert("이미 간단평을 등록하셨습니다.");	
+		return ;
+	}
+	
+	f = document.mainForm;
+	
+	str = f.sentence.value;
+	if(str.length <0){
+	alert("내용을 입력해주세요.");
+	return ;
+	}
+	alert("간단평이 등록되었습니다.");
+	
+	
+	location.href = '<%=cp%>/enroll_simpleReview.action?isbn=' + Val
+				+ '&sentence=' + str;
+		return;
+}
+
+function reviewVote2(Val){
+	alert("한줄평에 공감하셨습니다. + " + Val);
+	
+	var url = '<%=cp%>/book_simpleReviewVote.action';
+		url += '?isbn=' + ${isbn};
+		url += '&reviewId=' + Val;
+
+		var xmlHttp = new XMLHttpRequest();
+		xmlHttp.open("GET", url, false); // false for synchronous request
+		xmlHttp.send(null);
+		return xmlHttp.responseText;
+
+	}
 </script>
 
 <link rel="stylesheet"
@@ -667,14 +710,11 @@ table	th.td_Left {
 						<input type="hidden" name="isbn" value=${isbn }>
 						<div style="width: 100%;">
 							<div class="shotReview">
-								<textarea name="sentence"
-									onclick="onChangeText(this,'title_stat')"
-									onkeyup="onChangeText(this,'title_stat')"
-									onkeypress="onChangeText(this,'title_stat')"></textarea>
+								<textarea name="sentence"></textarea>
 								<p class="btn_show_register">
 									<c:choose>
 										<c:when test="${empty sessionScope.userInfo.userId }">
-											<a class="box_tag" href="javascript:go_login();">등록</a>
+											<a class="box_tag" href="javascript:go_login2();">등록</a>
 										</c:when>
 										<c:otherwise>
 											<a class="box_tag"
@@ -746,9 +786,7 @@ table	th.td_Left {
 					htmlData += thumbup.item(i).firstChild.nodeValue;
 					htmlData += "</span></span></td>";
 					htmlData += "</tr>";
-					
-					
-		
+
 				}
 
 				htmlData += "</tbody>  </table>";
@@ -756,7 +794,7 @@ table	th.td_Left {
 				var simpleReviewDiv = document
 						.getElementById("simpleReviewTitle");
 				simpleReviewDiv.innerHTML = htmlData;
-		
+
 			} else {
 				alert(httpRequest.status + " : " + httpRequest.statusText);
 			}
@@ -768,169 +806,5 @@ table	th.td_Left {
 	window.onload = function() {
 		simpleReviewTitle();
 	}
-	
-	 function reviewVote2(Val){
-			alert("한줄평에 공감하셨습니다. + " + Val);
-			
-			var url = '<%=cp%>/book_simpleReviewVote.action';
-			url +='?isbn='+${isbn};
-			url +='&reviewId='+Val;
-			
-			var xmlHttp = new XMLHttpRequest();
-		    xmlHttp.open( "GET", url, false ); // false for synchronous request
-		    xmlHttp.send( null );
-		    return xmlHttp.responseText;
-			
-		}
-
-		<%-- $(function(){
-			
-			
-			var url = '<%=cp%>/book_simpleReviewVote.action';
-			url +='?isbn='+${isbn};
-			url +='&reviewId='+Val;
-				
-			$('#btn1').click(function(){
-				location.href='<%=cp%>/book_simpleReviewVote.action?isbn=' + ${isbn} + '&reviewId=' + Val';
-				$(location).attr('href',url);
-				
-			});
-			
-		}); --%>
-
-		<%-- function reviewVote2(Val){
-			alert("한줄평에 공감하셨습니다. + " + Val);
-			
-			var url = '<%=cp%>/book_simpleReviewVote.action?isbn=' + ${isbn };
-			url += '&reviewId='+ Val;
-			location.href = "<%=cp%>/book_simpleReview_vote.action?isbn=<%=isbn%>" + "&reviewId="+Val;
-			location.href = url;
-			alert(url);
-		}
-		 --%>
-		function go_login() {
-
-			alert("로그인 하셔야 간단평을 쓰실수 있습니다.");
-			parent.location.href = '<%=cp%>/login2.action?isbn='+<%=isbn%>;
-
-		}
-
-		function enroll_SimpleReview(Val){
-			alert("간단평이 등록되었습니다.");
-			f = document.mainForm;
-			
-			str = f.sentence.value;
-			
-			
-			
-			location.href = '<%=cp%>/enroll_simpleReview.action?isbn=' + Val
-						+ '&sentence=' + str;
-				return;
-			}
-
-			var sMemSeq = "";
-
-			function onChangeText(obj, val) {
-				if (obj.value.length > 200) {
-					alert("200자 이상 입력하실 수 없습니다.");
-					obj.value = obj.value.substring(0, 200);
-					return;
-				}
-				// 길이체크 바이트 체크 안함
-				var len = obj.value.length;
-				document.getElementById(val).innerHTML = len + "/200";
-			}
-
-			function checkReview(seq) {
-				//간단평 금칙어들
-				var noWords = [ "개새끼", "개세끼", "씨발", "지랄", "좆", "병신", "등신" ];
-
-				var sReview = "";
-
-				if (seq == 0) {
-					sReview = document.mainForm.title.value;
-				} else if (seq > 0) {
-					sReview = document.getElementById("title_" + seq).value
-				}
-
-				// 간단평 금칙어 검사
-				for (var i = 0; i < noWords.length; i++) {
-					if (sReview.indexOf(noWords[i]) != -1) {
-						alert("금칙어가 포함되어 있어 입력이 불가능 합니다.");
-						return false;
-					}
-				}
-
-				// 간단평 자음, 모음 검사
-				for (var i = 0; i < sReview.length; i++) {
-					var c = sReview.charCodeAt(i);
-
-					if (0x3131 <= c && c <= 0x318E) {
-						alert("간단평은 자음, 모음만 입력이 불가능 합니다.");
-						return false;
-					}
-				}
-
-				//간단평 길이 검사
-				if (sReview.length == 0) {
-					alert("내용을 입력하세요.");
-					return false;
-				} else if (sReview.length < 15) {
-					alert("상품과 관련된 내용을 15자 이상 작성해주셔야 합니다.");
-					return false;
-				}
-
-				return true;
-			}
-
-			function viewUpdateForm(seq) {
-				var obj = "updateForm_" + seq;
-				var obj2 = "listArea_" + seq;
-				document.getElementById(obj).style.display = "block";
-				document.getElementById(obj2).style.display = "none";
-			}
-
-			function goUpdate(seq) {
-				if (!checkReview(seq)) {
-					return;
-				}
-
-				var frm = document.mainForm;
-				var obj = "title_" + seq;
-				frm.modTitle.value = document.getElementById(obj).value;
-				frm.seq.value = seq;
-				frm.actionType.value = "update";
-				frm.submit();
-			}
-
-			function goDelete(seq) {
-				var frm = document.mainForm;
-				frm.seq.value = seq;
-				frm.actionType.value = "delete";
-				frm.submit();
-			}
-
-			function recommandCnt(seq, vote) {
-				var frm = document.mainForm;
-
-				if (!isLogin()) {
-					parent.location.href = "/front/formLogin.do?resPath="
-							+ encodeURIComponent("/front/product/detailProduct.do?prodId=4189934#simpleReview");
-					return;
-				}
-				if (vote == 0) {
-					frm.seq.value = seq;
-					frm.actionType.value = "prodVote";
-					frm.submit();
-				} else if (vote > 0) {
-					frm.seq.value = seq;
-					frm.actionType.value = "cancle";
-					frm.submit();
-
-				}
-
-			}
-	
-	
 </script>
 </html>
