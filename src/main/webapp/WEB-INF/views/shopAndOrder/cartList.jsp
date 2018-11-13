@@ -74,7 +74,7 @@
 			
 			<td>
 		        <input type="checkbox" id="checkBox_${dto.seqNum }" name="seqArr3" class="check_bandiDeduction" value="${dto.seqNum }" checked="checked">
-   				<input type="hidden"  id="pricePerBook_${dto.seqNum}" name="pricePerBook" value="${dto.discountedPrice}"/>
+   				<input type="hidden" id="pricePerBook_${dto.seqNum}" name="pricePerBook" value="${dto.discountedPrice}"/>
 
 				<input type="hidden" class="storeId_1" value="${dto.seqNum }"/>
 				<input type="hidden" id="storeIdVal_${dto.seqNum }" value="1"/>
