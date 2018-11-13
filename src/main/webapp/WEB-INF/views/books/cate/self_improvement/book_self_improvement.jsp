@@ -129,7 +129,7 @@
 </script>
 <style>
 * {
-	box-sizing: border-box
+	box-sizing: inherit;
 }
 
 /* Style the tab */
@@ -176,6 +176,7 @@
 	float: none;
 	padding: 12px 12px;
 	border-top: none;
+	border-bottom: none;
 	width: 100%;
 	height: 200px;
 	display: none;
@@ -201,441 +202,57 @@
 
 		<div class="side_t2 ml5">
 			<div class="cate_comm">
-				<h2 class="cate_tit">자기계발</h2>
+
+				<h2 class="cate_tit">${dto_Main.categoryName }</h2>
 				<ul class="cate_d1">
 					<!-- 중분류 -->
-					<li id="kidsCate_821" class="cate_d1_li "><a href="/"
-						class="cate_d1_link" onmouseover="javascript:toggleDisplay3('01')"
-						onmouseout="javascript:toggleDisplay3('01')">성공/처세</a> <!-- 소분류 -->
-						<div class="cate_d2" id="left2_layer01"
-							onmouseover="javascript:toggleDisplay3('01')"
-							onmouseout="javascript:toggleDisplay3('01')"
-							style="display: none;">
-
-							<div class="pos_rel">
-								<div class="ico_arrow"></div>
-								<ul>
-
-									<li class="cate_d2_link "><a
-										href="/front/product/bookCategoryMain.do?cateId=822">성공스토리</a>
-									</li>
-
-									<li class="cate_d2_link "><a
-										href="/front/product/bookCategoryMain.do?cateId=826">마인드콘트롤</a>
-									</li>
-
-									<li class="cate_d2_link "><a
-										href="/front/product/bookCategoryMain.do?cateId=827">직장처세술</a>
-									</li>
-
-									<li class="cate_d2_link "><a
-										href="/front/product/bookCategoryMain.do?cateId=831">인생처세술</a>
-									</li>
-
-									<li class="cate_d2_link "><a
-										href="/front/product/bookCategoryMain.do?cateId=835">유명인처세</a>
-									</li>
-
-								</ul>
-							</div>
-						</div></li>
-
-
-					<li id="kidsCate_841" class="cate_d1_li "><a
-						href="/front/product/bookCategoryMain.do?cateId=841"
-						class="cate_d1_link" onmouseover="javascript:toggleDisplay3('02')"
-						onmouseout="javascript:toggleDisplay3('02')">자기능력계발</a> <!-- 소분류 -->
-
-
-						<div class="cate_d2" id="left2_layer02"
-							onmouseover="javascript:toggleDisplay3('02')"
-							onmouseout="javascript:toggleDisplay3('02')"
-							style="display: none;">
-
-							<div class="pos_rel">
-								<div class="ico_arrow"></div>
-								<ul>
-
-
-
-
-									<li class="cate_d2_link "><a
-										href="/front/product/bookCategoryMain.do?cateId=842">자기혁신</a></li>
-
-
-									<li class="cate_d2_link "><a
-										href="/front/product/bookCategoryMain.do?cateId=847">자기관리</a></li>
-
-								</ul>
-							</div>
-						</div></li>
-
-
-					<!-- 중분류 -->
-
-
-					<!-- 중분류 -->
-
-
-					<!-- 중분류 -->
-
-
-					<!-- 중분류 -->
-
-
-					<!-- 중분류 -->
-
-
-					<!-- 중분류 -->
-
-
-					<!-- 중분류 -->
-
-
-					<!-- 중분류 -->
-
-
-					<!-- 중분류 -->
-
-
-					<!-- 중분류 -->
-
-
-					<!-- 중분류 -->
-
-
-					<!-- 중분류 -->
-
-
-					<!-- 중분류 -->
-
-					<li id="kidsCate_853" class="cate_d1_li "><a
-						href="/front/product/bookCategoryMain.do?cateId=853"
-						class="cate_d1_link" onmouseover="javascript:toggleDisplay3('03')"
-						onmouseout="javascript:toggleDisplay3('03')">비즈니스능력계발</a> <!-- 소분류 -->
-
-						<div class="cate_d2" id="left2_layer03"
-							onmouseover="javascript:toggleDisplay3('03')"
-							onmouseout="javascript:toggleDisplay3('03')"
-							style="display: none;">
-
-							<div class="pos_rel">
-								<div class="ico_arrow"></div>
-								<ul>
-
-									<li class="cate_d2_link "><a
-										href="/front/product/bookCategoryMain.do?cateId=854">비즈니스소양</a>
-									</li>
-
-									<li class="cate_d2_link "><a
-										href="/front/product/bookCategoryMain.do?cateId=861">리더십</a></li>
-
-								</ul>
-							</div>
-						</div></li>
-
-
-					<!-- 중분류 -->
-
-
-					<!-- 중분류 -->
-
-
-					<!-- 중분류 -->
-
-
-					<!-- 중분류 -->
-
-
-					<!-- 중분류 -->
-
-
-					<!-- 중분류 -->
-
-
-					<!-- 중분류 -->
-
-
-					<!-- 중분류 -->
-
-
-					<!-- 중분류 -->
-
-
-					<!-- 중분류 -->
-
-
-					<!-- 중분류 -->
-
-
-					<!-- 중분류 -->
-
-					<li id="kidsCate_864" class="cate_d1_li "><a
-						href="/front/product/bookCategoryMain.do?cateId=864"
-						class="cate_d1_link" onmouseover="javascript:toggleDisplay3('04')"
-						onmouseout="javascript:toggleDisplay3('04')">인간관계</a> <!-- 소분류 -->
-
-
-
-						<div class="cate_d2" id="left2_layer04"
-							onmouseover="javascript:toggleDisplay3('04')"
-							onmouseout="javascript:toggleDisplay3('04')"
-							style="display: none;">
-
-							<div class="pos_rel">
-								<div class="ico_arrow"></div>
-								<ul>
-
-
-									<li class="cate_d2_link "><a
-										href="/front/product/bookCategoryMain.do?cateId=865">인간관계일반</a>
-									</li>
-
-
-									<li class="cate_d2_link "><a
-										href="/front/product/bookCategoryMain.do?cateId=866">직장내인간관계</a>
-									</li>
-
-
-									<li class="cate_d2_link "><a
-										href="/front/product/bookCategoryMain.do?cateId=867">남녀관계</a></li>
-
-
-
-									<li class="cate_d2_link "><a
-										href="/front/product/bookCategoryMain.do?cateId=868">가족관계</a></li>
-
-
-
-									<li class="cate_d2_link "><a
-										href="/front/product/bookCategoryMain.do?cateId=869">심리일반</a></li>
-
-
-								</ul>
-							</div>
-						</div></li>
-
-
-					<!-- 중분류 -->
-
-
-					<!-- 중분류 -->
-
-
-					<!-- 중분류 -->
-
-
-					<!-- 중분류 -->
-
-
-					<!-- 중분류 -->
-
-
-					<!-- 중분류 -->
-
-
-					<!-- 중분류 -->
-
-
-					<!-- 중분류 -->
-
-
-					<!-- 중분류 -->
-
-					<li id="kidsCate_873" class="cate_d1_li "><a
-						href="/front/product/bookCategoryMain.do?cateId=873"
-						class="cate_d1_link" onmouseover="javascript:toggleDisplay3('05')"
-						onmouseout="javascript:toggleDisplay3('05')">화술/협상</a> <!-- 소분류 -->
-
-
-
-						<div class="cate_d2" id="left2_layer05"
-							onmouseover="javascript:toggleDisplay3('05')"
-							onmouseout="javascript:toggleDisplay3('05')"
-							style="display: none;">
-
-							<div class="pos_rel">
-								<div class="ico_arrow"></div>
-								<ul>
-
-
-
-									<li class="cate_d2_link "><a
-										href="/front/product/bookCategoryMain.do?cateId=874">대화와화술</a>
-									</li>
-
-
-
-									<li class="cate_d2_link "><a
-										href="/front/product/bookCategoryMain.do?cateId=875">설득/협상</a>
-									</li>
-
-
-
-									<li class="cate_d2_link "><a
-										href="/front/product/bookCategoryMain.do?cateId=876">연설/스피치</a>
-									</li>
-
-
-
-									<li class="cate_d2_link "><a
-										href="/front/product/bookCategoryMain.do?cateId=877">회의방법/토론</a>
-									</li>
-
-
-								</ul>
-							</div>
-						</div></li>
-
-
-					<!-- 중분류 -->
-
-
-					<!-- 중분류 -->
-
-
-					<!-- 중분류 -->
-
-
-					<!-- 중분류 -->
-
-
-					<!-- 중분류 -->
-
-					<li id="kidsCate_878" class="cate_d1_li "><a
-						href="/front/product/bookCategoryMain.do?cateId=878"
-						class="cate_d1_link" onmouseover="javascript:toggleDisplay3('06')"
-						onmouseout="javascript:toggleDisplay3('06')">세일즈/매너</a> <!-- 소분류 -->
-
-
-
-						<div class="cate_d2" id="left2_layer06"
-							onmouseover="javascript:toggleDisplay3('06')"
-							onmouseout="javascript:toggleDisplay3('06')"
-							style="display: none;">
-
-							<div class="pos_rel">
-								<div class="ico_arrow"></div>
-								<ul>
-
-									<li class="cate_d2_link "><a
-										href="/front/product/bookCategoryMain.do?cateId=879">CS</a></li>
-
-
-
-									<li class="cate_d2_link "><a
-										href="/front/product/bookCategoryMain.do?cateId=880">세일즈기법</a>
-									</li>
-
-
-
-									<li class="cate_d2_link "><a
-										href="/front/product/bookCategoryMain.do?cateId=881">매너</a></li>
-
-
-
-									<li class="cate_d2_link "><a
-										href="/front/product/bookCategoryMain.do?cateId=882">세일즈성공스토리</a>
-									</li>
-
-
-								</ul>
-							</div>
-						</div></li>
-
-
-					<!-- 중분류 -->
-
-
-					<!-- 중분류 -->
-
-
-					<!-- 중분류 -->
-
-
-					<!-- 중분류 -->
-
-
-					<!-- 중분류 -->
-
-					<li id="kidsCate_883" class="cate_d1_li "><a
-						href="/front/product/bookCategoryMain.do?cateId=883"
-						class="cate_d1_link" onmouseover="javascript:toggleDisplay3('07')"
-						onmouseout="javascript:toggleDisplay3('07')">오디오북</a> <!-- 소분류 -->
-
-
-
-						<div class="cate_d2" id="left2_layer07"
-							onmouseover="javascript:toggleDisplay3('07')"
-							onmouseout="javascript:toggleDisplay3('07')"
-							style="display: none;">
-
-							<div class="pos_rel">
-								<div class="ico_arrow"></div>
-								<ul>
-
-									<li class="cate_d2_link "><a
-										href="/front/product/bookCategoryMain.do?cateId=884">성공/처세</a>
-									</li>
-
-
-
-									<li class="cate_d2_link "><a
-										href="/front/product/bookCategoryMain.do?cateId=885">자기능력계발</a>
-									</li>
-
-
-
-									<li class="cate_d2_link "><a
-										href="/front/product/bookCategoryMain.do?cateId=886">비즈니스능력계발</a>
-									</li>
-
-
-
-									<li class="cate_d2_link "><a
-										href="/front/product/bookCategoryMain.do?cateId=887">인간관계일반</a>
-									</li>
-
-
-
-									<li class="cate_d2_link "><a
-										href="/front/product/bookCategoryMain.do?cateId=888">화술/협상</a>
-									</li>
-
-
-
-									<li class="cate_d2_link "><a
-										href="/front/product/bookCategoryMain.do?cateId=889">세일즈/매너</a>
-									</li>
-
-
-
-
-								</ul>
-							</div>
-						</div></li>
-
-
-
-
-					<li id="kidsCate_4931" class="cate_d1_li "><a
-						href="/front/product/bookCategoryMain.do?cateId=4931"
-						class="cate_d1_link">묶음</a> <!-- 소분류 --></li>
+					<c:set var="i" value="0" />
+					<c:forEach var="list" items="${lists }">
+
+						<li id="kidsCate_821" class="cate_d1_li "><a
+							href="/webproject/book_cate.action?categoryId=${list.categoryId }"
+							class="cate_d1_link"
+							onmouseover="javascript:toggleDisplay3(${i})"
+							onmouseout="javascript:toggleDisplay3(${i })">
+								${list.categoryName }</a> <!-- 소분류 --> <c:choose>
+								<c:when test="${empty list.lastNode }">
+
+								</c:when>
+								<c:otherwise>
+									<div class="cate_d2" id="left2_layer${i }"
+										onmouseover="javascript:toggleDisplay3(${i })"
+										onmouseout="javascript:toggleDisplay3(${i })"
+										style="display: none;">
+
+										<div class="pos_rel">
+											<div class="ico_arrow"></div>
+											<ul>
+
+												<c:forEach var="list2" items="${list.lastNode }">
+													<li class="cate_d2_link "><a
+														href="/webproject/book_cate.action?categoryId=${list2.categoryId }">${list2.categoryName}
+													</a></li>
+												</c:forEach>
+
+											</ul>
+										</div>
+
+									</div>
+								</c:otherwise>
+							</c:choose></li>
+						<c:set var="i" value="${i+1 }" />
+					</c:forEach>
 
 				</ul>
+
+				<!-- 좌측 템플릿 -->
+
 			</div>
 
 
-			<!-- left banner -->
-
-			<!-- 브랜드 -->
-
-			<!-- 추천인사이드:회원님이 주로 구입하시는 가격대의 인기 상품입니다 -->
-			<div id="CATE_2"></div>
-
 			<!-- 좌측 템플릿 -->
 
-			<div class="cate_left_box temClassE">
+			<div class="cate_left_box temClassE" style="width: 180px;">
 
 				<h4 class="cate_tem_tit ">자기계발 스테디 셀러</h4>
 				<ul>
@@ -643,14 +260,11 @@
 					<li>
 						<dl>
 							<dt class="pImg60">
-								<a href="/front/product/detailProduct.do?prodId=4026928"><img
+								<img
 									src="http://image.bandinlunis.com/upload/product/4026/4026928.jpg"
-									onerror="this.src='/images/common/noimg_type04.gif';"></a>
+									onerror="this.src='/images/common/noimg_type04.gif';">
 							</dt>
-							<dd class="booktit">
-								<a href="/front/product/detailProduct.do?prodId=4026928">영어책
-									한 권 외워봤니?</a>
-							</dd>
+							<dd class="booktit">영어책 한 권 외워봤니?</dd>
 							<dd class="writer">김민식</dd>
 							<dd class="price">12,600원</dd>
 							<dd class="sPoint t_11">(10%↓+5%P)</dd>
@@ -660,14 +274,11 @@
 					<li>
 						<dl>
 							<dt class="pImg60">
-								<a href="/front/product/detailProduct.do?prodId=4003399"><img
+								<img
 									src="http://image.bandinlunis.com/upload/product/4003/4003399.jpg"
-									onerror="this.src='/images/common/noimg_type04.gif';"></a>
+									onerror="this.src='/images/common/noimg_type04.gif';">
 							</dt>
-							<dd class="booktit">
-								<a href="/front/product/detailProduct.do?prodId=4003399">휘게
-									라이프, 편안하게 함께...</a>
-							</dd>
+							<dd class="booktit">휘게 라이프, 편안하게 함께...</dd>
 							<dd class="writer">마이크 비킹</dd>
 							<dd class="price">12,600원</dd>
 							<dd class="sPoint t_11">(10%↓+5%P)</dd>
@@ -677,14 +288,11 @@
 					<li>
 						<dl>
 							<dt class="pImg60">
-								<a href="/front/product/detailProduct.do?prodId=3998575"><img
+								<img
 									src="http://image.bandinlunis.com/upload/product/3998/3998575.jpg"
-									onerror="this.src='/images/common/noimg_type04.gif';"></a>
+									onerror="this.src='/images/common/noimg_type04.gif';">
 							</dt>
-							<dd class="booktit">
-								<a href="/front/product/detailProduct.do?prodId=3998575">그릿
-									GRIT</a>
-							</dd>
+							<dd class="booktit">그릿 GRIT</dd>
 							<dd class="writer">앤절라 더크워스</dd>
 							<dd class="price">14,400원</dd>
 							<dd class="sPoint t_11">(10%↓+5%P)</dd>
@@ -694,14 +302,11 @@
 					<li>
 						<dl>
 							<dt class="pImg60">
-								<a href="/front/product/detailProduct.do?prodId=3990452"><img
+								<img
 									src="http://image.bandinlunis.com/upload/product/3990/3990452.jpg"
-									onerror="this.src='/images/common/noimg_type04.gif';"></a>
+									onerror="this.src='/images/common/noimg_type04.gif';">
 							</dt>
-							<dd class="booktit">
-								<a href="/front/product/detailProduct.do?prodId=3990452">프레임
-									[개정증보판]</a>
-							</dd>
+							<dd class="booktit">프레임 [개정증보판]</dd>
 							<dd class="writer">최인철</dd>
 							<dd class="price">14,400원</dd>
 							<dd class="sPoint t_11">(10%↓+5%P)</dd>
@@ -711,14 +316,11 @@
 					<li>
 						<dl>
 							<dt class="pImg60">
-								<a href="/front/product/detailProduct.do?prodId=3986344"><img
+								<img
 									src="http://image.bandinlunis.com/upload/product/3986/3986344.jpg"
-									onerror="this.src='/images/common/noimg_type04.gif';"></a>
+									onerror="this.src='/images/common/noimg_type04.gif';">
 							</dt>
-							<dd class="booktit">
-								<a href="/front/product/detailProduct.do?prodId=3986344">자존감
-									수업</a>
-							</dd>
+							<dd class="booktit">자존감 수업</dd>
 							<dd class="writer">윤홍균</dd>
 							<dd class="price">12,600원</dd>
 							<dd class="sPoint t_11">(10%↓+5%P)</dd>
@@ -728,14 +330,11 @@
 					<li>
 						<dl>
 							<dt class="pImg60">
-								<a href="/front/product/detailProduct.do?prodId=3947410"><img
+								<img
 									src="http://image.bandinlunis.com/upload/product/3947/3947410.jpg"
-									onerror="this.src='/images/common/noimg_type04.gif';"></a>
+									onerror="this.src='/images/common/noimg_type04.gif';">
 							</dt>
-							<dd class="booktit">
-								<a href="/front/product/detailProduct.do?prodId=3947410">리딩으로
-									리드하라[개정증보판...</a>
-							</dd>
+							<dd class="booktit">리딩으로 리드하라[개정증보판...</dd>
 							<dd class="writer">이지성</dd>
 							<dd class="price">15,300원</dd>
 							<dd class="sPoint t_11">(10%↓+5%P)</dd>
@@ -745,14 +344,11 @@
 					<li>
 						<dl>
 							<dt class="pImg60">
-								<a href="/front/product/detailProduct.do?prodId=3928166"><img
+								<img
 									src="http://image.bandinlunis.com/upload/product/3928/3928166.jpg"
-									onerror="this.src='/images/common/noimg_type04.gif';"></a>
+									onerror="this.src='/images/common/noimg_type04.gif';">
 							</dt>
-							<dd class="booktit">
-								<a href="/front/product/detailProduct.do?prodId=3928166">미라클
-									모닝</a>
-							</dd>
+							<dd class="booktit">미라클 모닝</dd>
 							<dd class="writer">할 엘로드</dd>
 							<dd class="price">10,800원</dd>
 							<dd class="sPoint t_11">(10%↓+5%P)</dd>
@@ -762,14 +358,11 @@
 					<li>
 						<dl>
 							<dt class="pImg60">
-								<a href="/front/product/detailProduct.do?prodId=3853562"><img
+								<img
 									src="http://image.bandinlunis.com/upload/product/3853/3853562.jpg"
-									onerror="this.src='/images/common/noimg_type04.gif';"></a>
+									onerror="this.src='/images/common/noimg_type04.gif';">
 							</dt>
-							<dd class="booktit">
-								<a href="/front/product/detailProduct.do?prodId=3853562">혼자
-									있는 시간의 힘</a>
-							</dd>
+							<dd class="booktit">혼자 있는 시간의 힘</dd>
 							<dd class="writer">사이토 다카시</dd>
 							<dd class="price">11,520원</dd>
 							<dd class="sPoint t_11">(10%↓+5%P)</dd>
@@ -779,14 +372,11 @@
 					<li>
 						<dl>
 							<dt class="pImg60">
-								<a href="/front/product/detailProduct.do?prodId=3812617"><img
+								<img
 									src="http://image.bandinlunis.com/upload/product/3812/3812617.jpg"
-									onerror="this.src='/images/common/noimg_type04.gif';"></a>
+									onerror="this.src='/images/common/noimg_type04.gif';">
 							</dt>
-							<dd class="booktit">
-								<a href="/front/product/detailProduct.do?prodId=3812617">그림의
-									힘</a>
-							</dd>
+							<dd class="booktit">그림의 힘</dd>
 							<dd class="writer">김선현</dd>
 							<dd class="price">16,920원</dd>
 							<dd class="sPoint t_11">(10%↓+5%P)</dd>
@@ -796,14 +386,11 @@
 					<li>
 						<dl>
 							<dt class="pImg60">
-								<a href="/front/product/detailProduct.do?prodId=3653595"><img
+								<img
 									src="http://image.bandinlunis.com/upload/product/3653/3653595.jpg"
-									onerror="this.src='/images/common/noimg_type04.gif';"></a>
+									onerror="this.src='/images/common/noimg_type04.gif';">
 							</dt>
-							<dd class="booktit">
-								<a href="/front/product/detailProduct.do?prodId=3653595">데일
-									카네기 인간관계론[개정...</a>
-							</dd>
+							<dd class="booktit">데일 카네기 인간관계론[개정...</dd>
 							<dd class="writer">데일 카네기</dd>
 							<dd class="price">12,420원</dd>
 							<dd class="sPoint t_11">(10%↓+5%P)</dd>
@@ -816,35 +403,7 @@
 		</div>
 
 
-
 		<!-- 좌측 템플릿 끝 -->
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -871,7 +430,7 @@
 
 				<!-- 탭 메뉴 -->
 
-				<div class="tab-content">
+				<div class="tab-content" style="width: 800px;">
 
 					<div id="home" class="tab-pane fade in active">
 						<div class="cateM pos_rel">
@@ -933,7 +492,7 @@
 								추천책</h4>
 							<hr>
 
-							<div class="tab" style="border-bottom: 1px solid #ffffff;">
+							<div class="tab" style="border-bottom : 10px solid #ffffff; z-index: 99;">
 								<div class="tablinks" onmouseover="openCity(event, 'book_1')">
 									<a href=""> <img
 										src="http://image.bandinlunis.com/upload/product/4161/4161879.jpg"
@@ -1060,9 +619,9 @@
 
 						</div>
 
-						<div class="cateS" style="border: none;">
+						<div class="cateS" style="border: none; margin-left: 20px; margin-top: 8px;">
 
-							<br /> <br /> <br /> <br /> <br /> <br /> <br /> <br />
+							<br /> <br /> <br /> <br /> <br /> <br /> <br /> <br /> 
 							<!-- 분야 주간 베스트 -->
 							<div class="cateBest">
 								<h4>분야 주간 베스트</h4>
@@ -1260,200 +819,261 @@
 
 
 							<div class="temClassA temType2" id="dp_015">
-										
-										<h4>2018 습관의 힘<span></span></h4>
-										<ul>
-											
-												<li class="po1">
-													<dl>
-														<dt class="pImg90 imgP"><a href="/front/product/detailProduct.do?prodId=4154403">
-														
-															
-															
-																<img src="http://image.bandinlunis.com/upload/product/4154/4154403.jpg" onerror="this.src='/images/common/noimg_type01.gif';">	
-															
-														
-														</a></dt>
-														
-														
-															<dd class="booktit"><a href="/webproject/book_info.action?isbn=9791187400226">아침 1시간 노트 [개정판]</a></dd>
-															<dd class="writer">야마모토 노리아키<span class="public"> | 책비</span></dd>
-														
-														
-														<dd class="rPrice">13,000원 </dd>
-														<dd class="price">11,700원</dd>
-														<dd class="sPoint">(10%↓+5%P)</dd>
-														
-														
-														
-														<dd class="bex">일본 아마존 베스트셀러 저자가 말하는‘아침 1시간’으로 인생을 변화시키는 가장 손쉽고 현실적인 비결! 회사원으로 일하면서 ‘세무사’ 시험에 합격...</dd>
-													</dl>
-												</li>
-											
-												<li class="po1">
-													<dl>
-														<dt class="pImg90 imgP"><a href="/front/product/detailProduct.do?prodId=4152988">
-														
-															
-															
-																<img src="http://image.bandinlunis.com/upload/product/4152/4152988.jpg" onerror="this.src='/images/common/noimg_type01.gif';">	
-															
-														
-														</a></dt>
-														
-														
-															<dd class="booktit"><a href="/front/product/detailProduct.do?prodId=4152988">6분 다이어리</a></dd>
-															<dd class="writer">도미닉 스펜스트<span class="public"> | 행성B</span></dd>
-														
-														
-														<dd class="rPrice">15,700원 </dd>
-														<dd class="price">14,130원</dd>
-														<dd class="sPoint">(10%↓+5%P)</dd>
-														
-														
-														
-															<dd class="rStar s10">10.0</dd>
-														
-														<dd class="bex">★ 독일과 영국의 5만 명 넘는 독자들이 선택한 책★ 독일 아마존 자기계발 분야 1위! ★ 깐깐한 독일 독자 평점 5점 만점!아침 3분, 저녁 ...</dd>
-													</dl>
-												</li>
-											
-												<li >
-													<dl>
-														<dt class="pImg90 imgP"><a href="/front/product/detailProduct.do?prodId=4144299">
-														
-															
-															
-																<img src="http://image.bandinlunis.com/upload/product/4144/4144299.jpg" onerror="this.src='/images/common/noimg_type01.gif';">	
-															
-														
-														</a></dt>
-														
-														
-														
-															<dd class="booktit"><a href="/front/product/detailProduct.do?prodId=4144299">나우이스트 NOWIST</a></dd>
-															<dd class="writer">맥스 맥케온</dd>
-														
-														<dd class="rPrice">14,500원 </dd>
-														<dd class="price">13,050원</dd>
-														<dd class="sPoint">(10%↓+5%P)</dd>
-														
-														
-														
-														<dd class="bex">★ 아마존 베스트셀러 작가 ★★ 포춘 선정 100대 기업 전략 코치 ★★ MIT 미디어랩 소장 이토 조이치 강력 추천 ★지금을 놓치면 끝이다!망...</dd>
-													</dl>
-												</li>
-											
-												<li >
-													<dl>
-														<dt class="pImg90 imgP"><a href="/front/product/detailProduct.do?prodId=4134091">
-														
-															
-															
-																<img src="http://image.bandinlunis.com/upload/product/4134/4134091.jpg" onerror="this.src='/images/common/noimg_type01.gif';">	
-															
-														
-														</a></dt>
-														
-														
-														
-															<dd class="booktit"><a href="/front/product/detailProduct.do?prodId=4134091">AGAIN! 이기는 습관     </a></dd>
-															<dd class="writer">전옥표</dd>
-														
-														<dd class="rPrice">16,000원 </dd>
-														<dd class="price">14,400원</dd>
-														<dd class="sPoint">(10%↓+5%P)</dd>
-														
-														
-														
-														<dd class="bex">수많은 기업과 독자가 열광한 《이기는 습관》 본격 실천 편 밀리언셀러 《이기는 습관》의 저자이자 우리나라 최고의 자기 혁신전문가인 전옥표 박사가...</dd>
-													</dl>
-												</li>
-											
-												<li >
-													<dl>
-														<dt class="pImg90 imgP"><a href="/front/product/detailProduct.do?prodId=4131687">
-														
-															
-															
-																<img src="http://image.bandinlunis.com/upload/product/4131/4131687.jpg" onerror="this.src='/images/common/noimg_type01.gif';">	
-															
-														
-														</a></dt>
-														
-														
-														
-															<dd class="booktit"><a href="/front/product/detailProduct.do?prodId=4131687">침대부터 정리하라</a></dd>
-															<dd class="writer">윌리엄 H. 맥레이븐</dd>
-														
-														<dd class="rPrice">12,000원 </dd>
-														<dd class="price">10,800원</dd>
-														<dd class="sPoint">(10%↓+5%P)</dd>
-														
-														
-														
-															<dd class="rStar s9">8.67</dd>
-														
-														<dd class="bex">세상을 바꾸고 싶다면, 침대부터 정리하십시오!아마존닷컴, 뉴욕 타임스 종합 베스트셀러 1위!2017년 4월 출간 이후 20여 주 연속 뉴욕 타임...</dd>
-													</dl>
-												</li>
-											
-												<li >
-													<dl>
-														<dt class="pImg90 imgP"><a href="/front/product/detailProduct.do?prodId=4119543">
-														
-															
-															
-																<img src="http://image.bandinlunis.com/upload/product/4119/4119543.jpg" onerror="this.src='/images/common/noimg_type01.gif';">	
-															
-														
-														</a></dt>
-														
-														
-														
-															<dd class="booktit"><a href="/front/product/detailProduct.do?prodId=4119543">습관책</a></dd>
-															<dd class="writer">마크 레클라우</dd>
-														
-														<dd class="rPrice">14,000원 </dd>
-														<dd class="price">12,600원</dd>
-														<dd class="sPoint">(10%↓+5%P)</dd>
-														
-														
-														
-														<dd class="bex">Change Your Habits, Change Your Life! 새로운 인생을 만드는 30일 프로젝트에 도전하라!이 책을 읽으면 다시는 습관...</dd>
-													</dl>
-												</li>
-											
-												<li >
-													<dl>
-														<dt class="pImg90 imgP"><a href="/front/product/detailProduct.do?prodId=4116973">
-														
-															
-															
-																<img src="http://image.bandinlunis.com/upload/product/4116/4116973.jpg" onerror="this.src='/images/common/noimg_type01.gif';">	
-															
-														
-														</a></dt>
-														
-														
-														
-															<dd class="booktit"><a href="/front/product/detailProduct.do?prodId=4116973">하루 5분 아침 일기</a></dd>
-															<dd class="writer">인텔리전트 체인지</dd>
-														
-														<dd class="rPrice">15,800원 </dd>
-														<dd class="price">14,220원</dd>
-														<dd class="sPoint">(10%↓+5%P)</dd>
-														
-														
-														
-															<dd class="rStar s10">10.0</dd>
-														
-														<dd class="bex">“아는가? 성공하는 사람들은 아침에 일기를 쓴다는 사실을!” 글로벌 CEO와 리더, 하이퍼포머들이 공개하는‘아침 일기 쓰기’의 놀라운 효과! “...</dd>
-													</dl>
-												</li>
-											
-										</ul>
-									</div>
+
+								<h4>
+									2018 습관의 힘<span></span>
+								</h4>
+								<ul>
+
+									<li class="po1">
+										<dl>
+											<dt class="pImg90 imgP">
+												<a href="/front/product/detailProduct.do?prodId=4154403">
+
+
+
+													<img
+													src="http://image.bandinlunis.com/upload/product/4154/4154403.jpg"
+													onerror="this.src='/images/common/noimg_type01.gif';">
+
+
+												</a>
+											</dt>
+
+
+											<dd class="booktit">
+												<a href="/webproject/book_info.action?isbn=9791187400226">아침
+													1시간 노트 [개정판]</a>
+											</dd>
+											<dd class="writer">
+												야마모토 노리아키<span class="public"> | 책비</span>
+											</dd>
+
+
+											<dd class="rPrice">13,000원</dd>
+											<dd class="price">11,700원</dd>
+											<dd class="sPoint">(10%↓+5%P)</dd>
+
+
+
+											<dd class="bex">일본 아마존 베스트셀러 저자가 말하는‘아침 1시간’으로 인생을 변화시키는
+												가장 손쉽고 현실적인 비결! 회사원으로 일하면서 ‘세무사’ 시험에 합격...</dd>
+										</dl>
+									</li>
+
+									<li class="po1">
+										<dl>
+											<dt class="pImg90 imgP">
+												<a href="/front/product/detailProduct.do?prodId=4152988">
+
+
+
+													<img
+													src="http://image.bandinlunis.com/upload/product/4152/4152988.jpg"
+													onerror="this.src='/images/common/noimg_type01.gif';">
+
+
+												</a>
+											</dt>
+
+
+											<dd class="booktit">
+												<a href="/front/product/detailProduct.do?prodId=4152988">6분
+													다이어리</a>
+											</dd>
+											<dd class="writer">
+												도미닉 스펜스트<span class="public"> | 행성B</span>
+											</dd>
+
+
+											<dd class="rPrice">15,700원</dd>
+											<dd class="price">14,130원</dd>
+											<dd class="sPoint">(10%↓+5%P)</dd>
+
+
+
+											<dd class="rStar s10">10.0</dd>
+
+											<dd class="bex">★ 독일과 영국의 5만 명 넘는 독자들이 선택한 책★ 독일 아마존
+												자기계발 분야 1위! ★ 깐깐한 독일 독자 평점 5점 만점!아침 3분, 저녁 ...</dd>
+										</dl>
+									</li>
+
+									<li>
+										<dl>
+											<dt class="pImg90 imgP">
+												<a href="/front/product/detailProduct.do?prodId=4144299">
+
+
+
+													<img
+													src="http://image.bandinlunis.com/upload/product/4144/4144299.jpg"
+													onerror="this.src='/images/common/noimg_type01.gif';">
+
+
+												</a>
+											</dt>
+
+
+
+											<dd class="booktit">
+												<a href="/front/product/detailProduct.do?prodId=4144299">나우이스트
+													NOWIST</a>
+											</dd>
+											<dd class="writer">맥스 맥케온</dd>
+
+											<dd class="rPrice">14,500원</dd>
+											<dd class="price">13,050원</dd>
+											<dd class="sPoint">(10%↓+5%P)</dd>
+
+
+
+											<dd class="bex">★ 아마존 베스트셀러 작가 ★★ 포춘 선정 100대 기업 전략 코치 ★★
+												MIT 미디어랩 소장 이토 조이치 강력 추천 ★지금을 놓치면 끝이다!망...</dd>
+										</dl>
+									</li>
+
+									<li>
+										<dl>
+											<dt class="pImg90 imgP">
+												<a href="/front/product/detailProduct.do?prodId=4134091">
+
+
+
+													<img
+													src="http://image.bandinlunis.com/upload/product/4134/4134091.jpg"
+													onerror="this.src='/images/common/noimg_type01.gif';">
+
+
+												</a>
+											</dt>
+
+
+
+											<dd class="booktit">
+												<a href="/front/product/detailProduct.do?prodId=4134091">AGAIN!
+													이기는 습관 </a>
+											</dd>
+											<dd class="writer">전옥표</dd>
+
+											<dd class="rPrice">16,000원</dd>
+											<dd class="price">14,400원</dd>
+											<dd class="sPoint">(10%↓+5%P)</dd>
+
+
+
+											<dd class="bex">수많은 기업과 독자가 열광한 《이기는 습관》 본격 실천 편 밀리언셀러
+												《이기는 습관》의 저자이자 우리나라 최고의 자기 혁신전문가인 전옥표 박사가...</dd>
+										</dl>
+									</li>
+
+									<li>
+										<dl>
+											<dt class="pImg90 imgP">
+												<a href="/front/product/detailProduct.do?prodId=4131687">
+
+
+
+													<img
+													src="http://image.bandinlunis.com/upload/product/4131/4131687.jpg"
+													onerror="this.src='/images/common/noimg_type01.gif';">
+
+
+												</a>
+											</dt>
+
+
+
+											<dd class="booktit">
+												<a href="/front/product/detailProduct.do?prodId=4131687">침대부터
+													정리하라</a>
+											</dd>
+											<dd class="writer">윌리엄 H. 맥레이븐</dd>
+
+											<dd class="rPrice">12,000원</dd>
+											<dd class="price">10,800원</dd>
+											<dd class="sPoint">(10%↓+5%P)</dd>
+
+
+
+											<dd class="rStar s9">8.67</dd>
+
+											<dd class="bex">세상을 바꾸고 싶다면, 침대부터 정리하십시오!아마존닷컴, 뉴욕 타임스
+												종합 베스트셀러 1위!2017년 4월 출간 이후 20여 주 연속 뉴욕 타임...</dd>
+										</dl>
+									</li>
+
+									<li>
+										<dl>
+											<dt class="pImg90 imgP">
+												<a href="/front/product/detailProduct.do?prodId=4119543">
+
+
+
+													<img
+													src="http://image.bandinlunis.com/upload/product/4119/4119543.jpg"
+													onerror="this.src='/images/common/noimg_type01.gif';">
+
+
+												</a>
+											</dt>
+
+
+
+											<dd class="booktit">
+												<a href="/front/product/detailProduct.do?prodId=4119543">습관책</a>
+											</dd>
+											<dd class="writer">마크 레클라우</dd>
+
+											<dd class="rPrice">14,000원</dd>
+											<dd class="price">12,600원</dd>
+											<dd class="sPoint">(10%↓+5%P)</dd>
+
+
+
+											<dd class="bex">Change Your Habits, Change Your Life!
+												새로운 인생을 만드는 30일 프로젝트에 도전하라!이 책을 읽으면 다시는 습관...</dd>
+										</dl>
+									</li>
+
+									<li>
+										<dl>
+											<dt class="pImg90 imgP">
+												<a href="/front/product/detailProduct.do?prodId=4116973">
+
+
+
+													<img
+													src="http://image.bandinlunis.com/upload/product/4116/4116973.jpg"
+													onerror="this.src='/images/common/noimg_type01.gif';">
+
+
+												</a>
+											</dt>
+
+
+
+											<dd class="booktit">
+												<a href="/front/product/detailProduct.do?prodId=4116973">하루
+													5분 아침 일기</a>
+											</dd>
+											<dd class="writer">인텔리전트 체인지</dd>
+
+											<dd class="rPrice">15,800원</dd>
+											<dd class="price">14,220원</dd>
+											<dd class="sPoint">(10%↓+5%P)</dd>
+
+
+
+											<dd class="rStar s10">10.0</dd>
+
+											<dd class="bex">“아는가? 성공하는 사람들은 아침에 일기를 쓴다는 사실을!” 글로벌
+												CEO와 리더, 하이퍼포머들이 공개하는‘아침 일기 쓰기’의 놀라운 효과! “...</dd>
+										</dl>
+									</li>
+
+								</ul>
+							</div>
 
 							<div class="cateInside" id="dp_029"></div>
 
@@ -1478,121 +1098,111 @@
 					<!-- 베스트셀러 시작 -->
 
 					<div id="menu_best" class="tab-pane fade">
-						<div class="prod_sort sort_ver02">
-							<div class="sorting">
-								<ul class="con01">
-									<li><a style="cursor: pointer;"
-										href="<%=cp%>/book_self_improvement.action?pageNum=1&sort=&sort1st=${sort1st}&sort2nd=${sort2nd}#menu_best">순위
-											높은 순</a></li>
-									<li><a style="cursor: pointer;"
-										href="<%=cp%>/book_self_improvement.action?pageNum=1&sort=sort1&sort1st=${sort1st}&sort2nd=${sort2nd}#menu_best">발행일순</a></li>
-									<li><a style="cursor: pointer;"
-										href="<%=cp%>/book_self_improvement.action?pageNum=1&sort=sort2&sort1st=${sort1st}&sort2nd=${sort2nd}#menu_best">상품명순</a></li>
-									<li><a style="cursor: pointer;"
-										href="<%=cp%>/book_self_improvement.action?pageNum=1&sort=sort3&sort1st=${sort1st}&sort2nd=${sort2nd}#menu_best">평점순</a></li>
-									<li class="alt"><a style="cursor: pointer;"
-										href="<%=cp%>/book_self_improvement.action?pageNum=1&sort=sort4&sort1st=${sort1st}&sort2nd=${sort2nd}#menu_best">리뷰순</a></li>
-								</ul>
-								<div class="con02">
-									<p class="t_11gr">
-										<input type="checkbox" name="prodStat" id="prodStat" value="Y"
-											class="chk"> 품절/절판제외
-									</p>
-								</div>
-							</div>
+						<div class="prod_sort">
+
+							<h4>
+								<strong>${dto_Main.categoryName }</strong> 베스트셀러 목록입니다.
+							</h4>
+
 						</div>
+						<div class="con_t2">
 
-						<!-- EL / JSTL / Foreach  -->
-						<c:forEach var="dto" items="${lists }">
-							<div class="prod_list_type prod_best_type">
-								<ul>
-									<li>
-										<div class="prod_thumb">
-											<span class="ranking"> <span class="rank_num">${dto.rnum }</span>
-												<span class="rank_change"> <img
-													src="http://image.bandinlunis.com/images/common/2014/ico_best_same.gif"
-													alt="-"> 0
-											</span>
-											</span>
-											<div class="prod_thumb_img">
-												<a href="/front/product/detailProduct.do?isbn=4181047"
-													onfocus="this.blur();"> <img
-													src="<%=cp %>/resources/image/book/${dto.bookImage }">
-
-												</a> <a class="btn_popup" target="_blank"
-													href="/webproject/book_info.action?isbn=${dto.isbn }"><span
-													class="ico_new">새창열기</span></a>
-											</div>
-											<a class="btn_preview"
-												href="javascript:popPreview('${dto.isbn }');">미리 보기</a>
-										</div>
-
-										<dl class="prod_info">
-											<dt>
-												<a href="/front/product/detailProduct.do?isbn=4181047"
-													onfocus="this.blur();"> ${dto.bookTitle } </a> <span
-													class="tag_area"> <span class="tag_best"><span>베스트</span></span>
-													<span class="tag_recom"><span>반디추천</span></span> <span
-													class="tag_free"><span>무료배송</span></span>
+							<!-- EL / JSTL / Foreach  -->
+							<c:forEach var="dto" items="${lists_Best }">
+								<div class="prod_list_type prod_best_type">
+									<ul>
+										<li><input class="checkbox" type="checkbox"
+											value="${dto.isbn }" name="isbn" id="cart_isbn${dto.isbn }">
+											<div class="prod_thumb">
+												<span class="ranking"> <span class="rank_num">${dto.rnum }</span>
+													<span class="rank_change"> <img
+														src="http://image.bandinlunis.com/images/common/2014/ico_best_same.gif"
+														alt="-"> <!-- 0 -->
 												</span>
-											</dt>
-											<dd class="txt_block">
-												<span>${dto.authorName }</span> <span class="gap">|</span> <span>${dto.publisher }</span>
-												<span class="txt_date"><span class="gap">|</span> <span>${dto.publishDate }</span></span>
-											</dd>
-											<dd class="mt5">
-												<p>
-													<span class="txt_reprice">${dto.bookPrice }</span> <span
-														class="txt_arrow">→</span> <span class="txt_price"><strong><em>${dto.discountedPrice }</em>원</strong>
-														(${dto.discountRate }%↓+5%P)</span>
-												</p>
-											</dd>
-											<dd class="txt_desc">
-												<div class="review_point">
-													<span style="width: ${dto.rate*10 }%;"></span>
+												</span>
+												<div class="prod_thumb_img">
+													<a href="/webproject/book_info.action?isbn=${dto.isbn }"
+														onfocus="this.blur();"> <img
+														src="<%=cp %>/resources/image/book/${dto.bookImage }">
+
+													</a> <a class="btn_popup" target="_blank"
+														href="/webproject/book_info.action?isbn=${dto.isbn }"><span
+														class="ico_new">새창열기</span></a>
 												</div>
-												<strong>${dto.rate }</strong> <a
-													href="/front/product/detailProduct.do?isbn=4181047#sub10"
-													target="_blank">리뷰<em>(${dto.reviewCnt })</em></a>
-											</dd>
-											<dd class="txt_bex">${dto.introduction }</dd>
-											<dd class="txt_ebook">
-												<span>지금 주문하면 <strong class="t_red">내일</strong>받을 수
-													있습니다.
-												</span>
-											</dd>
-										</dl>
+												<a class="btn_preview"
+													href="javascript:popPreview('${dto.isbn }');">미리 보기</a>
+											</div>
 
-										<dl class="prod_btn">
-											<dt>
-												<span class="num_txt">수량</span> <input type="text"
-													id="cntVal_${dto.isbn }" value="1" class="num" size="3"
-													maxlength="2" onkeydown="onlyNumber();" onkeyup="">
-												<span class="btn_updn_wrap"><a
-													href="javascript:cntUp('${dto.isbn }');" class="btn_num_up">▲</a><a
-													href="javascript:cntDown('${dto.isbn }');"
-													class="btn_num_dn">▼</a></span>
-											</dt>
+											<dl class="prod_info">
+												<dt>
+													<a href="/webproject/book_info.action?isbn=${dto.isbn }"
+														onfocus="this.blur();"> ${dto.bookTitle } </a> <span
+														class="tag_area"> <span class="tag_best"><span>베스트</span></span>
+														<span class="tag_recom"><span>반디추천</span></span> <span
+														class="tag_free"><span>무료배송</span></span>
+													</span>
+												</dt>
+												<dd class="txt_block">
+													<span>${dto.authorName }</span> <span class="gap">|</span>
+													<span>${dto.publisher }</span> <span class="txt_date"><span
+														class="gap">|</span> <span>${dto.publishDate }</span></span>
+												</dd>
+												<dd class="mt5">
+													<p>
+														<span class="txt_reprice">${dto.bookPrice }</span> <span
+															class="txt_arrow">→</span> <span class="txt_price"><strong><em>${dto.discountedPrice }</em>원</strong>
+															(${dto.discountRate }%↓+5%P)</span>
+													</p>
+												</dd>
+												<dd class="txt_desc">
+													<div class="review_point">
+														<span style="width: ${dto.rate*10 }%;"></span>
+													</div>
+													<strong>${dto.rate }</strong> <a
+														href="/front/product/detailProduct.do?isbn=4181047#sub10"
+														target="_blank">리뷰<em>(${dto.reviewCnt })</em></a>
+												</dd>
+												<dd class="txt_bex">${dto.introduction }...</dd>
+												<dd class="txt_ebook">
+													<span>지금 주문하면 <strong class="t_red">내일</strong>받을 수
+														있습니다.
+													</span>
+												</dd>
+											</dl>
 
-											<dd>
-												<a href="javascript:addCart('${dto.isbn }');"><span
-													class="btn_b_comm btype_f1">쇼핑카트</span></a>
-											</dd>
-											<dd class="mt3">
-												<a href="javascript:goOrder('${dto.isbn }');"><span
-													class="btn_w_comm btype_f1">바로구매</span></a>
-											</dd>
-											<dd class="mt3">
-												<a
-													href="javascript:add_wish_array_common('${dto.isbn }', true);"><span
-													class="btn_w_comm btype_f1">위시리스트</span></a>
-											</dd>
-										</dl>
-									</li>
-								</ul>
-							</div>
-						</c:forEach>
+											<dl class="prod_btn">
+												<dt>
+													<span class="num_txt">수량</span> <input type="text"
+														id="cntVal_${dto.isbn }" value="1" class="num" size="3"
+														maxlength="2" onkeydown="onlyNumber();" onkeyup="">
+													<span class="btn_updn_wrap"> <a
+														href="javascript:cntUp('${dto.isbn }');"
+														class="btn_num_up">▲</a> <a
+														href="javascript:cntDown('${dto.isbn }');"
+														class="btn_num_dn">▼</a>
+													</span>
+												</dt>
 
+												<dd>
+													<a href="javascript:addCart('${dto.isbn }');"><span
+														class="btn_b_comm btype_f1">쇼핑카트</span></a>
+												</dd>
+												<dd class="mt3">
+													<a href="javascript:goOrder('${dto.isbn }');"><span
+														class="btn_w_comm btype_f1">바로구매</span></a>
+												</dd>
+												<dd class="mt3">
+													<a
+														href="javascript:add_wish_array_common('${dto.isbn }', true);"><span
+														class="btn_w_comm btype_f1">위시리스트</span></a>
+												</dd>
+											</dl></li>
+									</ul>
+								</div>
+							</c:forEach>
+
+
+						</div>
 
 					</div>
 					<!-- 베스트셀러 끝 -->
@@ -1600,126 +1210,15 @@
 
 					<!-- 새로나온 책 시작  -->
 					<div id="menu_new" class="tab-pane fade">
-						<h3>새로나온 책</h3>
-
-						<div class="prod_sort sort_ver02">
-							<div class="sorting">
-								<ul class="con01">
-									<li><a style="cursor: pointer;"
-										href="<%=cp%>/book_self_improvement.action?pageNum=1&sort=&sort1st=${sort1st}&sort2nd=${sort2nd}#menu_best">순위
-											높은 순</a></li>
-									<li><a style="cursor: pointer;"
-										href="<%=cp%>/book_self_improvement.action?pageNum=1&sort=sort1&sort1st=${sort1st}&sort2nd=${sort2nd}#menu_best">발행일순</a></li>
-									<li><a style="cursor: pointer;"
-										href="<%=cp%>/book_self_improvement.action?pageNum=1&sort=sort2&sort1st=${sort1st}&sort2nd=${sort2nd}#menu_best">상품명순</a></li>
-									<li><a style="cursor: pointer;"
-										href="<%=cp%>/book_self_improvement.action?pageNum=1&sort=sort3&sort1st=${sort1st}&sort2nd=${sort2nd}#menu_best">평점순</a></li>
-									<li class="alt"><a style="cursor: pointer;"
-										href="<%=cp%>/book_self_improvement.action?pageNum=1&sort=sort4&sort1st=${sort1st}&sort2nd=${sort2nd}#menu_best">리뷰순</a></li>
-								</ul>
-								<div class="con02">
-									<p class="t_11gr">
-										<input type="checkbox" name="prodStat" id="prodStat" value="Y"
-											class="chk"> 품절/절판제외
-									</p>
-								</div>
+						<div class="row">
+							<div class="col-md-12">
+								<iframe id="iframe_list1" width="100%"
+									src="<%=cp %>/book_New.action?categoryId=${categoryId}"
+									style="overflow: auto; min-height: 1000px;"
+									frameborder="0" scrolling="auto" onload="calcHeight();"
+									></iframe>
 							</div>
 						</div>
-
-						<!-- EL / JSTL / Foreach  -->
-						<c:forEach var="dto" items="${lists }">
-							<div class="prod_list_type prod_best_type">
-								<ul>
-									<li>
-										<div class="prod_thumb">
-											<span class="ranking"> <span class="rank_num">${dto.rnum }</span>
-												<span class="rank_change"> <img
-													src="http://image.bandinlunis.com/images/common/2014/ico_best_same.gif"
-													alt="-"> 0
-											</span>
-											</span>
-											<div class="prod_thumb_img">
-												<a href="/front/product/detailProduct.do?isbn=4181047"
-													onfocus="this.blur();"> <img
-													src="<%=cp %>/resources/image/book/${dto.bookImage }">
-
-												</a> <a class="btn_popup" target="_blank"
-													href="/webproject/book_info.action?isbn=${dto.isbn }"><span
-													class="ico_new">새창열기</span></a>
-											</div>
-											<a class="btn_preview"
-												href="javascript:popPreview('${dto.isbn }');">미리 보기</a>
-										</div>
-
-										<dl class="prod_info">
-											<dt>
-												<a href="/front/product/detailProduct.do?isbn=4181047"
-													onfocus="this.blur();"> ${dto.bookTitle } </a> <span
-													class="tag_area"> <span class="tag_best"><span>베스트</span></span>
-													<span class="tag_recom"><span>반디추천</span></span> <span
-													class="tag_free"><span>무료배송</span></span>
-												</span>
-											</dt>
-											<dd class="txt_block">
-												<span>${dto.authorName }</span> <span class="gap">|</span> <span>${dto.publisher }</span>
-												<span class="txt_date"><span class="gap">|</span> <span>${dto.publishDate }</span></span>
-											</dd>
-											<dd class="mt5">
-												<p>
-													<span class="txt_reprice">${dto.bookPrice }</span> <span
-														class="txt_arrow">→</span> <span class="txt_price"><strong><em>${dto.discountedPrice }</em>원</strong>
-														(${dto.discountRate }%↓+5%P)</span>
-												</p>
-											</dd>
-											<dd class="txt_desc">
-												<div class="review_point">
-													<span style="width: ${dto.rate*10 }%;"></span>
-												</div>
-												<strong>${dto.rate }</strong> <a
-													href="/front/product/detailProduct.do?isbn=4181047#sub10"
-													target="_blank">리뷰<em>(${dto.reviewCnt })</em></a>
-											</dd>
-											<dd class="txt_bex">${dto.introduction }</dd>
-											<dd class="txt_ebook">
-												<span>지금 주문하면 <strong class="t_red">내일</strong>받을 수
-													있습니다.
-												</span>
-											</dd>
-										</dl>
-
-										<dl class="prod_btn">
-											<dt>
-												<span class="num_txt">수량</span> <input type="text"
-													id="cntVal_${dto.isbn }" value="1" class="num" size="3"
-													maxlength="2" onkeydown="onlyNumber();" onkeyup="">
-												<span class="btn_updn_wrap"><a
-													href="javascript:cntUp('${dto.isbn }');" class="btn_num_up">▲</a><a
-													href="javascript:cntDown('${dto.isbn }');"
-													class="btn_num_dn">▼</a></span>
-											</dt>
-
-											<dd>
-												<a href="javascript:addCart('${dto.isbn }');"><span
-													class="btn_b_comm btype_f1">쇼핑카트</span></a>
-											</dd>
-											<dd class="mt3">
-												<a href="javascript:goOrder('${dto.isbn }');"><span
-													class="btn_w_comm btype_f1">바로구매</span></a>
-											</dd>
-											<dd class="mt3">
-												<a
-													href="javascript:add_wish_array_common('${dto.isbn }', true);"><span
-													class="btn_w_comm btype_f1">위시리스트</span></a>
-											</dd>
-										</dl>
-									</li>
-								</ul>
-							</div>
-						</c:forEach>
-
-
-
-
 					</div>
 					<!-- 새로나온 책 끝  -->
 
@@ -1727,128 +1226,17 @@
 
 					<!-- 정가인하 시작 -->
 					<div id="menu_discount" class="tab-pane fade">
-						<h3>정가인하</h3>
-
-						<div class="prod_sort sort_ver02">
-							<div class="sorting">
-								<ul class="con01">
-									<li><a style="cursor: pointer;"
-										href="<%=cp%>/book_self_improvement.action?pageNum=1&sort=&sort1st=${sort1st}&sort2nd=${sort2nd}#menu_best">순위
-											높은 순</a></li>
-									<li><a style="cursor: pointer;"
-										href="<%=cp%>/book_self_improvement.action?pageNum=1&sort=sort1&sort1st=${sort1st}&sort2nd=${sort2nd}#menu_best">발행일순</a></li>
-									<li><a style="cursor: pointer;"
-										href="<%=cp%>/book_self_improvement.action?pageNum=1&sort=sort2&sort1st=${sort1st}&sort2nd=${sort2nd}#menu_best">상품명순</a></li>
-									<li><a style="cursor: pointer;"
-										href="<%=cp%>/book_self_improvement.action?pageNum=1&sort=sort3&sort1st=${sort1st}&sort2nd=${sort2nd}#menu_best">평점순</a></li>
-									<li class="alt"><a style="cursor: pointer;"
-										href="<%=cp%>/book_self_improvement.action?pageNum=1&sort=sort4&sort1st=${sort1st}&sort2nd=${sort2nd}#menu_best">리뷰순</a></li>
-								</ul>
-								<div class="con02">
-									<p class="t_11gr">
-										<input type="checkbox" name="prodStat" id="prodStat" value="Y"
-											class="chk"> 품절/절판제외
-									</p>
-								</div>
+						<div class="row">
+							<div class="col-md-12">
+								<iframe id="iframe_list2" width="100%"
+									style="min-height: 1000px; overflow: auto;" scrolling="auto"
+									src="<%=cp %>/book_Discount.action?categoryId=${categoryId}"
+									frameborder="0"> </iframe>
 							</div>
 						</div>
 
-						<!-- EL / JSTL / Foreach  -->
-						<c:forEach var="dto" items="${lists }">
-							<div class="prod_list_type prod_best_type">
-								<ul>
-									<li>
-										<div class="prod_thumb">
-											<span class="ranking"> <span class="rank_num">${dto.rnum }</span>
-												<span class="rank_change"> <img
-													src="http://image.bandinlunis.com/images/common/2014/ico_best_same.gif"
-													alt="-"> 0
-											</span>
-											</span>
-											<div class="prod_thumb_img">
-												<a href="/front/product/detailProduct.do?isbn=4181047"
-													onfocus="this.blur();"> <img
-													src="<%=cp %>/resources/image/book/${dto.bookImage }">
-
-												</a> <a class="btn_popup" target="_blank"
-													href="/webproject/book_info.action?isbn=${dto.isbn }"><span
-													class="ico_new">새창열기</span></a>
-											</div>
-											<a class="btn_preview"
-												href="javascript:popPreview('${dto.isbn }');">미리 보기</a>
-										</div>
-
-										<dl class="prod_info">
-											<dt>
-												<a href="/front/product/detailProduct.do?isbn=4181047"
-													onfocus="this.blur();"> ${dto.bookTitle } </a> <span
-													class="tag_area"> <span class="tag_best"><span>베스트</span></span>
-													<span class="tag_recom"><span>반디추천</span></span> <span
-													class="tag_free"><span>무료배송</span></span>
-												</span>
-											</dt>
-											<dd class="txt_block">
-												<span>${dto.authorName }</span> <span class="gap">|</span> <span>${dto.publisher }</span>
-												<span class="txt_date"><span class="gap">|</span> <span>${dto.publishDate }</span></span>
-											</dd>
-											<dd class="mt5">
-												<p>
-													<span class="txt_reprice">${dto.bookPrice }</span> <span
-														class="txt_arrow">→</span> <span class="txt_price"><strong><em>${dto.discountedPrice }</em>원</strong>
-														(${dto.discountRate }%↓+5%P)</span>
-												</p>
-											</dd>
-											<dd class="txt_desc">
-												<div class="review_point">
-													<span style="width: ${dto.rate*10 }%;"></span>
-												</div>
-												<strong>${dto.rate }</strong> <a
-													href="/front/product/detailProduct.do?isbn=4181047#sub10"
-													target="_blank">리뷰<em>(${dto.reviewCnt })</em></a>
-											</dd>
-											<dd class="txt_bex">${dto.introduction }</dd>
-											<dd class="txt_ebook">
-												<span>지금 주문하면 <strong class="t_red">내일</strong>받을 수
-													있습니다.
-												</span>
-											</dd>
-										</dl>
-
-										<dl class="prod_btn">
-											<dt>
-												<span class="num_txt">수량</span> <input type="text"
-													id="cntVal_${dto.isbn }" value="1" class="num" size="3"
-													maxlength="2" onkeydown="onlyNumber();" onkeyup="">
-												<span class="btn_updn_wrap"><a
-													href="javascript:cntUp('${dto.isbn }');" class="btn_num_up">▲</a><a
-													href="javascript:cntDown('${dto.isbn }');"
-													class="btn_num_dn">▼</a></span>
-											</dt>
-
-											<dd>
-												<a href="javascript:addCart('${dto.isbn }');"><span
-													class="btn_b_comm btype_f1">쇼핑카트</span></a>
-											</dd>
-											<dd class="mt3">
-												<a href="javascript:goOrder('${dto.isbn }');"><span
-													class="btn_w_comm btype_f1">바로구매</span></a>
-											</dd>
-											<dd class="mt3">
-												<a
-													href="javascript:add_wish_array_common('${dto.isbn }', true);"><span
-													class="btn_w_comm btype_f1">위시리스트</span></a>
-											</dd>
-										</dl>
-									</li>
-								</ul>
-							</div>
-						</c:forEach>
-
-
-
 					</div>
 					<!-- 정가인하 끝 -->
-
 
 
 				</div>

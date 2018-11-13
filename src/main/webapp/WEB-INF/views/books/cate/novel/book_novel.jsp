@@ -207,7 +207,7 @@
 
 <style>
 * {
-	box-sizing: border-box
+	box-sizing: inherit;
 }
 
 /* Style the tab */
@@ -274,417 +274,7 @@
 
 	<jsp:include page="../../../common/header.jsp" flush="false" />
 
-	<div id="contentBody" style="width: 1100px; margin-bottom: 50px;">
-
-		<!-- 좌측 템플릿 시작 -->
-		<!-- <div class="side_t2 ml5">
-			<div class="cate_comm">
-				<h2 class="cate_tit">소설</h2>
-				<ul class="cate_d1">
-					중분류
-					<li id="kidsCate_821" class="cate_d1_li "><a
-						href="/webproject/book_cate.action?categoryId="
-						class="cate_d1_link" onmouseover="javascript:toggleDisplay3('01')"
-						onmouseout="javascript:toggleDisplay3('01')">한국소설</a> 소분류
-						<div class="cate_d2" id="left2_layer01"
-							onmouseover="javascript:toggleDisplay3('01')"
-							onmouseout="javascript:toggleDisplay3('01')"
-							style="display: none;">
-
-							<div class="pos_rel">
-								<div class="ico_arrow"></div>
-								<ul>
-
-									<li class="cate_d2_link "><a
-										href="/webproject/book_cate.action?categoryId=">현대소설</a></li>
-
-									<li class="cate_d2_link "><a
-										href="/webproject/book_cate.action?categoryId=">고전/명작소설</a></li>
-
-									<li class="cate_d2_link "><a
-										href="/webproject/book_cate.action?categoryId=">공포/무협소설</a></li>
-
-									<li class="cate_d2_link "><a
-										href="/webproject/book_cate.action?categoryId=">추리/범죄/스릴러소설</a>
-									</li>
-
-									<li class="cate_d2_link "><a
-										href="/webproject/book_cate.action?categoryId=">로맨스/인터넷소설</a>
-									</li>
-
-									<li class="cate_d2_link "><a
-										href="/webproject/book_cate.action?categoryId=">SF/판타지소설</a></li>
-
-									<li class="cate_d2_link "><a
-										href="/webproject/book_cate.action?categoryId=">동화/우화소설</a></li>
-
-									<li class="cate_d2_link "><a
-										href="/webproject/book_cate.action?categoryId=">가족/성장소설</a></li>
-
-									<li class="cate_d2_link "><a
-										href="/webproject/book_cate.action?categoryId=">드라마/영화소설</a></li>
-
-									<li class="cate_d2_link "><a
-										href="/webproject/book_cate.action?categoryId=">청소년소설</a></li>
-
-									<li class="cate_d2_link "><a
-										href="/webproject/book_cate.action?categoryId=">대하/역사/전쟁소설</a>
-									</li>
-
-									<li class="cate_d2_link "><a
-										href="/webproject/book_cate.action?categoryId=">문학상수상작품</a></li>
-
-									<li class="cate_d2_link "><a
-										href="/webproject/book_cate.action?categoryId=">라이트(NT)소설</a>
-									</li>
-
-									<li class="cate_d2_link "><a
-										href="/webproject/book_cate.action?categoryId=">문지사 한국소설전</a></li>
-
-								</ul>
-							</div>
-						</div></li>
-
-
-					<li id="kidsCate_841" class="cate_d1_li "><a
-						href="/webproject/book_cate.action?categoryId="
-						class="cate_d1_link" onmouseover="javascript:toggleDisplay3('02')"
-						onmouseout="javascript:toggleDisplay3('02')">일본소설</a> 소분류
-
-
-
-						<div class="cate_d2" id="left2_layer02"
-							onmouseover="javascript:toggleDisplay3('02')"
-							onmouseout="javascript:toggleDisplay3('02')"
-							style="display: none;">
-
-							<div class="pos_rel">
-								<div class="ico_arrow"></div>
-								<ul>
-
-									<li class="cate_d2_link "><a
-										href="/webproject/book_cate.action?categoryId=">현대소설</a></li>
-
-									<li class="cate_d2_link "><a
-										href="/webproject/book_cate.action?categoryId=">고전/명작소설</a></li>
-
-									<li class="cate_d2_link "><a
-										href="/webproject/book_cate.action?categoryId=">공포/무협소설</a></li>
-
-									<li class="cate_d2_link "><a
-										href="/webproject/book_cate.action?categoryId=">추리/범죄/스릴러소설</a>
-									</li>
-
-									<li class="cate_d2_link "><a
-										href="/webproject/book_cate.action?categoryId=">로맨스/인터넷소설</a>
-									</li>
-
-									<li class="cate_d2_link "><a
-										href="/webproject/book_cate.action?categoryId=">SF/판타지소설</a></li>
-
-									<li class="cate_d2_link "><a
-										href="/webproject/book_cate.action?categoryId=">동화/우화소설</a></li>
-
-									<li class="cate_d2_link "><a
-										href="/webproject/book_cate.action?categoryId=">가족/성장소설</a></li>
-
-									<li class="cate_d2_link "><a
-										href="/webproject/book_cate.action?categoryId=">드라마/영화소설</a></li>
-
-									<li class="cate_d2_link "><a
-										href="/webproject/book_cate.action?categoryId=">청소년소설</a></li>
-
-									<li class="cate_d2_link "><a
-										href="/webproject/book_cate.action?categoryId=">대하/역사/전쟁소설</a>
-									</li>
-
-									<li class="cate_d2_link "><a
-										href="/webproject/book_cate.action?categoryId=">문학상수상작품</a></li>
-
-
-								</ul>
-							</div>
-						</div></li>
-
-
-					중분류
-
-
-					<li id="kidsCate_853" class="cate_d1_li "><a
-						href="/webproject/book_cate.action?categoryId="
-						class="cate_d1_link" onmouseover="javascript:toggleDisplay3('03')"
-						onmouseout="javascript:toggleDisplay3('03')">영미소설</a> 소분류
-
-						<div class="cate_d2" id="left2_layer03"
-							onmouseover="javascript:toggleDisplay3('03')"
-							onmouseout="javascript:toggleDisplay3('03')"
-							style="display: none;">
-
-							<div class="pos_rel">
-								<div class="ico_arrow"></div>
-								<ul>
-
-									<li class="cate_d2_link "><a
-										href="/webproject/book_cate.action?categoryId=">현대소설</a></li>
-
-									<li class="cate_d2_link "><a
-										href="/webproject/book_cate.action?categoryId=">고전/명작소설</a></li>
-
-									<li class="cate_d2_link "><a
-										href="/webproject/book_cate.action?categoryId=">공포/무협소설</a></li>
-
-									<li class="cate_d2_link "><a
-										href="/webproject/book_cate.action?categoryId=">추리/범죄/스릴러소설</a>
-									</li>
-
-									<li class="cate_d2_link "><a
-										href="/webproject/book_cate.action?categoryId=">로맨스/인터넷소설</a>
-									</li>
-
-									<li class="cate_d2_link "><a
-										href="/webproject/book_cate.action?categoryId=">SF/판타지소설</a></li>
-
-									<li class="cate_d2_link "><a
-										href="/webproject/book_cate.action?categoryId=">동화/우화소설</a></li>
-
-									<li class="cate_d2_link "><a
-										href="/webproject/book_cate.action?categoryId=">가족/성장소설</a></li>
-
-									<li class="cate_d2_link "><a
-										href="/webproject/book_cate.action?categoryId=">드라마/영화소설</a></li>
-
-									<li class="cate_d2_link "><a
-										href="/webproject/book_cate.action?categoryId=">청소년소설</a></li>
-
-									<li class="cate_d2_link "><a
-										href="/webproject/book_cate.action?categoryId=">대하/역사/전쟁소설</a>
-									</li>
-
-									<li class="cate_d2_link "><a
-										href="/webproject/book_cate.action?categoryId=">문학상수상작품</a></li>
-
-								</ul>
-							</div>
-						</div></li>
-
-
-					중분류
-
-					<li id="kidsCate_864" class="cate_d1_li "><a
-						href="/webproject/book_cate.action?categoryId="
-						class="cate_d1_link" onmouseover="javascript:toggleDisplay3('04')"
-						onmouseout="javascript:toggleDisplay3('04')">기타외국소설</a> 소분류
-
-
-
-						<div class="cate_d2" id="left2_layer04"
-							onmouseover="javascript:toggleDisplay3('04')"
-							onmouseout="javascript:toggleDisplay3('04')"
-							style="display: none;">
-
-							<div class="pos_rel">
-								<div class="ico_arrow"></div>
-								<ul>
-
-
-									<li class="cate_d2_link "><a
-										href="/webproject/book_cate.action?categoryId=">프랑스소설</a></li>
-
-
-									<li class="cate_d2_link "><a
-										href="/webproject/book_cate.action?categoryId=">독일소설</a></li>
-
-
-									<li class="cate_d2_link "><a
-										href="/webproject/book_cate.action?categoryId=">중국소설</a></li>
-
-
-
-									<li class="cate_d2_link "><a
-										href="/webproject/book_cate.action?categoryId=">인도소설</a></li>
-
-
-
-									<li class="cate_d2_link "><a
-										href="/webproject/book_cate.action?categoryId=">동유럽소설</a></li>
-
-
-									<li class="cate_d2_link "><a
-										href="/webproject/book_cate.action?categoryId=">스페인/중남미소설</a></li>
-
-									<li class="cate_d2_link "><a
-										href="/webproject/book_cate.action?categoryId=">기타국가소설</a></li>
-								</ul>
-							</div>
-						</div></li>
-
-
-					중분류
-
-
-					<li id="kidsCate_873" class="cate_d1_li "><a
-						href="/webproject/book_cate.action?categoryId="
-						class="cate_d1_link" onmouseover="javascript:toggleDisplay3('05')"
-						onmouseout="javascript:toggleDisplay3('05')">고전/명작소설</a> 소분류
-
-
-
-						<div class="cate_d2" id="left2_layer05"
-							onmouseover="javascript:toggleDisplay3('05')"
-							onmouseout="javascript:toggleDisplay3('05')"
-							style="display: none;">
-
-							<div class="pos_rel">
-								<div class="ico_arrow"></div>
-								<ul>
-
-
-									<li class="cate_d2_link "><a
-										href="/webproject/book_cate.action?categoryId=">한국</a></li>
-
-
-
-									<li class="cate_d2_link "><a
-										href="/webproject/book_cate.action?categoryId=">일본</a></li>
-
-
-
-									<li class="cate_d2_link "><a
-										href="/webproject/book_cate.action?categoryId=">영미</a></li>
-
-
-
-									<li class="cate_d2_link "><a
-										href="/webproject/book_cate.action?categoryId=">중국</a></li>
-
-									<li class="cate_d2_link "><a
-										href="/webproject/book_cate.action?categoryId=">기타외국</a></li>
-
-
-								</ul>
-							</div>
-						</div></li>
-
-
-					중분류
-
-					<li id="kidsCate_878" class="cate_d1_li "><a
-						href="/webproject/book_cate.action?categoryId="
-						class="cate_d1_link" onmouseover="javascript:toggleDisplay3('06')"
-						onmouseout="javascript:toggleDisplay3('06')">장르소설</a> 소분류
-
-
-						<div class="cate_d2" id="left2_layer06"
-							onmouseover="javascript:toggleDisplay3('06')"
-							onmouseout="javascript:toggleDisplay3('06')"
-							style="display: none;">
-
-							<div class="pos_rel">
-								<div class="ico_arrow"></div>
-								<ul>
-
-									<li class="cate_d2_link "><a
-										href="/webproject/book_cate.action?categoryId=">공포/무협소설</a></li>
-
-									<li class="cate_d2_link "><a
-										href="/webproject/book_cate.action?categoryId=">추리/범죄/스릴러소설</a>
-									</li>
-
-									<li class="cate_d2_link "><a
-										href="/webproject/book_cate.action?categoryId=">라이트(NT)소설</a></li>
-
-									<li class="cate_d2_link "><a
-										href="/webproject/book_cate.action?categoryId=">로맨스/인터넷소설</a>
-									</li>
-
-									<li class="cate_d2_link "><a
-										href="/webproject/book_cate.action?categoryId=">SF/판타지소설</a></li>
-
-
-								</ul>
-							</div>
-						</div></li>
-
-
-					중분류
-
-
-					<li id="kidsCate_883" class="cate_d1_li "><a
-						href="/webproject/book_cate.action?categoryId="
-						class="cate_d1_link" onmouseover="javascript:toggleDisplay3('07')"
-						onmouseout="javascript:toggleDisplay3('07')">테마소설</a> 소분류
-
-
-
-						<div class="cate_d2" id="left2_layer07"
-							onmouseover="javascript:toggleDisplay3('07')"
-							onmouseout="javascript:toggleDisplay3('07')"
-							style="display: none;">
-
-							<div class="pos_rel">
-								<div class="ico_arrow"></div>
-								<ul>
-
-									<li class="cate_d2_link "><a
-										href="/webproject/book_cate.action?categoryId=">동화/우화소설</a></li>
-
-
-
-									<li class="cate_d2_link "><a
-										href="/webproject/book_cate.action?categoryId=">가족/성장소설</a></li>
-
-
-
-									<li class="cate_d2_link "><a
-										href="/webproject/book_cate.action?categoryId=">드라마/영화소설</a></li>
-
-
-
-									<li class="cate_d2_link "><a
-										href="/webproject/book_cate.action?categoryId=">청소년소설</a></li>
-
-
-
-									<li class="cate_d2_link "><a
-										href="/webproject/book_cate.action?categoryId=">대하/역사/전쟁소설</a>
-									</li>
-
-
-
-									<li class="cate_d2_link "><a
-										href="/webproject/book_cate.action?categoryId=">성인소설</a></li>
-
-
-
-
-								</ul>
-							</div>
-						</div></li>
-
-				</ul>
-			</div>
-
-
-			left banner
-
-			브랜드
-
-			<ul class="cateEvent mt10">
-
-				<li><img
-					src="http://image.bandinlunis.com/upload/banner/20181015/banner20181015180231.jpg"></li>
-
-				<li><img
-					src="http://image.bandinlunis.com/upload/banner/20181109/banner20181109173659.jpg"></li>
-
-			</ul>
-			좌측 템플릿
-
-
-
-		</div> -->
-
-		<!-- 좌측 템플릿 끝 -->
+	<div id="contentBody" style="width: 1100px; ">
 
 
 		<!-- 좌측 템플릿 시작 -->
@@ -974,7 +564,7 @@
 
 						</div>
 
-						<div class="cateS" style="margin-left: 20px;">
+						<div class="cateS" style="margin-left: 20px; margin-top: 8px;">
 
 							<br /> <br /> <br /> <br /> <br /> <br /> <br /> <br />
 							<!-- 분야 주간 베스트 -->
@@ -1650,12 +1240,15 @@
 
 					<!-- 새로나온 책 시작  -->
 					<div id="menu_new" class="tab-pane fade">
-
-						<iframe id="iframe_list1" height="100%" width="100%"
-							src="<%=cp %>/book_New.action?categoryId=${categoryId}"
-							style="margin-left: 0; overflow: auto; min-height: 1000px;"
-							frameborder="0" scrolling="auto" onload="calcHeight();"
-							name="WrittenPublic"></iframe>
+						<div class="row">
+							<div class="col-md-12">
+								<iframe id="iframe_list1" height="100%" width="100%"
+									src="<%=cp %>/book_New.action?categoryId=${categoryId}"
+									style=" overflow: auto; min-height: 1000px;"
+									frameborder="0" scrolling="auto" onload="calcHeight();"
+									name="WrittenPublic"></iframe>
+							</div>
+						</div>
 
 					</div>
 
@@ -1690,7 +1283,6 @@
 
 	<!-- footer -->
 	<jsp:include page="../../../common/footer.jsp" flush="false" />
-
 </body>
 
 </html>

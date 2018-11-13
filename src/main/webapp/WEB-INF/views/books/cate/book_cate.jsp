@@ -67,7 +67,8 @@ html, body {
 
 <script
 	src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
-<script type="text/javascript" src="/webproject/resources/book_js/jquery.iframeResizer.min.js"></script>
+<script type="text/javascript"
+	src="/webproject/resources/book_js/jquery.iframeResizer.min.js"></script>
 
 
 <script type="text/javascript">
@@ -224,52 +225,6 @@ iFrameResize({
 
 <script type="text/javascript">
 
-	// 쇼핑카트
-	function addCarts() {
-	
-		var obj 	= document.getElementsByName("isbn");
-		var p_arr = "";
-		var cnt = 0;
-		
-		for(var i=0;i<obj.length;i++){
-			if(obj[i].checked){
-				if(cnt>0){
-					p_arr += ",";
-				}
-				p_arr += obj[i].value;
-				cnt++;
-			}
-		}
-		
-		if(p_arr==""){
-			alert('선택된 항목이 없습니다.');
-			return;
-		}
-		
-		
-		var tmpArr	= p_arr.split(",");
-		var resultArr	= Array();
-		var cntArr		= Array();
-		
-		for(var i=0 ; i < tmpArr.length ; i++){
-			resultArr.push(" ");
-			cntArr.push(1);
-		}
-		
-		add_basket_array_common(p_arr,resultArr.join(","), cntArr.join(","),resultArr.join(","), true, callBack_);
-	}
-	
-	function callBack_()
-	{
-		jutil.bandi.reloadWiseCart("cart");
-	}
-	
-	$(function() {
-		
-		var ck = getCookie('cartlist');
-		var ckOne = cookieInfo(ck);
-	});
-	
 	
 	//쿠키 가져오기
 	function getCookie(cookiename){
@@ -374,7 +329,7 @@ iFrameResize({
 
 <style>
 * {
-	box-sizing: border-box
+	box-sizing: inherit;
 }
 
 /* Style the tab */
@@ -495,7 +450,7 @@ iFrameResize({
 			<!-- 브랜드 -->
 
 			<!-- 추천인사이드:회원님이 주로 구입하시는 가격대의 인기 상품입니다 -->
-			
+
 		</div>
 
 		<!-- 좌측 템플릿 끝 -->
@@ -528,24 +483,7 @@ iFrameResize({
 
 					<div id="menu_best" class="tab-pane in active">
 						<div class="prod_sort">
-							<div class="sorting">
-								<ul class="con01">
-									<li><a id="sort1" style="cursor: pointer;">판매량순</a></li>
-									<li><a id="sort2" style="cursor: pointer;">발행일순</a></li>
-									<li><a id="sort6" style="cursor: pointer;">상품명순</a></li>
-									<li class="alt"><a id="sort10" style="cursor: pointer;">가격순</a></li>
-								</ul>
-								<div class="con02">
-									<p>
-										<select class="changeListSize">
-											<option value="20" selected="">10개씩</option>
-											<option value="40">20개씩</option>
-											<option value="60">30개씩</option>
-										</select>
-									</p>
-								</div>
-							</div>
-
+						
 							<h4>
 								<strong>${dto_Main.categoryName }</strong> 베스트셀러 목록입니다.
 							</h4>
@@ -661,7 +599,8 @@ iFrameResize({
 						<iframe id="iframe_list1" height="100%" width="100%"
 							src="<%=cp %>/book_New.action?categoryId=${categoryId}"
 							style="margin-left: 0; overflow: auto; min-height: 1000px;"
-							frameborder="0" scrolling="auto" onload ="calcHeight();" name ="WrittenPublic"></iframe>
+							frameborder="0" scrolling="auto" onload="calcHeight();"
+							name="WrittenPublic"></iframe>
 
 
 					</div>
@@ -673,17 +612,17 @@ iFrameResize({
 					<div id="menu_discount" class="tab-pane fade">
 
 
-							<div class="row">
-								<div class="col-md-12">
-									<iframe id="iframe_list2" width="100%" style="min-height: 1000px; overflow: auto;" 
-									scrolling="auto"
-										src="<%=cp %>/book_Discount.action?categoryId=${categoryId}"
-										frameborder="0"> </iframe>
-								</div>
+						<div class="row">
+							<div class="col-md-12">
+								<iframe id="iframe_list2" width="100%"
+									style="min-height: 1000px; overflow: auto;" scrolling="auto"
+									src="<%=cp %>/book_Discount.action?categoryId=${categoryId}"
+									frameborder="0"> </iframe>
 							</div>
 						</div>
+					</div>
 
-					
+
 					<!-- 정가인하 끝 -->
 
 

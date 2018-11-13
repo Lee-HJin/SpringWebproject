@@ -91,6 +91,7 @@ body {
 #main {
 	transition: margin-left .5s;
 	padding: 16px;
+	margin-top: 400px;
 }
 
 /* On smaller screens, where height is less than 450px, change the style of the sidenav (less padding and a smaller font size) */
@@ -664,7 +665,93 @@ bbbody {
 		no-repeat;
 }
 </style>
+<script type="text/javascript">
+	//북카트
+	function addCart(isbn) {
 
+		var ordCnt = 1;
+
+		$(function() {
+
+			var cookieValue = JSON.stringify({
+				"isbn" : isbn,
+				"orderCount" : ordCnt
+			});
+			var ck = $("#cart_isbn" + isbn).val();
+
+			if (document.cookie.indexOf('shop') == -1) {
+				setCookie('shop', cookieValue, 1);
+			} else if (document.cookie.indexOf('shop') != -1) {
+				addCookie(cookieValue, ck);
+			}
+		});
+
+		//기존 쿠키에 추가
+		function addCookie(cValue, cVal) {
+			var items = getCookie('shop');
+			//var maxItemNum = 10;
+			var flag = true;
+
+			if (items) {
+				var itemArray = items.split('/');
+				var ck = new Array();
+
+				for (i = 0; i < itemArray.length; i++) {
+					ck[i] = JSON.parse(itemArray[i]);
+				}
+				for (i = 0; i < ck.length; i++) {
+
+					if (ck[i].isbn == cVal) {
+
+						alert("이미 있는 상품입니다.");
+						return;
+
+					} else {
+						flag = false;
+					}
+				}
+				if (flag == false) {
+					itemArray.unshift(cValue);
+					/*						if(itemArray.length>maxItemNum){
+					 itemArray.length=10;}*/
+					items = itemArray.join('/');
+					setCookie('shop', items, 1);
+
+					if (confirm("쇼핑카트에 등록되었습니다. 지금 바로 확인 하시겠습니까?")) {
+						location.href = 'shopCartList.action';
+					} else {
+						return;
+					}
+				}
+			}
+		}
+
+		//쿠키 생성
+		function setCookie(cName, cValue, cDay) {
+			var expire = new Date();
+			expire.setDate(expire.getDate() + cDay);
+			cookies = cName + '=' + escape(cValue) + '; path=/ ';
+			if (typeof cDay != 'undefined')
+				cookies += ';expires=' + expire.toGMTString() + ';';
+			document.cookie = cookies;
+		}
+
+		function getCookie(cookiename) {
+			var cookiestring = document.cookie;
+			var cookiearray = cookiestring.split(';');
+			for (var i = 0; i < cookiearray.length; ++i) {
+				if (cookiearray[i].indexOf(cookiename) != -1) {
+					var ck = [];
+					var nameVal = cookiearray[i].split("=");
+					var value = nameVal[1].trim();
+					ck += value;
+				}
+			}
+			return unescape(ck);
+		}
+
+	}
+</script>
 <!-- ZoomIn ZoomOut 시작-->
 <script src="http://code.jquery.com/jquery-latest.min.js"></script>
 <script src='/springwebview/resources/js/ex01/jquery.zoom.js'></script>
@@ -672,27 +759,64 @@ bbbody {
 
 <script type="text/javascript">
 	$(document).ready(function() {
-		
-		$('#ex1').zoom({ on:'click' });
-		$('#ex2').zoom({ on:'click' });
-		$('#ex3').zoom({ on:'click' });
-		$('#ex4').zoom({ on:'click' });
-		$('#ex5').zoom({ on:'click' });
-		$('#ex6').zoom({ on:'click' });
-		$('#ex7').zoom({ on:'click' });
-		$('#ex8').zoom({ on:'click' });
-		$('#ex9').zoom({ on:'click' });
-		$('#ex10').zoom({ on:'click' });
-		$('#ex11').zoom({ on:'click' });
-		$('#ex12').zoom({ on:'click' });
-		$('#ex13').zoom({ on:'click' });
-		$('#ex15').zoom({ on:'click' });
-		$('#ex16').zoom({ on:'click' });
-		$('#ex17').zoom({ on:'click' });
-		$('#ex18').zoom({ on:'click' });
-		$('#ex19').zoom({ on:'click' });
-		$('#ex20').zoom({ on:'click' });
 
+		$('#ex1').zoom({
+			on : 'click'
+		});
+		$('#ex2').zoom({
+			on : 'click'
+		});
+		$('#ex3').zoom({
+			on : 'click'
+		});
+		$('#ex4').zoom({
+			on : 'click'
+		});
+		$('#ex5').zoom({
+			on : 'click'
+		});
+		$('#ex6').zoom({
+			on : 'click'
+		});
+		$('#ex7').zoom({
+			on : 'click'
+		});
+		$('#ex8').zoom({
+			on : 'click'
+		});
+		$('#ex9').zoom({
+			on : 'click'
+		});
+		$('#ex10').zoom({
+			on : 'click'
+		});
+		$('#ex11').zoom({
+			on : 'click'
+		});
+		$('#ex12').zoom({
+			on : 'click'
+		});
+		$('#ex13').zoom({
+			on : 'click'
+		});
+		$('#ex15').zoom({
+			on : 'click'
+		});
+		$('#ex16').zoom({
+			on : 'click'
+		});
+		$('#ex17').zoom({
+			on : 'click'
+		});
+		$('#ex18').zoom({
+			on : 'click'
+		});
+		$('#ex19').zoom({
+			on : 'click'
+		});
+		$('#ex20').zoom({
+			on : 'click'
+		});
 
 	});
 </script>
@@ -717,10 +841,10 @@ bbbody {
 					src="<%=cp %>/resources/book_image/sample/${dto.bookImage}">
 			</div>
 
-			
-		
+
+
 		</c:forEach>
-	
+
 
 
 		<a class="prev" onclick="plusSlides(-1)">&#10094;</a> <a class="next"
@@ -791,18 +915,13 @@ bbbody {
 				</div>
 				<div class="btnA">
 
-					<a class="bookCart" href="javascript:bookCart('${dto2.isbn }');">
+					<a class="bookCart" href="javascript:addCart('${dto2.isbn }');">
 						<span>쇼핑카트</span>
 					</a>
 
 					<!-- 판매중지, 품절, 절판 -->
 
-					<a class="wishList" href="javascript:wishList('${dto2.isbn }');">
-						<span>위시리스트</span>
-					</a> <a class="myLibrary"
-						href="javascript:opener.jutil.bandi.blogAddMyLibrary('${dto2.isbn }');">
-						<span>서재에 담기</span>
-					</a> <a class="bookInfo" target="_blank"
+					<a class="bookInfo" target="_blank"
 						href="<%=cp %>/book_info.action?isbn=${dto2.isbn }"> <span>상세정보</span>
 					</a>
 				</div>
