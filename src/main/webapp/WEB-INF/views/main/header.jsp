@@ -185,7 +185,9 @@
 <link rel="shortcut icon" href="http://bandinlunis.com/favicon.ico"	type="image/x-icon">
 <link rel="stylesheet" href="http://bandinlunis.com/common/css/center.css" type="text/css">
 <link rel="stylesheet" href="http://bandinlunis.com/common/css/common.css?v=20180705" type="text/css">
+<link rel="stylesheet" href="<%=cp%>/resources/css/swiper_min.css">
 <link rel="stylesheet" href="<%=cp%>/resources/css/main.css" type="text/css"/>
+
 </head>
 <body>
 	<div id="onTop" class="top_btn">

@@ -14,8 +14,6 @@
 <head>
 <meta charset="UTF-8">
 
-<link rel="stylesheet" href="<%=cp%>/resources/css/main.css" type="text/css"/>
-<link rel="stylesheet" href="<%=cp%>/resources/css/swiper_min.css">
 <link rel="stylesheet" href="http://bandinlunis.com/common/css/center.css" type="text/css">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <link rel="shortcut icon" href="http://image.bandinlunis.com/favicon.ico" type="image/x-icon">
