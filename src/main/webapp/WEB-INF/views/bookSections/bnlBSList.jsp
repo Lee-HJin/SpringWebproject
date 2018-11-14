@@ -122,70 +122,7 @@
 								<li><a style="cursor:pointer;" href="<%=cp%>/bnlBSList.action?pageNum=1&sort=sort3&sort1st=${sort1st}&sort2nd=${sort2nd}">평점순</a></li>
 								<li class="alt"><a style="cursor:pointer;" href="<%=cp%>/bnlBSList.action?pageNum=1&sort=sort4&sort1st=${sort1st}&sort2nd=${sort2nd}">리뷰순</a></li> 
 							</ul> 
-						 	<div class="con02">
-								<p class="t_11gr"><input type="checkbox" name="prodStat" id="prodStat" value="Y" class="chk"> 품절/절판제외</p>
-							</div>
 						</div>
-						
-						<h4>
-							<span>기간</span>
-							<select style="width:70px;" name="recommendYear">
-								
-								<option value="2000">2000년</option>							
-								<option value="2001">2001년</option>								
-								<option value="2002">2002년</option>								
-								<option value="2003">2003년</option>								
-								<option value="2004">2004년</option>								
-								<option value="2005">2005년</option>								
-								<option value="2006">2006년</option>								
-								<option value="2007">2007년</option>								
-								<option value="2008">2008년</option>								
-								<option value="2009">2009년</option>								
-								<option value="2010">2010년</option>								
-								<option value="2011">2011년</option>								
-								<option value="2012">2012년</option>								
-								<option value="2013">2013년</option>								
-								<option value="2014">2014년</option>								
-								<option value="2015">2015년</option>								
-								<option value="2016">2016년</option>								
-								<option value="2017">2017년</option>								
-								<option value="2018" selected="selected">2018년</option>								
-								<option value="2019">2019년</option>
-								
-							</select> 
-							<select style="width:55px;" name="recommendMonth">
-								
-								<option value="1">1월</option>								
-								<option value="2">2월</option>								
-								<option value="3">3월</option>								
-								<option value="4">4월</option>								
-								<option value="5">5월</option>								
-								<option value="6">6월</option>								
-								<option value="7">7월</option>								
-								<option value="8">8월</option>								
-								<option value="9">9월</option>								
-								<option value="10" selected="selected">10월</option>								
-								<option value="11">11월</option>								
-								<option value="12">12월</option>
-								
-							</select> 
-							<select style="width:60px;" name="recommendWeek">
-								
-								<option value="1">1주째</option>								
-								<option value="2" selected="selected">2주째</option>								
-								<option value="3">3주째</option>								
-								<option value="4">4주째</option>								
-								<option value="5">5주째</option>
-								
-							</select> 
-						   <a href="javascript:goSearch();"><img src="http://image.bandinlunis.com/images/common/btnW_search_01.gif" alt="조회" class="al_top"></a>
-						 </h4>
-						 
-						<p class="btn_cart">
-							<span><input type="checkbox" name="ibsns" class="chk" onclick="javascript:check_all(document.getElementsByName('isbn'), this.checked);"> 전체</span>
-							<a href="javascript:addCarts();"><span class="btn_w_comm btype_a2">쇼핑카트</span></a>
-							<a href="javascript:addWishes();"><span class="btn_w_comm btype_a2">위시리스트</span></a>
-						</p>
 					</div>
 
 						<!-- page -->
@@ -218,17 +155,17 @@
 									</span>
 								</span>
 								<div class="prod_thumb_img">
-									<a href="/front/product/detailProduct.do?isbn=4181047" onfocus="this.blur();">
-										<img src="<%=cp %>/resources/image/book/${dto.bookImage }"> <!-- onerror="this.src='/images/common/noimg_type01.gif';"  -->
+									<a href="<%=cp %>/book_info.action?isbn=${dto.isbn}" onfocus="this.blur();">
+										<img src="<%=cp %>/resources/image/book/${dto.bookImage }">
 									</a>
-									<a class="btn_popup" target="_blank" href="/front/product/detailProduct.do?isbn=4181047"><span class="ico_new">새창열기</span></a>
+									<a class="btn_popup" target="_blank" href="<%=cp %>/book_info.action?isbn=${dto.isbn}"><span class="ico_new">새창열기</span></a>
 								</div>
-									<a class="btn_preview" href="javascript:popPreview('${dto.isbn }');">미리 보기</a>			
+									<a class="btn_preview" target="_blank" href="<%=cp %>/book_preview.action?isbn=${dto.isbn }">미리 보기</a>			
 							</div>
 							
 							<dl class="prod_info">
 								<dt>
-									<a href="/front/product/detailProduct.do?isbn=4181047" onfocus="this.blur();">
+									<a href="<%=cp %>/book_info.action?isbn=${dto.isbn}" onfocus="this.blur();">
 										  ${dto.bookTitle }
 									</a> 												
 									<span class="tag_area">
