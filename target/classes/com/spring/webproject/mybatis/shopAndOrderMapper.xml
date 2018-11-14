@@ -12,7 +12,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	
 	<!-- in order.jsp, 유저 별 남은포인트 가져오기  -->
 	<select id="leftPoint" parameterType="java.lang.String" resultType="Integer">
-		select sum(leftValue) from point a where userId = #{userId}
+		select sum(leftValue) from point where userId = #{userId}
 	</select>
 
 	<!-- orderId(maxNum)  -->

@@ -36,17 +36,11 @@
 <script type="text/javascript" src="/webproject/resources/js/jquery/idangerous.swiper.js"></script>
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-<script type="text/javascript" src="https://wcs.naver.net/wcslog.js"></script>
-
-<!-- ADSSOM 신규 버전 17-11-20 -->
-<!-- ADSSOM 공통 SCRIPT -->
-<script type="text/javascript" src="https://sc.11h11m.net/s/E799.js"></script>
-<script type="text/javascript" charset="UTF-8" async="" src="http://s.n2s.co.kr/_n2s_ck_log.php"></script>
 
 <!-- 스크립트2 시작 -->
 <link rel="stylesheet" href="http://image.bandinlunis.com/common/css/pStyle.css" type="text/css">
 
-<script type="text/javascript" src="/webproject/resources/js/dwr.js" charset="euc-kr"></script>
+
 <script type="text/javascript" src="/webproject/resources/js/jquery/jquery.min.js"></script><!-- IE8 에서 오류로 인해 일부러 넣음(jQuery 보다 dwr.util.js 가 밑에 있음 오류 발생) -->
 <script type="text/javascript" src="/webproject/resources/js/multiCart.js"></script>
 
@@ -190,7 +184,7 @@
 									${dto.introduction }...
 								</dd>
 									<dd class="txt_ebook">
-									<span>지금 주문하면 <strong class="t_red">내일</strong>받을 수 있습니다.</span>
+									<span>지금 주문하면 <strong class="t_red">3일</strong> 뒤에 받을 수 있습니다.</span>
 									</dd>
 							</dl>
 							
@@ -209,7 +203,6 @@
 										
 										<dd><a href="javascript:addCart('${dto.isbn }');"><span class="btn_b_comm btype_f1">쇼핑카트</span></a></dd>
 										<dd class="mt3"><a href="javascript:goOrder('${dto.isbn }');"><span class="btn_w_comm btype_f1">바로구매</span></a></dd>
-										<dd class="mt3"><a href="javascript:add_wish_array_common('${dto.isbn }', true);"><span class="btn_w_comm btype_f1">위시리스트</span></a></dd>
 									</dl>
 								</c:when>
 								
@@ -226,7 +219,6 @@
 										
 										<dd><a href=""><span class="btn_gy_comm btype_f1">상품문의하기</span></a></dd>
 										<dd class="mt3"><a href="javascript:goOrder('${dto.isbn }');"><span class="btn_w_comm btype_f1">바로구매</span></a></dd>
-										<dd class="mt3"><a href="javascript:add_wish_array_common('${dto.isbn }', true);"><span class="btn_w_comm btype_f1">위시리스트</span></a></dd>
 									</dl>
 								</c:otherwise>
 							</c:choose>

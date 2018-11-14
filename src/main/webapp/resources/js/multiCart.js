@@ -164,8 +164,7 @@
 					} else { 
 						return;
 					}
-					
-					
+
 					
 				}else if(document.cookie.indexOf('shop')!=-1){
 					addCookie(cookieValue,ck);
@@ -291,7 +290,7 @@
 		}
 		
 		//배송비용
-		if(bandiDeductionTotSaleCost < 50000){
+		if(bandiDeductionTotSaleCost < 10000){
 			bandiDeductionTotDeliCost = 2000;
 		}
 		
@@ -320,8 +319,7 @@
 		$("#goOrder").submit();
 	});
 	
-	
-	
+
 	//cart 수정
 	function updateShopCart(isbn, seqNum) {
 		var ordCnt = parseInt($("#cntVal_"+seqNum).val());

@@ -103,7 +103,7 @@
 			document.getElementById('rcvr_addr1').value = "";
 
 		});
-		
+
 		
 		
 		
@@ -506,11 +506,11 @@
 		            		<tbody><tr>
 		            			<th class="line_none pb0" style="height: 34px; padding-top: 5px;">적립금</th>
 		            			<td class="line_none pb0" style="height: 34px; padding-top: 5px;">
-		            				<span class="s_con01"><input type="text" name="reserve_point" id="reserve_point" maxlength="8" class="o_input use_point" value="0" min="" max="" style="ime-mode;disabled;"></span>
-		            				<span class="s_con02">원 / <strong class="t_org">${leftPoint }원</strong></span>
+		            				<span class="s_con01"><input type="text" name="reserve_point" id="reserve_point" maxlength="8" class="o_input use_point" value="0" size="18" min="" max="" style="ime-mode;disabled;"></span>
+		            				<span class="s_con02"> 원 / <strong class="t_org">${leftPoint }원</strong></span>
 		            				<input type="hidden" id="reserve_point_max" value="${leftPoint }">
 		            			</td>
-		            			<td class="line_none pb0"><!-- <input type="checkbox" name="reserve_point_all" id="reserve_point_all" value="reserve_point" class="mt3m mr3 use_all"><label for="reserve_point_all">모두사용</label> --></td>
+		            			<td class="line_none pb0"></td>
 		            		</tr>
 
 		            		
