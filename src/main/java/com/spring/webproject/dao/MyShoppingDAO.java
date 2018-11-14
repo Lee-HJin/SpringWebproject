@@ -651,5 +651,8 @@ public class MyShoppingDAO {
 		
 	}
 	
+	public int getPointValue(String userId) {
+		return sessionTemplate.selectOne("myShopping.getPointValue",userId);
+	}
 
 }

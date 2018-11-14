@@ -6,6 +6,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
@@ -584,7 +585,7 @@ public class BookSectionColtroller {
 		//usedPoint : 주문시에 사용한 포인트
 		int inputPoint = usedPoint-(usedPoint*2);	//DB에 입력할 때 사용할 포인트 변수
 		
-		while(usedPoint<=0) {	//usedPoint가 0이 될때까지 동작
+		while(usedPoint!=0) {	//usedPoint가 0이 될때까지 동작
 
 			//rownum으로 leftPoint를 만료일자가 가까운 순으로 불러옴
 			//pointMap안에는 pointid, leftValue가 들어있음
@@ -593,14 +594,17 @@ public class BookSectionColtroller {
 			//pointMap 풀어내기
 			int leftValue = ((BigDecimal)pointMap.get("LEFTVALUE")).intValue();
 			int pointId = ((BigDecimal)pointMap.get("POINTID")).intValue();
+			
 
+			
 			//사용한 포인트>적립된 포인트
 			//적립된 포인트(point테이블 안의 leftValue)를 0으로 만든다음 사용한포인트-적립된 포인트한 금액을
 			//다시 usedPoint에 넣음 그리고 while문 반복
 			if(usedPoint>=leftValue) { 
 				//leftValue를 0으로 만들고, usedPoint를 그만큼 줄여서 다시 저장
 				shoppingDao.pointUseUpdate(pointId, 0);
-				usedPoint = usedPoint-leftValue;		
+				usedPoint = usedPoint-leftValue;
+
 			}
 			//사용한 포인트<적립된 포인트
 			//적립된 포인트-사용한 포인트 금액을 불러온 pointId를 통해 leftValue를 업데이트한 후 while문 종료됨
@@ -633,12 +637,34 @@ public class BookSectionColtroller {
 		shoppingDao.getShipmentsStatus(shoppingDao.getMaxShipmentsId()+1, dto4.getOrderId());
 		//shipment table insert
 		
-	
 		
-		
-		
+		//책권수 빼기
+		for(int i=0;i<arrayIsbn.length;i++) {
+			int finalOrderCount = 0;
+			String isbn = arrayIsbn[i];
+			int orderCount = Integer.parseInt(arrayOrderCnt[i]);
+			
+			int totOrderCount = raDao.getSelectBookQuantity(isbn);
+			System.out.println(totOrderCount);
+			
+			finalOrderCount = totOrderCount - orderCount;
+			System.out.println(finalOrderCount);
 
-		return "shopAndOrder/order";
+			raDao.getUpdateBookQuantity(isbn, finalOrderCount);
+		}
+		//책권수 빼기
+
+	    // 특정 쿠키만 삭제하기
+	    Cookie kc = new Cookie("shop", null);
+	    kc.setMaxAge(0);
+	    kc.setPath("/");
+	    response.addCookie(kc);
+	    
+	    //세션에 적립금 정보 다시 올리기(적립금 사용 및 적립 변동사항 적용)
+	    int pointValue = shoppingDao.getPointValue(dto3.getUserId());
+	    request.getSession().setAttribute("pointValue", pointValue);
+
+		return "redirect:/myShoppingMain.action";
 	}
 	
 	@RequestMapping(value="cartList.action", method= {RequestMethod.GET, RequestMethod.POST})
@@ -657,6 +683,5 @@ public class BookSectionColtroller {
 		
 		return "shopAndOrder/cartList";
 	}
-
 
 }

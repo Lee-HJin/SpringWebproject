@@ -4,6 +4,12 @@
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="myShopping">
+
+<!-- 적립금 불러오기 -->
+<select id="getPointValue" parameterType="java.lang.String" resultType="int">
+	select nvl(sum(leftValue),0) from point where userId=#{userId}
+</select>
+
 <!-- 위시리스트 권수 -->
 <select id="getWishCount" parameterType="java.lang.String" resultType="int">
 select nvl(count(*),0) from wishList where userId=#{userId}
@@ -365,7 +371,7 @@ update point set leftvalue=#{leftValue} where pointId=#{pointId}
 <!-- 포인트 사용내역 insert -->
 <insert id="usedPointInsert" parameterType="map">
 insert into point(userId,savingdate,expirationdate,orderid,value,pointitem,pointid,leftvalue) 
-values(#{userId},sysdate,sysdate,#{orderId},#{value},'상품구입',#{pointId},0)
+values(#{userId},sysdate,sysdate,#{orderId},#{value},'상품구입시 사용',#{pointId},0)
 </insert>
 
 <!-- 포인트(point table) = pointId(maxNum)  -->
@@ -381,13 +387,13 @@ values(#{userId},sysdate,sysdate,#{orderId},#{value},'상품구입',#{pointId},0
 
 <!-- 배송테이블,상품준비중(shipments table) -->
 <select id="maxShipmentsId" resultType="Integer">
-	select nvl(max(shipmentsId),0) from shiptments
+	select nvl(max(shipmentsId),0) from shipments
 </select>
 
 <!-- 배송테이블 상품준비중 -->
 <insert id="shipmentsStatus" parameterType="map">
-	insert into point(shipmentsId, orderId, shipmentsStatusCode, expectedDate)
-	values(#{shipmentsId}, #{orderId}, ,'상품준비중', to_date(to_char(sysdate+3,'YYYY-MM-DD ') || '23:59:59','YYYY-MM-DD HH24:MI:SS'))
+	insert into shipments(shipmentsId, orderId, shipmentsStatusCode, expectedDate)
+	values(#{shipmentsId}, #{orderId}, '상품준비중', to_date(to_char(sysdate+3,'YYYY-MM-DD ') || '23:59:59','YYYY-MM-DD HH24:MI:SS'))
 </insert>
 
 <!-- 1:1 상담내역 리스트 count (all) -->

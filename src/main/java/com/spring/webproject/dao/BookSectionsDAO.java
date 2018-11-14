@@ -511,6 +511,21 @@ public class BookSectionsDAO {
 	public void getOrderBooksInsertData(OrderBooksDTO dto) {
 		sessionTemplate.insert("shopAndOrderMapper.orderBooksInsertData", dto);
 	}
-
 	
+	//update booksatwarehouse 책 구입 후 최대수량 업데이트
+	public void getUpdateBookQuantity(String isbn, int OrderCount) {
+		
+		HashMap<String, Object> params = new HashMap<String, Object>();
+		
+		params.put("isbn", isbn);
+		params.put("OrderCount", OrderCount);
+		
+		sessionTemplate.update("shopAndOrderMapper.updateBookQuantity", params);
+	}
+	
+	//select Quantity 책 총수량 warehouse=1
+	public int getSelectBookQuantity(String isbn) {
+		
+		return sessionTemplate.selectOne("shopAndOrderMapper.selectBookQuantity", isbn);
+	}
 }

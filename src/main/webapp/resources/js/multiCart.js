@@ -3,46 +3,68 @@
  */
 
 	//카운트 증가
-	function cntUp(isbn) {
+	function cntUp(isbn, maxQuantity) {
 		
 		var ordCnt = parseInt($("#cntVal_"+isbn).val());
-		if(isNaN(ordCnt)) {
-			ordCnt = 1;
-		}else {
-			ordCnt++;
+
+		if(maxQuantity == 0) {
+
+			alert("현재 재고가 없습니다.");
+			ordCnt = 0;
+
 		}
-		if(ordCnt > 99) {
-			alert("최대 수량입니다.");
-			ordCnt = 99;
+		
+		if(maxQuantity != 0){
+			
+			if(isNaN(ordCnt)) {
+				ordCnt = 1;
+			}else {
+				ordCnt++;
+			}
+			
+			if(ordCnt > maxQuantity) {
+				alert("온라인 매장한정 최대 수량입니다.");
+				ordCnt = maxQuantity;
+			}
+
 		}
+
 		$("#cntVal_"+isbn).val(ordCnt);
 	
 	}
 	
 	//카운트 감소
-	function cntDown(isbn) {
-		
+	function cntDown(isbn, maxQuantity) {
+
 		var ordCnt = parseInt($("#cntVal_"+isbn).val());
-		if(isNaN(ordCnt)) {
-			ordCnt = 1;
-		}else {
-			ordCnt--;
+
+		if(maxQuantity == 0) {
+			
+			alert("현재 재고가 없습니다.");
+			ordCnt = 0;
+			
 		}
-		if(ordCnt < 1) {
-			alert("최소 수량입니다.");
-			ordCnt = 1;
+		
+		if(maxQuantity != 0){
+
+			if(isNaN(ordCnt)) {
+				ordCnt = 1;	
+			}else {	
+				ordCnt--;
+			}
+			
+			if(ordCnt <= 0){
+				alert("최소 수량입니다.");
+				ordCnt = 1;
+			}
+
 		}
+		
+		
+		
 		$("#cntVal_"+isbn).val(ordCnt);
 		
 	}
-	
-/*	function calculation() {
-		
-		var bookItems = $(".storeId_1").length;
-
-		$("#bandiDeduction_totOrdCnt").text("수량: "+bookItems+"종(아직n개)");
-
-	}*/
 	
 	//카운트 증가(cartList)
 	function cntUp2(seqNum) {
@@ -138,13 +160,9 @@
 					
 					var result = confirm('쇼핑카트로 바로 가시겠습니까?'); 
 					if(result) { 
-
-						//yes 
 						location.replace('shopCartList.action'); 
-				
 					} else { 
-						//no
-						
+						return;
 					}
 					
 					
@@ -297,29 +315,9 @@
 		
 		
 	}
-	
-	$("#btn_order").click(function() {
-	
-		var session = $("#userInfo").val();
 
-		   if(session == null || session == ""){
-			   
-			   var result = confirm('로그인을 해야 주문 가능합니다. 로그인 하시겠습니까?'); 
-				if(result) { 
-
-					//yes 
-					location.href = 'login.action' 
-			
-				} else { 
-					//no
-					
-				}
-			   
-		   }
-		   else{
-			   $("#goOrder").submit();
-		   }
-
+	$("#btn_order").click(function() {	  
+		$("#goOrder").submit();
 	});
 	
 	

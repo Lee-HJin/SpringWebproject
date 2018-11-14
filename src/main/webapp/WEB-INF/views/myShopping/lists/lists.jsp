@@ -9,7 +9,7 @@
 <table>
 	<tr>
 		<th>주문번호</th>
-		<th style="width: 365px;">상품명</th>
+		<th style="width: 380px;">상품명</th>
 		<th>주문일자</th>
 		<th>수령예상일</th>
 		<th>주문금액</th>

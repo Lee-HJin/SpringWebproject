@@ -20,19 +20,7 @@
 	type="text/css">
 <script src="http://blog.bandinlunis.com/bandi_blog/js/common.js"></script>
 
-<script type="text/javascript">
 
-	function go_login() {
-
-		alert("로그인 하셔야 리뷰를 쓰실수 있습니다.");
-		parent.location.href = '<%=cp%>/login2.action?isbn='+${isbn };
-		return;
-
-	}
-
-
-	
-</script>
 
 
 <style>
@@ -372,10 +360,21 @@
 					</div>
 
 					<div class="pageConR">
+
 						<script>
+						
+						function go_login2() {
+
+							alert("로그인 하셔야 리뷰를 쓰실수 있습니다.");
+							parent.location.href = '<%=cp%>/login2.action?isbn='+${isbn };
+							return;
+
+						}
+
+
 						function goReview() {
 							
-							if(${check_review} == 1){
+							if(${check_review } == 1){
 								alert("이미 리뷰를 한번 등록하셨습니다.");	
 								return ;
 							}									
@@ -386,13 +385,14 @@
 						function goReviewMain(Val){
 							location.href = '<%=cp%>/book_review_main.action?reviewId='+ Val+ '&isbn=' + ${isbn };
 							}
-						
+
+					
 						</script>
 						<form action="" name="reviewForm" method="post">
 							<c:choose>
 
 								<c:when test="${empty sessionScope.userInfo.userId }">
-									<a href="javascript:go_login()"> <img
+									<a href="javascript:go_login2();"> <img
 										src="http://blog.bandinlunis.com/bandi_blog/images/common/btn_writeReview.gif"
 										class="al_middle" alt="리뷰쓰기">
 									</a>
@@ -401,7 +401,7 @@
 
 
 								<c:otherwise>
-									<a href="javascript:goReview()"> <img
+									<a href="javascript:goReview();"> <img
 										src="http://blog.bandinlunis.com/bandi_blog/images/common/btn_writeReview.gif"
 										class="al_middle" alt="리뷰쓰기">
 									</a>

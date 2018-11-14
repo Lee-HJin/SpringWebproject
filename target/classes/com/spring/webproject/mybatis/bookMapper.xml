@@ -5,6 +5,12 @@
 
 <mapper namespace="bookMapper">
 
+	<!-- 카테고리 아이디 가져오기 -->
+	<select id="getCategoryId" parameterType="String"
+		resultType="int">
+		select categoryId from booksections where isbn = #{isbn}
+	</select>
+
 	<!-- 이전 리뷰 데이터 가져오기 -->
 	<select id="preReadReviewData" parameterType="map"
 		resultType="com.spring.webproject.dto.ReviewDTO">
@@ -219,6 +225,12 @@
 		contents is not null
 	</select>
 
+	<!-- 간단평 작성 확인 -->
+	<select id="getSimpleReviewCheck" parameterType="map" resultType="int">
+		select count(*) from review where isbn = #{isbn} and userid =
+		#{userId} and
+		sentence is not null
+	</select>
 
 	<!-- 전체데이터 -->
 	<select id="getLists" parameterType="hashMap"
@@ -348,6 +360,21 @@
 	]]>
 	</select>
 
+	<!-- 카테고리별 베스트 셀러(3개) 데이터 -->
+	<select id="getLists_Best3" parameterType="hashMap"
+		resultType="com.spring.webproject.dto.BookSectionsDTO">
+		select * from (
+		select rownum rnum, data.* from (
+		select * from
+		bookSections
+		where categoryId between #{cateStart} and #{cateEnd }
+		order by soldBookCnt desc
+		) data)
+	<![CDATA[
+	where rnum >= 1 and rnum <= 3
+	]]>
+	</select>
+
 	<!-- 카테고리별 새로 나온책 데이터 -->
 
 	<select id="getLists_New" parameterType="hashMap"
@@ -356,9 +383,11 @@
 		select rownum rnum, data.* from (
 		select * from
 		bookSections
-		where categoryId between #{cateStart} and #{cateEnd }  and publishDate
+		where categoryId between #{cateStart} and #{cateEnd } and
+		publishDate
 		between
-		(trunc(sysdate,'MM')-3) and (LAST_DAY (TRUNC (SYSDATE)) + 1 /
+		(trunc(sysdate,'MM')-3) and (LAST_DAY (TRUNC
+		(SYSDATE)) + 1 /
 		24)
 		order by
 		soldBookCnt desc
@@ -367,56 +396,65 @@
 	where rnum >= 1 and rnum <= 10
 	]]>
 	</select>
-	
+
 	<!-- 카테고리별 할인 도서 -->
 	<select id="getLists_Discount" parameterType="hashMap"
 		resultType="com.spring.webproject.dto.BookSectionsDTO">
 		select * from (
 		select rownum rnum, data.* from (
-		select * from bookSections
+		select * from
+		bookSections
 		where categoryId between #{cateStart} and #{cateEnd }
-		and discountRate between ${fromDiscount } and ${toDiscount }
-		order by soldBookCnt desc
+		and
+		discountRate between ${fromDiscount } and ${toDiscount }
+		order by
+		soldBookCnt desc
 		) data)
 	<![CDATA[
 	where rnum >= #{start } and rnum <= #{end }
 	]]>
 	</select>
-	
-	<!-- 2) 카테고리별 새로나온도서 개수  -->
+
+	<!-- 2) 카테고리별 새로나온도서 개수 -->
 	<select id="getLists_New_Num" parameterType="hashMap"
 		resultType="int">
 		select count(*) from (
 		select rownum rnum, data.* from (
 		select * from
 		bookSections
-		where categoryId between #{cateStart} and #{cateEnd }  and publishDate
+		where categoryId between #{cateStart} and
+		#{cateEnd } and publishDate
 		between
-		(trunc(sysdate,'MM')-5) and (LAST_DAY (TRUNC (SYSDATE)) + 1 /
+		(trunc(sysdate,'MM')-5) and
+		(LAST_DAY (TRUNC (SYSDATE)) + 1 /
 		24)
 		order by
 		soldBookCnt desc
 		) data)
 
 	</select>
-	
+
 	<!-- 3) 카테고리별 할인도서 개수 -->
 	<select id="getLists_Discount_Num" parameterType="hashMap"
 		resultType="int">
 		select count(*) from (
 		select rownum rnum, data.* from (
 		select * from bookSections
-		where categoryId between #{cateStart} and #{cateEnd }
-		and discountRate between ${fromDiscount } and ${toDiscount }
+		where categoryId between #{cateStart} and
+		#{cateEnd }
+		and discountRate between ${fromDiscount } and ${toDiscount
+		}
 		order by soldBookCnt desc
 		) data)
-	
+
 	</select>
 	<!-- 카테고리 마지막 값 가져오기 -->
 	<select id="getCateEnd" parameterType="int" resultType="int">
-		select nvl(MAX(CATEGORYID),#{categoryId}) from BOOKSCATEGORYLIST where parentsid = #{categoryId }
+		select
+		nvl(MAX(CATEGORYID),#{categoryId}) from BOOKSCATEGORYLIST where
+		parentsid = #{categoryId }
 	</select>
-	
+
 
 
 </mapper>

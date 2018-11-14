@@ -39,6 +39,7 @@ public class BookSectionsDTO {
 	private int soldBookCnt;
 	private String orderCount;
 	private int seqNum;
+	private int maxQuantity;
 	
 	public int getCategoryId() {
 		return categoryId;
@@ -153,6 +154,12 @@ public class BookSectionsDTO {
 	}
 	public void setSeqNum(int seqNum) {
 		this.seqNum = seqNum;
+	}
+	public int getMaxQuantity() {
+		return maxQuantity;
+	}
+	public void setMaxQuantity(int maxQuantity) {
+		this.maxQuantity = maxQuantity;
 	}
 	
 	

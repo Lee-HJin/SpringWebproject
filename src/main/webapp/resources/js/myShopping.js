@@ -380,7 +380,7 @@ function updatePwd(){
 	}
 	f.newPwd2.value = pwd2;
 	
-	if(!pwd1==pwd2){
+	if(pwd1!=pwd2){
 		alert("\n새 비밀번호가 일치하지 않습니다.");
 		f.newPwd1.focus();
 		return;
@@ -972,31 +972,28 @@ function goShoppingCart(){
 	
 	if(checkArray.length==0){
 		alert("쇼핑카트에 담을 상품을 선택해주세요.");
+		return;
 	}
-	
 	
 	if(items){
 		var itemArray=items.split('/');
-		var cookie = new Array();	
+		var cookie = new Array();
 		
 		for(i=0;i<itemArray.length;i++){
 			cookie[i] = JSON.parse(itemArray[i]);
 	 	}
 		
-		for(i=0;i<checkArray.length;i++){
-			
+		for(i=0;i<checkArray.length;i++){		
 			for(j=0;j<cookie.length;j++){
-				
-				if(cookie[j].isbn==checkArray[i]){
-					
+				if(cookie[j].isbn==checkArray[i]){	
 					alert("이미 쇼핑카트에 있는 상품입니다.");
-					return;
-					
+					return;	
 				}	
 			}
 			
 			flag = false;
 		}
+		
 		if(flag==false){
 			
 			for(i=0;i<checkArray.length;i++){
@@ -1008,9 +1005,10 @@ function goShoppingCart(){
 		}
 	}
 	else{
+		var newArray = new Array();
+		
 		for(i=0;i<checkArray.length;i++){
 			var cookieValue = JSON.stringify({"isbn":checkArray[i],"orderCount":ordCnt});
-			var newArray = new Array();
 			newArray.push(cookieValue);
 		}
 		setCookie('shop',newArray.join('/'),1);
