@@ -74,8 +74,7 @@ public class BookSectionColtroller {
 		장르별 검색을 위해서 between 을 넣어서 
 		sortNum lke 1 and 99 or 1 and 4 필요
 		*/
-		
-		
+
 		
 		//전체데이터 갯수
 		int dataCount = raDao.getDataCount();
@@ -163,7 +162,7 @@ public class BookSectionColtroller {
 		
 		if(sort1st == null && sort2nd == null){
 			sort1st = "1";
-			sort2nd = "99";
+			sort2nd = "2000";
 		}
 
 		/* 
@@ -315,7 +314,7 @@ public class BookSectionColtroller {
 		
 		if(sort1st == null && sort2nd == null){
 			sort1st = "1";
-			sort2nd = "99";
+			sort2nd = "2000";
 		}
 		/*장르*//*장르*/
 		
@@ -660,7 +659,7 @@ public class BookSectionColtroller {
 	    kc.setPath("/");
 	    response.addCookie(kc) ;
 
-		return "myShopping/myShoppingMain";
+		return "redirect:/myShoppingMain.action";
 	}
 	
 	@RequestMapping(value="cartList.action", method= {RequestMethod.GET, RequestMethod.POST})
