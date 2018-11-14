@@ -32,13 +32,6 @@
 <script type="text/javascript" src="/webproject/resources/js/jquery/jquery.blockUI.js"></script>
 <script type="text/javascript" src="/webproject/resources/js/jquery/idangerous.swiper.js"></script>
 
-<script type="text/javascript" src="https://wcs.naver.net/wcslog.js"></script>
-
-<!-- ADSSOM 신규 버전 17-11-20 -->
-<!-- ADSSOM 공통 SCRIPT -->
-<script type="text/javascript" src="https://sc.11h11m.net/s/E799.js"></script>
-<script type="text/javascript" charset="UTF-8" async="" src="http://s.n2s.co.kr/_n2s_ck_log.php"></script>
-
 <link rel="stylesheet" href="http://image.bandinlunis.com/common/css/pStyle.css" type="text/css">
 
 <script type="text/javascript" src="/webproject/resources/js/dwr.js" charset="euc-kr"></script>
@@ -127,11 +120,11 @@
 						<ul class="swiper-slide swiper-slide-duplicate" style="width: 728px; height: 265px;">
 							<li>
 								<p class="pimg">
-									<a href="" class="sw">
+									<a href="<%=cp %>/book_info.action?isbn=${dto.isbn}" class="sw">
 										<img src="<%=cp %>/resources/image/book/${dto.bookImage }" class="mPimg" alt="">
 									</a>
 								</p>
-								<p class="booktit mt10"><a href="/front/product/detailProduct.do?prodId=4198423">${dto.bookTitle }</a></p>
+								<p class="booktit mt10"><a href="<%=cp %>/book_info.action?isbn=${dto.isbn}">${dto.bookTitle }</a></p>
 								<p class="writer mt5">${dto.authorName } | ${dto.publisher }</p>
 								<p class="price mt10">${dto.discountedPrice }원</p>
 							</li>
@@ -205,7 +198,7 @@
 					<div class="prod_list_type prod_best_type">
 						<ul>	        	
 			         	<li>
-			         		<input class="checkbox" type="checkbox" value="${dto.isbn }" name="isbn">
+			         		<input type="hidden" name="maxQuantity" id="maxQuantity" value="${dto.maxQuantity }"/>
 							<div class="prod_thumb">
 								<span class="ranking">
 									<span class="rank_num">${dto.rnum }</span>
@@ -216,7 +209,7 @@
 								</span>
 								<div class="prod_thumb_img">
 									<a href="<%=cp %>/book_info.action?isbn=${dto.isbn}" onfocus="this.blur();">
-										<img src="<%=cp %>/resources/image/book/${dto.bookImage }"> <!-- onerror="this.src='/images/common/noimg_type01.gif';"  -->
+										<img src="<%=cp %>/resources/image/book/${dto.bookImage }">
 									</a>
 									<a class="btn_popup" target="_blank" href="/front/product/detailProduct.do?isbn=4181047"><span class="ico_new">새창열기</span></a>
 								</div>
@@ -250,7 +243,7 @@
 									${dto.introduction }
 								</dd>
 									<dd class="txt_ebook">
-									<span>지금 주문하면 <strong class="t_red">내일</strong>받을 수 있습니다.</span>
+									<span>지금 주문하면 <strong class="t_red">3일</strong> 뒤에 받을 수 있습니다.</span>
 									</dd>
 							</dl>
 							
@@ -268,8 +261,7 @@
 										</dt>
 										
 										<dd><a href="javascript:addCart('${dto.isbn }');"><span class="btn_b_comm btype_f1">쇼핑카트</span></a></dd>
-										<dd class="mt3"><a href="javascript:goOrder('${dto.isbn }');"><span class="btn_w_comm btype_f1">바로구매</span></a></dd>
-										<dd class="mt3"><a href="javascript:add_wish_array_common('${dto.isbn }', true);"><span class="btn_w_comm btype_f1">위시리스트</span></a></dd>
+										<dd class="mt3"><a href="javascript:goOrder('${dto.isbn }');"><span class="btn_w_comm btype_f1">바로구매</span></a></dd>	
 									</dl>
 								</c:when>
 								
@@ -286,7 +278,6 @@
 										
 										<dd><a href=""><span class="btn_gy_comm btype_f1">상품문의하기</span></a></dd>
 										<dd class="mt3"><a href="javascript:goOrder('${dto.isbn }');"><span class="btn_w_comm btype_f1">바로구매</span></a></dd>
-										<dd class="mt3"><a href="javascript:add_wish_array_common('${dto.isbn }', true);"><span class="btn_w_comm btype_f1">위시리스트</span></a></dd>
 									</dl>
 								</c:otherwise>
 							</c:choose>

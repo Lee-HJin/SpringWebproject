@@ -292,9 +292,9 @@
                     </c:if>
                     <c:if test="${empty sessionScope.userInfo }">
                     	<dl class="benefitA overflow">
-	                   		<dt class="bftit">나의 사용가능 혜택:</dt>
+	                   		<dt class="bftit">&nbsp;</dt>
 	                   		<dd>
-	                   		로그인 하시면 확인할 수 있습니다.                 		
+	                   		<strong>로그인 하시면 <strong class="t_red">포인트</strong>를 확인할 수 있습니다.</strong>                 		
 	                   		</dd>
 	                    </dl>
                     </c:if>
@@ -329,8 +329,7 @@
 					</div>
 
 					<div class="pos_abs at0 ar0 mt3" style="_top:0;_margin-top:0">
-						<a href="javascript:array_interest(1);"><img src="/webproject/resources/images/searchN/btn_cart_wishlist02.gif" alt="선택상품 위시리스트 담기"></a>
-						<a href="javascript:deleteCart();" id="bandiDeduction" class="btn_del" style="cursor:pointer;"><img src="/webproject/resources/images/searchN/btn_cart_del02.gif" alt="선택상품 삭제"></a>
+						<a href="javascript:deleteCart();" id="bandiDeduction" class="btn_del" style="cursor:pointer; margin-right: 10px;"><img src="/webproject/resources/images/searchN/btn_cart_del02.gif" alt="선택상품 삭제"></a>
 					</div>
 					
             		<form  id="goOrder" action="<%=cp%>/order.action" method="post">

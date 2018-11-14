@@ -5,8 +5,8 @@
 %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
-<link rel="stylesheet" href="<%=cp%>/resources/css/swiper_min.css">
 <link rel="stylesheet" href="<%=cp%>/resources/css/main.css" type="text/css"/>
+
 
 <script type="text/javascript">
 
@@ -882,8 +882,7 @@
 		</div>
 	</div>
 
-	<script src="<%=cp%>/resources/js/swiper_min.js"></script>
-	<script src="<%=cp%>/resources/js/swiper.js"></script>
+
 	
 	
 
