@@ -158,12 +158,13 @@
 				if(document.cookie.indexOf('shop')==-1){
 					setCookie('shop',cookieValue,1);
 					
-					if(confirm("쇼핑카트에 등록되었습니다. 지금 바로 확인 하시겠습니까?")){
-						location.href= 'shopCartList.action';
-					}
-					else{
+					var result = confirm('쇼핑카트로 바로 가시겠습니까?'); 
+					if(result) { 
+						location.replace('shopCartList.action'); 
+					} else { 
 						return;
 					}
+
 					
 				}else if(document.cookie.indexOf('shop')!=-1){
 					addCookie(cookieValue,ck);
@@ -290,7 +291,7 @@
 		}
 		
 		//배송비용
-		if(bandiDeductionTotSaleCost < 50000){
+		if(bandiDeductionTotSaleCost < 10000){
 			bandiDeductionTotDeliCost = 2000;
 		}
 		
@@ -314,33 +315,12 @@
 		
 		
 	}
-	
-	$("#btn_order").click(function() {
-	
-		var session = $("#userInfo").val();
 
-		   if(session == null || session == ""){
-			   
-			   var result = confirm('로그인을 해야 주문 가능합니다. 로그인 하시겠습니까?'); 
-				if(result) { 
-
-					//yes 
-					location.href = 'login.action' 
-			
-				} else { 
-					//no
-					
-				}
-			   
-		   }
-		   else{
-			   $("#goOrder").submit();
-		   }
-
+	$("#btn_order").click(function() {	  
+		$("#goOrder").submit();
 	});
 	
-	
-	
+
 	//cart 수정
 	function updateShopCart(isbn, seqNum) {
 		var ordCnt = parseInt($("#cntVal_"+seqNum).val());

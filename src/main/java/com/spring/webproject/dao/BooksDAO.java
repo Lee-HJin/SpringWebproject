@@ -30,6 +30,12 @@ public class BooksDAO {
 
 	}
 
+	// 카테고리 아이디 가져오기
+	public int getCategoryId(String isbn) {
+		int result = sessionTemplate.selectOne("bookMapper.getCategoryId", isbn);
+		return result;
+	}
+
 	// 카테고리 정보 가져오기
 	public CateDTO getReadCate(int categoryId) {
 		CateDTO dto = sessionTemplate.selectOne("bookMapper.getReadCate", categoryId);
@@ -228,6 +234,18 @@ public class BooksDAO {
 		return result;
 	}
 
+	// 간단평 체크
+	public int getSimpleReviewCheck(String isbn, String userId) {
+
+		HashMap<String, Object> params = new HashMap<String, Object>();
+
+		params.put("isbn", isbn);
+		params.put("userId", userId);
+
+		int result = sessionTemplate.selectOne("bookMapper.getSimpleReviewCheck", params);
+		return result;
+	}
+
 	// 전체 데이터 from bnlBSList
 	public List<BookSectionsDTO> getListMain_2(int sort1st, int sort2nd, int start, int end) {
 
@@ -310,9 +328,21 @@ public class BooksDAO {
 
 		params.put("cateStart", cateStart);
 		params.put("cateEnd", cateEnd);
-	
 
 		List<BookSectionsDTO> lists = sessionTemplate.selectList("bookMapper.getLists_Best", params);
+
+		return lists;
+	}
+
+	// 카테고리별 베스트 셀러(3개) 가져오기2
+	public List<BookSectionsDTO> getLists_Best3(int cateStart, int cateEnd) {
+
+		HashMap<String, Object> params = new HashMap<String, Object>();
+
+		params.put("cateStart", cateStart);
+		params.put("cateEnd", cateEnd);
+
+		List<BookSectionsDTO> lists = sessionTemplate.selectList("bookMapper.getLists_Best3", params);
 
 		return lists;
 	}
@@ -324,7 +354,6 @@ public class BooksDAO {
 
 		params.put("cateStart", cateStart);
 		params.put("cateEnd", cateEnd);
-	
 
 		List<BookSectionsDTO> lists = sessionTemplate.selectList("bookMapper.getLists_New", params);
 

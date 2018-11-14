@@ -66,6 +66,11 @@
 	type="text/css">
 
 <script type="text/javascript"
+	src="/webproject/resources/js/multiCart.js">
+	
+</script>
+
+<script type="text/javascript"
 	src="/webproject/resources/book_js/iframeResizer.contentWindow.min.js"></script>
 
 <script type="text/javascript"

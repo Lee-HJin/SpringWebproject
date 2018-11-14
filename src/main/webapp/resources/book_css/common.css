@@ -906,7 +906,7 @@ a.more:active	{text-decoration:none; color:#999999;}
 .prod_btn dt .num{float:left;width:31px;height:19px;padding:0 2px;border:1px solid #c6c8cb;text-align:center;line-height:21px;*height:19px;}
 .prod_btn dt .num_txt{float:left;padding:5px 3px 0 34px;margin-left:4px;color:#666}
 .prod_btn dt .btn_updn_wrap{float:left}
-.btn_num_up, .btn_num_dn{display:block;width:12px;height:11px;background:url('/images/searchN/btn_comm_140630.gif') no-repeat;text-indent:-99999em}
+.btn_num_up, .btn_num_dn{display:block;width:12px;height:11px; no-repeat;text-indent:-99999em}
 .btn_num_up{background-position:-81px -20px}
 .btn_num_dn{background-position:-81px -33px}
 .prod_btn a{text-decoration:none}

@@ -6,6 +6,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
@@ -73,8 +74,7 @@ public class BookSectionColtroller {
 		장르별 검색을 위해서 between 을 넣어서 
 		sortNum lke 1 and 99 or 1 and 4 필요
 		*/
-		
-		
+
 		
 		//전체데이터 갯수
 		int dataCount = raDao.getDataCount();
@@ -314,7 +314,7 @@ public class BookSectionColtroller {
 		
 		if(sort1st == null && sort2nd == null){
 			sort1st = "1";
-			sort2nd = "99";
+			sort2nd = "2000";
 		}
 		/*장르*//*장르*/
 		
@@ -456,18 +456,16 @@ public class BookSectionColtroller {
 	@RequestMapping(value="shopCartList.action", method= {RequestMethod.GET, RequestMethod.POST})
 	public String shopCartList(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		
-	/*	UserDTO dto5 = (UserDTO)request.getSession().getAttribute("userInfo");
+		UserDTO dto5 = (UserDTO)request.getSession().getAttribute("userInfo");
 		
-		//남은 포인트
-		String userId = dto5.getUserId();
+		if(dto5 != null) {
+			
+			//남은 포인트	
+			int leftPoint = raDao.getLeftPoint(dto5.getUserId());
+				
+			request.setAttribute("leftPoint", leftPoint);
+		}
 		
-		int leftPoint = raDao.getLeftPoint(userId);
-		//남은 포인트
-		System.out.println(userId);
-		System.out.println(leftPoint);
-		
-		request.setAttribute("leftPoint", leftPoint);*/
-
 		return "shopAndOrder/shopCartList";
 	}
 	
@@ -540,7 +538,7 @@ public class BookSectionColtroller {
 		// orders table insert	start
 		int totCosVal = 0;
 		int totValue = 0;
-		
+		int deliveryFee = 2000;
 		for(int i=0;i<arrayIsbn.length;i++) {
 
 			int saleCosVal = Integer.parseInt(arraySaleCosVal[i]);
@@ -548,6 +546,10 @@ public class BookSectionColtroller {
 			int value = Integer.parseInt(arrayPointVal[i]);
 
 			totCosVal += saleCosVal * OrderCount;
+				if(totCosVal < 10000) {
+					totCosVal += deliveryFee;
+				}
+			
 			totValue += value;
 
 		}
@@ -584,7 +586,7 @@ public class BookSectionColtroller {
 		//usedPoint : 주문시에 사용한 포인트
 		int inputPoint = usedPoint-(usedPoint*2);	//DB에 입력할 때 사용할 포인트 변수
 		
-		while(usedPoint<=0) {	//usedPoint가 0이 될때까지 동작
+		while(usedPoint!=0) {	//usedPoint가 0이 될때까지 동작
 
 			//rownum으로 leftPoint를 만료일자가 가까운 순으로 불러옴
 			//pointMap안에는 pointid, leftValue가 들어있음
@@ -593,14 +595,17 @@ public class BookSectionColtroller {
 			//pointMap 풀어내기
 			int leftValue = ((BigDecimal)pointMap.get("LEFTVALUE")).intValue();
 			int pointId = ((BigDecimal)pointMap.get("POINTID")).intValue();
+			
 
+			
 			//사용한 포인트>적립된 포인트
 			//적립된 포인트(point테이블 안의 leftValue)를 0으로 만든다음 사용한포인트-적립된 포인트한 금액을
 			//다시 usedPoint에 넣음 그리고 while문 반복
 			if(usedPoint>=leftValue) { 
 				//leftValue를 0으로 만들고, usedPoint를 그만큼 줄여서 다시 저장
 				shoppingDao.pointUseUpdate(pointId, 0);
-				usedPoint = usedPoint-leftValue;		
+				usedPoint = usedPoint-leftValue;
+
 			}
 			//사용한 포인트<적립된 포인트
 			//적립된 포인트-사용한 포인트 금액을 불러온 pointId를 통해 leftValue를 업데이트한 후 while문 종료됨
@@ -650,7 +655,17 @@ public class BookSectionColtroller {
 		}
 		//책권수 빼기
 
-		return "shopAndOrder/order";
+	    // 특정 쿠키만 삭제하기
+	    Cookie kc = new Cookie("shop", null);
+	    kc.setMaxAge(0);
+	    kc.setPath("/");
+	    response.addCookie(kc);
+	    
+	    //세션에 적립금 정보 다시 올리기(적립금 사용 및 적립 변동사항 적용)
+	    int pointValue = shoppingDao.getPointValue(dto3.getUserId());
+	    request.getSession().setAttribute("pointValue", pointValue);
+
+		return "redirect:/myShoppingMain.action";
 	}
 	
 	@RequestMapping(value="cartList.action", method= {RequestMethod.GET, RequestMethod.POST})
@@ -669,6 +684,5 @@ public class BookSectionColtroller {
 		
 		return "shopAndOrder/cartList";
 	}
-
 
 }

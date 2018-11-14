@@ -4,6 +4,8 @@
 <% 
 	request.setCharacterEncoding("UTF-8");
 	String cp = request.getContextPath();
+	String alert = (String)request.getSession().getAttribute("loginAlert");
+	request.getSession().removeAttribute("loginAlert");
 	
 %>
 <!DOCTYPE html>
@@ -23,7 +25,7 @@
 	
 	$(function(){
 		
-		var message = '${loginAlert}';
+		var message = '<%=alert%>';
 		
 		if(message!=null && message!='' && message!='null'){
 			alert(message);
