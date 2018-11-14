@@ -1125,9 +1125,9 @@ $(document).ready(function(){
 	    onlyExternal : true,
 	    pagination: '.d_md_recomm .pagination',
 	    loop:true,
-	    autoplay: 5000,
+	/*     autoplay: 5000,
 	    speed:500,
-	    autoplayDisableOnInteraction: true,
+	    autoplayDisableOnInteraction: false, */
 	    //autoplayStopOnLast: true,
 	    paginationClickable: true,
 	    onSlideChangeStart: function(){

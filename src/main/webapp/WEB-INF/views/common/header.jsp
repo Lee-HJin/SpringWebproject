@@ -6,7 +6,6 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
 <link rel="stylesheet" href="<%=cp%>/resources/css/swiper_min.css">
-<link rel="stylesheet" href="<%=cp%>/resources/css/main.css" type="text/css"/>
 
 <script type="text/javascript">
 
@@ -203,7 +202,7 @@
 		</div>
 	</div>
 	<div id="side_service" style="top: 554px;">
-		<div class="today_view" id="side_today_nodata" style="display: none;">
+		<div class="today_view main" id="side_today_nodata" style="display: none;">
 			<h4>최근 본 상품</h4>
 			<div style="width: 92px;margin: 0 auto;overflow: hidden;">
 				<div class="nodata">
@@ -881,10 +880,6 @@
 			</div>
 		</div>
 	</div>
-
-	<script src="<%=cp%>/resources/js/swiper_min.js"></script>
-	<script src="<%=cp%>/resources/js/swiper.js"></script>
-	
 
 </body>
 

@@ -67,13 +67,13 @@
 
 <!-- 베스트셀러 -->
 <select id="bestSeller" resultType="com.spring.webproject.dto.MainDTO">
-	select * from(
-	select rownum listNum,a.isbn,bookTitle,bookImage from bookImage a,(
+	select rownum listNum,isbn,bookTitle,bookImage from (
+	select a.isbn,bookTitle,bookImage,selCnt from bookImage a,(
 	select a.isbn,bookTitle,selCnt from books a,(
 	select sum(quantity) selCnt,isbn from orderBooks group by isbn) b 
-	where a.isbn=b.isbn order by selCnt desc, bookTitle) b where a.isbn=b.isbn and bookImage like '%cover%')
-<![CDATA[ 
-	where listNum<=10
+	where a.isbn=b.isbn) b where a.isbn=b.isbn and bookImage like '%cover%' order by selCnt desc, bookTitle)
+<![CDATA[
+	where rownum<=10
 ]]>
 </select>
 

@@ -339,9 +339,9 @@ body{font-size: 12px;
     margin: 0 auto;
     padding: 0;}
 
-.swiper-container{ width: 100%; height: 100%;}
+#body .swiper-container{ width: 100%; height: 100%;}
 
-.swiper-slide{
+#body .swiper-slide{
 	text-align: center;
      font-size: 18px;
      background: #fff;
@@ -447,29 +447,29 @@ body{font-size: 12px;
     text-align: left;
 }
 
-.b_wrap{
+.tb_wrap{
 	margin: 45px 0 0 60px;
 }
 
-.b_img{
+.tb_img{
     width: 172px;
     float: left;
     margin-right: 32px;
 }
 
-.b_img img{ width:170px;border:1px solid #e9e9e9;max-height:265px;}
+.tb_img img{ width:170px;border:1px solid #e9e9e9;max-height:265px;}
 
-.b_wrap dl{
+.tb_wrap dl{
     float: left;
     width: 335px;
     font-family: 맑은고딕;
 }
-.b_wrap dl dt{
+.tb_wrap dl dt{
 	font-size: 23px;
     letter-spacing: -0.03em;
     line-height: 120%;
 }
-.b_wrap dl dt a{ color: #333;}
+.tb_wrap dl dt a{ color: #333;}
 
 .author{
     font-size: 16px;
@@ -1331,7 +1331,7 @@ body{font-size: 12px;
     right: 5px;
     background: #FFF url(/webproject/resources/image/main/sp_common.gif) no-repeat -177px -57px;
 }
-.q_list{margin: 12px 0 4px 3px; height: 165px;}
+.q_list{margin: 12px 0 0 3px; height: 165px;}
 .q_list li{margin-bottom: 8px; overflow: hidden;}
 
 .bnl_banner{

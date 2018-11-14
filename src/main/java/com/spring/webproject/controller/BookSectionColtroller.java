@@ -162,7 +162,7 @@ public class BookSectionColtroller {
 		
 		if(sort1st == null && sort2nd == null){
 			sort1st = "1";
-			sort2nd = "99";
+			sort2nd = "2000";
 		}
 
 		/* 
@@ -658,12 +658,14 @@ public class BookSectionColtroller {
 		
 		String ck = request.getParameter("isbn");
 		String ckC = request.getParameter("orderCount");
-
-		List<BookSectionsDTO> lst = new ArrayList<BookSectionsDTO>();
 		
-		lst = raDao.cartList(ck,ckC);
-		
-		request.setAttribute("lst", lst);
+		if(!ck.equals("") && ck!=null) {
+			List<BookSectionsDTO> lst = new ArrayList<BookSectionsDTO>();
+			
+			lst = raDao.cartList(ck,ckC);
+			
+			request.setAttribute("lst", lst);
+		}
 		
 		return "shopAndOrder/cartList";
 	}
