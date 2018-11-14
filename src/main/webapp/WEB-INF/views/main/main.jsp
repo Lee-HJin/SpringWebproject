@@ -14,8 +14,6 @@
 <head>
 <meta charset="UTF-8">
 
-<link rel="stylesheet" href="<%=cp%>/resources/css/main.css" type="text/css"/>
-<link rel="stylesheet" href="<%=cp%>/resources/css/swiper_min.css">
 <link rel="stylesheet" href="http://bandinlunis.com/common/css/center.css" type="text/css">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <link rel="shortcut icon" href="http://image.bandinlunis.com/favicon.ico" type="image/x-icon">
@@ -189,39 +187,6 @@
 		
 	}
 	
-/* 	//쿠키 가져오기
-	function getCookie(cookiename){
-		var cookiestring  = document.cookie;
-		var cookiearray = cookiestring.split(';');
-		for(var i=0; i<cookiearray.length; ++i){ 
-		    if(cookiearray[i].indexOf(cookiename)!=-1){
-		        var nameVal = cookiearray[i].split("=");
-		        nameVal = nameVal[1].trim();
-		        return unescape(nameVal);
-		    }else{
-		    	var cookie = null;
-		    } 
-		}
-		return cookie;
-	}
- 	
-	//쿠키 뿌리기
-	function cookieInfo(cValue) {		
- 		var cookie = cValue;
- 		
- 		if(cookie!=null){
- 			cookie = cookie.split("/");
- 	 		var ck = new Array();
- 	 		
- 	 		for(i=0;i<cookie.length;i++){
- 	 			ck[i] = JSON.parse(cookie[i]);
- 	 		} 		
- 	 		return ck;
- 		}else{
- 			return null;
- 		}
-	} */
-	
 
 </script>
 </head>
@@ -229,7 +194,6 @@
 <jsp:include page="./header.jsp" flush="false"/>
 
 <div id="body">
-	
 	<div class="swiper-container swiper1"><!-- 첫번째 슬라이드 -->
    		<div class="swiper-wrapper">
      		<div class="swiper-slide">
@@ -254,8 +218,7 @@
 
 	    <div class="swiper-button-next"></div>
 	    <div class="swiper-button-prev"></div>
-    </div>
-
+	</div>
 </div>
 
 <div class="body_section">
@@ -334,8 +297,8 @@
 				<div class="swiper-wrapper" 
 				style="width: 3345px; height: 358px; transform: translate3d(-2676px, 0px, 0px); transition-duration: 0.3s;">
 					<div class="swiper-slide one_b">
-						<div class="b_wrap">
-							<div class="b_img">
+						<div class="tb_wrap">
+							<div class="tb_img">
 								<a href="<%=cp%>/book_info.action?isbn=9788950976514">
 								<!-- db구축 후에 db에서 데이터 꺼내와야함 -->
 									<img src="/webproject/resources/image/main/today_book1.jpg">
@@ -469,7 +432,7 @@
 			</div>
 			<div class="rc_body" id="no_data" style="display: none;">
 				<div class="rc_no_data">
-					최근 본 상품이 없습니다.
+					오늘 본 상품이 없습니다.
 				</div>
 			</div>
 			<div class="rc_body" id="data" style="display: block;">
@@ -931,7 +894,14 @@
 					</div>
 					<div>
 						<a href="/webproject/help/helpIndex.action?parentsTypeId=${qlst.parentsTypeId }&questionId=${qlst.questionId }&typeId=${qlst.typeId}">
-							${qlst.subject }
+						<c:choose>
+							<c:when test="${fn:length(qlst.subject)>30 }">
+								<c:out value="${fn:substring(qlst.subject,0,28) }"/>…
+							</c:when>
+							<c:otherwise>
+								<c:out value="${qlst.subject }"></c:out>
+							</c:otherwise>
+						</c:choose>
 						</a>
 					</div>
 				</li>

@@ -185,7 +185,9 @@
 <link rel="shortcut icon" href="http://bandinlunis.com/favicon.ico"	type="image/x-icon">
 <link rel="stylesheet" href="http://bandinlunis.com/common/css/center.css" type="text/css">
 <link rel="stylesheet" href="http://bandinlunis.com/common/css/common.css?v=20180705" type="text/css">
+<link rel="stylesheet" href="<%=cp%>/resources/css/swiper_min.css">
 <link rel="stylesheet" href="<%=cp%>/resources/css/main.css" type="text/css"/>
+
 </head>
 <body>
 	<div id="onTop" class="top_btn">
@@ -195,13 +197,13 @@
 	</div>
 	<div class="side_banner" style="margin-left: 575px;">
 		<div>
-			<a href="/webproject/book_info.action?isbn=9788965706830"> <img
+			<a href="<%=cp%>/book_info.action?isbn=9788965706830"> <img
 				src="<%=cp%>/resources/image/main/side_banner01.jpg">
 			</a>
 		</div>
 		<div>
-			<a href="/webproject/book_info.action?isbn=9791160271454"> <img
-				src="<%=cp%>/resources/image/main/side_banner02.jpg">
+			<a href="<%=cp%>/book_info.action?isbn=9788984373594"> <img
+				src="<%=cp%>/resources/image/main/banner20181109141235.jpg">
 			</a>
 		</div>
 	</div>
@@ -653,8 +655,5 @@
 			</div>
 		</div>
 	</div>
-
-	<script src="<%=cp%>/resources/js/swiper_min.js"></script>
-	<script src="<%=cp%>/resources/js/swiper.js"></script>
 
 </body>

@@ -8,8 +8,8 @@
 ************************************************************************/
 
 .conWrap{width:960px;margin-left:5px}
-.orderTit{border-bottom:2px solid #5d503f;width:955px;height:25px;padding-left:5px}
-.orderTit02{border-bottom:2px solid #5d503f;width:955px;height:25px;padding-left:5px;;padding-top:10px}
+.orderTit{border-bottom:2px solid #5d503f;width:965px;height:25px;padding-left:5px}
+.orderTit02{border-bottom:2px solid #5d503f;width:965px;height:25px;padding-left:5px;;padding-top:10px}
 .orderTit .dedu_txt {font:bold 16px 맑은 고딕; letter-spacing:-0.05em; display:inline-block; margin-top:-3px; margin-left:10px; color:#457CAB}
 .cartTit{height:30px;background:#f9f9f9;border:1px solid #e1e1e1;border-bottom:none;padding:16px 0 0 22px;}
 .cartTit h3{font:bolder 16px '맑은 고딕',돋움;color:#222}
@@ -29,7 +29,7 @@ textarea	{border:1px solid #d1d1d1;}
 
 .receive_check{background:url(/webproject/resources/images/searchN/ico_receive_check.gif) no-repeat 0 0;padding:7px 0 0 238px;}
 
-.orderTable{width:960px;font:normal 12px 굴림,Dotum,AppleGothic,sans-serif}
+.orderTable{width:970px;font:normal 12px 굴림,Dotum,AppleGothic,sans-serif}
 .orderTable th{font-weight:normal;background:#f7f7f7;border-left:1px solid #d8d8d8;padding:10px 5px 10px 5px; text-align:center}
 .orderTable th:first-child{border-left:none}
 .orderTable td{padding:10px 5px 10px 5px;border-bottom:1px solid #d8d8d8;border-left:1px solid #d8d8d8; text-align:center}
@@ -56,7 +56,7 @@ textarea	{border:1px solid #d1d1d1;}
 .orderTable2 .s_con02{display:inline-block;width:110px;}
 .orderTable2 .s_con04{display:inline-block;width:200px}
 
-.orderTable_tatol{width:960px;}
+.orderTable_tatol{width:970px;}
 .orderTable_tatol th{background:#999999;border-left:1px solid #d7d7d7;border-bottom:1px dashed #fff;height:40px;color:#fff;font:bolder 14px 돋움;text-align:center}
 .orderTable_tatol th:first-child{border-left:none}
 .orderTable_tatol td{background:#f9fcf5;font:bolder 22px verdana; vertical-align:top;color:#333333;padding:28px 0 25px 0;border-bottom:1px solid #d7d7d7;border-left:1px solid #d7d7d7; text-align:center}

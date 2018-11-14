@@ -196,6 +196,7 @@
 							
 						}else{
 							flag= false;
+							alert("중복 피함");
 						}	
 					}
 					if(flag==false){

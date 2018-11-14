@@ -5,9 +5,6 @@
 %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
-<link rel="stylesheet" href="<%=cp%>/resources/css/main.css" type="text/css"/>
-
-
 <script type="text/javascript">
 
 	$(document).ready(function(){
@@ -183,7 +180,9 @@
 <link rel="shortcut icon" href="http://bandinlunis.com/favicon.ico"	type="image/x-icon">
 <link rel="stylesheet" href="http://bandinlunis.com/common/css/center.css" type="text/css">
 <link rel="stylesheet" href="http://bandinlunis.com/common/css/common.css?v=20180705" type="text/css">
+<link rel="stylesheet" href="<%=cp%>/resources/css/swiper_min.css">
 <link rel="stylesheet" href="<%=cp%>/resources/css/main.css" type="text/css"/>
+
 <body>
 	<div id="onTop" class="top_btn">
 		<a href="javascript://"> <img
@@ -197,13 +196,13 @@
 			</a>
 		</div>
 		<div>
-			<a href="/webproject/book_info.action?isbn=9791160271454"> <img
-				src="<%=cp%>/resources/image/main/side_banner02.jpg">
+			<a href="<%=cp%>/book_info.action?isbn=9788984373594"> <img
+				src="<%=cp%>/resources/image/main/banner20181109141235.jpg">
 			</a>
 		</div>
 	</div>
 	<div id="side_service" style="top: 554px;">
-		<div class="today_view" id="side_today_nodata" style="display: none;">
+		<div class="today_view main" id="side_today_nodata" style="display: none;">
 			<h4>최근 본 상품</h4>
 			<div style="width: 92px;margin: 0 auto;overflow: hidden;">
 				<div class="nodata">
