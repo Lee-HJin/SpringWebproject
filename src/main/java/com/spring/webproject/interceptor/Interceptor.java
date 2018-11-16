@@ -22,7 +22,7 @@ public class Interceptor extends HandlerInterceptorAdapter{
 				if(query==null) {
 				path = "/shopCartList.action";
 				}else {
-				path = "/order.action";
+				path = "/order_dirOrder.action";
 				}
 			}
 			

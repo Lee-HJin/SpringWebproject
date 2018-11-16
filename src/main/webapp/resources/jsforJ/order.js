@@ -8,7 +8,6 @@
 			})()
 
 			$("#totDiscountCost").text(FormatNumber3($("#reserve_point").val()));
-			
 
 		});
 		
@@ -29,12 +28,16 @@
 		//결제하기
 		$("#btn_order").click(function(){
 			
+			
+			if(!($("#item03").is(":checked")) || !($("#item04").is(":checked"))){
+				alert("체크 박스를 모두 체크 하셔야합니다.")
+				return;
+			}
+			
 			$("#getDone").submit();
 			
 		});
 
-		
-	
 	});
 	
 		
@@ -43,7 +46,7 @@
 	// 쇼핑카트 수정
 	function goCart() {
 		
-		document.location.href = "http://www.bandinlunis.com/front/order/shopCartList.do?cartType=01";
+		document.location.href = "shopCartList.action";
 		
 	}
 
@@ -85,7 +88,7 @@
 		}
 
 		// 배송비용
-		if (bandiDeductionTotSaleCost < 50000) {
+		if (bandiDeductionTotSaleCost < 10000) {
 			bandiDeductionTotDeliCost = 2000;
 		}
 		

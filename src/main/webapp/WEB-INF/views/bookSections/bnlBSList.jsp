@@ -232,11 +232,11 @@
 					<!-- page -->
 					<div class="pageTypeA pageTypeB">
 
-						<a href="<%=cp%>/bnlBSList.action?pageNum=1&sort=${sort }&sort1st=${sort1st}&sort2nd=${sort2nd}">1~20위</a>
-						<a href="<%=cp%>/bnlBSList.action?pageNum=2&sort=${sort }&sort1st=${sort1st}&sort2nd=${sort2nd}">21~40위</a>
-						<a href="<%=cp%>/bnlBSList.action?pageNum=3&sort=${sort }&sort1st=${sort1st}&sort2nd=${sort2nd}">41~60위</a>
-						<a href="<%=cp%>/bnlBSList.action?pageNum=4&sort=${sort }&sort1st=${sort1st}&sort2nd=${sort2nd}">61~80위</a>
-						<a href="<%=cp%>/bnlBSList.action?pageNum=5&sort=${sort }&sort1st=${sort1st}&sort2nd=${sort2nd}">81~100위</a>
+						<a href="<%=cp%>/bnlBSList.action?pageNum=1&sort=${sort }&sort1st=${sort1st}&sort2nd=${sort2nd}">1~10위</a>
+						<a href="<%=cp%>/bnlBSList.action?pageNum=2&sort=${sort }&sort1st=${sort1st}&sort2nd=${sort2nd}">11~20위</a>
+						<a href="<%=cp%>/bnlBSList.action?pageNum=3&sort=${sort }&sort1st=${sort1st}&sort2nd=${sort2nd}">21~30위</a>
+						<a href="<%=cp%>/bnlBSList.action?pageNum=4&sort=${sort }&sort1st=${sort1st}&sort2nd=${sort2nd}">31~40위</a>
+						<a href="<%=cp%>/bnlBSList.action?pageNum=5&sort=${sort }&sort1st=${sort1st}&sort2nd=${sort2nd}">41~50위</a>
 
 					</div>
 
