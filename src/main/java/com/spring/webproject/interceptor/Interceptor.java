@@ -19,7 +19,11 @@ public class Interceptor extends HandlerInterceptorAdapter{
 			HttpSession session = request.getSession();
 			
 			if(path.equals("/order.action")) {
+				if(query==null) {
 				path = "/shopCartList.action";
+				}else {
+				path = "/order.action";
+				}
 			}
 			
 			//돌아갈 url을 생성해서 session에 올림
