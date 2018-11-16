@@ -97,7 +97,7 @@
 				
 				<!-- left contents -->
 				<div class="con_t2">
-				<form name="bestForm" action="/webspring/bnlBSList.action" method="get" onsubmit="javascript:return false;">
+				<form name="bestForm" action="" method="post" onsubmit="javascript:return false;">
 					<input type="hidden" name="prodStat">
 					<input type="hidden" name="sort">
 					<input type="hidden" name="pageNum" value="1">
@@ -193,6 +193,8 @@
 									<dl class="prod_btn">
 										<dt>
 											<input type="hidden" id="cart_isbn${dto.isbn }" value="${dto.isbn }">
+											<input type="hidden" name="isbn" id="isbn" value=""/>
+											<input type="hidden" name="orderCount" id="orderCount" value=""/>
 											구입 가능 권수 - <strong class="t_red">${dto.maxQuantity }</strong>권<span class="num_txt">수량</span>
 											<input type="text" id="cntVal_${dto.isbn }" value="1" class="num" size="3" maxlength="2" onkeydown="onlyNumber();" onkeyup="">
 											<span class="btn_updn_wrap">
@@ -218,7 +220,7 @@
 										</dt>
 										
 										<dd><a href=""><span class="btn_gy_comm btype_f1">상품문의하기</span></a></dd>
-										<dd class="mt3"><a href="javascript:goOrder('${dto.isbn }');"><span class="btn_w_comm btype_f1">바로구매</span></a></dd>
+										<%-- <dd class="mt3"><a href="javascript:goOrder('${dto.isbn }');"><span class="btn_w_comm btype_f1">바로구매</span></a></dd> --%>
 									</dl>
 								</c:otherwise>
 							</c:choose>
