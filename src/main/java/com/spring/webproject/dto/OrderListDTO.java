@@ -15,6 +15,7 @@ public class OrderListDTO {
 	private String address1;
 	private String address2;
 	private String recipientName;
+	private int booksPrice;
 	
 	public int getOrderId() {
 		return orderId;
@@ -93,6 +94,12 @@ public class OrderListDTO {
 	}
 	public void setRecipientName(String recipientName) {
 		this.recipientName = recipientName;
+	}
+	public int getBooksPrice() {
+		return booksPrice;
+	}
+	public void setBooksPrice(int booksPrice) {
+		this.booksPrice = booksPrice;
 	}
 	
 }

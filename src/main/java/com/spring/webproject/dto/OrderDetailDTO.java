@@ -5,7 +5,7 @@ public class OrderDetailDTO {
 	private String isbn;
 	private String bookTitle;
 	private int quantity;
-	private int bookPrice;
+	private int price;
 	private int point;
 	
 	public String getIsbn() {
@@ -26,17 +26,17 @@ public class OrderDetailDTO {
 	public void setQuantity(int quantity) {
 		this.quantity = quantity;
 	}
-	public int getBookPrice() {
-		return bookPrice;
-	}
-	public void setBookPrice(int bookPrice) {
-		this.bookPrice = bookPrice;
-	}
 	public int getPoint() {
 		return point;
 	}
 	public void setPoint(int point) {
 		this.point = point;
+	}
+	public int getPrice() {
+		return price;
+	}
+	public void setPrice(int price) {
+		this.price = price;
 	}
 
 }

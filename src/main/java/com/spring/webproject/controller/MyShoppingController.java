@@ -1,6 +1,5 @@
 package com.spring.webproject.controller;
 
-import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -82,7 +81,7 @@ public class MyShoppingController {
 		//위시리스트
 		List<MainDTO> wishList = dao.getWishListDefault(hMap);
 		request.setAttribute("wishList", wishList);
-		
+
 		//1:1 상담내역
 		hMap.clear();
 		hMap.put("userId", userId);
@@ -1077,14 +1076,14 @@ public class MyShoppingController {
 	//간단평 페이지
 	@RequestMapping(value = "myShopping/mySentenceList.action", method = RequestMethod.GET)
 	public String mySentenceList(HttpServletRequest request) {
-		
+
 		UserDTO dto = (UserDTO) request.getSession().getAttribute("userInfo");
 		String userId = dto.getUserId();
-		
+
 		int sentenceCount = dao.sentenceCount(userId);
-		
+
 		request.setAttribute("sentenceCount", sentenceCount);
-		
+
 
 		return "myShopping/mySentenceList";
 	}
@@ -1306,7 +1305,7 @@ public class MyShoppingController {
 
 			}
 			else if(mode.equals("yes")) {	//답변내역
-				
+
 				totalDataCount = dao.getCounselCountYes(userId, fromDate, toDate);
 
 				Map<String, Object> hMap = new HashMap<String, Object>();
@@ -1360,21 +1359,21 @@ public class MyShoppingController {
 
 		return "myShopping/lists/lists_counsel";
 	}
-	
+
 	//1:1상담내역 내용보기
 	@RequestMapping(value = "myShopping/counselArticle.action", method = RequestMethod.GET)
 	public String counselArticle(HttpServletRequest request) {
-		
+
 		int consultId = Integer.parseInt(request.getParameter("consultId"));
-		
+
 		CounselDTO dto = dao.getCounselContents(consultId);
 		dto.setContents(dto.getContents().replaceAll("\n", "<br/>"));
-		
+
 		request.setAttribute("dto", dto);
 
 		return "myShopping/myCounselArticle";
 	}
-	
+
 
 	//회원 탈퇴 페이지
 	@RequestMapping(value = "myShopping/memberOut.action", method = RequestMethod.GET)
@@ -1431,12 +1430,59 @@ public class MyShoppingController {
 	@RequestMapping(value = "myShopping/cancelOrder.action", method = RequestMethod.GET)
 	public String cancelOrder(HttpServletRequest request) {
 
-		String orderId = request.getParameter("orderId");
+		UserDTO dto = (UserDTO) request.getSession().getAttribute("userInfo");
+		String userId = dto.getUserId();
 
+		String orderId = request.getParameter("orderId");
+		int usedValue = 0;
+		
+		try {
+			usedValue = Integer.parseInt(request.getParameter("usedPoint"));
+		} catch (Exception e) {
+			usedValue = 0;
+		}
+		
+		int point  = Integer.parseInt(request.getParameter("point"));
+
+		//주문상태 변경
 		dao.cancelOrder(orderId);
 
+		//적립되었던 포인트 회수 및 주문시 사용했던 포인트 재적립
+		
+		//1.적립되었던 포인트 id가져오기
+		int savePointId = dao.getSavePointId(orderId);
+		
+		//3.적립되었던 포인트의 leftValue를 0으로 update
+		dao.pointUseUpdate(savePointId, 0);
 
-		return "redirect:/myShopping/myOrderDetail.action?orderId=" + orderId;
+		//4. 주문시 사용했던 포인트 다시 적립시키기
+		if(usedValue!=0) {	
+			Map<String, Object> hMap = new HashMap<String, Object>();
+			hMap.put("userId", userId);
+			hMap.put("orderId", orderId);
+			hMap.put("value", usedValue);
+			hMap.put("pointId", dao.getMaxPointId()+1);
+			hMap.put("leftValue", usedValue);
+			dao.reSavePoint(hMap);
+		}
+
+		//5.포인트 회수내역 DB에 입력
+		Map<String, Object> hMap = new HashMap<String, Object>();
+		hMap.put("userId", userId);
+		hMap.put("value", point-(point*2));
+		hMap.put("pointId", dao.getMaxPointId()+1);
+		hMap.put("orderId", orderId);
+		dao.canceledOrderPoint(hMap);
+		
+		//적립금 리다이렉트
+		int pointValue = loginDao.getPointValue(userId);	
+		request.getSession().setAttribute("pointValue", pointValue);
+		//진행중 주문 건수 리다이렉트
+		int orderCount = dao.getCountOrderListNormal(userId);
+		request.getSession().setAttribute("orderCount", orderCount);
+		
+		return "redirect:/myShopping/myOrderDetail.action?orderId=" + orderId;	
+		
 	}
 
 	//반품 신청
@@ -1454,9 +1500,9 @@ public class MyShoppingController {
 	//구매 완료
 	@RequestMapping(value = "myShopping/confirmOrder.action", method = RequestMethod.GET)
 	public String confirmOrder(HttpServletRequest request) {
-		
+
 		String orderId = request.getParameter("orderId");
-		
+
 		//구매완료로 상태 변환
 		dao.confirmOrder(orderId);
 
@@ -1472,58 +1518,6 @@ public class MyShoppingController {
 		dao.exchangeOrder(orderId);
 
 		return "redirect:/myShopping/myOrderDetail.action?orderId=" + orderId;
-	}
-
-	//포인트 사용 테스트
-	@RequestMapping(value = "testpoint_ok.action", method = RequestMethod.POST)
-	public String testpoint_ok(HttpServletRequest request) {
-
-		UserDTO dto = (UserDTO) request.getSession().getAttribute("userInfo");
-		String userId = dto.getUserId();
-
-		//usedPoint : 주문시에 사용한 포인트
-		int usedPoint =  Integer.parseInt(request.getParameter("usedPoint"));
-		int inputPoint = usedPoint-(usedPoint*2);	//DB에 입력할 때 사용할 포인트 변수
-
-		while(usedPoint!=0) {	//usedPoint가 0이 될때까지 동작
-
-			//rownum으로 leftPoint를 만료일자가 가까운 순으로 불러옴
-			//pointMap안에는 pointid, leftValue가 들어있음
-			HashMap<String, Object> pointMap = dao.getLeftPoint(userId);
-
-			//pointMap 풀어내기
-			int leftValue = ((BigDecimal)pointMap.get("LEFTVALUE")).intValue();
-			int pointId = ((BigDecimal)pointMap.get("POINTID")).intValue();
-
-			//사용한 포인트>적립된 포인트
-			//적립된 포인트(point테이블 안의 leftValue)를 0으로 만든다음 사용한포인트-적립된 포인트한 금액을
-			//다시 usedPoint에 넣음 그리고 while문 반복
-			if(usedPoint>=leftValue) { 
-				//leftValue를 0으로 만들고, usedPoint를 그만큼 줄여서 다시 저장
-				dao.pointUseUpdate(pointId, 0);
-				usedPoint = usedPoint-leftValue;		
-			}
-			//사용한 포인트<적립된 포인트
-			//적립된 포인트-사용한 포인트 금액을 불러온 pointId를 통해 leftValue를 업데이트한 후 while문 종료됨
-			else {
-
-				leftValue = leftValue-usedPoint;
-				dao.pointUseUpdate(pointId, leftValue);
-				usedPoint = 0;
-
-			}
-		}
-
-		//DB에 포인트 사용한 내역 추가함
-		Map<String, Object> map = new HashMap<String, Object>();
-		map.put("userId", userId);
-		map.put("orderId", 12);	//orderId 생성후 입력
-		map.put("value", inputPoint);
-		map.put("pointId", loginDao.getPointId()+1);//pointId 생성후 입력
-
-		dao.usedPointInsert(map);
-
-		return "/myShopping/testpoint";
 	}
 
 }
