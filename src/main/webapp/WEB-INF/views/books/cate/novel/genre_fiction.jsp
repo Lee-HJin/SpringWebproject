@@ -633,17 +633,17 @@
 							<!-- 반디 추천책 -->
 
 							<h4
-								style="width: 532px; height: 35px; padding: 0 0 0 5px; border-bottom: 1px solid #e1e1e1; font: normal 16px; color: #000; letter-spacing: -0.05em">반디앤루니스
+								style="width: 532px; height: 35px; padding: 0 0 0 5px; border-bottom: 1px solid #e1e1e1; font: 돋움 16px; color: #000; letter-spacing: -0.05em">반디앤루니스
 
 								추천책</h4>
 
 							<hr>
+							
 
-
-							<div class="tab" style="border-bottom: 1px solid #ffffff;">
+							<div class="tab"  >
 
 								<div class="tablinks" onmouseover="openCity(event, 'book_1')"
-									style="border: none;">
+									style="background-color: white;">
 
 									<a href="/webproject/book_info.action?isbn=9791158790943">
 
@@ -656,7 +656,7 @@
 								</div>
 
 								<div class="tablinks" onmouseover="openCity(event, 'book_2')"
-									style="border: none;">
+									style="background-color: white;">
 
 									<a href="/webproject/book_info.action?isbn=9788983927118">
 										<img
@@ -670,7 +670,7 @@
 								</div>
 
 								<div class="tablinks" onmouseover="openCity(event, 'book_3')"
-									style="border: none;">
+									style="background-color: white;">
 
 									<a href="/webproject/book_info.action?isbn=9788950976262">
 										<img
@@ -683,7 +683,7 @@
 
 
 								<div class="tablinks" onmouseover="openCity(event, 'book_4')"
-									style="border: none;">
+									style="background-color: white;">
 
 									<a href="/webproject/book_info.action?isbn=9788928090938">
 										<img
@@ -699,9 +699,6 @@
 							<br /> <br />
 
 							<div style="height: 60px;"></div>
-
-
-
 
 							<div id="book_1" class="tabcontent">
 
