@@ -346,42 +346,7 @@
 			            				<input type="hidden" name="rcvr_post" value="">
 			            			</td>
 			            		</tr>
-			            		<!-- <tr id="tr_deliMsg" style="display: table-row;">
-			            			<th>배송 메시지</th>
-			            			<td class="pos_rel">
-			            				<p><input type="text" id="ref_msg" name="ref_msg" size="70" maxlength="50" class="o_input" placeholder="택배 기사님께 전달 할 메시지를 남겨주세요" onclick="onChangeText(this,'deli_req_stat')" onkeyup="onChangeText(this,'deli_req_stat')" onkeypress="onChangeText(this,'deli_req_stat')"> <span class="di_in t_gr4_v" id="deli_req_stat">(0/50)</span></p>
-			            				<p class="mt5 t_11gr">택배 기사님께 전달 할 메시지를 남겨주세요. 주문 관련 사항은   1:1상담을 이용해주십시오.</p>
-			            				배송 메시지 
-			            				<ul class="pre_deliMsg" style="display:none">
-			            					<li value="0">배송 전에 미리 연락 바랍니다.</li>
-			            					<li value="1">부재 시 경비실에 맡겨 주세요.</li>
-			            					<li value="2">부재 시 전화 주시거나 문자 남겨주세요.</li>
-			            				</ul>
-			            			</td>
-			            		</tr> -->
-			            		<!-- <tr id="tr_deliGift" style="display: table-row;">
-			            			<th class="line_none">선물포장</th>
-			            			<td class="line_none">
-			            				<div>
-				            				<span>선물포장을 하시겠습니까? (1,000원 추가)</span>
-				            				<span class="ml15"><input type="radio" name="gift_yn" value="Y" class="mt3m mr3 btn_giftYn"><label for="">예</label></span> 
-				            				<span class="ml15"><input type="radio" name="gift_yn" value="N" class="mt3m mr3 btn_giftYn" checked=""><label for="">아니오</label></span>
-				            				<span class="ml10"><img src="/webproject/resources/images/order/btn_order_pack.gif" id="btn_giftInfo" alt="선물포장 안내" class="mt3m" style="cursor:pointer;"></span>
-			            				</div>
-			            				
-			            				<div id="div_giftMsg" style="display:none">
-				            				<div class="mt10"><span><textarea name="gift_msg" cols="81" rows="4" onclick="onChangeText(this,'gift_req_stat')" onkeyup="onChangeText(this,'gift_req_stat')" onkeypress="onChangeText(this,'gift_req_stat')"></textarea></span> <span class="di_in t_gr4_v" id="gift_req_stat">(0/50)</span></div>
-						            		<ul class="dotList mt5 ml5 mr10">
-						            			<li>포장 가능 개수는 선물박스 사이즈에 따라 <strong style="color:#7b5844">최소3권~최대 5권</strong> 이내만 가능합니다.</li>
-						            			<li class="mt3">메시지는 별도 엽서에 인쇄 후 박스 안에 담아 발송됩니다.</li>
-						            			<li class="mt3">선물포장 주문 건은 <strong style="color:#7b5844">당일배송에서 제외</strong>되며, 거래명세서는 발송되지 않습니다.</li>
-						            			<li class="mt3">상품이 박스크기에 맞지 않아 포장이 어려운 경우 안내 후 포장비는 <strong style="color:#7b5844">환불</strong> 해드립니다.</li>
-						            		</ul>				            				
-					            		</div>
-			            			</td>
-			            		</tr> -->
-	
-			            		
+		
 			            		<tr class="tr_deliEng" style="display:none;">
 			            			<th class="line_none pb0">City</th>
 			            			<td class="line_none pb0"><input type="text" name="eng_rcvr_city" size="25" class="o_input"></td>
