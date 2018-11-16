@@ -61,6 +61,7 @@
 		select rownum rnum, data.* from(
 		select isbn,
 		bookImage from bookImage where isbn = #{isbn}
+		and bookimage not like('%cover%')
 		order by bookImage asc)
 		data)
 

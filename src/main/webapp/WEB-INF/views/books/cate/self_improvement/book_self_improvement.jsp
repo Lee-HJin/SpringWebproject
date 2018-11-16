@@ -513,19 +513,19 @@
 								</div>
 								<div class="tablinks" onmouseover="openCity(event, 'book_3')"
 									style="background-color: white;">
-									 <img
+									<img
 										src="http://image.bandinlunis.com/upload/product/4154/4154294.jpg"
 										style="cursor: pointer; width: 45%; height: 45%;">
-									
+
 								</div>
 
 								<div class="tablinks" onmouseover="openCity(event, 'book_4')"
 									style="background-color: white;">
-									<a href = "/webproject/book_info.action?isbn=9791158462109">
-									<img
+									<a href="/webproject/book_info.action?isbn=9791158462109">
+										<img
 										src="http://image.bandinlunis.com/upload/product/4149/4149818.jpg"
 										style="cursor: pointer; width: 45%; height: 45%;">
-</a>
+									</a>
 								</div>
 							</div>
 
@@ -642,16 +642,14 @@
 											</dt>
 
 											<dd class="pImg52 imgP">
-												 <img
+												<img
 													src="http://image.bandinlunis.com/upload/product/4134/4134086_s.jpg"
 													onerror="this.src='/images/common/noimg_type04.gif';">
 
 
-											
+
 											</dd>
-											<dd class="booktit">
-												무례한 사람에게 웃으며 대처...
-											</dd>
+											<dd class="booktit">무례한 사람에게 웃으며 대처...</dd>
 											<dd class="writer">정문정</dd>
 
 
@@ -666,9 +664,7 @@
 											</dt>
 
 
-											<dd class="booktit">
-												자존감 수업
-											</dd>
+											<dd class="booktit">자존감 수업</dd>
 											<dd class="writer">윤홍균</dd>
 
 
@@ -682,9 +678,7 @@
 											</dt>
 
 
-											<dd class="booktit">
-												첫째 딸로 태어나고 싶지는 ...
-											</dd>
+											<dd class="booktit">첫째 딸로 태어나고 싶지는 ...</dd>
 											<dd class="writer">리세터 스하위테마커르, 비스...</dd>
 
 
@@ -699,7 +693,8 @@
 
 
 											<dd class="booktit">
-												<a href="/webproject/book_info.action?isbn=9788965706830">관점을 디자인하라</a>
+												<a href="/webproject/book_info.action?isbn=9788965706830">관점을
+													디자인하라</a>
 											</dd>
 											<dd class="writer">박용후</dd>
 
@@ -714,9 +709,7 @@
 											</dt>
 
 
-											<dd class="booktit">
-												말투 하나 바꿨을 뿐인데 [...
-											</dd>
+											<dd class="booktit">말투 하나 바꿨을 뿐인데 [...</dd>
 											<dd class="writer">나이토 요시히토</dd>
 
 
@@ -835,11 +828,11 @@
 									<li class="po1">
 										<dl>
 											<dt class="pImg90 imgP">
-											
 
 
 
-													<img
+
+												<img
 													src="http://image.bandinlunis.com/upload/product/4154/4154403.jpg"
 													onerror="this.src='/images/common/noimg_type01.gif';">
 
@@ -870,11 +863,11 @@
 									<li class="po1">
 										<dl>
 											<dt class="pImg90 imgP">
-												
 
 
 
-													<img
+
+												<img
 													src="http://image.bandinlunis.com/upload/product/4152/4152988.jpg"
 													onerror="this.src='/images/common/noimg_type01.gif';">
 
@@ -882,10 +875,7 @@
 											</dt>
 
 
-											<dd class="booktit">
-												6분
-													다이어리
-											</dd>
+											<dd class="booktit">6분 다이어리</dd>
 											<dd class="writer">
 												도미닉 스펜스트<span class="public"> | 행성B</span>
 											</dd>
@@ -907,11 +897,11 @@
 									<li>
 										<dl>
 											<dt class="pImg90 imgP">
-												
 
 
 
-													<img
+
+												<img
 													src="http://image.bandinlunis.com/upload/product/4144/4144299.jpg"
 													onerror="this.src='/images/common/noimg_type01.gif';">
 
@@ -920,10 +910,7 @@
 
 
 
-											<dd class="booktit">
-												나우이스트
-													NOWIST
-											</dd>
+											<dd class="booktit">나우이스트 NOWIST</dd>
 											<dd class="writer">맥스 맥케온</dd>
 
 											<dd class="rPrice">14,500원</dd>
@@ -940,11 +927,11 @@
 									<li>
 										<dl>
 											<dt class="pImg90 imgP">
-												
 
 
 
-													<img
+
+												<img
 													src="http://image.bandinlunis.com/upload/product/4134/4134091.jpg"
 													onerror="this.src='/images/common/noimg_type01.gif';">
 
@@ -952,10 +939,7 @@
 
 
 
-											<dd class="booktit">
-												AGAIN!
-													이기는 습관 
-											</dd>
+											<dd class="booktit">AGAIN! 이기는 습관</dd>
 											<dd class="writer">전옥표</dd>
 
 											<dd class="rPrice">16,000원</dd>
@@ -972,24 +956,21 @@
 									<li>
 										<dl>
 											<dt class="pImg90 imgP">
-												
 
 
 
-													<img
+
+												<img
 													src="http://image.bandinlunis.com/upload/product/4131/4131687.jpg"
 													onerror="this.src='/images/common/noimg_type01.gif';">
 
 
-												
+
 											</dt>
 
 
 
-											<dd class="booktit">
-												침대부터
-													정리하라
-											</dd>
+											<dd class="booktit">침대부터 정리하라</dd>
 											<dd class="writer">윌리엄 H. 맥레이븐</dd>
 
 											<dd class="rPrice">12,000원</dd>
@@ -1008,10 +989,10 @@
 									<li>
 										<dl>
 											<dt class="pImg90 imgP">
-												
 
 
-													<img
+
+												<img
 													src="http://image.bandinlunis.com/upload/product/4119/4119543.jpg"
 													onerror="this.src='/images/common/noimg_type01.gif';">
 
@@ -1039,24 +1020,21 @@
 									<li>
 										<dl>
 											<dt class="pImg90 imgP">
-												
 
 
 
-													<img
+
+												<img
 													src="http://image.bandinlunis.com/upload/product/4116/4116973.jpg"
 													onerror="this.src='/images/common/noimg_type01.gif';">
 
 
-											
+
 											</dt>
 
 
 
-											<dd class="booktit">
-												하루
-													5분 아침 일기
-											</dd>
+											<dd class="booktit">하루 5분 아침 일기</dd>
 											<dd class="writer">인텔리전트 체인지</dd>
 
 											<dd class="rPrice">15,800원</dd>
@@ -1109,10 +1087,11 @@
 
 							<!-- EL / JSTL / Foreach  -->
 							<c:forEach var="dto" items="${lists_Best }">
+
 								<div class="prod_list_type prod_best_type">
 									<ul>
-										<li><input class="checkbox" type="checkbox"
-											value="${dto.isbn }" name="isbn" id="cart_isbn${dto.isbn }">
+										<li><input type="hidden" name="maxQuantity"
+											id="maxQuantity" value="${dto.maxQuantity }" />
 											<div class="prod_thumb">
 												<span class="ranking"> <span class="rank_num">${dto.rnum }</span>
 													<span class="rank_change"> <img
@@ -1121,21 +1100,21 @@
 												</span>
 												</span>
 												<div class="prod_thumb_img">
-													<a href="/webproject/book_info.action?isbn=${dto.isbn }"
+													<a href="<%=cp %>/book_info.action?isbn=${dto.isbn}"
 														onfocus="this.blur();"> <img
 														src="<%=cp %>/resources/image/book/${dto.bookImage }">
-
 													</a> <a class="btn_popup" target="_blank"
-														href="/webproject/book_info.action?isbn=${dto.isbn }"><span
+														href="<%=cp %>/book_info.action?isbn=${dto.isbn}"><span
 														class="ico_new">새창열기</span></a>
 												</div>
-												<a class="btn_preview"
-													href="javascript:popPreview('${dto.isbn }');">미리 보기</a>
+												<a class="btn_preview" target="_blank"
+													href="<%=cp %>/book_preview.action?isbn=${dto.isbn }">미리
+													보기</a>
 											</div>
 
 											<dl class="prod_info">
 												<dt>
-													<a href="/webproject/book_info.action?isbn=${dto.isbn }"
+													<a href="<%=cp %>/book_info.action?isbn=${dto.isbn}"
 														onfocus="this.blur();"> ${dto.bookTitle } </a> <span
 														class="tag_area"> <span class="tag_best"><span>베스트</span></span>
 														<span class="tag_recom"><span>반디추천</span></span> <span
@@ -1164,43 +1143,67 @@
 												</dd>
 												<dd class="txt_bex">${dto.introduction }...</dd>
 												<dd class="txt_ebook">
-													<span>지금 주문하면 <strong class="t_red">내일</strong>받을 수
-														있습니다.
+													<span>지금 주문하면 <strong class="t_red">3일</strong> 뒤에
+														받을 수 있습니다.
 													</span>
 												</dd>
-											</dl>
+											</dl> <c:choose>
+												<c:when test="${dto.maxQuantity ne 0}">
+													<dl class="prod_btn">
+														<dt style="width: 130px;">
+															<input type="hidden" id="cart_isbn${dto.isbn }"
+																value="${dto.isbn }"> <input type="hidden"
+																name="isbn" id="isbn" value="" /> <input type="hidden"
+																name="orderCount" id="orderCount" value="" /> 구입 가능 권수
+															- <strong class="t_red">${dto.maxQuantity }</strong>권<span
+																class="num_txt">수량</span> <input type="text"
+																id="cntVal_${dto.isbn }" value="1" class="num" size="3"
+																maxlength="2" onkeydown="onlyNumber();" onkeyup="">
+															<span class="btn_updn_wrap"> <a
+																href="javascript:cntUp('${dto.isbn }','${dto.maxQuantity }');"
+																class="btn_num_up">▲</a> <a
+																href="javascript:cntDown('${dto.isbn }','${dto.maxQuantity }');"
+																class="btn_num_dn">▼</a>
+															</span>
+														</dt>
 
-											<dl class="prod_btn">
-												<dt>
-													<span class="num_txt">수량</span> <input type="text"
-														id="cntVal_${dto.isbn }" value="1" class="num" size="3"
-														maxlength="2" onkeydown="onlyNumber();" onkeyup="">
-													<span class="btn_updn_wrap"> <a
-														href="javascript:cntUp('${dto.isbn }');"
-														class="btn_num_up">▲</a> <a
-														href="javascript:cntDown('${dto.isbn }');"
-														class="btn_num_dn">▼</a>
-													</span>
-												</dt>
+														<dd>
+															<a href="javascript:addCart('${dto.isbn }');"><span
+																class="btn_b_comm btype_f1">쇼핑카트</span></a>
+														</dd>
+														<dd class="mt3">
+															<a href="javascript:goOrder('${dto.isbn }');"><span
+																class="btn_w_comm btype_f1">바로구매</span></a>
+														</dd>
+													</dl>
+												</c:when>
 
-												<dd>
-													<a href="javascript:addCart('${dto.isbn }');"><span
-														class="btn_b_comm btype_f1">쇼핑카트</span></a>
-												</dd>
-												<dd class="mt3">
-													<a href="javascript:goOrder('${dto.isbn }');"><span
-														class="btn_w_comm btype_f1">바로구매</span></a>
-												</dd>
-												<dd class="mt3">
-													<a
-														href="javascript:add_wish_array_common('${dto.isbn }', true);"><span
-														class="btn_w_comm btype_f1">위시리스트</span></a>
-												</dd>
-											</dl></li>
+												<c:otherwise>
+													<dl class="prod_btn">
+														<dt>
+															구입 가능 권수 - <strong class="t_red">${dto.maxQuantity }</strong>권<span
+																class="num_txt">수량</span> <input type="text"
+																id="cntVal_${dto.isbn }" value="0" class="num" size="3"
+																maxlength="2" onkeydown="onlyNumber();" onkeyup=""
+																readonly="readonly"> <span class="btn_updn_wrap">
+																<a
+																href="javascript:cntUp('${dto.isbn }','${dto.maxQuantity }');"
+																class="btn_num_up">▲</a> <a
+																href="javascript:cntDown('${dto.isbn }','${dto.maxQuantity }');"
+																class="btn_num_dn">▼</a>
+															</span>
+														</dt>
+
+														<dd>
+															<a href=""><span class="btn_gy_comm btype_f1">상품문의하기</span></a>
+														</dd>
+														<%-- <dd class="mt3"><a href="javascript:goOrder('${dto.isbn }');"><span class="btn_w_comm btype_f1">바로구매</span></a></dd> --%>
+													</dl>
+												</c:otherwise>
+											</c:choose></li>
 									</ul>
 								</div>
 							</c:forEach>
-
 
 						</div>
 
