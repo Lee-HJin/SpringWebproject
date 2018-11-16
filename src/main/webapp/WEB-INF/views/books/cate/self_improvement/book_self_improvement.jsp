@@ -492,32 +492,40 @@
 								추천책</h4>
 							<hr>
 
-							<div class="tab" style="border-bottom : 10px solid #ffffff; z-index: 99;">
-								<div class="tablinks" onmouseover="openCity(event, 'book_1')">
-									<a href=""> <img
+							<div class="tab"
+								style="border-bottom: 10px solid #ffffff; z-index: 99;">
+								<div class="tablinks" onmouseover="openCity(event, 'book_1')"
+									style="background-color: white;">
+									<a href="/webproject/book_info.action?isbn=9788932473772">
+										<img
+										src="http://image.bandinlunis.com/upload/product/4168/4168234.jpg"
+										style="cursor: pointer; width: 45%; height: 45%;">
+									</a>
+								</div>
+								<div class="tablinks" onmouseover="openCity(event, 'book_2')"
+									style="background-color: white;">
+									<a href="/webproject/book_info.action?isbn=9791185811468">
+										<img
 										src="http://image.bandinlunis.com/upload/product/4161/4161879.jpg"
 										style="cursor: pointer; width: 45%; height: 45%;">
+
 									</a>
 								</div>
-								<div class="tablinks" onmouseover="openCity(event, 'book_2')">
-									<a href=""> <img
+								<div class="tablinks" onmouseover="openCity(event, 'book_3')"
+									style="background-color: white;">
+									 <img
 										src="http://image.bandinlunis.com/upload/product/4154/4154294.jpg"
 										style="cursor: pointer; width: 45%; height: 45%;">
-
-									</a>
+									
 								</div>
-								<div class="tablinks" onmouseover="openCity(event, 'book_3')">
-									<a href=""> <img
+
+								<div class="tablinks" onmouseover="openCity(event, 'book_4')"
+									style="background-color: white;">
+									<a href = "/webproject/book_info.action?isbn=9791158462109">
+									<img
 										src="http://image.bandinlunis.com/upload/product/4149/4149818.jpg"
 										style="cursor: pointer; width: 45%; height: 45%;">
-									</a>
-								</div>
-
-								<div class="tablinks" onmouseover="openCity(event, 'book_4')">
-									<a href=""> <img
-										src="http://image.bandinlunis.com/upload/product/4175/4175391.jpg"
-										style="cursor: pointer; width: 45%; height: 45%;">
-									</a>
+</a>
 								</div>
 							</div>
 
@@ -526,14 +534,15 @@
 							<div id="book_1" class="tabcontent" style="border: none;">
 								<dl style="border: none;">
 									<dt class="pImg145" style="float: left; margin-right: 20px;">
-										<a href=""> <img
-											src="http://image.bandinlunis.com/upload/product/4161/4161879.jpg"
+										<a href="/webproject/book_info.action?isbn=9788932473772">
+											<img
+											src="http://image.bandinlunis.com/upload/product/4168/4168234.jpg"
 											style="float: left;">
 										</a>
 									</dt>
 									<br />
 									<dd class="booktit">
-										<a href="">다동력</a>
+										<a href="/webproject/book_info.action?isbn=9788932473772">다동력</a>
 
 									</dd>
 									<dd class="writer">호리에 다카후미 | 을유문화사</dd>
@@ -548,15 +557,16 @@
 							<div id="book_2" class="tabcontent" style="border: none;">
 								<dl style="border: none;">
 									<dt class="pImg145" style="float: left; margin-right: 20px;">
-										<a href=""> <img
-											src="http://image.bandinlunis.com/upload/product/4154/4154294.jpg"
+										<a href="/webproject/book_info.action?isbn=9791185811468">
+											<img
+											src="http://image.bandinlunis.com/upload/product/4161/4161879.jpg"
 											style="float: left;">
 
 										</a>
 									</dt>
 									<br />
 									<dd class="booktit">
-										<a href="/front/product/detailProduct.do?prodId=4188573">인빅터스
+										<a href="/webproject/book_info.action?isbn=9791185811468">인빅터스
 											1 </a>
 									</dd>
 									<dd class="writer">이진 | 천년의상상</dd>
@@ -572,18 +582,14 @@
 							<div id="book_3" class="tabcontent" style="border: none;">
 								<dl style="border: none;">
 									<dt class="pImg145" style="float: left; margin-right: 20px;">
-										<a href="/front/product/detailProduct.do?prodId=4189269">
-											<img
-											src="http://image.bandinlunis.com/upload/product/4149/4149818.jpg"
+
+										<img
+											src="http://image.bandinlunis.com/upload/product/4154/4154294.jpg"
 											style="float: left;">
 
-										</a>
 									</dt>
 									<br />
-									<dd class="booktit">
-										<a href="/front/product/detailProduct.do?prodId=4189269">만만하게
-											보이지 않는 대화법</a>
-									</dd>
+									<dd class="booktit">만만하게 보이지 않는 대화법</dd>
 									<dd class="writer">나이토 요시히토 | 홍익</dd>
 									<br />
 									<dd class="bex">“상처 받았다면 무심코라도 웃지 마라!” 필요한 말을 센스 있게 하는
@@ -595,15 +601,15 @@
 							<div id="book_4" class="tabcontent" style="border: none;">
 								<dl style="border: none;">
 									<dt class="pImg145" style="float: left; margin-right: 20px;">
-										<a href="/front/product/detailProduct.do?prodId=4187725">
+										<a href="/webproject/book_info.action?isbn=9791158462109">
 											<img
-											src="http://image.bandinlunis.com/upload/product/4175/4175391.jpg"
+											src="http://image.bandinlunis.com/upload/product/4149/4149818.jpg"
 											style="float: left;">
 										</a>
 									</dt>
 									<br />
 									<dd class="booktit">
-										<a href="/front/product/detailProduct.do?prodId=4187725">긍정의
+										<a href="/webproject/book_info.action?isbn=9791158462109">긍정의
 											말습관 1</a>
 									</dd>
 									<dd class="writer">오수향 | 북클라우드</dd>
@@ -619,9 +625,10 @@
 
 						</div>
 
-						<div class="cateS" style="border: none; margin-left: 20px; margin-top: 8px;">
+						<div class="cateS"
+							style="border: none; margin-left: 20px; margin-top: 8px;">
 
-							<br /> <br /> <br /> <br /> <br /> <br /> <br /> <br /> 
+							<br /> <br /> <br /> <br /> <br /> <br /> <br /> <br />
 							<!-- 분야 주간 베스트 -->
 							<div class="cateBest">
 								<h4>분야 주간 베스트</h4>
@@ -635,15 +642,15 @@
 											</dt>
 
 											<dd class="pImg52 imgP">
-												<a href=""> <img
+												 <img
 													src="http://image.bandinlunis.com/upload/product/4134/4134086_s.jpg"
 													onerror="this.src='/images/common/noimg_type04.gif';">
 
 
-												</a>
+											
 											</dd>
 											<dd class="booktit">
-												<a href="">무례한 사람에게 웃으며 대처...</a>
+												무례한 사람에게 웃으며 대처...
 											</dd>
 											<dd class="writer">정문정</dd>
 
@@ -660,7 +667,7 @@
 
 
 											<dd class="booktit">
-												<a href="">자존감 수업</a>
+												자존감 수업
 											</dd>
 											<dd class="writer">윤홍균</dd>
 
@@ -676,7 +683,7 @@
 
 
 											<dd class="booktit">
-												<a href="">첫째 딸로 태어나고 싶지는 ...</a>
+												첫째 딸로 태어나고 싶지는 ...
 											</dd>
 											<dd class="writer">리세터 스하위테마커르, 비스...</dd>
 
@@ -692,7 +699,7 @@
 
 
 											<dd class="booktit">
-												<a href="">관점을 디자인하라</a>
+												<a href="/webproject/book_info.action?isbn=9788965706830">관점을 디자인하라</a>
 											</dd>
 											<dd class="writer">박용후</dd>
 
@@ -708,7 +715,7 @@
 
 
 											<dd class="booktit">
-												<a href="">말투 하나 바꿨을 뿐인데 [...</a>
+												말투 하나 바꿨을 뿐인데 [...
 											</dd>
 											<dd class="writer">나이토 요시히토</dd>
 
@@ -828,7 +835,7 @@
 									<li class="po1">
 										<dl>
 											<dt class="pImg90 imgP">
-												<a href="/front/product/detailProduct.do?prodId=4154403">
+											
 
 
 
@@ -837,7 +844,6 @@
 													onerror="this.src='/images/common/noimg_type01.gif';">
 
 
-												</a>
 											</dt>
 
 
@@ -864,7 +870,7 @@
 									<li class="po1">
 										<dl>
 											<dt class="pImg90 imgP">
-												<a href="/front/product/detailProduct.do?prodId=4152988">
+												
 
 
 
@@ -873,13 +879,12 @@
 													onerror="this.src='/images/common/noimg_type01.gif';">
 
 
-												</a>
 											</dt>
 
 
 											<dd class="booktit">
-												<a href="/front/product/detailProduct.do?prodId=4152988">6분
-													다이어리</a>
+												6분
+													다이어리
 											</dd>
 											<dd class="writer">
 												도미닉 스펜스트<span class="public"> | 행성B</span>
@@ -902,7 +907,7 @@
 									<li>
 										<dl>
 											<dt class="pImg90 imgP">
-												<a href="/front/product/detailProduct.do?prodId=4144299">
+												
 
 
 
@@ -911,14 +916,13 @@
 													onerror="this.src='/images/common/noimg_type01.gif';">
 
 
-												</a>
 											</dt>
 
 
 
 											<dd class="booktit">
-												<a href="/front/product/detailProduct.do?prodId=4144299">나우이스트
-													NOWIST</a>
+												나우이스트
+													NOWIST
 											</dd>
 											<dd class="writer">맥스 맥케온</dd>
 
@@ -936,7 +940,7 @@
 									<li>
 										<dl>
 											<dt class="pImg90 imgP">
-												<a href="/front/product/detailProduct.do?prodId=4134091">
+												
 
 
 
@@ -944,15 +948,13 @@
 													src="http://image.bandinlunis.com/upload/product/4134/4134091.jpg"
 													onerror="this.src='/images/common/noimg_type01.gif';">
 
-
-												</a>
 											</dt>
 
 
 
 											<dd class="booktit">
-												<a href="/front/product/detailProduct.do?prodId=4134091">AGAIN!
-													이기는 습관 </a>
+												AGAIN!
+													이기는 습관 
 											</dd>
 											<dd class="writer">전옥표</dd>
 
@@ -970,7 +972,7 @@
 									<li>
 										<dl>
 											<dt class="pImg90 imgP">
-												<a href="/front/product/detailProduct.do?prodId=4131687">
+												
 
 
 
@@ -979,14 +981,14 @@
 													onerror="this.src='/images/common/noimg_type01.gif';">
 
 
-												</a>
+												
 											</dt>
 
 
 
 											<dd class="booktit">
-												<a href="/front/product/detailProduct.do?prodId=4131687">침대부터
-													정리하라</a>
+												침대부터
+													정리하라
 											</dd>
 											<dd class="writer">윌리엄 H. 맥레이븐</dd>
 
@@ -1006,8 +1008,7 @@
 									<li>
 										<dl>
 											<dt class="pImg90 imgP">
-												<a href="/front/product/detailProduct.do?prodId=4119543">
-
+												
 
 
 													<img
@@ -1015,7 +1016,6 @@
 													onerror="this.src='/images/common/noimg_type01.gif';">
 
 
-												</a>
 											</dt>
 
 
@@ -1039,7 +1039,7 @@
 									<li>
 										<dl>
 											<dt class="pImg90 imgP">
-												<a href="/front/product/detailProduct.do?prodId=4116973">
+												
 
 
 
@@ -1048,14 +1048,14 @@
 													onerror="this.src='/images/common/noimg_type01.gif';">
 
 
-												</a>
+											
 											</dt>
 
 
 
 											<dd class="booktit">
-												<a href="/front/product/detailProduct.do?prodId=4116973">하루
-													5분 아침 일기</a>
+												하루
+													5분 아침 일기
 											</dd>
 											<dd class="writer">인텔리전트 체인지</dd>
 
@@ -1214,9 +1214,8 @@
 							<div class="col-md-12">
 								<iframe id="iframe_list1" width="100%"
 									src="<%=cp %>/book_New.action?categoryId=${categoryId}"
-									style="overflow: auto; min-height: 1000px;"
-									frameborder="0" scrolling="auto" onload="calcHeight();"
-									></iframe>
+									style="overflow: auto; min-height: 1000px;" frameborder="0"
+									scrolling="auto" onload="calcHeight();"></iframe>
 							</div>
 						</div>
 					</div>

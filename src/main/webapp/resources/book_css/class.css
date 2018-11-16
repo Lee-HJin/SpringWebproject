@@ -106,7 +106,7 @@
 	li.on	a	img				{display:none}
 	li.on	a	img.rollover	{display:inline}
 
-.tab	{height:30px; background:url('/images/common/bg_baseTab.gif') repeat-x;}
+.tab	{height:30px;  repeat-x;}
 .tab	li			{float:left; width:150px; margin-left:1px; background:url('/images/common/bg_tabB.gif') no-repeat}
 .tab	li	a		{display:block; height:20px;  padding-top:10px; background:url('/images/common/bg_tabBR.gif') no-repeat right 0; text-align:center}
 .tab	li	a:link, .tab	li	a:visited, .tab	li	a:hover, .tab	li	a:active	{color:#998B62; text-decoration:none}
