@@ -31,7 +31,6 @@
 			<span class="tv_aw_count"></span>
 		<button class="tv_aw right" id="tv_awr"></button>
 	</div>
-	
 	<script>
 	var swiper = new Swiper('.side_swiper', {
 				spaceBetween: 0,

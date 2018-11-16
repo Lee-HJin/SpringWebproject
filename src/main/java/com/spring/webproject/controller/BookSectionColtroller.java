@@ -456,18 +456,16 @@ public class BookSectionColtroller {
 	@RequestMapping(value="shopCartList.action", method= {RequestMethod.GET, RequestMethod.POST})
 	public String shopCartList(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		
-	/*	UserDTO dto5 = (UserDTO)request.getSession().getAttribute("userInfo");
+		UserDTO dto5 = (UserDTO)request.getSession().getAttribute("userInfo");
 		
-		//남은 포인트
-		String userId = dto5.getUserId();
+		if(dto5 != null) {
+			
+			//남은 포인트	
+			int leftPoint = raDao.getLeftPoint(dto5.getUserId());
+				
+			request.setAttribute("leftPoint", leftPoint);
+		}
 		
-		int leftPoint = raDao.getLeftPoint(userId);
-		//남은 포인트
-		System.out.println(userId);
-		System.out.println(leftPoint);
-		
-		request.setAttribute("leftPoint", leftPoint);*/
-
 		return "shopAndOrder/shopCartList";
 	}
 	
@@ -540,7 +538,7 @@ public class BookSectionColtroller {
 		// orders table insert	start
 		int totCosVal = 0;
 		int totValue = 0;
-		
+		int deliveryFee = 2000;
 		for(int i=0;i<arrayIsbn.length;i++) {
 
 			int saleCosVal = Integer.parseInt(arraySaleCosVal[i]);
@@ -548,6 +546,10 @@ public class BookSectionColtroller {
 			int value = Integer.parseInt(arrayPointVal[i]);
 
 			totCosVal += saleCosVal * OrderCount;
+				if(totCosVal < 10000) {
+					totCosVal += deliveryFee;
+				}
+			
 			totValue += value;
 
 		}

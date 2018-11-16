@@ -2,6 +2,24 @@
  * 리스트 수량선택 북카드 담기(search_header.jsp와 같음)
  */
 
+	//바로구매
+	function goOrder(isbn) {
+		var ordCnt = $("#cntVal_"+isbn).val();
+		if(isNaN(ordCnt)) {
+			ordCnt = 1;
+		}
+		
+		$("#isbn").val(isbn);
+		$("#orderCount").val(ordCnt);
+		
+		var form = document.bestForm;
+
+		form.action = "/webproject/order.action?isbn="+isbn+"&orderCount="+ordCnt;
+
+		form.submit();
+
+	}
+	
 	//카운트 증가
 	function cntUp(isbn, maxQuantity) {
 		
@@ -117,7 +135,7 @@
 		
 	}
 	
-	//카운트 변화
+/*	//카운트 변화
 	function cntChange(seqNum) {
 		var seqBox = parseInt(document.getElementById("cntVal_"+seqNum).value);
 		var maxBox = 0;
@@ -140,7 +158,7 @@
 			document.getElementById("costVal_"+seqNum).innerHTML = FormatNumber3(document.getElementById("cntVal_"+seqNum).value * document.getElementById("saleCostVal_"+seqNum).value)+"원";
 			
 		}
-	}	
+	}	*/
 
 	
 	//북카트
@@ -164,8 +182,7 @@
 					} else { 
 						return;
 					}
-					
-					
+
 					
 				}else if(document.cookie.indexOf('shop')!=-1){
 					addCookie(cookieValue,ck);
@@ -197,6 +214,7 @@
 							
 						}else{
 							flag= false;
+							alert("중복 피함");
 						}	
 					}
 					if(flag==false){
@@ -249,14 +267,6 @@
 
 	}
 	
-	//바로구매
-	function goOrder(isbn) {
-		var ordCnt = $("#cntVal_"+isbn).val();
-		if(isNaN(ordCnt)) {
-			ordCnt = 1;
-		}
-		goBuyOpt(isbn, ordCnt);
-	}
 
 	//금액 계산
 	function orderCalc() {
@@ -291,7 +301,7 @@
 		}
 		
 		//배송비용
-		if(bandiDeductionTotSaleCost < 50000){
+		if(bandiDeductionTotSaleCost < 10000){
 			bandiDeductionTotDeliCost = 2000;
 		}
 		
@@ -320,8 +330,7 @@
 		$("#goOrder").submit();
 	});
 	
-	
-	
+
 	//cart 수정
 	function updateShopCart(isbn, seqNum) {
 		var ordCnt = parseInt($("#cntVal_"+seqNum).val());

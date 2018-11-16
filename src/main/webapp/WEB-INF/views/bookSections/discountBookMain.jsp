@@ -19,6 +19,7 @@
 <script type="text/javascript" src="/webproject/resources/common/js/flashcommon.js"></script>
 <script type="text/javascript" src="/webproject/resources/common/js/AC_RunActiveContent.js"></script>
 
+
 <script type="text/javascript" src="/webproject/resources/js/common.js" charset="utf-8"></script>
 <script type="text/javascript" src="/webproject/resources/js/JUTIL/JUTIL.js" charset="utf-8"></script>
 <script type="text/javascript" src="/webproject/resources/js/navi.js" charset="utf-8"></script>
@@ -27,6 +28,9 @@
 <script type="text/javascript" src="/webproject/resources/js/jquery/jquery.min.js"></script>
 <script type="text/javascript" src="/webproject/resources/js/jquery/jquery-ui.js"></script>
 <script type="text/javascript" src="/webproject/resources/js/jquery/jquery.blockUI.js"></script>
+<script type="text/javascript" src="/webproject/resources/js/jquery/idangerous.swiper.js"></script>
+
+
 
 <style type="text/css">
 	.m_tit{font:normal 20px '맑은 고딕','돋움';color:#000;height:24px;padding-left:5px;padding-bottom:10px}
@@ -100,12 +104,10 @@
 </style>
 
 <!-- <link rel="stylesheet" href="/webproject/resources/common/css/dcBookMainSwiper.css" type="text/css"> -->
+
 </head>
 <body>
 <jsp:include page="../common/header.jsp" flush="false"/>
-
-<script type="text/javascript" src="/webproject/resources/js/jquery/idangerous.swiper.js"></script>
-
 
 <div id="contentBody">
 
@@ -176,7 +178,7 @@
                 
 				<div class="d_area_recomm" id="discountAreaRecomm">
 					<h3 class="m_tit"><span>분야 별 정가인하</span></h3>		
-					<a href="/front/display/discountBookList.do" class="btn_more_2014"><span>더보기</span></a>
+					<a href="<%=cp%>/discountBookList.action?theMonth=" class="btn_more_2014"><span>더보기</span></a>
 					<div class="newBookArea">
 						<div class="aw_type_box">
 							<button class="aw_l" id="recommAreaLt"><span class="ns">이전</span><span class="aw_count"><span class="start_index">${start }</span>/<span class="end_index">${end }</span></span></button>
@@ -195,12 +197,12 @@
 										<li>
 											<div class="t_cate">[${dto.genre }]</div>
 											<div class="b_img">
-												<a href="/front/product/detailProduct.do?prodId=3827032">
+												<a href="<%=cp %>/book_info.action?isbn=${dto.isbn}">
 													<img src="<%=cp %>/resources/image/book/${dto.bookImage }" alt="">
 												</a>
 											</div>
 											<dl>
-												<dt><a href="/front/product/detailProduct.do?prodId=3827032">[정가인하] ${dto.bookTitle }</a></dt>
+												<dt><a href="<%=cp %>/book_info.action?isbn=${dto.isbn}">[정가인하] ${dto.bookTitle }</a></dt>
 												<dd class="b_author">${dto.authorName }</dd>
 												<dd class="mt10"><span class="rPrice">${dto.bookPrice }원</span> → ${dto.discountedPrice }원(<strong>${dto.discountRate }%↓</strong>)</dd>
 												<dd class="price">판매가 : <strong><fmt:formatNumber value="${dto.discountedPrice*0.9 }" type="number"/>원</strong></dd>
@@ -244,12 +246,12 @@
 								
 									<li>
 										<div class="b_img">
-											<a href="/front/product/detailProduct.do?prodId=3858538">
+											<a href="<%=cp %>/book_info.action?isbn=${dto.isbn}">
 												<img src="<%=cp %>/resources/image/book/${dto.bookImage }" alt="">
 											</a>
 										</div>
 										<dl>
-											<dt><a href="/front/product/detailProduct.do?prodId=3858538">[정가인하] ${dto.bookTitle }</a></dt>
+											<dt><a href="<%=cp %>/book_info.action?isbn=${dto.isbn}">[정가인하] ${dto.bookTitle }</a></dt>
 											<dd class="b_author">스티븐영</dd>
 											<dd class="mt10"><span class="rPrice">${dto.bookPrice }원</span> → ${dto.discountedPrice }원(<strong>${dto.discountRate }%↓</strong>)</dd>
 											<dd class="price mt5">판매가 : <strong><fmt:formatNumber value="${dto.discountedPrice*0.9 }" type="number"/></strong></dd>
@@ -289,7 +291,7 @@
 						<ul class="ranking_list">
 							
 						<c:forEach var="dto" items="${bestSellerTop10 }">	
-							<li><span class="num">${dto.rnum }</span> <a href="" class="r_book">${dto.bookTitle }</a></li>
+							<li><span class="num">${dto.rnum }</span> <a href="<%=cp %>/book_info.action?isbn=${dto.isbn}" class="r_book">${dto.bookTitle }</a></li>
 						</c:forEach>
 							
 			      		</ul>
@@ -323,9 +325,9 @@ $(document).ready(function(){
 	    onlyExternal : true,
 	    pagination: '.d_md_recomm .pagination',
 	    loop:true,
-	    autoplay: 5000,
+	/*     autoplay: 5000,
 	    speed:500,
-	    autoplayDisableOnInteraction: true,
+	    autoplayDisableOnInteraction: false, */
 	    //autoplayStopOnLast: true,
 	    paginationClickable: true,
 	    onSlideChangeStart: function(){

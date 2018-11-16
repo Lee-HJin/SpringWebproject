@@ -151,7 +151,17 @@ public class MainDAO {
 		return lst;	
 	}
 	
-	//로그인시 최근본 상품
+	//로그인시 오늘 본 상품
+	public List<MainDTO> todayLogin(String userId){
+		
+		List<MainDTO> lst = new ArrayList<MainDTO>();
+		lst = sessionTemplate.selectList("mainMapper.todayLogin",userId);
+		
+		return lst;
+	}
+	
+	
+	//로그인시 최근 본 상품
 	public List<MainDTO> recentLogin(String userId){
 		
 		List<MainDTO> lst = new ArrayList<MainDTO>();

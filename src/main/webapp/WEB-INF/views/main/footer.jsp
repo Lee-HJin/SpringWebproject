@@ -4,6 +4,8 @@
 	String cp = request.getContextPath();
 	
 %>
+<script src="<%=cp%>/resources/js/swiper_min.js"></script>
+<script src="<%=cp%>/resources/js/swiper.js"></script>
 
 <script type="text/javascript">
 
