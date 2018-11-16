@@ -897,9 +897,13 @@ function checkValue(){
 }
 
 //주문 취소
-function cancelOrder(orderId){
+function cancelOrder(orderId,point,usedPoint){
 	var check = confirm("정말 주문을 취소하시겠습니까?");
-	var url = "cancelOrder.action?orderId=" + orderId; 
+	
+	if(usedPoint<0){
+		usedPoint=0;
+	}
+	var url = "cancelOrder.action?orderId=" + orderId + "&point=" + point + "&usedPoint=" + usedPoint; 
 	
 	if(check){
 		location.href= url;

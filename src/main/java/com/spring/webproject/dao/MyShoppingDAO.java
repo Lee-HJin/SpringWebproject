@@ -507,6 +507,8 @@ public class MyShoppingDAO {
 		Map<String, Object> map = new HashMap<String, Object>();
 		map.put("pointId", pointId);
 		map.put("leftValue", leftValue);
+		System.out.println("DAO pointId" +pointId);
+		System.out.println("DAO leftValue"+leftValue);
 
 		sessionTemplate.update("myShopping.pointUseUpdate",map);
 
@@ -518,7 +520,6 @@ public class MyShoppingDAO {
 		sessionTemplate.insert("myShopping.usedPointInsert",map);
 
 	}
-	/////////////////////////
 
 	public int getAllCounselCount(String userId) {
 
@@ -654,5 +655,33 @@ public class MyShoppingDAO {
 	public int getPointValue(String userId) {
 		return sessionTemplate.selectOne("myShopping.getPointValue",userId);
 	}
+	
+	public int getSavePointId(String orderId) {
+		return sessionTemplate.selectOne("myShopping.getSavePointId",orderId);
+	}
+	
+	public HashMap<String,Object> getUsedPointId(String orderId) {
+		
+		HashMap<String,Object> resultMap = sessionTemplate.selectOne("myShopping.getUsedPointId",orderId);
 
+		return resultMap;
+	}
+	
+	public void canceledOrderPoint(Map<String, Object> map) {
+		sessionTemplate.insert("myShopping.canceledOrderPoint",map);
+	}
+	
+	public void updateLeftValue(int pointId, int value) {
+		
+		HashMap<String, Object> params = new HashMap<String, Object>();
+		
+		sessionTemplate.update("myShopping.updateLeftValue",params);
+	}
+	
+	public void reSavePoint(Map<String, Object> map) {
+		
+		sessionTemplate.insert("myShopping.reSavePoint",map);
+		
+	}
+	
 }
