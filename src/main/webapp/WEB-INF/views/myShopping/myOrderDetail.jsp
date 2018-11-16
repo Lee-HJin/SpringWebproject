@@ -62,7 +62,7 @@
 							<td style="text-align: left; padding-left: 15px;"><a
 								href="<%=cp%>/book_info.action?isbn=${dto.isbn}">${dto.bookTitle }</a></td>
 							<td>${dto.quantity }</td>
-							<td><fmt:formatNumber value="${dto.bookPrice }"
+							<td><fmt:formatNumber value="${dto.price }"
 									pattern="#,###" />원</td>
 							<td><fmt:formatNumber value="${dto.point }" pattern="#,###" />원</td>
 							<td>${orderInfo.status }</td>
@@ -73,13 +73,23 @@
 						</tr>
 					</c:forEach>
 					<tr>
-						<td colspan="7" style="text-align: right; padding-right: 10px;"><span
-							style="margin-right: 20px;">합계 : <span
-								style="font-weight: bold; color: #ea5759;"><fmt:formatNumber
-										value="${orderInfo.orderPrice }" pattern="#,###" />원</span></span><span>적립금
-								: <span style="font-weight: bold; color: #ea5759;"><fmt:formatNumber
-										value="${orderInfo.point }" pattern="#,###" />원</span>
-						</span></td>
+						<td colspan="7" style="text-align: right; padding-right: 10px;">
+							<span style="margin-right: 20px;">
+								합계 : 	<span style="font-weight: bold; color: #ea5759;">
+								<fmt:formatNumber value="${orderInfo.booksPrice }" pattern="#,###" />
+								<c:set var="val" value="${(orderInfo.booksPrice-orderInfo.orderPrice) }" />
+								<c:if test="${val>=0 }">
+								 - <fmt:formatNumber value="${(orderInfo.booksPrice-orderInfo.orderPrice) }" pattern="#,###" />(적립금) = 
+								</c:if>
+								<c:if test="${val<0 }">
+								 + <fmt:formatNumber value="${(orderInfo.booksPrice-orderInfo.orderPrice)-(((orderInfo.booksPrice-orderInfo.orderPrice)*2)) }" pattern="#,###" />(배송비) = 
+								</c:if>
+								<fmt:formatNumber value="${orderInfo.orderPrice }" pattern="#,###" />원</span>
+							</span>
+							<span>적립금: <span style="font-weight: bold; color: #ea5759;">
+								<fmt:formatNumber value="${orderInfo.point }" pattern="#,###" />원</span>
+							</span>
+						</td>
 					</tr>
 				</table>
 
@@ -87,20 +97,20 @@
 					<c:if test="${orderInfo.shipmentsStatusCode == '입금대기중' }">
 						<c:if test="${orderInfo.status !='구매완료' }">
 							<input type="button" class="order_detail_book_btn2" value="주문취소"
-								onclick="cancelOrder('${orderInfo.orderId}');">
+								onclick="cancelOrder('${orderInfo.orderId}','${orderInfo.point }','${(orderInfo.booksPrice-orderInfo.orderPrice) }');">
 						</c:if>
 					</c:if>
 					<c:if test="${orderInfo.shipmentsStatusCode == '상품준비중' }">
 						<c:if
 							test="${orderInfo.status !='구매완료' && orderInfo.status !='주문취소'}">
 							<input type="button" class="order_detail_book_btn2" value="주문취소"
-								onclick="cancelOrder('${orderInfo.orderId}');">
+								onclick="cancelOrder('${orderInfo.orderId}','${orderInfo.point }','${(orderInfo.booksPrice-orderInfo.orderPrice) }');">
 						</c:if>
 					</c:if>
 					<c:if test="${orderInfo.shipmentsStatusCode == '상품준비완료' }">
 						<c:if test="${orderInfo.status !='구매완료' }">
 							<input type="button" class="order_detail_book_btn2" value="주문취소"
-								onclick="cancelOrder('${orderInfo.orderId}');">
+								onclick="cancelOrder('${orderInfo.orderId}','${orderInfo.point }'.'${(orderInfo.booksPrice-orderInfo.orderPrice) }');">
 						</c:if>
 					</c:if>
 
@@ -130,8 +140,6 @@
 			<div class="order_detail_notice">
 				<ul>
 					<li>출고완료상태에서 '구매완료' 버튼을 누르시면 '구매완료'로 전환됩니다.</li>
-					<li>적립금은 '구매완료' 상태가 될 때 지급되므로 '구매완료' 버튼을 클릭하시면 즉시 적립금을 받으실 수
-						있습니다.</li>
 					<li>주문상태가 '구매완료'가 되면 반품/교환/주문취소는 불가능하오니 반품 등을 고려하실 경우에는 '구매완료'
 						버튼을 클릭하지 마시기 바랍니다.</li>
 				</ul>

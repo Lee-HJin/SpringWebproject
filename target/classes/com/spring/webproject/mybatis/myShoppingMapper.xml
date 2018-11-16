@@ -164,12 +164,12 @@ select * from(select rownum rnum, data.* from (select to_char(savingdate,'YYYY-M
 
 <!-- 주문 상세내역 -->
 <select id="getOrderDetailList" parameterType="java.lang.String" resultType="com.spring.webproject.dto.OrderDetailDTO">
-select orderid, orderbooks.isbn, booktitle, quantity, bookprice, (bookprice*0.05)as point from orderbooks, books where orderbooks.isbn=books.isbn and orderid=#{orderId}
+select orderid, orderbooks.isbn, booktitle, quantity, price, (bookprice*0.05)as point from orderbooks, books where orderbooks.isbn=books.isbn and orderid=#{orderId}
 </select>
 
 <!-- 주문 상세내역 -->
 <select id="getOrderDetailInfo" parameterType="java.lang.String" resultType="com.spring.webproject.dto.OrderListDTO">
-select orderId, orderPrice, point, shipmentsStatusCode, handlingDate, to_char(expectedDate,'YYYY-MM-DD') expectedDate, status, zipCode, address1, address2, recipientName from orderList where orderId=#{orderId}
+select orderId, orderPrice, point, shipmentsStatusCode, handlingDate, to_char(expectedDate,'YYYY-MM-DD') expectedDate, status, zipCode, address1, address2, recipientName,booksPrice from orderList where orderId=#{orderId}
 </select>
 
 <!-- 주문 취소 -->
@@ -365,13 +365,19 @@ select pointId,leftValue from (select rownum rnum, point.* from (select * from p
 
 <!-- 포인트 사용 update -->
 <update id="pointUseUpdate" parameterType="map">
-update point set leftvalue=#{leftValue} where pointId=#{pointId}
+update point set leftValue=${leftValue} where pointId=#{pointId}
 </update>
 
 <!-- 포인트 사용내역 insert -->
 <insert id="usedPointInsert" parameterType="map">
 insert into point(userId,savingdate,expirationdate,orderid,value,pointitem,pointid,leftvalue) 
 values(#{userId},sysdate,sysdate,#{orderId},#{value},'상품구입시 사용',#{pointId},0)
+</insert>
+
+<!-- 주문 취소 포인트 회수 insert -->
+<insert id="canceledOrderPoint" parameterType="map">
+insert into point(userId,savingdate,expirationdate,orderid,value,pointitem,pointid,leftvalue) 
+values(#{userId},sysdate,sysdate,#{orderId},#{value},'주문취소',#{pointId},0)
 </insert>
 
 <!-- 포인트(point table) = pointId(maxNum)  -->
@@ -382,7 +388,7 @@ values(#{userId},sysdate,sysdate,#{orderId},#{value},'상품구입시 사용',#{
 <!-- 책 결제완료 후 적립금 적립 -->
 <insert id="purchasingPoint" parameterType="map">
 	insert into point(userId, savingDate, expirationDate, orderId, value, pointItem, pointId, leftValue)
-	values(#{userId}, sysdate, to_date(to_char(sysdate+365,'YYYY-MM-DD ') || '23:59:59','YYYY-MM-DD HH24:MI:SS'), #{orderId}, #{value} ,'구입한 도서 포인트', #{pointId}, ${leftValue})
+	values(#{userId}, sysdate, to_date(to_char(sysdate+365,'YYYY-MM-DD ') || '23:59:59','YYYY-MM-DD HH24:MI:SS'), #{orderId}, #{value} ,'도서구입 적립', #{pointId}, ${leftValue})
 </insert>
 
 <!-- 배송테이블,상품준비중(shipments table) -->
@@ -452,5 +458,17 @@ from consultation where userId=#{userId} and answercheck is null and consultatio
 select * from consultation where consultId=#{consultId}
 </select>
 
+<!-- 포인트id 찾기 -->
+<select id="getSavePointId" parameterType="java.lang.String" resultType="int">
+select pointId from point where orderid=#{orderId} <![CDATA[and value>0]]>
+</select>
+<select id="getUsedPointId" parameterType="java.lang.String" resultType="hashmap">
+select pointId,value from point where orderid=#{orderId} and <![CDATA[leftvalue=0 and value<0]]>
+</select>
+
+<!-- 구매 취소 후 적립금 다시 적립 -->
+<insert id="reSavePoint" parameterType="map">
+insert into point values(#{userId}, sysdate, to_date(to_char(sysdate+365,'YYYY-MM-DD ') || '23:59:59','YYYY-MM-DD HH24:MI:SS'),#{orderId},#{value},'주문취소',#{pointId},#{leftValue})
+</insert>
 
 </mapper>

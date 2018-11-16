@@ -13,18 +13,6 @@ html	{height:100%; _overflow:hidden;}
 body	{width:100%; height:100%;}
 
 
-/*
-html, body, div, textarea{
-	scrollbar-face-color: #ffffff;
-	scrollbar-shadow-color: #ffffff;
-	scrollbar-highlight-color: #ffffff;
-	scrollbar-3dlight-color: #DBD0BA;
-	scrollbar-darkshadow-color: #DBD0BA;
-	scrollbar-track-color: #DED6B6;
-	scrollbar-arrow-color: #DBD0BA;
-}
-*/
-
 img			{border:0; vertical-align:top;}
 ul		{list-style:none; vertical-align:top;}
 li		{vertical-align:top;}

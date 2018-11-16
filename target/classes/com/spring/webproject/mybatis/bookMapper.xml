@@ -19,7 +19,7 @@
 	<![CDATA[
 		select * from review where isbn = #{isbn} and REVIEWID > #{reviewId} order
 		by reviewId asc) data LEFT JOIN users on data.userid = users.userid
-		where rownum =1 and sentence is not null
+		where rownum =1 and sentence is null
 	]]>
 	</select>
 
@@ -30,7 +30,7 @@
 		<![CDATA[
 		select * from review where isbn = #{isbn} and REVIEWID < #{reviewId} order by reviewId
 		desc) data LEFT JOIN users on data.userid = users.userid
-		where rownum = 1 and sentence is not null
+		where rownum = 1 and sentence is null
 		]]>
 	</select>
 
@@ -61,6 +61,7 @@
 		select rownum rnum, data.* from(
 		select isbn,
 		bookImage from bookImage where isbn = #{isbn}
+		and bookimage not like('%cover%')
 		order by bookImage asc)
 		data)
 
