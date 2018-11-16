@@ -81,8 +81,7 @@
 
 				<input type="hidden" id="maxVal_${dto.seqNum }"  name="maxVal" value="999">
 				<input type="hidden" id="saleCostVal_${dto.seqNum }" name="price" value="${dto.discountedPrice }"/>
-				<input type="hidden" id="deliCostCondiVal_${dto.seqNum }" name="deliCostCondiVal" value="10000"/>
-   				<%-- <input type="hidden" id="deliCostVal_${dto.seqNum }" name="deliCostVal" value="2000"/> --%>
+				
    				<input type="hidden" id="marketSaleVal_${dto.seqNum }" name="marketSaleVal" value="${dto.bookPrice }"/>
    				<input type="hidden" id="prodPointVal_${dto.seqNum }" name="rodPointVal" value="${dto.point }"/>
    				<input type="hidden" id="bundleDeliYnVal_${dto.seqNum }" name="bundleDeliYnVal" value="Y"/>
@@ -110,12 +109,12 @@
 		<span class="di_in al_top mr5"><img src="/webproject/resources/images/searchN/ico_cart_plus.gif" alt=""></span>
 		<span class="di_in mt3 mr5">배송비: <span id="bandiDeduction_totDeliCost">0</span>원</span>
 		<span class="di_in al_top mr5"><img src="/webproject/resources/images/searchN/ico_cart_same.gif" alt=""></span>
-		<span class="di_in mt3 mr10">주문금액 합계: <span class="t_red"><span id="bandiDeduction_totOrdCost">13,500</span>원</span></span>
+		<span class="di_in mt3 mr10">주문금액 합계: <span class="t_red"><span id="bandiDeduction_totOrdCost">0</span>원</span></span>
 	</span>
 </div>
 <div class="cart_point_total al_right"> 
 	<span id="span_prevInfo"></span>
-	<strong class="mr10">적립가능액 : <span class="point_b">상품적립금 <span id="bandiDeduction_totPoint">750</span>원</span></strong>
+	<strong class="mr10">적립가능액 : <span class="point_b">상품적립금 <span id="bandiDeduction_totPoint">0</span>원</span></strong>
 </div>
 
 <script type="text/javascript">

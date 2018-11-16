@@ -126,6 +126,7 @@
 			<mvc:mapping path="/myShopping/myCounselHistory.action" />
 			<mvc:mapping path="/myShopping/memberOut.action" />
 			<mvc:mapping path="/order.action" />
+			<mvc:mapping path="/order_dirOrder.action" />
 			<beans:bean
 				class="com.spring.webproject.interceptor.Interceptor" />
 		</mvc:interceptor>

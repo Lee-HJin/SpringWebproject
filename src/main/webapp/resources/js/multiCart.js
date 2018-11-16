@@ -9,14 +9,16 @@
 			ordCnt = 1;
 		}
 		
-		$("#isbn").val(isbn);
-		$("#orderCount").val(ordCnt);
+		/*$("#isbn").val(isbn);
+		$("#orderCount").val(ordCnt);*/
 		
-		var form = document.bestForm;
+/*		var form = document.bestForm;
 
 		form.action = "/webproject/order.action?isbn="+isbn+"&orderCount="+ordCnt;
 
-		form.submit();
+		form.submit();*/
+		
+		location.href = "/webproject/order_dirOrder.action?isbn="+isbn+"&orderCount="+ordCnt;
 
 	}
 	
@@ -298,11 +300,15 @@
 			bandiDeductionTotCost += parseInt($("#marketSaleVal_"+seq).val(),10) * cnt;
 			bandiDeductionTotPoint += parseInt($("#prodPointVal_"+seq).val(),10) * cnt;
 			bandiDeductionTotDc += parseInt($("#marketSaleVal_"+seq).val(),10) * cnt * 1/parseInt($("#discountRate_"+seq).val(),10);
+			
 		}
+		
 		
 		//배송비용
 		if(bandiDeductionTotSaleCost < 10000){
 			bandiDeductionTotDeliCost = 2000;
+		}else{
+			bandiDeductionTotDeliCost = 0;
 		}
 		
 		//총비용(+배달비용)

@@ -39,8 +39,10 @@
 <script src="http://dmaps.daum.net/map_js_init/postcode.v2.js"></script>
 
 <script type="text/javascript">
-	
+
 	$(document).ready(function(){
+		
+		/* orderCalc(); */
 		
 		//우편번호 검색 및 주소 가져오기
 		$('#fZipCode').on('click',function(){
@@ -104,18 +106,6 @@
 
 		});
 
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
 	});
 
 	</script>
@@ -200,8 +190,7 @@
 						
 										<input type="hidden" id="maxVal_${dto.seqNum }"  name="maxVal" value="999">
 										<input type="hidden" id="saleCostVal_${dto.seqNum }" name="price" value="${dto.discountedPrice }"/>
-										<input type="hidden" id="deliCostCondiVal_${dto.seqNum }" name="deliCostCondiVal" value="10000"/>
-						   				<input type="hidden" id="deliCostVal_${dto.seqNum }" name="deliCostVal" value="2000"/>
+										
 						   				<input type="hidden" id="marketSaleVal_${dto.seqNum }" name="marketSaleVal" value="${dto.bookPrice }"/>
 						   				<input type="hidden" id="prodPointVal_${dto.seqNum }" name="rodPointVal" value="${dto.point }"/>
 						   				<input type="hidden" id="bundleDeliYnVal_${dto.seqNum }" name="bundleDeliYnVal" value="Y"/>
@@ -242,8 +231,7 @@
 						
 										<input type="hidden" id="maxVal_${dto.seqNum }"  name="maxVal" value="999">
 										<input type="hidden" id="saleCostVal_${dto.seqNum }" name="price" value="${dto.discountedPrice }"/>
-										<input type="hidden" id="deliCostCondiVal_${dto.seqNum }" name="deliCostCondiVal" value="10000"/>
-						   				<input type="hidden" id="deliCostVal_${dto.seqNum }" name="deliCostVal" value="2000"/>
+										
 						   				<input type="hidden" id="marketSaleVal_${dto.seqNum }" name="marketSaleVal" value="${dto.bookPrice }"/>
 						   				<input type="hidden" id="prodPointVal_${dto.seqNum }" name="rodPointVal" value="${dto.point }"/>
 						   				<input type="hidden" id="bundleDeliYnVal_${dto.seqNum }" name="bundleDeliYnVal" value="Y"/>
@@ -275,7 +263,7 @@
 		            	<div class="overflow">
 		            		 
 		            		<div class="fl_left mt10 ml10 receive_check">
-			            		<div class="mb5">반디배송상품 <strong id="bandi_deli_expect">2018년 10월 17일(수)</strong></div>
+			            		<!-- <div class="mb5">반디상품 <strong id="bandi_deli_expect">2018년 10월 17일(수)</strong></div> -->
 				            </div>
 			            	<div class="fl_right mt10">
 			            		<span class="t_11gr mr5">주문상품 변경을 원하시면 </span>
@@ -292,9 +280,7 @@
 			            		<tbody><tr id="tr_deliCode" style="display: table-row;">
 			            			<th>배송방법</th>
 			            			<td>
-			            				<span><input type="radio" name="deli_code" id="deli_01" value="01" class="mt3m mr3 btn_deliCode" checked=""><label for="deli_01">일반택배</label></span>
-			            				<!-- <span class="ml15" id="deliMethod_07" style=""><input type="radio" name="deli_code" id="deli_07" value="07" class="mt3m mr3 btn_deliCode"><label for="deli_07">편의점택배</label></span> -->
-			            				<!-- <span class="ml15" id="deliMethod_13" style="display:none;"><input type="radio" name="deli_code" id="deli_13" value="13" class="mt3m mr3 btn_deliCode"><label for="deli_13">편의점택배</label></span> -->			            				
+			            				<span><input type="radio" name="deli_code" id="deli_01" value="01" class="mt3m mr3 btn_deliCode" checked=""><label for="deli_01">일반택배</label></span>   				
 			            			</td>
 			            		</tr>
 						
@@ -313,10 +299,26 @@
 			            		<tr id="tr_deliMobile" style="display: table-row;">
 			            			<th class="line_none pb0">휴대폰</th>
 			            			<td class="line_none pb0">
-			            				<select name="rcvr_tel2_part1"><option value="010">010</option><option value="011">011</option><option value="016">016</option><option value="017">017</option><option value="018">018</option><option value="019">019</option><option value="0502">0502</option><option value="0503">0503</option><option value="0504">0504</option><option value="0505">0505</option><option value="0506">0506</option><option value="0507">0507</option><option value="0508">0508</option><option value="0509">0509</option></select> -
+			            				<select name="rcvr_tel2_part1">
+			            					<option value="010">010</option>
+			            					<option value="011">011</option>
+			            					<option value="016">016</option>
+			            					<option value="017">017</option>
+			            					<option value="018">018</option>
+			            					<option value="019">019</option>
+			            					<option value="0502">0502</option>
+			            					<option value="0503">0503</option>
+			            					<option value="0504">0504</option>
+			            					<option value="0505">0505</option>
+			            					<option value="0506">0506</option>
+			            					<option value="0507">0507</option>
+			            					<option value="0508">0508</option>
+			            					<option value="0509">0509</option>
+			            				</select> 
+			            					-
 			            				<input type="text" name="rcvr_tel2_part2" id="rcvr_tel2_part2" size="4" maxlength="4" value="${addPhone2 }" class="o_input" style="ime-mode:disabled;width:20%" onkeypress="goNumCheck();"> -
 			            				<input type="text" name="rcvr_tel2_part3" id="rcvr_tel2_part3" size="4" maxlength="4" value="${addPhone3 }" class="o_input" style="ime-mode:disabled;width:20%" onkeypress="goNumCheck();">
-			            				<input type="hidden" name="rcvr_tel2" value="">
+			            				
 			            			</td>
 			            		</tr>
 			            		<tr id="tr_deliPhone" style="display: table-row;">
@@ -346,7 +348,7 @@
 			            				<input type="hidden" name="rcvr_post" value="">
 			            			</td>
 			            		</tr>
-		
+
 			            		<tr class="tr_deliEng" style="display:none;">
 			            			<th class="line_none pb0">City</th>
 			            			<td class="line_none pb0"><input type="text" name="eng_rcvr_city" size="25" class="o_input"></td>
@@ -506,10 +508,10 @@
 			            			<th>결제금액</th>
 			            		</tr>
 			            		<tr>
-			            			<td><span id="bandiDeduction_totSaleCost">15,000</span><span class="t_14">원</span></td>
+			            			<td><span id="bandiDeduction_totSaleCost">0</span><span class="t_14">원</span></td>
 			            			<td><span id="bandiDeduction_totDeliCost">0</span><span class="t_14">원</span><br><span class="t_11gr" id="finalDeliCostInfo"></span></td>
 			            			<td><span id="totDiscountCost">0</span><span class="t_14">원</span><br><span class="t_11gr" id="finalDiscountCostInfo"></span></td>
-			            			<td class="total"><span id="totOrdCost">25,920</span><span class="t_14">원</span></td>
+			            			<td class="total"><span id="totOrdCost">0</span><span class="t_14">원</span></td>
 			            		</tr>
 			            	</tbody></table>
 			            	<span class="order_plus"></span><span class="order_minus"></span><span class="order_same"></span>
@@ -527,7 +529,7 @@
 				            		<div class="pay_total">
 				            			<dl class="pan_con01">
 				            				<dt><img src="/webproject/resources/images/order/h3_order_totalpay.gif" alt="최종 결제 금액"></dt>
-				            				<dd><span class="finalCashCost">25,920</span><span class="t_14">원</span></dd>
+				            				<dd><span class="finalCashCost">0</span><span class="t_14">원</span></dd>
 				            			</dl>
 				            		</div> 
 				            		<div class="mt10">
@@ -538,11 +540,11 @@
 				            			<!-- 약관체크 인증시 비회원은 동의했으므로 생략 -->
 				            			
 					            			<div class="pay_receipt">
-					            				<span class="receipt_check"><input type="checkbox" name="item03"></span>
+					            				<span class="receipt_check"><input type="checkbox" id="item03" name="item03"></span>
 					            				개인정보 선택 항목의 수집에 동의합니다. <a href="javascript:popUpRules2();" class="btn_w_comm btype_a4">내용보기</a>
 					            			</div>
 						            		<div class="pay_receipt">
-						            			<span class="receipt_check"><input type="checkbox" name="item04"></span>
+						            			<span class="receipt_check"><input type="checkbox" id="item04" name="item04"></span>
 						            			 배송 등을 위해 제3자 정보제공에 동의합니다. <a href="javascript:popUpRules3();" class="btn_w_comm btype_a4">내용보기</a>
 						            		</div>
 

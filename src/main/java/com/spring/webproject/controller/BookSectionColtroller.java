@@ -469,6 +469,59 @@ public class BookSectionColtroller {
 		return "shopAndOrder/shopCartList";
 	}
 	
+	
+	@RequestMapping(value="order_dirOrder.action", method= {RequestMethod.GET, RequestMethod.POST})
+	public String dirOrder(HttpServletRequest request, HttpServletResponse response) throws Exception {
+		
+		UserDTO dto2 = (UserDTO)request.getSession().getAttribute("userInfo");
+		
+		//배송지 중에서 폰 및 일반 전화번호 splited by '-'
+
+		String addPhone = dto2.getPhone();
+		
+		String[] arrayAddPhone = addPhone.split("-");
+
+		String addPhone2 = arrayAddPhone[1];
+		String addPhone3 = arrayAddPhone[2];
+
+		String isbn = request.getParameter("isbn");
+		String orderCount = request.getParameter("orderCount");
+		//--------------------------------------------------------------------------
+	
+		
+		//남은 포인트
+		String userId = dto2.getUserId();
+		
+		int leftPoint = raDao.getLeftPoint(userId);
+		//남은 포인트
+		
+		//쿠키 책 출력
+		int num = 0;
+		List<BookSectionsDTO> lists = new ArrayList<BookSectionsDTO>();
+		
+		for(int i=0;i<1;i++) {
+			
+			int seqNum = 1000+i;
+			num += 1;
+			
+			BookSectionsDTO dto = raDao.getBookSection(isbn);
+			dto.setOrderCount(orderCount);
+			dto.setSeqNum(seqNum);
+			
+			lists.add(dto);
+			
+		}
+		//쿠키 책 출력
+		
+		request.setAttribute("leftPoint", leftPoint);
+		request.setAttribute("addPhone2", addPhone2);
+		request.setAttribute("addPhone3", addPhone3);
+		request.setAttribute("num", num);
+		request.setAttribute("lists", lists);
+		
+		return "shopAndOrder/order";
+	}
+	
 	@RequestMapping(value="order.action", method= {RequestMethod.GET, RequestMethod.POST})
 	public String order(HttpServletRequest request, HttpServletResponse response) throws Exception {
 
@@ -582,51 +635,57 @@ public class BookSectionColtroller {
 		}
 		// orderBooks table insert end
 		
-		// point table insert
-		//usedPoint : 주문시에 사용한 포인트
-		int inputPoint = usedPoint-(usedPoint*2);	//DB에 입력할 때 사용할 포인트 변수
 		
-		while(usedPoint!=0) {	//usedPoint가 0이 될때까지 동작
-
-			//rownum으로 leftPoint를 만료일자가 가까운 순으로 불러옴
-			//pointMap안에는 pointid, leftValue가 들어있음
-			HashMap<String, Object> pointMap = shoppingDao.getLeftPoint(dto3.getUserId());
-
-			//pointMap 풀어내기
-			int leftValue = ((BigDecimal)pointMap.get("LEFTVALUE")).intValue();
-			int pointId = ((BigDecimal)pointMap.get("POINTID")).intValue();
+		//usedPoint가 0이면 그냥 넘어가게 (시작)
+		if(usedPoint != 0) {
+			// point table insert
+			//usedPoint : 주문시에 사용한 포인트
+			int inputPoint = usedPoint-(usedPoint*2);	//DB에 입력할 때 사용할 포인트 변수
 			
-
+			while(usedPoint!=0) {	//usedPoint가 0이 될때까지 동작
+	
+				//rownum으로 leftPoint를 만료일자가 가까운 순으로 불러옴
+				//pointMap안에는 pointid, leftValue가 들어있음
+				HashMap<String, Object> pointMap = shoppingDao.getLeftPoint(dto3.getUserId());
+	
+				//pointMap 풀어내기
+				int leftValue = ((BigDecimal)pointMap.get("LEFTVALUE")).intValue();
+				int pointId = ((BigDecimal)pointMap.get("POINTID")).intValue();
+				
+	
+				
+				//사용한 포인트>적립된 포인트
+				//적립된 포인트(point테이블 안의 leftValue)를 0으로 만든다음 사용한포인트-적립된 포인트한 금액을
+				//다시 usedPoint에 넣음 그리고 while문 반복
+				if(usedPoint>=leftValue) { 
+					//leftValue를 0으로 만들고, usedPoint를 그만큼 줄여서 다시 저장
+					shoppingDao.pointUseUpdate(pointId, 0);
+					usedPoint = usedPoint-leftValue;
+	
+				}
+				//사용한 포인트<적립된 포인트
+				//적립된 포인트-사용한 포인트 금액을 불러온 pointId를 통해 leftValue를 업데이트한 후 while문 종료됨
+				else {
+	
+					leftValue = leftValue-usedPoint;
+					shoppingDao.pointUseUpdate(pointId, leftValue);
+					usedPoint = 0;
+	
+				}
+			}
+			//포인트 아이디 생성
 			
-			//사용한 포인트>적립된 포인트
-			//적립된 포인트(point테이블 안의 leftValue)를 0으로 만든다음 사용한포인트-적립된 포인트한 금액을
-			//다시 usedPoint에 넣음 그리고 while문 반복
-			if(usedPoint>=leftValue) { 
-				//leftValue를 0으로 만들고, usedPoint를 그만큼 줄여서 다시 저장
-				shoppingDao.pointUseUpdate(pointId, 0);
-				usedPoint = usedPoint-leftValue;
-
-			}
-			//사용한 포인트<적립된 포인트
-			//적립된 포인트-사용한 포인트 금액을 불러온 pointId를 통해 leftValue를 업데이트한 후 while문 종료됨
-			else {
-
-				leftValue = leftValue-usedPoint;
-				shoppingDao.pointUseUpdate(pointId, leftValue);
-				usedPoint = 0;
-
-			}
+			//DB에 포인트 사용한 내역 추가함
+			Map<String, Object> map = new HashMap<String, Object>();
+			map.put("userId", dto3.getUserId());
+			map.put("orderId", dto4.getOrderId());	//orderId 생성후 입력
+			map.put("value", inputPoint);
+			map.put("pointId", shoppingDao.getMaxPointId()+1);//pointId 생성후 입력
+	
+			shoppingDao.usedPointInsert(map);
 		}
-		//포인트 아이디 생성
+		//usedPoint가 0이면 그냥 넘어가게 (끝)
 		
-		//DB에 포인트 사용한 내역 추가함
-		Map<String, Object> map = new HashMap<String, Object>();
-		map.put("userId", dto3.getUserId());
-		map.put("orderId", dto4.getOrderId());	//orderId 생성후 입력
-		map.put("value", inputPoint);
-		map.put("pointId", shoppingDao.getMaxPointId()+1);//pointId 생성후 입력
-
-		shoppingDao.usedPointInsert(map);
 		
 		//상품 구입후 포인트 적립 시작
 		String orderId = Integer.toString(dto4.getOrderId());
