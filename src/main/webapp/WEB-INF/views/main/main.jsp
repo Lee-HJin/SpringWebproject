@@ -466,30 +466,12 @@
 											</dl>
 										</div>
 									</div>
-								</c:forEach>
+								</c:forEach>					
 								</div>
 							</div>
-						</div>
-
-						<script type="text/javascript">
-						
-						var swiper = new Swiper('.swiper3', {
-							spaceBetween: 0,
-							centeredSlides: true,
-							loop: true,
-							simulateTouch : false,
-							pagination: {
-								el: '.aw_count_rb',
-								type: 'fraction',
-							},
-							navigation: {
-								nextEl: '#rb_awR',
-								prevEl: '#rb_awL',
-							},
-						});
-						
-						</script>
+						</div>	
 					</c:if>
+					
 					<button class="rc_btn" id="recommend_btn"></button>
 					<div class="rc_books">
 						<h4>최근 본 도서와 유사한 분야 또는 주제를 다룬 도서</h4>
@@ -917,8 +899,8 @@
 	</div>
 </div>
 
-	<script src="<%=cp%>/resources/js/swiper_min.js"></script>
-	<script src="<%=cp%>/resources/js/swiper.js"></script>
+<%-- 	<script src="<%=cp%>/resources/js/swiper_min.js"></script>
+	<script src="<%=cp%>/resources/js/swiper.js"></script> --%>
 	
 <jsp:include page="./footer.jsp" flush="false"/>
 

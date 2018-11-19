@@ -120,3 +120,17 @@ var swiper = new Swiper('.bnl_swiper2', {
 	},
 }); 
 
+var swiper = new Swiper('.swiper3', {
+	spaceBetween: 0,
+	centeredSlides: true,
+	loop: true,
+	simulateTouch : false,
+	pagination: {
+		el: '.aw_count_rb',
+		type: 'fraction',
+	},
+	navigation: {
+		nextEl: '#rb_awR',
+		prevEl: '#rb_awL',
+	},
+});
