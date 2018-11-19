@@ -13,7 +13,8 @@
 <link rel="stylesheet" href="<%=cp%>/resources/css/admin.css" type="text/css"/>
 <link href="https://fonts.googleapis.com/css?family=Noto+Sans+KR" rel="stylesheet"/>
 
-<title>Insert title here</title>
+<link rel="shortcut icon" href="http://image.bandinlunis.com/favicon.ico" type="image/x-icon">
+<title>2조 반디앤루니스</title>
 
 </head>
 <body>
@@ -25,20 +26,6 @@
 					<img alt="" src="<%=cp%>/resources/image/main/logo_2014_top.gif">
 				</a>
 			</h1>
-			<div class="top_menu" style="width: 1100px;">
-				<ul class="t_menu_list">
-					<c:if test="${empty sessionScope.userInfo.userId }">
-					<li class="t_menu login">
-						<a href="<%=cp %>/login.action" class="t_menu_link btn_login">로그인</a>
-					</li>
- 					</c:if>
-					<c:if test="${!empty sessionScope.userInfo.userId }"> 
-						<li class="t_menu logout">
-							<a href="javascript://" class="t_menu_link btn_logout">로그아웃</a>
-						</li>
- 					</c:if>
-				</ul>
-			</div>
 		</div>
 	</div>
 	

@@ -19,7 +19,7 @@
 <script type="text/javascript" src="https://wcs.naver.net/wcslog.js"></script>
 </head>
 
-<body><jsp:include page="../search/header.jsp" flush="false" /></body>
+<body><jsp:include page="../main/header.jsp" flush="false" /></body>
 <div class="min_height">
 	<!-- 컨텐츠 영역 -->
 	<article id="bandiContainer" style=""> <!-- 상단 검색 키워드 영역 -->

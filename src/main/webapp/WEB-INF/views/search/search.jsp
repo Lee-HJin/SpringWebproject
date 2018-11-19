@@ -498,8 +498,8 @@ $(document).ready(function(){
 </script>
 </head>
 <body class="vsc-initialized" style="">
+	<jsp:include page="../main/header.jsp" flush="false"/>
 	<article id="bandiWrap"> 
-	<jsp:include page="../search/header.jsp" flush="false"/>
 	<script type="text/javascript">
 	if(window.location.protocol == 'https:'){
 		window.location.href = window.location.href.replace('https:','http:');
@@ -741,7 +741,7 @@ $(document).ready(function(){
 								</a>
 							</div>
 							<div class="btn_popup">
-								<a href="/front/product/detailProduct.do?prodId=4109026"
+								<a href="<%=cp%>/book_info.action?isbn=${dto.isbn}"
 									class="btn_new" id="blank_link_4109026" target="_blank"
 									style="display: none;"><span class="ico_new">새창열기</span></a>
 							</div>
@@ -749,7 +749,7 @@ $(document).ready(function(){
 						
 						<dl class="book_contents">
 							<dt>
-								<a href="/front/product/detailProduct.do?prodId=4109026"><span
+								<a href="<%=cp%>/book_info.action?isbn=${dto.isbn}"><span
 									class="tit_category"></span>${dto.bookTitle }</a> <span class="tit_sub">-
 									${dto.subTitle }</span>
 								<div class="tag_area">

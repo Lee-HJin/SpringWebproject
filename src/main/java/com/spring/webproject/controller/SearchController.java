@@ -54,7 +54,7 @@ public class SearchController {
 			dataCount = dao.getBookCount2(searchValue, categoryId);			
 		}
 		
-		System.out.println(searchValue);
+		//System.out.println(searchValue);
 		String pageNum = req.getParameter("pageNum");
 		int currentPage = 1;
 
@@ -80,12 +80,12 @@ public class SearchController {
 			param += "&categoryId="+categoryId;
 		}
 		
-		System.out.println(param);
+		//System.out.println(param);
 		String listUrl = cp + "/search/search.do";
 		if (!param.equals("")) {
 			listUrl = listUrl + "?" + param;
 		}
-		System.out.println(totalPage);
+		//System.out.println(totalPage);
 		String pageIndexList = myUtil.pageIndexList(currentPage, totalPage, listUrl);
 		req.setAttribute("pageIndexList", pageIndexList);
 		//
@@ -104,7 +104,7 @@ public class SearchController {
 		
 		
 		List<SearchDTO> bookTitle = dao.getBookTitle(searchValue);
-		System.out.println("ddddddd");
+		/*System.out.println("ddddddd");*/
 		List<SearchDTO> categoryList = dao.getCategory(searchValue);
 		
 		req.setAttribute("categoryList", categoryList);
@@ -137,11 +137,11 @@ public class SearchController {
 		req.setCharacterEncoding("UTF-8");
 		resp.setContentType("text/html;charset=UTF-8");
 		
-		System.out.println("searchValue="+result);
+		//System.out.println("searchValue="+result);
 		
 		List<SearchDTO> list = dao.getBookTitle(result); //result값이 포함되어 있는 emp테이블의 네임을 리턴
-		System.out.println("bookt :" +list.get(0).getBookTitle());
-		System.out.println("isbn :"+list.get(0).getIsbn());
+		//System.out.println("bookt :" +list.get(0).getBookTitle());
+		//System.out.println("isbn :"+list.get(0).getIsbn());
 		req.setAttribute("list", list);
 //		JSONArray array = new JSONArray();
 //		for (int i = 0; i < list.size(); i++) {

@@ -456,7 +456,7 @@
 </head>
 
 <body class="vsc-initialized">
-<jsp:include page="../search/header.jsp" flush="false"/>
+<jsp:include page="../main/header.jsp" flush="false"/>
 
 	<div id="wrap">
 
@@ -499,7 +499,7 @@
 											<a href="/webproject/help/helpCounsel.action">1:1 상담하기</a>
 											</c:if>
 											</li>
-											<li><a href="/bandi/myshopping/myCounselHist.action">1:1
+											<li><a href="/webproject/myShopping/myCounselHistory.action">1:1
 													상담내역</a></li>
 										</ul>
 									</li>
